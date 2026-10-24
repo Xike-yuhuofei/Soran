@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导学 · 如何使用这套教材 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="guide" data-root="../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>导学</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">导学 · ORIENTATION</div>
+        <h1 class="page-title">如何使用这套教材</h1>
+        <p class="page-lede">这套教材是为「素然之境 Soran」品牌主理人定制的贴身衣物专业课程：假设你具备商业与供应链常识，但没有受过纺织或服装工程教育。它将带你从零建立系统的专业知识，最终目标是——你能独立判断产品、材料、工艺、品质、成本与供应商。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 15 分钟</span>
+          <span class="chip">前置要求：无</span>
+          <span class="chip">建议在电脑端配合实物学习</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-position" data-sec="s-position"><span class="sec-no">01</span>教材定位：学什么、学到什么程度</h2>
+
+      <p>这不是一本产品介绍手册，也不是术语词典。它的任务是回答四个层次的问题：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">是什么</div><div class="kv-v">一个术语、一种材料、一道工序的准确定义与边界。<em class="t">（基础层）</em></div></div>
+        <div class="kv-row"><div class="kv-k">为什么</div><div class="kv-v">为什么这个品类要用这种材料、这种结构、这道工艺——背后的功能与成本逻辑。<em class="t">（理解层）</em></div></div>
+        <div class="kv-row"><div class="kv-k">怎么比</div><div class="kv-v">两件看似相同的商品，品质差异在哪里，如何用可验证的方法比较。<em class="t">（判断层）</em></div></div>
+        <div class="kv-row"><div class="kv-k">怎么定</div><div class="kv-v">作为品牌主理人，如何把这些判断转化为选品决策、规格书、验收标准与供应商对话。<em class="t">（决策层）</em></div></div>
+      </div>
+
+      <p>三个品类的<dfn class="term" data-term="产业集群">共性知识</dfn>（纤维、面料、染整、检测、供应链）统一放在第一篇讲透，之后各品类篇只讲差异化的内容——请勿跳过第一篇，后面的品类章节默认你已掌握这些前置概念。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>你不需要成为工程师。这套教材刻意控制在「产品开发与供应链管理者」所需的深度：能看懂报告、能提出对的问题、能识破不合理的报价——但<b>不要求</b>你会操作设备、推导公式或设计配方。遇到超出这个深度的内容，教材会用「深入理解」框标注，可跳过不影响主线。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-map" data-sec="s-map"><span class="sec-no">02</span>知识体系总览</h2>
+
+      <p>全部内容分为五篇，学习逻辑是「先建地基，再进品类，最后回到生意」：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 连接线 -->
+            <g stroke="#C7BFAE" stroke-width="1.6" fill="none">
+              <path d="M380 92 L170 158"/>
+              <path d="M380 92 L380 158"/>
+              <path d="M380 92 L590 158"/>
+              <path d="M170 262 L380 318"/>
+              <path d="M380 262 L380 318"/>
+              <path d="M590 262 L380 318"/>
+              <path d="M380 388 L380 396"/>
+            </g>
+            <g fill="#C7BFAE">
+              <circle cx="170" cy="158" r="3"/><circle cx="380" cy="158" r="3"/><circle cx="590" cy="158" r="3"/>
+              <circle cx="170" cy="262" r="3"/><circle cx="380" cy="262" r="3"/><circle cx="590" cy="262" r="3"/>
+            </g>
+            <!-- 第一篇 地基 -->
+            <g>
+              <rect x="230" y="24" width="300" height="62" rx="12" fill="#3D6B57"/>
+              <text x="380" y="50" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">第一篇 · 通用基础</text>
+              <text x="380" y="71" text-anchor="middle" fill="#CDE0D6" font-size="11.5">纤维 / 纱线 / 面料 / 染整 / 检测标准 / 供应链</text>
+            </g>
+            <!-- 三品类 -->
+            <g>
+              <rect x="60" y="162" width="220" height="96" rx="12" fill="#fff" stroke="#C7D8CE" stroke-width="1.6"/>
+              <text x="170" y="190" text-anchor="middle" fill="#26231D" font-size="15.5" font-weight="700">第二篇 · 内裤</text>
+              <text x="170" y="212" text-anchor="middle" fill="#5D574B" font-size="11.5">分类结构 · 版型尺码</text>
+              <text x="170" y="230" text-anchor="middle" fill="#5D574B" font-size="11.5">车缝 / 无痕 / 无缝工艺</text>
+              <text x="170" y="248" text-anchor="middle" fill="#5D574B" font-size="11.5">底裆与卫生设计</text>
+            </g>
+            <g>
+              <rect x="270" y="162" width="220" height="96" rx="12" fill="#fff" stroke="#C7D8CE" stroke-width="1.6"/>
+              <text x="380" y="190" text-anchor="middle" fill="#26231D" font-size="15.5" font-weight="700">第三篇 · 袜子</text>
+              <text x="380" y="212" text-anchor="middle" fill="#5D574B" font-size="11.5">袜型结构 · 针数筒径</text>
+              <text x="380" y="230" text-anchor="middle" fill="#5D574B" font-size="11.5">缝头 / 毛圈 / 加固</text>
+              <text x="380" y="248" text-anchor="middle" fill="#5D574B" font-size="11.5">材料配比与成本</text>
+            </g>
+            <g>
+              <rect x="480" y="162" width="220" height="96" rx="12" fill="#B0603F"/>
+              <text x="590" y="190" text-anchor="middle" fill="#fff" font-size="15.5" font-weight="700">第四篇 · 文胸（重点）</text>
+              <text x="590" y="212" text-anchor="middle" fill="#F3D9CC" font-size="11.5">承托原理 · 结构拆解</text>
+              <text x="590" y="230" text-anchor="middle" fill="#F3D9CC" font-size="11.5">模杯材料 · 版型放码</text>
+              <text x="590" y="248" text-anchor="middle" fill="#F3D9CC" font-size="11.5">四大工艺路线</text>
+            </g>
+            <!-- 实战 -->
+            <g>
+              <rect x="230" y="322" width="300" height="62" rx="12" fill="#26231D"/>
+              <text x="380" y="348" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">第五篇 · 选品实战</text>
+              <text x="380" y="369" text-anchor="middle" fill="#B9B29F" font-size="11.5">品质判断 / 规格书 / 验收 / 汕头工厂考察 / 成本谈判</text>
+            </g>
+            <!-- 附录 -->
+            <g>
+              <rect x="230" y="398" width="300" height="26" rx="8" fill="#F3EFE7" stroke="#E6E0D3"/>
+              <text x="380" y="415" text-anchor="middle" fill="#8B8375" font-size="11.5">附录 · 术语索引 140+ ｜ 标准与检测方法清单</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 0-1</span><b>教材知识体系。</b>第一篇是三个品类共用的地基；文胸因结构与工艺最复杂、决策影响最大，作为重点模块单独加深；最后一篇把全部知识转化为选品与供应链的实操能力。</figcaption>
+      </figure>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-path" data-sec="s-path"><span class="sec-no">03</span>选择你的学习路径</h2>
+
+      <p>根据你的基础与时间安排，推荐三种走法。无论哪条路径，都请配合「实物」学习：手边至少准备一条内裤、一双袜子、一件文胸，边读边拆。</p>
+
+      <div class="wg">
+        <div class="wg-panel" data-tabs>
+          <div class="tabs">
+            <button class="tab active" data-tab="p1">零基础 · 完整路径</button>
+            <button class="tab" data-tab="p2">快速上手 · 两周路径</button>
+            <button class="tab" data-tab="p3">工作手册 · 随用随查</button>
+          </div>
+          <div class="wg-body">
+            <div class="tab-pane active" id="p1">
+              <p><b>适合：</b>第一次系统接触内衣行业，目标是 1-2 个月内建立完整知识框架。</p>
+              <ul class="plain">
+                <li><b>第 1 周</b>：通读第一篇全部五章（产品基础 → 供应链），完成每章自测。这一遍不求记住所有参数，只需建立概念地图。</li>
+                <li><b>第 2 周</b>：内裤篇 + 袜子篇（每篇 2 章，篇幅较短），同步做实物拆解练习。</li>
+                <li><b>第 3-4 周</b>：文胸篇三章（重点，建议精读两遍——第一遍懂结构，第二遍懂取舍），随后立即学习第五篇选品实战。</li>
+                <li><b>贯穿</b>：每次读完一章，用手边产品对照验证 3 个知识点；用首页搜索检查自己能否解释核心术语。</li>
+              </ul>
+            </div>
+            <div class="tab-pane" id="p2">
+              <p><b>适合：</b>近期就要开始选品或对接工厂，需要最短路径达到「能对话」的水平。</p>
+              <ul class="plain">
+                <li><b>先读</b>：第一篇的「纤维与纱线」「性能检测与标准」「生产制造与供应链」三章（跳过深水区，抓主干）。</li>
+                <li><b>再读</b>：你首发品类的对应篇目（如先做内裤，读第二篇全部），完成该篇自测。</li>
+                <li><b>必读</b>：第五篇「品质判断」中的规格书模板与「供应商考察」中的考察清单——这两样是可以直接带去工厂用的。</li>
+                <li><b>补课</b>：遇到听不懂的术语立刻用 <b>/</b> 搜索或查术语索引，回来把关联章节补上。</li>
+              </ul>
+            </div>
+            <div class="tab-pane" id="p3">
+              <p><b>适合：</b>已有一定经验，把教材当作决策工具书使用。</p>
+              <ul class="plain">
+                <li>验货出问题 → 「性能、检测与质量标准」的缺陷图鉴 + 对应品类篇的品质章节。</li>
+                <li>报价看不懂 → 「生产制造与供应链」的成本结构 + 第五篇的成本拆解工具。</li>
+                <li>打样不理想 → 对应品类篇的工艺章节，先看「问题成因」小节再回复工厂。</li>
+                <li>新品类立项 → 先读该品类篇的「选品判断」小节，再用规格书模板起草技术要求。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-tools" data-sec="s-tools"><span class="sec-no">04</span>教材功能与使用方法</h2>
+
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">①</span>术语系统</h5>
+          <ul>
+            <li>正文中带<b>金色虚线下划线</b>的词（如 <dfn class="term" data-term="旦尼尔">旦尼尔</dfn>、<dfn class="term" data-term="包覆纱">包覆纱</dfn>）可以悬停或点击查看释义卡片。</li>
+            <li>释义卡内的「相关 →」可跳转到关联术语，适合顺藤摸瓜式学习。</li>
+            <li>全部术语集中在「附录 · 术语索引」，支持按分类浏览。</li>
+          </ul>
+        </div>
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">②</span>搜索</h5>
+          <ul>
+            <li>按键盘 <b>/</b> 键或点左侧搜索框，可同时检索术语定义与章节正文。</li>
+            <li>搜索结果直接跳转到具体小节，适合「工作手册」式使用。</li>
+          </ul>
+        </div>
+        <div class="d-cell">
+          <h5><span class="d-ico">③</span>学习进度</h5>
+          <ul>
+            <li>每页按小节自动记录阅读进度，读完一整页侧栏会打 ✓。</li>
+            <li>进度保存在当前浏览器中（localStorage），<b>换浏览器或清理数据会重置</b>。</li>
+          </ul>
+        </div>
+        <div class="d-cell">
+          <h5><span class="d-ico">④</span>自测</h5>
+          <ul>
+            <li>每个章节穿插自测题，重在考察<b>判断与选择</b>而非记忆。</li>
+            <li>答错会给出解析，建议把解析读完再重做一次。</li>
+            <li>答案与得分自动保存，可随时重做。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          关于数据严谨性
+        </div>
+        <p>教材中出现的<b>价格、克重、工艺参数、交期</b>等数字，凡未标注标准或文献来源的，一律是<b>教学示例值</b>——用于建立正确的量级概念，不代表真实市场行情。涉及钱和品质标准的决策，请以供应商实测报告、现行标准和多家比价结果为准。可追溯的行业结论（如标准限值）会注明出处。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-method" data-sec="s-method"><span class="sec-no">05</span>三个学习习惯，效果翻倍</h2>
+
+      <h3 class="sub-title">习惯一：拆，是最快的学习</h3>
+      <p>拿到任何一件贴身衣物，先问五个问题：这是什么材料（看成分标 + 手感验证）？怎么缝的（翻看接缝与边口）？克重多少（电子秤称单件重，估算面料用量）？哪里最容易坏（拉伸回弹、揉搓、看加固部位）？成本大概多少（对照教材的成本拆解法）？坚持拆 10 件以上，你对品质的直觉会完全不同。</p>
+
+      <h3 class="sub-title">习惯二：永远做对比</h3>
+      <p>单个产品没有信息量，<b>差异</b>才有。同价位买两三个品牌对比，同款式买高中低三个价位对比，记录差异点：克重、缝制方式、辅料、洗后变化。教材的对比表与拆解分析法就是为此设计的框架。</p>
+
+      <h3 class="sub-title">习惯三：带着问题下工厂</h3>
+      <p>第五篇会给你完整的考察清单。在此之前，先养成习惯：把每次与工厂沟通中「听不懂的词」记下来，回来查清——这个词往往就是你与供应商之间的信息差，也就是你需要补的课。</p>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区
+        </div>
+        <p>不要试图「背完再开始」。内衣行业的知识密度远超一般消费品，正确姿势是：<b>框架先立住（第一篇），细节按需查（术语与搜索），判断靠对比（品类篇方法），决策靠工具（第五篇模板）</b>。能对着实物讲出产品的好坏，比背下 100 个术语有用得多。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-link" data-sec="s-link"><span class="sec-no">06</span>学完各篇，你能做什么</h2>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:26%">完成</th><th>你将能够</th></tr></thead>
+          <tbody>
+            <tr><td><b>第一篇</b> 通用基础</td><td>看懂成分标与检测报告；听懂供应商的行话；判断一份报价单里的材料是否合理；知道问什么问题不会被绕过去。</td></tr>
+            <tr><td><b>第二篇</b> 内裤</td><td>独立完成内裤款式的工艺路线选择（车缝/无痕/无缝）、底裆方案与成本估算；识破常见偷工点。</td></tr>
+            <tr><td><b>第三篇</b> 袜子</td><td>判断针数、克重、加固是否与售价匹配；写出袜子规格书；与大唐/义乌袜厂有效沟通。</td></tr>
+            <tr><td><b>第四篇</b> 文胸</td><td>理解承托逻辑与版型语言；选定工艺路线（车缝/模压/无痕/无缝）并评估打样；判断试穿问题的工艺成因；与汕头模杯/车缝厂对等沟通。</td></tr>
+            <tr><td><b>第五篇</b> 选品实战</td><td>建立产品技术规格书与验收标准；执行系统化的工厂考察与样品评审；用成本拆解与供应商谈判；形成符合 Soran「高品质、高质价比」定位的选品标准。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>准备好了就从<a href="fundamentals.html" style="color:var(--green);font-weight:600">第一篇 · 产品基础与人体工学</a>开始。祝学习顺利。</p>
+
+      <!-- 自测样题 -->
+      <h3 class="sub-title">先试两题：感受一下自测的风格</h3>
+
+      <section class="quiz" data-quiz="guide-1" data-q="供应商向你推荐一款「80支兰精莫代尔」内裤面料，报价比普通莫代尔高约一倍。以下哪种做法最专业？" data-a="2" data-exp="验证纤维来源与配比是基本功：要求提供兰精授权/吊牌许可与第三方成分检测（GB/T 2910），才能确认你付的溢价对应真实材料。A 凭手感判断主观且可被整理剂误导；B 直接放弃可能错过合理溢价的真实好料；D 「厂家保证」在虚标常见的情况下不能作为依据。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>摸上去确实比普通款柔滑，应该没问题，直接下单</li>
+            <li>太贵了，直接换成普通莫代尔面料</li>
+            <li>要求供应商提供兰精纤维的授权或采购凭证，并出具第三方成分检测报告</li>
+            <li>相信厂家，「他们做这行这么多年不会骗人」</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="guide-2" data-q="同样标着「精梳棉 80%、锦纶 15%、氨纶 5%」的两款女袜，价格相差 60%。价格差异最不可能是以下哪个原因？" data-a="3" data-exp="棉纱等级（精梳棉内部还分长绒棉/细绒棉、纱支高低）、橡筋（包覆氨纶）品质、织造与缝头工艺、克重都可能造成 60% 差价；而「针数高低」在同为精梳棉的袜子上对成本影响有限，且针数是袜机规格、与棉纱价格无直接关系。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>一款用的是长绒棉高支精梳纱，另一款是普通精梳纱</li>
+            <li>一款的橡筋用双包锦纶包覆氨纶，另一款用劣质橡筋</li>
+            <li>一款针数更高（如 200 针 vs 168 针），细腻度不同</li>
+            <li>「氨纶 5%」一栏：贵的那款用的是「进口氨纶」，与便宜款氨纶本质相同却贵数倍</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/glossary.js"></script>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/widgets.js"></script>
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

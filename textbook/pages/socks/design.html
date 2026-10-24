@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>袜子 · 结构、材料与规格 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="socks-design" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第三篇 · 袜子 / 结构材料</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">SOCKS · DESIGN</div>
+        <h1 class="page-title">袜子 · 结构、材料与规格</h1>
+        <p class="page-lede">袜子是唯一「没有裁片、没有版师」的贴身衣物：一只袜子在袜机上一次织成筒状，再封头、定型，织造配置直接等于产品本身。所以袜子品质的关键词不是「缝工」而是「规格」——针数、筒径、纱线配比、克重、加固，每一个数字都是成本与体验的旋钮。本页建立袜型分类地图，拆解一只袜子的完整解剖结构，讲透本篇最核心的概念「针数与筒径」，再落到材料配比、克重、尺码与 SKU 规划，为下一页的工艺与成本打好地基。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 25 分钟</span>
+          <span class="chip">前置：第一篇 · 通用基础</span>
+          <span class="chip">建议手边备一双旧袜边读边拆</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-map" data-sec="s-map"><span class="sec-no">01</span>袜型分类地图：长度 × 功能 × 工艺</h2>
+
+      <p>袜子的市场名称比内裤还乱：隐形袜、浅口袜、堆堆袜、板袜、跑步袜、袜子袜……但拆开看，描述一只袜子只需要三个正交变量：<b>长度</b>（袜筒盖到哪里）、<b>功能</b>（为谁、什么场景优化）、<b>工艺</b>（用什么织法与封头方式做出来）。以后看到任何新品名，先翻译回这三个变量，再判断它「新」在哪里——绝大多数「新品」只是三个变量的重新组合。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 500" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 根节点 -->
+            <rect x="270" y="14" width="220" height="46" rx="12" fill="#3D6B57"/>
+            <text x="380" y="43" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">袜子分类地图</text>
+            <!-- 连接线 -->
+            <g stroke="#C7BFAE" stroke-width="1.6" fill="none">
+              <path d="M380 60 L380 76"/>
+              <path d="M150 76 L610 76"/>
+              <path d="M150 76 L150 92"/>
+              <path d="M380 76 L380 92"/>
+              <path d="M610 76 L610 92"/>
+            </g>
+            <!-- 组头 -->
+            <rect x="40" y="92" width="220" height="36" rx="9" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.5"/>
+            <text x="150" y="115" text-anchor="middle" fill="#2C5142" font-size="14" font-weight="700">按长度</text>
+            <rect x="270" y="92" width="220" height="36" rx="9" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.5"/>
+            <text x="380" y="115" text-anchor="middle" fill="#8F6E2F" font-size="14" font-weight="700">按功能</text>
+            <rect x="500" y="92" width="220" height="36" rx="9" fill="#F7EAE2" stroke="#E6C9B8" stroke-width="1.5"/>
+            <text x="610" y="115" text-anchor="middle" fill="#B0603F" font-size="14" font-weight="700">按工艺</text>
+            <!-- 长度 -->
+            <g>
+              <rect x="40" y="140" width="220" height="44" rx="8" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="54" y="158" fill="#26231D" font-size="13.5" font-weight="650">船袜（隐形袜）</text>
+              <text x="54" y="175" fill="#5D574B" font-size="11.5">低于鞋口 · 配浅口鞋 · 防滑是命门</text>
+              <rect x="40" y="192" width="220" height="44" rx="8" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="54" y="210" fill="#26231D" font-size="13.5" font-weight="650">短袜（ ankle）</text>
+              <text x="54" y="227" fill="#5D574B" font-size="11.5">筒到脚踝上方 · 最通用日常档</text>
+              <rect x="40" y="244" width="220" height="44" rx="8" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="54" y="262" fill="#26231D" font-size="13.5" font-weight="650">中筒（crew）</text>
+              <text x="54" y="279" fill="#5D574B" font-size="11.5">小腿中段 · 通勤休闲主力档</text>
+              <rect x="40" y="296" width="220" height="44" rx="8" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="54" y="314" fill="#26231D" font-size="13.5" font-weight="650">长筒</text>
+              <text x="54" y="331" fill="#5D574B" font-size="11.5">膝下 · 靴袜 / 正装 / 户外</text>
+              <rect x="40" y="348" width="220" height="44" rx="8" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="54" y="366" fill="#26231D" font-size="13.5" font-weight="650">小腿袜（过膝）</text>
+              <text x="54" y="383" fill="#5D574B" font-size="11.5">过膝 · 搭配单品 / 压力起点</text>
+            </g>
+            <!-- 功能 -->
+            <g>
+              <rect x="270" y="140" width="220" height="44" rx="8" fill="#fff" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="284" y="158" fill="#26231D" font-size="13.5" font-weight="650">日常袜</text>
+              <text x="284" y="175" fill="#5D574B" font-size="11.5">棉为主 · 手感百搭 · 配比均衡</text>
+              <rect x="270" y="192" width="220" height="44" rx="8" fill="#fff" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="284" y="210" fill="#26231D" font-size="13.5" font-weight="650">运动袜</text>
+              <text x="284" y="227" fill="#5D574B" font-size="11.5">导湿耐磨 · 毛圈缓震 · 跟尖加固</text>
+              <rect x="270" y="244" width="220" height="44" rx="8" fill="#fff" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="284" y="262" fill="#26231D" font-size="13.5" font-weight="650">保暖袜</text>
+              <text x="284" y="279" fill="#5D574B" font-size="11.5">羊毛加厚 · 冬季与户外场景</text>
+              <rect x="270" y="296" width="220" height="44" rx="8" fill="#fff" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="284" y="314" fill="#26231D" font-size="13.5" font-weight="650">压力袜</text>
+              <text x="284" y="331" fill="#5D574B" font-size="11.5">梯度压力 · 久站久坐 / 医疗级</text>
+              <rect x="270" y="348" width="220" height="44" rx="8" fill="#FAF8F3" stroke="#E6E0D3" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="380" y="366" text-anchor="middle" fill="#8B8375" font-size="11.5">压力袜的压力分级与检测</text>
+              <text x="380" y="383" text-anchor="middle" fill="#8B8375" font-size="11.5">见本页 01 节末段说明</text>
+            </g>
+            <!-- 工艺 -->
+            <g>
+              <rect x="500" y="140" width="220" height="44" rx="8" fill="#fff" stroke="#E6C9B8" stroke-width="1.4"/>
+              <text x="514" y="158" fill="#26231D" font-size="13.5" font-weight="650">普通机缝</text>
+              <text x="514" y="175" fill="#5D574B" font-size="11.5">缝头有棱 · 性价比基础档</text>
+              <rect x="500" y="192" width="220" height="44" rx="8" fill="#fff" stroke="#E6C9B8" stroke-width="1.4"/>
+              <text x="514" y="210" fill="#26231D" font-size="13.5" font-weight="650">对目缝头</text>
+              <text x="514" y="227" fill="#5D574B" font-size="11.5">缝痕平整无棱 · 中高端标配</text>
+              <rect x="500" y="244" width="220" height="44" rx="8" fill="#fff" stroke="#E6C9B8" stroke-width="1.4"/>
+              <text x="514" y="262" fill="#26231D" font-size="13.5" font-weight="650">毛圈织造</text>
+              <text x="514" y="279" fill="#5D574B" font-size="11.5">袜内毛巾圈 · 厚实缓震吸汗</text>
+              <rect x="500" y="296" width="220" height="44" rx="8" fill="#fff" stroke="#E6C9B8" stroke-width="1.4"/>
+              <text x="514" y="314" fill="#26231D" font-size="13.5" font-weight="650">提花 / 无缝花色</text>
+              <text x="514" y="331" fill="#5D574B" font-size="11.5">图案直织 · 设计感与品牌识别</text>
+              <rect x="500" y="348" width="220" height="44" rx="8" fill="#FAF8F3" stroke="#E6E0D3" stroke-width="1.2" stroke-dasharray="5 4"/>
+              <text x="610" y="366" text-anchor="middle" fill="#8B8375" font-size="11.5">缝头与毛圈的工艺细节</text>
+              <text x="610" y="383" text-anchor="middle" fill="#8B8375" font-size="11.5">在本篇工艺页（下一页）展开</text>
+            </g>
+            <!-- 底部维度带 -->
+            <rect x="40" y="424" width="680" height="38" rx="9" fill="#F3EFE7" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="380" y="447" text-anchor="middle" fill="#5D574B" font-size="12.5">三个维度相互正交：描述一款袜子 = 长度 × 功能 × 工艺。例：中筒 × 运动 × 毛圈 = 主流跑步袜；短袜 × 日常 × 对目 = 精品棉袜。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-1</span><b>袜子分类地图。</b>长度、功能、工艺三个维度独立取值、自由组合——「跑步袜」不是一个独立家族，而是「中筒 × 运动 × 毛圈」的一个组合。这个框架也是 SKU 规划表的第一列。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">长度维度：五档一句话画像</h3>
+      <ul class="plain">
+        <li><dfn class="term" data-term="船袜">船袜</dfn>：袜口低于鞋口的隐形袜，配浅口鞋、乐福鞋。版型与工艺的全部挑战在「穿得住」：后跟要做出足够深的跟袋，再靠硅胶条与橡筋压力防滑——细节见下一页 03 节。</li>
+        <li><b>短袜</b>：筒到脚踝上方，最通用的日常档，四季皆宜；零售占比最大，也是新品牌跑量的基本盘。</li>
+        <li><b>中筒</b>：筒到小腿中段，通勤休闲与运动场景的主力长度；袜筒罗纹的松紧与「套腿不下滑」是体验关键。</li>
+        <li><b>长筒</b>：膝下长度，配靴、正装与户外；对袜口压力均匀性要求最高——筒越长，橡筋劣质造成的「束带感」越明显。</li>
+        <li><b>小腿袜</b>：过膝，多为搭配单品；若叠加梯度压力则与压力袜接壤。</li>
+      </ul>
+
+      <h3 class="sub-title">功能维度：四类定位</h3>
+      <p><b>日常袜</b>以棉等吸湿纤维为主，追求手感与百搭，配比均衡即可；<b>运动袜</b>的优先级完全不同——导湿、耐磨、缓震、防磨泡，毛圈与加固是标配，棉含量反而要刻意控制（本页 04 节细讲）；<b>保暖袜</b>靠<dfn class="term" data-term="美利奴羊毛">美利奴羊毛</dfn>等纤维加厚，冬季与户外定位，抗臭性与防毡缩是卖点与风险点；<dfn class="term" data-term="压力袜">压力袜</dfn>按梯度压力设计，日常零售常见的是轻度弹力袜，真正的医疗级压力袜有压力分级与检测要求（国内可参考 FZ/T 73031《压力袜》的指标体系），宣称压力前先确认有没有压检数据——「穿得紧」不等于「有梯度压力」。</p>
+
+      <p>工艺维度（普通机缝 / 对目 / 毛圈 / 提花）的原理与品质差异，集中在下一页展开；本页先记住结论：<b>缝头方式与毛圈配置，是袜子「面子价」之外最能拉开体验差距的两处</b>。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-anatomy" data-sec="s-anatomy"><span class="sec-no">02</span>结构解剖：一只袜子的八个部位</h2>
+
+      <p>把一只短袜平铺在桌上，你找不到一条裁缝合——除了封住脚尖的<b>袜头缝</b>，整只袜子是织出来的。正因为如此，它的每个「部位」都不是缝出来的，而是<b>织造程序切换出来的</b>：织到跟部，机器开始收放针；织到袜口，机器切换罗纹并喂入橡筋。点击下图编号，查看每个部位的功能与常见问题。</p>
+
+      <figure class="fig" data-hotroot>
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 袜子侧视轮廓 -->
+            <path d="M132 66 L216 66 L216 214 C216 206 224 200 240 198 L540 198 C586 200 614 220 616 246 C618 270 596 288 560 290 L330 294 C296 298 262 296 246 272 C238 258 234 248 230 242 L132 242 Z"
+              fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+            <!-- 袜口罗纹带 -->
+            <rect x="132" y="66" width="84" height="34" fill="#C7D8CE" opacity=".5"/>
+            <g stroke="#2C5142" stroke-width="1.4" opacity=".55">
+              <line x1="142" y1="68" x2="142" y2="98"/><line x1="154" y1="68" x2="154" y2="98"/>
+              <line x1="166" y1="68" x2="166" y2="98"/><line x1="178" y1="68" x2="178" y2="98"/>
+              <line x1="190" y1="68" x2="190" y2="98"/><line x1="202" y1="68" x2="202" y2="98"/>
+              <line x1="214" y1="68" x2="214" y2="98"/>
+            </g>
+            <line x1="132" y1="66" x2="216" y2="66" stroke="#2C5142" stroke-width="3" opacity=".6"/>
+            <!-- 脚掌区（底部加厚示意） -->
+            <path d="M300 292 L540 288 C570 287 596 276 606 262 L616 246 C618 270 596 288 560 290 L330 294 Z" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.2"/>
+            <!-- 跟部 Y 字加固示意 -->
+            <path d="M236 232 L258 262 M232 288 L258 262 L262 246" fill="none" stroke="#B98F45" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <path d="M246 272 C262 296 296 298 330 294" fill="none" stroke="#B0603F" stroke-width="2.2" opacity=".8"/>
+            <!-- 袜头缝线 -->
+            <path d="M544 200 C560 226 560 264 546 289" fill="none" stroke="#B0603F" stroke-width="1.8" stroke-dasharray="4 3"/>
+            <!-- 脚背纹理 -->
+            <g stroke="#3D6B57" stroke-width="1" opacity=".25">
+              <line x1="300" y1="204" x2="300" y2="192"/><line x1="330" y1="205" x2="330" y2="193"/>
+              <line x1="360" y1="205" x2="360" y2="193"/><line x1="390" y1="205" x2="390" y2="193"/>
+              <line x1="420" y1="205" x2="420" y2="193"/><line x1="450" y1="205" x2="450" y2="193"/>
+              <line x1="480" y1="206" x2="480" y2="194"/><line x1="510" y1="206" x2="510" y2="194"/>
+            </g>
+            <!-- 侧视图标签 -->
+            <text x="380" y="352" text-anchor="middle" fill="#8B8375" font-size="12.5">侧视剖面示意 · 侧放短袜（左为袜口，右为袜尖）</text>
+            <!-- 热点 -->
+            <g class="svg-hot" data-tip="袜口（罗口/橡筋口）|袜子的收口段：罗口织入氨纶、或橡筋口直接衬入氨纶丝，负责固定与「不束带」。橡筋品质差是「穿两次就垮」的头号原因，是本品类最值得加钱的部件之一。">
+              <circle class="hot-ring" cx="174" cy="84" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="174" cy="84" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="174" y="88.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">1</text>
+            </g>
+            <g class="svg-hot" data-tip="翻口（罗口收口）|袜口最上缘的收边：双翻口把罗纹再翻折织一层，观感厚实、压力分散；单层收口轻薄但易卷边。收口工艺差直接表现为「卷边、咬腿」。">
+              <circle class="hot-ring" cx="174" cy="62" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="174" cy="62" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="174" y="66.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">2</text>
+            </g>
+            <g class="svg-hot" data-tip="袜筒|从袜口到脚踝的筒身，负责覆盖与「套腿不下滑」。筒越长对橡筋压力均匀性要求越高；罗纹结构（织入氨纶）是袜筒防滑的通用解。">
+              <circle class="hot-ring" cx="174" cy="170" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="174" cy="170" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="174" y="174.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">3</text>
+            </g>
+            <g class="svg-hot" data-tip="脚背区（袜面）|脚背侧的袜面，是针数与纱线细腻度的「展示面」；高针薄袜与提花图案都做在这里。透气网眼也常织在此区。">
+              <circle class="hot-ring" cx="390" cy="216" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="390" cy="216" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="390" y="220.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">4</text>
+            </g>
+            <g class="svg-hot" data-tip="袜跟（转跟/Y字跟）|包裹脚跟的立体袋状结构：织造时在跟部往复收放针「转」出跟袋，普通做法称转跟；加织 Y 形加固的称 Y字跟，更立体耐穿。跟袋太浅或尺码偏大 → 袜跟滑落。">
+              <circle class="hot-ring" cx="256" cy="266" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="256" cy="266" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="256" y="270.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">5</text>
+            </g>
+            <g class="svg-hot" data-tip="脚掌区（袜底）|脚掌踩踏面，吸汗、缓震、耐磨的主战场：运动袜在此织毛圈（局部或全脚掌），日常袜靠加密与加厚。金线包住的区域即毛圈/加厚示意。">
+              <circle class="hot-ring" cx="430" cy="284" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="430" cy="284" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="430" y="288.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">6</text>
+            </g>
+            <g class="svg-hot" data-tip="袜头（封头）|脚尖端的立体收头，靠逐圈收针缩小成圆头；先破洞的部位之一，正规做法在此添锦纶加固纱。其缝合方式（机缝/对目）见下一页 02 节。">
+              <circle class="hot-ring" cx="588" cy="248" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="588" cy="248" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="588" y="252.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">7</text>
+            </g>
+            <g class="svg-hot" data-tip="缝头线|脚趾端的封口缝合线（图中陶土虚线）。传统机缝会留一条硬棱硌脚，对目缝头则把线圈对齐、缝痕平整——翻出袜头摸一下，是验货最快的判断法。">
+              <circle class="hot-ring" cx="540" cy="240" r="18" fill="#3D6B57" opacity=".25"/>
+              <circle cx="540" cy="240" r="13" fill="#fff" stroke="#3D6B57" stroke-width="2"/>
+              <text x="540" y="244.5" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="700">8</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-2</span><b>袜子结构解剖（侧视剖面示意）。</b>灰蓝带=袜口罗纹，深绿粗线=翻口收口，金色区=脚掌加厚/毛圈示意，金色虚线=Y字跟加固，陶土虚线=缝头线。袜子的部位由织造程序切换生成，不是缝合而成。</figcaption>
+        <div class="wg-note" data-hotout>点击图中编号查看结构说明</div>
+      </figure>
+
+      <h3 class="sub-title">袜口三式：罗口、橡筋口、翻口</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">罗口</div><div class="kv-v"><dfn class="term" data-term="罗纹">罗纹</dfn>组织织成的<dfn class="term" data-term="袜口">袜口</dfn>并织入氨纶：横向弹性大、压力均匀、不卷边，是最通用也最稳妥的形态。<dfn class="term" data-term="橡筋">橡筋</dfn>（氨纶）的品质决定「三个月后还紧不紧」。</div></div>
+        <div class="kv-row"><div class="kv-k">橡筋口</div><div class="kv-v">平纹袜身直接衬入橡筋丝收口，工艺简单、口部轻薄（船袜常用）；压力集中在一两条氨纶丝上，劣质橡筋时「勒」与「垮」都更明显。</div></div>
+        <div class="kv-row"><div class="kv-k">翻口</div><div class="kv-v">罗纹织出后翻折再织一层（双翻口），观感厚实、压力分散、不易卷边；多一倍口部用纱，是经典「学院风」与正装袜的标志性细节。</div></div>
+      </div>
+
+      <p>跟部与脚掌的织造细节（收放针成跟、Y字跟、毛圈配置）工艺性强，集中放到下一页 03、04 节；这里只需要建立「<b>部位 = 织造程序</b>」的心智：袜子上没有一处结构是后来加上去的，规格书里的每一个织造指令，最终都会长在消费者脚上。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-gauge" data-sec="s-gauge"><span class="sec-no">03</span>针数与筒径：本篇最核心的一组数字</h2>
+
+      <p>袜机没有版型、没有裁片，它是一台竖立的圆型针织机：中间一根<dfn class="term" data-term="筒径">筒径</dfn>固定的针筒，筒上插满织针，纱线一圈圈织上去，袜子像「长」在机器上一样成型。<dfn class="term" data-term="针数">针数</dfn>就是这根针筒上的织针总数（写作 96N、144N、200N），<b>它决定袜面的细腻度</b>——就像屏幕的像素密度：针数越多，同一圈上的「像素」越密，袜面越细腻。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="110" y="30" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">96N · 童袜 / 厚毛圈</text>
+            <text x="295" y="30" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">144N · 主流运动</text>
+            <text x="480" y="30" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">168N · 精细日常</text>
+            <text x="665" y="30" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">200N · 高针薄袜</text>
+            <!-- A 96N -->
+            <rect x="40" y="46" width="140" height="94" rx="6" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.4"/>
+            <path d="M60 46 V140 M80 46 V140 M100 46 V140 M120 46 V140 M140 46 V140 M160 46 V140" stroke="#3D6B57" stroke-width="1.6" opacity=".6" fill="none"/>
+            <path d="M40 68 H180 M40 92 H180 M40 116 H180" stroke="#B98F45" stroke-width="1.4" opacity=".55" fill="none"/>
+            <text x="110" y="166" text-anchor="middle" fill="#5D574B" font-size="12">针距约 3.1mm（示例）</text>
+            <text x="110" y="184" text-anchor="middle" fill="#8B8375" font-size="11">结构粗壮 · 利织厚毛圈</text>
+            <!-- B 144N -->
+            <rect x="225" y="46" width="140" height="94" rx="6" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.4"/>
+            <path d="M238 46 V140 M252 46 V140 M266 46 V140 M280 46 V140 M294 46 V140 M308 46 V140 M322 46 V140 M336 46 V140 M350 46 V140" stroke="#3D6B57" stroke-width="1.3" opacity=".6" fill="none"/>
+            <path d="M225 63 H365 M225 80 H365 M225 97 H365 M225 114 H365 M225 131 H365" stroke="#B98F45" stroke-width="1.1" opacity=".55" fill="none"/>
+            <text x="295" y="166" text-anchor="middle" fill="#5D574B" font-size="12">针距约 2.1mm（示例）</text>
+            <text x="295" y="184" text-anchor="middle" fill="#8B8375" font-size="11">细腻与产能的平衡点</text>
+            <!-- C 168N -->
+            <rect x="410" y="46" width="140" height="94" rx="6" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.4"/>
+            <path d="M418 46 V140 M428 46 V140 M438 46 V140 M448 46 V140 M458 46 V140 M468 46 V140 M478 46 V140 M488 46 V140 M498 46 V140 M508 46 V140 M518 46 V140 M528 46 V140" stroke="#3D6B57" stroke-width="1.1" opacity=".6" fill="none"/>
+            <path d="M410 59 H550 M410 72 H550 M410 85 H550 M410 98 H550 M410 111 H550 M410 124 H550 M410 137 H550" stroke="#B98F45" stroke-width=".9" opacity=".55" fill="none"/>
+            <text x="480" y="166" text-anchor="middle" fill="#5D574B" font-size="12">针距约 1.8mm（示例）</text>
+            <text x="480" y="184" text-anchor="middle" fill="#8B8375" font-size="11">配高支精梳棉 · 通勤衬衫袜</text>
+            <!-- D 200N -->
+            <rect x="595" y="46" width="140" height="94" rx="6" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.4"/>
+            <path d="M602 46 V140 M610 46 V140 M618 46 V140 M626 46 V140 M634 46 V140 M642 46 V140 M650 46 V140 M658 46 V140 M666 46 V140 M674 46 V140 M682 46 V140 M690 46 V140 M698 46 V140 M706 46 V140 M714 46 V140 M722 46 V140 M730 46 V140" stroke="#3D6B57" stroke-width=".9" opacity=".6" fill="none"/>
+            <path d="M595 56 H735 M595 67 H735 M595 78 H735 M595 89 H735 M595 100 H735 M595 111 H735 M595 122 H735 M595 133 H735" stroke="#B98F45" stroke-width=".8" opacity=".55" fill="none"/>
+            <text x="665" y="166" text-anchor="middle" fill="#5D574B" font-size="12">针距约 1.5mm（示例）</text>
+            <text x="665" y="184" text-anchor="middle" fill="#8B8375" font-size="11">极细腻 · 对纱支与机台要求高</text>
+            <!-- 筒径注释 -->
+            <rect x="40" y="212" width="695" height="76" rx="9" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.3"/>
+            <text x="60" y="240" fill="#2C5142" font-size="12.5" font-weight="700">同一筒径（3.75" 为例）下：针距 = π × 筒径 ÷ 针数</text>
+            <text x="60" y="264" fill="#5D574B" font-size="12">3.75" ≈ 95mm 周长约 299mm → 96N 针距 3.1mm / 144N 2.1mm / 200N 1.5mm。针数越高针距越小，可织的纱越细、越难织厚。</text>
+            <text x="60" y="280" fill="#8B8375" font-size="11">筒径常见 3.5" / 3.75" / 4.5"：筒径决定可织尺码范围——大码与运动款常用 4.5"，跨大尺码需换筒径或用选针提针控制（教学示例）。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-3</span><b>同一筒径下不同针数的袜面密度对比（放大示意）。</b>绿线=纵向针圈（wale），金线=横向线圈（course）。针数越高，格越细密——但也越难织厚、对纱线要求越高。</figcaption>
+      </figure>
+
+      <div class="callout deep">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>
+          深入理解 · 针数、筒径与尺码的联动
+        </div>
+        <p>针数与筒径必须配套表述（如「3.75"/144N」），因为同样的针数在大小不同的筒径上，针距与成品围度都不同。筒径决定可织袜子的尺寸范围：3.5" 多做女款与童袜、3.75" 是日常主力、4.5" 用于大码与运动；一个工厂有什么筒径的机器，直接决定它能给你做哪些码。这也是袜业与梭织服装最大的不同——<b>服装加码靠放码，袜子加码靠换机</b>。</p>
+      </div>
+
+      <div class="wg">
+        <div class="wg-panel">
+          <div class="wg-head"><span class="wg-tag">交互</span>针数调节器：拖动滑杆，观察袜面密度与适用场景（教学示例，筒径固定 3.75"）</div>
+          <div class="wg-body">
+            <svg id="nc-svg" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+              <rect x="118" y="76" width="464" height="138" rx="8" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.5"/>
+              <g id="nc-lines"></g>
+              <text x="350" y="248" text-anchor="middle" fill="#8B8375" font-size="11.5">放大袜面示意：绿线=纵向针圈 · 金线=横向线圈 · 密度随针数变化</text>
+              <text x="350" y="52" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700" id="nc-grade">走量主力档</text>
+              <text x="350" y="270" text-anchor="middle" fill="#5D574B" font-size="12">针距 = π × 95mm ÷ 针数 ≈ <tspan id="nc-pitch" font-weight="700" fill="#2C5142">2.08 mm</tspan></text>
+            </svg>
+            <div class="ctl-row" id="nc-ctl"><label>针数（针筒总针数）</label></div>
+          </div>
+          <div class="wg-note" id="nc-use">主流运动袜与日常走量档：细腻度与产能成本的最佳平衡。</div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：针数 ≠ 品质
+        </div>
+        <p>「高针 = 高级」是袜子品类最流行的错觉。针数只决定<b>细腻度</b>这一个维度：96N/108N 织童袜与厚毛圈运动袜是<b>合理配置</b>——粗针距才能容纳饱满毛圈与粗加固纱，强行用 200N 反而织不出厚实脚感；而 200N 的薄袜若配低支粗纱、劣质橡筋，实际体验远不如一款诚实的 144N。判断顺序永远是：<b>先问定位，再问配置是否匹配，最后才看数字高低</b>。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-material" data-sec="s-material"><span class="sec-no">04</span>材料配比实务：成分标背后看不见的三层纱</h2>
+
+      <p>看一只日常棉袜的成分标：「精梳棉 75% / 锦纶 20% / 氨纶 5%」。这三个百分比描述的是<b>整只袜子所有纱线的重量占比</b>，而不是「这只袜子 75% 的部位是棉」。真实结构是第一篇讲过的<dfn class="term" data-term="添纱">添纱</dfn>织法：几种纱同时织入，各司其职——</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="200" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">一只棉袜的纱线层次（爆炸示意）</text>
+            <!-- 面 -->
+            <polygon points="60,58 300,58 330,94 90,94" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.8"/>
+            <g stroke="#3D6B57" stroke-width="1.1" opacity=".5">
+              <path d="M80 74 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0 q6 -8 12 0" fill="none"/>
+            </g>
+            <text x="346" y="72" fill="#26231D" font-size="12" font-weight="650">面纱 · 精梳棉（短纤纱）</text>
+            <text x="346" y="90" fill="#5D574B" font-size="11">触感、吸湿、外观——成分标里的「棉 75%」主要在这一层</text>
+            <!-- 芯 -->
+            <polygon points="60,128 300,128 330,164 90,164" fill="#E9EFF3" stroke="#44657F" stroke-width="1.8"/>
+            <g stroke="#44657F" stroke-width="1.2" opacity=".65">
+              <path d="M84 146 l14 0 M104 146 l14 0 M124 146 l14 0 M144 146 l14 0 M164 146 l14 0 M184 146 l14 0 M204 146 l14 0 M224 146 l14 0 M244 146 l14 0 M264 146 l14 0" fill="none"/>
+            </g>
+            <text x="346" y="142" fill="#26231D" font-size="12" font-weight="650">地纱 · 锦纶包覆氨纶（<tspan fill="#44657F">包覆纱</tspan>）</text>
+            <text x="346" y="160" fill="#5D574B" font-size="11">藏在线圈里的弹力骨架：锦纶出强度耐磨，氨纶芯出弹性——「锦纶 20% + 氨纶 5%」</text>
+            <!-- 口 -->
+            <polygon points="60,198 300,198 330,234 90,234" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.8"/>
+            <g stroke="#B0603F" stroke-width="1.2" opacity=".65">
+              <path d="M84 216 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0" fill="none"/>
+            </g>
+            <text x="346" y="212" fill="#26231D" font-size="12" font-weight="650">袜口 · 橡筋（氨纶，多经包覆）</text>
+            <text x="346" y="230" fill="#5D574B" font-size="11">只在袜口段织入；克重占比小，却直接决定「穿多久还紧」</text>
+            <!-- 连接虚线 -->
+            <g stroke="#8B8375" stroke-width="1.2" stroke-dasharray="3 3" fill="none">
+              <line x1="180" y1="98" x2="180" y2="124"/>
+              <line x1="180" y1="168" x2="180" y2="194"/>
+            </g>
+            <!-- 右侧角色表 -->
+            <line x1="676" y1="40" x2="676" y2="286" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="718" y="60" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">纤维角色</text>
+            <g font-size="11.5">
+              <text x="696" y="92" fill="#2C5142" font-weight="700">棉</text>
+              <text x="696" y="110" fill="#5D574B">触感吸湿亲肤</text>
+              <text x="696" y="148" fill="#44657F" font-weight="700">锦纶</text>
+              <text x="696" y="166" fill="#5D574B">强度 · 耐磨 · 定型</text>
+              <text x="696" y="204" fill="#B0603F" font-weight="700">氨纶</text>
+              <text x="696" y="222" fill="#5D574B">弹性 · 贴合</text>
+              <text x="696" y="260" fill="#8F6E2F" font-weight="700">橡筋</text>
+              <text x="696" y="278" fill="#5D574B">袜口回弹的命</text>
+            </g>
+            <text x="200" y="296" text-anchor="middle" fill="#8B8375" font-size="11.5">添纱织法：面纱露在外、地纱藏在内——成分标只给重量占比，不给结构</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-4</span><b>「精梳棉 75% / 锦纶 20% / 氨纶 5%」的真实结构。</b>棉面纱出触感与吸湿，锦纶包覆氨纶地纱出弹性与强度，橡筋守袜口。同样三个百分比的袜子，因纱线等级与配比不同，可能是完全不同的两款产品。</figcaption>
+      </figure>
+
+      <p>由此就能读懂四类主流袜子的配方逻辑。注意一个反直觉的事实：<dfn class="term" data-term="锦纶">锦纶</dfn>的耐磨性居常见纤维之首，运动袜的寿命几乎全靠它，所以<b>运动袜的棉含量是刻意压低的</b>：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>四类袜子的材料方案对比（成分为常见区间示例，教学参考）</caption>
+          <thead><tr><th style="width:15%">类型</th><th style="width:26%">典型成分标</th><th style="width:28%">看不见的结构</th><th style="width:12%">克重示例</th><th>定位与代价</th></tr></thead>
+          <tbody>
+            <tr><td><b>日常棉袜</b></td><td>精梳棉 70-80% / 锦纶 15-22% / 氨纶 3-5%</td><td>棉面纱 + 锦氨包覆地纱 + 罗口橡筋</td><td class="num">30-45g</td><td>手感与耐穿的平衡点；棉纱等级（<dfn class="term" data-term="精梳棉">精梳棉</dfn> vs <dfn class="term" data-term="普梳棉">普梳棉</dfn>、纱支高低）决定档位</td></tr>
+            <tr><td><b>运动袜</b></td><td>锦纶/涤纶 55-80% + 棉或再生纤 10-30% + 氨纶 5-15%</td><td>导湿长丝面 + 脚掌毛圈 + 跟尖锦纶<dfn class="term" data-term="加固">加固</dfn></td><td class="num">50-75g</td><td>耐用、导湿、缓震优先；棉含量故意不高，防磨泡靠结构不靠纤维故事</td></tr>
+            <tr><td><b>羊毛袜</b></td><td>美利奴羊毛 40-70% / 锦纶 25-45% / 氨纶 3-8%</td><td>羊毛面纱出保暖抗臭 + 锦纶骨架防磨防毡缩</td><td class="num">45-70g</td><td>冬季与户外定位；无锦纶骨架的纯毛袜几乎不耐穿，且洗护要求高</td></tr>
+            <tr><td><b>莫代尔/黏胶滑感袜</b></td><td><dfn class="term" data-term="莫代尔">莫代尔</dfn>或<dfn class="term" data-term="黏胶纤维">黏胶</dfn> 60-75% / 锦纶 20-30% / 氨纶 3-8%</td><td>再生纤面纱出垂坠丝滑 + 锦氨地纱兜底强度</td><td class="num">25-40g</td><td>手感卖点突出；再生纤湿强低，耐穿性为手感让位，更「娇气」</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>成分比例还要与<dfn class="term" data-term="克重">克重</dfn>、耐穿性放在一起读：同样的配比，克重越高用料越多、越耐穿也越贵；同样的克重，锦纶每多 5 个百分点，耐磨寿命上一个台阶但棉感下降。<b>成分标、克重、加固结构三张牌一起打，才能判断一双袜子「值不值」</b>——任何一张牌单看都会被骗。</p>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：成分标是「重量」，不是「结构」
+        </div>
+        <p>两张都写「棉 75%」的成分标，背后可能一款用 40S 普梳棉、一款用 60S 长绒精梳棉，价差数倍；也可能一款把锦纶全藏在袜口橡筋里、另一款老老实实全袜织锦纶地纱。成分标按 GB/T 29862 标注即可合规，<b>它从不说纱线等级，也不说结构</b>。这就是为什么袜子验货必须「标 + 秤 + 拆」三件套：看标、称重、翻拆跟尖看加固。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-weight" data-sec="s-weight"><span class="sec-no">05</span>克重与厚度：手感与成本的第二个旋钮</h2>
+
+      <p>袜子的克重不用 g/m²，直接用<b>单双克重（g）</b>——一双袜子放电子秤上称出来的数。它是最诚实的用料指标：纱线用量与克重近似成正比，成本表上的「棉纱用量」就是克重 × 各纤维占比 × 纱价。常见区间（示例，教学参考）：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">船袜</div><div class="kv-v">约 15-25g/双。轻薄隐形是卖点，克重偷得再低也有「包不住鞋口摩擦」的下限——低于约 15g 的船袜常见脚跟早期磨破（示例下限）。</div></div>
+        <div class="kv-row"><div class="kv-k">日常短袜 / 中筒</div><div class="kv-v">约 30-45g/双。主流档位；同为「日常」，35g 与 45g 的脚感、耐穿与成本差异肉眼可辨。</div></div>
+        <div class="kv-row"><div class="kv-k">厚毛圈运动袜</div><div class="kv-v">约 50-75g/双。毛圈把纱线用量抬上去，缓震与吸汗正来自这几十克——「又厚又轻」的运动袜多半毛圈稀疏。</div></div>
+      </div>
+
+      <p>关键认知：<b>克重与针数是两个独立旋钮</b>，四种组合对应四种产品逻辑：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>针数 × 克重的四种组合（教学示例，非严格分类）</caption>
+          <thead><tr><th style="width:24%">组合</th><th style="width:34%">产品形态</th><th>成本与品质要点</th></tr></thead>
+          <tbody>
+            <tr><td><b>高针 + 低克重</b></td><td>轻薄正装袜、丝感袜（200N + 约 25-32g）</td><td>面子上限最高；纱支必须跟上，橡筋与缝头最容易在此档被偷</td></tr>
+            <tr><td><b>低针 + 高克重</b></td><td>厚毛圈运动袜（96N/144N + 50-75g）</td><td>里子上限最高；粗针距织厚毛圈是合理配置，别被「针数低」劝退</td></tr>
+            <tr><td><b>高针 + 高克重</b></td><td>冬季密织羊毛袜、形象款</td><td>两者都要 → 成本最高，考验供应链整合；售价与定位需匹配</td></tr>
+            <tr><td><b>低针 + 低克重</b></td><td>稀松薄袜</td><td>警惕档位：密度不足则露底、易变形、洗后松垮——低价袜最常见的「偷纱」形态</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸 · 克重是最好用的比价锚点
+        </div>
+        <p>供应商报价打架时，先让双方各寄样品<b>称单双克重</b>：同样报价，克重差 10g 就是原料成本差约两成的量级（示例直觉）。再配合成分标与跟尖拆检，三步就能把「看起来一样」的两款袜子拉开差距。袜子是贴身衣物里最容易「实物对标」的品类——因为它小、便宜、可量化。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-size" data-sec="s-size"><span class="sec-no">06</span>尺码体系：为什么袜子尺码「宽容」</h2>
+
+      <p>内裤篇讲过「负放量」，袜子把弹力适配推到极致：<dfn class="term" data-term="罗纹">罗纹</dfn>组织横向弹性大，加上氨纶全袜织入，一双袜子通常能覆盖<b>±1.5-2cm 的脚长区间</b>（示例）——这就是袜子尺码宽容度大的结构性原因，也是「均码袜子」能够存在的理由（代价是两端码的贴合度让位于中间码）。</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>袜码换算示例（教学参考；各品牌实际标注口径不一，以实测脚长区间为准）</caption>
+          <thead><tr><th style="width:20%">袜码（脚长 cm）</th><th style="width:20%">欧码约</th><th style="width:20%">适配脚长</th><th>常见定位</th></tr></thead>
+          <tbody>
+            <tr><td><b>22-24</b></td><td class="num">36-38</td><td class="num">22-24cm</td><td>女款常见档</td></tr>
+            <tr class="hl"><td><b>24-26</b></td><td class="num">39-42</td><td class="num">24-26cm</td><td>男女通用主力档，SKU 走量核心</td></tr>
+            <tr><td><b>26-28</b></td><td class="num">43-46</td><td class="num">26-28cm</td><td>男款大码档</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>童袜是另一套逻辑：脚长长得快，尺码阶梯更密、单档覆盖更窄，常见 <b>10-12 / 12-14 / 14-16 / 16-18 / 18-20 / 20-22cm</b> 约 2cm 一档（示例）。童袜通常用 96N-108N 的粗针粗纱（耐穿、成本低），这也是「针数低」完全合理的典型场景。另外提醒：市面袜码标注混乱，「39-42」虚标成「38-45」的产品不少见，详情页应给出<b>实测脚长适配区间</b>而不是只抄一个欧码。</p>
+
+      <p>尺码宽容还有一条隐含的供应链红利：<b>袜子不需要放码体系</b>。同一种纱、同一张工艺单，换筒径或调选针即可覆盖全码——这也是袜子的库存风险远低于内裤与文胸的原因之一，SKU 深度可以更激进。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">07</span>主理人视角：SKU 档位、颜色与诚实边界</h2>
+
+      <p>袜子单价低、尺码少、库存风险小，特别适合「宽度换深度」的反向操作：<b>款少、色精、码全覆盖</b>。针数是 SKU 分档的第一刀——用 144N 做走量基本盘，用高针做形象款拉品牌感：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>袜子首发 SKU 矩阵示例（教学参考）</caption>
+          <thead><tr><th style="width:22%">档位</th><th style="width:30%">配置</th><th style="width:20%">出厂价区间（示例）</th><th>角色</th></tr></thead>
+          <tbody>
+            <tr><td><b>走量款</b></td><td>144N 日常棉袜，短袜/中筒 ×2，基础色 3 个</td><td class="num">1.5-3 元</td><td>跑量与复购基本盘</td></tr>
+            <tr><td><b>形象款</b></td><td>168N/200N 精细棉袜或羊毛袜，1-2 款</td><td class="num">3-8 元</td><td>拉客单价与品牌感</td></tr>
+            <tr><td><b>功能款</b></td><td>144N 毛圈运动袜（带加固），1 款</td><td class="num">4-8 元</td><td>验证运动场景与人群</td></tr>
+            <tr class="hl"><td><b>合计</b></td><td>3-4 个版型 × 3 色 × 2-3 码</td><td class="num">约 24-36 SKU</td><td>先跑通再扩</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-title">颜色深度管理：深色的牢度风险</h3>
+      <p>袜子的基础色是黑、白、灰与肤色，但<b>黑色与深色是摩擦色牢度的重灾区</b>：袜子在鞋内全天摩擦、出汗浸泡，深色染料摩擦牢度不达标会出现掉色染袜、染鞋、染皮肤（<dfn class="term" data-term="色牢度">色牢度</dfn>耐摩擦项对应 GB/T 3920，袜子产品标准可参考 FZ/T 73001《袜子》的内在质量要求）。深色款验收时应加测摩擦牢度，浅色与中色风险显著更低——SKU 的颜色配比不仅是审美问题，也是品质风险管理。</p>
+
+      <h3 class="sub-title">材质故事的诚实边界</h3>
+      <p>「新疆棉」「兰精莫代尔」「美丽诺羊毛」都是好故事，但每个故事都有匹配的定位：羊毛袜卖的是温湿调节与抗臭，莫代尔袜卖的是垂坠手感，它们都不必伪装成「全能袜」。守住两条线：成分标与实物一致（GB/T 29862）；功能宣称有数据（保暖、导湿、抗菌都看检测，不讲故事）。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 棉含量不是越高越好
+        </div>
+        <p>「我们要做 85% 高棉含量的袜子」——这句话在<b>日常短袜</b>上成立（配足锦纶地纱即可），在<b>运动袜</b>上却是负资产：棉纤维的耐磨性远低于锦纶，高于约 80% 的棉含量若无跟尖加固与锦纶骨架撑着，袜子会精确地从脚跟、脚尖两个摩擦最重的部位先破（示例经验线）。消费者会把「破洞」记成「质量差」，而不会记成「棉太多」。<b>配比的正确性问题不是「棉多不多」，而是「每根纱在不在它该在的岗位上」。</b></p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">分类框架</div><div class="kv-v">长度（船/短/中筒/长筒/小腿）× 功能（日常/运动/保暖/压力）× 工艺（机缝/对目/毛圈/提花）——三个维度正交组合描述一切袜型。</div></div>
+        <div class="kv-row"><div class="kv-k">部位即程序</div><div class="kv-v">袜口、袜筒、袜跟、脚掌、袜尖全部由织造程序切换生成；袜口三式（罗口/橡筋口/翻口）与跟袋深浅决定基础体验。</div></div>
+        <div class="kv-row"><div class="kv-k">针数筒径</div><div class="kv-v">针数决定袜面细腻度（96N-200N），筒径决定尺码范围（3.5"/3.75"/4.5"）；同筒径下针距 = π×筒径÷针数。针数≠品质：粗针毛圈运动袜用 144N 反而合理。</div></div>
+        <div class="kv-row"><div class="kv-k">配比真相</div><div class="kv-v">成分标是重量占比不是结构：棉面纱出触感、锦氨包覆地纱出弹力强度、橡筋守袜口。成分标 + 克重 + 加固三牌同看才不被骗。</div></div>
+        <div class="kv-row"><div class="kv-k">克重锚点</div><div class="kv-v">船袜 15-25g / 日常 30-45g / 厚毛圈 50-75g（示例）；克重与针数独立组合，低针低克的稀松薄袜是最常见的偷纱形态。</div></div>
+        <div class="kv-row"><div class="kv-k">尺码与SKU</div><div class="kv-v">罗纹+氨纶带来 ±1.5-2cm 弹性适配；144N 走量 + 高针走形象 + 功能款验证场景；深色盯摩擦牢度，材质故事守成分与数据两条诚实线。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="socks-design-q1" data-q="供应商向你主推一款「200 针」厚毛圈跑步袜，称「针数高所以更高级」。以下判断哪个正确？" data-a="1" data-exp="毛圈袜的厚实与缓震来自毛圈高度、密度与克重，需要较大的针距空间容纳毛圈与粗加固纱——高针距（约1.5mm）反而织不出饱满毛圈。厚毛圈运动袜用 96N-144N 是合理配置（教学参考）。A 把针数当品质指标是本品类最典型误区；C 针数直接决定细腻度与可织厚度，是核心规格而非只关乎价格；D 常规跑步袜主力档在 144N 左右，96N 偏童袜与极厚织物档。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>针数越高越高级，直接采用 200N 方案</li>
+            <li>针数要与定位匹配：厚毛圈运动袜用 96N-144N 更合理，高针距反而织不出饱满毛圈</li>
+            <li>针数只影响价格，与穿着性能无关</li>
+            <li>运动袜就该用 96N，其他针数都是智商税</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="socks-design-q2" data-q="竞品运动袜成分标「棉 80%、氨纶 20%（无锦纶、无加固）」，售价更低且详情页主打「纯棉更健康」。你应该跟进吗？" data-a="1" data-exp="棉的耐磨性远低于锦纶：80% 棉且无跟尖加固的运动袜，会在摩擦最重的脚跟脚尖先破——「纯棉」的故事性与运动袜的耐用需求方向相反。A/C/D 都在同一个「棉含量越高越好」的误区里加码。正确的差异化打法恰恰是把锦纶骨架与跟尖加固做扎实，并用「拆开看加固」的对比内容教育消费者。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>跟进并把棉含量提到 85%，故事更彻底</li>
+            <li>不跟进：运动袜高棉无加固会在脚跟脚尖先破，棉含量不是越高越好</li>
+            <li>跟进，但加一句「建议勤换」的提示降低差评</li>
+            <li>改推「100% 纯棉运动袜」，卖点更极致</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="socks-design-q3" data-q="首发袜子线只有有限预算，以下 SKU 规划哪个最合理？" data-a="2" data-exp="袜子是「款少色精码全」的典型品类：144N 是细腻度、产能与成本的最佳平衡点，适合走量基本盘；高针款承担形象与客单价；深色基础色通用性最强但必须盯摩擦色牢度。A 全线高针推高成本且牺牲毛圈类产品可能性；B 全线粗针定位模糊，形象与溢价无从谈起；D 款式铺开会稀释单款销量与打样迭代资源——袜子的库存风险低，但款多依然意味着每一款都做不深。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>全线 200N，先把「高级」立住</li>
+            <li>全线 96N，把成本压到最低</li>
+            <li>144N 做 2-3 个日常走量款 + 168N/200N 做 1-2 个形象款，颜色以深色基础色为主并加测摩擦牢度</li>
+            <li>针数每档（96/144/168/200）各上一款，全覆盖</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：针数调节器 */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var lines = document.getElementById('nc-lines');
+    var pitch = document.getElementById('nc-pitch');
+    var use = document.getElementById('nc-use');
+    var grade = document.getElementById('nc-grade');
+    var row = document.getElementById('nc-ctl');
+    if (!lines || !row || !window.W) return;
+    var X0 = 118, X1 = 582, Y0 = 76, Y1 = 214;
+    function paint(n) {
+      var v = Math.round(n / 10), h = Math.round(n / 24), s = '', i, x, y;
+      for (i = 0; i <= v; i++) {
+        x = X0 + (X1 - X0) * i / v;
+        s += '<line x1="' + x.toFixed(1) + '" y1="' + Y0 + '" x2="' + x.toFixed(1) + '" y2="' + Y1 + '" stroke="#3D6B57" stroke-width="1" opacity=".55"/>';
+      }
+      for (i = 0; i <= h; i++) {
+        y = Y0 + (Y1 - Y0) * i / h;
+        s += '<line x1="' + X0 + '" y1="' + y.toFixed(1) + '" x2="' + X1 + '" y2="' + y.toFixed(1) + '" stroke="#B98F45" stroke-width="1" opacity=".45"/>';
+      }
+      lines.innerHTML = s;
+      pitch.textContent = (299.3 / n).toFixed(2) + ' mm';
+      var t, g;
+      if (n < 120) { t = '童袜、厚毛圈运动袜的主档：针距大、结构粗壮，利于织饱满毛圈与粗加固纱（教学示例）。'; g = '粗壮实用档'; }
+      else if (n <= 155) { t = '主流运动袜与日常走量档：细腻度、产能与成本的最佳平衡点（教学示例）。'; g = '走量主力档'; }
+      else if (n <= 190) { t = '精细日常袜、通勤衬衫袜：袜面细腻，宜配高支精梳棉纱（教学示例）。'; g = '精细日常档'; }
+      else { t = '高针薄袜、丝感正装袜：袜面极细密，对纱支与机台状态要求最高（教学示例）。'; g = '高针形象档'; }
+      use.textContent = t;
+      grade.textContent = g;
+    }
+    var s = W.slider({ min: 96, max: 200, step: 2, value: 144, fmt: function (v) { return v + ' N'; }, onInput: paint });
+    s.input.setAttribute('aria-label', '针数调节滑杆');
+    row.appendChild(s.input);
+    row.appendChild(s.val);
+    paint(144);
+  })();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内裤 · 工艺、成本与品质 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="panties-craft" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第二篇 · 内裤 / 工艺品质</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">PANTIES · CRAFT</div>
+        <h1 class="page-title">内裤 · 工艺、成本与品质</h1>
+        <p class="page-lede">上一页讲「做什么版型」，这一页讲「怎么把它做出来、做好、卖对价」。内裤只有三条工艺主线：传统车缝、无痕切边、无缝针织——路线选择同时锁死外观、耐用性、成本结构与你能对话的供应商圈层。本页逐条拆解三大工艺的原理与参数，给出七个内裤专项缺陷的「长相-成因-验货判断」图鉴，用同一套 BOM 拆解三条路线的成本，最后收拢为一张可勾选的选品判断清单。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 25 分钟</span>
+          <span class="chip">前置：内裤 · 分类结构与版型</span>
+          <span class="chip">建议对照实物边读边验</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>三大工艺路线：先选赛道，再谈产品</h2>
+
+      <p>内裤的工艺路线只有三条主线：<b>传统车缝</b>、<b>无痕切边</b>、<b>无缝针织</b>。路线选择不是「哪个高级」的问题，而是「你的定位愿意为什么买单」的问题——它同时决定了外观上限、耐用下限、单件成本与起订门槛。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 290" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="135" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">A · 传统车缝</text>
+            <text x="385" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">B · 无痕切边</text>
+            <text x="630" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">C · 无缝针织</text>
+            <line x1="260" y1="40" x2="260" y2="270" stroke="#E6E0D3" stroke-width="1.4"/>
+            <line x1="510" y1="40" x2="510" y2="270" stroke="#E6E0D3" stroke-width="1.4"/>
+            <!-- A 车缝 -->
+            <rect x="55" y="70" width="140" height="22" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+            <rect x="55" y="96" width="140" height="22" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+            <ellipse cx="197" cy="78" rx="9" ry="8" fill="none" stroke="#B0603F" stroke-width="1.8"/>
+            <ellipse cx="197" cy="94" rx="9" ry="8" fill="none" stroke="#B0603F" stroke-width="1.8"/>
+            <ellipse cx="197" cy="110" rx="9" ry="8" fill="none" stroke="#B0603F" stroke-width="1.8"/>
+            <text x="135" y="140" text-anchor="middle" fill="#5D574B" font-size="11.5">裁片 + 包缝线迹包边（陶土圈）</text>
+            <text x="135" y="172" text-anchor="middle" fill="#5D574B" font-size="12">外观：缝痕可见</text>
+            <text x="135" y="190" text-anchor="middle" fill="#5D574B" font-size="12">耐用：最稳、可返修</text>
+            <text x="135" y="208" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">出厂价 3-6 元（示例）</text>
+            <text x="135" y="226" text-anchor="middle" fill="#8B8375" font-size="11">MOQ 低 · 打样 3-7 天（示例）</text>
+            <text x="135" y="244" text-anchor="middle" fill="#8B8375" font-size="11">供应商最普遍 · 开发最快</text>
+            <!-- B 无痕 -->
+            <rect x="280" y="70" width="140" height="22" fill="#E9EFF3" stroke="#44657F" stroke-width="1.5"/>
+            <rect x="280" y="96" width="140" height="22" fill="#E9EFF3" stroke="#44657F" stroke-width="1.5"/>
+            <rect x="280" y="92" width="140" height="4" fill="#B98F45" opacity=".85"/>
+            <rect x="416" y="66" width="8" height="56" fill="#C7BFAE"/>
+            <text x="350" y="140" text-anchor="middle" fill="#5D574B" font-size="11.5">激光切边（灰块）+ 热压胶条（金线）</text>
+            <text x="385" y="172" text-anchor="middle" fill="#5D574B" font-size="12">外观：边口无痕（裆部仍有缝）</text>
+            <text x="385" y="190" text-anchor="middle" fill="#5D574B" font-size="12">耐用：取决于胶条耐洗性</text>
+            <text x="385" y="208" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">出厂价 5-10 元（示例）</text>
+            <text x="385" y="226" text-anchor="middle" fill="#8B8375" font-size="11">依赖热压设备与参数控制</text>
+            <text x="385" y="244" text-anchor="middle" fill="#8B8375" font-size="11">车缝厂升级或专业无痕厂</text>
+            <!-- C 无缝 -->
+            <ellipse cx="630" cy="64" rx="82" ry="15" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+            <line x1="548" y1="64" x2="548" y2="196" stroke="#3D6B57" stroke-width="1.5"/>
+            <line x1="712" y1="64" x2="712" y2="196" stroke="#3D6B57" stroke-width="1.5"/>
+            <path d="M548 196 A 82 15 0 0 0 712 196" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+            <line x1="552" y1="80" x2="708" y2="80" stroke="#2C5142" stroke-width="18" stroke-dasharray="3 6" opacity=".3"/>
+            <line x1="548" y1="96" x2="712" y2="96" stroke="#C7D8CE" stroke-width="1"/>
+            <line x1="548" y1="140" x2="712" y2="140" stroke="#C7D8CE" stroke-width="1"/>
+            <text x="630" y="84" text-anchor="middle" fill="#2C5142" font-size="10.5" font-weight="650" stroke="#EAF1ED" stroke-width="4" paint-order="stroke">罗纹腰</text>
+            <text x="630" y="122" text-anchor="middle" fill="#5D574B" font-size="10.5">提花 / 身区</text>
+            <text x="630" y="172" text-anchor="middle" fill="#5D574B" font-size="10.5">裆区平纹</text>
+            <text x="630" y="228" text-anchor="middle" fill="#5D574B" font-size="12">整体无缝 · 一次织成筒状</text>
+            <text x="630" y="246" text-anchor="middle" fill="#8B8375" font-size="11">耐用：腰罗纹易松 · 勾丝风险</text>
+            <text x="630" y="264" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">出厂价 6-12 元（示例）</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-7</span><b>三条工艺路线的截面本质。</b>车缝是「裁片 + 线迹包边」；无痕切边仍是裁片逻辑，但边口换成熔切与胶条；无缝针织根本没有裁片——圆机直接织出筒状裤身，分区组织在织造时一次成形。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>三路线总对比（价格为教学参考的出厂价区间示例，随定位与量级浮动）</caption>
+          <thead><tr><th style="width:16%">维度</th><th>传统车缝</th><th>无痕切边</th><th>无缝针织</th></tr></thead>
+          <tbody>
+            <tr><td><b>外观</b></td><td>缝痕明显，工艺可见</td><td>边口无痕，裆部仍有车缝</td><td>整体无缝，组织即外观</td></tr>
+            <tr><td><b>舒适</b></td><td>好，边口略有线迹感</td><td>边口无压痕，胶条处有膜感</td><td>最佳，筒状一体贴合</td></tr>
+            <tr><td><b>耐用</b></td><td>最稳，线迹可返修</td><td>看胶条耐洗性（最大变量）</td><td>腰罗纹易松、怕勾丝</td></tr>
+            <tr><td><b>出厂价</b></td><td class="num">3-6 元（示例）</td><td class="num">5-10 元（示例）</td><td class="num">6-12 元（示例）</td></tr>
+            <tr><td><b>起订与开发</b></td><td>MOQ 低（300-1000 件/款/色，示例），打样 3-7 天</td><td>中等，依赖胶条等级与热压机</td><td>打版 3-7 天（示例），机台排产慢，交期长</td></tr>
+            <tr><td><b>供应商圈层</b></td><td>产业带最普遍（汕头、中山等）</td><td>车缝厂升级线或专业无痕厂</td><td>以<dfn class="term" data-term="义乌无缝">义乌无缝</dfn>集群为主</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>一句话总结：<b>车缝是基本盘</b>（耐用、便宜、开发快），<b>无痕买的是外观溢价</b>（赌胶条耐洗），<b>无缝买的是织造成形</b>（门槛在机台与打版）。新品牌的第一条内裤线，多数时候应该从车缝或「车缝 + 部分无痕边」起步。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-sew" data-sec="s-sew"><span class="sec-no">02</span>车缝工艺细讲：线迹是一门组合学</h2>
+
+      <p>车缝内裤的品质感，等于「每个部位用对线迹」。先认识两台主力机器：</p>
+
+      <ul class="plain">
+        <li><dfn class="term" data-term="包缝">包缝</dfn>（锁边机）：线迹 504 三线 / 514 四线。切刀修边、线包卷布边，边口有弹性、不易散，速度快；缺点是线迹凸起、贴肤感略粗。内裤裤脚边与接缝的标配。</li>
+        <li><dfn class="term" data-term="绷缝">绷缝</dfn>（坎车）：线迹 602 / 605 等。正面双针或三针平行线、反面网状包覆，平整、能盖住毛边、抗拉伸，是腰头与裤脚折边处的标配；<dfn class="term" data-term="三针五线">三针五线</dfn>一类绷缝配合切边，可做出外穿级的平整线迹。</li>
+      </ul>
+
+      <p>缝线用<b>涤纶包芯线</b>（402 / 603 是常见规格叫法，示例）：涤纶强度高、缩率稳，包芯结构兼顾接缝弹性。针距常规 <b>10-12 针 / 3cm</b>（示例）——针距过稀易脱线，过密则布料被扎伤、弹性下降。这两个数字应该写进你的规格书。</p>
+
+      <p>腰头是车缝内裤最大的外观件，三种工艺见下图：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="140" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">A · 松紧带直接车</text>
+            <text x="380" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">B · 穿带（翻口）</text>
+            <text x="620" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">C · 编织提花腰头</text>
+            <!-- A -->
+            <rect x="60" y="84" width="160" height="22" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.5"/>
+            <path d="M66 92 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8" fill="none" stroke="#2C5142" stroke-width="1.5"/>
+            <rect x="60" y="106" width="160" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <rect x="60" y="120" width="160" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <text x="140" y="182" text-anchor="middle" fill="#26231D" font-size="12.5" font-weight="650">橡筋外露（金框），之字线直接车</text>
+            <text x="140" y="202" text-anchor="middle" fill="#8B8375" font-size="11.5">效率最高 · 成本最低</text>
+            <text x="140" y="220" text-anchor="middle" fill="#8B8375" font-size="11.5">触肤是橡筋 · 久洗易松</text>
+            <!-- B -->
+            <rect x="292" y="80" width="8" height="44" fill="#E9EFF3" stroke="#44657F" stroke-width="1.3"/>
+            <rect x="460" y="80" width="8" height="44" fill="#E9EFF3" stroke="#44657F" stroke-width="1.3"/>
+            <rect x="300" y="84" width="160" height="22" fill="#E9EFF3" stroke="#44657F" stroke-width="1.5"/>
+            <rect x="306" y="92" width="148" height="10" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.4" stroke-dasharray="4 3"/>
+            <rect x="300" y="106" width="160" height="14" fill="#E9EFF3" stroke="#44657F" stroke-width="1.3"/>
+            <text x="380" y="182" text-anchor="middle" fill="#26231D" font-size="12.5" font-weight="650">橡筋穿入夹层（金虚框），翻口封边</text>
+            <text x="380" y="202" text-anchor="middle" fill="#8B8375" font-size="11.5">触肤是布 · 柔软不勒</text>
+            <text x="380" y="220" text-anchor="middle" fill="#8B8375" font-size="11.5">工序 +1 · 翻口需防扭曲</text>
+            <!-- C -->
+            <rect x="540" y="80" width="160" height="30" fill="#3D6B57"/>
+            <text x="620" y="100" text-anchor="middle" fill="#fff" font-size="12" font-weight="700" letter-spacing="3">SORAN</text>
+            <rect x="540" y="110" width="160" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <rect x="540" y="124" width="160" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <line x1="542" y1="110" x2="698" y2="110" stroke="#2C5142" stroke-width="1" stroke-dasharray="3 3"/>
+            <text x="620" y="182" text-anchor="middle" fill="#26231D" font-size="12.5" font-weight="650">花型 / LOGO 直织进腰头</text>
+            <text x="620" y="202" text-anchor="middle" fill="#8B8375" font-size="11.5">档次感强 · 品牌识别度高</text>
+            <text x="620" y="220" text-anchor="middle" fill="#8B8375" font-size="11.5">成本最高 · 织带定制交期更长</text>
+            <text x="380" y="290" text-anchor="middle" fill="#5D574B" font-size="12.5">选择逻辑：基础款 A 足够；触肤敏感、腰围敏感做 B；品牌识别与礼盒属性用 C。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-8</span><b>腰头三种车缝工艺（剖面示意）。</b>腰头是内裤承受拉力最大、也最先松垮的部位——橡筋品质与车缝方式共同决定「穿三个月还紧不紧」。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>部位 × 工艺组合逻辑（示例配置，可按定位调整）</caption>
+          <thead><tr><th style="width:20%">部位</th><th style="width:40%">常用工艺</th><th>组合逻辑</th></tr></thead>
+          <tbody>
+            <tr><td><b>裤脚边</b></td><td>504 三线包缝 / 之字折边 / 滚边</td><td>弹性优先，贴肤区避免硬边与厚叠</td></tr>
+            <tr><td><b>前浪 · 后浪</b></td><td>514 四线包缝或绷缝</td><td>中缝受纵向拉力，要「牢 + 弹」兼顾</td></tr>
+            <tr><td><b>底裆固定</b></td><td>平车直线，四点固定</td><td>平服、防扭曲，里裆留活动余量</td></tr>
+            <tr><td><b>腰头（直接车）</b></td><td>橡筋重叠 + 之字 / 平车</td><td>效率优先，适合基础款跑量</td></tr>
+            <tr><td><b>腰头（穿带）</b></td><td>绷缝 602 封口</td><td>平整盖边，触肤舒适</td></tr>
+            <tr><td><b>腰头（提花带）</b></td><td>平车拼缝成品织带</td><td>腰头本身是外购辅料，注意色差配伍</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-bond" data-sec="s-bond"><span class="sec-no">03</span>无痕工艺细讲：外观的溢价，耐用性的分水岭</h2>
+
+      <p><dfn class="term" data-term="无痕内裤">无痕内裤</dfn>的外观溢价来自三件事：<dfn class="term" data-term="激光切边">激光切边</dfn>、热压胶条、以及「把缝藏到没有」。先纠正一个常见混淆——<b>无痕 ≠ 无缝</b>：绝大多数无痕款的裆部与里裆仍要车缝，只是边口和腰头不再有线迹。</p>
+
+      <h3 class="sub-title">激光切边：切口为什么发硬</h3>
+      <p>激光沿裁片边缘切割，高温使纤维切口熔融固化，形成不散边的「熔合层」。参数对了，切口光滑柔软；参数过猛（功率偏高或速度偏慢），熔合层过厚，<b>边口发硬、发亮、贴肤有刮感</b>。<dfn class="term" data-term="热压贴合">热压贴合</dfn>类工艺中的超声焊接原理类似（机械振动摩擦生热），常与切边配合使用。</p>
+
+      <h3 class="sub-title">热压胶条：三要素与分水岭</h3>
+      <p>胶条是把两层布用 TPU 胶膜粘住的工艺，品质由<b>温度、压力、时间</b>三要素决定，量化指标是<b>剥离强度</b>（N/25mm，把胶条从布上剥开所需的力）。行业普遍反馈：<b>劣质胶条约 20-30 次机洗后起泡、开胶</b>（经验判断，非标准限值），而内裤是每周洗 2-3 次的高频洗物——胶条耐洗性就是无痕款的生死线。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="190" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">激光切边剖面（示意）</text>
+            <rect x="50" y="70" width="240" height="20" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+            <rect x="50" y="94" width="240" height="20" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+            <rect x="286" y="64" width="12" height="56" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.5"/>
+            <text x="252" y="42" text-anchor="end" fill="#B0603F" font-size="11.5">切口熔合层</text>
+            <line x1="262" y1="46" x2="286" y2="62" stroke="#B0603F" stroke-width="1"/>
+            <text x="50" y="150" fill="#5D574B" font-size="12">高温熔融固化 → 不散边、无线迹</text>
+            <text x="50" y="172" fill="#5D574B" font-size="12">过熔 → 熔合层过厚，发硬发亮</text>
+            <text x="50" y="194" fill="#8B8375" font-size="12">验货：指腹划过边口，刮手即不合格</text>
+            <line x1="410" y1="40" x2="410" y2="270" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="570" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">热压胶条与三要素</text>
+            <rect x="430" y="48" width="80" height="24" rx="6" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <text x="470" y="64" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">温度</text>
+            <rect x="520" y="48" width="80" height="24" rx="6" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <text x="560" y="64" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">压力</text>
+            <rect x="610" y="48" width="80" height="24" rx="6" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.3"/>
+            <text x="650" y="64" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">时间</text>
+            <text x="570" y="90" text-anchor="middle" fill="#8B8375" font-size="11">示例：约 150-190℃ · 约 0.2-0.4MPa · 8-15s（视胶膜与面料）</text>
+            <rect x="430" y="106" width="240" height="20" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+            <rect x="430" y="126" width="240" height="22" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.5"/>
+            <text x="550" y="141" text-anchor="middle" fill="#8F6E2F" font-size="11.5" font-weight="650">TPU 胶膜</text>
+            <rect x="430" y="148" width="240" height="20" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+            <path d="M672 136 C706 132 714 112 706 92" fill="none" stroke="#B0603F" stroke-width="1.8"/>
+            <polygon points="706,92 700,100 712,102" fill="#B0603F"/>
+            <text x="570" y="196" text-anchor="middle" fill="#26231D" font-size="12.5" font-weight="650">剥离强度（N/25mm）：数值越高越牢</text>
+            <text x="570" y="218" text-anchor="middle" fill="#8B8375" font-size="11.5">劣质胶条约 20-30 次洗后起泡开胶（行业经验）</text>
+            <text x="570" y="238" text-anchor="middle" fill="#8B8375" font-size="11.5">验货：指腹抠边口，翻起超约 2mm 或见气泡即退（示例判定）</text>
+            <text x="380" y="278" text-anchor="middle" fill="#5D574B" font-size="12.5">无痕 ≠ 无缝：裁片仍在，裆部与里裆依旧车缝——查无痕款先翻里裆。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-9</span><b>无痕工艺的两个关键截面。</b>左：激光切边的熔合层——它是「无痕」的来源，也是「发硬」的来源；右：热压胶条的三要素与剥离强度方向。</figcaption>
+      </figure>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区
+        </div>
+        <p>把「无痕」当「耐久」。无痕工艺的失败模式恰恰是「洗着洗着，回到有痕还更难看」。低温慢压可以做出很好的胶条，但产能减半——低价无痕单几乎必然牺牲热压时间或胶条等级。给无痕款定价之前，先问供应商两个问题：你们的胶条做过多少次水洗测试？有没有第三方洗测报告？答不上来，就把预算退回车缝路线。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-seamless" data-sec="s-seamless"><span class="sec-no">04</span>无缝工艺细讲：织出来的内裤</h2>
+
+      <p>无缝内裤在 <dfn class="term" data-term="圣东尼">圣东尼</dfn>类圆机上一次织成筒状：腰口织<dfn class="term" data-term="罗纹">罗纹</dfn>（氨纶喂入形成回弹），裆部织<dfn class="term" data-term="平针组织">平纹</dfn>保证贴肤平整，图案用<dfn class="term" data-term="提花">提花</dfn>直接织出——无侧缝、少裁切，本质是「织出来的版型」。</p>
+
+      <p>原料示例：<b>70D/48F 锦纶长丝 + 20D 锦纶包覆氨纶</b>（<dfn class="term" data-term="包覆纱">包覆纱</dfn>；数字为<dfn class="term" data-term="旦尼尔">旦尼尔</dfn>粗细）。F 数越高单丝越细、手感越细腻；氨纶粗细与喂入量决定腰头回弹——这两个参数直接对应上页讲的「负放量」能不能长期扛住。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="270" y="24" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">织造分区（展平示意）</text>
+            <line x1="60" y1="48" x2="480" y2="48" stroke="#8B8375" stroke-width="1.4"/>
+            <polygon points="60,48 70,44 70,52" fill="#8B8375"/>
+            <polygon points="480,48 470,44 470,52" fill="#8B8375"/>
+            <text x="270" y="40" text-anchor="middle" fill="#8B8375" font-size="11">周向（筒状一次织出，无侧缝）</text>
+            <rect x="60" y="60" width="420" height="54" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+            <line x1="66" y1="87" x2="474" y2="87" stroke="#2C5142" stroke-width="28" stroke-dasharray="3 6" opacity=".22"/>
+            <text x="76" y="92" fill="#2C5142" font-size="12" font-weight="650">腰部罗纹区 · 氨纶喂入决定回弹</text>
+            <rect x="60" y="114" width="420" height="66" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.3"/>
+            <path d="M270 147 L280 137 L290 147 L280 157 Z M340 147 L350 137 L360 147 L350 157 Z M410 147 L420 137 L430 147 L420 157 Z" fill="none" stroke="#B98F45" stroke-width="1.4"/>
+            <text x="76" y="152" fill="#8F6E2F" font-size="12" font-weight="650">提花图案区（图形 / LOGO 直织）</text>
+            <rect x="60" y="180" width="420" height="86" fill="#E9EFF3" stroke="#C9D7E0" stroke-width="1.3"/>
+            <text x="76" y="216" fill="#44657F" font-size="12" font-weight="650">裆部平纹区（平针 · 贴肤平整）</text>
+            <text x="76" y="236" fill="#8B8375" font-size="11">可加裆衬 / 双层组织加固</text>
+            <rect x="60" y="266" width="420" height="84" fill="#FAF8F3" stroke="#E6E0D3" stroke-width="1.3" stroke-dasharray="5 4"/>
+            <text x="76" y="302" fill="#8B8375" font-size="12" font-weight="650">裤脚切边区（切裆 / 切边后形成）</text>
+            <text x="76" y="322" fill="#8B8375" font-size="11">裆口切开后再固定，是品质波动点之一</text>
+            <!-- 右列 -->
+            <text x="620" y="84" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">织后工序</text>
+            <rect x="530" y="96" width="180" height="44" rx="9" fill="#fff" stroke="#3D6B57" stroke-width="1.4"/>
+            <text x="620" y="115" text-anchor="middle" fill="#26231D" font-size="13" font-weight="650">定裆</text>
+            <text x="620" y="131" text-anchor="middle" fill="#8B8375" font-size="10.5">裆部热定形 · 加固</text>
+            <line x1="620" y1="140" x2="620" y2="158" stroke="#8B8375" stroke-width="1.4"/>
+            <polygon points="620,158 616,150 624,150" fill="#8B8375"/>
+            <rect x="530" y="158" width="180" height="44" rx="9" fill="#fff" stroke="#3D6B57" stroke-width="1.4"/>
+            <text x="620" y="177" text-anchor="middle" fill="#26231D" font-size="13" font-weight="650">切裆</text>
+            <text x="620" y="193" text-anchor="middle" fill="#8B8375" font-size="10.5">切出裆口与裤脚</text>
+            <line x1="620" y1="202" x2="620" y2="220" stroke="#8B8375" stroke-width="1.4"/>
+            <polygon points="620,220 616,212 624,212" fill="#8B8375"/>
+            <rect x="530" y="220" width="180" height="44" rx="9" fill="#fff" stroke="#3D6B57" stroke-width="1.4"/>
+            <text x="620" y="239" text-anchor="middle" fill="#26231D" font-size="13" font-weight="650">定形</text>
+            <text x="620" y="255" text-anchor="middle" fill="#8B8375" font-size="10.5">高温锁定尺寸与弹性</text>
+            <text x="620" y="300" text-anchor="middle" fill="#5D574B" font-size="11.5">原料示例：70D/48F 锦纶</text>
+            <text x="620" y="318" text-anchor="middle" fill="#5D574B" font-size="11.5">+ 20D 锦纶包覆氨纶</text>
+            <text x="620" y="340" text-anchor="middle" fill="#8B8375" font-size="11.5">打版 3-7 天（示例）· 机台昂贵</text>
+            <text x="620" y="358" text-anchor="middle" fill="#8B8375" font-size="11.5">排产慢 → 交期长</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-10</span><b>无缝针织的分区织造与后道工序。</b>同一只筒状织片上，腰、身、裆、脚由不同组织一次织出；织造之后还要经定裆、切裆、定形三道工序，再染色与少量缝合。</figcaption>
+      </figure>
+
+      <p>织造不是终点：筒状织片还要经过<b>定裆</b>（裆部定形加固）、<b>切裆</b>（切出裆口与裤脚）、<b>定形</b>（高温锁定尺寸）三道后道工序，再经染色（先织后染为常见流程，示例）、里裆缝合与检验。打版（上机调程序）一般 3-7 天（示例），<dfn class="term" data-term="圣东尼">圣东尼</dfn>类机台排产慢是交期的主要变量。</p>
+
+      <p>优劣势小结：优势是体感无缝、外观整体、组织可设计感强；劣势是机台昂贵（数十万至上百万元/台，示例量级）、款式变更依赖打版、腰罗纹易松（见下节缺陷表）、起订与交期对柔性供应链不友好——适合做「少款多量」的长期款，不适合频繁上新。</p>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸 · 选路线约等于选产业带
+        </div>
+        <p>车缝路线集中在<dfn class="term" data-term="汕头潮南">汕头潮南</dfn>、中山小榄等内衣<dfn class="term" data-term="产业集群">产业集群</dfn>；无缝路线集中在<dfn class="term" data-term="义乌无缝">义乌无缝</dfn>及周边。定了路线，你后面所有供应商对话的语境、打样成本与验货习惯都随之确定——这也是把「路线选择」放在本页第一节的原因。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">05</span>品质缺陷图鉴：长相 → 成因 → 验货判断</h2>
+
+      <p>缺陷图的用法：先认「长相」，再顺着「成因」定位责任工序，最后落到「验货判断」的可执行动作。<b>能否定责，取决于你能不能把缺陷映射到具体工序</b>——这也是这张表最大的价值。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="130" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">腰头起浪</text>
+            <rect x="45" y="52" width="170" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+            <text x="130" y="84" text-anchor="middle" fill="#5D574B" font-size="11">正常</text>
+            <path d="M45 106 Q57 96 69 106 T93 106 T117 106 T141 106 T165 106 T189 106 T213 106 L213 122 Q201 112 189 122 T165 122 T141 122 T117 122 T93 122 T69 122 T45 122 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.5"/>
+            <text x="130" y="148" text-anchor="middle" fill="#B0603F" font-size="11">起浪（橡筋与布拉伸不匹配）</text>
+            <line x1="255" y1="40" x2="255" y2="170" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="385" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">底裆扭曲</text>
+            <polygon points="315,60 465,72 452,140 302,124" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.6"/>
+            <line x1="310" y1="90" x2="462" y2="106" stroke="#5D574B" stroke-width="1.2" stroke-dasharray="5 4"/>
+            <text x="385" y="166" text-anchor="middle" fill="#B0603F" font-size="11">裆里外露歪斜 · 中线偏移</text>
+            <line x1="510" y1="40" x2="510" y2="170" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="630" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">胶条开胶</text>
+            <rect x="540" y="64" width="160" height="16" fill="#E9EFF3" stroke="#44657F" stroke-width="1.3"/>
+            <rect x="540" y="96" width="160" height="16" fill="#E9EFF3" stroke="#44657F" stroke-width="1.3"/>
+            <path d="M700 64 L724 56 L724 76 Z" fill="#E9EFF3" stroke="#44657F" stroke-width="1.2"/>
+            <circle cx="565" cy="88" r="4" fill="#fff" stroke="#B0603F" stroke-width="1.5"/>
+            <circle cx="600" cy="90" r="5" fill="#fff" stroke="#B0603F" stroke-width="1.5"/>
+            <circle cx="640" cy="89" r="4" fill="#fff" stroke="#B0603F" stroke-width="1.5"/>
+            <circle cx="680" cy="91" r="5" fill="#fff" stroke="#B0603F" stroke-width="1.5"/>
+            <text x="630" y="148" text-anchor="middle" fill="#B0603F" font-size="11">起泡 · 边缘剥离（白圈为气泡）</text>
+            <text x="380" y="255" text-anchor="middle" fill="#5D574B" font-size="12">下表给出 7 项内裤专项缺陷的完整对照（本图示意为其中 3 项）。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-11</span><b>三个高发缺陷的视觉特征。</b>腰头起浪看「波浪」、底裆扭曲看「中线」、胶条开胶看「气泡与翘边」——三者都是平铺肉眼可查的缺陷，应写进验货动作。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>判定阈值中的数字为教学示例，正式验收请写入规格书并约定 AQL 抽检方案</caption>
+          <thead><tr><th style="width:16%">缺陷</th><th style="width:26%">长相</th><th style="width:30%">成因</th><th>验货判断</th></tr></thead>
+          <tbody>
+            <tr><td><b>底裆扭曲 / 裆里歪斜</b></td><td>里裆外露边缘左右不对称，裆部拧成斜条</td><td>四点固定针位偏移、双层送布不匀（吃势）、里裆裁片方向错</td><td>平铺看里裆中线与后浪是否对齐；抽 10 件量两侧外露宽度差</td></tr>
+            <tr><td><b>腰头起浪</b></td><td>腰头呈波浪状不平服</td><td>橡筋与布料拉伸率不匹配，车缝时橡筋张力不匀</td><td>平铺手抚腰头，肉眼可见波浪即退</td></tr>
+            <tr><td><b>切边发硬发亮</b></td><td>边口有硬棱、反光</td><td>激光功率过高或速度过慢，熔合层过厚</td><td>指腹划过边口，有刮手感即不合格</td></tr>
+            <tr><td><b>胶条开胶</b></td><td>胶条边缘翘起、膜下起泡</td><td>胶膜品质差，热压温度 / 压力 / 时间失配</td><td>指腹抠边口，翻起超约 2mm 或见气泡即退（示例判定）</td></tr>
+            <tr><td><b>无缝腰罗纹松</b></td><td>新品回弹弱，洗后更松</td><td>罗纹区氨纶喂入不足或线圈过长，定形过度</td><td>拉伸腰头约 50% 放开，2 秒不回位即不合格</td></tr>
+            <tr><td><b>左右色差</b></td><td>同一条内裤左右腿深浅不一</td><td>面料<dfn class="term" data-term="缸差">缸差</dfn>混裁，拼接件用料批次不同</td><td>对色灯或自然光下左右对比，低于灰卡 4 级（示例）即退</td></tr>
+            <tr><td><b>裤脚边卷口</b></td><td>脚边向内卷、不伏贴</td><td>边口张力过大、折边量不足、版型腿围不足</td><td>上腿架或手撑开看边口是否自然平展</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本对比实操：同一定位，三条 BOM</h2>
+
+      <p>把同一个定位——「基础女中腰三角、锦氨汗布主体 + 棉里裆」——放到三条路线下拆解（<b>示例数据，教学参考，非实际报价</b>）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>BOM 与工缴对比（示例数据，用于建立量级概念）</caption>
+          <thead><tr><th style="width:22%">项目</th><th>传统车缝</th><th>无痕切边</th><th>无缝针织</th></tr></thead>
+          <tbody>
+            <tr><td><b>面料 / 原料</b></td><td>锦氨汗布约 0.055m²/件（含损耗，示例）</td><td>同车缝</td><td>锦纶长丝 + 包覆氨纶，织造成形（示例）</td></tr>
+            <tr><td><b>面料 / 原料成本</b></td><td class="num">1.60 元</td><td class="num">1.60 元</td><td class="num">2.60 元</td></tr>
+            <tr><td><b>辅料</b></td><td class="num">橡筋、缝线、唛标 ≈ 0.45 元</td><td class="num">TPU 胶条、橡筋、唛标 ≈ 0.85 元</td><td class="num">唛标等 ≈ 0.30 元</td></tr>
+            <tr><td><b>工序数（示例）</b></td><td class="num">约 8 道车缝</td><td class="num">约 6 道（切边热压替代多道车缝）</td><td class="num">织造 + 定裆 / 切裆 / 定形</td></tr>
+            <tr><td><b><dfn class="term" data-term="工缴">工缴</dfn></b></td><td class="num">1.50 元</td><td class="num">2.30 元（设备折旧高）</td><td class="num">2.60 元</td></tr>
+            <tr><td><b>染整 / 包装 / 管理</b></td><td class="num">0.55 元</td><td class="num">0.60 元</td><td class="num">0.90 元</td></tr>
+            <tr class="hl"><td><b>出厂价小计</b></td><td class="num">≈ 4.10 元</td><td class="num">≈ 5.35 元</td><td class="num">≈ 6.40 元</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <rect x="150" y="14" width="14" height="14" fill="#3D6B57"/><text x="170" y="26" fill="#5D574B" font-size="12">面料 / 原料</text>
+            <rect x="270" y="14" width="14" height="14" fill="#B98F45"/><text x="290" y="26" fill="#5D574B" font-size="12">辅料</text>
+            <rect x="350" y="14" width="14" height="14" fill="#44657F"/><text x="370" y="26" fill="#5D574B" font-size="12">工缴</text>
+            <rect x="420" y="14" width="14" height="14" fill="#C7BFAE"/><text x="440" y="26" fill="#5D574B" font-size="12">染整 · 包装 · 管理</text>
+            <text x="18" y="83" fill="#26231D" font-size="13" font-weight="650">车缝</text>
+            <rect x="120" y="64" width="128" height="30" fill="#3D6B57"/>
+            <rect x="248" y="64" width="36" height="30" fill="#B98F45"/>
+            <rect x="284" y="64" width="120" height="30" fill="#44657F"/>
+            <rect x="404" y="64" width="44" height="30" fill="#C7BFAE"/>
+            <text x="184" y="83" text-anchor="middle" fill="#fff" font-size="11">1.60</text>
+            <text x="344" y="83" text-anchor="middle" fill="#fff" font-size="11">1.50</text>
+            <text x="456" y="83" fill="#26231D" font-size="13" font-weight="700">4.10 元（示例）</text>
+            <text x="18" y="149" fill="#26231D" font-size="13" font-weight="650">无痕切边</text>
+            <rect x="120" y="130" width="128" height="30" fill="#3D6B57"/>
+            <rect x="248" y="130" width="68" height="30" fill="#B98F45"/>
+            <rect x="316" y="130" width="184" height="30" fill="#44657F"/>
+            <rect x="500" y="130" width="48" height="30" fill="#C7BFAE"/>
+            <text x="184" y="149" text-anchor="middle" fill="#fff" font-size="11">1.60</text>
+            <text x="282" y="149" text-anchor="middle" fill="#fff" font-size="11">0.85</text>
+            <text x="408" y="149" text-anchor="middle" fill="#fff" font-size="11">2.30</text>
+            <text x="556" y="149" fill="#26231D" font-size="13" font-weight="700">5.35 元（示例）</text>
+            <text x="18" y="215" fill="#26231D" font-size="13" font-weight="650">无缝针织</text>
+            <rect x="120" y="196" width="208" height="30" fill="#3D6B57"/>
+            <rect x="328" y="196" width="24" height="30" fill="#B98F45"/>
+            <rect x="352" y="196" width="208" height="30" fill="#44657F"/>
+            <rect x="560" y="196" width="72" height="30" fill="#C7BFAE"/>
+            <text x="224" y="215" text-anchor="middle" fill="#fff" font-size="11">2.60</text>
+            <text x="456" y="215" text-anchor="middle" fill="#fff" font-size="11">2.60</text>
+            <text x="640" y="215" fill="#26231D" font-size="13" font-weight="700">6.40 元（示例）</text>
+            <text x="380" y="270" text-anchor="middle" fill="#5D574B" font-size="12">同一定位下的教学示例拆分；区间参考：车缝 3-6 / 无痕 5-10 / 无缝 6-12 元（示例出厂价）。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 2-12</span><b>三条路线的出厂价构成（示例）。</b>无痕比车缝贵在胶条与热压工缴，无缝比车缝贵在原料与织造——「贵在哪里」决定你该跟供应商谈什么。</figcaption>
+      </figure>
+
+      <p>读表的三个直觉：<b>第一</b>，无痕比车缝贵的钱主要付给胶条与热压设备，不是布；<b>第二</b>，无缝的原料比车缝贵（筒状织造有织损、氨纶用量高），但工序少、人工省；<b>第三</b>，三条路线的染整包装管理几乎一样——所有路线共享同样的后端，能谈的只在前面。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · Soran 视角
+        </div>
+        <p>钱要花在消费者摸得到、洗得出差异的地方。<b>里裆用棉</b>——卫生与亲肤，几毛钱的事；<b>橡筋用好的</b>——腰头不松垮是复购底线，劣质橡筋是「穿两次就松」的头号原因；<b>胶条看洗次</b>——做无痕就买合格胶条，做不到就退回车缝路线。不值得加钱的：过度提花、多余蕾丝、过度包装——这些都不产生复购。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">07</span>选品判断清单：14 项可勾选</h2>
+
+      <p>下面这张清单把本页全部判断点收拢成验货与选品动作，勾选进度会保存在浏览器中，可直接用于样品评审与大货验货现场。数字阈值均为教学示例，正式执行请写入规格书。</p>
+
+      <div data-checklist="panties-craft-select">
+        <div class="chk-group">面料与弹性<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">静态拉伸回复<span class="chk-d">手拉腰头与裤脚边拉开约 50% 后放开，2 秒内回位、无松弛痕；回复差 = 穿一天就松。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">成分与克重核对<span class="chk-d">成分标与实测一致（GB/T 29862），克重与报价一致（内裤汗布常见 160-220g/m²，示例）。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">布面与手感检查<span class="chk-d">逆光看密度均匀、无稀路针；过分「滑腻」警惕拒水硅油过量，吸湿反而变差。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">氨纶配比与橡筋确认<span class="chk-d">报价单写明氨纶含量与橡筋规格；橡筋品质差是「穿两次就松」的头号原因。</span></span></label>
+        <div class="chk-group">里裆与卫生<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">里裆成分单独确认<span class="chk-d">私处接触面为纯棉或莫代尔等吸湿纤维；别只看主体面料，翻里裆看成分标。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">里裆结构与走线<span class="chk-d">双层、宽约 5-8cm（示例）、四点固定平服不扭曲；里裆中线与后浪对齐。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">抗菌宣称要洗后数据<span class="chk-d">要求洗涤若干次后的抗菌率报告（可参考 FZ/T 73023），无数据按无抗菌处理。</span></span></label>
+        <div class="chk-group">腰头与边口<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">腰头回弹与平服<span class="chk-d">拉伸后不变形；平铺看松紧宽窄一致，波浪状「起浪」即退。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">裤脚边弹力适中<span class="chk-d">上腿不勒、不卷边；切边款手摸边缘不发硬发亮、无刮手感。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">无痕款胶条检查<span class="chk-d">指腹抠胶条边缘无气泡、无虚粘；要求耐洗次数承诺并做洗测（合格胶条宜经 30 次以上机洗无明显开胶，经验值）。</span></span></label>
+        <div class="chk-group">做工与合规<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">针距与线迹均匀<span class="chk-d">每 3cm 针数一致（示例 10-12 针），无跳针、浮线、断线；线迹张力适中不打皱。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">对称性检查<span class="chk-d">左右裤脚边高度、两侧腰头宽度对称；前后浪居中不偏斜。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">强制合规报告<span class="chk-d">GB 18401 B 类检测报告（甲醛、pH、异味、芳香胺），标签与成分标符合规范；出口批次确认检针记录。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">色牢度报告<span class="chk-d">耐洗、耐摩擦达标；深色与深色里裆重点加测摩擦色牢度（GB/T 3920）。</span></span></label>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-chk-bar style="height:100%;width:0;background:var(--green)"></div></div>
+          <span data-chk-sum style="font-size:12.5px;color:var(--ink-faint)"></span>
+          <button class="btn ghost sm" data-chk-reset>重置</button>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">路线选择</div><div class="kv-v">车缝是基本盘；无痕买外观溢价、赌胶条耐洗；无缝买织造成形、门槛在机台与打版。选路线≈选产业带与供应商圈层。</div></div>
+        <div class="kv-row"><div class="kv-k">车缝要点</div><div class="kv-v">部位 × 线迹组合：包缝管边口、绷缝管腰脚；涤纶包芯线 + 10-12 针/3cm（示例）写进规格书。</div></div>
+        <div class="kv-row"><div class="kv-k">无痕要点</div><div class="kv-v">无痕≠无缝；切边防「发硬发亮」、胶条防「20-30 次洗后开胶」（行业经验）——低价比价先比胶条。</div></div>
+        <div class="kv-row"><div class="kv-k">无缝要点</div><div class="kv-v">分区织造 + 定裆 / 切裆 / 定形；盯腰罗纹氨纶喂入与定形曲线，防「一洗就松」。</div></div>
+        <div class="kv-row"><div class="kv-k">定责思路</div><div class="kv-v">先分版型 / 面料 / 工艺问题，再按工序定位责任；裁片对、面料对，问题多在车缝参数。</div></div>
+        <div class="kv-row"><div class="kv-k">成本直觉</div><div class="kv-v">里裆用棉、橡筋用好的、胶条看洗次——三处小钱决定复购；提花、蕾丝、过度包装不产生复购。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="panties-craft-q1" data-q="你计划做一款终端零售 29 元的「无痕内裤」，供应商报出厂价 3.8 元并承诺「无痕工艺」。最应该警惕的风险是什么？" data-a="1" data-exp="无痕的成本差主要落在胶条等级与热压参数控制上，远低于常规报价的无痕单几乎必然用最便宜的胶膜。行业普遍经验：劣质胶条约 20-30 次洗后起泡开胶（经验判断），而内裤是高频洗物，等于把差评写进使用寿命里。A 该定位下低出厂价未必亏本，先查配置再下结论；C 无痕内裤完全可以机洗，关键在胶条耐洗性；D 提价不解决品质，应先换胶条等级或退回车缝路线。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>出厂价太低肯定亏本，直接放弃这个方案</li>
+            <li>低价无痕通常对应最低配胶条与快切边，20-30 次洗后可能起泡开胶，毁掉复购口碑</li>
+            <li>无痕内裤不能机洗，在详情页声明只可手洗即可规避</li>
+            <li>把零售价提到 59 元就不用查供应商了</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="panties-craft-q2" data-q="大货验货发现约三成产品「底裆扭曲、里裆外露边缘歪斜」。面料进厂检验合格、裁片尺寸正确。最可能的责任环节在哪里？" data-a="2" data-exp="裆里歪斜的典型成因在车缝环节：里裆四点固定的针位偏移、两层布料送布速度不一致（吃势不匀），或缝纫张力过大把弹力布拉变形。A 面料纬斜会在进厂验布（四分制）时暴露，且已排除；B 裁片角度错是系统性问题，不会只出现在三成产品上；D 运输挤压不会造成固定形状的歪斜。正确动作：定责车缝工序，调整送布牙与针位，并严格执行首件确认。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>面料厂：布料纬斜超标</li>
+            <li>裁剪车间：排板角度错误</li>
+            <li>成衣车缝：四点固定针位偏移或送布不匀，里裆被「吃」歪</li>
+            <li>包装运输途中挤压所致</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="panties-craft-q3" data-q="无缝内裤大货洗水测试后：腰部罗纹普遍变松、失去回弹，而裆部平纹区完好。最可能的原因是什么？" data-a="1" data-exp="无缝裤的腰头弹性由罗纹区的氨纶决定：织造时氨纶喂入量不足、罗纹线圈长度过大，或定形温度过高 / 时间过长让氨纶疲劳，都会表现为「一洗就松」。A 同批次普遍性缺陷排除个例使用问题；C 组织织错在织造当场就会被发现，且不会洗后才出现；D 可先复测排除程序问题，但缺陷形态明确指向织造与定形参数。改进方向：核对氨纶送纱比与定形曲线，做洗前洗后弹性回复对比。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>消费者洗涤方式不当，与生产无关</li>
+            <li>腰罗纹织造时氨纶喂入不足或线圈过长，或定形参数不当使弹性受损</li>
+            <li>裆部平纹区织错了组织</li>
+            <li>洗水测试机程序错误，重测即可</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

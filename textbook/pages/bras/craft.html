@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文胸 · 工艺、品质与成本 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style>
+/* 本页专属：分段选择器（与设计系统同源） */
+.seg { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.seg-btn {
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft);
+  border-radius: 8px; padding: 5px 14px; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all .15s ease; font-family: inherit;
+}
+.seg-btn:hover { border-color: var(--green); color: var(--green-deep); }
+.seg-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
+</style>
+</head>
+<body data-page-id="bras-craft" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第四篇 · 文胸 / 工艺品质</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BRAS · CRAFT</div>
+        <h1 class="page-title">文胸 · 工艺、品质与成本</h1>
+        <p class="page-lede">材料与版型决定上限，工艺决定下限。本页先建立文胸的四条工艺路线全景——传统车缝、模杯光面、热压无痕、无缝针织，再深入传统车缝工序链与模压成型的关键参数，然后给一张文胸缺陷图鉴：每个问题如何从材料、工艺、版型三个方向溯源。最后拆解成本结构，配一个可交互的成本估算器与验货清单，让你能带着工具谈价、验货。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 30 分钟</span>
+          <span class="chip">前置：文胸 · 材料与版型</span>
+          <span class="chip">建议先读第一篇 · 生产制造与供应链</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>四条工艺路线：一张图看全行业</h2>
+
+      <p>市面上的文胸款式上千，但制造路线只有四条。<b>选路线就是选商业模式</b>：它同时锁定了你的设备门槛、起订量、交期、品质上限与成本区间。看任何一款文胸，先判断它走的是哪条路线，再谈价格与品质。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 列1 传统车缝 -->
+            <rect x="16" y="20" width="172" height="34" rx="9" fill="#3D6B57"/><text x="102" y="42" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">传统车缝（夹棉）</text>
+            <rect x="16" y="62" width="172" height="466" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+            <text x="30" y="88" fill="#8B8375" font-size="10.5" font-weight="700">核心工序</text>
+            <text x="30" y="106" fill="#26231D" font-size="11">裁片剪接拼杯 → 上棉 → 车缝</text>
+            <text x="30" y="122" fill="#26231D" font-size="11">→ 上钢圈槽 / 背扣 → 整烫</text>
+            <text x="30" y="146" fill="#8B8375" font-size="10.5" font-weight="700">关键设备</text>
+            <text x="30" y="163" fill="#26231D" font-size="11">平缝机、包缝、绷缝、</text>
+            <text x="30" y="179" fill="#26231D" font-size="11">拉筒车、套结机（门槛低）</text>
+            <text x="30" y="203" fill="#8B8375" font-size="10.5" font-weight="700">优势</text>
+            <text x="30" y="220" fill="#2C5142" font-size="11">打样快、小单灵活、</text>
+            <text x="30" y="236" fill="#2C5142" font-size="11">剪接杯支撑指向性好</text>
+            <text x="30" y="260" fill="#8B8375" font-size="10.5" font-weight="700">局限</text>
+            <text x="30" y="277" fill="#7A4429" font-size="11">有缝痕；工序多、工缴高；</text>
+            <text x="30" y="293" fill="#7A4429" font-size="11">品质依赖车工水平</text>
+            <text x="30" y="317" fill="#8B8375" font-size="10.5" font-weight="700">适用</text>
+            <text x="30" y="334" fill="#26231D" font-size="11">夹棉款、蕾丝款、</text>
+            <text x="30" y="350" fill="#26231D" font-size="11">大杯全罩杯、哺乳款</text>
+            <text x="30" y="374" fill="#8B8375" font-size="10.5" font-weight="700">工时 / MOQ（示例）</text>
+            <text x="30" y="391" fill="#26231D" font-size="11">约 20-40 分钟/件</text>
+            <text x="30" y="407" fill="#26231D" font-size="11">300-1000 件/款/色</text>
+            <rect x="26" y="428" width="152" height="88" rx="8" fill="#F3EFE7" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="102" y="450" text-anchor="middle" fill="#5D574B" font-size="10.5" font-weight="700">主理人要点</text>
+            <text x="102" y="468" text-anchor="middle" fill="#5D574B" font-size="10">新品牌首选试错路线：</text>
+            <text x="102" y="484" text-anchor="middle" fill="#5D574B" font-size="10">车缝厂最多、打样最快，</text>
+            <text x="102" y="500" text-anchor="middle" fill="#5D574B" font-size="10">品质靠首件确认锁住</text>
+            <!-- 列2 模杯光面 -->
+            <rect x="202" y="20" width="172" height="34" rx="9" fill="#44657F"/><text x="288" y="42" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">模杯光面</text>
+            <rect x="202" y="62" width="172" height="466" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.4"/>
+            <text x="216" y="88" fill="#8B8375" font-size="10.5" font-weight="700">核心工序</text>
+            <text x="216" y="106" fill="#26231D" font-size="11">外购模杯（模压定型）</text>
+            <text x="216" y="122" fill="#26231D" font-size="11">→ 车缝杯里杯面 → 组装</text>
+            <text x="216" y="146" fill="#8B8375" font-size="10.5" font-weight="700">关键设备</text>
+            <text x="216" y="163" fill="#26231D" font-size="11">模压机（杯厂）+ 车缝线；</text>
+            <text x="216" y="179" fill="#26231D" font-size="11">模具按罩杯尺码一套</text>
+            <text x="216" y="203" fill="#8B8375" font-size="10.5" font-weight="700">优势</text>
+            <text x="216" y="220" fill="#2C5142" font-size="11">表面光洁无痕、杯型稳定、</text>
+            <text x="216" y="236" fill="#2C5142" font-size="11">工序少工缴低</text>
+            <text x="216" y="260" fill="#8B8375" font-size="10.5" font-weight="700">局限</text>
+            <text x="216" y="277" fill="#7A4429" font-size="11">自开模贵（示例：数千至</text>
+            <text x="216" y="293" fill="#7A4429" font-size="11">上万元/尺码）；杯型改版慢</text>
+            <text x="216" y="317" fill="#8B8375" font-size="10.5" font-weight="700">适用</text>
+            <text x="216" y="334" fill="#26231D" font-size="11">光面 T 恤文胸、薄厚杯、</text>
+            <text x="216" y="350" fill="#26231D" font-size="11">走量基础款</text>
+            <text x="216" y="374" fill="#8B8375" font-size="10.5" font-weight="700">工时 / MOQ（示例）</text>
+            <text x="216" y="391" fill="#26231D" font-size="11">约 12-25 分钟/件</text>
+            <text x="216" y="407" fill="#26231D" font-size="11">模杯单杯数千对起</text>
+            <rect x="212" y="428" width="152" height="88" rx="8" fill="#F3EFE7" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="288" y="450" text-anchor="middle" fill="#5D574B" font-size="10.5" font-weight="700">主理人要点</text>
+            <text x="288" y="468" text-anchor="middle" fill="#5D574B" font-size="10">打样期用外购标准模杯，</text>
+            <text x="288" y="484" text-anchor="middle" fill="#5D574B" font-size="10">验证后再开模；</text>
+            <text x="288" y="500" text-anchor="middle" fill="#5D574B" font-size="10">海绵密度写进规格书</text>
+            <!-- 列3 热压无痕 -->
+            <rect x="388" y="20" width="172" height="34" rx="9" fill="#B0603F"/><text x="474" y="42" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">热压无痕</text>
+            <rect x="388" y="62" width="172" height="466" rx="10" fill="#fff" stroke="#E4CDBE" stroke-width="1.4"/>
+            <text x="402" y="88" fill="#8B8375" font-size="10.5" font-weight="700">核心工序</text>
+            <text x="402" y="106" fill="#26231D" font-size="11">激光/超声切边 + 热压胶条</text>
+            <text x="402" y="122" fill="#26231D" font-size="11">替代车缝（常与模杯组合）</text>
+            <text x="402" y="146" fill="#8B8375" font-size="10.5" font-weight="700">关键设备</text>
+            <text x="402" y="163" fill="#26231D" font-size="11">激光切割机、热压机、</text>
+            <text x="402" y="179" fill="#26231D" font-size="11">超声焊接机</text>
+            <text x="402" y="203" fill="#8B8375" font-size="10.5" font-weight="700">优势</text>
+            <text x="402" y="220" fill="#2C5142" font-size="11">外衣下无痕、轻薄贴身、</text>
+            <text x="402" y="236" fill="#2C5142" font-size="11">差异化观感强</text>
+            <text x="402" y="260" fill="#8B8375" font-size="10.5" font-weight="700">局限</text>
+            <text x="402" y="277" fill="#7A4429" font-size="11">胶条剥离强度与耐洗性</text>
+            <text x="402" y="293" fill="#7A4429" font-size="11">是命门；开胶即严重缺陷</text>
+            <text x="402" y="317" fill="#8B8375" font-size="10.5" font-weight="700">适用</text>
+            <text x="402" y="334" fill="#26231D" font-size="11">无痕文胸、无痕内裤、</text>
+            <text x="402" y="350" fill="#26231D" font-size="11">运动与塑身拼接</text>
+            <text x="402" y="374" fill="#8B8375" font-size="10.5" font-weight="700">工时 / MOQ（示例）</text>
+            <text x="402" y="391" fill="#26231D" font-size="11">约 10-20 分钟/件</text>
+            <text x="402" y="407" fill="#26231D" font-size="11">500-1000 件/款/色</text>
+            <rect x="398" y="428" width="152" height="88" rx="8" fill="#F7EAE2" stroke="#E4CDBE" stroke-width="1.2"/>
+            <text x="474" y="450" text-anchor="middle" fill="#7A4429" font-size="10.5" font-weight="700">主理人要点</text>
+            <text x="474" y="468" text-anchor="middle" fill="#7A4429" font-size="10">验收必测剥离强度，</text>
+            <text x="474" y="484" text-anchor="middle" fill="#7A4429" font-size="10">并要求洗 3 次复测样；</text>
+            <text x="474" y="500" text-anchor="middle" fill="#7A4429" font-size="10">「无痕」是卖点也是风险</text>
+            <!-- 列4 无缝针织 -->
+            <rect x="574" y="20" width="172" height="34" rx="9" fill="#B98F45"/><text x="660" y="42" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">无缝针织</text>
+            <rect x="574" y="62" width="172" height="466" rx="10" fill="#fff" stroke="#E4D6B4" stroke-width="1.4"/>
+            <text x="588" y="88" fill="#8B8375" font-size="10.5" font-weight="700">核心工序</text>
+            <text x="588" y="106" fill="#26231D" font-size="11">圆机一次织出筒状衣片</text>
+            <text x="588" y="122" fill="#26231D" font-size="11">→ 裁切 → 少量缝合</text>
+            <text x="588" y="146" fill="#8B8375" font-size="10.5" font-weight="700">关键设备</text>
+            <text x="588" y="163" fill="#26231D" font-size="11">圣东尼等电脑无缝机</text>
+            <text x="588" y="179" fill="#26231D" font-size="11">（数十万至上百万/台）</text>
+            <text x="588" y="203" fill="#8B8375" font-size="10.5" font-weight="700">优势</text>
+            <text x="588" y="220" fill="#2C5142" font-size="11">无侧缝、舒适度最高、</text>
+            <text x="588" y="236" fill="#2C5142" font-size="11">背心式文胸主流路线</text>
+            <text x="588" y="260" fill="#8B8375" font-size="10.5" font-weight="700">局限</text>
+            <text x="588" y="277" fill="#7A4429" font-size="11">织法打版周期长；支撑</text>
+            <text x="588" y="293" fill="#7A4429" font-size="11">弱于钢圈结构；改版要重织</text>
+            <text x="588" y="317" fill="#8B8375" font-size="10.5" font-weight="700">适用</text>
+            <text x="588" y="334" fill="#26231D" font-size="11">背心式文胸、bralette、</text>
+            <text x="588" y="350" fill="#26231D" font-size="11">运动与家居场景</text>
+            <text x="588" y="374" fill="#8B8375" font-size="10.5" font-weight="700">工时 / MOQ（示例）</text>
+            <text x="588" y="391" fill="#26231D" font-size="11">织造排产为主</text>
+            <text x="588" y="407" fill="#26231D" font-size="11">单款可小量但交期长</text>
+            <rect x="584" y="428" width="152" height="88" rx="8" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.2"/>
+            <text x="660" y="450" text-anchor="middle" fill="#8F6E2F" font-size="10.5" font-weight="700">主理人要点</text>
+            <text x="660" y="468" text-anchor="middle" fill="#8F6E2F" font-size="10">看厂先看机型与数量</text>
+            <text x="660" y="484" text-anchor="middle" fill="#8F6E2F" font-size="10">（8/16/28 针）；</text>
+            <text x="660" y="500" text-anchor="middle" fill="#8F6E2F" font-size="10">集聚地：义乌及周边</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-10</span><b>四条工艺路线全景对比。</b>工时、MOQ 均为教学示例区间；实际随款式复杂度与工厂排产波动。四条路线常被组合使用——例如「模杯光面 + 热压无痕侧翼」是无痕 T 恤文胸的主流组合。</figcaption>
+      </figure>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 路线选择的决策树
+        </div>
+        <p>三个问题定路线：<b>① 你要的是「结构性支撑」还是「无感舒适」？</b>前者选车缝 / 模杯，后者选热压 / 无缝。<b>② 你的订单规模与改款频率？</b>小单快反选车缝，稳定走量选模杯。<b>③ 你的开发节奏能不能等？</b>无缝与自开模都要「先压几周打版」。新品牌首年最稳的组合：车缝夹棉款 + 外购模杯的光面款双线起步，把无缝留给第二年验证过的爆款。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">02</span>传统车缝工序链：一件文胸的 40 道工序</h2>
+
+      <p>文胸是「零件最多的贴身衣物」：传统车缝路线的单件工时约 20-40 分钟（示例），工序 30-60 道（示例）。不必背下全链，但要理解<b>工序的顺序逻辑：先做「碗」（罩杯），再做「架子」（下扒、侧比），最后总装（肩带、背扣）</b>——顺序错了就返工。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="380" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">传统车缝文胸工序链（简化为 12 步 · 示意）</text>
+            <!-- 第一行 -->
+            <g font-size="11" text-anchor="middle">
+              <rect x="22" y="52" width="104" height="46" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="74" y="72" fill="#2C5142" font-weight="700">① 拉布裁剪</text><text x="74" y="88" fill="#8B8375" font-size="9.5">排料利用率 80-88%</text>
+              <polygon points="130,75 138,71 138,79" fill="#8B8375"/>
+              <rect x="142" y="52" width="104" height="46" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="194" y="72" fill="#2C5142" font-weight="700">② 拼杯缝合</text><text x="194" y="88" fill="#8B8375" font-size="9.5">剪接线决定立体度</text>
+              <polygon points="250,75 258,71 258,79" fill="#8B8375"/>
+              <rect x="262" y="52" width="104" height="46" rx="8" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.5"/>
+              <text x="314" y="72" fill="#7A4429" font-weight="700">③ 上芯材</text><text x="314" y="88" fill="#8B8375" font-size="9.5">夹棉衍缝 / 袋装棉</text>
+              <polygon points="370,75 378,71 378,79" fill="#8B8375"/>
+              <rect x="382" y="52" width="104" height="46" rx="8" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.5"/>
+              <text x="434" y="72" fill="#8F6E2F" font-weight="700">④ 上捆条</text><text x="434" y="88" fill="#8B8375" font-size="9.5">张力失衡=卷边首因</text>
+              <polygon points="490,75 498,71 498,79" fill="#8B8375"/>
+              <rect x="502" y="52" width="104" height="46" rx="8" fill="#E9EFF3" stroke="#44657F" stroke-width="1.5"/>
+              <text x="554" y="72" fill="#44657F" font-weight="700">⑤ 下扒+钢圈槽</text><text x="554" y="88" fill="#8B8375" font-size="9.5">端头封死防脱圈</text>
+              <polygon points="610,75 618,71 618,79" fill="#8B8375"/>
+              <rect x="622" y="52" width="104" height="46" rx="8" fill="#E9EFF3" stroke="#44657F" stroke-width="1.5"/>
+              <text x="674" y="72" fill="#44657F" font-weight="700">⑥ 侧比+胶骨</text><text x="674" y="88" fill="#8B8375" font-size="9.5">胶骨过顶肋=选长了</text>
+              <!-- 第二行（反向） -->
+              <rect x="622" y="128" width="104" height="46" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="674" y="148" fill="#2C5142" font-weight="700">⑦ 合侧缝</text><text x="674" y="164" fill="#8B8375" font-size="9.5">左右对称关键工位</text>
+              <polygon points="622,151 614,147 614,155" fill="#8B8375"/>
+              <rect x="502" y="128" width="104" height="46" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="554" y="148" fill="#2C5142" font-weight="700">⑧ 上背扣</text><text x="554" y="164" fill="#8B8375" font-size="9.5">钩扣拉力必检</text>
+              <polygon points="502,151 494,147 494,155" fill="#8B8375"/>
+              <rect x="382" y="128" width="104" height="46" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="434" y="148" fill="#2C5142" font-weight="700">⑨ 上肩带</text><text x="434" y="164" fill="#8B8375" font-size="9.5">8字环+日字扣</text>
+              <polygon points="382,151 374,147 374,155" fill="#8B8375"/>
+              <rect x="262" y="128" width="104" height="46" rx="8" fill="#FAF8F3" stroke="#D4CCBB" stroke-width="1.5"/>
+              <text x="314" y="148" fill="#26231D" font-weight="700">⑩ 整烫定形</text><text x="314" y="164" fill="#8B8375" font-size="9.5">低温快烫防氨纶老化</text>
+              <polygon points="262,151 254,147 254,155" fill="#8B8375"/>
+              <rect x="142" y="128" width="104" height="46" rx="8" fill="#FAF8F3" stroke="#D4CCBB" stroke-width="1.5"/>
+              <text x="194" y="148" fill="#26231D" font-weight="700">⑪ 检针</text><text x="194" y="164" fill="#8B8375" font-size="9.5">断针管控标志性工序</text>
+              <polygon points="142,151 134,147 134,155" fill="#8B8375"/>
+              <rect x="22" y="128" width="104" height="46" rx="8" fill="#FAF8F3" stroke="#D4CCBB" stroke-width="1.5"/>
+              <text x="74" y="148" fill="#26231D" font-weight="700">⑫ 抽检包装</text><text x="74" y="164" fill="#8B8375" font-size="9.5">按 AQL 抽样</text>
+            </g>
+            <!-- 三个品质关口 -->
+            <g font-size="11">
+              <rect x="22" y="212" width="230" height="96" rx="9" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+              <text x="36" y="236" fill="#2C5142" font-weight="700">关口 1 · 杯部</text>
+              <text x="36" y="256" fill="#5D574B">拼杯线对称、捆条张力、芯材平伏；</text>
+              <text x="36" y="274" fill="#5D574B">左右杯面纹路一致，杯口不卷不浪。</text>
+              <text x="36" y="294" fill="#8B8375" font-size="10">问题集中在张力与对称性。</text>
+              <rect x="266" y="212" width="230" height="96" rx="9" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+              <text x="280" y="236" fill="#44657F" font-weight="700">关口 2 · 骨架</text>
+              <text x="280" y="256" fill="#5D574B">钢圈槽端头封死、胶骨槽牢固、</text>
+              <text x="280" y="274" fill="#5D574B">背扣车缝平整、钩扣拉力达标。</text>
+              <text x="280" y="294" fill="#8B8375" font-size="10">脱圈、戳出属安全级缺陷。</text>
+              <rect x="510" y="212" width="230" height="96" rx="9" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.4"/>
+              <text x="524" y="236" fill="#8F6E2F" font-weight="700">关口 3 · 总装后</text>
+              <text x="524" y="256" fill="#5D574B">整烫不过热（氨纶怕高温）、</text>
+              <text x="524" y="274" fill="#5D574B">检针全覆盖、对称抽检按封样。</text>
+              <text x="524" y="294" fill="#8B8375" font-size="10">首件确认签字后才开大货。</text>
+            </g>
+            <text x="380" y="330" text-anchor="middle" fill="#5D574B" font-size="11.5">三个品质关口对应车缝文胸八成以上的质量问题——验厂时按这三处看工位管理与返修记录</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-11</span><b>传统车缝工序链与三大品质关口。</b>先做碗、再做架子、最后总装；品质问题集中在杯部张力、骨架封合与总装对称性三处。工序数与工时为教学示例，实际随款式浮动。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">设备与「工缴」的关系</h3>
+      <p>车缝工缴（加工费）的底层逻辑是<b>「工序秒数 × 秒单价」</b>。文胸为什么工缴高于内裤与袜子？因为它的车缝线路短而多变：捆条要拐弧线、钢圈槽要拐角打结、8 字环要来回穿绕——机器跑不快，全靠车工手上功夫。这也解释了两件事：<b>一是</b>同一条工序链在不同厂报出的工缴能差 30%（示例），差的不是设备是熟练度；<b>二是</b>版型越复杂（剪接线越多、装饰越多），工缴越高——简化剪接就是最直接的降本手段，但会牺牲支撑指向性。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-molding" data-sec="s-molding"><span class="sec-no">03</span>模压成型：模杯是怎么「烙」出来的</h2>
+
+      <p><dfn class="term" data-term="模压">模压</dfn>是把「平的布 + 平的海绵」变成「立体的碗」的工序：叠片置入上下金属模，加热加压数十秒，纤维与海绵在温度下软化贴合、冷却后定型。它的品质三要素——<b>温度、压力、时间</b>——决定了杯型对称性、贴合牢度与耐洗寿命。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="190" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">模压机原理（剖面示意）</text>
+            <!-- 上模 -->
+            <path d="M80,60 L300,60 L300,84 C300,96 280,104 260,112 L120,112 C100,104 80,96 80,84 Z" fill="#44657F" stroke="#2F4A5C" stroke-width="1.6"/>
+            <text x="190" y="82" text-anchor="middle" fill="#E9EFF3" font-size="11.5" font-weight="700">上模（凸模）</text>
+            <polygon points="190,120 182,106 198,106" fill="#B0603F"/>
+            <rect x="150" y="96" width="80" height="20" fill="none"/>
+            <!-- 叠片 -->
+            <g>
+              <path d="M92,150 C110,128 270,128 288,150 C296,164 268,176 190,176 C112,176 84,164 92,150 Z" fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+              <path d="M100,148 C118,132 262,132 280,148" fill="none" stroke="#B98F45" stroke-width="1.6" stroke-dasharray="4 3"/>
+              <path d="M96,158 C116,144 264,144 284,158" fill="none" stroke="#B0603F" stroke-width="2"/>
+              <text x="190" y="196" text-anchor="middle" fill="#5D574B" font-size="10.5">叠片：杯面料 + 胶点层 + 海绵（自下而上受热压合）</text>
+            </g>
+            <!-- 下模 -->
+            <path d="M84,246 C110,214 270,214 296,246 L296,278 C296,290 84,290 84,278 Z" fill="#3D6B57" stroke="#2C5142" stroke-width="1.6"/>
+            <text x="190" y="262" text-anchor="middle" fill="#EAF1ED" font-size="11.5" font-weight="700">下模（凹模）· 型腔即杯型</text>
+            <!-- 参数标注 -->
+            <g font-size="11" fill="#5D574B">
+              <text x="330" y="70" font-weight="700" fill="#26231D">三要素（示例区间）</text>
+              <text x="330" y="94">温度：约 150-220℃（视材料）</text>
+              <text x="330" y="114">压力：上下模合拢压强均匀</text>
+              <text x="330" y="134">时间：数十秒 + 冷却定型</text>
+              <text x="330" y="162" font-weight="700" fill="#26231D">品质输出</text>
+              <text x="330" y="186">杯型对称（左右模差 &lt; 公差）</text>
+              <text x="330" y="206">面料与海绵贴合牢固（不起泡）</text>
+              <text x="330" y="226">多次水洗不瘪、不黄、不脱层</text>
+            </g>
+            <text x="330" y="256" fill="#8B8375" font-size="10.5">温度过高：氨纶脆化、海绵黄变</text>
+            <text x="330" y="274" fill="#8B8375" font-size="10.5">压力不均：局部脱层起泡</text>
+            <text x="330" y="292" fill="#8B8375" font-size="10.5">冷却不足：出模后回弹变形</text>
+            <!-- 温度曲线 -->
+            <text x="600" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">一条模压温度曲线</text>
+            <line x1="500" y1="240" x2="740" y2="240" stroke="#5D574B" stroke-width="1.4"/>
+            <line x1="500" y1="48" x2="500" y2="240" stroke="#8B8375" stroke-width="1.2"/>
+            <text x="494" y="58" text-anchor="end" fill="#8B8375" font-size="10">℃</text>
+            <path d="M500,238 C540,150 570,90 610,84 C650,80 660,84 686,96 C706,110 724,160 738,200" fill="none" stroke="#B0603F" stroke-width="3"/>
+            <text x="576" y="70" fill="#B0603F" font-size="10.5">升温 → 保温定型</text>
+            <text x="688" y="182" fill="#44657F" font-size="10.5">冷却出模</text>
+            <line x1="500" y1="84" x2="740" y2="84" stroke="#E6E0D3" stroke-width="1" stroke-dasharray="4 4"/>
+            <text x="494" y="88" text-anchor="end" fill="#8B8375" font-size="9.5">上限</text>
+            <text x="620" y="256" text-anchor="middle" fill="#8B8375" font-size="10.5">时间 →</text>
+            <text x="620" y="292" text-anchor="middle" fill="#5D574B" font-size="10.5">曲线形状是杯厂的核心 know-how，</text>
+            <text x="620" y="308" text-anchor="middle" fill="#5D574B" font-size="10.5">同一副模具换参数，成品耐洗性不同</text>
+            <text x="380" y="330" text-anchor="middle" fill="#8B8375" font-size="11">示意图；参数区间为教学示例，实际按材料与设备设定</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-12</span><b>模压成型原理与温度曲线。</b>模具型腔就是杯型；温度、压力、时间三要素与冷却流程决定杯型对称性与耐洗寿命。模压是「杯厂」的核心能力——这也是为什么模杯厂与车缝厂通常分工。</figcaption>
+      </figure>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">一次成型<br>vs 后接杯面</div><div class="kv-v">一次成型：面料与海绵同模压出，表面光洁、无剪接线（光面 T 恤文胸标准做法）；后接杯面：模压芯杯外面再车缝或热压一层装饰面，造型自由度高但多一道工序。前者看贴合，后者看车缝。</div></div>
+        <div class="kv-row"><div class="kv-k">模具账</div><div class="kv-v">每个罩杯尺码需要一套（或一对）模具，开模费示例区间数千至上万元；意味着 6 个底围档 × 4 个杯档的自有版型要开几十套模具——打样期用外购标准模杯、验证后再开模，是新品牌的常规路径。模具寿命与保养（氧化、划痕）直接影响杯面光洁度。</div></div>
+        <div class="kv-row"><div class="kv-k">半模杯</div><div class="kv-v">只在罩杯下半部模压（或用薄棉），上半部靠剪接与弹力——兼顾部分光洁外观与支撑指向，是「伪光面款」的常见做法，看杯上缘有没有剪接缝即可识别。</div></div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区 · 「一体成型 = 更高级」？
+        </div>
+        <p>模杯一体成型解决的是「外观光洁」与「生产效率」，不是承托性能。事实上，光面模杯放弃了剪接杯的「指向性剪接」，大杯人群的光面模杯款反而更容易跑杯——大杯的承托要靠钢圈、侧比与剪接共同完成。所以「一体成型更高级」是小杯语境下的部分真话；遇到把模杯说成普遍更高级的详情页，把它翻译回「这是一件以外观优先的产品」再判断是否匹配你的定位。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-bondless" data-sec="s-bondless"><span class="sec-no">04</span>热压贴合与无缝针织：两条「去车缝」路线</h2>
+
+      <p>车缝的痕迹与针眼是舒适感的物理上限，于是出现了两条绕开车缝的路线：<b>热压无痕</b>用胶与热替代线，<b>无缝针织</b>用织造直接织出成形衣片。</p>
+
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">A</span>热压贴合（无痕文胸）</h5>
+          <ul>
+            <li><b>原理</b>：<dfn class="term" data-term="热压贴合">热压贴合</dfn>用热熔胶膜 / 胶点 + 加热加压把两层材料粘合，替代车缝；边缘配 <dfn class="term" data-term="激光切边">激光切边</dfn>或超声切边，切口熔合不散边。</li>
+            <li><b>优势</b>：外衣下无痕、轻薄、贴身，是「无痕 T 恤文胸」「无痕内裤」的核心卖点。</li>
+            <li><b>命门</b>：剥离强度（N/25mm）与耐洗性——反复洗涤后起泡、开胶是最常见的「用半年就坏」。验收必测剥离强度 + 洗 3 次复测。</li>
+            <li><b>适用</b>：侧翼、杯口、标签贴合；与模杯组合成完整无痕款。</li>
+          </ul>
+        </div>
+        <div class="d-cell">
+          <h5><span class="d-ico" style="background:var(--gold-soft);color:var(--gold-deep,#8F6E2F)">B</span>无缝针织（背心式文胸）</h5>
+          <ul>
+            <li><b>原理</b>：<dfn class="term" data-term="无缝针织">无缝针织</dfn>用<dfn class="term" data-term="圣东尼">圣东尼</dfn>等圆型电脑针织机一次织出筒状衣片，无侧缝，再裁切与少量缝合；杯垫可内置或后装。</li>
+            <li><b>优势</b>：无侧缝、 stretches 无痕、舒适度上限最高；提花图形直接织出，耐洗不掉。</li>
+            <li><b>命门</b>：织法打版周期长（改版要重织）、支撑依赖织造密度设计，大杯支撑弱于钢圈结构；机台昂贵，看厂先看机型（8/16/28 针）与数量。</li>
+            <li><b>适用</b>：背心式文胸、bralette、运动与家居；集聚地在义乌及周边。</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>两条路线的共同点是：<b>把品质风险从「车工水平」转移到「参数与材料」</b>——热压看胶条与温压参数，无缝看织法程序与纱线。对品牌方的好处是品质更可标准化；坏处是一旦参数错误，问题是批量的，返修不可逆（胶开胶无法车缝修复、织坏无法拆线重来），所以首件确认比车缝路线更要严格。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-defects" data-sec="s-defects"><span class="sec-no">05</span>文胸缺陷图鉴：从现象溯源到责任方</h2>
+
+      <p>验货发现问题的价值不在「挑刺」，而在<b>溯源</b>：同一现象可能是材料、工艺或版型三个方向的问题，责任方与整改动作完全不同。下表是最常见的十二项，按「现象 → 机理 → 归因 → 整改」组织。</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>文胸常见缺陷溯源表（出现频率为行业经验排序，非统计值；归因标签：【材】材料 ·【艺】工艺 ·【版】版型 ·【储】仓储物流）</caption>
+          <thead><tr><th style="width:16%">缺陷</th><th style="width:30%">现象与机理</th><th style="width:14%">主要归因</th><th>验货发现方法与整改</th></tr></thead>
+          <tbody>
+            <tr><td><b>模杯黄变</b></td><td>海绵氧化（热、紫外、残留助剂）泛黄；洗后加速</td><td>【材】为主</td><td>要求芯材耐黄变等级 + 洗 3 次复测样；低等级海绵直接换料</td></tr>
+            <tr><td><b>杯体瘪塌</b></td><td>海绵密度不足或虚标，泡孔壁压缩后塌陷不回复</td><td>【材】为主</td><td>按压回弹对比封样；称重核密度；锁密度与回弹书面指标</td></tr>
+            <tr><td><b>脱层起泡</b></td><td>面料与海绵贴合不牢（胶点不足 / 温压曲线错）</td><td>【艺】为主</td><td>捏压杯面查空鼓；调模压曲线；返修不可逆需整批评估</td></tr>
+            <tr><td><b>胶条开胶</b></td><td>热压剥离强度不足，洗后起泡开裂</td><td>【艺】为主</td><td>测剥离强度 + 洗 3 次复测；不合格批次不可车缝补救</td></tr>
+            <tr><td><b>钢圈脱出 / 戳出</b></td><td>圈槽端头未封死或封合不牢；属安全级缺陷</td><td>【艺】为主</td><td>逐件翻查槽口端头；抽检向外拉拽钢圈；整批全检</td></tr>
+            <tr><td><b>杯口卷边 / 波浪</b></td><td>捆条张力失衡或用了弹力带未用定带</td><td>【艺】为主</td><td>平铺看杯口伏贴度；调张力、换无弹定带（见结构篇）</td></tr>
+            <tr><td><b>左右不对称</b></td><td>左右杯剪接、纹路、模杯批次不一致</td><td>【艺】+【材】</td><td>平铺对齐比对两只杯；模杯按模具批次配对使用</td></tr>
+            <tr><td><b>肩带脱落 / 松紧不一</b></td><td>织带弹性回复差；8 字环缝固不牢</td><td>【材】+【艺】</td><td>拉伸织带看回复；拽缝固点；换高回弹橡筋</td></tr>
+            <tr><td><b>钩扣脱落</b></td><td>钩扣拉力不足或车缝不牢，反复扣合后失效</td><td>【材】+【艺】</td><td>反复扣合 20 次测试；拉力抽检；不合格换辅料商</td></tr>
+            <tr><td><b>洗后变形</b></td><td>缩水率超标、弹力面料回复差、定型不到位</td><td>【材】+【艺】</td><td>洗 3 次量尺寸对比；查面料<dfn class="term" data-term="缩水率">缩水率</dfn>报告与定型工艺</td></tr>
+            <tr><td><b>色差 / 缸差</b></td><td>不同缸次颜色不一致；深色更明显</td><td>【材】（染整）</td><td>对封样比色（灰卡）；分缸裁剪配比出货</td></tr>
+            <tr><td><b>鸡心浮起 / 压胃</b></td><td>钢圈开口与胸型不合、下扒过长——不是做工差</td><td>【版】为主</td><td>真人试穿确认；换钢圈开口档位或改下扒长度</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸 · 为什么文胸要做「洗后复测」
+        </div>
+        <p>文胸的多数「翻车」不在新衣状态，而在洗 3-10 次后：海绵黄变瘪塌、胶条开胶、橡筋松弛、缩水变形——这些全是时间性劣化。所以文胸的样品评审必须包含「洗后复评」环节：自购样品正常洗涤 3 次（标准程序可参照产品标准的洗涤方法），再对比封样评估外观、弹性、杯型。这一步的成本几乎为零，却能拦下最高频的差评类型。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本拆解：一件文胸的钱花在哪</h2>
+
+      <p>文胸出厂价的典型结构是五个部分：<b>面料 + 芯材 / 模杯 + 辅料 + 工缴（含后道）+ 损耗与管理</b>。不同路线的构成差异很大：车缝路线工缴占大头，模杯路线芯材占大头，无缝路线织造占大头。理解结构，才能知道跟谁谈价、谈哪一项。</p>
+
+      <div class="wg">
+        <div class="wg-panel">
+          <div class="wg-head"><span class="wg-tag">交互</span>文胸成本估算器：选路线与用料档位（全部为教学示例值）</div>
+          <div class="wg-body">
+            <div class="ctl-row"><label>工艺路线</label>
+              <div class="seg" id="c-route">
+                <button class="seg-btn active" data-v="sew">车缝夹棉</button>
+                <button class="seg-btn" data-v="mold">模杯光面</button>
+                <button class="seg-btn" data-v="seam">无缝背心式</button>
+              </div>
+            </div>
+            <div class="ctl-row"><label>用料档位</label>
+              <div class="seg" id="c-grade">
+                <button class="seg-btn" data-v="0">入门</button>
+                <button class="seg-btn active" data-v="1">主流</button>
+                <button class="seg-btn" data-v="2">高配</button>
+              </div>
+            </div>
+            <div class="calc-grid">
+              <div class="calc-card acc-g"><div class="cc-l" id="c-l1">面料</div><div class="cc-v"><span id="c-fab">2.60</span><small>元</small></div></div>
+              <div class="calc-card acc-c"><div class="cc-l" id="c-l2">芯材 / 模杯</div><div class="cc-v"><span id="c-core">1.20</span><small>元</small></div></div>
+              <div class="calc-card acc-gold"><div class="cc-l">辅料</div><div class="cc-v"><span id="c-hw">1.60</span><small>元</small></div></div>
+              <div class="calc-card acc-b"><div class="cc-l">工缴 / 后道</div><div class="cc-v"><span id="c-cm">4.50</span><small>元</small></div></div>
+              <div class="calc-card acc-gold"><div class="cc-l">损耗与管理</div><div class="cc-v"><span id="c-mg">0.99</span><small>元</small></div></div>
+              <div class="calc-card acc-g"><div class="cc-l">出厂价合计</div><div class="cc-v"><span id="c-total">10.89</span><small>元/件</small></div></div>
+            </div>
+            <div class="wg-note" id="c-note"></div>
+          </div>
+          <div class="wg-note">教学示例值，用于建立量级概念与谈判结构，不构成真实报价；实际成本随款式复杂度、面料行情、订单量浮动可达 ±30%。谈价顺序建议：先锁芯材与辅料的规格（防偷工），再谈工缴与量价阶梯。</div>
+        </div>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="380" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">三条路线的成本结构对比（「主流」档 · 示例值，单位：元）</text>
+            <!-- 图例 -->
+            <g font-size="11" fill="#5D574B">
+              <rect x="180" y="40" width="12" height="12" rx="2" fill="#3D6B57"/><text x="198" y="50">面料 / 织造</text>
+              <rect x="300" y="40" width="12" height="12" rx="2" fill="#B0603F"/><text x="318" y="50">芯材 / 模杯</text>
+              <rect x="420" y="40" width="12" height="12" rx="2" fill="#B98F45"/><text x="438" y="50">辅料</text>
+              <rect x="500" y="40" width="12" height="12" rx="2" fill="#44657F"/><text x="518" y="50">工缴 / 后道</text>
+              <rect x="620" y="40" width="12" height="12" rx="2" fill="#C7BFAE"/><text x="638" y="50">损耗与管理</text>
+            </g>
+            <!-- 条1 车缝 10.89 -->
+            <text x="176" y="94" text-anchor="end" fill="#26231D" font-size="12" font-weight="700">车缝夹棉</text>
+            <g>
+              <rect x="186" y="80" width="104" height="26" fill="#3D6B57"/>
+              <rect x="290" y="80" width="48" height="26" fill="#B0603F"/>
+              <rect x="338" y="80" width="64" height="26" fill="#B98F45"/>
+              <rect x="402" y="80" width="180" height="26" fill="#44657F"/>
+              <rect x="582" y="80" width="40" height="26" fill="#C7BFAE"/>
+              <text x="632" y="97" fill="#26231D" font-size="12" font-weight="700">≈ 10.9 元</text>
+            </g>
+            <!-- 条2 模杯 10.56 -->
+            <text x="176" y="150" text-anchor="end" fill="#26231D" font-size="12" font-weight="700">模杯光面</text>
+            <g>
+              <rect x="186" y="136" width="88" height="26" fill="#3D6B57"/>
+              <rect x="274" y="136" width="88" height="26" fill="#B0603F"/>
+              <rect x="362" y="136" width="68" height="26" fill="#B98F45"/>
+              <rect x="430" y="136" width="140" height="26" fill="#44657F"/>
+              <rect x="570" y="136" width="38" height="26" fill="#C7BFAE"/>
+              <text x="618" y="153" fill="#26231D" font-size="12" font-weight="700">≈ 10.6 元</text>
+            </g>
+            <!-- 条3 无缝 12.54 -->
+            <text x="176" y="206" text-anchor="end" fill="#26231D" font-size="12" font-weight="700">无缝背心式</text>
+            <g>
+              <rect x="186" y="192" width="240" height="26" fill="#3D6B57"/>
+              <rect x="426" y="192" width="32" height="26" fill="#B0603F"/>
+              <rect x="458" y="192" width="56" height="26" fill="#B98F45"/>
+              <rect x="514" y="192" width="112" height="26" fill="#44657F"/>
+              <rect x="626" y="192" width="62" height="26" fill="#C7BFAE"/>
+              <text x="698" y="209" fill="#26231D" font-size="12" font-weight="700">≈ 12.5 元</text>
+            </g>
+            <text x="380" y="252" text-anchor="middle" fill="#5D574B" font-size="11.5">读图要点：车缝路线「贵在人」（工缴最长），模杯路线「贵在料」（芯材），无缝路线「贵在织造」——</text>
+            <text x="380" y="272" text-anchor="middle" fill="#5D574B" font-size="11.5">同价位下三条路线的品质体验不同，降本动作也完全不同：谈工缴 / 谈模杯规格 / 谈织造密度</text>
+            <text x="380" y="292" text-anchor="middle" fill="#8B8375" font-size="10.5">条长按示例值比例绘制；损耗与管理按前四项合计的 10%-16% 计（示例）</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-13</span><b>三条路线的成本结构（示例值）。</b>成本大头决定了你的谈判重心：车缝路线压工缴、模杯路线锁芯材规格、无缝路线核织造密度——对着正确的科目谈价，才不伤品质。</figcaption>
+      </figure>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 降本的正确姿势
+        </div>
+        <p>错误降本 = 砍材料单价（直接触发偷工：克重、密度、橡筋全线下降）。正确降本三刀：<b>① 简化剪接与装饰</b>——每多一道剪接线都是工缴，装饰件是「拍照的钱」；<b>② 模杯标准化</b>——用标准模杯库而不是每款开模，摊薄模具账；<b>③ 量价阶梯</b>——把量写进合同（如 3000 件降 5%，示例条款），而不是口头比三家。三刀都砍在「不伤穿着体验」的位置。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-inspect" data-sec="s-inspect"><span class="sec-no">07</span>验货要点：把品质写进流程</h2>
+
+      <p>供应商承诺的品质不值钱，<b>写进流程的品质才值钱</b>。文胸验货分三个节点：产前（首件确认）、大货中期（抽检）、出货前（终验）。下面这份清单可直接用于打样与大货验收——勾选进度会自动保存在本机。</p>
+
+      <div data-checklist="bras-craft-inspect">
+        <div class="chk-group">产前 · 首件确认</div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">首件与封样逐项比对（尺寸 / 配色 / 工艺 / 辅料）<span class="chk-d">大货以签封样为准；无封样不允许开裁。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">左右罩杯对称：剪接线、纹路、色泽一致<span class="chk-d">平铺对齐比对；模杯按模具批次配对。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">钢圈槽端头封死，钢圈不位移不外露<span class="chk-d">安全级项：向外拉拽测试，端头看封合线迹。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">杯口与下扒捆条平伏，无卷边波浪<span class="chk-d">平铺观察；张力问题的最直观表现。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">无痕款：剥离强度报告 + 洗 3 次复测样<span class="chk-d">胶条开胶不可逆，必须产前锁死。</span></span></label>
+        <div class="chk-group">大货中期 · 抽检</div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">按 AQL 抽样方案执行并留存记录<span class="chk-d">参照 GB/T 2828.1，主次疵点分级判定。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">色差比对：对封样用灰卡评定<span class="chk-d">分缸检查；主料间≥4级、辅料配伍按约定。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">钩扣反复扣合与拉力抽检<span class="chk-d">20 次扣合不松动；拉力按企标或国标附件要求。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">检针全数通过并留存记录<span class="chk-d">含钢圈款：确认检针机对整衣灵敏度校准。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">水洗唛 / 吊牌信息合规（成分、类别、洗护）<span class="chk-d">成分按 GB/T 29862；安全类别标注 B 类。</span></span></label>
+        <div class="chk-group">出货前 · 洗后复评</div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">洗 3 次复评：杯型、黄变、弹性、尺寸<span class="chk-d">对比封样；文胸差评的最大单项来源。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">真人试穿记录：中间档 + 两端码各一<span class="chk-d">放码风险的最后一道验证（见材料版型篇）。</span></span></label>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-chk-bar style="height:100%;width:0;background:var(--green)"></div></div>
+          <span data-chk-sum style="font-size:12.5px;color:var(--ink-faint)"></span>
+          <button class="btn ghost sm" data-chk-reset>重置</button>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区 · 「验货是出货前的事」
+        </div>
+        <p>文胸最贵的品质错误都发生在<b>开裁之前</b>：模杯批次不一致、面料缩水率超标、胶条未测剥离强度——这些一旦流入大货便是整批性的、不可逆的。所以文胸验货的重心必须前移：首件确认与产前测试的价值远高于出货翻箱。翻箱验货发现的问题是「损失控制」，产前验出来的问题才是「损失避免」。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">四条路线</div><div class="kv-v">传统车缝（灵活、工缴高）、模杯光面（光洁、模具账）、热压无痕（无痕、胶条是命门）、无缝针织（舒适上限、打版周期长）。选路线 = 选商业模式。</div></div>
+        <div class="kv-row"><div class="kv-k">工序逻辑</div><div class="kv-v">先做碗（罩杯）、再做架子（下扒侧比）、最后总装（肩带背扣）；三大品质关口：杯部张力对称、骨架封合、总装后整烫检针。</div></div>
+        <div class="kv-row"><div class="kv-k">模压三要素</div><div class="kv-v">温度（150-220℃ 示例）、压力、时间 + 冷却定型；输出看对称性、贴合牢度、耐洗寿命。打样用外购模杯、验证后再开模。</div></div>
+        <div class="kv-row"><div class="kv-k">缺陷溯源</div><div class="kv-v">黄变瘪塌查材料、脱层开胶查工艺、鸡心浮起查版型——同一现象三种责任方；文胸必须含「洗 3 次复评」环节。</div></div>
+        <div class="kv-row"><div class="kv-k">成本结构</div><div class="kv-v">面料 + 芯材 / 模杯 + 辅料 + 工缴 + 损耗管理；车缝贵在人、模杯贵在料、无缝贵在织造——对着大头科目谈价，不伤品质。</div></div>
+        <div class="kv-row"><div class="kv-k">验货前移</div><div class="kv-v">文胸最贵的错误在开裁前；首件确认 + 产前测试（剥离强度、缩水、密度）是损失避免，出货翻箱只是损失控制。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="bras-craft-q1" data-q="大货首件一切正常，但消费者反馈「洗五次后杯面发黄、杯体变瘪」。最优先的排查方向是？" data-a="1" data-exp="新杯正常、洗后黄变瘪塌，指向芯材的时间性劣化：海绵密度不足或虚标、抗氧化等级低——这是材料端问题，锁密度、回弹与耐黄变指标并换料。A 模压温度问题会在新杯即现（黄变、脆化），不会只洗后出现；C 车缝张力问题表现为卷边、褶皱，与杯体瘪塌无关；D 消费者洗涤方式确实可能是共因，但在排查上应先由品牌方完成材料复测，把责任推给用户会伤害信任。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>模压温度过高，要求工厂调整温度曲线</li>
+            <li>芯材密度与耐黄变等级：复测海绵密度与回弹，核对是否虚标并要求换料</li>
+            <li>捆条张力失衡，重新调整车缝张力</li>
+            <li>消费者洗涤方式不当，在详情页加强洗护说明即可</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="bras-craft-q2" data-q="你想开发一款自有版型的光面模杯文胸，覆盖 70-80 / A-C 共 9 个尺码。关于模具投入，最合理的策略是？" data-a="0" data-exp="每套模具对应一个罩杯尺码，全尺码自开模示例投入可达数万至十余万元。行业常规路径：打样期用外购标准模杯验证版型与市场，验证后再对验证通过的杯型开模。B 9 套模具一次投入在未验证前风险极高；C 无模杯则根本不是「光面模杯款」；D 复用近似尺码模会造成版型档差不准——文胸放码必须逐码对应钢圈与模具。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>先用外购标准模杯打样验证版型与销量，验证通过后再对确认杯型开模</li>
+            <li>一次性开齐 9 套模具，保证首发全尺码现货</li>
+            <li>放弃模杯路线，改用纯车缝剪接杯，完全避免模具投入</li>
+            <li>让工厂用相邻尺码的现有模具替代，9 个尺码共用 3 套模具</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="bras-craft-q3" data-q="同预算下比较三条路线的报价：车缝款 10.9 元、模杯款 10.6 元、无缝款 12.5 元（均为示例）。以下谈价策略哪个最专业？" data-a="2" data-exp="先锁规格再谈价是底线：材料规格（克重、密度、橡筋等级）是偷工重灾区，不锁规格的低价必然以偷工兑现。A 车缝路线的工缴对应工序与车工水平，压得过低直接导致品质下滑；B 模杯芯材正是最需要锁指标的科目；D 无缝织造密度是支撑力的来源，压密度等于砍性能。谈判的重心应放在该路线的成本大头科目上，但前提永远是规格先书面化。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>选最便宜的模杯款，重点把工缴再压 15%</li>
+            <li>车缝款工序多、水分大，直接要求工缴对半砍</li>
+            <li>无论选哪条路线，先把材料规格（克重 / 密度 / 橡筋等级）书面锁定，再谈价格阶梯</li>
+            <li>无缝款贵在织造密度，要求工厂降低密度换价格</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：成本估算器（教学示例值） */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    /* 数据：[入门, 主流, 高配] 单位元（示例值） */
+    var DATA = {
+      sew:  { l1: '面料',        fab: [2.0, 2.6, 3.6], core: [0.8, 1.2, 1.8], hw: [1.2, 1.6, 2.2], cm: [3.5, 4.5, 6.0], rate: [0.08, 0.10, 0.12],
+              l2: '芯材 / 模杯', note: '车缝夹棉路线：工缴占大头（约 40%），降本重点在简化剪接与工序，而不是压材料单价。' },
+      mold: { l1: '面料',        fab: [1.6, 2.2, 3.0], core: [1.5, 2.2, 3.2], hw: [1.2, 1.7, 2.4], cm: [2.8, 3.5, 4.6], rate: [0.08, 0.10, 0.12],
+              l2: '模杯（外购）', note: '模杯光面路线：芯材 / 模杯占大头，谈价重点是把海绵密度、回弹、耐黄变等级写进规格书后再比价。' },
+      seam: { l1: '织造（含纱）', fab: [4.5, 6.0, 8.5], core: [0.0, 0.8, 1.2], hw: [1.0, 1.4, 2.0], cm: [2.2, 2.8, 3.6], rate: [0.12, 0.14, 0.16],
+              l2: '内置杯垫',    note: '无缝背心式路线：织造占大头，织法打版周期长；起订量可小但交期长，损耗率高于车缝（示例 12%-16%）。' }
+    };
+    var route = 'sew', grade = 1;
+    var elL1 = document.getElementById('c-l1'), elL2 = document.getElementById('c-l2');
+    var elFab = document.getElementById('c-fab'), elCore = document.getElementById('c-core');
+    var elHw = document.getElementById('c-hw'), elCm = document.getElementById('c-cm');
+    var elMg = document.getElementById('c-mg'), elTotal = document.getElementById('c-total');
+    var elNote = document.getElementById('c-note');
+    if (!elL1 || !window.W) return;
+
+    function bindSeg(id, cb) {
+      var seg = document.getElementById(id);
+      if (!seg) return;
+      seg.querySelectorAll('.seg-btn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          seg.querySelectorAll('.seg-btn').forEach(function (x) { x.classList.remove('active'); });
+          b.classList.add('active');
+          cb(b.getAttribute('data-v'));
+        });
+      });
+    }
+    function money(v) { return v.toFixed(2); }
+    function render() {
+      var d = DATA[route];
+      var fab = d.fab[grade], core = d.core[grade], hw = d.hw[grade], cm = d.cm[grade];
+      var mg = (fab + core + hw + cm) * d.rate[grade];
+      var total = fab + core + hw + cm + mg;
+      elL1.textContent = d.l1; elL2.textContent = d.l2;
+      elFab.textContent = money(fab); elCore.textContent = money(core);
+      elHw.textContent = money(hw); elCm.textContent = money(cm);
+      elMg.textContent = money(mg);
+      if (window.W && W.count) W.count(elTotal, total, { dec: 2, dur: 420 });
+      else elTotal.textContent = money(total);
+      var share = Math.round(cm / total * 100);
+      elNote.textContent = d.note + ' 当前组合工缴占比约 ' + share + '%（示例）。' + d.l1 + ' ' + money(fab) + ' + ' + d.l2 + ' ' + money(core) + ' + 辅料 ' + money(hw) + ' + 工缴 ' + money(cm) + ' + 损耗管理 ' + money(mg) + ' = ' + money(total) + ' 元。';
+    }
+    bindSeg('c-route', function (v) { route = v; render(); });
+    bindSeg('c-grade', function (v) { grade = +v; render(); });
+    render();
+  })();
+};
+</script>
+</body>
+</html>

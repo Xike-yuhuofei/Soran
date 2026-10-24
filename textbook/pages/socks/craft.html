@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>袜子 · 工艺、性能与品质 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="socks-craft" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第三篇 · 袜子 / 工艺品质</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">SOCKS · CRAFT</div>
+        <h1 class="page-title">袜子 · 工艺、性能与品质</h1>
+        <p class="page-lede">上一页回答「做什么规格」，这一页回答「怎么把它做好、坏在哪里、钱花在哪」。袜子工艺链很短：织造、缝头、定型三步定生死——缝头决定脚趾的体感分水岭，袜跟收放针决定跟不跟脚，毛圈与加固决定耐穿寿命，定型决定洗三次之后的模样。本页按全流程走一遍工厂动线，逐项拆解缝头、袜跟、毛圈、定型四大工艺，给出袜子专项八类缺陷的「长相-成因-责任环节-验货判断」图鉴，用三档袜子的 BOM 拆成本，最后收拢为一张可带去工厂的选品判断清单。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 25 分钟</span>
+          <span class="chip">前置：袜子 · 结构、材料与规格</span>
+          <span class="chip">建议翻出袜头摸一摸再读 02 节</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">01</span>织袜全流程：从纱到袜的六道主工序</h2>
+
+      <p>袜子的生产动线比内裤短得多——没有裁剪、没有大件缝纫，主体只有「织、缝、定」三步。但每一步都是「机器+程序」驱动，<b>品质波动不来自工人手艺，而来自机台状态与参数设定</b>，这决定了袜子验货的思路与服装完全不同。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 388" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 行1 -->
+            <g>
+              <rect x="30" y="50" width="160" height="64" rx="10" fill="#fff" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="110" y="72" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">① 原料进厂</text>
+              <text x="110" y="91" text-anchor="middle" fill="#5D574B" font-size="10.5">纱线 / 橡筋检验</text>
+              <text x="110" y="105" text-anchor="middle" fill="#8B8375" font-size="10.5">支数 · 成分 · 等级核对</text>
+              <rect x="215" y="50" width="160" height="64" rx="10" fill="#fff" stroke="#3D6B57" stroke-width="1.5"/>
+              <text x="295" y="72" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">② 络纱</text>
+              <text x="295" y="91" text-anchor="middle" fill="#5D574B" font-size="10.5">倒筒 · 上蜡 / 硅油</text>
+              <text x="295" y="105" text-anchor="middle" fill="#8B8375" font-size="10.5">络纱机 · 并纱</text>
+              <rect x="400" y="50" width="160" height="64" rx="10" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.8"/>
+              <text x="480" y="72" text-anchor="middle" fill="#2C5142" font-size="13.5" font-weight="700">③ 袜机织造</text>
+              <text x="480" y="91" text-anchor="middle" fill="#5D574B" font-size="10.5">单 / 双针筒一体织出筒状</text>
+              <text x="480" y="105" text-anchor="middle" fill="#8B8375" font-size="10.5">跟部收放针 · 提花换纱</text>
+              <rect x="585" y="50" width="160" height="64" rx="10" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.8"/>
+              <text x="665" y="72" text-anchor="middle" fill="#2C5142" font-size="13.5" font-weight="700">④ 缝头</text>
+              <text x="665" y="91" text-anchor="middle" fill="#5D574B" font-size="10.5">机缝或对目缝合袜头</text>
+              <text x="665" y="105" text-anchor="middle" fill="#8B8375" font-size="10.5">缝头机 / 自动对目机</text>
+            </g>
+            <g stroke="#8B8375" stroke-width="1.6" fill="#8B8375">
+              <line x1="192" y1="82" x2="211" y2="82"/><polygon points="213,82 206,78.5 206,85.5"/>
+              <line x1="377" y1="82" x2="396" y2="82"/><polygon points="398,82 391,78.5 391,85.5"/>
+              <line x1="562" y1="82" x2="581" y2="82"/><polygon points="583,82 576,78.5 576,85.5"/>
+              <line x1="665" y1="116" x2="665" y2="204"/><polygon points="665,206 661.5,199 668.5,199"/>
+            </g>
+            <!-- 行2 -->
+            <g>
+              <rect x="585" y="210" width="160" height="64" rx="10" fill="#fff" stroke="#44657F" stroke-width="1.5"/>
+              <text x="665" y="232" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">⑤ 染色</text>
+              <text x="665" y="251" text-anchor="middle" fill="#5D574B" font-size="10.5">散袜染色（先织后染主流）</text>
+              <text x="665" y="265" text-anchor="middle" fill="#8B8375" font-size="10.5">缸差管理在此分批</text>
+              <rect x="400" y="210" width="160" height="64" rx="10" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.8"/>
+              <text x="480" y="232" text-anchor="middle" fill="#2C5142" font-size="13.5" font-weight="700">⑥ 定型</text>
+              <text x="480" y="251" text-anchor="middle" fill="#5D574B" font-size="10.5">烫袜板撑型 · 烘干锁尺寸</text>
+              <text x="480" y="265" text-anchor="middle" fill="#8B8375" font-size="10.5">缩水与板正的最后一关</text>
+              <rect x="215" y="210" width="160" height="64" rx="10" fill="#fff" stroke="#44657F" stroke-width="1.5"/>
+              <text x="295" y="232" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">⑦ 检验</text>
+              <text x="295" y="251" text-anchor="middle" fill="#5D574B" font-size="10.5">外观 · 配对 · 检针</text>
+              <text x="295" y="265" text-anchor="middle" fill="#8B8375" font-size="10.5">查破洞 / 色差 / 横档</text>
+              <rect x="30" y="210" width="160" height="64" rx="10" fill="#fff" stroke="#44657F" stroke-width="1.5"/>
+              <text x="110" y="232" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">⑧ 包装</text>
+              <text x="110" y="251" text-anchor="middle" fill="#5D574B" font-size="10.5">配对 · 贴标 · 装箱</text>
+              <text x="110" y="265" text-anchor="middle" fill="#8B8375" font-size="10.5">左右配对错是低级高发错</text>
+            </g>
+            <g stroke="#8B8375" stroke-width="1.6" fill="#8B8375">
+              <line x1="583" y1="242" x2="564" y2="242"/><polygon points="562,242 569,238.5 569,245.5"/>
+              <line x1="398" y1="242" x2="379" y2="242"/><polygon points="377,242 384,238.5 384,245.5"/>
+              <line x1="213" y1="242" x2="194" y2="242"/><polygon points="192,242 199,238.5 199,245.5"/>
+            </g>
+            <!-- 产能注释 -->
+            <rect x="30" y="298" width="715" height="66" rx="9" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.3"/>
+            <text x="50" y="324" fill="#8F6E2F" font-size="12.5" font-weight="700">产能概念（教学示例）</text>
+            <text x="50" y="346" fill="#5D574B" font-size="12">单针筒棉袜机约 8-15 双/小时；按日运转 20 小时折算约 200-300 双/台/日。毛圈、提花、双针筒机型更慢——</text>
+            <text x="50" y="358" fill="#8B8375" font-size="10.5">量级直觉应该是「一台机器一天几百双」，这也是袜厂动辄几百台机器的原因。数字均为示例。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-5</span><b>织袜全流程。</b>绿框=决定体验上限的三步（织造、缝头、定型）；蓝框=品质兜底步骤。袜子的品质管理本质是「机台参数管理」：同一台机器，参数对了是好袜，参数错了是退货。</figcaption>
+      </figure>
+
+      <p>三个对主理人有直接含义的流程事实：<b>第一</b>，染色在缝头之后（先织后染是主流），所以<dfn class="term" data-term="缸差">缸差</dfn>、掉色、色花问题都集中在织完之后才暴露，返工损失大；<b>第二</b>，定型直接决定「上手脚感与洗后尺寸」，是低价厂最爱压缩时间的环节；<b>第三</b>，袜机产能低、单价低，袜厂的利润靠<b>机器数量 × 翻单率</b>——这解释了为什么袜子产业高度集聚（全球最大的是诸暨<dfn class="term" data-term="大唐袜业">大唐袜业</dfn>集群），也解释了为什么小厂对「小批量多款式」的响应反而更慢、更贵。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-toe" data-sec="s-toe"><span class="sec-no">02</span>缝头工艺：一双袜子的品质分水岭</h2>
+
+      <p>袜机织完的袜子是一端开口的「袜坯」，脚趾端必须缝合封闭。怎么缝这最后一道口，是袜子行业公认的品质分水岭：<b>缝得糙，一条硬棱顶在五个脚趾尖上，穿一次就有体感；缝得好，指腹摸不出缝的存在</b>。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 268" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="140" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">A · 传统机缝</text>
+            <text x="380" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">B · 自动对目缝头</text>
+            <text x="620" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">C · 手工对目</text>
+            <line x1="260" y1="42" x2="260" y2="212" stroke="#E6E0D3" stroke-width="1.4"/>
+            <line x1="500" y1="42" x2="500" y2="212" stroke="#E6E0D3" stroke-width="1.4"/>
+            <!-- A 机缝 -->
+            <rect x="35" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <rect x="146" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <path d="M130 128 L150 128 L140 152 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.8"/>
+            <g fill="none" stroke="#B0603F" stroke-width="1.4">
+              <circle cx="128" cy="114" r="3.4"/><circle cx="128" cy="122" r="3.4"/>
+              <circle cx="152" cy="117" r="3.4"/><circle cx="152" cy="125" r="3.4"/>
+            </g>
+            <text x="140" y="178" text-anchor="middle" fill="#B0603F" font-size="12" font-weight="650">线圈错位叠缝 → 缝棱明显</text>
+            <text x="140" y="196" text-anchor="middle" fill="#8B8375" font-size="11">顶趾硌脚 · 效率最高 · 成本基准</text>
+            <!-- B 自动对目 -->
+            <rect x="275" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <rect x="386" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <path d="M372 128 L388 128 L380 138 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.4"/>
+            <g fill="none" stroke="#B0603F" stroke-width="1.4">
+              <circle cx="372" cy="113" r="3"/><circle cx="372" cy="119" r="3"/>
+              <circle cx="388" cy="113" r="3"/><circle cx="388" cy="119" r="3"/>
+            </g>
+            <text x="380" y="178" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">线圈逐针对齐 → 缝痕平整</text>
+            <text x="380" y="196" text-anchor="middle" fill="#8B8375" font-size="11">自动对目机普及 · 中高端主流</text>
+            <!-- C 手工对目 -->
+            <rect x="515" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <rect x="626" y="110" width="99" height="18" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+            <path d="M612 128 L628 128 L620 133 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.1"/>
+            <g fill="none" stroke="#B0603F" stroke-width="1.2">
+              <circle cx="614" cy="113" r="2.6"/><circle cx="614" cy="119" r="2.6"/><circle cx="614" cy="125" r="2.6"/>
+              <circle cx="626" cy="113" r="2.6"/><circle cx="626" cy="119" r="2.6"/><circle cx="626" cy="125" r="2.6"/>
+            </g>
+            <text x="620" y="178" text-anchor="middle" fill="#2C5142" font-size="12" font-weight="650">手工逐针对目 → 最均匀平整</text>
+            <text x="620" y="196" text-anchor="middle" fill="#8B8375" font-size="11">极慢 · 依赖熟练工 · 高端形象款</text>
+            <!-- 底注 -->
+            <rect x="35" y="218" width="690" height="36" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+            <text x="380" y="241" text-anchor="middle" fill="#2C5142" font-size="12.5">验货判断法：翻出袜头，指腹横向摸过缝口——能摸到硌手横棱即机缝或对目不良；好袜的缝口应该「摸不出缝」。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-6</span><b>三种缝头方式的剖面对比（示意）。</b>陶土色为缝棱，圈为对齐的线圈。对目类缝头较机缝约贵 0.2-0.8 元/双（示例区间：自动对目约 +0.2-0.4、手工对目约 +0.6-0.8）——这可能是袜子上「单位金额体验提升最大」的一笔钱。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>缝头三法对比（成本差为教学示例区间，随产区与订单量浮动）</caption>
+          <thead><tr><th style="width:16%">方式</th><th style="width:30%">缝痕与脚感</th><th style="width:26%">效率与设备</th><th style="width:14%">单双成本（示例）</th><th>适用</th></tr></thead>
+          <tbody>
+            <tr><td><b>普通机缝</b></td><td>缝棱明显，翻看有一条横棱，趾尖有异物感</td><td>缝头机，效率高、门槛低</td><td class="num">基准</td><td>走量基础款</td></tr>
+            <tr><td><b><dfn class="term" data-term="对目缝头">对目缝头</dfn>（自动）</b></td><td>线圈逐针对齐，<dfn class="term" data-term="袜头">袜头</dfn>缝痕平整无棱</td><td>自动对目机已普及，效率尚可</td><td class="num">约 +0.2-0.4 元</td><td>中高端款主流选择</td></tr>
+            <tr><td><b>手工对目</b></td><td>手工逐针对目，最均匀、最平整</td><td>极慢，依赖熟练工，产量低</td><td class="num">约 +0.6-0.8 元</td><td>高端形象款、礼盒款</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>为什么机缝会有棱？袜坯脚趾端开口处是上下两排线圈，机缝把两排<b>错位</b>地叠在一起缝死，两排布的厚度叠加就是那条棱；对目（linking）则先用对目机（或人手）把两排线圈<b>逐针挑齐</b>再缝合，缝线只落在线圈本身的位置，所以平整。一只好袜子和一双普通袜子的差距，很多时候消费者说不出来，但脚趾尖每一步都替他们记着。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-heel" data-sec="s-heel"><span class="sec-no">03</span>袜跟与立体织造：收放针的魔法</h2>
+
+      <p>袜子最神奇的工艺在脚跟：一条平面的筒状织物，怎么「转」出一个立体的口袋？答案是<b>收放针</b>（行业叫「转跟」）：织到跟部时，袜机不再整圈编织，而是只在一半针上往复织造，每织一行收掉两端各一针，收到中间后再逐行放针——布料就这样被「折」出一个袋状。做过编织的人会认出：这就是手编袜后跟的手法，袜机只是把它自动化了。</p>
+
+      <p>两个对体验直接相关的工艺点：</p>
+      <ul class="plain">
+        <li><dfn class="term" data-term="袜跟">袜跟</dfn>的深浅由收针行数决定：收针多 → 跟袋深 → 包住脚跟；收针少 → 跟袋浅 → 一走路袜跟就滑到脚踝下方，在鞋里堆成一团。<b>「掉跟」不一定是尺码问题，多半是跟部收针程序偷了行数</b>。</li>
+        <li><dfn class="term" data-term="Y字跟">Y字跟</dfn>是在跟袋与袜身交界处再织出 Y 形加强结构的进阶做法：跟部更立体、更贴合、过渡处更耐反复拉伸，是中高端运动袜的标志性细节——也是样品评审时翻看内侧就能看到的「诚意证据」。</li>
+      </ul>
+
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">跟</span>有跟立体织造（标准解）</h5>
+          <ul>
+            <li>转跟收放针织出跟袋，跟型立体、兜得住脚跟。</li>
+            <li>中高端加 Y 字跟：过渡加固、耐拉伸、不易变形。</li>
+            <li>验货：套楦或手撑开看跟袋深度与立体度，两只对称。</li>
+          </ul>
+        </div>
+        <div class="d-cell d-bad">
+          <h5><span class="d-ico">滑</span>跟部滑落的三个成因</h5>
+          <ul>
+            <li>跟部收针行数不足，跟袋浅——织造程序问题。</li>
+            <li>尺码虚标偏大，跟袋落在脚踝上——尺码管理问题。</li>
+            <li><dfn class="term" data-term="船袜">船袜</dfn>无跟或浅跟款：只能靠后跟硅胶条与橡筋压力「按住」，胶条脱落即失效——设计取舍问题。</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>船袜的「无跟」是一种主动取舍：为了隐形必须压低后跟，跟袋做不深，于是防滑全部押在<b>后跟内侧硅胶条</b>与橡筋压力上。硅胶条的品质（耐洗、耐老化）与贴合位置决定船袜「穿三次还是穿三个月不掉跟」——验货时洗测几次再看胶条状态，是最诚实的检验方式。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-terry" data-sec="s-terry"><span class="sec-no">04</span>毛圈与加固：运动袜的里子工程</h2>
+
+      <p>运动袜踩下去那种「厚实的脚感」，来自<dfn class="term" data-term="毛圈组织">毛圈组织</dfn>：<dfn class="term" data-term="毛圈袜">毛圈袜</dfn>在织造时让部分纱线形成拉长的线圈（毛圈），留在袜子<b>内侧</b>——脚踩的就是一层织出来的「毛巾」。毛圈不是垫上去的，是织进去的，所以洗不脱、跑不偏。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 316" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="200" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">毛圈组织剖面（示意）</text>
+            <!-- 地组织 zigzag -->
+            <path d="M60 96 L72 78 L84 96 L96 78 L108 96 L120 78 L132 96 L144 78 L156 96 L168 78 L180 96 L192 78 L204 96 L216 78 L228 96 L240 78 L252 96 L264 78 L276 96 L288 78 L300 96 L312 78 L324 96 L336 78 L348 96"
+              fill="none" stroke="#3D6B57" stroke-width="2"/>
+            <text x="60" y="66" fill="#2C5142" font-size="11.5" font-weight="650">地组织（绿）· 贴脚背的外层</text>
+            <!-- 毛圈 U loops -->
+            <g fill="none" stroke="#B98F45" stroke-width="1.5">
+              <path d="M84 94 C84 134 96 134 96 94"/>
+              <path d="M108 94 C108 138 120 138 120 94"/>
+              <path d="M132 94 C132 132 144 132 144 94"/>
+              <path d="M156 94 C156 140 168 140 168 94"/>
+              <path d="M180 94 C180 130 192 130 192 94"/>
+              <path d="M204 94 C204 138 216 138 216 94"/>
+              <path d="M228 94 C228 133 240 133 240 94"/>
+              <path d="M252 94 C252 139 264 139 264 94"/>
+              <path d="M276 94 C276 131 288 131 288 94"/>
+              <path d="M300 94 C300 137 312 137 312 94"/>
+            </g>
+            <text x="60" y="162" fill="#8F6E2F" font-size="11.5" font-weight="650">毛圈（金）· 留在袜内侧，脚踩的缓冲层</text>
+            <!-- 高度标注 -->
+            <line x1="372" y1="96" x2="372" y2="138" stroke="#8B8375" stroke-width="1.3"/>
+            <polygon points="372,96 368.5,103 375.5,103" fill="#8B8375"/>
+            <polygon points="372,138 368.5,131 375.5,131" fill="#8B8375"/>
+            <text x="382" y="120" fill="#5D574B" font-size="11.5">毛圈高度</text>
+            <text x="60" y="192" fill="#8B8375" font-size="11">毛圈高度 × 毛圈密度（单位长度个数）共同决定缓震、吸汗与克重；稀疏矮圈 = 「看着厚、踩着薄」。</text>
+            <line x1="410" y1="36" x2="410" y2="200" stroke="#E6E0D3" stroke-width="1.4"/>
+            <!-- 右：加固部位 -->
+            <text x="585" y="28" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">加固部位（示意）</text>
+            <path d="M446 60 L516 60 L516 140 C516 134 522 130 534 128 L672 128 C700 130 715 142 716 158 C717 174 703 184 682 186 L560 188 C534 190 514 186 506 172 C502 165 500 160 498 156 L446 156 Z"
+              fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.8"/>
+            <path d="M536 186 L668 184 C688 183 702 174 708 164 L716 158 C717 174 703 184 682 186 L560 188 Z" fill="#F6EFDF" stroke="#B98F45" stroke-width="1.1"/>
+            <ellipse cx="520" cy="170" rx="19" ry="15" fill="none" stroke="#B0603F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <ellipse cx="694" cy="162" rx="15" ry="12" fill="none" stroke="#B0603F" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="602" y="150" text-anchor="middle" fill="#8F6E2F" font-size="11">脚掌毛圈区（局部或全脚掌）</text>
+            <text x="504" y="212" text-anchor="middle" fill="#B0603F" font-size="11">跟部加固</text>
+            <text x="700" y="206" text-anchor="middle" fill="#B0603F" font-size="11">尖部加固</text>
+            <text x="585" y="240" text-anchor="middle" fill="#8B8375" font-size="11">加固 = 在跟、尖易磨区添织一根锦纶纱（圈数为证）</text>
+            <text x="585" y="258" text-anchor="middle" fill="#8B8375" font-size="11">翻看内侧可见细密的加固线圈——「拆开看里子」的验货点</text>
+            <rect x="30" y="272" width="715" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+            <text x="388" y="294" text-anchor="middle" fill="#2C5142" font-size="12.5">锦纶的耐磨性居常见纤维之首：运动袜的寿命不是棉给的，是锦纶骨架 + 跟尖加固给的。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-7</span><b>毛圈组织与加固部位（示意）。</b>左：地组织与毛圈的层次关系——毛圈留在内侧做缓冲，高度与密度决定脚感；右：袜子上的两个「里子工程」：脚掌毛圈区与跟尖加固纱。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">毛圈的三个规格词</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">毛圈高度</div><div class="kv-v">拉长线圈的长度：高毛圈缓冲足但易倒伏、显厚重；矮毛圈贴脚、轻便。跑步袜多为中等偏矮的高密度毛圈。</div></div>
+        <div class="kv-row"><div class="kv-k">毛圈密度</div><div class="kv-v">单位长度的毛圈个数：密度高 → 脚感绵密、吸汗均匀；密度低 → 毛圈稀疏、脚感「隔」。称克重是密度最快捷的代理指标。</div></div>
+        <div class="kv-row"><div class="kv-k">毛圈范围</div><div class="kv-v">全毛圈（整只内层）/ 脚掌毛圈（踩踏面）/ 无毛圈。范围越大用料越多——毛圈运动袜克重 50-75g（示例）主要贵在这里。</div></div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：「高棉含量」的伪命题
+        </div>
+        <p>「我们运动袜棉含量更高，更亲肤」——把上一页的结论再钉一次：<b>运动袜的耐穿寿命由锦纶骨架与跟尖加固决定</b>，棉纤维耐磨性远低于锦纶。高棉、无加固的运动袜等于把先破点（脚跟、脚尖）直接暴露给摩擦，是「成分故事」压倒「结构逻辑」的典型伪命题。判断运动袜用料诚意，先翻内侧看跟尖有没有加固线圈，再称克重，最后才看成分标。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-set" data-sec="s-set"><span class="sec-no">05</span>定型与后整理：板正与缩水的最后关卡</h2>
+
+      <p>缝好头的袜子是皱的、扭的、尺寸不定的——必须套在金属<b>烫袜板</b>上，经蒸汽或热风定形烘干，把线圈形态「锁」住。定型是袜子出厂前最后一道关键工序，决定了四件事：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">定型充分的袜子洗后长度、筒口围变化小（缩水率一般要求 ±5% 内，示例阈值；检测方法可沿用 GB/T 8628-8630 系列）。定型不足 = 消费者第一次水洗就帮你「缩水验收」。</div></div>
+        <div class="kv-row"><div class="kv-k">外观板正</div><div class="kv-v">罗纹横条平直、袜型饱满、无扭曲。横条歪斜与螺旋扭（织造张力问题）能在定型环节部分矫正——但织造横档（周期性粗细不匀）救不回来。</div></div>
+        <div class="kv-row"><div class="kv-k">手感与氨纶寿命</div><div class="kv-v">定型温度曲线过猛或时间过长，会让<dfn class="term" data-term="氨纶">氨纶</dfn>弹性衰减——新品摸着尚可、十几次洗后袜口松垮。这是「橡筋没坏、被工艺烫坏」的隐性定责点：袜口松垮不全是橡筋的锅，也可能是定型的。</div></div>
+        <div class="kv-row"><div class="kv-k">后整理宣称</div><div class="kv-v"><dfn class="term" data-term="抗菌整理">抗菌整理</dfn>袜应只认「洗涤若干次后」的抗菌率数据（可参考 FZ/T 73023《抗菌针织品》的洗后指标体系）；「异味」本身是 GB 18401 的强制项（不得检出），柜存闷捂或定型不足都会中招。没有洗后数据的抗菌宣称，按「一洗就没」处理。</div></div>
+      </div>
+
+      <p>验货时给定型留两个动作：<b>洗测对比</b>（洗前洗后量长度与筒口围）与<b>回弹测试</b>（袜口拉开约 50% 放开，观察回位速度）。这两步能把「定型省时间」的工厂精确筛出来。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">06</span>性能缺陷图鉴：袜子专项八大问题</h2>
+
+      <p>沿用内裤篇的方法论：先认「长相」，再顺着「成因」定位<b>责任环节</b>（原料 / 织造 / 缝头 / 定型 / 染整），最后落到可执行的验货动作。袜子缺陷的最大特点是「穿出来才暴露」——所以图鉴的最后一列尤其重要：能在样品阶段拦住的问题，绝不要等大货差评。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 306" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="130" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">袜口松垮</text>
+            <rect x="55" y="46" width="150" height="24" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+            <g stroke="#2C5142" stroke-width="1.2" opacity=".5">
+              <line x1="70" y1="48" x2="70" y2="68"/><line x1="90" y1="48" x2="90" y2="68"/><line x1="110" y1="48" x2="110" y2="68"/><line x1="130" y1="48" x2="130" y2="68"/><line x1="150" y1="48" x2="150" y2="68"/><line x1="170" y1="48" x2="170" y2="68"/><line x1="190" y1="48" x2="190" y2="68"/>
+            </g>
+            <text x="130" y="88" text-anchor="middle" fill="#5D574B" font-size="10.5">正常：横条平直、回弹足</text>
+            <path d="M55 122 Q70 132 85 122 T115 122 T145 122 T175 122 L205 122 Q190 132 175 132 T145 132 T115 132 T85 132 T55 132 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.4"/>
+            <text x="130" y="156" text-anchor="middle" fill="#B0603F" font-size="10.5">松垮：波浪卷边、回弹弱</text>
+            <text x="130" y="176" text-anchor="middle" fill="#8B8375" font-size="10.5">橡筋劣质 / 定型过热</text>
+            <line x1="255" y1="40" x2="255" y2="196" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="380" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">缝头起棱</text>
+            <rect x="290" y="70" width="80" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+            <rect x="390" y="70" width="80" height="14" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+            <path d="M368 84 L392 84 L380 110 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="1.6"/>
+            <text x="380" y="134" text-anchor="middle" fill="#B0603F" font-size="10.5">翻出袜头：一条硌手硬棱</text>
+            <text x="380" y="154" text-anchor="middle" fill="#8B8375" font-size="10.5">机缝未对目 / 对目不良</text>
+            <text x="380" y="176" text-anchor="middle" fill="#8B8375" font-size="10.5">责任环节：缝头</text>
+            <line x1="510" y1="40" x2="510" y2="196" stroke="#E6E0D3" stroke-width="1.2"/>
+            <text x="630" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">横向条纹歪斜</text>
+            <rect x="560" y="46" width="140" height="104" rx="6" fill="#FAF8F3" stroke="#3D6B57" stroke-width="1.4"/>
+            <g stroke="#3D6B57" stroke-width="1.3" opacity=".65">
+              <line x1="560" y1="66" x2="700" y2="56"/>
+              <line x1="560" y1="86" x2="700" y2="76"/>
+              <line x1="560" y1="106" x2="700" y2="96"/>
+              <line x1="560" y1="126" x2="700" y2="116"/>
+              <line x1="560" y1="146" x2="700" y2="136"/>
+            </g>
+            <line x1="560" y1="106" x2="700" y2="106" stroke="#B0603F" stroke-width="1" stroke-dasharray="4 3"/>
+            <text x="630" y="170" text-anchor="middle" fill="#B0603F" font-size="10.5">罗纹横条不水平 · 螺旋扭</text>
+            <text x="630" y="190" text-anchor="middle" fill="#8B8375" font-size="10.5">织造张力 / 定型扭度 · 织造横档另见下表</text>
+            <text x="380" y="240" text-anchor="middle" fill="#5D574B" font-size="12">以上为 8 项袜子专项缺陷中的 3 项示意；完整对照（含责任环节与验货判断）见下表。</text>
+            <text x="380" y="266" text-anchor="middle" fill="#8B8375" font-size="11">袜子缺陷多「穿出来才暴露」：样品阶段能拦的，绝不要等大货差评。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-8</span><b>三个高发缺陷的视觉特征。</b>袜口松垮看「波浪与回弹」、缝头起棱看「摸」、条纹歪斜看「水平参照线」——三者的验货动作都不需要设备，肉眼与指腹即可完成。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>判定阈值为教学示例，正式验收请写入规格书并约定 AQL 抽检方案</caption>
+          <thead><tr><th style="width:14%">缺陷</th><th style="width:24%">长相</th><th style="width:30%">成因</th><th style="width:12%">责任环节</th><th>验货判断</th></tr></thead>
+          <tbody>
+            <tr><td><b>袜口松垮</b></td><td>新品回弹弱、穿两次下滑，袜口卷边咬腿</td><td><dfn class="term" data-term="橡筋">橡筋</dfn>等级差（裸氨/劣包覆）、罗口氨纶喂入不足、定型温度过猛烫伤氨纶</td><td>原料为主，定型次之</td><td>袜口拉开约 50% 放开，2 秒内回位（示例）；两只对比松紧一致</td></tr>
+            <tr><td><b>袜跟滑落</b></td><td>穿着中跟袋滑到脚踝下方，鞋内堆团</td><td>跟部收针行数不足（跟袋浅）、尺码虚标偏大、船袜硅胶条粘接差</td><td>织造 / 尺码管理</td><td>套楦或试穿看跟袋是否兜住脚跟；对比同码两只跟袋深度</td></tr>
+            <tr><td><b>缝头起棱</b></td><td>趾端一条横向硬棱，顶趾硌脚</td><td>传统机缝未对目；对目机故障或挑针错位</td><td>缝头</td><td>翻出袜头指腹横摸，硌手即不合格</td></tr>
+            <tr><td><b>脚尖/脚跟破洞</b></td><td>穿着早期即从跟、尖磨破</td><td>加固缺失或加固纱过细，锦纶占比不足</td><td>织造 / 原料</td><td>翻看跟尖内侧有无加固线圈；称克重对表</td></tr>
+            <tr><td><b><dfn class="term" data-term="起球">起球</dfn></b></td><td>穿洗数次袜面起毛球，外观显旧</td><td>普梳棉短纤多、捻度低、毛羽多</td><td>原料（纱线等级）</td><td>要求起球测试报告（GB/T 4802 系列）；手感糙、毛羽多即警惕</td></tr>
+            <tr><td><b>洗后缩水</b></td><td>洗一次长度缩短、袜口变紧</td><td>定型不足或温度曲线不当，棉纱回缩未锁住</td><td>定型</td><td>洗测前后量长度与筒口围（±5% 内，示例）；洗后复查袜口回弹</td></tr>
+            <tr><td><b>左右色差</b></td><td>同一双两只深浅不一</td><td>不同缸次混配对（<dfn class="term" data-term="缸差">缸差</dfn>），配对管理缺位</td><td>染整 / 配对</td><td>对色光下左右对比，低于灰卡 4 级（示例）即退</td></tr>
+            <tr><td><b>横向条纹歪斜 / 织造横档</b></td><td>罗纹横条螺旋上升不水平；或袜面周期性横影</td><td>织造纱线张力不匀、针筒坏针椭圆；横档多与纱线批差或送纱不匀相关</td><td>织造（定型可部分矫正扭度）</td><td>平铺以水平参照线量条纹夹角；目视横档均匀性，明显横影即退</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本拆解实操：三档袜子的账</h2>
+
+      <p>袜子是所有品类里 BOM 最短、最容易自算成本的。公式只有一条：<b>原料成本 ≈ 单双克重 × 各纤维占比 × 纱价</b>，再加上橡筋、工缴与染整损耗。下面用三档袜子把账拆开（<b>示例数据，教学参考，非实际报价</b>）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>三档袜子单双成本拆解（示例数据，用于建立量级概念）</caption>
+          <thead><tr><th style="width:28%">项目</th><th>144N 日常棉袜（35g）</th><th>200N 精细棉袜（32g）</th><th>毛圈运动袜（65g）</th></tr></thead>
+          <tbody>
+            <tr><td><b>棉类主纱</b></td><td class="num">0.85 元（精梳棉 26g）</td><td class="num">1.20 元（高支精梳/长绒棉）</td><td class="num">2.00 元（棉涤混 40g+）</td></tr>
+            <tr><td><b>锦纶 / 氨纶 / 包覆纱</b></td><td class="num">0.30 元</td><td class="num">0.35 元</td><td class="num">0.55 元（含导湿长丝）</td></tr>
+            <tr><td><b>橡筋</b></td><td class="num">0.10 元（普通橡筋）</td><td class="num">0.22 元（双包优质橡筋）</td><td class="num">0.15 元</td></tr>
+            <tr><td><b><dfn class="term" data-term="工缴">工缴</dfn>（织造+缝头+定型+包装）</b></td><td class="num">0.60 元</td><td class="num">1.25 元（机速低 + 对目缝头）</td><td class="num">1.00 元（毛圈慢织 + 加固）</td></tr>
+            <tr><td><b>染整 + 损耗 + 管理</b></td><td class="num">0.35 元</td><td class="num">0.58 元</td><td class="num">0.45 元</td></tr>
+            <tr class="hl"><td><b>出厂价小计（示例）</b></td><td class="num">≈ 2.20 元</td><td class="num">≈ 3.60 元</td><td class="num">≈ 4.15 元</td></tr>
+            <tr><td><b>常见出厂价区间（示例）</b></td><td class="num">1.5-3 元</td><td class="num">3-5 元</td><td class="num">4-8 元</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 292" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 图例 -->
+            <rect x="150" y="12" width="14" height="14" fill="#3D6B57"/><text x="170" y="24" fill="#5D574B" font-size="12">棉类主纱</text>
+            <rect x="252" y="12" width="14" height="14" fill="#44657F"/><text x="272" y="24" fill="#5D574B" font-size="12">锦纶/氨纶</text>
+            <rect x="366" y="12" width="14" height="14" fill="#B0603F"/><text x="386" y="24" fill="#5D574B" font-size="12">橡筋</text>
+            <rect x="440" y="12" width="14" height="14" fill="#B98F45"/><text x="460" y="24" fill="#5D574B" font-size="12">工缴</text>
+            <rect x="514" y="12" width="14" height="14" fill="#C7BFAE"/><text x="534" y="24" fill="#5D574B" font-size="12">染整损耗管理</text>
+            <!-- 144N -->
+            <text x="20" y="86" fill="#26231D" font-size="13" font-weight="650">144N 日常</text>
+            <rect x="150" y="66" width="72" height="34" fill="#3D6B57"/>
+            <rect x="222" y="66" width="26" height="34" fill="#44657F"/>
+            <rect x="248" y="66" width="8" height="34" fill="#B0603F"/>
+            <rect x="256" y="66" width="51" height="34" fill="#B98F45"/>
+            <rect x="307" y="66" width="30" height="34" fill="#C7BFAE"/>
+            <text x="186" y="87" text-anchor="middle" fill="#fff" font-size="11">0.85</text>
+            <text x="281" y="87" text-anchor="middle" fill="#fff" font-size="11">0.60</text>
+            <text x="346" y="87" fill="#26231D" font-size="13" font-weight="700">≈2.20 元</text>
+            <!-- 200N -->
+            <text x="20" y="160" fill="#26231D" font-size="13" font-weight="650">200N 精细</text>
+            <rect x="150" y="140" width="102" height="34" fill="#3D6B57"/>
+            <rect x="252" y="140" width="30" height="34" fill="#44657F"/>
+            <rect x="282" y="140" width="19" height="34" fill="#B0603F"/>
+            <rect x="301" y="140" width="106" height="34" fill="#B98F45"/>
+            <rect x="407" y="140" width="49" height="34" fill="#C7BFAE"/>
+            <text x="201" y="161" text-anchor="middle" fill="#fff" font-size="11">1.20</text>
+            <text x="354" y="161" text-anchor="middle" fill="#fff" font-size="11">1.25</text>
+            <text x="465" y="161" fill="#26231D" font-size="13" font-weight="700">≈3.60 元</text>
+            <!-- 毛圈 -->
+            <text x="20" y="234" fill="#26231D" font-size="13" font-weight="650">毛圈运动</text>
+            <rect x="150" y="214" width="170" height="34" fill="#3D6B57"/>
+            <rect x="320" y="214" width="47" height="34" fill="#44657F"/>
+            <rect x="367" y="214" width="13" height="34" fill="#B0603F"/>
+            <rect x="380" y="214" width="85" height="34" fill="#B98F45"/>
+            <rect x="465" y="214" width="38" height="34" fill="#C7BFAE"/>
+            <text x="235" y="235" text-anchor="middle" fill="#fff" font-size="11">2.00</text>
+            <text x="422" y="235" text-anchor="middle" fill="#fff" font-size="11">1.00</text>
+            <text x="512" y="235" fill="#26231D" font-size="13" font-weight="700">≈4.15 元</text>
+            <text x="380" y="278" text-anchor="middle" fill="#8B8375" font-size="11.5">读法：200N 贵在工缴（机速低+对目）与橡筋，毛圈袜贵在主纱用量——「贵在哪里」决定你该跟工厂谈什么（示例）。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 3-9</span><b>三档袜子的出厂价构成（示例）。</b>横向对比可见：精细袜与运动袜的溢价来源完全不同——前者贵在工艺时间，后者贵在原料克重。压价时削掉的，正是这些构成里对应的那一块。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">规模厂与小厂的价差从哪来</h3>
+      <p>同一张款式图，大唐规模厂与小型加工厂的报价可能差 30% 以上（示例直觉），价差主要落在五处：<b>机台代际</b>（电脑提花机 vs 老式机，横档与断纱率不同）、<b>橡筋与氨纶等级</b>、<b>验货与检针体系</b>（有无检针机、回修率记录）、<b>翻单稳定性</b>（二次返单的品质一致性）与<b>合规成本</b>（税票、品质赔付能力）。买便宜的那一档，省的是看得见的单价，赌的是看不见的稳定性。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 面子与里子的平衡
+        </div>
+        <p>袜子的「面子」是针数（袜面细腻度，看得见），「里子」是橡筋与缝头（第三个月才开始被评价，但直接写差评）。加钱优先级建议：<b>橡筋 &gt; 缝头 &gt; 针数</b>。一双 144N + 优质橡筋 + 对目缝头的袜子，能穿半年还被夸；一双 200N + 劣质橡筋 + 机缝的袜子，第一周惊艳、第三个月差评。消费者为「面子」付第一次的钱，为「里子」付第二次的钱——复购永远长在里子上。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">08</span>选品判断清单：12 项可勾选</h2>
+
+      <p>这张清单把本页全部判断点收拢为样品评审与大货验货动作，勾选进度保存在浏览器中，可直接带去工厂现场使用。数字阈值均为教学示例，正式执行请写入<dfn class="term" data-term="规格书">规格书</dfn>并约定 <dfn class="term" data-term="AQL">AQL</dfn> 抽检方案。</p>
+
+      <div data-checklist="socks-craft-select">
+        <div class="chk-group">结构与缝头<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">缝头平整度<span class="chk-d">翻出袜头指腹横摸：硌手即不合格；对目款目视线圈是否逐针对齐、缝口无错叠。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">袜口回弹<span class="chk-d">拉开约 50% 放开，2 秒内回位（示例）；两只对比松紧一致，无卷边、无波浪。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">跟型立体度<span class="chk-d">套楦或手撑开：跟袋深度足、兜得住脚跟、两只对称；Y字跟款检查 Y 形加固完整。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">加固与毛圈剖检<span class="chk-d">翻看跟尖内侧：可见加固线圈为合格；毛圈款查毛圈高度密度，稀疏矮圈即「虚厚」。</span></span></label>
+        <div class="chk-group">材料与克重<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">克重称量<span class="chk-d">电子秤称单双克重，与报价克重对表；偏差超约 10%（示例）要求书面解释。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">成分标核对<span class="chk-d">成分标与报价单一致（GB/T 29862）；高棉含量款重点核对是否配足锦纶地纱与加固。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">橡筋规格确认<span class="chk-d">报价写明橡筋类型（裸氨/锦纶包覆）与氨纶等级；劣质橡筋是袜口松垮头号原因。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">纱线等级确认<span class="chk-d">精梳/普梳、纱支数写入规格书；手感粗糙毛羽多，警惕普梳冒充精梳。</span></span></label>
+        <div class="chk-group">染整与合规<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t"><dfn class="term" data-term="色牢度">色牢度</dfn>报告<span class="chk-d">耐洗、耐摩擦达标；深色款加测摩擦色牢度（GB/T 3920）——袜子在鞋内摩擦强度极高。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">洗测缩水<span class="chk-d">洗前洗后量长度与筒口围：±5% 内（示例）；洗后复查袜口回弹与板正度。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">强制合规报告<span class="chk-d">GB 18401 B 类（甲醛、pH、异味、芳香胺）；出口批次确认检针记录（<dfn class="term" data-term="检针">检针</dfn>）。</span></span></label>
+        <div class="chk-group">外观与稳定<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">条纹顺直与对称<span class="chk-d">罗纹横条水平无螺旋歪斜、无织造横档；左右两只深浅一致（灰卡 ≥4 级，示例）。</span></span></label>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-chk-bar style="height:100%;width:0;background:var(--green)"></div></div>
+          <span data-chk-sum style="font-size:12.5px;color:var(--ink-faint)"></span>
+          <button class="btn ghost sm" data-chk-reset>重置</button>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">全流程</div><div class="kv-v">络纱 → 织造 → 缝头 → 染色 → 定型 → 检验包装；品质是「机台参数管理」，产能概念为单机约 8-15 双/小时（示例）。</div></div>
+        <div class="kv-row"><div class="kv-k">缝头分水岭</div><div class="kv-v">机缝有棱硌脚，对目对齐线圈平整（约 +0.2-0.8 元/双，示例）；判断法：翻出袜头摸缝棱。这是单位金额体验提升最大的一笔钱。</div></div>
+        <div class="kv-row"><div class="kv-k">跟与毛圈</div><div class="kv-v">收放针「转」出跟袋，Y字跟更立体；掉跟先查跟袋深浅与尺码。毛圈是织进去的毛巾，高度×密度定脚感；运动袜寿命靠锦纶骨架+跟尖加固。</div></div>
+        <div class="kv-row"><div class="kv-k">定型关卡</div><div class="kv-v">定型锁尺寸、板正外观；曲线过猛会烫伤氨纶——袜口松垮不全是橡筋的锅。抗菌宣称只认洗后数据。</div></div>
+        <div class="kv-row"><div class="kv-k">定责思路</div><div class="kv-v">八类缺陷映射五环节：松垮→橡筋/定型、掉跟→织造、起棱→缝头、破洞→加固、起球→纱线、缩水→定型、色差→缸差配对、横档→织造。</div></div>
+        <div class="kv-row"><div class="kv-k">成本直觉</div><div class="kv-v">原料 ≈ 克重×占比×纱价；200N 贵在工缴与橡筋、毛圈袜贵在克重；加钱优先级：橡筋 &gt; 缝头 &gt; 针数——复购长在里子上。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="socks-craft-q1" data-q="供应商报一款「200N 精细棉袜」，出厂价 2.8 元——低于该档常见区间 3-5 元（示例）。配置上最应该怀疑什么？" data-a="1" data-exp="200N 的正常溢价来自慢机速、对目缝头与高支纱；被压到区间下限时，工厂几乎必然在「看不见的里子」降配：橡筋换劣质、缝头回机缝。A 针数高不等于整体高级；C 颜色深浅与该价差无直接因果关系；D 包装是小头，救不了体验。正确动作：摸缝头、试橡筋回弹、称克重，三项验证后再谈价。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>200N 本来就便宜，高针等于高性价比，直接下单</li>
+            <li>怀疑橡筋等级与缝头方式被降配——低价高针通常省在「里子」，袜口松垮与缝棱会毁掉体验</li>
+            <li>怀疑颜色用的是差染料，先查颜色</li>
+            <li>怀疑包装简陋，要求升级包装再谈</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="socks-craft-q2" data-q="大货穿测一周，三成以上试穿人反馈「袜口松垮下滑」。纱线进厂检验合格、橡筋按确认样采购。最优先的排查方向是什么？" data-a="2" data-exp="橡筋按样采购仍松垮，优先排查定型环节：温度曲线过猛或时间过长会烫伤氨纶、令弹性衰减——这是「料对、工艺坏」的典型隐性定责点。A 大比例共性反馈可排除个例洗涤问题；C 包装与回弹无关；D 全盘换橡筋成本高且未必命中真因，应先比对定型参数与留存确认样的回弹差异，锁定环节再整改。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>试穿人洗涤不当，属个案使用问题</li>
+            <li>橡筋供应商偷换料，直接索赔换供应商</li>
+            <li>排查定型温度曲线与时间——过猛的定型会烫伤氨纶，表现为「料对但弹性被烫坏」</li>
+            <li>与生产无关，是产品设计问题，改设计把袜口织紧一点即可</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="socks-craft-q3" data-q="两款运动袜对比：A 标「棉 80%、氨纶 20%」无加固，售 9.9 元；B 标「棉 55%、锦纶 40%、氨纶 5%」带跟尖加固，售 15 元。只论耐穿性，哪个判断成立？" data-a="1" data-exp="锦纶耐磨性居常见纤维之首，B 的锦纶骨架加跟尖加固精确覆盖了袜子的两个先破点（脚跟、脚尖）；A 的高棉无加固恰恰是「把最不耐磨的纤维放在摩擦最重的岗位」，穿洗不久即从跟尖破洞。C 无数据支持；D 耐穿性可由纤维耐磨排序+加固结构+克重作出可靠预判，并非无法判断。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>A 更耐穿：棉多更结实，纯棉=耐用是常识</li>
+            <li>B 更耐穿：锦纶骨架与跟尖加固直击先破部位；A 高棉无加固是把弱纤维放在摩擦最重的岗位</li>
+            <li>两者耐穿性相同，差价纯属品牌溢价</li>
+            <li>不穿三个月无法判断耐穿性，任何分析都无意义</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+</body>
+</html>

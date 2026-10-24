@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>纤维与纱线 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="basics-fibers" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第一篇 · 通用基础 / 纤维纱线</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BASICS · FIBERS</div>
+        <h1 class="page-title">纤维与纱线</h1>
+        <p class="page-lede">纤维决定性能的天花板，纱线决定手感的第一印象。本页先建立纤维分类地图，再把九种主力纤维逐一讲透——每种都按「来源→手感→关键性能→用在哪」展开；然后沿「纤维→纱线」的路径，学会读纱支、旦数、F 数、包芯与包覆；最后落到成分标识与虚标识别。读完你能对供应商报出的每一个名词追问到底，也能判断一个报价里的纤维组合是否合理。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 30 分钟</span>
+          <span class="chip">前置：产品基础与人体工学</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-map" data-sec="s-map"><span class="sec-no">01</span>纤维分类地图</h2>
+
+      <p>先把地图立起来。所有纺织纤维分两大族：<dfn class="term" data-term="天然纤维">天然纤维</dfn>直接取自自然界，<b>化学纤维</b>则由人工制成；化学纤维再按原料与工艺分成<dfn class="term" data-term="再生纤维素纤维">再生纤维素纤维</dfn>（天然高分子重新纺丝）与<dfn class="term" data-term="合成纤维">合成纤维</dfn>（石油基高分子合成）。贴身衣物里 90% 以上的面料，都由这张图上的十来种纤维组合而成。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <g stroke="#C7BFAE" stroke-width="1.5" fill="none">
+              <path d="M380,56 L380,72 M200,72 L560,72 M200,72 L200,92 M560,72 L560,92"/>
+              <path d="M200,132 L200,148 M117,148 L283,148 M117,148 L117,158 M283,148 L283,158"/>
+              <path d="M560,132 L560,148 M497,148 L665,148 M497,148 L497,158 M665,148 L665,158"/>
+              <path d="M117,196 L79,226 M117,196 L155,226"/>
+              <path d="M283,196 L245,226 M283,196 L321,226"/>
+              <path d="M497,196 L459,226 M497,196 L537,226 M497,196 L459,264 M497,196 L537,264"/>
+              <path d="M665,196 L629,226 M665,196 L707,226 M665,196 L629,264 M665,196 L707,264"/>
+            </g>
+            <rect x="300" y="12" width="160" height="44" rx="10" fill="#26231D"/>
+            <text x="380" y="40" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">纺织纤维</text>
+            <rect x="110" y="92" width="180" height="40" rx="9" fill="#3D6B57"/>
+            <text x="200" y="118" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">天然纤维</text>
+            <rect x="470" y="92" width="180" height="40" rx="9" fill="#B0603F"/>
+            <text x="560" y="118" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">化学纤维</text>
+            <rect x="42" y="158" width="150" height="38" rx="8" fill="#EAF1ED" stroke="#3D6B57"/>
+            <text x="117" y="182" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="600">植物纤维（纤维素）</text>
+            <rect x="208" y="158" width="150" height="38" rx="8" fill="#EAF1ED" stroke="#3D6B57"/>
+            <text x="283" y="182" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="600">动物纤维（蛋白质）</text>
+            <rect x="420" y="158" width="155" height="38" rx="8" fill="#F6EFDF" stroke="#B98F45"/>
+            <text x="497" y="182" text-anchor="middle" fill="#8F6E2F" font-size="12.5" font-weight="600">再生纤维素纤维</text>
+            <rect x="590" y="158" width="150" height="38" rx="8" fill="#E9EFF3" stroke="#44657F"/>
+            <text x="665" y="182" text-anchor="middle" fill="#44657F" font-size="12.5" font-weight="600">合成纤维</text>
+            <g font-size="12.5" font-weight="700" fill="#26231D" text-anchor="middle">
+              <rect x="46" y="226" width="66" height="30" rx="6" fill="#fff" stroke="#C7D8CE"/>
+              <circle cx="56" cy="241" r="3" fill="#B98F45"/>
+              <text x="81" y="245">棉</text>
+              <rect x="122" y="226" width="66" height="30" rx="6" fill="#fff" stroke="#C7D8CE"/>
+              <text x="155" y="245">麻</text>
+              <rect x="212" y="226" width="66" height="30" rx="6" fill="#fff" stroke="#C7D8CE"/>
+              <text x="245" y="245">蚕丝</text>
+              <rect x="288" y="226" width="66" height="30" rx="6" fill="#fff" stroke="#C7D8CE"/>
+              <text x="321" y="245">羊毛</text>
+              <rect x="424" y="226" width="70" height="30" rx="6" fill="#fff" stroke="#E4D6B4"/>
+              <text x="459" y="245">黏胶</text>
+              <rect x="502" y="226" width="70" height="30" rx="6" fill="#fff" stroke="#E4D6B4"/>
+              <circle cx="512" cy="241" r="3" fill="#B98F45"/>
+              <text x="542" y="245">莫代尔</text>
+              <rect x="424" y="264" width="70" height="30" rx="6" fill="#fff" stroke="#E4D6B4"/>
+              <circle cx="434" cy="279" r="3" fill="#B98F45"/>
+              <text x="464" y="283">莱赛尔</text>
+              <rect x="502" y="264" width="70" height="30" rx="6" fill="#fff" stroke="#E4D6B4"/>
+              <text x="537" y="283">竹浆黏胶</text>
+              <rect x="594" y="226" width="70" height="30" rx="6" fill="#fff" stroke="#C9D7E0"/>
+              <text x="629" y="245">涤纶</text>
+              <rect x="672" y="226" width="70" height="30" rx="6" fill="#fff" stroke="#C9D7E0"/>
+              <circle cx="682" cy="241" r="3" fill="#B98F45"/>
+              <text x="712" y="245">锦纶</text>
+              <rect x="594" y="264" width="70" height="30" rx="6" fill="#fff" stroke="#C9D7E0"/>
+              <circle cx="604" cy="279" r="3" fill="#B98F45"/>
+              <text x="634" y="283">氨纶</text>
+              <rect x="672" y="264" width="70" height="30" rx="6" fill="#fff" stroke="#C9D7E0"/>
+              <text x="707" y="283">丙纶</text>
+            </g>
+            <circle cx="50" cy="318" r="3.5" fill="#B98F45"/>
+            <text x="62" y="322" font-size="11.5" fill="#5D574B">贴身衣物主力纤维</text>
+            <text x="742" y="322" text-anchor="end" font-size="11" fill="#8B8375">竹浆黏胶按标准应标「黏胶纤维（竹浆）」</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-3</span><b>纤维分类树。</b>记三句就够：天然纤维吸湿亲肤但性能各有短板；再生纤维素纤维是「吸湿主力」（比棉更吸、更垂、更可控）；合成纤维是「功能担当」（强度、弹性、耐磨、速干）。本页后面九节，就是把这张图上的主力逐一讲透。</figcaption>
+      </figure>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>这张分类树同时是一张<b>成本地图</b>：同一大类内部的价格阶梯（黏胶→莫代尔→莱赛尔）远小于跨大类的价格阶梯（黏胶系→真丝/美利奴）。看报价时先定位「它在这个格子里处于哪一档」，再判断溢价是否合理——后面的成分标解读会反复用到这个框架。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-natural" data-sec="s-natural"><span class="sec-no">02</span>天然纤维：棉与它的伙伴们</h2>
+
+      <h4 class="mini-title">棉：贴身衣物的基本盘</h4>
+
+      <p><dfn class="term" data-term="棉">棉</dfn>是种子纤维，也几乎是所有人对「舒服」的第一印象来源。手感温和不凉不滑，吸湿亲肤——回潮率约 8.5%，能吸走自身体约 8.5% 重量的水分而仍无明显湿感。它有一个常被忽略的优点：<b>湿强高于干强</b>，湿了反而更结实，这就是纯棉衣物禁得起高频机洗、热水烫洗的根本原因（对需要反复消毒清洗的贴身层是硬价值）。短板同样明确：弹性差（穿久松垮、易皱）、易缩水、毛羽多易<dfn class="term" data-term="起球">起球</dfn>——所以纯棉贴身款几乎都要掺氨纶补弹力。</p>
+
+      <p>棉纱内部还有一条清晰的品质阶梯，这是与供应商谈判的入门话题：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="普梳棉">普梳棉</dfn></div><div class="kv-v">只经梳棉、保留较多短绒与杂质。成本低、手感偏糙、易起毛起球——低价棉袜与低价棉内衣的标配。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="精梳棉">精梳棉</dfn></div><div class="kv-v">增加精梳工序去除短绒。纱体光洁、毛羽少、更不易起球、手感细腻——中高端棉质贴身衣物的「及格线」，成本高于普梳约 20%–40%（示例量级）。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="长绒棉">长绒棉</dfn></div><div class="kv-v">纤维长度 33mm 以上的优质棉（新疆长绒棉、匹马棉等）。纤维越长越能纺细纱，光泽手感更好——高支棉袜、高支汗布的原料门槛，价格再上一个台阶。</div></div>
+      </div>
+
+      <p><b>用在哪：</b>底裆里料（吸湿、可烫洗）、棉袜面纱（贴肤）、秋衣裤、家纺级贴身款。听到「精梳棉」「长绒棉」报价时，对应的价格阶梯要能对得上，对不上就有问题。</p>
+
+      <h4 class="mini-title">蚕丝、羊毛与麻：各有性格的高手</h4>
+
+      <p><dfn class="term" data-term="蚕丝">蚕丝</dfn>是天然蛋白纤维，回潮率约 11%，光泽优雅、极亲肤，被誉为「人体第二皮肤」；但娇贵——怕碱、怕晒、耐磨差，真丝内裤、真丝眼罩属于高价位小众品类。<dfn class="term" data-term="羊毛">羊毛</dfn>是回潮率冠军（约 15%），弹性好、湿了也暖、不易臭，是冬季袜的高级原料；但普通羊毛直径粗、贴身扎痒，贴身用途必须选超细的<dfn class="term" data-term="美利奴羊毛">美利奴羊毛</dfn>（直径 17μm 级，教学参考），且要防毡缩、控制成本。麻（亚麻、苎麻）天然凉爽挺爽，但刚性强、皮肤敏感者有刺痒感，内衣中多作少量混纺点缀。这三者在贴身衣物里都是「特色添加」，不是量担当。</p>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：「羊毛都扎人」
+        </div>
+        <p>扎不扎取决于<b>纤维直径</b>而非「羊毛」这个名称：直径大于约 30μm 的粗毛纤维端会机械刺激皮肤产生痒感，17–19μm 的超细美利奴贴身几乎无感（教学量级）。听到「羊毛袜」报价时，追问一句「美利奴？细度多少 μm？」就能分辨供应商的专业度——这也是第 03 节性能表里「回潮率 15%」能兑现为「湿了也暖」的前提。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-regen" data-sec="s-regen"><span class="sec-no">03</span>再生纤维素纤维：吸湿主力</h2>
+
+      <p>再生纤维素纤维的思路很聪明：把木材、棉短绒、竹子里的天然纤维素溶解再纺成丝——既保留了天然纤维的吸湿基因（回潮率 11%–14%），又获得了工业化生产的细度与均匀度。它是女士内裤、秋衣裤面料里占比最高的纤维家族，内部是一条清晰的技术演进线。</p>
+
+      <h4 class="mini-title">黏胶：吸湿王者与它的湿强软肋</h4>
+
+      <p><dfn class="term" data-term="黏胶纤维">黏胶纤维</dfn>（人造棉）是家族第一代，回潮率约 13% 高于棉，吸湿好、垂感好、染色鲜艳、价格低——「莫代尔手感」的低价料大多是它。软肋要刻在脑子里：<b>湿态强力下降约 50%</b>。什么含义？湿着搓洗、用力拧绞时纤维更容易断裂起毛，织物易变形、缩水率大、寿命偏短。它是「上身很好、洗后衰退快」的典型——适合低成本走量款，不适合你对耐久度有要求的定位。</p>
+
+      <h4 class="mini-title">莫代尔：把湿强补好的第二代</h4>
+
+      <p><dfn class="term" data-term="莫代尔">莫代尔</dfn>是高湿模量黏胶——「湿模量」指湿态下的抗变形能力。它保留了黏胶的吸湿与垂感，湿强明显更高、缩水更小，手感柔软带丝感，是女士内裤与秋衣裤最常用的纤维之一，常与棉、氨纶混纺。注意：莫代尔是纤维品类名，<b>兰精（Lenzing）公司的莫代尔才是品牌货</b>，品质稳定但价格更高——报价单上「兰精莫代尔」比「莫代尔」贵是合理的，贵多少要有凭证（见第 07 节）。</p>
+
+      <h4 class="mini-title">莱赛尔：环保工艺的第三代，天丝®是它的商标</h4>
+
+      <p><dfn class="term" data-term="莱赛尔">莱赛尔</dfn>用 NMMO 溶剂法生产，溶剂回收率超过 99%，环保性是卖点；性能上干湿强都高、织物挺括滑爽、有轻微冷感（常被用作凉感面料的原料之一）。关系要分清：<dfn class="term" data-term="天丝">天丝</dfn>®（Tencel®）是兰精公司的注册商标，涵盖其莱赛尔与莫代尔产品线——<b>成分标识上必须写「莱赛尔」，写「天丝」反而违规</b>；商标可以用作品牌宣传但要有授权凭证。此外莱赛尔高湿高摩擦下有原纤化倾向（泛白起绒），对染整工艺有要求，这既是「桃皮绒风格」的来源，也是品质风险点。</p>
+
+      <h4 class="mini-title">竹浆黏胶：本质是黏胶</h4>
+
+      <p><dfn class="term" data-term="竹浆纤维">竹浆纤维</dfn>用竹子制浆、按黏胶工艺生产，本质就是黏胶纤维的一种，成分标识应写「黏胶纤维（竹浆）」。它的性能与普通黏胶接近（吸湿、柔软、垂感好），但市场上围绕它构建的「天然抗菌」叙事水分很大——这个问题放在第 07 节的 warn 框里详细拆。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-synth" data-sec="s-synth"><span class="sec-no">04</span>合成纤维：功能担当</h2>
+
+      <p>合成纤维强度高、弹性好、耐磨、尺寸稳定，且性能可以通过改形设计精准定制；代价是<b>吸湿是天生短板</b>（涤纶回潮率仅 0.4%）——这个短板靠织物结构（网眼、添纱、导湿截面）部分弥补，纤维章与面料章会反复呼应这一点。贴身衣物四大主力：涤纶、锦纶、氨纶、丙纶。</p>
+
+      <h4 class="mini-title">涤纶：0.4% 回潮率意味着什么</h4>
+
+      <p><dfn class="term" data-term="涤纶">涤纶</dfn>（聚酯纤维）几乎不吸湿——0.4% 的回潮率意味着水分子基本不进纤维内部。硬币的另一面：<b>它也不存水，洗后极快干</b>，尺寸稳定、免烫不缩、耐氯、强度高。在贴身衣物中它以两种身份出现：一是「结构材料」——蕾丝、网眼、运动背心的骨架；二是「功能材料」——细旦涤纶长丝织物（俗称「<dfn class="term" data-term="冰丝">冰丝</dfn>」的主力之一）经凉感整理后做凉感内裤与家居服。关键认知：<b>不吸湿≠不能导湿</b>——涤纶自己不吸水，但可以通过异形截面与织物结构把汗「导」走，这正是运动速干衣的原理。</p>
+
+      <h4 class="mini-title">锦纶：耐磨冠军与弹力面料主力</h4>
+
+      <p><dfn class="term" data-term="锦纶">锦纶</dfn>（尼龙、聚酰胺）的耐磨性居常见纤维之首，强度高、密度小、回潮率约 4% 在合成纤维中最高（因此染色鲜艳、吸湿略好、静电较少）。它是内衣行业真正的合成纤维主力：<dfn class="term" data-term="锦氨面料">锦氨面料</dfn>（锦纶＋氨纶）是文胸、内裤、泳衣的标准弹力面料；袜子跟尖加固靠它；包覆纱的外层几乎全是它。弹力面料里听到「锦氨」，锦纶提供强度、耐磨与细腻光泽，氨纶提供弹性——这个组合在后面几篇里会出现几十次。</p>
+
+      <h4 class="mini-title">氨纶：2%–30% 含量的含义</h4>
+
+      <p><dfn class="term" data-term="氨纶">氨纶</dfn>（聚氨酯弹性纤维）可拉伸 5–8 倍并瞬间回复，是所有弹力贴身衣物的核心，也是成本敏感点（单价远高于主流纤维，但用量小）。含量是读懂配方表的钥匙（教学参考）：<b>2%–5%</b> 用于汗布内裤、T 恤的轻微弹性；<b>5%–10%</b> 是弹力袜、贴身内裤的常规档；<b>10%–20%</b> 用于泳衣、塑身、高弹无缝；<b>20%–30%</b> 见于高压力塑身衣。它有「三怕」：<b>怕氯</b>（泳池水与含氯漂白剂使它脆化断裂——泳衣「越洗越松」的主因）、<b>怕高温</b>（定型与熨烫超温会永久失效）、<b>怕油</b>（护肤品油脂加速老化）。<dfn class="term" data-term="莱卡">莱卡</dfn>®是英威达的氨纶商标，成分标识必须写「氨纶」。</p>
+
+      <h4 class="mini-title">丙纶：导湿不吸水的极端案例</h4>
+
+      <p><dfn class="term" data-term="丙纶">丙纶</dfn>（聚丙烯）密度 0.91g/cm³ 是纤维中最轻，回潮率为零、完全吸不上水——水只能沿纤维表面传输，反而<b>导湿极快、不存水</b>，且保暖相对好。用于运动功能袜的导湿层、凉感类产品。短板是染色困难（基本只能用<b>色纱</b>原液着色），限制了它在时尚款中的应用。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-table" data-sec="s-table"><span class="sec-no">05</span>性能对比大表：一张表读懂取舍</h2>
+
+      <p>九种主力纤维的关键性能对比如下。请先接受一个前提：<b>没有全能纤维</b>——这张表的每一行都是一组取舍，混纺的意义就是让不同行互补。</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>教学参考值：通行纺织材料学常见区间（约值），随纤维规格、纱线与织物结构变化；相对成本随行情波动（示例，以涤纶≈1 为基准）</caption>
+          <thead><tr><th>纤维</th><th>回潮率%（约）</th><th>强度量级</th><th>弹性回复</th><th>耐磨</th><th>耐热</th><th>耐氯</th><th>起球倾向</th><th>相对成本</th></tr></thead>
+          <tbody>
+            <tr><td><b>棉</b></td><td class="num">8.5</td><td>中（湿强＞干强）</td><td>差</td><td>中</td><td>好（可高温烫洗）</td><td>中</td><td>高（短纤纱）</td><td class="num">1.5–2.5</td></tr>
+            <tr><td><b>黏胶</b></td><td class="num">13–14</td><td>中（湿强骤降约 50%）</td><td>差</td><td>差</td><td>中</td><td>中</td><td>中–高</td><td class="num">1.2–1.6</td></tr>
+            <tr><td><b>莫代尔</b></td><td class="num">12–13</td><td>中高（湿强保持好）</td><td>中</td><td>中</td><td>中</td><td>中</td><td>中</td><td class="num">2.5–3.5</td></tr>
+            <tr><td><b>莱赛尔</b></td><td class="num">11–13</td><td>高</td><td>中</td><td>好</td><td>中</td><td>中</td><td>低–中（原纤化）</td><td class="num">3–4.5</td></tr>
+            <tr><td><b>涤纶</b></td><td class="num">0.4</td><td>高</td><td>好</td><td>好</td><td>好</td><td>优</td><td>低（长丝）</td><td class="num">1（基准）</td></tr>
+            <tr><td><b>锦纶</b></td><td class="num">4–4.5</td><td>高</td><td>优</td><td>优（冠军）</td><td>中（怕高温熨烫）</td><td>差（易黄变）</td><td>低（长丝）</td><td class="num">1.5–2.5</td></tr>
+            <tr><td><b>氨纶</b></td><td class="num">1.3</td><td>低（专司弹性）</td><td>优（5–8 倍拉伸）</td><td>中</td><td>差（怕高温）</td><td>差（氯→脆断）</td><td>—</td><td class="num">3–6</td></tr>
+            <tr><td><b>丙纶</b></td><td class="num">0</td><td>中高</td><td>好</td><td>好</td><td>差（低温软化）</td><td>优</td><td>低</td><td class="num">0.8–1.2</td></tr>
+            <tr><td><b>羊毛（美利奴）</b></td><td class="num">15</td><td>中低</td><td>好</td><td>中–差</td><td>中（怕碱怕高温）</td><td>差</td><td>高</td><td class="num">6–15</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout data">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          怎么用这张表
+        </div>
+        <p>先记住三条主线：<b>棉</b>＝吸湿舒适但弱弹性（所以永远配氨纶）；<b>锦纶</b>＝强韧耐磨（所以永远做骨架与加固）；<b>氨纶</b>＝只管弹性（所以含量是配方表的信号灯）。再记两组「软肋对」：黏胶怕湿强、涤纶怕吸湿——这两个弱点在织物结构层面互为答案。看任何配比时，先用这张表预判它的强项与死穴，再用第 07 节的成分标知识验证真实性。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-yarn" data-sec="s-yarn"><span class="sec-no">06</span>纱线：从纤维到纱，细度的三把尺子</h2>
+
+      <p>同样的纤维，纺成不同的纱，成品手感可以差出一个档次——纱线是纤维性能的「放大器」。第一个分岔路口是纺纱方式：</p>
+
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">短</span>短纤纱：把短纤维捻在一起</h5>
+          <ul>
+            <li>表面有毛羽，手感<b>温暖、哑光、棉感</b>，吸湿好。</li>
+            <li>弱点：毛羽易起球、易痒（呼应上一页「触」的知识）。</li>
+            <li>用在：棉袜、汗布内裤、秋衣裤——贴身衣物的「暖感担当」。</li>
+          </ul>
+        </div>
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">长</span>长丝：连续不断的丝</h5>
+          <ul>
+            <li>光滑均匀有光泽、不起球、可做到极细。</li>
+            <li>弱点：凉感强（冬天「凉胳膊」）、无棉感。</li>
+            <li>用在：锦氨弹力面料、冰丝凉感款、无缝内衣——「滑感担当」。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4 class="mini-title">尺子一：纱支 Ne——短纤纱的细度</h4>
+
+      <p><dfn class="term" data-term="纱支">纱支</dfn>（英制支数）像「每磅能纺出多少段纱」：<b>数字越大，纱越细</b>，就像面条越细越考验面粉。21S 是棉袜常用的粗支，40S 明显更细（直径约为 21S 的 0.7 倍，教学估算），60S 以上就是高支——手感细腻但价格陡增，且更需要精梳与长绒棉支撑。<b>同价之下怎么选，看用途</b>：毛圈运动袜用 21S 更合理（粗纱耐造、毛圈饱满），轻薄贴身内裤用 40S 才细腻——「支数高＝好」是半个真理。</p>
+
+      <h4 class="mini-title">尺子二：旦尼尔 D 与分特 dtex——长丝的细度</h4>
+
+      <p>长丝不用支数，用定长制：<dfn class="term" data-term="旦尼尔">旦尼尔</dfn>（D）＝ 9000 米长丝的克重，数字越大越粗（70D 比 40D 粗）。法定单位是<dfn class="term" data-term="分特克斯">分特克斯</dfn>（dtex，10000 米克重），检测报告用 dtex、行业口语用 D，换算记住一句：<b>D＝dtex×0.9</b>（如 70D≈78dtex）。袜子的弹力纱、包覆氨纶常用 20D–70D。</p>
+
+      <h4 class="mini-title">尺子三：单丝根数 F——同样粗细下的手感分水岭</h4>
+
+      <p><dfn class="term" data-term="单丝根数">单丝根数</dfn>（F）指一根长丝由多少根超细单丝组成，写作「总旦数/F 数」。<b>同样 70D，F 越高单丝越细，手感越柔软细腻、光泽越柔和</b>——70D/24F 偏挺括滑爽，70D/144F 则柔糯得像奶油。这是同价位产品「手感差距」最常见的隐藏原因，也是比较两只袜子、两件无缝内衣时最值得追问的参数之一。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="150" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#26231D">70D / 24F</text>
+            <text x="380" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#26231D">70D / 48F（常用档）</text>
+            <text x="610" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#26231D">70D / 144F</text>
+            <text x="150" y="62" text-anchor="middle" font-size="11.5" fill="#5D574B">单丝 ≈ 2.9D</text>
+            <text x="380" y="62" text-anchor="middle" font-size="11.5" fill="#5D574B">单丝 ≈ 1.5D</text>
+            <text x="610" y="62" text-anchor="middle" font-size="11.5" fill="#5D574B">单丝 ≈ 0.5D</text>
+            <circle cx="150" cy="150" r="72" fill="#FAF8F3" stroke="#C7BFAE" stroke-width="1.5"/>
+            <circle cx="380" cy="150" r="72" fill="#FAF8F3" stroke="#C7BFAE" stroke-width="1.5"/>
+            <circle cx="610" cy="150" r="72" fill="#FAF8F3" stroke="#C7BFAE" stroke-width="1.5"/>
+            <g id="fig-f24"></g><g id="fig-f48"></g><g id="fig-f144"></g>
+            <text x="150" y="252" text-anchor="middle" font-size="12" font-weight="650" fill="#2C5142">挺括 · 滑爽</text>
+            <text x="150" y="270" text-anchor="middle" font-size="11" fill="#8B8375">硬挺感强，适合里料、光面</text>
+            <text x="380" y="252" text-anchor="middle" font-size="12" font-weight="650" fill="#2C5142">柔软均衡</text>
+            <text x="380" y="270" text-anchor="middle" font-size="11" fill="#8B8375">内衣弹力面料最常用档</text>
+            <text x="610" y="252" text-anchor="middle" font-size="12" font-weight="650" fill="#2C5142">极柔软 · 微光泽</text>
+            <text x="610" y="270" text-anchor="middle" font-size="11" fill="#8B8375">轻薄贴身、无缝与高端滑面</text>
+            <rect x="60" y="288" width="640" height="24" rx="6" fill="#F3EFE7"/>
+            <text x="380" y="304" text-anchor="middle" font-size="11.5" fill="#5D574B">总旦数相同＝整根丝一样粗；F 越高单丝越细（截面积约成反比）。点数与排布为示意。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-4</span><b>同样的 70D，不同的 F 数。</b>三束长丝总粗细完全相同，差别只在「内部有多少根单丝」：F 越高，单丝越细、越柔，光泽越柔——截面积约按 F 成反比缩小。点阵排布为教学示意（实际单丝远多于图示比例）。</figcaption>
+      </figure>
+
+      <h4 class="mini-title">加捻与合股：纱线的「性格整形」</h4>
+
+      <p><dfn class="term" data-term="加捻">加捻</dfn>是把纤维抱合成形的工序，也是手感调节阀：捻度大→纱紧实、强、挺、光泽弱；捻度小→松软、毛羽外露、易起球。两根单纱再捻在一起就是<dfn class="term" data-term="合股">合股</dfn>（如 40S/2）：股线更均匀、更强、更耐磨，袜子常用 2 股提升寿命——同样标「棉袜」，单纱与股线的耐用度差一档。捻度远超常规的强捻纱则带来独特的皱感爽感，是设计感面料的玩法。</p>
+
+      <h4 class="mini-title">包芯纱 vs 包覆纱：弹力纱的两种做法</h4>
+
+      <p>弹力贴身衣物里的「氨纶」几乎从不裸奔，而是被包在别的纱里——两种包法对应两个体系：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <line x1="380" y1="14" x2="380" y2="326" stroke="#E6E0D3" stroke-width="1.5"/>
+            <text x="190" y="30" text-anchor="middle" font-size="14.5" font-weight="700" fill="#26231D">包芯纱（如：棉包氨）</text>
+            <text x="190" y="72" text-anchor="middle" font-size="11.5" fill="#3D6B57">外包棉／莫代尔短纤维（有毛羽、棉感）</text>
+            <path d="M50,120 Q62,108 74,120 T98,120 T122,120 T146,120 T170,120 T194,120 T218,120 T242,120 T266,120 T290,120 T314,120" fill="none" stroke="#B0603F" stroke-width="2.5"/>
+            <g stroke="#3D6B57" stroke-width="2" opacity=".85">
+              <line x1="58" y1="100" x2="66" y2="112"/><line x1="78" y1="94" x2="84" y2="110"/><line x1="98" y1="98" x2="104" y2="112"/><line x1="118" y1="93" x2="122" y2="109"/><line x1="138" y1="97" x2="144" y2="112"/><line x1="158" y1="94" x2="163" y2="110"/><line x1="178" y1="98" x2="184" y2="113"/><line x1="198" y1="94" x2="203" y2="109"/><line x1="218" y1="97" x2="224" y2="112"/><line x1="238" y1="93" x2="243" y2="109"/><line x1="258" y1="98" x2="264" y2="113"/><line x1="278" y1="95" x2="283" y2="110"/><line x1="298" y1="98" x2="304" y2="112"/><line x1="318" y1="96" x2="324" y2="110"/>
+              <line x1="62" y1="130" x2="70" y2="142"/><line x1="86" y1="132" x2="92" y2="144"/><line x1="110" y1="131" x2="116" y2="143"/><line x1="134" y1="132" x2="140" y2="144"/><line x1="158" y1="131" x2="164" y2="143"/><line x1="182" y1="132" x2="188" y2="144"/><line x1="206" y1="131" x2="212" y2="143"/><line x1="230" y1="132" x2="236" y2="144"/><line x1="254" y1="131" x2="260" y2="143"/><line x1="278" y1="132" x2="284" y2="144"/><line x1="302" y1="131" x2="308" y2="143"/><line x1="322" y1="133" x2="328" y2="144"/>
+            </g>
+            <text x="190" y="170" text-anchor="middle" font-size="11.5" fill="#B0603F">芯：氨纶（提供弹性，几乎不外露）</text>
+            <rect x="50" y="196" width="280" height="112" rx="8" fill="#EAF1ED" stroke="#C7D8CE"/>
+            <text x="64" y="220" font-size="12" font-weight="700" fill="#2C5142">典型用途与特点</text>
+            <text x="64" y="242" font-size="11.5" fill="#5D574B">· 弹力汗布（内裤、秋衣裤）</text>
+            <text x="64" y="262" font-size="11.5" fill="#5D574B">· 手感偏棉、吸湿好</text>
+            <text x="64" y="282" font-size="11.5" fill="#5D574B">· 氨纶被包住→不易露白、不易老化</text>
+            <text x="64" y="300" font-size="11" fill="#8B8375">短纤维手感＋氨纶弹力的结合</text>
+
+            <text x="570" y="30" text-anchor="middle" font-size="14.5" font-weight="700" fill="#26231D">包覆纱（锦纶包氨）</text>
+            <text x="570" y="72" text-anchor="middle" font-size="11.5" fill="#44657F">外包锦纶长丝：螺旋包缠，表面光洁</text>
+            <path d="M430,120 Q442,108 454,120 T478,120 T502,120 T526,120 T550,120 T574,120 T598,120 T622,120 T646,120 T670,120 T694,120" fill="none" stroke="#B0603F" stroke-width="2.5"/>
+            <g fill="none" stroke="#44657F" stroke-width="1.8" opacity=".9">
+              <path d="M440,98 Q453,120 440,142"/><path d="M466,98 Q479,120 466,142"/><path d="M492,98 Q505,120 492,142"/><path d="M518,98 Q531,120 518,142"/><path d="M544,98 Q557,120 544,142"/><path d="M570,98 Q583,120 570,142"/><path d="M596,98 Q609,120 596,142"/><path d="M622,98 Q635,120 622,142"/><path d="M648,98 Q661,120 648,142"/><path d="M674,98 Q687,120 674,142"/><path d="M700,98 Q713,120 700,142"/>
+            </g>
+            <g fill="none" stroke="#B98F45" stroke-width="1.6" stroke-dasharray="5 3" opacity=".85">
+              <path d="M458,98 Q445,120 458,142"/><path d="M484,98 Q471,120 484,142"/><path d="M510,98 Q497,120 510,142"/><path d="M536,98 Q523,120 536,142"/><path d="M562,98 Q549,120 562,142"/><path d="M588,98 Q575,120 588,142"/><path d="M614,98 Q601,120 614,142"/><path d="M640,98 Q627,120 640,142"/><path d="M666,98 Q653,120 666,142"/><path d="M692,98 Q679,120 692,142"/><path d="M718,98 Q705,120 718,142"/>
+            </g>
+            <text x="570" y="170" text-anchor="middle" font-size="11.5" fill="#B0603F">芯：氨纶（与包芯纱相同）</text>
+            <text x="570" y="186" text-anchor="middle" font-size="11" fill="#B98F45">蓝实线＝单包（SCY）；金虚线＝双包（DCY，更匀稳、更贵）</text>
+            <rect x="430" y="196" width="280" height="112" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="444" y="220" font-size="12" font-weight="700" fill="#8F6E2F">典型用途与特点</text>
+            <text x="444" y="242" font-size="11.5" fill="#5D574B">· 袜口橡筋、袜身弹力纱</text>
+            <text x="444" y="262" font-size="11.5" fill="#5D574B">· 无缝内衣、文胸弹力面料</text>
+            <text x="444" y="282" font-size="11.5" fill="#5D574B">· 强力高、弹性稳、耐穿耐洗</text>
+            <text x="444" y="300" font-size="11" fill="#8B8375">双包锦氨橡筋是中高端袜的标志用料</text>
+
+            <text x="380" y="332" text-anchor="middle" font-size="11.5" fill="#5D574B">成分标上的「锦纶＋氨纶」很多就来自它们——弹力是「纱线结构」，不是把两种纤维均匀混在一起。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-5</span><b>包芯纱与包覆纱结构对比。</b>包芯纱＝氨纶芯＋外包短纤维（棉感、吸湿、氨纶不外露），用于弹力汗布；包覆纱＝氨纶芯＋锦纶长丝螺旋包缠（单包 SCY 一层，双包 DCY 两层反向更匀稳），用于袜口橡筋、无缝与文胸弹力纱。均为教学示意。</figcaption>
+      </figure>
+
+      <p>还有两类常见的长丝变体，一张表带过：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="网络丝">网络丝</dfn></div><div class="kv-v">用高压空气把单丝打成网络结点，可代替加捻/上浆、织造不松散，成本低；手感略逊于低弹丝。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="低弹丝">低弹丝</dfn>（DTY）</div><div class="kv-v">经假捻变形、有轻微卷曲蓬松感的涤纶/锦纶长丝，运动内衣与针织外衣常用；FDY（全拉伸丝）则光滑有光泽。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="色纱">色纱</dfn></div><div class="kv-v">纺丝时加入色母粒的原液着色纱，色牢度极高、免染色环保，适合大批量单色（丙纶基本只能用它）。</div></div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-label" data-sec="s-label"><span class="sec-no">07</span>成分标解读与虚标识别</h2>
+
+      <p>成分标是产品对消费者的<b>法定承诺</b>，规则出自 <dfn class="term" data-term="GB/T 29862">GB/T 29862</dfn>《纺织品 纤维含量的标识》。掌握五条就够用：</p>
+
+      <ul class="plain">
+        <li><b>降序＋必标</b>：含量 ≥5% 的纤维必须标出，按含量从高到低排列（「80% 棉 15% 锦纶 5% 氨纶」）。</li>
+        <li><b>小比例可合并</b>：≤5% 的纤维可合并标为「其他」，也可单独标出。</li>
+        <li><b>允差 ±5%</b>：一般纤维含量允差为标注值 ±5 个百分点；含量 ≤10% 的纤维另有按标注值 30% 掌握的相对允差（教学提示，执行时查标准原文）——标 5% 氨纶，实测 3.5%–6.5% 合格。</li>
+        <li><b>「纯／100%」很严格</b>：要求该纤维实际含量为 100%，有意添加的氨纶等任何其他纤维都必须如实标出——<b>弹力产品不能标「纯棉」</b>；对生产中偶然混入的微量杂质另有豁免细则。</li>
+        <li><b>分别标注</b>：里料、填充物、花边等不同部位要分别标注，不能只标主料。</li>
+      </ul>
+
+      <h4 class="mini-title">配比背后的真实结构：以袜子为例</h4>
+
+      <p>成分标只告诉你「有什么、各多少」，不告诉你「在哪」。而纤维的分布位置往往比总量更影响体验——以一双「80% 棉 15% 锦纶 5% 氨纶」的女袜为例（示例配比）：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">棉 80%</div><div class="kv-v"><dfn class="term" data-term="添纱">添纱</dfn>面纱——织在<b>贴肤面</b>的那根纱，负责手感与吸湿。你摸到的柔软全是它的功劳。</div></div>
+        <div class="kv-row"><div class="kv-k">锦纶 15%</div><div class="kv-v">地纱与加固——藏在反面的骨架：整只袜的强度、跟尖加固层、橡筋的外包层，集中在受力部位而非均匀分布。</div></div>
+        <div class="kv-row"><div class="kv-k">氨纶 5%</div><div class="kv-v">以锦纶包覆纱（橡筋）与氨纶添纱形式存在——袜口回弹与整体贴脚。品质差距极大的一小撮（劣质橡筋=穿两次就垮）。</div></div>
+      </div>
+
+      <p>所以专业问法不是「棉含量多少」，而是：<b>「面纱什么纱？橡筋是单包还是双包？跟尖有没有加固？」</b>——三问下来，报价的合理性与工厂的专业度同时现形。</p>
+
+      <h4 class="mini-title">营销名词鉴定表</h4>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>常见营销名词与法定纤维名的对应关系（教学整理）</caption>
+          <thead><tr><th style="width:16%">营销名词</th><th>实际身份</th><th>主理人判断要点</th></tr></thead>
+          <tbody>
+            <tr><td><b>冰丝</b></td><td>商业俗称：细旦涤纶/锦纶/黏胶长丝织成的滑爽面料，常叠加<dfn class="term" data-term="凉感整理">凉感整理</dfn></td><td>凉不凉看数据（接触凉感系数 Qmax≥0.15，GB/T 35263），不看名字；成分标必须写法定纤维名</td></tr>
+            <tr><td><b>牛奶丝</b></td><td>绝大多数为涤纶/锦纶长丝的营销叫法；真牛奶蛋白纤维（<dfn class="term" data-term="牛奶纤维">牛奶纤维</dfn>）产量小、成本高、极少见</td><td>一律以成分标＋第三方定量检测（GB/T 2910 系列）为准</td></tr>
+            <tr><td><b>竹纤维</b></td><td>实为<b>竹浆黏胶</b>，应标「黏胶纤维（竹浆）」</td><td>吸湿柔软是真的，「天然抗菌」存疑（见下方警示框）</td></tr>
+            <tr><td><b>莱卡</b></td><td>英威达的氨纶商标，<dfn class="term" data-term="商标纤维">商标纤维</dfn>之一</td><td>成分标必须写「氨纶」；用「莱卡」宣传需授权凭证，正品有品质与防伪体系但价格更高</td></tr>
+            <tr><td><b>天丝</b></td><td>兰精的莱赛尔/莫代尔商标（<b>天丝</b>®）</td><td>成分标必须写「莱赛尔」「莫代尔」，直接标「天丝」反而违规；要求吊牌许可凭证</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+        话术警示：「抗菌竹纤维内裤」
+        </div>
+        <p>这套话术由两层借力拼成：「竹子天然抗菌」（指竹醌）＋「黏胶工艺生态环保」。事实是：竹浆黏胶经过制浆、纺丝、染整多道化学工序后，<b>竹醌所剩有限，「天然抗菌」基本没有标准可验证的落点</b>。内裤的抗菌宣称要落在可检测的指标上——按 FZ/T 73023 等标准看<b>洗涤 N 次后</b>的抗菌率（抗菌整理），而不是纤维名字。遇到「竹纤维抗菌」报价：要求提供成分检测＋洗涤后抗菌率报告，二者缺一，按普通黏胶定价。</p>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>为 Soran 定成分时的<b>三问清单</b>：①<b>功能诉求是什么？</b>——把上一页的功能优先级翻译成纤维语言（吸湿→莫代尔/莱赛尔；耐磨→锦纶加固；弹力→氨纶含量档位），不为一句话术买单。②<b>成本差异值不值？</b>——把纤维差价换算到单件成本与零售价差（例：莫代尔比黏胶贵约 1.5 元/件，能否支撑零售差价与卖点，示例量级）。③<b>供应链能否验证？</b>——商标纤维要授权/吊牌凭证，成分要可送检（GB/T 2910 定量），谈不拢验证方式就等于没有验证。三问过后再签单，能把 80% 的虚标风险挡在合同之外。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-lab" data-sec="s-lab"><span class="sec-no">08</span>交互演示：纱线参数放大镜</h2>
+
+      <p>把第 06 节的三把尺子装进一个可以玩的图：拖动滑杆，观察<b>纱支</b>如何改变纱的粗细与毛羽，<b>单丝根数 F</b> 如何改变单丝截面与光泽——并读一条随参数变化的「手感预期」。玩两分钟，「支数、旦数、F 数」就从名词变成了直觉。</p>
+
+      <div class="wg">
+        <div class="wg-panel" data-tabs>
+          <div class="wg-head"><span class="wg-tag">交互演示</span>纱线参数放大镜：拖动下方两个滑杆，左侧纱线与右侧截面实时变化</div>
+          <div class="wg-body">
+            <svg id="yarn-svg" viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+              <text id="yarn-lbl-count" x="60" y="36" font-size="12.5" font-weight="700" fill="#26231D">纱支：40S（英制支数，越大越细）</text>
+              <rect id="yarn-body" x="60" y="63" width="500" height="44" rx="22" fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+              <g id="yarn-twist"></g>
+              <g id="yarn-hair"></g>
+              <line id="yarn-gloss1" x1="80" y1="66.5" x2="540" y2="66.5" stroke="#FAF8F3" stroke-width="3" opacity=".3" stroke-linecap="round"/>
+              <line id="yarn-gloss2" x1="100" y1="69.5" x2="420" y2="69.5" stroke="#FAF8F3" stroke-width="1.6" opacity=".2" stroke-linecap="round"/>
+              <text x="60" y="150" font-size="11.5" fill="#5D574B">短纤纱侧视：纱支越高 → 纱越细、表面毛羽越少</text>
+              <text x="60" y="168" font-size="11.5" fill="#5D574B">长丝截面：F 越高 → 单丝越细（点越密、越细腻）</text>
+              <text x="60" y="186" font-size="11" fill="#8B8375">纸色高光示意光泽（随 F 增强）；斜线示意加捻；几何为示意非真实比例</text>
+              <text id="yarn-lbl-f" x="645" y="136" text-anchor="middle" font-size="12" font-weight="700" fill="#26231D">长丝截面示意：70D/48F</text>
+              <circle cx="645" cy="205" r="62" fill="#FAF8F3" stroke="#C7BFAE" stroke-width="1.5"/>
+              <g id="yarn-dots"></g>
+              <text id="yarn-lbl-dia" x="645" y="286" text-anchor="middle" font-size="11.5" fill="#5D574B">单丝相对粗细：1.00×（以 48F 为基准）</text>
+            </svg>
+            <div class="ctl-row" id="ctl-count"><label>纱支（英支 S）</label></div>
+            <div class="ctl-row" id="ctl-f"><label>单丝根数（F）</label></div>
+            <div id="yarn-feel" style="background:var(--surface-2);border-left:3px solid var(--gold);padding:10px 14px;border-radius:8px;font-size:13.5px;line-height:1.8;margin-top:12px">手感预期（示意）：40S ＋ 48F —— 中支：厚薄与细腻的平衡区；单丝适中：柔软与挺度均衡。</div>
+          </div>
+          <div class="wg-note">示例性质：纱支（S）属短纤纱体系，旦数（D）与单丝根数（F）属长丝体系——本演示把两者并置在同一画面，只为建立「越细→越细滑」的直觉；实际选料时它们分属不同纱线类型，几何均非真实比例。</div>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">分类地图</div><div class="kv-v">天然（吸湿亲肤）／再生纤维素（吸湿主力：黏胶→莫代尔→莱赛尔）／合成（功能担当：涤、锦、氨、丙）。</div></div>
+        <div class="kv-row"><div class="kv-k">棉系阶梯</div><div class="kv-v">普梳→精梳→长绒棉＋高支：品质与成本同步上行；棉湿强高于干强，耐洗烫。</div></div>
+        <div class="kv-row"><div class="kv-k">关键软肋</div><div class="kv-v">黏胶湿强降约 50%；涤纶几乎不吸湿（0.4%）；氨纶怕氯怕高温；锦纶耐氯差。</div></div>
+        <div class="kv-row"><div class="kv-k">细度三尺</div><div class="kv-v">短纤看纱支 Ne（越大越细）；长丝看旦数 D（dtex×0.9＝D）与单丝根数 F（同旦数下 F 越高越柔）。</div></div>
+        <div class="kv-row"><div class="kv-k">弹力纱</div><div class="kv-v">包芯纱（短纤包氨，棉感汗布）vs 包覆纱（长丝包氨，橡筋/无缝/文胸；双包优于单包）。</div></div>
+        <div class="kv-row"><div class="kv-k">成分标</div><div class="kv-v">GB/T 29862：≥5% 降序必标、允差 ±5%、「纯/100%」不容有意掺他纤；成分标只讲配比，不讲分布——分布由织法决定。</div></div>
+        <div class="kv-row"><div class="kv-k">谈判三问</div><div class="kv-v">功能诉求是什么？成本差异值不值？供应链能否验证？——三问之后再签单。</div></div>
+      </div>
+
+      <h3 class="sub-title">自测三题</h3>
+
+      <section class="quiz" data-quiz="basics-fibers-q1" data-q="一款深色锦氨弹力内裤，穿几次后只要一拉伸，布面就出现细密的「白芯」。最可能的原因是什么？" data-a="2" data-exp="锦氨布用酸性染料染色：染料上染锦纶，而氨纶基本不着色（白色）。拉伸时线圈被拉开、氨纶丝弯露在布面，白芯就显形——这是「结构问题」，不是掉色。缓解思路：让氨纶被包住（包芯/包覆结构）、控制氨纶外露量，或选有色氨纶/调整染色工艺；这也是判断工厂染整水平的常见考点。A 错误：掉色是摩擦脱色（白斑出现在摩擦处而非拉伸纹路），且色牢度问题不会只在拉伸时出现；B 错误：密度低是「露底透光」，与拉伸相关的规律性白芯不同；D 错误：光照反射无法解释「拉伸才出现」。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>面料掉色，摩擦把染料磨掉了</li>
+            <li>织物密度太低，拉伸后布面露底透光</li>
+            <li>氨纶基本不上染，拉伸时白色氨纶丝在锦纶线圈间显露</li>
+            <li>深色布面反光不均，属于正常光学现象</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-fibers-q2" data-q="预算相同，两款棉袜一款用 21S、一款用 40S。以下判断哪个最专业？" data-a="2" data-exp="支数没有绝对好坏，只有用途适配：21S 粗支纱耐造、毛圈饱满，适合毛圈运动袜、加厚保暖款；40S 细支纱细腻贴肤，适合轻薄款、正装袜——同价时按用途选才是专业判断。A 错误：「支数高＝好」是半个真理，粗支用错地方反而娇气；B 错误：便宜不是理由，21S 织轻薄夏袜会粗糙起球；D 错误：支数直接决定直径、手感与布面细腻度，与品牌无关。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>40S 一定更好，支数越高品质越高</li>
+            <li>21S 更划算，粗纱耐用，应该全选 21S</li>
+            <li>看用途选：毛圈运动袜/加厚款选 21S，轻薄贴身款选 40S，同价时适配第一</li>
+            <li>支数只影响成本，不影响手感，按品牌选即可</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-fibers-q3" data-q="供应商报价一款无缝针织内裤，成分标写着「莫代尔 100%」。这可信吗？" data-a="2" data-exp="无缝针织是筒状成形织造，需要弹力纱（氨纶添纱或包覆纱）提供横向弹性并稳定线圈——没有氨纶的无缝内裤既无法正常织造定形，也无法贴身穿。因此正规无缝产品必然含氨纶并如实标出，「莫代尔 100%」的标注与品类结构矛盾：要么漏标、要么虚标。正确动作：要求第三方成分检测（GB/T 2910 定量），并核对 GB/T 29862 的标注规则。A/B 错误：不是「能不能织」的问题，而是标注与产品结构相互矛盾；D 错误：成分标是法定要求，无缝产品同样必须标注。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>可信，无缝机想织什么成分都可以</li>
+            <li>可信，只是这家工厂工艺特别，不需要氨纶</li>
+            <li>高度可疑：无缝针织需要氨纶提供弹力与织造稳定，正规产品必然含氨纶；标注与结构矛盾，应要求第三方成分检测</li>
+            <li>无所谓，无缝产品可以不标注成分</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互 */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var NS = 'http://www.w3.org/2000/svg';
+
+    /* ---------- 图 1-4：三组静态截面点阵（向日葵布局） ---------- */
+    function packDots(gid, cx, cy, R, n) {
+      var g = document.getElementById(gid);
+      if (!g) return;
+      var dr = Math.sqrt(0.60 * R * R / n);
+      for (var i = 0; i < n; i++) {
+        var r = R * Math.sqrt((i + 0.5) / n);
+        var th = i * 2.399963;
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', (cx + r * Math.cos(th)).toFixed(1));
+        c.setAttribute('cy', (cy + r * Math.sin(th)).toFixed(1));
+        c.setAttribute('r', dr.toFixed(2));
+        c.setAttribute('fill', '#44657F');
+        g.appendChild(c);
+      }
+    }
+    packDots('fig-f24', 150, 150, 56, 24);
+    packDots('fig-f48', 380, 150, 56, 48);
+    packDots('fig-f144', 610, 150, 56, 144);
+
+    /* ---------- 图 1-6：纱线参数放大镜 ---------- */
+    var bodyR = document.getElementById('yarn-body');
+    if (!bodyR || !window.W) return;
+    var twist = document.getElementById('yarn-twist');
+    var hair = document.getElementById('yarn-hair');
+    var g1 = document.getElementById('yarn-gloss1');
+    var g2 = document.getElementById('yarn-gloss2');
+    var dots = document.getElementById('yarn-dots');
+    var lblC = document.getElementById('yarn-lbl-count');
+    var lblF = document.getElementById('yarn-lbl-f');
+    var lblD = document.getElementById('yarn-lbl-dia');
+    var feel = document.getElementById('yarn-feel');
+    var seeds = [];
+    for (var s = 0; s < 64; s++) seeds.push(Math.random());
+
+    function pack(cx, cy, R, n) {
+      dots.innerHTML = '';
+      var dr = Math.sqrt(0.60 * R * R / n);
+      for (var i = 0; i < n; i++) {
+        var r = R * Math.sqrt((i + 0.5) / n);
+        var th = i * 2.399963;
+        var c = document.createElementNS(NS, 'circle');
+        c.setAttribute('cx', (cx + r * Math.cos(th)).toFixed(1));
+        c.setAttribute('cy', (cy + r * Math.sin(th)).toFixed(1));
+        c.setAttribute('r', dr.toFixed(2));
+        c.setAttribute('fill', '#44657F');
+        dots.appendChild(c);
+      }
+    }
+
+    function feelText(c, f) {
+      var a, b, use;
+      if (c <= 28) { a = '粗支：纱粗布厚，颗粒感与温暖感强'; use = '毛圈运动袜、罗口、加厚秋裤'; }
+      else if (c <= 42) { a = '中支：厚薄与细腻的平衡区'; use = '常规棉袜、汗布内裤、T 恤'; }
+      else { a = '高支：细滑贴肤，轻薄有垂感'; use = '轻薄内裤汗布、高支袜、细腻无缝面料'; }
+      if (f <= 48) { b = '单丝偏粗：手感偏挺、滑爽，光泽偏硬'; }
+      else if (f <= 96) { b = '单丝适中：柔软与挺度均衡'; }
+      else { b = '单丝极细：柔糯细腻，泛柔和光泽'; }
+      return '手感预期（示意）：<b>' + c + 'S ＋ ' + f + 'F</b> —— ' + a + '；' + b + '。参考用途：' + use + '。';
+    }
+
+    var cur = { c: 40, f: 48 };
+
+    function update(c, f) {
+      var t = 44 - (c - 21) * 30 / 39; /* 21S→44px，60S→14px */
+      var top = 85 - t / 2;
+      bodyR.setAttribute('y', top.toFixed(1));
+      bodyR.setAttribute('height', t.toFixed(1));
+      bodyR.setAttribute('rx', (t / 2).toFixed(1));
+      /* 加捻斜线 */
+      var h = '';
+      for (var x = 92; x <= 540; x += 44) {
+        h += '<line x1="' + x + '" y1="' + (top + 3).toFixed(1) + '" x2="' + (x + 16) + '" y2="' + (85 + t / 2 - 3).toFixed(1) + '" stroke="#C7D8CE" stroke-width="1.2"/>';
+      }
+      twist.innerHTML = h;
+      /* 毛羽：纱支越高越少 */
+      var n = Math.round(34 - (c - 21) * (34 - 7) / 39);
+      var h2 = '';
+      for (var i = 0; i < n; i++) {
+        var hx = 70 + (i * 89 % 470) + seeds[i % 64] * 8;
+        var len = 5 + seeds[(i + 13) % 64] * 7;
+        var up = i % 2 === 0;
+        var y0 = up ? top : 85 + t / 2;
+        var y1 = up ? top - len : 85 + t / 2 + len;
+        h2 += '<line x1="' + hx.toFixed(1) + '" y1="' + y0.toFixed(1) + '" x2="' + (hx + len * 0.7).toFixed(1) + '" y2="' + y1.toFixed(1) + '" stroke="#8B8375" stroke-width="1"/>';
+      }
+      hair.innerHTML = h2;
+      /* 光泽：F 越高越柔亮 */
+      var op = 0.12 + (f - 24) / 120 * 0.55;
+      g1.setAttribute('y1', (top + 3.5).toFixed(1)); g1.setAttribute('y2', (top + 3.5).toFixed(1));
+      g2.setAttribute('y1', (top + 6.5).toFixed(1)); g2.setAttribute('y2', (top + 6.5).toFixed(1));
+      g1.setAttribute('opacity', Math.min(0.9, op).toFixed(2));
+      g2.setAttribute('opacity', Math.min(0.8, op * 0.7).toFixed(2));
+      /* 截面点阵 */
+      pack(645, 205, 56, f);
+      /* 文本 */
+      lblC.textContent = '纱支：' + c + 'S（英制支数，越大越细）';
+      lblF.textContent = '长丝截面示意：70D/' + f + 'F';
+      var ratio = Math.sqrt(48 / f);
+      lblD.textContent = '单丝相对粗细：' + ratio.toFixed(2) + '×（以 48F 为基准）';
+      feel.innerHTML = feelText(c, f);
+    }
+
+    var cRow = document.getElementById('ctl-count');
+    var fRow = document.getElementById('ctl-f');
+    if (cRow && fRow) {
+      var sc = W.slider({ min: 21, max: 60, step: 1, value: 40, fmt: function (v) { return v + ' S'; }, onInput: function (v) { cur.c = v; update(cur.c, cur.f); } });
+      var sf = W.slider({ min: 24, max: 144, step: 12, value: 48, fmt: function (v) { return v + ' F'; }, onInput: function (v) { cur.f = v; update(cur.c, cur.f); } });
+      sc.input.id = 'sl-yarn-count';
+      sf.input.id = 'sl-yarn-f';
+      cRow.querySelector('label').setAttribute('for', 'sl-yarn-count');
+      fRow.querySelector('label').setAttribute('for', 'sl-yarn-f');
+      cRow.appendChild(sc.input); cRow.appendChild(sc.val);
+      fRow.appendChild(sf.input); fRow.appendChild(sf.val);
+      update(40, 48);
+    }
+  })();
+};
+</script>
+</body>
+</html>

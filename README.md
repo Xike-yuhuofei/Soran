@@ -10,4 +10,13 @@
 
 ## 目录结构
 
-待补充。
+- `textbook/` — 贴身衣物专业学习教材（纯离线 HTML，双击即用）
+
+## 本地使用教材
+
+1. 打开 `textbook/index.html`（双击即可，支持 Mac / Windows 主流浏览器；也可用任意静态服务器托管）。
+2. 无需网络：全部图形为内联 SVG，无外部字体 / CDN 依赖。
+3. 学习进度、自测答题、清单勾选状态自动保存在浏览器 localStorage 中（按浏览器与设备隔离，清除浏览器数据会重置进度）。
+4. 搜索：左侧搜索框或按 `/` 键，可同时检索 170 条专业术语与全部章节内容。
+5. 章节内容检索索引由 `textbook/tools/build-search-index.mjs` 生成；新增或修改章节页后，在该目录运行 `node tools/build-search-index.mjs` 重建。
+6. 页面编写规范见 `textbook/AUTHORING.md`。

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生产制造与供应链 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="basics-supply" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第一篇 · 通用基础 · 生产供应链</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BASICS · SUPPLY</div>
+        <h1 class="page-title">生产制造与供应链</h1>
+        <p class="page-lede">一条内裤在到达你手里之前，要经过纤维、纱线、织造、染整、裁剪、缝制、检针、包装八个环节，每个环节都有人在赚一段钱。本页把这条链路完整摊开：谁在生产、MOQ 与价格如何联动、成本怎么拆、交期与品质成本从哪来、产业集群怎么选、Soran 该用什么制造模式起步。读完你将能看懂一份报价单的结构，判断对话对象坐在链路的哪一环。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 25 分钟</span>
+          <span class="chip">前置：纤维与纱线 · 面料染整（建议先读）</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">01</span>从纤维到成衣：全链路地图</h2>
+
+      <p>先做一个思想实验：你在商场花 39 元买了一条女式内裤。这条内裤的棉，可能在新疆采摘；纱在山东纺；布在广东织、又在福建定型；橡筋来自浙江；最后在汕头谷饶的一间车缝厂里，被一位工人用四线包缝机在 90 秒内缝合成型。整条链路上有七八类玩家，每换一手，价格就往上叠一层。<b>看不懂链路，就看不懂报价。</b></p>
+
+      <p>把全链路摊开，是这样的：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 545" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="18" y="18" font-size="11.5" fill="#8B8375" font-weight="600" letter-spacing="2">上游 · 原料到面料（按公斤 / 米计价）</text>
+            <!-- 行1：四个环节 -->
+            <g>
+              <rect x="18" y="30" width="160" height="92" rx="10" fill="#3D6B57"/>
+              <text x="98" y="56" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">① 纤维原料</text>
+              <text x="98" y="76" text-anchor="middle" fill="#CDE0D6" font-size="11.5">棉商 · 化纤厂</text>
+              <text x="98" y="97" text-anchor="middle" fill="#F3E3C3" font-size="11.5">价格基准 1×</text>
+            </g>
+            <g>
+              <rect x="208" y="30" width="160" height="92" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+              <text x="288" y="56" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">② 纺纱 / 纺丝</text>
+              <text x="288" y="76" text-anchor="middle" fill="#5D574B" font-size="11.5">纱厂 · 弹力纱厂</text>
+              <text x="288" y="97" text-anchor="middle" fill="#B98F45" font-size="11.5">+15%-40%（示例）</text>
+            </g>
+            <g>
+              <rect x="398" y="30" width="160" height="92" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+              <text x="478" y="56" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">③ 织造</text>
+              <text x="478" y="76" text-anchor="middle" fill="#5D574B" font-size="11.5">圆机 / 经编 / 袜机 / 无缝机</text>
+              <text x="478" y="97" text-anchor="middle" fill="#B98F45" font-size="11.5">坯布 +30%-60%（示例）</text>
+            </g>
+            <g>
+              <rect x="588" y="30" width="160" height="92" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+              <text x="668" y="56" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">④ 染整</text>
+              <text x="668" y="76" text-anchor="middle" fill="#5D574B" font-size="11.5">印染厂 · 定型</text>
+              <text x="668" y="97" text-anchor="middle" fill="#B98F45" font-size="11.5">成品布 +40%-80%（示例）</text>
+            </g>
+            <!-- 行1 箭头 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="180" y1="76" x2="196" y2="76"/><polygon points="204,76 195,71.5 195,80.5"/>
+              <line x1="370" y1="76" x2="386" y2="76"/><polygon points="394,76 385,71.5 385,80.5"/>
+              <line x1="560" y1="76" x2="576" y2="76"/><polygon points="584,76 575,71.5 575,80.5"/>
+            </g>
+            <!-- 换行连接线 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="none">
+              <path d="M668 122 L668 168 L98 168 L98 210"/>
+              <polygon points="98,218 93.5,209 102.5,209" fill="#C7BFAE"/>
+            </g>
+            <text x="380" y="184" text-anchor="middle" font-size="11.5" fill="#8B8375">成品面料 + 辅料（橡筋 / 花边 / 唛头 / 胶袋）进入成衣环节</text>
+            <!-- 行2 -->
+            <text x="588" y="208" font-size="11.5" fill="#8B8375" font-weight="600" letter-spacing="2">下游 · 成衣（按件计价）</text>
+            <g>
+              <rect x="18" y="218" width="160" height="92" rx="10" fill="#fff" stroke="#E6C9B8" stroke-width="1.5"/>
+              <text x="98" y="244" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">⑤ 裁剪</text>
+              <text x="98" y="264" text-anchor="middle" fill="#5D574B" font-size="11.5">成衣厂裁床 · 排料</text>
+              <text x="98" y="285" text-anchor="middle" fill="#B0603F" font-size="11.5">面料损耗 3%-8%（示例）</text>
+            </g>
+            <g>
+              <rect x="208" y="218" width="160" height="92" rx="10" fill="#fff" stroke="#E6C9B8" stroke-width="1.5"/>
+              <text x="288" y="244" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">⑥ 缝制 / 成型</text>
+              <text x="288" y="264" text-anchor="middle" fill="#5D574B" font-size="11.5">车缝厂 或 袜机一体成型</text>
+              <text x="288" y="285" text-anchor="middle" fill="#B0603F" font-size="11.5">工缴 = 人工与设备摊销</text>
+            </g>
+            <g>
+              <rect x="398" y="218" width="160" height="92" rx="10" fill="#fff" stroke="#E6C9B8" stroke-width="1.5"/>
+              <text x="478" y="244" text-anchor="middle" fill="#26231D" font-size="14" font-weight="700">⑦ 整烫 · 检针</text>
+              <text x="478" y="264" text-anchor="middle" fill="#5D574B" font-size="11.5">后整车间 · 检针机</text>
+              <text x="478" y="285" text-anchor="middle" fill="#B0603F" font-size="11.5">回修在这里拦截</text>
+            </g>
+            <g>
+              <rect x="588" y="218" width="160" height="92" rx="10" fill="#26231D"/>
+              <text x="668" y="244" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">⑧ 包装 · 出库</text>
+              <text x="668" y="264" text-anchor="middle" fill="#B9B29F" font-size="11.5">成衣厂 / 贸易商</text>
+              <text x="668" y="285" text-anchor="middle" fill="#E8C87E" font-size="11.5">出厂价在此形成</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="180" y1="264" x2="196" y2="264"/><polygon points="204,264 195,259.5 195,268.5"/>
+              <line x1="370" y1="264" x2="386" y2="264"/><polygon points="394,264 385,259.5 385,268.5"/>
+              <line x1="560" y1="264" x2="576" y2="264"/><polygon points="584,264 575,259.5 575,268.5"/>
+            </g>
+            <!-- 加价逻辑说明 -->
+            <rect x="18" y="340" width="730" height="70" rx="10" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="38" y="364" font-size="13" font-weight="700" fill="#8F6E2F">「每换一手，加一次价」（示例比例，教学参考）</text>
+            <text x="38" y="384" font-size="12" fill="#5D574B">出厂价 ≈ 材料成本 × 1.6-2.2；零售价 ≈ 出厂价 × 3-5；材料约占出厂价 45%-60%。</text>
+            <text x="38" y="401" font-size="12" fill="#5D574B">认清对话对象坐在哪一环，才知道报价里叠了几层手——这决定你的谈判空间。</text>
+            <!-- 参与者链条 -->
+            <text x="18" y="436" font-size="11" fill="#8B8375" font-weight="600" letter-spacing="2">参与者链条</text>
+            <g font-size="11.5" fill="#26231D">
+              <rect x="18" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="58" y="467" text-anchor="middle">棉商·化纤</text>
+              <polygon points="106,463 99,459 99,467" fill="#C7BFAE"/>
+              <rect x="112" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="152" y="467" text-anchor="middle">纱厂</text>
+              <polygon points="200,463 193,459 193,467" fill="#C7BFAE"/>
+              <rect x="206" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="246" y="467" text-anchor="middle">织厂</text>
+              <polygon points="294,463 287,459 287,467" fill="#C7BFAE"/>
+              <rect x="300" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="340" y="467" text-anchor="middle">印染厂</text>
+              <polygon points="388,463 381,459 381,467" fill="#C7BFAE"/>
+              <rect x="394" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="434" y="467" text-anchor="middle">辅料商</text>
+              <polygon points="482,463 475,459 475,467" fill="#C7BFAE"/>
+              <rect x="488" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="528" y="467" text-anchor="middle">成衣厂</text>
+              <polygon points="576,463 569,459 569,467" fill="#C7BFAE"/>
+              <rect x="582" y="446" width="72" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE"/><text x="618" y="467" text-anchor="middle" fill="#2C5142" font-weight="600">品牌（你）</text>
+              <polygon points="662,463 655,459 655,467" fill="#C7BFAE"/>
+              <rect x="668" y="446" width="80" height="34" rx="8" fill="#fff" stroke="#E6E0D3"/><text x="708" y="467" text-anchor="middle">渠道·零售</text>
+            </g>
+            <text x="18" y="510" font-size="11.5" fill="#8B8375">你在哪一环直接采购，决定其余环节由谁替你把关：向面料商买现货色布，织造与染整的品质就由他兜底；直接对接印染厂，把关的责任就在你。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-1</span><b>从纤维到成衣的全链路。</b>八个环节、两类计价逻辑（上游按公斤/米，下游按件）；每环的参与者与加价幅度为教学示例。袜子与无缝品类在环节⑥改为「袜机/无缝机一体成型」，链路更短。</figcaption>
+      </figure>
+
+      <p>两个计价逻辑的分界点值得记住：<b>面料世界里一切都是「每公斤、每米」</b>——你谈的是 60 元/kg 还是 200 元/kg；<b>成衣世界里一切都是「每件」</b>——你谈的是 4 元/件还是 9 元/件。把公斤价乘以单件用量（克），两个世界才接上头。很多新主理人被报价绕晕，根源就是没有把这两个单位换算清楚。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>起步期你只需要也应该只对话<b>两个角色</b>：面料商（或成衣厂的面料采购）与成衣厂。织厂、印染厂让上游去管。但你要能看懂链路，才能判断「这家成衣厂说自己做不了无缝内裤」是真做不了（没设备），还是不想接小单——这两者的应对完全不同。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cat" data-sec="s-cat"><span class="sec-no">02</span>三大品类的制造差异</h2>
+
+      <p>内裤、袜子、文胸虽然都叫「贴身衣物」，但制造逻辑完全是三种物种：<b>内裤是「裁剪+车缝」</b>，布是布、衣是衣；<b>袜子是「织造成型」</b>，纱进去、袜子出来，几乎没有裁剪；<b>文胸是「部件组装」</b>，20 来种来自不同行业的部件汇合到一条流水线上。这个差异直接决定了成本结构、打样难度和供应商类型。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 内裤列 -->
+            <rect x="16" y="14" width="220" height="38" rx="9" fill="#3D6B57"/>
+            <text x="126" y="39" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">内裤 · 裁剪 + 车缝</text>
+            <g font-size="12" fill="#26231D">
+              <rect x="28" y="66" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="126" y="86" text-anchor="middle">排料裁断（纸样套裁）</text>
+              <polygon points="130,104 126,110 122,104" fill="#C7BFAE"/><line x1="126" y1="98" x2="126" y2="106" stroke="#C7BFAE" stroke-width="1.6"/>
+              <rect x="28" y="112" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="126" y="132" text-anchor="middle">包缝 / 绷缝车缝</text>
+              <line x1="126" y1="144" x2="126" y2="152" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="130,152 126,158 122,152" fill="#C7BFAE"/>
+              <rect x="28" y="160" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="126" y="180" text-anchor="middle">无痕款：激光切边 + 胶条</text>
+              <line x1="126" y1="192" x2="126" y2="200" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="130,200 126,206 122,200" fill="#C7BFAE"/>
+              <rect x="28" y="208" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="126" y="228" text-anchor="middle">整烫 · 检针</text>
+              <line x1="126" y1="240" x2="126" y2="248" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="130,248 126,254 122,248" fill="#C7BFAE"/>
+              <rect x="28" y="256" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="126" y="276" text-anchor="middle">包装出库</text>
+            </g>
+            <g font-size="11.5">
+              <text x="28" y="316" fill="#5D574B">工序道数</text><rect x="100" y="306" width="42" height="12" rx="6" fill="#3D6B57"/><text x="150" y="316" fill="#26231D" font-weight="600">8-12 道</text>
+              <text x="28" y="340" fill="#5D574B">部件数</text><rect x="100" y="330" width="26" height="12" rx="6" fill="#B98F45"/><text x="134" y="340" fill="#26231D" font-weight="600">4-6 个</text>
+              <text x="28" y="364" fill="#5D574B">SKU 特点</text><text x="100" y="364" fill="#26231D" font-weight="600">款多、量散、翻单快</text>
+              <text x="28" y="388" fill="#5D574B">成本大头</text><text x="100" y="388" fill="#26231D" font-weight="600">面料（约占 55-70%）</text>
+            </g>
+            <!-- 袜子列 -->
+            <rect x="270" y="14" width="220" height="38" rx="9" fill="#B98F45"/>
+            <text x="380" y="39" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">袜子 · 织造成型</text>
+            <g font-size="12" fill="#26231D">
+              <rect x="282" y="66" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="380" y="86" text-anchor="middle">袜机一体织造（含袜口）</text>
+              <line x1="380" y1="98" x2="380" y2="106" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="384,106 380,112 376,106" fill="#C7BFAE"/>
+              <rect x="282" y="114" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="380" y="134" text-anchor="middle">缝头（对目缝合）</text>
+              <line x1="380" y1="146" x2="380" y2="154" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="384,154 380,160 376,154" fill="#C7BFAE"/>
+              <rect x="282" y="162" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="380" y="182" text-anchor="middle">定型（烫袜板）</text>
+              <line x1="380" y1="194" x2="380" y2="202" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="384,202 380,208 376,208" fill="#C7BFAE"/>
+              <rect x="282" y="210" width="196" height="32" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="380" y="230" text-anchor="middle">检针 · 包装出库</text>
+            </g>
+            <g font-size="11.5">
+              <text x="282" y="316" fill="#5D574B">工序道数</text><rect x="354" y="306" width="34" height="12" rx="6" fill="#B98F45"/><text x="396" y="316" fill="#26231D" font-weight="600">6-10 道</text>
+              <text x="282" y="340" fill="#5D574B">部件数</text><rect x="354" y="330" width="14" height="12" rx="6" fill="#B0603F"/><text x="376" y="340" fill="#26231D" font-weight="600">2-3 种纱</text>
+              <text x="282" y="364" fill="#5D574B">SKU 特点</text><text x="354" y="364" fill="#26231D" font-weight="600">换款=重新排针程序</text>
+              <text x="282" y="388" fill="#5D574B">成本大头</text><text x="354" y="388" fill="#26231D" font-weight="600">纱线——克重即成本</text>
+            </g>
+            <!-- 文胸列 -->
+            <rect x="524" y="14" width="220" height="38" rx="9" fill="#B0603F"/>
+            <text x="634" y="39" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">文胸 · 部件组装</text>
+            <g font-size="11.5" fill="#26231D">
+              <rect x="536" y="62" width="196" height="27" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="634" y="80" text-anchor="middle">面料织造（经编锦氨）</text>
+              <line x1="634" y1="89" x2="634" y2="94" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="637,94 634,98 631,94" fill="#C7BFAE"/>
+              <rect x="536" y="100" width="196" height="27" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="634" y="118" text-anchor="middle">花边 · 织带 · 背扣采购</text>
+              <line x1="634" y1="127" x2="634" y2="132" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="637,132 634,136 631,132" fill="#C7BFAE"/>
+              <rect x="536" y="138" width="196" height="27" rx="7" fill="#F7EAE2" stroke="#E6C9B8"/><text x="634" y="156" text-anchor="middle" fill="#B0603F" font-weight="600">模杯开模 + 模压成型</text>
+              <line x1="634" y1="165" x2="634" y2="170" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="637,170 634,174 631,170" fill="#C7BFAE"/>
+              <rect x="536" y="176" width="196" height="27" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="634" y="194" text-anchor="middle">裁剪部件（20+ 种料）</text>
+              <line x1="634" y1="203" x2="634" y2="208" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="637,208 634,212 631,208" fill="#C7BFAE"/>
+              <rect x="536" y="214" width="196" height="27" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="634" y="232" text-anchor="middle">组装车缝（30-45 道工序）</text>
+              <line x1="634" y1="241" x2="634" y2="246" stroke="#C7BFAE" stroke-width="1.6"/><polygon points="637,246 634,250 631,246" fill="#C7BFAE"/>
+              <rect x="536" y="252" width="196" height="27" rx="7" fill="#fff" stroke="#E6E0D3"/><text x="634" y="270" text-anchor="middle">定型 · 检针 · 包装</text>
+            </g>
+            <g font-size="11.5">
+              <text x="536" y="316" fill="#5D574B">工序道数</text><rect x="608" y="306" width="170" height="12" rx="6" fill="#B0603F"/><text x="640" y="316" fill="#26231D" font-weight="600">30-45 道</text>
+              <text x="536" y="340" fill="#5D574B">部件数</text><rect x="608" y="330" width="120" height="12" rx="6" fill="#B98F45"/>
+              <text x="668" y="340" font-size="11" fill="#fff" font-weight="700" text-anchor="middle">15-20 种</text>
+              <text x="536" y="364" fill="#5D574B">SKU 特点</text><text x="608" y="364" fill="#26231D" font-weight="600">尺码×杯型矩阵爆炸</text>
+              <text x="536" y="388" fill="#5D574B">成本大头</text><text x="608" y="388" fill="#26231D" font-weight="600">材料+工缴双高</text>
+            </g>
+            <rect x="16" y="412" width="728" height="44" rx="10" fill="#F3EFE7" stroke="#E6E0D3"/>
+            <text x="380" y="439" text-anchor="middle" font-size="12.5" fill="#26231D" font-weight="600">供应链复杂度：文胸 ≫ 内裤 &gt; 袜子——这也是文胸溢价高、水也深的根源</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-2</span><b>三大品类的制造路径。</b>内裤靠裁剪车缝（工序少、SKU 多、打样快）；袜子靠袜机织造成型（后道只有缝头与定型，克重几乎等于成本）；文胸是部件组装（模杯/钢圈/花边/拉带/背扣，30-45 道工序）。图内数字为教学示例量级。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">为什么文胸供应链最复杂</h3>
+      <ul class="plain">
+        <li><b>部件来自不同行业。</b>模杯是化工发泡件，钢圈是金属件，花边是经编织物，织带/橡筋是机织品，背扣是五金注塑件——<dfn class="term" data-term="模杯">模杯</dfn>供应商、花边厂、织带厂、车缝厂各管一段，采购管理面是内裤的 4-5 倍。</li>
+        <li><b>工序串并联交织。</b>模杯要提前开模（开模费数千元/套起，示例），面料要同步织染，最后在车缝线上汇合；任何一件辅料延期，整条线停摆。</li>
+        <li><b>合体度要求苛刻。</b>文胸直接决定承托与舒适，版型迭代轮次远多于内裤；放码不是等比缩放，每个尺码要独立校验。</li>
+        <li><b>SKU 是矩阵。</b>下围 5cm 一档 × 罩杯逐级，一个款式 8-20 个 SKU 起；每个 SKU 的杯垫、钢圈规格都不同，库存与起订量管理难度指数级上升。</li>
+      </ul>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>选品类等于选供应链复杂度。Soran 的合理顺序是：<b>先用内裤/袜子练手</b>（链路短、打样快、试错便宜），<b>再上文胸</b>（单件价值高、复购与口碑效应强，但需要你能Hold住部件采购与试穿迭代）。跳过练手直接做文胸，是新手最常见的「高开低走」。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cluster" data-sec="s-cluster"><span class="sec-no">03</span>产业集群地图</h2>
+
+      <p>贴身衣物在中国的生产高度集聚：<dfn class="term" data-term="产业集群">产业集群</dfn>的意义在于——集群里你能在一小时内看完全部供应商（面料、辅料、成衣、印染），打样不用等快递，小单有人接，出问题当天能到现场。选集群就是选你的供应链半径。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 示意版图（整体缩放左移，避让右侧图例） -->
+            <g transform="translate(-60,10) scale(0.88)">
+              <path d="M60 88 L120 52 L200 44 L252 74 L262 108 L232 118 L252 140 L316 128 L352 158 L396 150 L408 190 L448 196 L470 236 L492 268 L486 300 L500 322 L524 340 L552 352 L592 348 L620 366 L596 388 L548 380 L500 388 L440 402 L360 404 L280 384 L196 348 L128 296 L84 220 L60 140 Z"
+                fill="#F3EFE7" stroke="#D4CCBB" stroke-width="1.6"/>
+              <!-- 集群点 -->
+              <g font-size="13" font-weight="700" text-anchor="middle">
+                <circle cx="566" cy="342" r="11" fill="#B0603F"/><text x="566" y="346.5" fill="#fff">1</text>
+                <circle cx="548" cy="366" r="11" fill="#3D6B57"/><text x="548" y="370.5" fill="#fff">4</text>
+                <circle cx="508" cy="370" r="11" fill="#B98F45"/><text x="508" y="374.5" fill="#fff">2</text>
+                <circle cx="492" cy="384" r="11" fill="#44657F"/><text x="492" y="388.5" fill="#fff">3</text>
+                <circle cx="516" cy="314" r="11" fill="#2C5142"/><text x="516" y="318.5" fill="#fff">5</text>
+                <circle cx="468" cy="276" r="11" fill="#B0603F"/><text x="468" y="280.5" fill="#fff">6</text>
+                <circle cx="450" cy="296" r="11" fill="#B98F45"/><text x="450" y="300.5" fill="#fff">7</text>
+              </g>
+            </g>
+            <text x="240" y="398" text-anchor="middle" font-size="11" fill="#B9B29F">示意图 · 非精确地理边界</text>
+            <!-- 图例 -->
+            <g>
+              <rect x="486" y="24" width="262" height="400" rx="10" fill="#fff" stroke="#E6E0D3"/>
+              <text x="502" y="48" font-size="12.5" font-weight="700" fill="#26231D">七大集群与擅长品类</text>
+              <g font-size="11.5">
+                <circle cx="510" cy="72" r="9" fill="#B0603F"/><text x="510" y="76" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">1</text>
+                <text x="528" y="70" fill="#26231D" font-weight="700">汕头潮南 · 谷饶</text>
+                <text x="528" y="87" fill="#5D574B">文胸模杯 / 家居服 / 内裤全链</text>
+                <circle cx="510" cy="122" r="9" fill="#B98F45"/><text x="510" y="126" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">2</text>
+                <text x="528" y="120" fill="#26231D" font-weight="700">佛山盐步</text>
+                <text x="528" y="137" fill="#5D574B">车缝文胸 / 调整型 / 中高端</text>
+                <circle cx="510" cy="172" r="9" fill="#44657F"/><text x="510" y="176" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">3</text>
+                <text x="528" y="170" fill="#26231D" font-weight="700">中山小榄</text>
+                <text x="528" y="187" fill="#5D574B">车缝内裤 / 男士平角强项</text>
+                <circle cx="510" cy="222" r="9" fill="#3D6B57"/><text x="510" y="226" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">4</text>
+                <text x="528" y="220" fill="#26231D" font-weight="700">普宁</text>
+                <text x="528" y="237" fill="#5D574B">衬衣 / 睡衣 / 家居服</text>
+                <circle cx="510" cy="272" r="9" fill="#2C5142"/><text x="510" y="276" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">5</text>
+                <text x="528" y="270" fill="#26231D" font-weight="700">义乌</text>
+                <text x="528" y="287" fill="#5D574B">无缝内衣（圣东尼机集群）</text>
+                <circle cx="510" cy="322" r="9" fill="#B0603F"/><text x="510" y="326" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">6</text>
+                <text x="528" y="320" fill="#26231D" font-weight="700">诸暨大唐</text>
+                <text x="528" y="337" fill="#5D574B">全品类袜子 / 配套最全</text>
+                <circle cx="510" cy="372" r="9" fill="#B98F45"/><text x="510" y="376" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">7</text>
+                <text x="528" y="370" fill="#26231D" font-weight="700">福建长乐</text>
+                <text x="528" y="387" fill="#5D574B">经编面料（锦氨/网眼/花边）</text>
+              </g>
+              <text x="502" y="412" font-size="11" fill="#8B8375">数字与图中位置对应</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-3</span><b>贴身衣物产业集群示意。</b>位置为示意而非精确地理。每个集群内部都有「面料—辅料—成衣—印染」的分工，集群选择的本质是选择供应链半径与配套成熟度。</figcaption>
+      </figure>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">① 汕头潮南（谷饶）</div><div class="kv-v">全国最大的<dfn class="term" data-term="汕头潮南">内衣产业集群</dfn>，<dfn class="term" data-term="谷饶">谷饶</dfn>镇周边聚集了模杯、织带、花边、印染、车缝的完整链条，中小单友好、打样极快。<b>Soran 起步期首选</b>：内裤与文胸都能在此落地，后期升级再横向比价。</div></div>
+        <div class="kv-row"><div class="kv-k">② 佛山盐步</div><div class="kv-v">老牌「内衣名镇」，大厂多、品质体系与外单经验成熟，车缝文胸与调整型内衣强项；起订量与价格高于潮南。<b>适合 Soran 品质升级期</b>：当你要做中高端线、需要更强的品控与验厂背书时来谈。</div></div>
+        <div class="kv-row"><div class="kv-k">③ 中山小榄</div><div class="kv-v">车缝内裤专精集群，男士平角与基础款效率高、价格有竞争力。<b>起步期内裤品类可与之并行比价</b>，尤其男款。</div></div>
+        <div class="kv-row"><div class="kv-k">④ 普宁</div><div class="kv-v">衬衣、睡衣、家居服集群。Soran 若拓展家居服/睡衣线再去看，起步期不必分心。</div></div>
+        <div class="kv-row"><div class="kv-k">⑤ 义乌</div><div class="kv-v"><dfn class="term" data-term="义乌无缝">无缝针织集群</dfn>，圣东尼机型保有量全国领先，无缝内裤、背心式文胸、运动背心的主产地；配套染整与后道齐全。织机排产慢、打版周期长，<b>适合第二阶段扩充无缝品类</b>。</div></div>
+        <div class="kv-row"><div class="kv-k">⑥ 诸暨大唐</div><div class="kv-v"><dfn class="term" data-term="大唐袜业">全球最大袜业集群</dfn>，从一元棉袜到功能袜都能落地，橡筋、缝头、定型、包装配套完整，多规格混单能力强。<b>袜子品类必去</b>，起步期即可对接。</div></div>
+        <div class="kv-row"><div class="kv-k">⑦ 福建长乐</div><div class="kv-v">经编面料织造基地（锦氨特里科、弹力网、花边），是文胸面料的上游。成衣厂少。<b>量大之后去谈一手面料价</b>，起步期经由面料商/潮南配套即可。</div></div>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸：集群的风险面
+        </div>
+        <p>集群的好处是配套快，风险是<b>同质化与信息透明</b>：你在潮南选的 ODM 款，你的竞品明天也能选到。这就是后面要讲的「规格书 + 自有版型资产」的意义——用集群的效率，做差异化的产品。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-mode" data-sec="s-mode"><span class="sec-no">04</span>OEM / ODM / 自研：模式选择</h2>
+
+      <p>确定了品类与产地，下一个决策是：<b>设计和版型从哪来？</b>三种模式对应三种控制点与成本结构：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>维度</th><th>OEM（纯代工）</th><th>ODM（工厂现成款）</th><th>自研（自有版型）</th></tr></thead>
+          <tbody>
+            <tr><td><b>设计与版型来源</b></td><td>品牌出设计+规格，工厂照做</td><td>工厂提供现成版型，贴标或微调</td><td>品牌自有版房/合作版师，版型归品牌</td></tr>
+            <tr><td><b>品牌控制点</b></td><td>版型、工艺、验收</td><td>仅材料与验收</td><td>全部：版型、材料、工艺、数据</td></tr>
+            <tr><td><b>开发成本</b></td><td class="num">中（自付开发费）</td><td class="num">低（选款即做）</td><td class="num">高（版房+数据积累）</td></tr>
+            <tr><td><b>起订门槛</b></td><td class="num">中高</td><td class="num">低</td><td class="num">高</td></tr>
+            <tr><td><b>差异化</b></td><td>高</td><td>弱（同款多品牌流通）</td><td>最高（护城河）</td></tr>
+            <tr><td><b>主要风险</b></td><td>版型不成熟、试错贵</td><td>撞款、同质化内卷</td><td>周期长、人才依赖</td></tr>
+            <tr><td><b>适合阶段</b></td><td>有销量验证后</td><td class="hl">新品牌起步验证</td><td>成熟期壁垒</td></tr>
+          </tbody>
+          <caption>三种制造模式对比。OEM/ODM 定义见术语卡；「自研」指品牌持有版型与工艺数据的开发方式。</caption>
+        </table>
+      </div>
+
+      <p>三种模式不是非此即彼，而是<b>随阶段演进的组合</b>。起步期的核心矛盾是「没销量验证，却需要差异化」——纯 ODM 会撞款，纯自研烧钱且慢。行业里被反复验证的折中解是：<b>ODM 选版打底 + 自有规格书锁控制点</b>。工厂的成熟版型保证了基本合体度与生产可行性，你用规格书把尺寸表、材料规格、工艺与验收标准改成自己的要求——差异化的部分恰好是消费者可感知、竞品最难抄的部分（材料等级、裆部方案、尺码区间、验收标准）。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：Soran 的起步建议
+        </div>
+        <p><b>从「ODM + 自有规格书」起步。</b>第一波产品用工厂成熟版型快速验证市场，但每款都附上你自己的规格书（写法见第五篇「品质判断」页模板）；对验证过的爆款，把版型买断或委托版师复刻微调，转为 OEM/自研——逐步把最畅销的 20% 款变成自己的版型资产。纯贴标不写规格书，等于把品质基准永久交给工厂。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-sample" data-sec="s-sample"><span class="sec-no">05</span>打样链路：从头样到船样</h2>
+
+      <p>打样是品牌与工厂「对齐想象」的过程，也是新品牌最容易低估时间与钱的环节。标准链路五步：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <g font-size="11" fill="#B98F45" font-weight="700" text-anchor="middle">
+              <text x="80" y="30">版型 / 效果确认</text>
+              <text x="224" y="30">材料 / 工艺确认</text>
+              <text x="368" y="30">大货基准</text>
+              <text x="512" y="30">合同附件</text>
+              <text x="656" y="30">出货比对</text>
+            </g>
+            <g>
+              <rect x="14" y="44" width="132" height="118" rx="10" fill="#3D6B57"/>
+              <text x="80" y="72" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">头样</text>
+              <text x="80" y="94" text-anchor="middle" fill="#CDE0D6" font-size="11.5">7-15 天 / 轮（示例）</text>
+              <text x="80" y="112" text-anchor="middle" fill="#CDE0D6" font-size="11.5">100-300 元 / 款（示例）</text>
+              <text x="80" y="136" text-anchor="middle" fill="#EAF1ED" font-size="11">验证版型与整体效果</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="148" y1="103" x2="144" y2="103"/><polygon points="154,103 146,99 146,107"/>
+            </g>
+            <g>
+              <rect x="158" y="44" width="132" height="118" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+              <text x="224" y="72" text-anchor="middle" fill="#26231D" font-size="15" font-weight="700">修改样</text>
+              <text x="224" y="94" text-anchor="middle" fill="#5D574B" font-size="11.5">5-10 天 / 轮（示例）</text>
+              <text x="224" y="112" text-anchor="middle" fill="#5D574B" font-size="11.5">100-400 元 / 轮（示例）</text>
+              <text x="224" y="136" text-anchor="middle" fill="#8B8375" font-size="11">常见 1-3 轮，逐轮收敛</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="292" y1="103" x2="288" y2="103"/><polygon points="298,103 290,99 290,107"/>
+            </g>
+            <g>
+              <rect x="302" y="44" width="132" height="118" rx="10" fill="#fff" stroke="#E6C9B8" stroke-width="1.5"/>
+              <text x="368" y="72" text-anchor="middle" fill="#26231D" font-size="15" font-weight="700">产前样</text>
+              <text x="368" y="94" text-anchor="middle" fill="#5D574B" font-size="11.5">7-12 天（示例）</text>
+              <text x="368" y="112" text-anchor="middle" fill="#5D574B" font-size="11.5">300-800 元 / 款（示例）</text>
+              <text x="368" y="136" text-anchor="middle" fill="#8B8375" font-size="11">大货面料辅料 + 大货工艺</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="436" y1="103" x2="432" y2="103"/><polygon points="442,103 434,99 434,107"/>
+            </g>
+            <g>
+              <rect x="446" y="44" width="132" height="118" rx="10" fill="#B0603F"/>
+              <text x="512" y="72" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">封样</text>
+              <text x="512" y="94" text-anchor="middle" fill="#F3D9CC" font-size="11.5">签字各留一件</text>
+              <text x="512" y="112" text-anchor="middle" fill="#F3D9CC" font-size="11.5">通常免费</text>
+              <text x="512" y="136" text-anchor="middle" fill="#F7EAE2" font-size="11">大货验收的唯一基准</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="580" y1="103" x2="576" y2="103"/><polygon points="586,103 578,99 578,107"/>
+            </g>
+            <g>
+              <rect x="590" y="44" width="132" height="118" rx="10" fill="#26231D"/>
+              <text x="656" y="72" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">船样</text>
+              <text x="656" y="94" text-anchor="middle" fill="#B9B29F" font-size="11.5">随大货抽留</text>
+              <text x="656" y="112" text-anchor="middle" fill="#B9B29F" font-size="11.5">留档备查</text>
+              <text x="656" y="136" text-anchor="middle" fill="#E8C87E" font-size="11">证明「大货=封样」</text>
+            </g>
+            <rect x="14" y="188" width="708" height="88" rx="10" fill="#F3EFE7" stroke="#E6E0D3"/>
+            <text x="34" y="214" font-size="12.5" font-weight="700" fill="#26231D">被新品牌低估的两件事（示例量级）</text>
+            <text x="34" y="236" font-size="12" fill="#5D574B">① 时间：全链含修改常达 4-9 周，多数人以为「打一轮样」就能开大货，实际均值 2-3 轮。</text>
+            <text x="34" y="258" font-size="12" fill="#5D574B">② 费用：每款 300-1500 元（示例，含 2-3 轮），10 个款的打样预算就要按万元规划——下单后可谈抵扣。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-4</span><b>打样链路与费用（示例）。</b><dfn class="term" data-term="头样">头样</dfn>允许用近似面料；<dfn class="term" data-term="产前样">产前样</dfn>必须用大货面料辅料与大货工艺制作；封样签字后成为合同意义上的品质基准。周期与费用均为教学示例值。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">打样最容易翻车的 5 个点</h3>
+      <ul class="plain">
+        <li><b>用了非大货面料。</b>头样用「手感差不多」的替代布确认效果，大货换料后克重、弹性、颜色全变——你确认的是一个不存在的样品。<em class="t">防范：头样即要求大货同源面料，或白纸黑字注明替代及差异。</em></li>
+        <li><b>版师没吃透款式。</b>平面思维做立体结构：前后浪差、裆宽、杯深靠猜。<em class="t">防范：给三样东西——款式图带部位标注、尺寸表含公差、一件参考实物。</em></li>
+        <li><b>辅料近似替代。</b>橡筋宽窄与弹力、唛头材质与工厂库存不同，样衣好看、大货松垮。<em class="t">防范：BOM 里把辅料规格写到可验收（宽度/弹力方向/材质），打样按 BOM 采购。</em></li>
+        <li><b>只做一个码。</b>中间码好看不代表两端码不变形，放码问题到天坑级才发现。<em class="t">防范：头样至少做 S/M/L 三码；最起码产前样阶段全码过检。</em></li>
+        <li><b>没有工艺单。</b>口头沟通，每道工序靠工人经验发挥，两批货能做出两个版本。<em class="t">防范：规格书先行，线迹、针距、部位工艺写清楚（模板见第五篇）。</em></li>
+      </ul>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：封样不是形式
+        </div>
+        <p>很多新主理人把封样当「走过场」，没逐项核对就签字。封样一旦签字，就成为大货验收与纠纷仲裁的唯一实物基准——你签了什么，就只能验什么。<b>签字前逐项核对尺寸、材料、工艺、辅料；有出入当场改。</b>同理，别用口头「下补充要求」：凡不在规格书与封样上的要求，工厂都可以不做。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-moq" data-sec="s-moq"><span class="sec-no">06</span>MOQ 与价格的真实关系</h2>
+
+      <p><dfn class="term" data-term="MOQ">MOQ</dfn>（起订量）不是工厂「刁难」你，而是<b>固定成本摊销</b>的数学结果：换一次色要洗缸调机、换一次款要重新排料调机、开一批料要承担最低起织量。产量越小，这些固定成本摊到每件上越多，单价自然越高。链路上每一环都有自己的 MOQ：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>环节</th><th>常见 MOQ（示例）</th><th>折算概念</th><th>对 Soran 的含义</th></tr></thead>
+          <tbody>
+            <tr><td>面料定制染色</td><td class="num">300-500 kg / 色</td><td class="num">≈ 0.8-1.4 万条内裤</td><td>新色成本极高；起步期用现货色布/色纱</td></tr>
+            <tr><td>面料现货改染</td><td class="num">100-300 kg / 色</td><td class="num">≈ 0.3-0.8 万条</td><td>可行折中；加强缸差与色差管理</td></tr>
+            <tr><td>辅料（橡筋/织带）</td><td class="num">1000-3000 m / 款</td><td class="num">≈ 1600-4800 条</td><td>选常规宽度规格，避免定制宽度</td></tr>
+            <tr><td>模杯（文胸）</td><td class="num">开模 3000-8000 元/套 + 数千对起订（示例）</td><td class="num">—</td><td>杯型定了难改；先用工厂现成杯型试市场</td></tr>
+            <tr><td>成衣车缝</td><td class="num">300-1000 件 / 款 / 色</td><td class="num">—</td><td>拼色拼款凑单是常态；首单宁少色多种</td></tr>
+            <tr><td>无缝（圣东尼机）</td><td class="num">500-1000 件 / 款</td><td class="num">—</td><td>排产慢、打版贵；小单快反受限</td></tr>
+          </tbody>
+          <caption>内衣链路各环节 MOQ（示例值，随行情浮动）。1kg 弹力汗布 ≈ 20-25 条内裤（按单件 40g、含损耗估算）。</caption>
+        </table>
+      </div>
+
+      <p>把摊销逻辑画成曲线，就是这样：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 坐标轴 -->
+            <line x1="70" y1="40" x2="70" y2="270" stroke="#D4CCBB" stroke-width="1.5"/>
+            <line x1="70" y1="270" x2="730" y2="270" stroke="#D4CCBB" stroke-width="1.5"/>
+            <g font-size="11" fill="#8B8375">
+              <text x="62" y="274" text-anchor="end">4</text>
+              <text x="62" y="219" text-anchor="end">5</text>
+              <text x="62" y="164" text-anchor="end">6</text>
+              <text x="62" y="109" text-anchor="end">7</text>
+              <text x="62" y="54" text-anchor="end">8</text>
+              <text x="70" y="292" text-anchor="middle">100</text>
+              <text x="230" y="292" text-anchor="middle">300</text>
+              <text x="430" y="292" text-anchor="middle">1000</text>
+              <text x="660" y="292" text-anchor="middle">5000</text>
+            </g>
+            <g stroke="#E6E0D3" stroke-width="1" stroke-dasharray="3 4">
+              <line x1="70" y1="215" x2="730" y2="215"/><line x1="70" y1="160" x2="730" y2="160"/>
+              <line x1="70" y1="105" x2="730" y2="105"/><line x1="70" y1="50" x2="730" y2="50"/>
+            </g>
+            <text x="400" y="312" text-anchor="middle" font-size="11.5" fill="#5D574B">订量（件 / 款 / 色，对数示意）</text>
+            <text x="24" y="160" font-size="11.5" fill="#5D574B" transform="rotate(-90 24 160)" text-anchor="middle">出厂价（元/件，示例）</text>
+            <!-- 曲线 -->
+            <path d="M110 78 C 170 100, 200 122, 240 136 C 300 158, 350 178, 430 200 C 510 220, 590 238, 690 250"
+              fill="none" stroke="#3D6B57" stroke-width="3" stroke-linecap="round"/>
+            <!-- 数据点 -->
+            <g>
+              <circle cx="110" cy="78" r="5.5" fill="#B0603F"/><text x="126" y="70" font-size="11.5" fill="#26231D" font-weight="600">100 件 · 7.6 元（+36%）</text>
+              <circle cx="240" cy="136" r="5.5" fill="#B98F45"/><text x="256" y="130" font-size="11.5" fill="#26231D" font-weight="600">300 件 · 6.8 元（+21%）</text>
+              <circle cx="430" cy="200" r="5.5" fill="#3D6B57"/><text x="446" y="196" font-size="11.5" fill="#26231D" font-weight="600">1000 件 · 5.6 元（基准）</text>
+              <circle cx="690" cy="250" r="5.5" fill="#2C5142"/><text x="536" y="240" font-size="11.5" fill="#26231D" font-weight="600">5000 件 · 4.6 元（-18%）</text>
+            </g>
+            <text x="400" y="30" text-anchor="middle" font-size="12" fill="#8B8375">同一款女内裤的订量-价格关系（教学示例）：小单快反溢价通常 +10%-40%</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-5</span><b>MOQ 与出厂价的摊销曲线（示例）。</b>溢价主要来自：换款/换色停机损耗、面料起订量摊销、辅料最小采购量、以及小批量下工序自动化收益消失。<dfn class="term" data-term="小单快反">小单快反</dfn>的代价即此。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>订量（件/款/色）</th><th>出厂价（示例）</th><th>相对 1000 件</th><th>适用场景</th></tr></thead>
+          <tbody>
+            <tr><td class="num">100</td><td class="num">7.6 元</td><td class="num">+36%</td><td>种子款测试（最小可行）</td></tr>
+            <tr class="hl"><td class="num">300</td><td class="num">6.8 元</td><td class="num">+21%</td><td>快反补单 / 首单常用</td></tr>
+            <tr><td class="num">1000</td><td class="num">5.6 元</td><td class="num">基准</td><td>常规起订</td></tr>
+            <tr><td class="num">5000</td><td class="num">4.6 元</td><td class="num">-18%</td><td>验证后的爆款追单</td></tr>
+          </tbody>
+          <caption>小单快反的成本代价（教学示例）。用 300 件验证市场，本质是花 +21% 的单价买「不压货的确定性」。</caption>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：为凑 MOQ 而压货
+        </div>
+        <p>「MOQ 3000 件，那就先做 3000 件吧」——新品牌死于库存的比死于卖不动货的多。正确姿势：<b>用现货面料 + 少色多款 + 300 件级首单</b>去逼近市场，把定制色、专供面料、大 MOQ 留给已被验证的款。压货不仅是资金占用，还有缸差、断码、过季贬值三重隐性成本。谈 MOQ 的正道是拼单、现货化、减色数，而不是透支现金流。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本结构拆解</h2>
+
+      <p>所有报价，无论包装成什么话术，都能拆进同一个公式：</p>
+
+      <div class="callout data">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          成本公式
+        </div>
+        <p><b>出厂价 = 材料（面料 + 辅料 + 损耗）+ 工缴（裁剪 · 车缝 · 整烫 · 包装）+ 管理费 + 利润</b></p>
+        <p style="font-size:13.5px;color:var(--ink-soft)">面料成本/件 = 面料单价（元/kg）× 单件用量（g）÷ 1000 ×（1 + 损耗率）。示例：60 元/kg × 40g ×（1+6%）≈ 2.54 元。管理费与利润合计通常体现为总成本的 5%-15%（示例）。</p>
+      </div>
+
+      <p>以一条常规女式三角内裤为例，静态拆解如下（全部为教学示例，请勿当作市场行情）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>成本项</th><th>估算口径（示例）</th><th>金额（元/件）</th><th>占总成本</th></tr></thead>
+          <tbody>
+            <tr><td>面料（含损耗）</td><td>60 元/kg × 40g ×（1+6%）</td><td class="num">2.54</td><td class="num">66%</td></tr>
+            <tr><td>辅料</td><td>橡筋腰带 + 唛头水洗唛 + 胶袋</td><td class="num">0.45</td><td class="num">12%</td></tr>
+            <tr><td>工缴</td><td>裁剪 + 四线车缝 + 腰头绷缝 + 整烫包装</td><td class="num">0.85</td><td class="num">22%</td></tr>
+            <tr><td><b>总成本</b></td><td>—</td><td class="num"><b>3.84</b></td><td class="num">100%</td></tr>
+            <tr><td>管理费 + 利润</td><td>按总成本 5%-15%（示例）</td><td class="num">0.19-0.58</td><td class="num">—</td></tr>
+            <tr class="hl"><td><b>出厂价参考区间</b></td><td>—</td><td class="num"><b>4.0-4.4</b></td><td class="num">—</td></tr>
+          </tbody>
+          <caption>女式内裤出厂价拆解（教学示例）。真实报价随面料等级、克重、工序、订单量浮动。</caption>
+        </table>
+      </div>
+
+      <p>下面的计算器把这套口径做成了可玩的形式——改任何一个输入，观察结构怎么变。<b>重点不是记住某个数，而是建立「量级感」：</b>材料涨 1 元/kg 对出厂价影响几毛？克重多 10g 影响多少？工缴翻倍会怎样？</p>
+
+      <div class="wg">
+        <div class="wg-panel">
+          <div class="wg-head"><span class="wg-tag">交互</span>内裤出厂价拆解计算器（教学示例 · 仅供理解量级）</div>
+          <div class="wg-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px;margin-bottom:4px">
+              <div><div style="font-size:12px;color:var(--ink-faint);margin-bottom:4px">面料单价（元/kg）</div><input class="num-input" style="width:100%" type="number" id="in-price" value="60" min="0" step="1"></div>
+              <div><div style="font-size:12px;color:var(--ink-faint);margin-bottom:4px">单件用量（g/件）</div><input class="num-input" style="width:100%" type="number" id="in-qty" value="40" min="0" step="1"></div>
+              <div><div style="font-size:12px;color:var(--ink-faint);margin-bottom:4px">面料损耗率（%）</div><input class="num-input" style="width:100%" type="number" id="in-loss" value="6" min="0" step="1"></div>
+              <div><div style="font-size:12px;color:var(--ink-faint);margin-bottom:4px">辅料合计（元/件）</div><input class="num-input" style="width:100%" type="number" id="in-trim" value="0.45" min="0" step="0.05"></div>
+              <div><div style="font-size:12px;color:var(--ink-faint);margin-bottom:4px">工缴（元/件）</div><input class="num-input" style="width:100%" type="number" id="in-labor" value="0.85" min="0" step="0.05"></div>
+            </div>
+            <div class="calc-grid">
+              <div class="calc-card acc-b"><div class="cc-l">材料成本（面料+辅料）</div><div class="cc-v"><span id="out-mat">0.00</span><small>元/件</small></div></div>
+              <div class="calc-card acc-c"><div class="cc-l">总成本（材料+工缴）</div><div class="cc-v"><span id="out-total">0.00</span><small>元/件</small></div></div>
+              <div class="calc-card acc-g"><div class="cc-l">出厂价参考区间</div><div class="cc-v"><span id="out-price">0.00</span><small>元/件</small></div></div>
+            </div>
+            <figure class="fig" style="margin:14px 0 0">
+              <div class="fig-canvas">
+                <svg viewBox="0 0 760 250" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                  <text x="380" y="26" text-anchor="middle" font-size="12.5" fill="#5D574B" font-weight="600">当前输入下的出厂价构成（按中值系数 1.10 绘制，教学示例）</text>
+                  <!-- 图例 -->
+                  <g font-size="11.5" fill="#5D574B">
+                    <rect x="60" y="42" width="12" height="12" rx="3" fill="#3D6B57"/><text x="78" y="52">面料（含损耗）</text>
+                    <rect x="212" y="42" width="12" height="12" rx="3" fill="#B98F45"/><text x="230" y="52">辅料</text>
+                    <rect x="300" y="42" width="12" height="12" rx="3" fill="#B0603F"/><text x="318" y="52">工缴</text>
+                    <rect x="392" y="42" width="12" height="12" rx="3" fill="#44657F"/><text x="410" y="52">管理费+利润（10% 中值）</text>
+                  </g>
+                  <!-- 堆叠条 -->
+                  <g>
+                    <rect id="seg-fab" x="40" y="104" width="0" height="48" fill="#3D6B57"/>
+                    <rect id="seg-trim" x="40" y="104" width="0" height="48" fill="#B98F45"/>
+                    <rect id="seg-lab" x="40" y="104" width="0" height="48" fill="#B0603F"/>
+                    <rect id="seg-oh" x="40" y="104" width="0" height="48" fill="#44657F"/>
+                  </g>
+                  <line x1="40" y1="104" x2="40" y2="152" stroke="#8B8375" stroke-width="1"/>
+                  <g font-size="11.5" fill="#26231D" font-weight="600">
+                    <text id="lbl-fab" x="0" y="94" text-anchor="middle">—</text>
+                    <text id="lbl-trim" x="0" y="94" text-anchor="middle">—</text>
+                    <text id="lbl-lab" x="0" y="94" text-anchor="middle">—</text>
+                    <text id="lbl-oh" x="0" y="94" text-anchor="middle">—</text>
+                  </g>
+                  <g font-size="11" fill="#fff" font-weight="700" text-anchor="middle">
+                    <text id="pct-fab" x="0" y="132">—</text>
+                    <text id="pct-trim" x="0" y="132">—</text>
+                    <text id="pct-lab" x="0" y="132">—</text>
+                    <text id="pct-oh" x="0" y="132">—</text>
+                  </g>
+                  <!-- 刻度 -->
+                  <g font-size="11" fill="#8B8375">
+                    <text x="40" y="172" text-anchor="middle">0 元</text>
+                    <text id="lbl-end" x="720" y="172" text-anchor="middle">— 元</text>
+                  </g>
+                  <line x1="40" y1="160" x2="720" y2="160" stroke="#E6E0D3" stroke-width="1"/>
+                  <text x="380" y="200" text-anchor="middle" font-size="11.5" fill="#8B8375">出厂价参考区间 = 总成本 × 1.05 ~ 1.15（管理费+利润，教学示例系数）</text>
+                  <text x="380" y="226" text-anchor="middle" font-size="11.5" fill="#8B8375">零售价 ≈ 出厂价 × 3-5（示例倍率，取决于渠道结构：纯电商低倍率、商场渠道高倍率）</text>
+                </svg>
+              </div>
+              <figcaption class="fig-cap"><span class="fig-no">图 1-6</span><b>出厂价堆叠条形图（随输入变化）。</b>试试把面料单价改成 120 元/kg（兰精莫代尔等级）或把单件用量改成 30g（轻薄款），观察各段占比怎么移动——这决定了你的降本抓手在哪里。</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>这套拆解的实战用法有三个：①<b>验报价</b>——供应商报 7 元/件而你拆出来 4.2 元，要么他材料规格更高（合理），要么虚高（可谈）；②<b>定倍率</b>——知道出厂价才能反推零售定价与毛利结构；③<b>抓降本</b>——材料占 65% 以上时，降本的主战场在面料选型与克重，而不是跟工人抠工缴。注意：出厂价只是起点，<b>零售价 = 出厂价 × 3-5（示例）</b>的倍率里还包含你的运营、流量、退货与利润——这也是「高品质、高质价比」品牌必须砍掉无效成本、而不是砍材料的原因。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-lead" data-sec="s-lead"><span class="sec-no">08</span>交期与品质成本</h2>
+
+      <h3 class="sub-title">典型交期链</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>环节</th><th>周期（示例）</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>订纱 / 买纱</td><td class="num">5-10 天</td><td>常规纱有现货；特种纱（长绒棉高支、包覆纱定制）更长</td></tr>
+            <tr><td>织造（坯布）</td><td class="num">8-15 天</td><td>圆机/经编排产；大厂旺季排队</td></tr>
+            <tr><td>染整 + 定型</td><td class="num">8-15 天</td><td>深色、多次对色更久；前处理不足会埋品质雷</td></tr>
+            <tr><td>辅料</td><td class="num">7-15 天</td><td>可与面料<b>并行</b>；定制宽度/花型另计</td></tr>
+            <tr><td>裁剪 + 车缝 + 后整</td><td class="num">15-30 天</td><td>含中查、终检、检针、包装</td></tr>
+            <tr class="hl"><td><b>合计</b></td><td class="num"><b>5-9 周</b></td><td>旺季（春夏订货季）各环节 +30%-50%（示例）</td></tr>
+            <tr><td>模杯（文胸加项）</td><td class="num">开模 15-25 天 + 模压 10-20 天</td><td>与面料环节并行；改杯型 = 部分重来</td></tr>
+          </tbody>
+          <caption>典型交期链（教学示例）。<dfn class="term" data-term="交期">交期</dfn>规划要按「面料 20-35 天 + 成衣 15-30 天」的心智预留，并叠加打样轮次。</caption>
+        </table>
+      </div>
+
+      <p>把交期当成本看：上新踩不准季节节奏，爆款断码就是直接损失。<dfn class="term" data-term="缸差">缸差</dfn>还要求你分缸管理——同一批订单的不同缸号要分缸裁剪、按缸配比出货，否则会收到「同款两个色」的投诉。这些都不是「工厂拖了」，而是链路的物理规律。</p>
+
+      <h3 class="sub-title">良品率、回修率与隐形成本</h3>
+      <p>报价单只写「出厂价」，但真实成本还有一层：<dfn class="term" data-term="良品率">良品率</dfn>与<dfn class="term" data-term="回修率">回修率</dfn>。面料裁剪有损耗，车缝有次品，检针有拦截——报价里没算的回修（返工人工、二次物流、缺货补单），最终都会以某种方式回到你头上：延期、涨价、或者品质缩水。稳定的工厂回修率可做到 1% 以下（示例口径），差的厂超过 3%——这 2 个点的差距，就是你「便宜 5 毛钱工缴」背后的真实代价。</p>
+
+      <h3 class="sub-title">品质成本的三层结构</h3>
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>层次</th><th>含义</th><th>典型动作</th><th>成本特征</th></tr></thead>
+          <tbody>
+            <tr><td><b>预防成本</b></td><td>让缺陷不发生</td><td>版房与规格书、首件确认、供应商评审、员工培训</td><td>花 1 份钱，最划算</td></tr>
+            <tr><td><b>鉴定成本</b></td><td>把已发生的缺陷找出来</td><td>验布四分制、巡检中查、终检、检针、第三方抽检</td><td>花 10 份钱</td></tr>
+            <tr><td><b>损失成本</b></td><td>缺陷流出后的代价</td><td>回修、降级、退货、差评、断码缺货、客诉</td><td>花 100 份钱</td></tr>
+          </tbody>
+          <caption>品质成本 1 : 10 : 100（教学经验比例）。钱要么花在前面（预防），要么在后面十倍百倍地花（损失）。</caption>
+        </table>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>这套「1:10:100」是 Soran 品质预算的分配逻辑：<b>规格书与打样（预防）要舍得花钱</b>，验货与抽检（鉴定）按标准执行不省略，而回修与退货（损失）要作为供应商谈判筹码——合同里写明「回修费用由责任方承担」，把损失成本还给制造它的人。第五篇会给你完整的合同条款写法。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-vendor" data-sec="s-vendor"><span class="sec-no">09</span>供应商评估维度总览</h2>
+
+      <p>本页是总览，第五篇「供应商考察」会给出可带去现场的完整清单与话术。先建立框架：<b>评估一家工厂看五个维度</b>，缺一个都可能踩坑：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>维度</th><th>看什么</th><th>快速信号</th></tr></thead>
+          <tbody>
+            <tr><td><b>① 设备与工艺能力</b></td><td>机型与机号（圆机机号 / 袜机针数 / 圣东尼机型）、设备新旧、关键工序自有还是外发</td><td>关键工序必须自有；什么都「协调一下」的可能是贸易商</td></tr>
+            <tr><td><b>② 品控体系</b></td><td>检针机与记录、验布四分制记录、首件确认制度、量具校准、回修率台账</td><td>有可查的记录 &gt; 好听的承诺</td></tr>
+            <tr><td><b>③ 开发与版房</b></td><td>版师人数与经验、打样周期、能否读懂规格书、有无独立版房</td><td>版房是品质的源头，没有版房的厂只能「照葫芦画瓢」</td></tr>
+            <tr><td><b>④ 产能真实性</b></td><td>参观时的开机率、排产表、淡旺季占用、工人数量与工位</td><td>数一数开机机器与实际在岗人数，对得上才可信</td></tr>
+            <tr><td><b>⑤ 商务健康</b></td><td>报价结构是否经得起拆解、账期要求、客户结构、是否过度依赖单一大客户</td><td>报价明显低于成本拆解 = 一定有猫腻（材料、克重或账期）</td></tr>
+          </tbody>
+          <caption>供应商评估五维总览。第五篇将展开为可打分的现场考察清单。</caption>
+        </table>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          下一站
+        </div>
+        <p>五个维度如何变成一张可以带去工厂、逐项打分的 checklist？样品如何用加权评分表评审？报价如何用成本拆解去谈？——全部在<b>第五篇 · 选品实战</b>展开。本页的任务是让你在去之前，脑子里先有这张地图。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">链路</div><div class="kv-v">纤维 → 纺纱/纺丝 → 织造 → 染整 → 裁剪 → 缝制/成型 → 整烫检针 → 包装；上游按公斤/米计价，下游按件计价，中间用「单价 × 单件克重」换算。</div></div>
+        <div class="kv-row"><div class="kv-k">三品类</div><div class="kv-v">内裤=裁剪+车缝（工序少、SKU 多）；袜子=织造成型（克重即成本）；文胸=部件组装（30-45 道工序，供应链最复杂）。</div></div>
+        <div class="kv-row"><div class="kv-k">集群</div><div class="kv-v">潮南谷饶（全链，起步首选）、盐步（品质升级）、小榄（内裤）、义乌（无缝）、大唐（袜）、普宁（家居服）、长乐（经编面料）。</div></div>
+        <div class="kv-row"><div class="kv-k">模式</div><div class="kv-v">Soran 从「ODM + 自有规格书」起步：借工厂版型的合体度，用规格书锁住材料、尺寸与验收，爆款逐步转自有版型。</div></div>
+        <div class="kv-row"><div class="kv-k">打样</div><div class="kv-v">头样 → 修改样 → 产前样 → 封样 → 船样；常见 2-3 轮、4-9 周、每款数百至上千元（均为示例）。封样签字即验收基准，签前逐项核对。</div></div>
+        <div class="kv-row"><div class="kv-k">MOQ 与成本</div><div class="kv-v">MOQ 是固定成本摊销的数学结果；小单快反的代价是单价 +10%-40%（示例）。起步期用现货面料+少色多款逼近市场，不为凑 MOQ 压货。</div></div>
+        <div class="kv-row"><div class="kv-k">成本与品质</div><div class="kv-v">出厂价 = 材料 + 工缴 + 管理费 + 利润；零售价 ≈ 出厂价 × 3-5（示例）。品质成本 1:10:100——钱花在预防层最划算。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="basics-supply-q1" data-q="你想上一款新颜色的内裤，面料厂报价：定制染色 400kg/色起订（约合上万条），而你的首单只计划 500 条。最合理的组合动作是？" data-a="1" data-exp="起步期绕开面料 MOQ 的标准做法是现货色布/色纱 + 限定颜色，把定制色留给验证后的爆款。A 直接压 400kg 是用现金流赌销量，还叠加缸差与断码风险；C 空口承诺未来大单换不来降 MOQ，有实力的买家靠拼单与现货方案谈判；D 因噎废食——颜色是内裤购买决策的重要变量，全部黑色等于放弃一半货架。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>咬牙接受 400kg 起订，先把面料囤着慢慢卖</li>
+            <li>改用现货色布或色纱，首单颜色限定在现货色谱内，定制色留给验证后的爆款</li>
+            <li>要求工厂把 MOQ 降到 50kg，并承诺「我们以后单子很大」</li>
+            <li>放弃这款颜色，全店以后只做黑色</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-supply-q2" data-q="Soran 起步期要开发第一波女内裤（3 个款）。以下哪种启动方式最符合本页的建议？" data-a="2" data-exp="「ODM 选版 + 自有规格书」兼顾速度与控制点：工厂成熟版型保证基本合体度，规格书锁定尺寸、材料、工艺与验收，差异化恰好落在消费者可感知、竞品难抄的部分。A 起步期自建版房成本高、周期长，是成熟期选项；B 没有规格书的 OEM 等于把品质基准让给工厂，参考图片无法验收；D 纯贴标撞款率高且完全无法验货，是本页明确反对的做法。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>全自研：先租版房养版师，三个款全部自己出纸样</li>
+            <li>直接下 OEM 单：把参考图片发给工厂「照着做」</li>
+            <li>ODM 选版打底，每款附自有规格书，锁定尺寸表、材料规格与工艺要求</li>
+            <li>纯选款贴标，规格书等有销量之后再说</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-supply-q3" data-q="成本演算判断：按本页拆解口径——面料 60 元/kg × 单件用量 40g，损耗 5%，辅料 0.40 元，工缴 0.90 元。某工厂对同规格产品报出厂价 9.8 元/件。以下判断最专业的是？" data-a="1" data-exp="演算：面料 60×0.04×1.05=2.52 元，加辅料 0.40 → 材料成本 2.92 元；加工缴 0.90 → 总成本 3.82 元；出厂价参考区间 ≈ 4.0-4.4 元。9.8 元远超区间上限一倍以上，正确动作是先索要 BOM 与用量明细——可能对方用了更高克重/长绒棉/更多辅料（溢价合理），也可能利润虚高（可谈），不拿到 BOM 无法分辨。A 无依据砍价会破坏谈判且可能错杀真材实料的报价；C 盲信「贵=好」；D 把倍率方向搞反了——零售价≈出厂价×3-5，出厂价应低于零售价。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>报价是拆解值的 2 倍多，直接砍价到 4 元以下再谈</li>
+            <li>先向工厂索要 BOM 与用量明细，核对材料规格与克重是否高于拆解假设，再判断溢价是否合理</li>
+            <li>9.8 元说明材料一定更好，直接下单</li>
+            <li>出厂价应该约等于零售价的 3-5 倍才对，这个报价反而偏低、有问题</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：内裤出厂价拆解计算器 */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var ids = ['in-price', 'in-qty', 'in-loss', 'in-trim', 'in-labor'];
+    var $ = function (id) { return document.getElementById(id); };
+    var seg = { fab: $('seg-fab'), trim: $('seg-trim'), lab: $('seg-lab'), oh: $('seg-oh') };
+    var lbl = { fab: $('lbl-fab'), trim: $('lbl-trim'), lab: $('lbl-lab'), oh: $('lbl-oh') };
+    var pct = { fab: $('pct-fab'), trim: $('pct-trim'), lab: $('pct-lab'), oh: $('pct-oh') };
+    var X0 = 40, W = 680;                 /* 条形图几何 */
+    var BAR_X = X0, BAR_Y = 104, BAR_W = W;
+
+    function num(id, dft) {
+      var v = parseFloat($(id).value);
+      if (isNaN(v) || v < 0) v = dft;
+      return v;
+    }
+    function fmt(v) { return v.toFixed(2); }
+
+    function calc() {
+      var price = num('in-price', 60);
+      var qty = num('in-qty', 40);
+      var loss = num('in-loss', 6);
+      var trim = num('in-trim', 0.45);
+      var labor = num('in-labor', 0.85);
+
+      var fab = price * qty / 1000 * (1 + loss / 100);
+      var mat = fab + trim;
+      var total = mat + labor;
+      var oh = total * 0.10;              /* 管理费+利润 中值 10%（教学示例） */
+      var grand = total + oh;
+      var lo = total * 1.05, hi = total * 1.15;
+
+      $('out-mat').textContent = fmt(mat);
+      $('out-total').textContent = fmt(total);
+      $('out-price').textContent = fmt(lo) + '~' + fmt(hi);
+      $('lbl-end').textContent = fmt(grand) + ' 元';
+
+      var vals = { fab: fab, trim: trim, lab: labor, oh: oh };
+      var keys = ['fab', 'trim', 'lab', 'oh'];
+      var cursor = BAR_X;
+      keys.forEach(function (k) {
+        var w = grand > 0 ? vals[k] / grand * BAR_W : 0;
+        if (w < 0) w = 0;
+        seg[k].setAttribute('x', cursor.toFixed(1));
+        seg[k].setAttribute('width', w.toFixed(1));
+        lbl[k].setAttribute('x', (cursor + w / 2).toFixed(1));
+        lbl[k].textContent = w >= 52 ? fmt(vals[k]) + ' 元' : '';
+        pct[k].setAttribute('x', (cursor + w / 2).toFixed(1));
+        pct[k].textContent = w >= 34 ? Math.round(vals[k] / grand * 100) + '%' : '';
+        cursor += w;
+      });
+    }
+    ids.forEach(function (id) {
+      var n = $(id);
+      if (n) n.addEventListener('input', calc);
+    });
+    calc();
+  })();
+};
+</script>
+</body>
+</html>

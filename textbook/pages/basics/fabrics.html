@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>针织面料与染整 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style>
+/* 染整流程图：分步高亮动画（reduced-motion 由框架全局关闭） */
+@keyframes dstPulse { 0% { fill:#EAF1ED; } 3% { fill:#3D6B57; } 14% { fill:#3D6B57; } 17% { fill:#EAF1ED; } 100% { fill:#EAF1ED; } }
+@keyframes dstxPulse { 0% { fill:#26231D; } 3% { fill:#FFFFFF; } 14% { fill:#FFFFFF; } 17% { fill:#26231D; } 100% { fill:#26231D; } }
+.dst  { animation: dstPulse 14s infinite; }
+.dstx { animation: dstxPulse 14s infinite; }
+</style>
+</head>
+<body data-page-id="basics-fabrics" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第一篇 · 通用基础 · 面料染整</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BASICS · FABRICS</div>
+        <h1 class="page-title">针织面料与染整</h1>
+        <p class="page-lede">面料是内衣品质与成本的第一决定因素。这一页回答四个问题：为什么贴身衣物几乎全是针织；纬编和经编两大家族各有什么成员、分别用在哪个品类；机号、克重、幅宽三件套如何决定布的身价；坯布到成品布的染整流程里，钱和品质在哪些环节被决定。读完你能用「成分+克重+组织+整理」四个要素向供应商准确描述你要的面料，并识破最常见的低价手法。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 30 分钟</span>
+          <span class="chip">前置：纤维与纱线</span>
+          <span class="chip">建议对照手边内裤 / 文胸实物阅读</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-knit" data-sec="s-knit"><span class="sec-no">01</span>针织 vs 梭织：内衣为什么几乎全是针织</h2>
+
+      <p>先做一个十秒钟的小实验：把毛衣和衬衫分别放在手里横向拉一拉。毛衣能拉开一大截、松手基本弹回去；衬衫几乎拉不动。差别不在纱线——两者都可能是棉的——而在<b>结构</b>：毛衣的纱线被弯成了一个个小圈（<dfn class="term" data-term="针织物">针织物</dfn>的线圈），拉的时候是<b>线圈在变形</b>；衬衫的经纬纱彼此垂直绞死，几乎没有让步的余地（<dfn class="term" data-term="梭织物">梭织物</dfn>）。</p>
+
+      <p>这就是针织的核心秘密：<b>弹性来自线圈变形，而不是纱线本身有弹性</b>。纯棉纱几乎没有弹性，但织成汗布就能横向拉开 10%-20%——因为每个线圈都像一枚缝进布里的小弹簧。这也是为什么一件没有任何「弹力纤维」的老式棉毛衫，依然比同样纱线的衬衫贴合身体。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <line x1="380" y1="20" x2="380" y2="292" stroke="#E6E0D3" stroke-width="1.5"/>
+            <!-- 左：针织线圈串套 -->
+            <text x="173" y="32" text-anchor="middle" font-size="14.5" font-weight="700" fill="#26231D">针织物：线圈串套</text>
+            <g fill="none" stroke="#3D6B57" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- row0 -->
+              <path d="M68 62 L83 92 L98 62"/><path d="M98 62 L113 92 L128 62"/><path d="M128 62 L143 92 L158 62"/><path d="M158 62 L173 92 L188 62"/><path d="M188 62 L203 92 L218 62"/><path d="M218 62 L233 92 L248 62"/><path d="M248 62 L263 92 L278 62"/>
+              <!-- row1: 同一横列（陶土高亮） -->
+              <g stroke="#B0603F" stroke-width="4.2">
+                <path d="M68 102 L83 132 L98 102"/><path d="M98 102 L113 132 L128 102"/><path d="M128 102 L143 132 L158 102"/><path d="M158 102 L173 132 L188 102"/><path d="M188 102 L203 132 L218 102"/><path d="M218 102 L233 132 L248 102"/><path d="M248 102 L263 132 L278 102"/>
+              </g>
+              <!-- row2 -->
+              <path d="M68 142 L83 172 L98 142"/><path d="M98 142 L113 172 L128 142"/><path d="M128 142 L143 172 L158 142"/><path d="M158 142 L173 172 L188 142"/><path d="M188 142 L203 172 L218 142"/><path d="M218 142 L233 172 L248 142"/><path d="M248 142 L263 172 L278 142"/>
+              <!-- row3 -->
+              <path d="M68 182 L83 212 L98 182"/><path d="M98 182 L113 212 L128 182"/><path d="M128 182 L143 212 L158 182"/><path d="M158 182 L173 212 L188 182"/><path d="M188 182 L203 212 L218 182"/><path d="M218 182 L233 212 L248 182"/><path d="M248 182 L263 212 L278 182"/>
+            </g>
+            <rect x="54" y="96" width="238" height="42" rx="10" fill="none" stroke="#B0603F" stroke-width="1.4" stroke-dasharray="5 4"/>
+            <text x="173" y="250" text-anchor="middle" font-size="11.5" fill="#B0603F">陶土色一横列 = 同一根纱线连续成圈（纬编一「路」）</text>
+            <g stroke="#5D574B" stroke-width="1.8" fill="#5D574B">
+              <line x1="100" y1="226" x2="246" y2="226" stroke-dasharray="6 5"/>
+              <polygon points="96,226 106,221 106,231"/>
+              <polygon points="250,226 240,221 240,231"/>
+            </g>
+            <text x="173" y="272" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">拉伸 → 线圈变形 → 回复 = 弹性的来源</text>
+            <text x="173" y="292" text-anchor="middle" font-size="11.5" fill="#8B8375">代价：易脱散 · 易卷边 · 尺寸稳定性弱</text>
+            <!-- 右：梭织经纬交织 -->
+            <text x="560" y="32" text-anchor="middle" font-size="14.5" font-weight="700" fill="#26231D">梭织物：经纬交织</text>
+            <g stroke="#C7BFAE" stroke-width="1.2">
+              <rect x="455" y="62" width="30" height="30" fill="#EAF1ED"/><rect x="485" y="62" width="30" height="30" fill="#FFFFFF"/><rect x="515" y="62" width="30" height="30" fill="#EAF1ED"/><rect x="545" y="62" width="30" height="30" fill="#FFFFFF"/><rect x="575" y="62" width="30" height="30" fill="#EAF1ED"/><rect x="605" y="62" width="30" height="30" fill="#FFFFFF"/><rect x="635" y="62" width="30" height="30" fill="#EAF1ED"/>
+              <rect x="455" y="92" width="30" height="30" fill="#FFFFFF"/><rect x="485" y="92" width="30" height="30" fill="#EAF1ED"/><rect x="515" y="92" width="30" height="30" fill="#FFFFFF"/><rect x="545" y="92" width="30" height="30" fill="#EAF1ED"/><rect x="575" y="92" width="30" height="30" fill="#FFFFFF"/><rect x="605" y="92" width="30" height="30" fill="#EAF1ED"/><rect x="635" y="92" width="30" height="30" fill="#FFFFFF"/>
+              <rect x="455" y="122" width="30" height="30" fill="#EAF1ED"/><rect x="485" y="122" width="30" height="30" fill="#FFFFFF"/><rect x="515" y="122" width="30" height="30" fill="#EAF1ED"/><rect x="545" y="122" width="30" height="30" fill="#FFFFFF"/><rect x="575" y="122" width="30" height="30" fill="#EAF1ED"/><rect x="605" y="122" width="30" height="30" fill="#FFFFFF"/><rect x="635" y="122" width="30" height="30" fill="#EAF1ED"/>
+              <rect x="455" y="152" width="30" height="30" fill="#FFFFFF"/><rect x="485" y="152" width="30" height="30" fill="#EAF1ED"/><rect x="515" y="152" width="30" height="30" fill="#FFFFFF"/><rect x="545" y="152" width="30" height="30" fill="#EAF1ED"/><rect x="575" y="152" width="30" height="30" fill="#FFFFFF"/><rect x="605" y="152" width="30" height="30" fill="#EAF1ED"/><rect x="635" y="152" width="30" height="30" fill="#FFFFFF"/>
+              <rect x="455" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="485" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="515" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="545" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="575" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="605" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="635" y="182" width="30" height="30" fill="#EAF1ED"/>
+            </g>
+            <text x="560" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">经纱 × 纬纱垂直交织，没有线圈</text>
+            <text x="560" y="278" text-anchor="middle" font-size="11.5" fill="#8B8375">结构稳定 · 挺括 · 不脱散，但弹性很小</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-1</span><b>两种织物的本质区别。</b>针织物是线圈相互串套：拉伸时线圈弯曲变形，所以柔软贴身；梭织物是经纬垂直交织：纱线被锁死，只有纱线本身伸长（极小）才变形。梭织结构稳定的另一面，就是它无法贴合会呼吸、会活动的身体——这是内衣选针织的根本原因。</figcaption>
+      </figure>
+
+      <p>硬币的另一面是针织的三个固有代价，也是日后验货时要盯的重点：</p>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">脱散</div><div class="kv-v">线圈是一环扣一环的串套，一处断裂会沿着串套方向「抽丝」越脱越长。汗布最明显，罗纹次之，经编基本不脱散。对策在边口：包缝、罗纹收口、激光切边熔合。</div></div>
+        <div class="kv-row"><div class="kv-k">卷边</div><div class="kv-v">布边（尤其汗布）会持续向反面卷曲，裁剪时必须先「定幅」，否则裁片歪斜。这也是无痕内裤切边工艺要先做定型的原因。</div></div>
+        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">线圈形态容易被改变：洗一次缩一圈、穿一天松一圈。针织物的缩水率控制是染整（第 05 节）与检测（下一页）的核心课题。</div></div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-weft" data-sec="s-weft"><span class="sec-no">02</span>纬编家族：内裤、背心、无缝的组织语言</h2>
+
+      <p><dfn class="term" data-term="纬编">纬编</dfn>的主力设备是<b>圆机</b>：一台把纱线织成布筒的「旋转编织机」——机头带着几十路成圈系统高速旋转，每一路喂一根纱线织一个横列，产出的连续布筒剖开就是坯布。你会在面料商口中听到「单面机、双面机、罗纹机」，它们的区别只是成圈系统的配置不同；袜机、无缝机（圣东尼）本质上也是纬编圆机的特种型号。纬编是内衣行业的绝对主力：<b>内裤、背心、秋衣裤、无缝衣片全部是纬编</b>。</p>
+
+      <h3 class="sub-title">平针（汗布）：一切的基础</h3>
+      <p><dfn class="term" data-term="平针组织">平针组织</dfn>俗称<b>汗布</b>，是最基本的纬编组织。识别正反面是入门基本功：正面是一列列 <b>V 形线圈柱</b>，光滑细腻；反面是一排排<b>横向弧线（圈弧）</b>，略见横纹。翻一翻手边内裤的布面：亮而平的一面是正面。轻薄柔软是它的优点，易卷边、易脱散是它的脾气。</p>
+
+      <h3 class="sub-title">罗纹与双罗纹：收口与厚实的分工</h3>
+      <p><dfn class="term" data-term="罗纹">罗纹</dfn>把正面线圈纵行和反面线圈纵行交替排布：<b>1×1</b> 是一正一反，<b>2×2</b> 是两正两反（俗称「灯芯弹力条」）。它横向可以拉开接近一倍且<b>不卷边</b>——所有需要「收紧回弹」的位置都是它：袜口、裤腰、领口、袖口。 <dfn class="term" data-term="双罗纹">双罗纹</dfn>俗称<b>棉毛布</b>，是两个罗纹背靠背复合：两面外观相同、厚实平整、不易脱散，是秋衣秋裤的经典面料。</p>
+
+      <h3 class="sub-title">毛圈、提花与添纱</h3>
+      <p><dfn class="term" data-term="毛圈组织">毛圈组织</dfn>在线圈上再挂一个拉长的线圈，布面长出无数小环——袜机直接织成毛巾圈（毛圈袜），割断拉毛就是绒。<dfn class="term" data-term="提花">提花</dfn>按花型选针成圈，可以直接把图案「织」出来而不是印上去，无缝内衣的图形、袜子的 logo 都靠它，耐洗不掉色。</p>
+
+      <p><dfn class="term" data-term="添纱">添纱</dfn>是本节最值得吃透的概念：<b>两根纱线同时垫入同一个线圈</b>，张力与垫纱角度决定一根露在正面（<b>面纱</b>）、一根藏在反面（<b>地纱</b>）。棉袜的经典配方就是添纱逻辑：棉做面纱——皮肤要吸汗亲肤；锦纶包覆氨纶做地纱——弹力与耐磨藏在里层。凉感内裤反过来：凉感长丝做面纱贴皮肤。以后你看成分标时多问一句「每种纤维到底在哪一面」，答案几乎都在添纱结构里。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 三组织 -->
+            <text x="124" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">平针（汗布）· 正面</text>
+            <g fill="none" stroke="#3D6B57" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M52 64 L64 90 L76 64"/><path d="M76 64 L88 90 L100 64"/><path d="M100 64 L112 90 L124 64"/><path d="M124 64 L136 90 L148 64"/><path d="M148 64 L160 90 L172 64"/><path d="M172 64 L184 90 L196 64"/>
+              <path d="M52 98 L64 124 L76 98"/><path d="M76 98 L88 124 L100 98"/><path d="M100 98 L112 124 L124 98"/><path d="M124 98 L136 124 L148 98"/><path d="M148 98 L160 124 L172 98"/><path d="M172 98 L184 124 L196 98"/>
+              <path d="M52 132 L64 158 L76 132"/><path d="M76 132 L88 158 L100 132"/><path d="M100 132 L112 158 L124 132"/><path d="M124 132 L136 158 L148 132"/><path d="M148 132 L160 158 L172 132"/><path d="M172 132 L184 158 L196 132"/>
+              <path d="M52 166 L64 192 L76 166"/><path d="M76 166 L88 192 L100 166"/><path d="M100 166 L112 192 L124 166"/><path d="M124 166 L136 192 L148 166"/><path d="M148 166 L160 192 L172 166"/><path d="M172 166 L184 192 L196 166"/>
+              <path d="M52 200 L64 226 L76 200"/><path d="M76 200 L88 226 L100 200"/><path d="M100 200 L112 226 L124 200"/><path d="M124 200 L136 226 L148 200"/><path d="M148 200 L160 226 L172 200"/><path d="M172 200 L184 226 L196 200"/>
+            </g>
+            <text x="124" y="254" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">正面：V 形线圈柱</text>
+            <text x="124" y="272" text-anchor="middle" font-size="11" fill="#8B8375">光滑细腻 · 易卷边易脱散</text>
+            <line x1="252" y1="30" x2="252" y2="278" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="384" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">平针（汗布）· 反面</text>
+            <g fill="none" stroke="#2C5142" stroke-width="3.2" stroke-linecap="round">
+              <path d="M312 78 C318 96 330 96 336 78"/><path d="M336 78 C342 96 354 96 360 78"/><path d="M360 78 C366 96 378 96 384 78"/><path d="M384 78 C390 96 402 96 408 78"/><path d="M408 78 C414 96 426 96 432 78"/><path d="M432 78 C438 96 450 96 456 78"/>
+              <path d="M312 108 C318 126 330 126 336 108"/><path d="M336 108 C342 126 354 126 360 108"/><path d="M360 108 C366 126 378 126 384 108"/><path d="M384 108 C390 126 402 126 408 108"/><path d="M408 108 C414 126 426 126 432 108"/><path d="M432 108 C438 126 450 126 456 108"/>
+              <path d="M312 138 C318 156 330 156 336 138"/><path d="M336 138 C342 156 354 156 360 138"/><path d="M360 138 C366 156 378 156 384 138"/><path d="M384 138 C390 156 402 156 408 138"/><path d="M408 138 C414 156 426 156 432 138"/><path d="M432 138 C438 156 450 156 456 138"/>
+              <path d="M312 168 C318 186 330 186 336 168"/><path d="M336 168 C342 186 354 186 360 168"/><path d="M360 168 C366 186 378 186 384 168"/><path d="M384 168 C390 186 402 186 408 168"/><path d="M408 168 C414 186 426 186 432 168"/><path d="M432 168 C438 186 450 186 456 168"/>
+              <path d="M312 198 C318 216 330 216 336 198"/><path d="M336 198 C342 216 354 216 360 198"/><path d="M360 198 C366 216 378 216 384 198"/><path d="M384 198 C390 216 402 216 408 198"/><path d="M408 198 C414 216 426 216 432 198"/><path d="M432 198 C438 216 450 216 456 198"/>
+            </g>
+            <text x="384" y="254" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">反面：横向圈弧</text>
+            <text x="384" y="272" text-anchor="middle" font-size="11" fill="#8B8375">略见横纹 · 吸湿贴肤</text>
+            <line x1="516" y1="30" x2="516" y2="278" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="624" y="42" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">罗纹 1×1</text>
+            <g fill="none" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+              <!-- 偶数列 V 绿 -->
+              <g stroke="#3D6B57">
+                <path d="M552 64 L564 90 L576 64"/><path d="M600 64 L612 90 L624 64"/><path d="M648 64 L660 90 L672 64"/>
+                <path d="M552 98 L564 124 L576 98"/><path d="M600 98 L612 124 L624 98"/><path d="M648 98 L660 124 L672 98"/>
+                <path d="M552 132 L564 158 L576 132"/><path d="M600 132 L612 158 L624 132"/><path d="M648 132 L660 158 L672 132"/>
+                <path d="M552 166 L564 192 L576 166"/><path d="M600 166 L612 192 L624 166"/><path d="M648 166 L660 192 L672 166"/>
+                <path d="M552 200 L564 226 L576 200"/><path d="M600 200 L612 226 L624 200"/><path d="M648 200 L660 226 L672 200"/>
+              </g>
+              <!-- 奇数列 λ 陶土（反面线圈） -->
+              <g stroke="#B0603F" stroke-dasharray="1 0" opacity=".85">
+                <path d="M576 90 L588 64 L600 90"/><path d="M624 90 L636 64 L648 90"/><path d="M672 90 L684 64 L696 90"/>
+                <path d="M576 124 L588 98 L600 124"/><path d="M624 124 L636 98 L648 124"/><path d="M672 124 L684 98 L696 124"/>
+                <path d="M576 158 L588 132 L600 158"/><path d="M624 158 L636 132 L648 158"/><path d="M672 158 L684 132 L696 158"/>
+                <path d="M576 192 L588 166 L600 192"/><path d="M624 192 L636 166 L648 192"/><path d="M672 192 L684 166 L696 192"/>
+                <path d="M576 226 L588 200 L600 226"/><path d="M624 226 L636 200 L648 226"/><path d="M672 226 L684 200 L696 226"/>
+              </g>
+            </g>
+            <text x="624" y="254" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">正反纵行交替（绿=正面，陶土=反面）</text>
+            <text x="624" y="272" text-anchor="middle" font-size="11" fill="#8B8375">横弹大 · 不卷边 · 袜口裤腰领口</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-2</span><b>平针正反面与罗纹。</b>正面看 V、反面看弧——这是验货时判断布面朝向最快的一招。罗纹的正反线圈纵行交替排列，形成肉眼可见的凸条纹，横向弹性远大于平针。图中线圈画法为教学示意。</figcaption>
+      </figure>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 左：添纱原理 -->
+            <text x="195" y="36" text-anchor="middle" font-size="14" font-weight="700" fill="#26231D">添纱：一个线圈，两根纱</text>
+            <path d="M136 268 C136 168 256 168 256 268" fill="none" stroke="#B0603F" stroke-width="7" stroke-linecap="round" stroke-dasharray="11 8"/>
+            <path d="M110 250 C110 150 230 150 230 250" fill="none" stroke="#3D6B57" stroke-width="9" stroke-linecap="round"/>
+            <text x="170" y="128" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2C5142">面纱 · 露在正面（实线）</text>
+            <line x1="170" y1="136" x2="170" y2="160" stroke="#2C5142" stroke-width="1.6" stroke-dasharray="4 4"/>
+            <text x="305" y="230" text-anchor="start" font-size="12.5" font-weight="700" fill="#B0603F">地纱 · 藏在反面</text>
+            <text x="305" y="248" text-anchor="start" font-size="11.5" fill="#B0603F">（陶土虚线）</text>
+            <text x="195" y="304" text-anchor="middle" font-size="11.5" fill="#5D574B">张力与垫纱角度决定谁在外、谁在内——这就是「成分表每种纤维在哪一面」的答案</text>
+            <line x1="378" y1="20" x2="378" y2="306" stroke="#E6E0D3" stroke-width="1.5"/>
+            <!-- 右：应用 -->
+            <text x="402" y="56" text-anchor="start" font-size="13.5" font-weight="700" fill="#26231D">典型应用（示例配比）</text>
+            <g>
+              <rect x="402" y="76" width="36" height="24" rx="6" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <rect x="412" y="68" width="36" height="24" rx="6" fill="#3D6B57" opacity=".9"/>
+              <text x="466" y="84" text-anchor="start" font-size="12.5" font-weight="600" fill="#26231D">棉袜：面纱 = 棉短纤纱 ｜ 地纱 = 锦氨包覆纱</text>
+              <text x="466" y="103" text-anchor="start" font-size="11.5" fill="#5D574B">正面吸汗亲肤；弹力与耐磨藏在里层</text>
+            </g>
+            <g>
+              <rect x="402" y="150" width="36" height="24" rx="6" fill="#E9EFF3" stroke="#C9D7E0" stroke-width="1.4"/>
+              <rect x="412" y="142" width="36" height="24" rx="6" fill="#44657F" opacity=".9"/>
+              <text x="466" y="158" text-anchor="start" font-size="12.5" font-weight="600" fill="#26231D">凉感内裤：面纱 = 凉感锦 / 涤长丝 ｜ 地纱 = 氨纶</text>
+              <text x="466" y="177" text-anchor="start" font-size="11.5" fill="#5D574B">凉感面朝皮肤，弹力垫在底下的看不见处</text>
+            </g>
+            <g>
+              <rect x="402" y="224" width="36" height="24" rx="6" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.4"/>
+              <rect x="412" y="216" width="36" height="24" rx="6" fill="#B98F45" opacity=".9"/>
+              <text x="466" y="232" text-anchor="start" font-size="12.5" font-weight="600" fill="#26231D">无缝内衣：添纱 + 提花一次织成</text>
+              <text x="466" y="251" text-anchor="start" font-size="11.5" fill="#5D574B">图案与功能分区同机完成，几乎无裁剪损耗</text>
+            </g>
+            <text x="402" y="296" text-anchor="start" font-size="11.5" fill="#8B8375">「氨纶添纱」= 氨纶以不成圈方式衬垫进线圈 → 汗布获得横向弹性</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-3</span><b>添纱原理与典型应用。</b>面纱决定布面的手感与功能，地纱决定弹力与牢度——低价产品常在这里做手脚：把昂贵的面纱换便宜的地纱顶包，成分标上却写总配比。合同里应直接约定「面纱 / 地纱」各自的规格。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>纬编组织速查（用途与克重为教学示例区间，具体以产品企划为准）</caption>
+        <thead><tr><th>组织</th><th>俗称 / 关键词</th><th>手感与功能</th><th>典型用途</th></tr></thead>
+        <tbody>
+          <tr><td>平针（单面）</td><td>汗布</td><td>轻薄柔软，正反面分明，易卷边脱散</td><td>内裤主体、背心、T 恤（<span class="num">160-220</span> g/m²）</td></tr>
+          <tr><td>平针 + 氨纶</td><td>氨纶汗布 / 弹力汗布</td><td>横向高弹，贴身不松垮</td><td>无痕内裤、光面背心（锦氨 / 棉氨）</td></tr>
+          <tr class="hl"><td>罗纹 1×1 / 2×2</td><td>罗口、弹力条</td><td>横向弹力最大，收紧回弹，不卷边</td><td>袜口、裤腰、领口袖口、背心下摆</td></tr>
+          <tr><td>双罗纹</td><td>棉毛布</td><td>厚实平整、两面同观、不易脱散</td><td>秋衣秋裤、棉毛衫裤（<span class="num">220-320</span> g/m²）</td></tr>
+          <tr><td>毛圈</td><td>毛巾布 / 割绒</td><td>厚、软、吸水缓震；割断成绒</td><td>袜底毛圈、家居袜、冬季内裤里层</td></tr>
+          <tr><td>提花</td><td>选针织花</td><td>图案织入布中，耐洗不褪</td><td>无缝图形、袜筒 logo、杯面花纹</td></tr>
+          <tr><td>添纱</td><td>面纱 + 地纱</td><td>两种纤维各占一面，功能分层</td><td>棉袜、凉感裤、裆部衬垫、无缝衣片</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>组织选择就是「用哪个部位弹、弹多少」的分配：<b>主体要平贴 → 平针；边口要回弹 → 罗纹；要图案 → 提花；要两种功能分层 → 添纱</b>。无缝内衣（<dfn class="term" data-term="无缝针织">无缝针织</dfn>）仍然是纬编——只是把织布与裁剪合并成直接织出筒状衣片，组织以添纱 + 提花为主。它对织机和打版的要求极高，品类细节在内裤篇展开。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-warp" data-sec="s-warp"><span class="sec-no">03</span>经编家族：文胸面料的绝对主角</h2>
+
+      <p>纬编是一根纱「绕着布幅来回跑」：织完一个横列，再织下一个。而 <dfn class="term" data-term="经编">经编</dfn>是<b>一整排经纱（成百上千根）同时成圈</b>——像一排人同时打结，步调一致。这个成圈方式的差别，带来三个决定性结果：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">不脱散</div><div class="kv-v">每根纱都被相邻纱锁定，剪开边缘几乎不抽丝。薄至 30-50 g/m² 的网布也能稳定存在——纬编汗布做到这个克重早脱散了。</div></div>
+        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">线圈相互锁紧，形态不易被改变。受力后回弹一致，这是罩杯面料「保形」的命根子。</div></div>
+        <div class="kv-row"><div class="kv-k">可织极细网眼</div><div class="kv-v">导纱针控制每根纱的垫纱轨迹，可织出规律、细密、弹性可控的网孔——弹力网、蕾丝、杯里网布全是这条技术路线。</div></div>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 344" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 左：纬编一根纱 -->
+            <text x="148" y="36" text-anchor="middle" font-size="13.5" font-weight="700" fill="#26231D">纬编：一根纱，依次成圈</text>
+            <g fill="none" stroke="#3D6B57" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <path d="M64 66 L78 92 L92 66"/><path d="M92 66 L106 92 L120 66"/><path d="M120 66 L134 92 L148 66"/><path d="M148 66 L162 92 L176 66"/><path d="M176 66 L190 92 L204 66"/><path d="M204 66 L218 92 L232 66"/>
+              <path d="M64 106 L78 132 L92 106"/><path d="M92 106 L106 132 L120 106"/><path d="M120 106 L134 132 L148 106"/><path d="M148 106 L162 132 L176 106"/><path d="M176 106 L190 132 L204 106"/><path d="M204 106 L218 132 L232 106"/>
+              <path d="M64 146 L78 172 L92 146"/><path d="M92 146 L106 172 L120 146"/><path d="M120 146 L134 172 L148 146"/><path d="M148 146 L162 172 L176 146"/><path d="M176 146 L190 172 L204 146"/><path d="M204 146 L218 172 L232 146"/>
+              <path d="M64 186 L78 212 L92 186"/><path d="M92 186 L106 212 L120 186"/><path d="M120 186 L134 212 L148 186"/><path d="M148 186 L162 212 L176 186"/><path d="M176 186 L190 212 L204 186"/><path d="M204 186 L218 212 L232 186"/>
+            </g>
+            <path d="M64 81 q 14 20 28 0 q 14 20 28 0 q 14 20 28 0 q 14 20 28 0 q 14 20 28 0 q 14 20 28 0 q 10 28 -4 42 q -14 20 -28 0 q -14 20 -28 0 q -14 20 -28 0 q -14 20 -28 0 q -14 20 -28 0 q -14 20 -28 0" fill="none" stroke="#B0603F" stroke-width="3.4" stroke-linecap="round"/>
+            <circle cx="64" cy="81" r="4" fill="#B0603F"/>
+            <text x="148" y="248" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">一根纱线沿纬向织完一个横列，再织下一个</text>
+            <text x="148" y="266" text-anchor="middle" font-size="11" fill="#8B8375">纱线可以很少 → 小批量灵活，但布边脱散、结构偏松</text>
+            <line x1="380" y1="20" x2="380" y2="274" stroke="#E6E0D3" stroke-width="1.5"/>
+            <!-- 右：经编一组纱 -->
+            <text x="552" y="36" text-anchor="middle" font-size="13.5" font-weight="700" fill="#26231D">经编：一组经纱，同时成圈</text>
+            <g fill="none" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M452 64 L452 82 l 16 12 l -16 12 L452 118 l -16 12 l 16 12 L452 154 l 16 12 l -16 12 L452 190 l -16 12 l 16 12 L452 226" stroke="#2C5142"/>
+              <path d="M492 64 L492 82 l 16 12 l -16 12 L492 118 l -16 12 l 16 12 L492 154 l 16 12 l -16 12 L492 190 l -16 12 l 16 12 L492 226" stroke="#B0603F"/>
+              <path d="M532 64 L532 82 l 16 12 l -16 12 L532 118 l -16 12 l 16 12 L532 154 l 16 12 l -16 12 L532 190 l -16 12 l 16 12 L532 226" stroke="#2C5142"/>
+              <path d="M572 64 L572 82 l 16 12 l -16 12 L572 118 l -16 12 l 16 12 L572 154 l 16 12 l -16 12 L572 190 l -16 12 l 16 12 L572 226" stroke="#B0603F"/>
+              <path d="M612 64 L612 82 l 16 12 l -16 12 L612 118 l -16 12 l 16 12 L612 154 l 16 12 l -16 12 L612 190 l -16 12 l 16 12 L612 226" stroke="#2C5142"/>
+              <path d="M652 64 L652 82 l 16 12 l -16 12 L652 118 l -16 12 l 16 12 L652 154 l 16 12 l -16 12 L652 190 l -16 12 l 16 12 L652 226" stroke="#B0603F"/>
+            </g>
+            <text x="552" y="248" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">上千根经纱各自成圈、彼此锁定（教学示意）</text>
+            <text x="552" y="266" text-anchor="middle" font-size="11" fill="#8B8375">高速高效、化纤长丝量产 → 适合大批量标准化面料</text>
+            <!-- 底部结论与产品 -->
+            <text x="380" y="296" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2C5142">结果：不脱散 · 尺寸稳定 · 可织极细网眼 —— 文胸面料几乎全是经编</text>
+            <g font-size="11.5" text-anchor="middle">
+              <rect x="25" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="110" y="327" fill="#8F6E2F" font-weight="600">特里科光布｜光杯 · 侧比</text>
+              <rect x="205" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="290" y="327" fill="#8F6E2F" font-weight="600">拉舍尔蕾丝｜杯面 · 花边</text>
+              <rect x="385" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="470" y="327" fill="#8F6E2F" font-weight="600">弹力网｜侧翼 · 杯里</text>
+              <rect x="565" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="650" y="327" fill="#8F6E2F" font-weight="600">间隔织物｜无钢圈杯芯</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-4</span><b>经编与纬编的成圈差异。</b>纬编一根纱逐列编织、灵活性高；经编一排纱同时成圈、相互锁定，因此不脱散、稳定、能织极细网眼。文胸对「保形 + 轻薄 + 大批量稳定」的要求，正好全部命中经编的优势区。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">认识四位成员</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="特里科">特里科</dfn> Tricot</div><div class="kv-v">高速经编机织出的细密平纹经编布。锦氨特里科（常见 80/20、82/18，<span class="num">170-240</span> g/m²，示例）是<b>文胸光面杯、侧比、无痕内裤光面</b>的标准料：布面平滑、横向高弹、纵向略弹、不脱散。你摸过的每一件「光面无痕」产品，八成是它。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="拉舍尔">拉舍尔</dfn> Raschel</div><div class="kv-v">另一类经编机，擅长花型与网孔：内衣<b>蕾丝花边</b>主要是拉舍尔经编蕾丝，花纹立体、弹性可控。评价点看花纹清晰度、弹性均匀性与勾丝耐洗性。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="弹力网">弹力网</dfn> Power Mesh</div><div class="kv-v">经编细网眼弹力织物：透气轻薄、回弹好，用于文胸侧翼、杯里、塑身拼接。低价弹力网洗后松弛是侧比失效的主因——采购时看克重与回弹数据，不要只看价格。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="间隔织物">间隔织物</dfn> Spacer</div><div class="kv-v">双面经编、中间由单丝撑起空隙层的「三明治」结构：透气、回弹好、可水洗不塌陷，是模杯海绵的替代升级材料，成本更高，多用于中高端无钢圈文胸。文胸篇详讲。</div></div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-spec" data-sec="s-spec"><span class="sec-no">04</span>规格三件套：机号 · 克重 · 幅宽</h2>
+
+      <p>向供应商要一块布，行话里绕不开三个数字。它们共同决定这块布「能织什么、多厚实、怎么排料」，也是比价时不被绕进去的坐标系。</p>
+
+      <h3 class="sub-title">机号 E：这块布的「像素密度」</h3>
+      <p><dfn class="term" data-term="机号">机号</dfn>指针织机<b>每英寸针床上的针数</b>，如 28G、32G、40G。针距 = 25.4 ÷ E 毫米：40G 的针距约 0.64mm，28G 约 0.91mm。机号越高，针越细越密，<b>能吃的纱就越细</b>——用纱过粗会顶断织针（断针、破洞），过细则布面稀松没骨架。所以机号直接决定「这个厂织不织得出这种布」：一台 28G 单面机永远做不出 40G 光布的细腻感。纬编大圆机常用 24G-40G；文胸锦氨光布多在 32G-40G 档（教学参考）。</p>
+
+      <h3 class="sub-title">克重与幅宽：报价的统一坐标系</h3>
+      <p><dfn class="term" data-term="克重">克重</dfn>是每平方米克数（g/m²），反映用料厚实度；<dfn class="term" data-term="幅宽">幅宽</dfn>是布卷的门幅宽度。两者必须<b>成对出现</b>才有意义——「190 克的布」在不同幅宽下用料量差 20%。比价时统一基准：<b>单价 × 克重 × 幅宽 = 每米布价与每件用料成本</b>。</p>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>贴身衣物常见克重区间（教学示例区间，随品类与设计浮动）</caption>
+        <thead><tr><th>品类 / 用途</th><th>常见成分</th><th class="num">克重 (g/m²)</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>内裤主体</td><td>棉氨 / 莫代尔氨 / 锦氨</td><td class="num">160-220</td><td>低于 160 易透易松，高于 240 厚闷</td></tr>
+          <tr><td>文胸光面布（特里科）</td><td>锦氨 80/20 等</td><td class="num">170-240</td><td>光杯、侧比；越高越挺也越闷</td></tr>
+          <tr><td>背心式文胸 / 无缝</td><td>锦氨 / 锦纶包覆氨纶</td><td class="num">180-280</td><td>提花与添纱结构为主</td></tr>
+          <tr><td>秋衣秋裤（棉毛布）</td><td>棉 / 棉莫混纺</td><td class="num">220-320</td><td>双罗纹厚实保暖</td></tr>
+          <tr><td>弹力网（侧翼 / 杯里）</td><td>锦氨经编网</td><td class="num">50-100</td><td>轻薄网眼，看回弹不看厚</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3 class="sub-title">线圈长度与密度：「同克重偷密度」的把戏</h3>
+      <p>同样克重的两块布，品质可能差一个档次——差别在<b>线圈织得松还是紧</b>。<dfn class="term" data-term="线圈长度">线圈长度</dfn>指一个线圈用掉的纱线长度，由织机的「弯纱深度」控制：弯纱越深线圈越长，同样克重的纱能覆盖更大面积，<dfn class="term" data-term="密度">密度</dfn>就稀。<b>「偷密度」就是调大线圈长度、织得松松垮垮，再用克重数字撑住报价</b>——上秤是 190 g/m²，上手是「虚胖」：拉伸后露底、变形、缩水厉害。识别方法：同条件下对比纵横密（线圈数/5cm）、拉伸回复手感，以及洗后尺寸变化。</p>
+
+      <figure class="fig">
+        <div class="wg">
+          <div class="wg-panel">
+            <div class="wg-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 4v16"/></svg>
+              交互演示 · 机号 × 纱线细度匹配器 <span class="wg-tag">教学模型</span>
+            </div>
+            <div class="wg-body">
+              <svg id="gauge-svg" viewBox="0 0 760 224" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif"></svg>
+              <div class="ctl-row" id="gctl-e"><label>机号 E（针/英寸）</label></div>
+              <div class="ctl-row" id="gctl-d"><label>纱线旦数 D</label></div>
+              <div class="ctl-row"><label>常见组合（教学示例）</label>
+                <button class="btn ghost sm" data-pre="28,150">28G · 150D</button>
+                <button class="btn ghost sm" data-pre="32,100">32G · 100D</button>
+                <button class="btn ghost sm" data-pre="40,70">40G · 70D</button>
+              </div>
+              <div class="calc-grid">
+                <div class="calc-card acc-g"><div class="cc-l">针距（25.4 ÷ E）</div><div class="cc-v"><span id="gm-pitch">–</span><small>mm</small></div></div>
+                <div class="calc-card acc-b"><div class="cc-l">纱线直径估算</div><div class="cc-v"><span id="gm-dia">–</span><small>mm</small></div></div>
+                <div class="calc-card acc-gold"><div class="cc-l">本机号参考旦数上限</div><div class="cc-v"><span id="gm-lim">–</span><small>D</small></div></div>
+                <div class="calc-card acc-c"><div class="cc-l">匹配判定</div><div class="cc-v" style="font-size:15px"><span id="gm-verdict">–</span></div></div>
+              </div>
+            </div>
+            <div class="wg-note" id="gm-note">教学简化模型：纱线直径 ≈ 0.0118 × √dtex（mm），直径 / 针距比在 0.10-0.19 视为匹配（教学锚点，示例）。实际还受组织、针型、张力影响；旦尼尔 D 越大纱越粗，可配合「纤维与纱线」一章复习。布面示意图中线圈随机号变密、随纱线变粗。</div>
+          </div>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-5</span><b>机号与纱线细度的匹配关系。</b>拖动两个滑杆：同样的纱放到更高机号上，布面更细腻，但旦数超过上限就会「粗纱上细机」——断针、破洞、横条；反过来低机号配细纱则稀松露底。这也是供应商说「这个我们织不了」时，背后真正的技术约束。</figcaption>
+      </figure>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：克重一样 ≠ 用料一样
+        </div>
+        <p>低价面料的三板斧：① <b>偷密度</b>——线圈织松，同克重下更稀更软，一洗就垮；② <b>减氨纶</b>——20% 报 18% 甚至 15%，成分标不上克扣的是弹性寿命；③ <b>换原料等级</b>——精梳棉换普梳棉、原生锦纶换回收料。三招都发生在「克重数字」看不见的地方。所以面料验收永远要<b>实测克重 + 纤维定量 + 洗后对比</b>三件套，不能只信吊牌与报价单。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-dye" data-sec="s-dye"><span class="sec-no">05</span>染整全流程：坯布到成品布的分水岭</h2>
+
+      <p>同一支坯布，进不同的染厂出来可以是两块布——<b>价差 30% 以上（教学示例）</b>并不夸张。染整是内衣面料价值链里最「看不见」、也最容易做手脚的一段。全程六步：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <g stroke="#C7BFAE" stroke-width="2" fill="#C7BFAE">
+              <line x1="126" y1="76" x2="138" y2="76"/><polygon points="140,76 132,72 132,80"/>
+              <line x1="248" y1="76" x2="260" y2="76"/><polygon points="262,76 254,72 254,80"/>
+              <line x1="370" y1="76" x2="382" y2="76"/><polygon points="384,76 376,72 376,80"/>
+              <line x1="492" y1="76" x2="504" y2="76"/><polygon points="506,76 498,72 498,80"/>
+              <line x1="614" y1="76" x2="626" y2="76"/><polygon points="628,76 620,72 620,80"/>
+            </g>
+            <g>
+              <rect class="dst" x="20" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6"/>
+              <text class="dstx" x="72" y="82" text-anchor="middle" font-size="12.5" font-weight="600">坯　布</text>
+              <rect class="dst" x="142" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6" style="animation-delay:2.33s"/>
+              <text class="dstx" x="194" y="82" text-anchor="middle" font-size="12.5" font-weight="600" style="animation-delay:2.33s">前处理</text>
+              <rect class="dst" x="264" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6" style="animation-delay:4.66s"/>
+              <text class="dstx" x="316" y="82" text-anchor="middle" font-size="12.5" font-weight="600" style="animation-delay:4.66s">染　色</text>
+              <rect class="dst" x="386" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6" style="animation-delay:7s"/>
+              <text class="dstx" x="438" y="82" text-anchor="middle" font-size="12.5" font-weight="600" style="animation-delay:7s">皂洗固色</text>
+              <rect class="dst" x="508" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6" style="animation-delay:9.33s"/>
+              <text class="dstx" x="560" y="82" text-anchor="middle" font-size="12.5" font-weight="600" style="animation-delay:9.33s">后整理</text>
+              <rect class="dst" x="630" y="48" width="104" height="56" rx="10" stroke="#C7D8CE" stroke-width="1.6" style="animation-delay:11.66s"/>
+              <text class="dstx" x="682" y="82" text-anchor="middle" font-size="12.5" font-weight="600" style="animation-delay:11.66s">检验包装</text>
+            </g>
+            <g font-size="11.5" fill="#5D574B" text-anchor="middle">
+              <text x="72" y="128">织机下机 · 未染整</text><text x="72" y="146" fill="#8B8375" font-size="11">克重密度基准</text>
+              <text x="194" y="128">煮练 · 漂白 · 除油</text><text x="194" y="146" fill="#B0603F" font-size="11">偷减→色花色点、糙手感</text>
+              <text x="316" y="128">活性(棉) · 分散(涤) · 酸性(锦)</text><text x="316" y="146" fill="#B0603F" font-size="11">缸差在此产生</text>
+              <text x="438" y="128">去浮色 · 固色</text><text x="438" y="146" fill="#B0603F" font-size="11">偷减→摩擦牢度差</text>
+              <text x="560" y="128">定型 · 柔软 · 预缩</text><text x="560" y="146" fill="#B0603F" font-size="11">手感与缩水分水岭</text>
+              <text x="682" y="128">四分制验布 · 留样</text><text x="682" y="146" fill="#8B8375" font-size="11">出具面料测试单</text>
+            </g>
+            <rect x="20" y="176" width="720" height="46" rx="10" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="380" y="196" text-anchor="middle" font-size="12.5" font-weight="700" fill="#8F6E2F">同一支坯布，染整水平的价差可达 30%+（教学示例）</text>
+            <text x="380" y="214" text-anchor="middle" font-size="11" fill="#8F6E2F">报价异常低时，先问前处理和皂洗做没做足——这两步最省成本，也最先出问题</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-6</span><b>染整六步流程（高亮随流程滚动）。</b>绿框依次点亮表示工序推进。注意两个「高危偷减点」（陶土色标注）：前处理与皂洗固色——省的是药剂与时间，赔的是色花、色点和摩擦牢度。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">前处理：底子打不好，后面全白搭</h3>
+      <p><dfn class="term" data-term="坯布">坯布</dfn>上带着织造时的油剂、棉蜡、杂质，染色前必须经<b>煮练、漂白、除油</b>（<dfn class="term" data-term="前处理">前处理</dfn>）。偷减药剂或缩短时间的后果是<b>滞后的</b>：染色时上色不匀出「色花」，油点处不上色出「色点」，布面手感发糙、吸水性差。它是最常被偷减的环节，因为问题要到染色甚至成衣后才暴露，追责困难。</p>
+
+      <h3 class="sub-title">染色：三类纤维，三套染料</h3>
+      <p>染料与纤维的匹配是「锁与钥匙」的关系，错配就染不上：</p>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="活性染料">活性染料</dfn> → 棉、莫代尔等纤维素纤维</div><div class="kv-v">与纤维共价结合（真正「长」在纤维上），色牢度好、色谱全。深色必须加强皂洗，否则浮色多、摩擦牢度差。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="分散染料">分散染料</dfn> → 涤纶</div><div class="kv-v">需约 130℃ 高温染色（涤纶结构致密），色牢度好。锦纶、氨纶不耐此温度——涤氨交织染涤时要控制氨纶损伤。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="酸性染料">酸性染料</dfn> → 锦纶、蚕丝、羊毛</div><div class="kv-v">色泽鲜艳，是锦氨弹力布的主力染料。关键局限：锦纶上染，<b>氨纶基本不着色</b>——这就是深色弹力布「露白芯」的根源（下文）。</div></div>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <rect x="60" y="56" width="280" height="130" rx="10" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+            <g fill="none" stroke="#3D6B57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M76 70 L91 96 L106 70"/><path d="M106 70 L121 96 L136 70"/><path d="M136 70 L151 96 L166 70"/><path d="M166 70 L181 96 L196 70"/><path d="M196 70 L211 96 L226 70"/><path d="M226 70 L241 96 L256 70"/><path d="M256 70 L271 96 L286 70"/><path d="M286 70 L301 96 L316 70"/>
+              <path d="M76 106 L91 132 L106 106"/><path d="M106 106 L121 132 L136 106"/><path d="M136 106 L151 132 L166 106"/><path d="M166 106 L181 132 L196 106"/><path d="M196 106 L211 132 L226 106"/><path d="M226 106 L241 132 L256 106"/><path d="M256 106 L271 132 L286 106"/><path d="M286 106 L301 132 L316 106"/>
+              <path d="M76 142 L91 168 L106 142"/><path d="M106 142 L121 168 L136 142"/><path d="M136 142 L151 168 L166 142"/><path d="M166 142 L181 168 L196 142"/><path d="M196 142 L211 168 L226 142"/><path d="M226 142 L241 168 L256 142"/><path d="M256 142 L271 168 L286 142"/><path d="M286 142 L301 168 L316 142"/>
+            </g>
+            <text x="200" y="212" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">常态：布面均匀着色</text>
+            <rect x="420" y="56" width="280" height="130" rx="10" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+            <g fill="none" stroke="#3D6B57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M440 70 L461 96 L482 70"/><path d="M482 70 L503 96 L524 70"/><path d="M524 70 L545 96 L566 70"/><path d="M566 70 L587 96 L608 70"/><path d="M608 70 L629 96 L650 70"/><path d="M650 70 L671 96 L692 70"/>
+              <path d="M440 106 L461 132 L482 106"/><path d="M482 106 L503 132 L524 106"/><path d="M524 106 L545 132 L566 106"/><path d="M566 106 L587 132 L608 106"/><path d="M608 106 L629 132 L650 106"/><path d="M650 106 L671 132 L692 106"/>
+              <path d="M440 142 L461 168 L482 142"/><path d="M482 142 L503 168 L524 142"/><path d="M524 142 L545 168 L566 142"/><path d="M566 142 L587 168 L608 142"/><path d="M608 142 L629 168 L650 142"/><path d="M650 142 L671 168 L692 142"/>
+            </g>
+            <ellipse cx="545" cy="96" rx="26" ry="16" fill="none" stroke="#B0603F" stroke-width="1.4" stroke-dasharray="4 3"/>
+            <text x="545" y="212" text-anchor="middle" font-size="12" font-weight="600" fill="#B0603F">拉伸后：线圈间隙拉开，露出白芯</text>
+            <text x="380" y="242" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">机理：酸性染料只上染锦纶，氨纶几乎不着色——线圈一被拉开，不着色的里层就露出来</text>
+            <text x="380" y="262" text-anchor="middle" font-size="11.5" fill="#5D574B">缓解方向（示例）：组织更紧密 · 面纱加粗盖住地纱 · 控制定型拉伸——可减轻，难根除</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-7</span><b>深色弹力布「露白芯」机理。</b>这不是掉色（色牢度问题），而是染色物理结构问题：色在锦纶皮层，白在氨纶芯。判断方法：拉伸出现的浅色纹路水洗后依旧、且与拉伸方向一致的线圈纹路重合——即为露白芯，属于品类固有现象，程度可用组织与纱线配置控制。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">后整理：定型是手感与缩水的分水岭</h3>
+      <p>染色后的布进入后整理。核心工序是 <dfn class="term" data-term="定型">定型</dfn>：布在设定温度与张力下通过定型机针板链，<b>幅宽、克重、线圈形态在这里被锁定</b>，缩水率与螺旋（布面歪斜）也在这里被控制。可以把它理解为「熨斗 + 拉幅机」的工业版——参数做老实还是做花活，直接决定这块布此后一生的尺寸稳定性。<dfn class="term" data-term="预缩">预缩</dfn>则用机械挤压让布预先回缩，把成品水洗缩率压进标准（常见要求 ±5% 以内，面料层面）。</p>
+
+      <div class="callout deep">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 1 3.6 10.8c-.7.55-1.1 1.2-1.1 2.2h-5c0-1-.4-1.65-1.1-2.2A6 6 0 0 1 12 3z"/></svg>
+          深入理解：超喂与张力（可跳过）
+        </div>
+        <p>定型机上布是被针板链条「拽」着走的。<b>超喂</b>=喂布速度大于链条速度，布在松弛状态下定型、内部应力小，成品缩水率小；<b>张力过大</b>=强行拉宽拉长，下机幅宽克重都「好看」，但布内蓄着应力——消费者水洗一次全部缩回去。看一份缩水率报告，本质上是在看定型参数有没有做老实。这也是「洗标上写着会缩」与「真的一缩到底」的差别所在。</p>
+      </div>
+
+      <p>其余常见整理各有取舍：<dfn class="term" data-term="柔软整理">柔软整理</dfn>用硅油类柔软剂换手感（过量会牺牲吸湿、影响缝制，下文 warn 框）；<dfn class="term" data-term="磨毛">磨毛</dfn>用砂辊磨出细绒，桃皮绒手感温暖，多用于秋冬内裤与秋衣裤，代价是毛羽增加、起球风险上升；功能整理（吸湿速干、凉感、抗菌）见第 07 节。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-shade" data-sec="s-shade"><span class="sec-no">06</span>色差与缸差管理：让整批货是「同一个色」</h2>
+
+      <p>颜色的统一性是消费者对品质最直观的感知之一——两个缸染出的内裤色光差一点，放在一起卖就是「批次混乱」。色差的量化语言是<b>灰卡</b>（GB/T 250）：1-5 级，5 级为无色差，成衣验收通常要求主料间 ≥4 级、辅料配伍 ≥3-4 级（按产品标准与合同约定）。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="380" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">灰卡 1-5 级（GB/T 250 变色灰卡）：两块色差越小级数越高，5 级 = 无可辨色差</text>
+            <g stroke="#E6E0D3" stroke-width="1">
+              <rect x="26"  y="64" width="32" height="44" fill="#9A9484"/><rect x="62"  y="64" width="32" height="44" fill="#9A9484"/>
+              <rect x="106" y="64" width="32" height="44" fill="#9A9484"/><rect x="142" y="64" width="32" height="44" fill="#A8A292"/>
+              <rect x="186" y="64" width="32" height="44" fill="#9A9484"/><rect x="222" y="64" width="32" height="44" fill="#B5AF9F"/>
+              <rect x="266" y="64" width="32" height="44" fill="#9A9484"/><rect x="302" y="64" width="32" height="44" fill="#C2BCAC"/>
+              <rect x="346" y="64" width="32" height="44" fill="#9A9484"/><rect x="382" y="64" width="32" height="44" fill="#CFC9B9"/>
+              <rect x="426" y="64" width="32" height="44" fill="#9A9484"/><rect x="462" y="64" width="32" height="44" fill="#DAD4C4"/>
+              <rect x="506" y="64" width="32" height="44" fill="#9A9484"/><rect x="542" y="64" width="32" height="44" fill="#E4DECE"/>
+              <rect x="586" y="64" width="32" height="44" fill="#9A9484"/><rect x="622" y="64" width="32" height="44" fill="#EDE7D7"/>
+              <rect x="666" y="64" width="32" height="44" fill="#9A9484"/><rect x="702" y="64" width="32" height="44" fill="#F6F0E0"/>
+            </g>
+            <g font-size="11" fill="#5D574B" text-anchor="middle">
+              <text x="60" y="126">5 级</text><text x="140" y="126">4-5 级</text><text x="220" y="126">4 级</text><text x="300" y="126">3-4 级</text><text x="380" y="126">3 级</text><text x="460" y="126">2-3 级</text><text x="540" y="126">2 级</text><text x="620" y="126">1-2 级</text><text x="700" y="126">1 级</text>
+            </g>
+            <line x1="20" y1="148" x2="740" y2="148" stroke="#E6E0D3" stroke-width="1.4"/>
+            <!-- 边中色差 -->
+            <rect x="40" y="168" width="200" height="56" fill="#3D6B57"/>
+            <rect x="40" y="168" width="26" height="56" fill="#568069"/>
+            <rect x="214" y="168" width="26" height="56" fill="#568069"/>
+            <text x="140" y="252" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">边中色差</text>
+            <text x="140" y="270" text-anchor="middle" font-size="11" fill="#8B8375">布边与布中色光不同；同件排料跨幅即撞色</text>
+            <!-- 缸差 -->
+            <g stroke="#E6E0D3" stroke-width="1">
+              <circle cx="330" cy="196" r="24" fill="#3D6B57"/><circle cx="395" cy="196" r="24" fill="#4A7A63"/><circle cx="460" cy="196" r="24" fill="#57876F"/>
+            </g>
+            <g font-size="10.5" fill="#FFFFFF" text-anchor="middle">
+              <text x="330" y="200">缸A</text><text x="395" y="200">缸B</text><text x="460" y="200">缸C</text>
+            </g>
+            <text x="395" y="252" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">缸差</text>
+            <text x="395" y="270" text-anchor="middle" font-size="11" fill="#8B8375">不同染色缸次色光不一致，须分缸管理</text>
+            <!-- 沾色 -->
+            <rect x="540" y="168" width="180" height="56" fill="#FAF8F3" stroke="#E6E0D3"/>
+            <ellipse cx="600" cy="196" rx="18" ry="9" fill="#B0603F" opacity=".45"/>
+            <ellipse cx="660" cy="188" rx="11" ry="6" fill="#B0603F" opacity=".4"/>
+            <ellipse cx="632" cy="210" rx="9" ry="5" fill="#B0603F" opacity=".4"/>
+            <text x="630" y="252" text-anchor="middle" font-size="11.5" font-weight="600" fill="#26231D">沾色</text>
+            <text x="630" y="270" text-anchor="middle" font-size="11" fill="#8B8375">浮色迁移或被异色物沾污</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-8</span><b>灰卡与三种常见色差形态。</b>灰卡把「差不多是一个色吗」变成可沟通的数字；边中色差、缸差、沾色是面料订单最常见的三类问题，责任分属染整工艺与生产管理（定责详见下一页缺陷图鉴）。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">分缸管理实务：五步把缸差关进笼子</h3>
+      <ol class="plain">
+        <li><b>确认色卡</b>：客户提供色样 → 染厂实验室打小样（色卡对色）→ 双方签字确认「颜色确认样」并封存，大货以它为准。</li>
+        <li><b>缸号留样</b>：大货每一缸都剪小样留存、标注缸号，与确认样在<b>标准光源箱</b>（D65 / TL84 等多光源）下比对，避免「路灯下看色」的坑。</li>
+        <li><b>分缸裁剪</b>：成衣厂按缸号分开排料开裁，<b>同一件衣服只用同一缸布</b>——边中色差再小，也经不起同件混裁。</li>
+        <li><b>按缸配比出货</b>：成衣按缸号分批入库出货；零售端整箱混发时按缸号配比装箱，防止单个订单收到「两个色」。</li>
+        <li><b>超缸差回修</b>：某缸与确认样超出约定灰卡级数（如 &lt;4 级）→ 回修重染或降级使用，触发条款写进面料合同。</li>
+      </ol>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸：为什么深色比浅色更难管
+        </div>
+        <p>深色上染率高、浮色多，摩擦牢度与缸差的波动都更大；特黑、大红、宝蓝是内衣行业公认的「难关色」。如果你首发色板里有这些颜色，请给染整多留打样轮次与交期，并把湿摩擦牢度列为必测项。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-finish" data-sec="s-finish"><span class="sec-no">07</span>功能整理鉴别：声称 vs 实证</h2>
+
+      <p>「吸汗速干」「冰凉一夏」「抗菌除螨」是内衣货架最高频的卖点，也是水分最大的地方。判断一个功能宣称，永远问三个问题：<b>机理是什么？有没有对应标准与检测方法？数据是「初始值」还是「洗涤 N 次后」？</b>——第三个问题最致命，因为多数整理剂一洗就衰减。</p>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>常见功能整理：原理与实证要点（标准号以最新有效版本为准）</caption>
+        <thead><tr><th>功能</th><th>原理</th><th>标准与指标</th><th>声称 vs 实证</th></tr></thead>
+        <tbody>
+          <tr><td><dfn class="term" data-term="吸湿速干">吸湿速干</dfn></td><td>亲水整理或异形截面纱线加速吸排汗</td><td>GB/T 21655.1：吸水率、滴水扩散、芯吸高度、蒸发速率多项组合达标</td><td>涤纶最容易「达标」（本体不吸湿，靠结构与整理）；必须看全项报告而非单一指标</td></tr>
+          <tr><td><dfn class="term" data-term="凉感整理">接触凉感</dfn></td><td>凉感助剂或高导热 / 大接触面纱线</td><td>GB/T 35263：接触凉感系数 Qmax ≥ 0.15 J/(cm²·s)</td><td>「上身冰凉」无 Qmax 数据即话术；初始凉感会随水洗衰减，可要求洗后复测（示例要求）</td></tr>
+          <tr><td><dfn class="term" data-term="抗菌整理">抗菌</dfn></td><td>银离子、季铵盐等抑制细菌繁殖、减异味</td><td>GB/T 20944 系列 / FZ/T 73023：洗涤 N 次后抑菌率仍需达标</td><td><b>只看洗涤后数据</b>；「纳米银持久抗菌」先问洗几次后测的</td></tr>
+          <tr><td>抗静电</td><td>降低摩擦起电或导出静电</td><td>GB/T 12703 系列（按季节与织物类型选用方法）</td><td>锦 / 涤低湿环境易起电；数据随湿度波动大，看测试条件</td></tr>
+          <tr><td>防螨</td><td>驱避或杀灭螨虫的整理</td><td>GB/T 24253（驱避率 / 抑螨率）</td><td>贴身衣物实际意义有限；床垫枕套场景更相关，防噱头消费</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸：功能整理与「底裆卫生」的关系
+        </div>
+        <p>内裤底裆的健康逻辑是「吸湿优先、抗菌辅助」：吸湿透气的棉 / 莫代尔保持干爽，本身就能抑制细菌滋生条件；抗菌整理是加分项而不是替代品。纯功能布（如银离子锦纶）若不透气不吸湿，反而制造闷湿环境。内裤篇的「底裆与卫生设计」会展开这个取舍。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">08</span>主理人视角：面料采购实务</h2>
+
+      <h3 class="sub-title">现货还是定制</h3>
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">现</span>现货面料</h5>
+          <ul>
+            <li>起订量小（按米 / 按卷），交期快，适合打样与首发小批量</li>
+            <li>已染整完毕，品质当下可见可测</li>
+            <li>短板：同款多品牌流通、无差异化；色卡即固定色，无对色主动权；补单可能断缸断色</li>
+          </ul>
+        </div>
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">定</span>定制面料（坯布 + 染整）</h5>
+          <ul>
+            <li>成分、组织、克重、幅宽、颜色全部按你的四要素定制，构成产品壁垒</li>
+            <li>代价：染色 MOQ 约 300-500 kg/色（示例）、交期 20-35 天（示例）、需自行承担缸差与试色轮次</li>
+            <li>适合：已验证的爆款返单、品牌主打系列</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="sub-title">一张面料测试单该有什么</h3>
+      <p>无论现货还是定制，进大货前让供应商出（或自行送检）一张测试单，至少覆盖：<b>纤维含量定量</b>（GB/T 2910，对照标称配比）、<b>克重与幅宽实测</b>、<b>水洗尺寸变化率</b>（±5% 常见要求，示例）、<b>色牢度三项</b>（耐洗 / 耐摩擦 / 耐汗渍）、<b>pH 与甲醛</b>（GB 18401 B 类限值）、<b>异味</b>；有功能宣称的加测对应功能标准。这张单子既是品质门槛，也是下一页检测标准知识的直接应用。</p>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：用「四要素」描述你要的面料
+        </div>
+        <p>对供应商下指令，请永远用四要素造句：<b>① 成分与比例</b>（锦氨 82/18，锦纶注明长丝规格如 70D/48F，氨纶注明粗细）；<b>② 组织</b>（经编特里科 / 平针汗布 / 罗纹 2×2）；<b>③ 克重与幅宽</b>（190 g/m² × 160cm，公差 ±5%）；<b>④ 整理与颜色</b>（定型预缩、手感丝柔不过硅、按确认样对色、缸差 ≥4 级）——再加一条：随货附第三方测试单。四要素锁死，报价才有可比性；供应商答不上来任何一条，就换一家。</p>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：手感软 ≠ 品质好
+        </div>
+        <p>上手极软的布，很可能是<b>硅油过量</b>：柔软剂裹住纤维，牺牲吸湿透气（滴水测试水珠滚留）、缝制时打皱起皱、水洗几轮后手感「塌」回原形。正确姿势：摸了湿态再摸——<b>过水晾干后的手感才是真手感</b>；把样品滴水看吸收速度；并要求「洗 5 次后复样对比」（示例轮次）。记住：柔软整理是权衡，不是指标。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">09</span>本页小结</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">针织 vs 梭织</div><div class="kv-v">弹性来自线圈变形而非纱线本身；代价是脱散、卷边、尺寸不稳——边口处理与定型预缩是对策。</div></div>
+        <div class="kv-row"><div class="kv-k">纬编家族</div><div class="kv-v">圆机织布筒；汗布（正 V 反弧）、罗纹（收口回弹）、棉毛布、毛圈、提花、添纱（面纱/地纱各占一面）。内裤、背心、无缝全是纬编。</div></div>
+        <div class="kv-row"><div class="kv-k">经编家族</div><div class="kv-v">一组经纱同时成圈 → 不脱散、尺寸稳定、可织细网眼；特里科光布、拉舍尔蕾丝、弹力网、间隔织物——文胸面料几乎全是经编。</div></div>
+        <div class="kv-row"><div class="kv-k">规格三件套</div><div class="kv-v">机号 E 决定用纱粗细上限；克重与幅宽成对出现才可比价；线圈长度决定松紧，「同克重偷密度」是低价第一把戏。</div></div>
+        <div class="kv-row"><div class="kv-k">染整六步</div><div class="kv-v">前处理与皂洗固色最常被偷减；定型参数（温度/超喂/张力）是手感与缩水的分水岭；活性染棉、分散染涤、酸性染锦。</div></div>
+        <div class="kv-row"><div class="kv-k">露白芯</div><div class="kv-v">深色锦氨拉伸发白是氨纶芯不着色的物理现象，可缓解难根除——不是色牢度事故，别按掉色去返修。</div></div>
+        <div class="kv-row"><div class="kv-k">色差管理</div><div class="kv-v">灰卡 1-5 级量化；确认样封存 → 缸号留样 → 分缸裁剪 → 按缸配比出货，缸差靠管理不靠运气。</div></div>
+        <div class="kv-row"><div class="kv-k">功能宣称</div><div class="kv-v">一律看标准方法 + 洗涤 N 次后的实证数据；手感软可能只是硅油，过水再摸才算数。</div></div>
+      </div>
+
+      <h3 class="sub-title">自测三题</h3>
+
+      <section class="quiz" data-quiz="basics-fabrics-q1" data-q="一款深色锦氨（82/18）内裤，消费者投诉：穿一天后臀部等拉伸部位出现浅色纹路，水洗后依旧。最可能的原因是？" data-a="2" data-exp="正确答案是露白芯机理：酸性染料只上染锦纶、氨纶芯不着色，拉伸把线圈间隙拉开，不着色的里层就露出来——这是弹力深色布的固有物理现象，可控制程度但难根除。A 色牢度差表现为整块褪色或沾染他物，不会恰好沿拉伸纹路分布；B 氨纶断裂表现为松垮塌陷，不是发白；D 泛白与含棉量无关，此款本身是锦氨。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>染料掉色，耐洗色牢度不合格，应整批返修重染</li>
+            <li>氨纶断裂，面料失去弹性，是原料质量问题</li>
+            <li>酸性染料只上染锦纶、氨纶芯不着色，拉伸后线圈间隙露白芯——固有现象，程度取决于组织与纱线配置</li>
+            <li>面料含棉量不足，吸湿差导致局部泛白</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-fabrics-q2" data-q="两家供应商同报「精梳棉+氨纶 平针汗布 190g/m²」，A 家便宜 12%。以下哪一步最该先做？" data-a="1" data-exp="同克重不等于同用料：偷密度（线圈织松）、减氨纶、降原料等级是低价三板斧，都藏在克重数字之外。先让两家寄样，同条件下实测克重、纵横密与拉伸回复，并做纤维含量定量，才能定位 12% 差价来自哪里。A 砍价不解决信息差；C 手感可被硅油操纵，湿态与洗后手感才是真手感；D 包装印刷与面料品质无关。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>直接砍价，要求对方再降一档</li>
+            <li>让两家寄样：同条件实测克重、纵横密（线圈密度）与拉伸回复，加做纤维含量定量，再谈</li>
+            <li>只看手感，谁的更软选谁</li>
+            <li>比谁的色卡和包装更精美，推断工厂实力</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-fabrics-q3" data-q="一批 800kg 定制面料分了 3 个缸染色，缸间色光差异在灰卡 4 级内。成衣厂应如何安排生产？" data-a="2" data-exp="缸差在可接受范围（≥4 级）内属正常现象，管理动作是：按缸号分开裁剪缝制、同一件衣服只用同一缸布、成衣按缸号配比出货。A 混缸随机裁剪会让同批成衣「两个色」；B 全批回染既损伤强力手感又推高成本，仅超缸差时按合同触发；D 报废两缸损失巨大且毫无必要——缸差靠管理消化，不靠消灭。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>混在一起随机裁剪，效率最高</li>
+            <li>全部送回染厂回染一次，统一色光后再生产</li>
+            <li>按缸号分开裁剪与缝制，同件衣服只用同一缸布，成衣按缸号配比出货</li>
+            <li>只挑色光最好的一缸用，其余两缸报废</li>
+          </div>
+        </div>
+      </section>
+
+      <p>下一页把面料知识变成验收语言：<a href="quality.html" style="color:var(--green);font-weight:600">性能、检测与质量标准</a>——看懂检测报告、认识缺陷图鉴、用 AQL 做抽样判定。</p>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：机号 × 纱线细度匹配器（教学模型） */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var svg = document.getElementById('gauge-svg');
+    if (!svg) return;
+    var pitchEl = document.getElementById('gm-pitch');
+    var diaEl = document.getElementById('gm-dia');
+    var limEl = document.getElementById('gm-lim');
+    var verdictEl = document.getElementById('gm-verdict');
+
+    function drawLoops(E, D) {
+      var pitch = 25.4 / E;                       /* 针距 mm */
+      var dtex = D * 1.111;                       /* D → dtex */
+      var dia = 0.0118 * Math.sqrt(dtex);         /* 纱线直径估算 mm（教学值） */
+      var ratio = dia / pitch;
+      var dmax = Math.round(Math.pow(0.19 * pitch / 0.0118, 2) / 1.111); /* 参考旦数上限（教学值） */
+
+      var verdict, color;
+      if (ratio > 0.23)      { verdict = '过粗'; color = '#B0603F'; }
+      else if (ratio > 0.19) { verdict = '偏粗'; color = '#B98F45'; }
+      else if (ratio < 0.10) { verdict = '偏细'; color = '#44657F'; }
+      else                   { verdict = '匹配良好'; color = '#3D6B57'; }
+
+      pitchEl.textContent = pitch.toFixed(2);
+      diaEl.textContent = dia.toFixed(2);
+      limEl.textContent = dmax;
+      verdictEl.textContent = verdict;
+      verdictEl.style.color = color;
+
+      /* 织纹示意：机号越高线圈越密，纱线越粗描边越粗 */
+      var cols = Math.max(9, Math.min(19, Math.round(E / 2.2)));
+      var rows = 5, x0 = 40, y0 = 26, cellH = 28, gapY = 7;
+      var cellW = 680 / cols;
+      var sw = Math.min(8.5, Math.max(1, ratio * 30));
+      var s = '<rect x="20" y="12" width="720" height="204" rx="10" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>';
+      s += '<text x="32" y="34" font-size="11" fill="#8B8375">布面细腻度示意：线圈随机号变密、随纱线变粗（教学示意）</text>';
+      for (var r = 0; r < rows; r++) {
+        var y = y0 + 16 + r * (cellH + gapY);
+        for (var c = 0; c < cols; c++) {
+          var x = x0 + c * cellW;
+          s += '<path d="M ' + x.toFixed(1) + ' ' + y + ' L ' + (x + cellW / 2).toFixed(1) + ' ' + (y + cellH) +
+               ' L ' + (x + cellW).toFixed(1) + ' ' + y + '" fill="none" stroke="#3D6B57" stroke-width="' + sw.toFixed(1) +
+               '" stroke-linecap="round" stroke-linejoin="round"/>';
+        }
+      }
+      svg.innerHTML = s;
+    }
+
+    var rowE = document.getElementById('gctl-e');
+    var rowD = document.getElementById('gctl-d');
+    var cur = { e: 32, d: 70 };
+    var sE = W.slider({ min: 24, max: 40, step: 2, value: 32, fmt: function (v) { return v + ' G'; },
+      onInput: function (v) { cur.e = v; drawLoops(cur.e, cur.d); } });
+    var sD = W.slider({ min: 20, max: 220, step: 10, value: 70, fmt: function (v) { return v + ' D'; },
+      onInput: function (v) { cur.d = v; drawLoops(cur.e, cur.d); } });
+    rowE.appendChild(sE.input); rowE.appendChild(sE.val);
+    rowD.appendChild(sD.input); rowD.appendChild(sD.val);
+
+    var pres = document.querySelectorAll('[data-pre]');
+    for (var i = 0; i < pres.length; i++) {
+      pres[i].addEventListener('click', function () {
+        var p = (this.getAttribute('data-pre') || '').split(',');
+        var e = parseFloat(p[0]), d = parseFloat(p[1]);
+        if (isNaN(e) || isNaN(d)) return;
+        sE.set(e); sD.set(d);
+      });
+    }
+    drawLoops(cur.e, cur.d);
+  })();
+};
+</script>
+</body>
+</html>

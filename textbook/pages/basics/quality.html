@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>性能、检测与质量标准 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="basics-quality" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第一篇 · 通用基础 · 性能标准</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BASICS · QUALITY</div>
+        <h1 class="page-title">性能、检测与质量标准</h1>
+        <p class="page-lede">检测报告是品牌与工厂之间唯一不会说谎的语言。这一页教你三层功夫：看懂强制标准 GB 18401 的 A/B/C 分级与核心限值，明白贴身衣物最要命的十来个性能指标用什么方法测；认识产品标准家族在分等定价中的作用；再用一张缺陷图鉴学会「长相—成因—定责—怎么写进验货单」，并亲手完成一次 GB/T 2828.1 抽样判定演算。读完你能独立审查检测报告、主持一场有据可依的验货。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 28 分钟</span>
+          <span class="chip">前置：针织面料与染整</span>
+          <span class="chip">标准数值以最新有效版本为准</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-why" data-sec="s-why"><span class="sec-no">01</span>为什么要懂检测：品牌与工厂的共同语言</h2>
+
+      <p>你和工厂隔着一张谈判桌，各自的说法都不可信：「我们质量很好」和「我觉得不好」都无法执行。能被双方共同执行的语言只有一种——<b>标准 + 检测数据</b>。规格书里写「耐湿摩擦色牢度 ≥3 级（GB/T 3920）」，验货时按方法标准测，出数据说话：达标收货、不达标退回，不需要吵。</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">内在质量</div><div class="kv-v">仪器说了算的部分：纤维含量、克重、缩水率、色牢度、起球、胀破强力、pH、甲醛等。它决定「穿三个月后还是不是一件好产品」，也是检测报告的主体。</div></div>
+        <div class="kv-row"><div class="kv-k">外观质量</div><div class="kv-v">人眼 + 规则判定的部分：色差、疵点、缝制质量、对称性、线头污渍。它决定「开箱第一眼」，靠验货标准（缺陷图鉴 + AQL 抽样）管理。</div></div>
+        <div class="kv-row"><div class="kv-k">分等制度</div><div class="kv-v">产品标准把质量分为<b>优等品 / 一等品 / 合格品</b>三档（部分标准另设等外品），每档对应不同指标门槛。等级写进合同就是质量承诺：收一等品的钱，就要交一等品的货。</div></div>
+      </div>
+
+      <p>对主理人，检测报告有三个用途：<b>① 准入底线</b>——强制标准不达标不得出厂销售；<b>② 分等定价</b>——等级与考核项写进合同与规格书；<b>③ 纠纷仲裁</b>——出货前封存留样与大货一致性的证据链，出问题时以第三方数据定责。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-gb" data-sec="s-gb"><span class="sec-no">02</span>强制底线：GB 18401-2010 与婴幼儿加严</h2>
+
+      <p><dfn class="term" data-term="GB 18401">GB 18401-2010</dfn>《国家纺织产品基本安全技术规范》是纺织品的<b>强制底线</b>——不达标即不得生产、销售。它把产品按接触皮肤的程度与人群分三类：<b>A 类（婴幼儿，36 个月及以下）、B 类（直接接触皮肤）、C 类（非直接接触皮肤）</b>。你做的内裤、袜子、文胸、秋衣裤全部属于 <b>B 类</b>；婴幼儿贴身产品必须 A 类，并叠加执行 <dfn class="term" data-term="GB 31701">GB 31701-2015</dfn>《婴幼儿及儿童纺织产品安全技术规范》（在 GB 18401 基础上加严，新增附件抗拉强力、绳带与边缘安全、残留断针等要求）。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 甲醛 -->
+            <text x="24" y="58" font-size="12" font-weight="600" fill="#26231D">甲醛含量</text>
+            <text x="24" y="76" font-size="11" fill="#8B8375">(mg/kg)</text>
+            <line x1="140" y1="44" x2="140" y2="112" stroke="#E6E0D3" stroke-width="1.4"/>
+            <rect x="140" y="46" width="34" height="16" rx="3" fill="#3D6B57"/>
+            <text x="182" y="59" font-size="11.5" fill="#2C5142" font-weight="600">A 类 ≤ 20</text>
+            <rect x="140" y="68" width="128" height="16" rx="3" fill="#B98F45"/>
+            <text x="276" y="81" font-size="11.5" fill="#8F6E2F" font-weight="600">B 类 ≤ 75</text>
+            <rect x="140" y="90" width="510" height="16" rx="3" fill="#B0603F"/>
+            <text x="656" y="103" font-size="11.5" fill="#B0603F" font-weight="600">C 类 ≤ 300</text>
+            <!-- pH -->
+            <text x="24" y="152" font-size="12" font-weight="600" fill="#26231D">pH 值</text>
+            <text x="24" y="170" font-size="11" fill="#8B8375">(范围)</text>
+            <rect x="340" y="140" width="234" height="18" rx="4" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.4"/>
+            <text x="457" y="153" text-anchor="middle" font-size="11.5" fill="#2C5142" font-weight="600">A / B 类：4.0 - 8.5</text>
+            <rect x="340" y="162" width="260" height="18" rx="4" fill="#E9EFF3" stroke="#44657F" stroke-width="1.4"/>
+            <text x="470" y="175" text-anchor="middle" font-size="11.5" fill="#44657F" font-weight="600">C 类：4.0 - 9.0</text>
+            <line x1="132" y1="188" x2="660" y2="188" stroke="#E6E0D3" stroke-width="1.2"/>
+            <g font-size="11" fill="#8B8375" text-anchor="middle">
+              <text x="340" y="204">4</text><text x="392" y="204">5</text><text x="444" y="204">6</text><text x="496" y="204">7</text><text x="548" y="204">8</text><text x="600" y="204">9</text>
+            </g>
+            <text x="24" y="152" font-size="0"> </text>
+            <!-- 色牢度 -->
+            <text x="24" y="242" font-size="12" font-weight="600" fill="#26231D">色牢度</text>
+            <text x="24" y="260" font-size="11" fill="#8B8375">(不低于)</text>
+            <rect x="140" y="222" width="150" height="36" rx="8" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.4"/>
+            <text x="215" y="245" text-anchor="middle" font-size="12" fill="#8F6E2F" font-weight="600">A 类 ≥ 3-4 级</text>
+            <rect x="310" y="222" width="150" height="36" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+            <text x="385" y="245" text-anchor="middle" font-size="12" fill="#2C5142" font-weight="600">B 类 ≥ 3 级</text>
+            <rect x="480" y="222" width="150" height="36" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+            <text x="555" y="245" text-anchor="middle" font-size="12" fill="#2C5142" font-weight="600">C 类 ≥ 3 级</text>
+            <!-- 底部注 -->
+            <text x="380" y="286" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">异味：不得检出（所有类别）｜ 可分解致癌芳香胺染料：≤ 20 mg/kg（所有类别）</text>
+            <text x="380" y="306" text-anchor="middle" font-size="11" fill="#8B8375">耐干摩擦 A 类加严至 ≥4 级，A 类另考耐唾液色牢度；数值依据 GB 18401-2010，以最新有效版本为准</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-9</span><b>GB 18401-2010 三类核心限值对比。</b>类别越靠婴幼儿越严：甲醛 A 类限值是 C 类的 1/15；pH 要求弱酸性区间以贴近皮肤环境；色牢度 A 类整体高半级。内裤、袜子、文胸按 B 类考核——这是贴身衣物验收时核对检测报告的第一张对照表。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>GB 18401-2010 核心限值速查（原文数值；以最新有效版本为准）</caption>
+        <thead><tr><th>项目</th><th class="num">A 类（婴幼儿）</th><th class="num">B 类（直接接触皮肤）</th><th class="num">C 类（非直接接触）</th></tr></thead>
+        <tbody>
+          <tr><td><dfn class="term" data-term="甲醛含量">甲醛含量</dfn> (mg/kg)</td><td class="num">≤ 20</td><td class="num">≤ 75</td><td class="num">≤ 300</td></tr>
+          <tr><td><dfn class="term" data-term="pH值">pH 值</dfn></td><td class="num">4.0 - 8.5</td><td class="num">4.0 - 8.5</td><td class="num">4.0 - 9.0</td></tr>
+          <tr><td><dfn class="term" data-term="色牢度">色牢度</dfn>（耐水 / 耐酸碱汗渍 / 耐干摩擦）</td><td class="num">≥ 3-4 级（干摩 ≥4）</td><td class="num">≥ 3 级</td><td class="num">≥ 3 级</td></tr>
+          <tr><td><dfn class="term" data-term="异味">异味</dfn></td><td class="num" colspan="3">不得检出（霉味、高沸程石油味、鱼腥味、芳香烃气味）</td></tr>
+          <tr><td><dfn class="term" data-term="可分解致癌芳香胺染料">可分解致癌芳香胺染料</dfn> (mg/kg)</td><td class="num" colspan="3">≤ 20（禁用偶氮染料）</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          关于标准版本
+        </div>
+        <p>本页引用 GB 18401-2010、GB 31701-2015 及各方法标准时，均以写作时点的现行版本为准。标准会修订换版（限值、方法都可能调整），采购与验收合同中请统一写明「按现行有效版本执行」，并在每次大货检测前与检测机构核对版本号。教材不代替标准原文，出报告与定合同以标准原文为准。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-index" data-sec="s-index"><span class="sec-no">03</span>贴身衣物的核心性能指标与方法</h2>
+
+      <p>强制标准只保证「无毒无害」，<b>好穿耐用</b>要靠下面这些性能指标。它们各有对应的方法标准——报告上「检测依据」一栏写的就是这些编号。先速览，再讲三个最值得深究的。</p>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>贴身衣物核心性能指标与方法标准（常见要求为教学示例，具体以产品标准与合同为准）</caption>
+        <thead><tr><th>指标</th><th>方法标准</th><th>常见要求（示例）</th><th>主理人关注点</th></tr></thead>
+        <tbody>
+          <tr><td><dfn class="term" data-term="缩水率">水洗尺寸变化率</dfn></td><td>GB/T 8628 / 8629 / 8630（准备标记 / 洗涤干燥 / 结果计算）</td><td class="num">±5.0% 以内（针织常见，部分品类更严）</td><td>定型预缩是否做老实；成衣洗标允许值另计</td></tr>
+          <tr><td>耐洗色牢度（皂洗）</td><td>GB/T 3921</td><td class="num">变色 / 沾色 ≥3-4 级</td><td>深色活性染料棉布的高发风险项</td></tr>
+          <tr class="hl"><td>耐摩擦色牢度</td><td>GB/T 3920</td><td class="num">干摩 ≥3-4 级，湿摩 ≥3 级</td><td>贴身衣物最常见不合格项；深色必测湿摩</td></tr>
+          <tr><td>耐汗渍色牢度</td><td>GB/T 3922</td><td class="num">≥3 级（酸 / 碱液）</td><td>「汗液 + 体温」的真实贴身场景</td></tr>
+          <tr><td>耐光色牢度</td><td>GB/T 8427</td><td class="num">≥3-4 级（按产品标准）</td><td>贴身场景要求不高，橱窗陈列褪色仍会发生</td></tr>
+          <tr><td><dfn class="term" data-term="起球">起球</dfn></td><td>GB/T 4802.1（圆轨迹法）</td><td class="num">≥3-4 级（1-5 级，5 最好）</td><td>短纤纱混纺摩擦部位：裤腰、袜跟、内裤腿根</td></tr>
+          <tr><td><dfn class="term" data-term="顶破强力">胀破强力</dfn></td><td>GB/T 7742.1</td><td class="num">按产品标准分档（kPa）</td><td>针织物以「顶破」代替拉伸评价坚牢度；薄布网眼必看</td></tr>
+          <tr><td><dfn class="term" data-term="透气性">透气率</dfn></td><td>GB/T 5453</td><td class="num">无强制限值，按设计目标对比</td><td>底裆、杯里的舒适设计参考；透气≠吸湿</td></tr>
+          <tr><td>纤维含量定量</td><td>GB/T 2910 系列（定量分析）</td><td class="num">与标称偏差 ±5%（GB/T 29862 标识规则）</td><td>虚标重罚；氨纶含量是弹性与成本的博弈点</td></tr>
+          <tr><td><dfn class="term" data-term="弹性回复率">拉伸弹性（定伸长回复）</dfn></td><td>针织物弹性方法标准（如 FZ/T 70006 等，以现行版本为准）</td><td class="num">回复率 ≥90% 左右（按标准 / 企标）</td><td>「穿一天就松」的直接证据；看氨纶品质与含量</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3 class="sub-title">三个最值得深究的指标</h3>
+      <p><b>水洗尺寸变化率（缩水率）</b>：把面料按标准洗涤干燥前后对比标记点距离。针织物缩水的根源在染整（第 05 节讲过的定型与预缩），检测只是「验尸」。注意两个口径：<b>面料缩率</b>（进厂验布时测）与<b>成衣缩率</b>（缝制过程还会叠加），面料合格不等于成衣合格，两边都要测。</p>
+      <p><b>色牢度体系</b>：它不是单一指标，而是一组「染色抵抗某种外界作用」的能力——耐洗（皂洗）、耐摩擦（干 / 湿）、耐汗渍、耐光，全部用灰卡评级。贴身衣物的真实考验是「汗液 + 摩擦 + 潮湿」的叠加，所以<b>耐湿摩擦是最容易翻车也最值得加严的一项</b>：深色活性染料棉布、酸性染料锦氨布都要盯。</p>
+      <p><b>拉伸弹性</b>：定伸长拉伸后看回复率。同样标「弹力」，回复率 95% 与 80% 的裤子一个月后是两件产品。它由氨纶的品质（好的裸丝 vs 回收料）、含量与添纱结构共同决定——报价奇低的「高弹」面料，先怀疑氨纶。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-std" data-sec="s-std"><span class="sec-no">04</span>产品标准家族：分等的依据</h2>
+
+      <p>强制标准管安全底线，<b>产品标准</b>（GB/T 推荐性国标、FZ/T 纺织行业标准）管「这个品类应该做到什么程度」：考核哪些指标、分几等、各等门槛多少、外观疵点如何判。它是你写规格书、定验收等级、打品质官司时引用的「品类宪法」。</p>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>贴身衣物常用产品标准（标准号会修订换版，引用前核对最新有效版本；详表见附录）</caption>
+        <thead><tr><th>品类</th><th>标准号</th><th>在你的工作里怎么用</th></tr></thead>
+        <tbody>
+          <tr><td>袜子</td><td>FZ/T 73001</td><td>分等依据 + 考核项（色牢度、水洗缩率、纤维含量等）；拉松紧口、加固等结构要求按品类约定</td></tr>
+          <tr><td>针织内衣</td><td>GB/T 8878</td><td>秋衣裤、打底衫等针织内衣的通用考核框架；缩水、顶破、色牢度的分档门槛</td></tr>
+          <tr class="hl"><td>针织内裤</td><td>FZ/T 73024</td><td>内裤品类的直接依据；深色款加测湿摩擦是行业惯例</td></tr>
+          <tr><td>针织文胸</td><td>FZ/T 73012</td><td>文胸分等与考核项；辅料（钢圈、背扣、肩带）的性能要求按企标补齐</td></tr>
+          <tr><td>运动文胸</td><td>FZ/T 74007</td><td>运动减震类功能宣称的落地依据；无标准覆盖的新功能用企标 + 第三方数据</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>三条使用要领：① <b>先选标准，再定等级</b>——规格书首页写明「执行 FZ/T 73024，一等品」，所有考核项自动以此为框架；② <b>企标补位</b>——功能宣称（抗菌、凉感、减震）若无对应国行标覆盖，备案企业标准并附第三方数据；③ <b>核对版本</b>——标准号后面带不带年份、哪一年的版本，报价与检测前都要和工厂、检测机构三方对齐，避免「各说各话」。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">05</span>缺陷图鉴：长相 · 成因 · 定责 · 怎么写</h2>
+
+      <p>验货的核心技能是把「感觉不对」翻译成「可追责的文字」。下面按五大类拆解贴身衣物最常见的缺陷：每类给你<b>长相（怎么认）→ 成因（为什么会发生）→ 责任环节（找谁）→ 验货单怎么写</b>。先约定：疵点按严重程度分<b>主要疵点</b>（影响穿着、安全或寿命，如破洞、跳针）与<b>次要疵点</b>（轻微外观问题，如轻微浮线），分类标准写进规格书，验货时按类计数。</p>
+
+      <div class="wg">
+        <div class="wg-panel" data-tabs>
+          <div class="tabs">
+            <button class="tab active" data-tab="dft1">色差类</button>
+            <button class="tab" data-tab="dft2">织造类</button>
+            <button class="tab" data-tab="dft3">染整类</button>
+            <button class="tab" data-tab="dft4">缝制类</button>
+            <button class="tab" data-tab="dft5">辅料类</button>
+          </div>
+          <div class="wg-body">
+
+            <div class="tab-pane active" id="dft1">
+              <figure class="fig" style="margin-top:0">
+                <div class="fig-canvas">
+                  <svg viewBox="0 0 760 175" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                    <rect x="30" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="45" y="40" width="80" height="68" fill="#3D6B57"/><rect x="145" y="40" width="80" height="68" fill="#4C7A64"/>
+                    <text x="85" y="78" text-anchor="middle" font-size="11" fill="#FFFFFF">缸 A</text>
+                    <text x="185" y="78" text-anchor="middle" font-size="11" fill="#FFFFFF">缸 B</text>
+                    <text x="135" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">缸差</text>
+                    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#8B8375">不同缸次色光不一致</text>
+                    <rect x="270" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="285" y="40" width="120" height="68" fill="#3D6B57"/>
+                    <rect x="285" y="40" width="22" height="68" fill="#568069"/>
+                    <rect x="383" y="40" width="22" height="68" fill="#568069"/>
+                    <text x="375" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">边中色差</text>
+                    <text x="375" y="164" text-anchor="middle" font-size="11" fill="#8B8375">布边与布中色光不同</text>
+                    <rect x="510" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="525" y="40" width="180" height="68" fill="#FAF8F3" stroke="#E6E0D3"/>
+                    <ellipse cx="595" cy="72" rx="17" ry="9" fill="#B0603F" opacity=".45"/>
+                    <ellipse cx="655" cy="64" rx="11" ry="6" fill="#B0603F" opacity=".4"/>
+                    <ellipse cx="630" cy="90" rx="9" ry="5" fill="#B0603F" opacity=".4"/>
+                    <text x="615" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">沾色</text>
+                    <text x="615" y="164" text-anchor="middle" font-size="11" fill="#8B8375">浮色迁移或异色沾污</text>
+                  </svg>
+                </div>
+                <figcaption class="fig-cap"><span class="fig-no">图 1-10</span><b>色差类缺陷（示意）。</b>评级用灰卡（GB/T 250 变色 / GB/T 251 沾色），面料验收常约定主料间 ≥4 级。</figcaption>
+              </figure>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>缺陷</th><th>常见成因</th><th>责任环节</th><th>验货单怎么写</th></tr></thead>
+                <tbody>
+                  <tr><td>缸差</td><td>染色工艺波动、配方重现性差、多缸排产无管理</td><td>面料厂（染整）</td><td>「缸间色差 3 级，低于合同 4 级要求，第 X 缸隔离待处理」</td></tr>
+                  <tr><td>边中色差</td><td>定型布边与中部温差、染色轧辊压力不匀</td><td>面料厂（染整）</td><td>「边中色差 3-4 级，同件排料须避让或整匹退回」</td></tr>
+                  <tr><td>沾色</td><td>皂洗不净浮色迁移、白布与异色布混堆混洗</td><td>面料厂或成衣厂（视发生环节）</td><td>「第 X 匹 / 第 Y 件沾色，编号拍照留证，计主要疵点」</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <div class="tab-pane" id="dft2">
+              <figure class="fig" style="margin-top:0">
+                <div class="fig-canvas">
+                  <svg viewBox="0 0 760 175" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                    <rect x="30" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <g fill="none" stroke="#3D6B57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M50 40 L62 66 L74 40"/><path d="M74 40 L86 66 L98 40"/><path d="M98 40 L110 66 L122 40"/><path d="M122 40 L134 66 L146 40"/><path d="M146 40 L158 66 L170 40"/><path d="M170 40 L182 66 L194 40"/>
+                      <path d="M50 68 L62 94 L74 68"/><path d="M74 68 L86 94 L98 68"/><path d="M122 68 L134 94 L146 68"/><path d="M146 68 L158 94 L170 68"/><path d="M170 68 L182 94 L194 68"/>
+                      <path d="M50 96 L62 122 L74 96"/><path d="M74 96 L86 122 L98 96"/><path d="M98 96 L110 122 L122 96"/><path d="M122 96 L134 122 L146 96"/><path d="M146 96 L158 122 L170 96"/><path d="M170 96 L182 122 L194 96"/>
+                    </g>
+                    <circle cx="110" cy="81" r="14" fill="none" stroke="#B0603F" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <text x="135" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">漏针</text>
+                    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#8B8375">线圈缺失成孔洞</text>
+                    <rect x="270" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <g fill="none" stroke="#3D6B57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M290 40 L302 66 L314 40"/><path d="M386 40 L398 66 L410 40"/><path d="M410 40 L422 66 L434 40"/><path d="M434 40 L446 66 L458 40"/>
+                      <path d="M290 68 L302 94 L314 68"/><path d="M386 68 L398 94 L410 68"/><path d="M410 68 L422 94 L434 68"/><path d="M434 68 L446 94 L458 68"/>
+                      <path d="M290 96 L302 122 L314 96"/><path d="M314 96 L326 122 L338 96"/><path d="M338 96 L350 122 L362 96"/><path d="M362 96 L374 122 L386 96"/><path d="M386 96 L398 122 L410 96"/><path d="M410 96 L422 122 L434 96"/><path d="M434 96 L446 122 L458 96"/>
+                    </g>
+                    <path d="M344 76 q 10 -10 20 0 q 10 10 20 0" fill="none" stroke="#B0603F" stroke-width="2"/>
+                    <text x="375" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">破洞</text>
+                    <text x="375" y="164" text-anchor="middle" font-size="11" fill="#8B8375">纱线断裂，伴随断头</text>
+                    <rect x="510" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <g fill="none" stroke="#3D6B57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+                      <path d="M530 40 L542 66 L554 40"/><path d="M602 40 L614 66 L626 40"/><path d="M626 40 L638 66 L650 40"/><path d="M650 40 L662 66 L674 40"/><path d="M674 40 L686 66 L698 40"/>
+                      <path d="M530 68 L542 94 L554 68"/><path d="M602 68 L614 94 L626 68"/><path d="M626 68 L638 94 L650 68"/><path d="M650 68 L662 94 L674 68"/><path d="M674 68 L686 94 L698 68"/>
+                      <path d="M530 96 L542 122 L554 96"/><path d="M602 96 L614 122 L626 96"/><path d="M626 96 L638 122 L650 96"/><path d="M650 96 L662 122 L674 96"/><path d="M674 96 L686 122 L698 96"/>
+                    </g>
+                    <rect x="578" y="34" width="14" height="94" fill="#B98F45" opacity=".45"/>
+                    <text x="615" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">油针（及横档）</text>
+                    <text x="615" y="164" text-anchor="middle" font-size="11" fill="#8B8375">纵行油污 / 横向密度条痕</text>
+                  </svg>
+                </div>
+                <figcaption class="fig-cap"><span class="fig-no">图 1-11</span><b>织造类缺陷（示意）。</b>共同点：问题出在织机下机时的坯布上，是面料厂织造车间的责任区间。</figcaption>
+              </figure>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>缺陷</th><th>常见成因</th><th>责任环节</th><th>验货单怎么写</th></tr></thead>
+                <tbody>
+                  <tr><td>漏针</td><td>成圈机件磨损、断纱自停装置失灵</td><td>面料厂（织造）</td><td>「漏针 X 处，按四分制评分；集中在第 X 米段建议开裁避让」</td></tr>
+                  <tr><td>破洞</td><td>断针、异物轧入、纱线强力不足</td><td>面料厂（织造）</td><td>「破洞直径约 X cm，计主要疵点，整匹评分超标退回」</td></tr>
+                  <tr><td>油针</td><td>针槽加油过量、油剂污染纱线</td><td>面料厂（织造）</td><td>「纵行油针 2 条/匹，洗油处理后复验或降级」</td></tr>
+                  <tr><td>横档</td><td>密度调试波动、不同批次纱线混用</td><td>面料厂（织造）</td><td>「横档 2 条/匹，横档处克重偏差 X%，要求避让或退」</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <div class="tab-pane" id="dft3">
+              <figure class="fig" style="margin-top:0">
+                <div class="fig-canvas">
+                  <svg viewBox="0 0 760 175" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                    <rect x="30" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="50" y="40" width="170" height="68" fill="#3D6B57"/>
+                    <ellipse cx="95" cy="68" rx="24" ry="13" fill="#4A7A63"/>
+                    <ellipse cx="160" cy="58" rx="20" ry="11" fill="#35604C"/>
+                    <ellipse cx="178" cy="92" rx="15" ry="8" fill="#56826C"/>
+                    <ellipse cx="120" cy="94" rx="17" ry="9" fill="#44705B"/>
+                    <text x="135" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">色花</text>
+                    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#8B8375">布面深浅斑块不匀</text>
+                    <rect x="270" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="310" y="40" width="150" height="24" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <rect x="310" y="70" width="150" height="24" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <line x1="310" y1="66" x2="460" y2="66" stroke="#B0603F" stroke-width="2.5"/>
+                    <text x="385" y="34" text-anchor="middle" font-size="11" fill="#B0603F">折痕发硬、回弹差</text>
+                    <text x="375" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">手感板结</text>
+                    <text x="375" y="164" text-anchor="middle" font-size="11" fill="#8B8375">布身发硬发死</text>
+                    <rect x="510" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="540" y="40" width="72" height="70" rx="6" fill="none" stroke="#5D574B" stroke-width="1.8"/>
+                    <rect x="646" y="47" width="60" height="60" rx="6" fill="none" stroke="#B0603F" stroke-width="1.8"/>
+                    <line x1="616" y1="75" x2="638" y2="75" stroke="#B0603F" stroke-width="1.6"/>
+                    <polygon points="642,75 634,71 634,79" fill="#B0603F"/>
+                    <text x="627" y="66" text-anchor="middle" font-size="11" fill="#B0603F" font-weight="600">-6%</text>
+                    <text x="615" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">缩水超标</text>
+                    <text x="615" y="164" text-anchor="middle" font-size="11" fill="#8B8375">洗后尺寸变化超出允差</text>
+                  </svg>
+                </div>
+                <figcaption class="fig-cap"><span class="fig-no">图 1-12</span><b>染整类缺陷（示意）。</b>这类问题在坯布阶段看不见，染整后才暴露——进厂验布与洗前洗后对比是唯一的拦截机会。</figcaption>
+              </figure>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>缺陷</th><th>常见成因</th><th>责任环节</th><th>验货单怎么写</th></tr></thead>
+                <tbody>
+                  <tr><td>色花</td><td>前处理不足、染色升温曲线不当、缸内循环差</td><td>面料厂（染整）</td><td>「色花超出 3-4 级，整匹退回，随货附缸号记录」</td></tr>
+                  <tr><td>手感板结</td><td>定型温度过高、固色 / 树脂过量、柔软剂失效</td><td>面料厂（染整）</td><td>「手感与确认样明显不符，附对比样，复定型或退」</td></tr>
+                  <tr><td>缩水超标</td><td>定型超喂不足 / 张力过大、未做预缩</td><td>面料厂（染整）</td><td>「水洗缩率 -6.5%（标准 ±5%，示例），判定不合格」</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <div class="tab-pane" id="dft4">
+              <figure class="fig" style="margin-top:0">
+                <div class="fig-canvas">
+                  <svg viewBox="0 0 760 175" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                    <rect x="30" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="50" y="84" width="170" height="30" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <line x1="55" y1="84" x2="126" y2="84" stroke="#26231D" stroke-width="3" stroke-dasharray="9 6"/>
+                    <line x1="152" y1="84" x2="215" y2="84" stroke="#26231D" stroke-width="3" stroke-dasharray="9 6"/>
+                    <circle cx="139" cy="84" r="13" fill="none" stroke="#B0603F" stroke-width="1.5" stroke-dasharray="4 3"/>
+                    <text x="135" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">跳针</text>
+                    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#8B8375">线迹间断缺针</text>
+                    <rect x="270" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="290" y="84" width="170" height="30" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <line x1="295" y1="84" x2="455" y2="84" stroke="#26231D" stroke-width="2.5"/>
+                    <g fill="none" stroke="#B0603F" stroke-width="1.6">
+                      <ellipse cx="320" cy="84" rx="3.5" ry="7"/><ellipse cx="350" cy="84" rx="3.5" ry="7"/><ellipse cx="380" cy="84" rx="3.5" ry="7"/><ellipse cx="410" cy="84" rx="3.5" ry="7"/>
+                    </g>
+                    <text x="375" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">针洞</text>
+                    <text x="375" y="164" text-anchor="middle" font-size="11" fill="#8B8375">缝口针眼拉大、撕裂</text>
+                    <rect x="510" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="530" y="40" width="170" height="70" rx="4" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <line x1="560" y1="46" x2="560" y2="104" stroke="#C7BFAE" stroke-width="1.4" stroke-dasharray="4 4"/>
+                    <line x1="670" y1="46" x2="670" y2="104" stroke="#C7BFAE" stroke-width="1.4" stroke-dasharray="4 4"/>
+                    <path d="M560 46 C600 62 630 88 670 104" fill="none" stroke="#B0603F" stroke-width="2.6"/>
+                    <path d="M626 66 q 14 10 6 24" fill="none" stroke="#5D574B" stroke-width="1.6"/>
+                    <polygon points="632,92 626,84 636,85" fill="#5D574B"/>
+                    <text x="615" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">扭曲（及浮线、毛漏）</text>
+                    <text x="615" y="164" text-anchor="middle" font-size="11" fill="#8B8375">侧缝旋转 / 线头外露</text>
+                  </svg>
+                </div>
+                <figcaption class="fig-cap"><span class="fig-no">图 1-13</span><b>缝制类缺陷（示意）。</b>发生在大货车缝环节，属成衣厂责任区间；注意「针洞」也可能是面料脆化（氨纶损伤）所致，需结合面料测试单定责。</figcaption>
+              </figure>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>缺陷</th><th>常见成因</th><th>责任环节</th><th>验货单怎么写</th></tr></thead>
+                <tbody>
+                  <tr><td>跳针</td><td>针线号不匹配、张力不当、机速过快</td><td>成衣厂（缝制）</td><td>「侧缝跳针 2 处/件，计主要疵点；全批按 AQL 判定」</td></tr>
+                  <tr><td>浮线</td><td>面线 / 底线张力失衡、梭芯绕线不良</td><td>成衣厂（缝制）</td><td>「绷缝处浮线起泡，影响外观计次要疵点」</td></tr>
+                  <tr><td>针洞</td><td>针尖钝化、缝线过密、布身脆化（氨纶受损）</td><td>成衣厂（缝制）；布脆化属面料厂</td><td>「肩带针洞拉丝，计主要疵点；送面料测弹力衰减定责」</td></tr>
+                  <tr><td>扭曲 / 毛漏</td><td>裁片丝缕歪斜（面料螺旋）、缝制错位、漏翻毛边</td><td>面料螺旋→面料厂；缝制错位→成衣厂</td><td>「侧缝前扭 2cm 超允差；后中毛漏 1 处，主要疵点」</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+            <div class="tab-pane" id="dft5">
+              <figure class="fig" style="margin-top:0">
+                <div class="fig-canvas">
+                  <svg viewBox="0 0 760 175" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+                    <rect x="30" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="50" y="46" width="170" height="13" rx="6" fill="#C7D8CE"/>
+                    <text x="230" y="57" text-anchor="end" font-size="11" fill="#5D574B">新带</text>
+                    <path d="M50 98 q 10.6 -13 21.3 0 t 21.3 0 t 21.3 0 t 21.3 0 t 21.3 0 t 21.3 0 t 21.3 0 t 21.3 0" fill="none" stroke="#B0603F" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+                    <text x="230" y="102" text-anchor="end" font-size="11" fill="#B0603F">老化</text>
+                    <text x="135" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">松紧带老化</text>
+                    <text x="135" y="164" text-anchor="middle" font-size="11" fill="#8B8375">橡筋松垮、回弹衰减</text>
+                    <rect x="270" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <line x1="290" y1="92" x2="460" y2="92" stroke="#C7D8CE" stroke-width="2"/>
+                    <path d="M290 92 q 20 -28 40 0 q 20 -28 40 0 q 20 -28 40 0 q 20 -28 40 0" fill="none" stroke="#3D6B57" stroke-width="2.2"/>
+                    <line x1="410" y1="64" x2="447" y2="42" stroke="#B0603F" stroke-width="2"/>
+                    <circle cx="451" cy="39" r="5" fill="none" stroke="#B0603F" stroke-width="2"/>
+                    <text x="375" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">花边勾丝</text>
+                    <text x="375" y="164" text-anchor="middle" font-size="11" fill="#8B8375">蕾丝丝线勾出成环</text>
+                    <rect x="510" y="26" width="210" height="96" rx="8" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+                    <rect x="550" y="52" width="150" height="40" rx="6" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.2"/>
+                    <rect x="653" y="34" width="9" height="72" rx="3" fill="#5D574B"/>
+                    <line x1="650" y1="28" x2="657" y2="36" stroke="#B0603F" stroke-width="1.6"/>
+                    <line x1="664" y1="28" x2="657" y2="36" stroke="#B0603F" stroke-width="1.6"/>
+                    <text x="615" y="146" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">胶骨顶出</text>
+                    <text x="615" y="164" text-anchor="middle" font-size="11" fill="#8B8375">骨端顶破布槽</text>
+                  </svg>
+                </div>
+                <figcaption class="fig-cap"><span class="fig-no">图 1-14</span><b>辅料类缺陷（示意）。</b>辅料问题往往在使用几周后才爆发（橡筋松、钩扣脱），是「上架时看不出、差评时才发现」的重灾区，验货要靠拉力抽测与老化对比样。</figcaption>
+              </figure>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>缺陷</th><th>常见成因</th><th>责任环节</th><th>验货单怎么写</th></tr></thead>
+                <tbody>
+                  <tr><td>松紧带老化</td><td>劣质氨纶 / 包覆不良、整烫高温烫伤橡筋</td><td>辅料厂（采购责任在成衣厂）</td><td>「腰头拉伸回复明显衰减，抽 3 件做对比测试留证」</td></tr>
+                  <tr><td>花边勾丝</td><td>蕾丝定形不足、设备 / 环境毛刺勾挂</td><td>辅料厂或成衣厂</td><td>「杯面勾丝 1 处，丝线已抽拉，计主要疵点」</td></tr>
+                  <tr><td>胶骨顶出</td><td>骨槽长度不足、骨端未倒角、槽口缝份过窄</td><td>成衣厂（工艺）</td><td>「胶骨端头顶出布面，安全隐患，单件直接退货项」</td></tr>
+                  <tr><td>装饰件 / 钩扣脱落</td><td>缝钉不牢、拉力不达标</td><td>成衣厂（工艺）</td><td>「装饰件拉力低于企标值，全批返修后复验」（儿童产品执行 GB 31701 附件拉力要求）</td></tr>
+                </tbody>
+              </table></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：把所有问题都算到成衣厂头上
+        </div>
+        <p>色花、缩水、螺旋（丝缕歪斜）、弹力衰减的根源都在<b>面料环节</b>；成衣厂只是最后一个「摸过货的人」。定责靠证据链：<b>进厂验布记录 + 缸号留样 + 首件确认样 + 测试单</b>。没有留样，纠纷时你说不清问题发生在哪一环——这也是下一节验货流程存在的意义。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-inspect" data-sec="s-inspect"><span class="sec-no">06</span>验货流程与 AQL 抽样判定</h2>
+
+      <h3 class="sub-title">全流程五道闸</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">① 面料进厂</div><div class="kv-v">验布按 <dfn class="term" data-term="四分制">四分制</dfn>评分：疵点按长度计 1-4 分（约 ≤7.5cm 计 1 分，每档递增，单码最高 4 分），每 100 平方码内总分 ≤28 分为常见合格线（可约定更严）。同时实测克重、幅宽，送测缩率与色牢度。</div></div>
+        <div class="kv-row"><div class="kv-k">② 首件确认</div><div class="kv-v">大货开裁前按产前样做首件，尺寸、工艺、配色、辅料全项核对签字封样——<b>大货以此为准</b>，防「大货与样品不一致」。</div></div>
+        <div class="kv-row"><div class="kv-k">③ 中查</div><div class="kv-v">裁剪与车缝过程中的巡检：查裁片丝缕、缝制张力、部位尺寸，问题在半成品阶段拦截，返工成本最低。</div></div>
+        <div class="kv-row"><div class="kv-k">④ 尾查（终期抽检）</div><div class="kv-v">成品按 <dfn class="term" data-term="AQL">AQL</dfn> 抽样判定（本节重点）。第三方验货（SGS / ITS / BV 等）与品牌自验都用 <dfn class="term" data-term="抽检">GB/T 2828.1</dfn> 框架。</div></div>
+        <div class="kv-row"><div class="kv-k">⑤ 检针与出货</div><div class="kv-v"><dfn class="term" data-term="检针">检针机</dfn>全数排查断针（含断针记录），装箱唛头核对，出具验货报告后方可出货。</div></div>
+      </div>
+
+      <h3 class="sub-title">AQL 抽样判定：从批量到接收 / 拒收</h3>
+      <p>AQL（Acceptable Quality Limit，可接受质量限）的逻辑：<b>不检查每一件，而是按批量随机抽取样本，数疵点个数与判定数比较</b>。行业常用 AQL 2.5（主要疵点）/ 4.0（次要疵点），检验水平 II，正常检验一次抽样。三步查表：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <g font-size="12" font-weight="600" text-anchor="middle">
+              <rect x="30" y="20" width="250" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="155" y="42" fill="#26231D">① 批量 3 000 件</text>
+              <polygon points="155,66 150,58 160,58" fill="#C7BFAE"/>
+              <rect x="30" y="68" width="250" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="155" y="90" fill="#26231D">② 一般检验水平 II</text>
+              <polygon points="155,114 150,106 160,106" fill="#C7BFAE"/>
+              <rect x="30" y="116" width="250" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="155" y="138" fill="#26231D">③ 查表得样本量字码 K</text>
+              <polygon points="155,162 150,154 160,154" fill="#C7BFAE"/>
+              <rect x="30" y="164" width="250" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="155" y="186" fill="#26231D">④ 随机抽取 n = 125 件</text>
+              <polygon points="155,210 150,202 160,202" fill="#C7BFAE"/>
+              <rect x="30" y="212" width="250" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="155" y="234" fill="#26231D">⑤ AQL 2.5 → Ac = 7 ｜ Re = 8</text>
+              <polygon points="155,258 150,250 160,250" fill="#C7BFAE"/>
+              <rect x="30" y="260" width="250" height="34" rx="8" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="155" y="282" fill="#8F6E2F">⑥ 数疵点：d ≤ 7 接收，d ≥ 8 拒收</text>
+            </g>
+            <rect x="430" y="20" width="300" height="274" rx="12" fill="#FFFFFF" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="448" y="50" font-size="12.5" font-weight="700" fill="#26231D">示例演算（示例值）</text>
+            <text x="448" y="84" font-size="12" fill="#26231D">同一批抽 125 件，检出主要疵点：</text>
+            <text x="448" y="114" font-size="12" fill="#3E7A4E" font-weight="600">· 6 件 → 6 ≤ Ac(7) → 该项接收 ✓</text>
+            <text x="448" y="142" font-size="12" fill="#B0603F" font-weight="600">· 9 件 → 9 ≥ Re(8) → 整批拒收 ✗</text>
+            <text x="448" y="174" font-size="11.5" fill="#8B8375">（次要疵点按 AQL 4.0 → Ac=10 / Re=11）</text>
+            <text x="448" y="204" font-size="12" fill="#26231D">规则：任一项超 Re，整批不合格；</text>
+            <text x="448" y="226" font-size="12" fill="#26231D">各项均在 Ac 内，整批接收。</text>
+            <text x="448" y="262" font-size="11" fill="#8B8375">抽样数值依据 GB/T 2828.1 主表（示例），</text>
+            <text x="448" y="280" font-size="11" fill="#8B8375">判定前以现行版本表格核对。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 1-15</span><b>一次完整的抽样判定演算。</b>批量 3000 件 → 检验水平 II → 字码 K → 样本量 125 → AQL 2.5 对应 Ac=7 / Re=8（示例）。注意判定逻辑是<b>计数规则而非百分比</b>：9 件疵点只占样本的 7.2%，但已越过 Re=8，整批拒收。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap"><table class="tbl">
+        <caption>常用批量段速查（一般检验水平 II、正常检验一次抽样，示例值；以 GB/T 2828.1 现行版本为准）</caption>
+        <thead><tr><th>批量（件）</th><th class="num">字码</th><th class="num">样本量 n</th><th class="num">Ac @ AQL 2.5</th><th class="num">Ac @ AQL 4.0</th></tr></thead>
+        <tbody>
+          <tr><td>281 - 500</td><td class="num">H</td><td class="num">50</td><td class="num">3</td><td class="num">5</td></tr>
+          <tr><td>501 - 1 200</td><td class="num">J</td><td class="num">80</td><td class="num">5</td><td class="num">7</td></tr>
+          <tr class="hl"><td>1 201 - 3 200</td><td class="num">K</td><td class="num">125</td><td class="num">7</td><td class="num">10</td></tr>
+          <tr><td>3 201 - 10 000</td><td class="num">L</td><td class="num">200</td><td class="num">10</td><td class="num">14</td></tr>
+          <tr><td>10 001 - 35 000</td><td class="num">M</td><td class="num">315</td><td class="num">14</td><td class="num">21</td></tr>
+        </tbody>
+      </table></div>
+      <p style="font-size:13px;color:var(--ink-faint)">Re = Ac + 1（如 Ac=7 则 Re=8）。小批量（&lt;281 件）与加严 / 放宽检验的转移规则，请直接查标准主表。</p>
+
+      <div class="wg">
+        <div class="wg-panel">
+          <div class="wg-head">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>
+            交互演示 · 抽样判定器 <span class="wg-tag">示例方案</span>
+          </div>
+          <div class="wg-body">
+            <div class="ctl-row"><label for="aq-in">主要疵点数（0-125）</label><input id="aq-in" class="num-input" type="number" min="0" max="125" step="1" value="6"><button class="btn sm" id="aq-btn" type="button">判定</button></div>
+            <div class="calc-grid">
+              <div class="calc-card acc-g"><div class="cc-l">示例方案</div><div class="cc-v" style="font-size:15px">n=125 ｜ Ac=7 / Re=8</div></div>
+              <div class="calc-card acc-c"><div class="cc-l">判定结果</div><div class="cc-v" style="font-size:15px"><span id="aq-out">–</span></div></div>
+            </div>
+          </div>
+          <div class="wg-note">固定示例方案：n=125、AQL 2.5、Ac=7 / Re=8（与图 1-15 一致）。真实验货的 n 与 Ac 随批量、检验水平与转移规则变化，见上表；判定规则不变：d ≤ Ac 接收，d ≥ Re 拒收。</div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">一份合格的验货报告要素</h3>
+      <ul class="plain">
+        <li><b>订单信息</b>：款号、批量、抽样方案（批量 / 水平 / AQL / n / Ac / Re）、验货日期与地点。</li>
+        <li><b>疵点分类统计</b>：按缺陷图鉴分类计数，主要 / 次要分开，附编号照片。</li>
+        <li><b>判定结论</b>：接收 / 拒收 / 有条件接收，对照抽样方案写明依据。</li>
+        <li><b>处理意见</b>：返修、全检、让步接收（降级扣款）或拒收退厂，及复验安排。</li>
+        <li><b>证据与签字</b>：留样封存编号、双方签字——这是后续仲裁的证据链。</li>
+      </ul>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">07</span>主理人视角：读报告与建内控</h2>
+
+      <h3 class="sub-title">如何读一份第三方检测报告</h3>
+      <ol class="plain">
+        <li><b>看资质章</b>：报告应有 <b>CMA</b> 章（检验检测机构资质认定，中国市场出具具有证明作用的数据必须具备）；<b>CNAS</b> 章代表实验室通过国家认可、数据国际互认。无 CMA 的「检测数据」只能算工厂自测参考。</li>
+        <li><b>对样品信息</b>：型号、颜色、批次、面料成分是否与你送检的大货一致——「套报告」（拿 A 货报告交 B 货）是常见把戏，核对样品照片与封样编号。</li>
+        <li><b>看判定依据与单项结论</b>：每个项目是否写明标准号与版本、单项结论是「符合 / 不符合」还是只给数据；注意「仅对来样负责」的含义——报告只代表送检那一段布或那几件样。</li>
+        <li><b>核验真伪</b>：向机构官网或客服提供报告编号核验；警惕格式怪异、机构查无此号的报告。</li>
+        <li><b>选项目</b>：常规套装 = GB 18401 全项 + 产品标准核心项（缩率、色牢度、起球、顶破 / 拉伸）+ 纤维含量定量；有功能宣称加测对应功能标准；深色必加湿摩擦。</li>
+      </ol>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：建立 Soran 内控标准的三步思路
+        </div>
+        <p>国标行标是「及格线」，品牌的品质口碑来自「比及格线严一点」。三步搭建：① <b>从严抓「贵」的指标</b>——消费者能用身体感知、且直接决定复购的：pH 收窄至 4.0-7.5、耐湿摩擦加严 0.5 级、缩率 ±4%、甲醛内控 ≤50 mg/kg（以上均为示例值，按 Soran 定位校准）；② <b>从宽放「贵而无感」的项</b>——耐光等贴身场景弱相关的项目按标准下限即可，把钱花在刀刃上；③ <b>写成文件</b>——内控限值进规格书与采购合同，检测不合格的处理路径（退修 / 降级 / 拒收）预先约定，标准才有牙齿。</p>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区：A 类标注滥用与「婴儿可用」营销
+        </div>
+        <p>吊牌标「GB 18401 A 类」就必须按 A 类限值检测并全部符合，婴幼儿产品还要执行 GB 31701——拿着 B 类报告标 A 类，或文案写「婴儿可用」但实际按成人 B 类生产，都属<b>违规标注</b>，市场监管抽查与职业打假的高发区。同理慎用「抗菌率 99%」「零甲醛」这类无报告支撑的绝对化宣称。Soran 的原则：宣称的每一个字，都要能在报告里找到对应的行。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">08</span>本页小结</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">共同语言</div><div class="kv-v">标准 + 检测数据才能执行；内在质量靠仪器、外观质量靠验货规则，等级（优等 / 一等 / 合格）写进合同就是承诺。</div></div>
+        <div class="kv-row"><div class="kv-k">强制底线</div><div class="kv-v">GB 18401：内裤袜子文胸 = B 类；甲醛 ≤75、pH 4.0-8.5、色牢度 ≥3 级、异味禁有、芳香胺 ≤20 mg/kg；婴幼儿叠加 GB 31701。</div></div>
+        <div class="kv-row"><div class="kv-k">性能抓手</div><div class="kv-v">缩率 ±5%、耐湿摩擦（深色必测）、起球、胀破、弹性回复率与纤维定量（±5%）——「穿三月后还是不是好产品」全在这组数据里。</div></div>
+        <div class="kv-row"><div class="kv-k">产品标准</div><div class="kv-v">FZ/T 73001（袜）、GB/T 8878（内衣）、FZ/T 73024（内裤）、FZ/T 73012（文胸）是分等与考核框架，引用前核对版本。</div></div>
+        <div class="kv-row"><div class="kv-k">缺陷定责</div><div class="kv-v">色差 / 染整类 → 面料厂；织造类 → 面料厂织造；缝制 / 辅料类 → 成衣厂；定责靠留样与记录，不靠嗓门。</div></div>
+        <div class="kv-row"><div class="kv-k">抽样判定</div><div class="kv-v">批量 → 水平 II → 字码 → n → AQL → Ac/Re，计数规则非百分比；任一超 Re 即拒收；报告五要素齐全才算闭环。</div></div>
+        <div class="kv-row"><div class="kv-k">读报告</div><div class="kv-v">CMA 章是效力门槛；对样品信息防套报告；单项结论看标准号与版本；报告编号可向机构核验。</div></div>
+        <div class="kv-row"><div class="kv-k">内控思路</div><div class="kv-v">严在身体可感知（pH / 湿摩 / 缩率），宽在无感项目；宣称的每个字都要有报告行对应。</div></div>
+      </div>
+
+      <h3 class="sub-title">自测四题</h3>
+
+      <section class="quiz" data-quiz="basics-quality-q1" data-q="按 GB/T 2828.1 一般检验水平 II、正常检验一次抽样：批量 3000 件 → 字码 K → n=125；AQL 2.5（主要疵点）→ Ac=7、Re=8（示例方案）。验货抽 125 件，检出主要疵点 9 件。正确的现场判定是？" data-a="1" data-exp="判定是计数规则而非百分比直觉：9 ≥ Re=8，整批拒收（退厂返修 / 全检后重验）。A 用 7.2% 的百分比感觉替代 Ac/Re 计数，不成立；C 加严或放宽转移有标准既定规则，不是现场随意加倍抽样；D 疵点算不算「主要」按规格书与产品标准分类，验货时无权口头豁免。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>9 件约占样本 7%，不算严重，可以收货</li>
+            <li>9 ≥ Re=8，超出合格判定数，整批拒收，退厂返修后重验</li>
+            <li>现场加倍抽 250 件重新计数，再判一次</li>
+            <li>主要疵点里没有破洞断裂，属可容忍范围，收货</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-quality-q2" data-q="整批背心式文胸的侧比弹力网在消费者水洗 5 次后普遍松弛变形；成衣厂复核车缝参数正常。更可能的责任环节与第一步动作是？" data-a="2" data-exp="整批一致的共性故障优先怀疑物料：弹力网先天克重 / 回弹不足，或定型超喂不足、应力未释放——洗后回缩松弛。正确动作是封存大货面料留样与缸号记录，请面料厂到场比对仲裁。A 缝制张力问题通常随机分布且参数已复核正常；B 单个消费者可谈洗涤方式，整批共性故障不能；D 版型影响合体度，不改变弹力回复率。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>成衣厂缝制张力问题，按合同扣款了事</li>
+            <li>消费者洗涤不当，发布洗涤指引即可</li>
+            <li>面料环节（弹力网克重 / 回弹不足或定型超喂不当）——封存大货面料留样与缸号记录，请面料厂到场比对仲裁</li>
+            <li>版型设计问题，直接改版重开</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-quality-q3" data-q="一款少女内裤吊牌印「A 类 · 婴幼儿可用」，但第三方报告是按 GB 18401 B 类检测合格的。正确的判断是？" data-a="2" data-exp="A 类是整套限值体系（甲醛 ≤20、pH 4.0-8.5、色牢度加严、加考耐唾液等），必须按 A 类检测且全部符合；婴幼儿产品还叠加 GB 31701 的附件拉力、绳带等要求。A 类标注必须与实际检测依据一致，B 类报告撑不起 A 类标注。A 报告合格≠标注合规，类别错位即违规；B A 类不是只看甲醛单项；D 换措辞仍构成「婴幼儿适用」宣称，同样受监管约束。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>报告既然全部合格，标注 A 类没有问题</li>
+            <li>只要甲醛一项达到 A 类限值（≤20），就可以标 A 类</li>
+            <li>A 类必须按 A 类限值整套检测合格（婴幼儿产品另执行 GB 31701），标注与检测依据必须一致，否则涉嫌违规标注</li>
+            <li>把文案改成「婴儿级面料」就可以规避</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="basics-quality-q4" data-q="某批内裤 GB 18401 全项合格，但耐湿摩擦色牢度低于 FZ/T 73024 标称「一等品」的要求。正确的处理是？" data-a="1" data-exp="强制标准是市场准入底线，产品标准决定等级承诺——两级都要满足。不达标称等级就不能按该等级出货：按合同降级 / 让步接收（扣款）或回修重染后复验。A 混淆了「能卖」与「按什么等级卖」，合同违约；C 擅自改标侵犯知情权且同样违约；D 贴身衣物深色湿摩擦恰是最常见不合格项之一，产品标准有明确考核。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>强制标准合格就能按一等品正常出货</li>
+            <li>不能按标称等级出货：按合同降级 / 让步接收或回修重染后复验</li>
+            <li>悄悄把吊牌改标「合格品」，客户不会深究</li>
+            <li>内衣产品不考核湿摩擦，无需处理</li>
+          </div>
+        </div>
+      </section>
+
+      <p>下一章进入供应链：<a href="supply.html" style="color:var(--green);font-weight:600">生产制造与供应链</a>——把面料与标准的知识接到工厂、成本与交期上。</p>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：抽样判定器（示例方案 n=125, Ac=7/Re=8） */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var btn = document.getElementById('aq-btn');
+    var input = document.getElementById('aq-in');
+    var out = document.getElementById('aq-out');
+    if (!btn || !input || !out) return;
+    var AC = 7, RE = 8, N = 125;
+    btn.addEventListener('click', function () {
+      var v = parseFloat(input.value);
+      if (isNaN(v) || v < 0 || v > N || Math.floor(v) !== v) {
+        out.textContent = '请输入 0-' + N + ' 的整数';
+        out.style.color = '#8B8375';
+        return;
+      }
+      if (v <= AC) {
+        out.textContent = '接收（d=' + v + ' ≤ Ac=' + AC + '）';
+        out.style.color = '#2C5142';
+      } else {
+        out.textContent = '拒收（d=' + v + ' ≥ Re=' + RE + '）';
+        out.style.color = '#B0603F';
+      }
+    });
+  })();
+};
+</script>
+</body>
+</html>

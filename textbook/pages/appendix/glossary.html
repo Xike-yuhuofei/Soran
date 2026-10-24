@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>专业术语索引 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style>
+/* 本页专属样式：术语索引（动态生成区） */
+.g-toolbar { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px 16px; margin: 6px 0 4px; }
+.g-stats { font-size: 13px; color: var(--ink-faint); margin-bottom: 10px; }
+.g-stats b { color: var(--green-deep); font-variant-numeric: tabular-nums; }
+.g-search-row { position: relative; margin-bottom: 12px; }
+.g-search-row svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--ink-faint); pointer-events: none; }
+.g-search {
+  width: 100%; padding: 9px 12px 9px 33px;
+  border: 1px solid var(--line-strong); border-radius: 8px;
+  background: var(--paper); font-size: 13.5px; font-family: var(--font-sans);
+  color: var(--ink); outline: none;
+}
+.g-search:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,107,87,.12); }
+.g-cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.g-cat-btn {
+  border: 1px solid var(--line-strong); background: var(--paper); color: var(--ink-soft);
+  border-radius: 999px; padding: 4px 14px; font-size: 13px; font-family: var(--font-sans);
+  cursor: pointer; transition: all .15s;
+}
+.g-cat-btn:hover { border-color: var(--green); color: var(--green-deep); }
+.g-cat-btn.on { background: var(--green); border-color: var(--green); color: #fff; font-weight: 600; }
+.g-group { margin-top: 26px; }
+.g-group-head { display: flex; align-items: baseline; gap: 10px; font-size: 15px; font-weight: 700; color: var(--green-deep); margin-bottom: 10px; }
+.g-group-head .g-count { font-size: 11.5px; font-weight: 500; color: var(--ink-faint); background: var(--surface-2); border-radius: 999px; padding: 1px 10px; }
+.g-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 18px 13px; margin: 10px 0; scroll-margin-top: 72px;
+}
+.g-card:hover { border-color: var(--green-line); }
+.g-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.g-name { font-size: 16px; font-weight: 700; color: var(--ink); }
+.g-en { font-size: 12px; color: var(--ink-faint); font-family: var(--font-mono); }
+.g-cat { margin-left: auto; flex: 0 0 auto; font-size: 10.5px; color: var(--ink-soft); background: var(--surface-2); border-radius: 4px; padding: 1px 8px; }
+.g-def { margin: 6px 0 0; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+.g-see { margin-top: 8px; font-size: 12.5px; color: var(--gold); }
+.g-see a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+.g-see a:hover { color: var(--green-deep); }
+.g-see-missing { color: var(--ink-faint); }
+.g-empty { padding: 40px 20px; text-align: center; color: var(--ink-faint); font-size: 14px; background: var(--surface); border: 1px dashed var(--line-strong); border-radius: 10px; margin-top: 20px; }
+.g-card.flash { animation: gFlash 2s ease; }
+@keyframes gFlash {
+  0% { background: var(--gold-soft); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(185,143,69,.18); }
+  60% { background: var(--gold-soft); border-color: var(--gold); }
+  100% { background: var(--surface); border-color: var(--line); box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) { .g-card.flash { animation: none; } }
+</style>
+</head>
+<body data-page-id="appendix-glossary" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>附录 · 术语索引</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">APPENDIX · GLOSSARY</div>
+        <h1 class="page-title">专业术语索引</h1>
+        <p class="page-lede">全部术语集中在这一个页面：按分类浏览、按关键词实时过滤、或从正文的虚线词一键跳来。每条术语卡包含中文名、英文名、定义与相关术语链路——它不是让你背下来的词典，而是让你在对话、报价单与检测报告里遇到陌生词时，30 秒内建立准确理解的工具书。索引由术语库动态生成，词条持续更新时本页自动同步。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 8 分钟（工具页，随用随查）</span>
+          <span class="chip">前置：无</span>
+          <span class="chip">内容随术语库自动更新</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-use" data-sec="s-use"><span class="sec-no">01</span>如何使用本索引</h2>
+
+      <p>这本索引有三种打开方式，对应三种真实场景：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">① 遇到生词时</div><div class="kv-v">正文里带<b>金色虚线下划线</b>的词（如 <dfn class="term" data-term="包覆纱">包覆纱</dfn>）悬停即出释义卡；点卡片里的「术语索引 →」就跳到本页对应词条——你不需要记住词在第几章。</div></div>
+        <div class="kv-row"><div class="kv-k">② 带着问题查时</div><div class="kv-v">用下方搜索框输入中文、英文或定义里的关键词（如搜「缩水」能同时找到缩水率与预缩），结果实时过滤、按分类归组。</div></div>
+        <div class="kv-row"><div class="kv-k">③ 系统补课时</div><div class="kv-v">按分类标签逐组浏览：先读「纤维」「纱线」「面料」打地基，再看「性能」「标准」建立验收语言，最后按品类（内裤/袜子/文胸）与「工艺」「供应链」补齐。</div></div>
+      </div>
+
+      <p>每张术语卡底部的「相关：→」是刻意设计的<b>学习链路</b>：从「氨纶」跳到「包覆纱」再跳到「橡筋」，五分钟就能把一组相互咬合的概念串成网。另外，本页每条术语都有一个稳定锚点（<code>glossary.html#g-术语名</code>），你可以在自己的笔记或团队协作工具里直接引用链接。全站搜索（按 <b>/</b> 键唤起）也能直达这里的词条。</p>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          关于数据严谨性
+        </div>
+        <p>术语定义以「帮助品牌主理人建立正确判断」为深度基准，参数与区间为行业常见量级（教学参考），不替代标准文本与检测报告。若发现某词条显示「待收录」，说明它已在相关术语中被引用、但词条本体尚未编写——主编更新术语库后，本页会自动补全，无需修改本页代码。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">02</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">三种入口</div><div class="kv-v">正文虚线词弹卡直达、搜索框中英文/定义实时过滤、分类标签系统浏览。</div></div>
+        <div class="kv-row"><div class="kv-k">学习链路</div><div class="kv-v">顺着「相关：→」跳关联术语，把孤立词条串成概念网络；锚点可外链引用。</div></div>
+        <div class="kv-row"><div class="kv-k">动态生成</div><div class="kv-v">本页由术语库（glossary.js）动态渲染：词条增删自动同步，页面无需改动。</div></div>
+        <div class="kv-row"><div class="kv-k">使用姿势</div><div class="kv-v">当词典查，不当课文背——先建第一篇的框架，生词随用随查，才是这本索引的正确打开方式。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="appendix-glossary-q1" data-q="供应商说：「我们这款是冰丝面料，上身冰凉。」你想用本索引最快核实这句话，最有效的路径是？" data-a="1" data-exp="「冰丝」在索引里明确标注为商业俗称而非法定纤维名，真实成分多为黏胶或涤/锦细旦长丝；顺着它的「相关」跳到「凉感整理」，能看到凉感有量化指标（Qmax）与对应检测标准——这条「词条 + 相关链路」的路径两分钟能走完，直接把营销话术换算成可验证的检测项。A 把宣传当结论正是本教材要纠正的习惯；C 成分标上根本不允许写「冰丝」这种非法定名称，看到反而要警惕；D 「大家怎么说」无法替代定义与标准。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>搜索「冰丝」，确信它是更凉的高级纤维，接受供应商说法</li>
+            <li>搜索「冰丝」确认它是商业俗称、看真实成分，再顺「相关」查「凉感整理」，要求提供 Qmax 检测数据</li>
+            <li>看成分标上有没有印「冰丝」两个字，印了就是真的</li>
+            <li>上网看买家评价里有没有人说凉</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="appendix-glossary-q2" data-q="你下周要去谷饶考察供应商，出发前想系统过一遍与工厂、成本、交期相关的术语，最高效的用法是？" data-a="0" data-exp="本页按分类分组，「供应链」分类集中收录了验厂、MOQ、工缴、BOM、交期、小单快反等考察高频术语，按分类浏览一次即可成体系地补齐。B 漫无目的地滚动上百条效率极低；C 只看搜到的词会漏掉「不知道自己不知道」的相邻概念；D 本页明确提供分类筛选，这个说法不成立。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>点分类标签「供应链」，逐条浏览并顺着「相关」链路补齐相邻概念</li>
+            <li>从第一条开始往下滚动，全部看一遍</li>
+            <li>只搜「工厂」两个字，看完结果就出发</li>
+            <li>术语没有分类，只能逐个关键词搜</li>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-index" data-sec="s-index"><span class="sec-no">03</span>术语总览（动态生成）</h2>
+
+      <div class="g-toolbar">
+        <div class="g-stats" id="g-stats">正在加载术语库…</div>
+        <div class="g-search-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input class="g-search" id="g-search" type="text" placeholder="搜索术语：中文 / English / 定义关键词，实时过滤…" autocomplete="off">
+        </div>
+        <div class="g-cats" id="g-cats"></div>
+      </div>
+
+      <div id="g-list"><div class="g-empty">正在生成术语索引…</div></div>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：术语索引动态渲染（数据源 window.GLOSSARY，绝不在页面硬编码词条） */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    if (!window.GLOSSARY) {
+      var host0 = document.getElementById('g-list');
+      if (host0) host0.innerHTML = '<div class="g-empty">术语库（glossary.js）加载失败，请检查文件。</div>';
+      return;
+    }
+    var CATS = ['纤维', '纱线', '面料', '染整', '性能', '标准', '内裤', '袜子', '文胸', '工艺', '供应链'];
+    var cat = '全部', q = '';
+    var listHost = document.getElementById('g-list');
+    var statsEl = document.getElementById('g-stats');
+    var catBar = document.getElementById('g-cats');
+    var input = document.getElementById('g-search');
+
+    function esc(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    function total() { return Object.keys(window.GLOSSARY).length; }
+
+    function render() {
+      var G = window.GLOSSARY;
+      var ql = q.trim().toLowerCase();
+      var shown = 0, html = '';
+      CATS.forEach(function (c) {
+        if (cat !== '全部' && cat !== c) return;
+        var keys = Object.keys(G).filter(function (k) {
+          var g = G[k];
+          if ((g.cat || '') !== c) return false;
+          if (!ql) return true;
+          return k.toLowerCase().indexOf(ql) > -1 ||
+            (g.en || '').toLowerCase().indexOf(ql) > -1 ||
+            (g.def || '').toLowerCase().indexOf(ql) > -1;
+        });
+        if (!keys.length) return;
+        shown += keys.length;
+        html += '<div class="g-group"><div class="g-group-head">' + esc(c) +
+          '<span class="g-count">' + keys.length + ' 条</span></div>';
+        keys.forEach(function (k) {
+          var g = G[k];
+          var seeHtml = '';
+          if (g.see) {
+            seeHtml = G[g.see]
+              ? '<div class="g-see">相关：<a href="#g-' + encodeURIComponent(g.see) + '">' + esc(g.see) + ' →</a></div>'
+              : '<div class="g-see">相关：<span class="g-see-missing" title="该词条尚未收录，待术语库更新">' + esc(g.see) + '（待收录）</span></div>';
+          }
+          html += '<div class="g-card" id="g-' + encodeURIComponent(k) + '">' +
+            '<div class="g-head"><span class="g-name">' + esc(k) + '</span>' +
+            (g.en ? '<span class="g-en">' + esc(g.en) + '</span>' : '') +
+            '<span class="g-cat">' + esc(g.cat || c) + '</span></div>' +
+            '<p class="g-def">' + esc(g.def || '') + '</p>' + seeHtml + '</div>';
+        });
+        html += '</div>';
+      });
+      listHost.innerHTML = html ||
+        '<div class="g-empty">没有匹配「' + esc(q) + '」的术语。<br>试试更短的关键词，或切换到「全部分类」。</div>';
+      if (statsEl) statsEl.innerHTML = '共收录 <b>' + total() + '</b> 条术语 · 当前显示 <b>' + shown + '</b> 条（数据源：glossary.js，动态生成）';
+    }
+
+    /* 分类按钮 */
+    ['全部'].concat(CATS).forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'g-cat-btn' + (c === '全部' ? ' on' : '');
+      b.textContent = c;
+      b.addEventListener('click', function () {
+        cat = c;
+        catBar.querySelectorAll('.g-cat-btn').forEach(function (x) { x.classList.toggle('on', x === b); });
+        render();
+      });
+      catBar.appendChild(b);
+    });
+
+    /* 搜索（实时过滤） */
+    if (input) {
+      input.addEventListener('input', function () {
+        q = input.value;
+        render();
+      });
+    }
+
+    /* 锚点跳转与高亮（兼容正文弹卡 / 全站搜索跳入 glossary.html#g-术语名） */
+    function jumpToHash() {
+      var raw = window.location.hash || '';
+      if (raw.indexOf('#g-') !== 0) return;
+      var name;
+      try { name = decodeURIComponent(raw.slice(3)); } catch (e) { name = raw.slice(3); }
+      if (!name) return;
+      var card = document.getElementById('g-' + encodeURIComponent(name));
+      if (!card) {
+        listHost.innerHTML = '<div class="g-empty">术语「' + esc(name) + '」尚未收录或已更名。<br>可尝试上方搜索，或返回正文查看对应章节。</div>';
+        return;
+      }
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      card.classList.remove('flash');
+      void card.offsetWidth; /* 重启动画 */
+      card.classList.add('flash');
+    }
+
+    render();
+    setTimeout(jumpToHash, 80);
+    window.addEventListener('hashchange', jumpToHash);
+  })();
+};
+</script>
+</body>
+</html>

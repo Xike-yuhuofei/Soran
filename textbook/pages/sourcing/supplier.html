@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>供应商考察与成本管理 · 汕头实战 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="sourcing-supplier" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第五篇 · 选品实战 · 供应商考察</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">SOURCING · SUPPLIER</div>
+        <h1 class="page-title">供应商考察与成本管理 · 汕头实战</h1>
+        <p class="page-lede">上一页解决了「货好不好」，本页解决「厂行不行、价怎么谈」：为什么 Soran 起步要去汕头谷饶、怎么在一天里看穿一家工厂、31 项可打勾的现场考察清单、试单怎么设计、季度评分卡怎么管理供应商、成本怎么基于 BOM 去谈。读完本页，你将能独立跑完「初筛 → 实地考察 → 试单 → 放大」的供应商开发闭环，并用一套评价与谈判规则守住 Soran 的「高品质、高质价比」定位。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 25 分钟</span>
+          <span class="chip">前置：品质判断 · 生产供应链</span>
+          <span class="chip">建议：把第 04 节清单打印带去现场</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-why" data-sec="s-why"><span class="sec-no">01</span>考察的目标与逻辑</h2>
+
+      <p>样品会骗人，报价会话术，只有工厂本身骗不了人。邮件里「我们是十年老厂、品质一流」是零成本的；而一间真实运转的车间、一叠翻得起了毛边的首件确认单、一台保养得当的检针机，是要真金白银与多年管理换来的——<b>实地考察的本质，是把语言换成证据。</b>供应商开发里 90% 的坑（交期跳票、大货掉样、报价注水），都能在考察阶段提前识别。</p>
+
+      <p>一次<dfn class="term" data-term="验厂">验厂</dfn>到底验证什么？归纳为五个维度：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">① 产能真实性</div><div class="kv-v">设备数量、开机率、在岗人数与其自称产能是否对得上。虚报产能=接单后外发或排期挤兑，交期与品质双双失控。</div></div>
+        <div class="kv-row"><div class="kv-k">② 品质体系</div><div class="kv-v">不是看有没有 ISO 证书，而是看「记录」：首件确认、中查尾查、返修台账、检针记录。有制度无记录，等于没有制度。</div></div>
+        <div class="kv-row"><div class="kv-k">③ 开发能力（版房）</div><div class="kv-v">版师人数、打样周期、能否读懂规格书。版房是品质的源头：没有版房的厂只能照葫芦画瓢，你的修改意见传到机台时已经变形。</div></div>
+        <div class="kv-row"><div class="kv-k">④ 商务健康</div><div class="kv-v">客户结构是否过度集中、报价是否经得起拆解、账期要求是否异常。一家「快撑不住」的工厂，会用低价接单然后偷工自救。</div></div>
+        <div class="kv-row"><div class="kv-k">⑤ 配合意愿</div><div class="kv-v">愿意为你改版、拆 BOM、配合验货的厂才值得培育。判断方法很简单：看对方是「接单思维」还是「解决你的问题思维」。</div></div>
+      </div>
+
+      <p>贯穿五个维度的判断原则，是一条「承诺 vs 证据」的对照：</p>
+
+      <div class="duo">
+        <div class="d-cell d-bad">
+          <h5><span class="d-ico">听</span>听得见的承诺（不算数）</h5>
+          <ul>
+            <li>「我们做这行十几年了」</li>
+            <li>「品质你放心，出问题我赔」</li>
+            <li>「这个交期没问题，肯定赶得上」</li>
+            <li>「大客户都在我们这做」</li>
+            <li>「机器都在车间，随便看」</li>
+          </ul>
+        </div>
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">看</span>看得见的证据（才算数）</h5>
+          <ul>
+            <li>营业执照注册年限、社保参保人数</li>
+            <li>签字的首件确认单与返修台账</li>
+            <li>当面问出的排产表与开机率</li>
+            <li>客户结构能否说清且逻辑自洽</li>
+            <li>不经预约时段车间仍在运转</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>考察不是一次性动作，而是随合作深度分阶段加码的过程。每一阶段解决一个问题，通过一个门槛再进入下一阶段：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:15%">阶段</th><th>核心问题</th><th>关键动作</th><th style="width:26%">进入下一阶段的标准（示例）</th></tr></thead>
+          <tbody>
+            <tr><td><b>① 初筛</b></td><td>值不值得花一天路费？</td><td>电话/视频沟通 + 公开信息核查（执照、社保、诉讼）+ 索要样品</td><td>样品合格率与回复速度达标</td></tr>
+            <tr><td><b>② 实地考察</b></td><td>厂是真实且有能力的吗？</td><td>按本页清单现场核验：设备、记录、版房、商务面谈</td><td>清单完成率与关键项无硬伤</td></tr>
+            <tr><td><b>③ 试单</b></td><td>口头能力能变成大货吗？</td><td>小批量试产 + 加严验货（详见第 06 节）</td><td>关键项全检合格、交期偏差 ≤3 天（示例）</td></tr>
+            <tr><td><b>④ 放大</b></td><td>能长期并肩吗？</td><td>提高订单份额、谈年度框架协议、纳入季度评分卡</td><td>连续两季评分 ≥85%（示例）</td></tr>
+          </tbody>
+          <caption>供应商开发的四阶段闸门（示例流程）。每个阶段都有明确的「不通过就停」，避免感情用事一路加码。</caption>
+        </table>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>两个常见浪费：一是<b>跳过初筛直接飞现场</b>——一天考察的时间成本对初创品牌是奢侈的，桌面尽调能先筛掉一半；二是<b>考察通过就再也不看厂</b>——工厂是活的，人员流动、转产、换老板都会让去年的结论失效。正确的节奏是：主力供应商每年至少实地回访一次，季度评分连续下滑时随时上门。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-gurao" data-sec="s-gurao"><span class="sec-no">02</span>汕头谷饶生态深读</h2>
+
+      <p>第一篇讲过产业集群地图，本节把 Soran 起步的首选地——<dfn class="term" data-term="汕头潮南">汕头潮南</dfn>的<dfn class="term" data-term="谷饶">谷饶</dfn>——单独放大看。谷饶被称为「中国内衣名镇」，镇域及周边聚集了文胸、家居服、内裤的全产业链。对 Soran 这样的起步品牌，它的价值集中在三点：</p>
+
+      <ul class="plain">
+        <li><b>全链分工，一小时配齐。</b>模杯、花边、织带、橡筋、印染、车缝各有专厂，辅料市场步行可达。缺一颗扣子、补一匹布，当天解决——这在产业集群之外意味着一轮快递往返。</li>
+        <li><b>打样快。</b>版房、面料、辅料、车缝的物理距离近，头样周期常可压缩到 7-10 天（示例）；改一轮样 5-7 天。打样速度=开发迭代速度，这是起步期最贵的资产。</li>
+        <li><b>小单友好。</b>集群内工厂密集、竞争充分，300-500 件级的<dfn class="term" data-term="小单快反">小单快反</dfn>订单有大量车缝厂愿意接。同样的单量在非集群地区，多数厂会直接拒单或报出离谱高价。</li>
+      </ul>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 上游左列 -->
+            <g>
+              <rect x="20" y="70" width="172" height="64" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+              <text x="106" y="96" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">面料商</text>
+              <text x="106" y="116" text-anchor="middle" font-size="11" fill="#8B8375">坯布 / 现货色布 / 定制染</text>
+            </g>
+            <g>
+              <rect x="20" y="190" width="172" height="64" rx="10" fill="#F7EAE2" stroke="#E6C9B8" stroke-width="1.5"/>
+              <text x="106" y="216" text-anchor="middle" font-size="13" font-weight="700" fill="#B0603F">区级印染环保中心</text>
+              <text x="106" y="236" text-anchor="middle" font-size="11" fill="#B0603F">染整 / 定型（集中入园）</text>
+            </g>
+            <!-- 顶部三个卫星 -->
+            <g>
+              <rect x="248" y="16" width="140" height="52" rx="10" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+              <text x="318" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">模杯专厂</text>
+              <text x="318" y="57" text-anchor="middle" font-size="10.5" fill="#8B8375">开模 · 模压 · 切边</text>
+            </g>
+            <g>
+              <rect x="402" y="16" width="128" height="52" rx="10" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+              <text x="466" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">花边·经编厂</text>
+              <text x="466" y="57" text-anchor="middle" font-size="10.5" fill="#8B8375">弹力蕾丝 · 网眼</text>
+            </g>
+            <g>
+              <rect x="544" y="16" width="140" height="52" rx="10" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+              <text x="614" y="40" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">织带·橡筋厂</text>
+              <text x="614" y="57" text-anchor="middle" font-size="10.5" fill="#8B8375">腰头橡筋 · 肩带 · 织带</text>
+            </g>
+            <!-- 中枢 -->
+            <g>
+              <rect x="290" y="140" width="180" height="92" rx="12" fill="#3D6B57"/>
+              <text x="380" y="172" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">车缝厂（成衣）</text>
+              <text x="380" y="194" text-anchor="middle" fill="#CDE0D6" font-size="11">裁剪 · 车缝 · 中查尾查</text>
+              <text x="380" y="212" text-anchor="middle" fill="#CDE0D6" font-size="11">整烫 · 检针 · 包装出库</text>
+            </g>
+            <!-- 右列 -->
+            <g>
+              <rect x="568" y="140" width="172" height="64" rx="10" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+              <text x="654" y="166" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">辅料市场</text>
+              <text x="654" y="186" text-anchor="middle" font-size="11" fill="#8B8375">唛头 · 胶袋 · 背扣 · 捆条</text>
+            </g>
+            <g>
+              <rect x="568" y="250" width="172" height="64" rx="10" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.5"/>
+              <text x="654" y="276" text-anchor="middle" font-size="13" font-weight="700" fill="#8F6E2F">版房·样衣工作室</text>
+              <text x="654" y="296" text-anchor="middle" font-size="11" fill="#8B8375">纸样 · 头样 · 修改样</text>
+            </g>
+            <!-- 底部品牌 -->
+            <g>
+              <rect x="290" y="330" width="180" height="64" rx="10" fill="#26231D"/>
+              <text x="380" y="356" text-anchor="middle" fill="#fff" font-size="13.5" font-weight="700">Soran 品牌</text>
+              <text x="380" y="376" text-anchor="middle" fill="#B9B29F" font-size="11">下单 · 规格书 · 验货 · 入仓</text>
+            </g>
+            <!-- 连线：左列 → 中枢 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <path d="M192 102 L240 102 L240 172 L282 172"/><polygon points="290,172 282,167.5 282,176.5"/>
+              <path d="M192 222 L240 222 L240 200 L282 200"/><polygon points="290,200 282,195.5 282,204.5"/>
+            </g>
+            <!-- 连线：顶部 → 中枢 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <path d="M318 68 L318 132"/><polygon points="318,140 313.5,132 322.5,132"/>
+              <path d="M466 68 L466 132"/><polygon points="466,140 461.5,132 470.5,132"/>
+              <path d="M614 68 L614 110 L500 110 L500 132"/><polygon points="500,140 495.5,132 504.5,132"/>
+            </g>
+            <!-- 连线：右列 ↔ 中枢 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <path d="M568 172 L546 172 L546 186 L478 186"/><polygon points="470,186 478,181.5 478,190.5"/>
+              <path d="M568 282 L520 282 L520 216"/><polygon points="520,208 515.5,216 524.5,216"/>
+            </g>
+            <!-- 品牌 ↔ 中枢 -->
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <path d="M330 330 L330 240"/><polygon points="330,232 325.5,240 334.5,240"/>
+              <path d="M430 240 L430 322"/><polygon points="430,330 425.5,322 434.5,322"/>
+            </g>
+            <text x="316" y="292" text-anchor="end" font-size="10.5" fill="#8B8375">订单 · 规格</text>
+            <text x="444" y="292" text-anchor="start" font-size="10.5" fill="#8B8375">成品 · 交货</text>
+            <!-- 底部注记 -->
+            <rect x="20" y="414" width="720" height="40" rx="9" fill="#EAF1ED" stroke="#C7D8CE"/>
+            <text x="380" y="439" text-anchor="middle" font-size="12" fill="#2C5142" font-weight="600">全部配套半径约 1 小时车程 · 头样常可 7-10 天（示例）· 300-500 件级小单有厂接（示例）</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-1</span><b>谷饶供应链分工示意。</b>车缝厂是汇合点：面料与印染从左翼进入，模杯、花边、织带等专厂部件与辅料、版房服务从顶部与右翼汇入；品牌在下端完成下单、验货与入仓。图为结构示意，不指向任何具体厂商。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">三种工厂形态：模杯专厂、车缝厂、全能厂</h3>
+      <p>在谷饶找供应商，你会遇到三类主体，分工逻辑与适用场景完全不同：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:15%">形态</th><th>做什么</th><th>优势</th><th>风险与适用</th></tr></thead>
+          <tbody>
+            <tr><td><b>模杯专厂</b></td><td>只做模杯：开模、海绵/面料模压、切边</td><td>模具与温压曲线经验深，杯型稳定性好</td><td>不做成衣。Soran 文胸品类需与其<b>并行合作</b>，杯型选定后再交车缝厂组装</td></tr>
+            <tr><td><b>车缝厂</b></td><td>裁剪+车缝+后整，材料由品牌指定外购</td><td>专注工艺与交期，材料透明、品质可控</td><td>要求你具备规格书与 BOM 能力——<b>Soran 起步期的主力形态</b></td></tr>
+            <tr><td><b>全能厂</b></td><td>面料到成衣一条龙，甚至自有印花绣花</td><td>省心、责任单一、大单效率高</td><td>MOQ 与价格门槛高，起步期小单排不上产线；适合放量后引入比价</td></tr>
+          </tbody>
+          <caption>谷饶常见的三类工厂形态。起步期「车缝厂 + 模杯专厂」的组合最灵活；全能厂留给放量期。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">贸易商 vs 直工厂：五个识别点</h3>
+      <p>行业里大量「供应商」本质是贸易商或中介：他们不拥有产能，赚的是转手差价。贸易商并非一律不能用——好的贸易商能拼单、能翻译你的需求、能管理小厂。但你必须<b>知道自己在跟谁谈</b>，否则成本结构与品质责任都会模糊：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:20%">识别点</th><th>直工厂的表现</th><th>贸易商 / 中介的典型表现</th></tr></thead>
+          <tbody>
+            <tr><td><b>工序细节</b></td><td>能立即说出机型、台数、班次（如「圣东尼 16 针 3 台、两班倒」）</td><td>「我问一下车间」——对自家设备说不清</td></tr>
+            <tr><td><b>现场参观</b></td><td>随时可进车间，愿意看不预约的产线</td><td>只带你看展厅与样品间；「车间在赶货不方便」是高频话术</td></tr>
+            <tr><td><b>发票与抬头</b></td><td>开票主体=生产主体，地址与工厂一致</td><td>开票主体是「服饰商行 / 贸易公司」，注册在写字楼</td></tr>
+            <tr><td><b>报价结构</b></td><td>可拆材料/工缴/管理费/利润四段</td><td>只报一口价，拆解时含糊其辞（差价藏在这里）</td></tr>
+            <tr><td><b>打样与改版</b></td><td>版师直接沟通，改样反馈具体到工序</td><td>改样来回转述，一轮修改拖成两轮</td></tr>
+          </tbody>
+          <caption>贸易商与直工厂的识别要点。判断不要靠单一信号，凑齐三个以上再下结论。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">本地商务习惯与沟通建议（示例性建议）</h3>
+      <ul class="plain">
+        <li><b>关系先于订单。</b>潮汕商圈重人情、慢热：第一次见面泡茶聊一小时不谈价很正常，直接报底价反而显得不专业。预留两三次接触建立信任。</li>
+        <li><b>口头文化浓，书面要主动。</b>当地交易习惯大量依赖口头与微信。对策不是抱怨，而是<b>每次沟通后 24 小时内发出书面纪要</b>（尺寸、价格、交期、验收口径），请对方回复「确认」——把口头变成可追溯的证据链。</li>
+        <li><b>讲价要有来有往。</b>首次报价几乎都有水分，但「一刀砍半」会直接终结对话。礼貌的还价方式是基于 BOM 拆解谈结构（见第 08 节），而不是压总数。</li>
+        <li><b>尊重作息与节令。</b>春节前后两到三周工厂停工返乡，订单排期要把这个因素写进<dfn class="term" data-term="交期">交期</dfn>计划；旺季（春夏订货季）提前下单。</li>
+        <li><b>普通话通行，态度平视。</b>小单不是低人一等——清楚讲要求、按时付定金、不随意砍已确认的价格，小客户反而常被优先照顾。</li>
+      </ul>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          延伸：印染环节的变化
+        </div>
+        <p>近年环保监管趋严，谷饶本地的印染、洗水产能逐步向区级印染环保中心集中（见术语卡）。这带来两个直接影响：①印染环节的资质与稳定性整体变好，但排产周期变长，深色定制染要留足时间；②部分车缝厂「自染自整」的老模式消失，问清合作印染厂是谁、资质文件在哪，是考察时的必查项。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">03</span>考察全流程：行前 → 现场 → 行后</h2>
+
+      <p>一次高效的考察，功夫一半在场外。完整流程分三段，每段有明确的任务与产出：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 372" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 列1 行前 -->
+            <g>
+              <rect x="14" y="16" width="232" height="280" rx="12" fill="#fff" stroke="#C7D8CE" stroke-width="1.6"/>
+              <rect x="14" y="16" width="232" height="42" rx="12" fill="#3D6B57"/>
+              <rect x="14" y="44" width="232" height="14" fill="#3D6B57"/>
+              <text x="130" y="43" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">行前 · 桌面尽调</text>
+              <g font-size="12" fill="#26231D">
+                <circle cx="38" cy="92" r="9" fill="#EAF1ED"/><text x="38" y="96" text-anchor="middle" font-size="10.5" fill="#3D6B57" font-weight="700">1</text>
+                <text x="54" y="90" font-weight="600">公开信息核查</text>
+                <text x="54" y="108" font-size="11" fill="#8B8375">执照年限 / 社保人数 / 诉讼记录</text>
+                <circle cx="38" cy="144" r="9" fill="#EAF1ED"/><text x="38" y="148" text-anchor="middle" font-size="10.5" fill="#3D6B57" font-weight="700">2</text>
+                <text x="54" y="142" font-weight="600">供应商名单分级</text>
+                <text x="54" y="160" font-size="11" fill="#8B8375">A 首选 2-3 家 · B 备选 · C 观望</text>
+                <circle cx="38" cy="196" r="9" fill="#EAF1ED"/><text x="38" y="200" text-anchor="middle" font-size="10.5" fill="#3D6B57" font-weight="700">3</text>
+                <text x="54" y="194" font-weight="600">预约并声明来意</text>
+                <text x="54" y="212" font-size="11" fill="#8B8375">提前 1-2 周，说明要看车间</text>
+                <text x="54" y="228" font-size="11" fill="#8B8375">与返修区、要看的具体工序</text>
+                <circle cx="38" cy="248" r="9" fill="#EAF1ED"/><text x="38" y="252" text-anchor="middle" font-size="10.5" fill="#3D6B57" font-weight="700">4</text>
+                <text x="54" y="246" font-weight="600">备好三样东西</text>
+                <text x="54" y="264" font-size="11" fill="#8B8375">考察清单 · 一页尺寸表 · 样品</text>
+              </g>
+            </g>
+            <!-- 列2 现场 -->
+            <g>
+              <rect x="264" y="16" width="232" height="280" rx="12" fill="#fff" stroke="#C7D8CE" stroke-width="1.6"/>
+              <rect x="264" y="16" width="232" height="42" rx="12" fill="#B0603F"/>
+              <rect x="264" y="44" width="232" height="14" fill="#B0603F"/>
+              <text x="380" y="43" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">现场 · 半天足够</text>
+              <g font-size="12" fill="#26231D">
+                <circle cx="288" cy="92" r="9" fill="#F7EAE2"/><text x="288" y="96" text-anchor="middle" font-size="10.5" fill="#B0603F" font-weight="700">5</text>
+                <text x="304" y="90" font-weight="600">按动线走厂</text>
+                <text x="304" y="108" font-size="11" fill="#8B8375">仓库→裁床→车缝→中查→返修区</text>
+                <circle cx="288" cy="144" r="9" fill="#F7EAE2"/><text x="288" y="148" text-anchor="middle" font-size="10.5" fill="#B0603F" font-weight="700">6</text>
+                <text x="304" y="142" font-weight="600">数机头 · 查记录 · 抽问</text>
+                <text x="304" y="160" font-size="11" fill="#8B8375">设备台账 / 首件单 / 检针记录</text>
+                <circle cx="288" cy="196" r="9" fill="#F7EAE2"/><text x="288" y="200" text-anchor="middle" font-size="10.5" fill="#B0603F" font-weight="700">7</text>
+                <text x="304" y="194" font-weight="600">商务洽谈</text>
+                <text x="304" y="212" font-size="11" fill="#8B8375">客户结构 / 产能饱和度 / 付款</text>
+                <circle cx="288" cy="248" r="9" fill="#F7EAE2"/><text x="288" y="252" text-anchor="middle" font-size="10.5" fill="#B0603F" font-weight="700">8</text>
+                <text x="304" y="246" font-weight="600">当场索要</text>
+                <text x="304" y="264" font-size="11" fill="#8B8375">资质复印件 · 报价拆分承诺</text>
+              </g>
+            </g>
+            <!-- 列3 行后 -->
+            <g>
+              <rect x="514" y="16" width="232" height="280" rx="12" fill="#fff" stroke="#C7D8CE" stroke-width="1.6"/>
+              <rect x="514" y="16" width="232" height="42" rx="12" fill="#26231D"/>
+              <rect x="514" y="44" width="232" height="14" fill="#26231D"/>
+              <text x="630" y="43" text-anchor="middle" fill="#fff" font-size="14.5" font-weight="700">行后 · 24 小时内</text>
+              <g font-size="12" fill="#26231D">
+                <circle cx="538" cy="92" r="9" fill="#F3EFE7"/><text x="538" y="96" text-anchor="middle" font-size="10.5" fill="#26231D" font-weight="700">9</text>
+                <text x="554" y="90" font-weight="600">趁记忆新鲜打分</text>
+                <text x="554" y="108" font-size="11" fill="#8B8375">按本页清单逐项评分+写备注</text>
+                <circle cx="538" cy="144" r="9" fill="#F3EFE7"/><text x="538" y="148" text-anchor="middle" font-size="10.5" fill="#26231D" font-weight="700">10</text>
+                <text x="554" y="142" font-weight="600">决策</text>
+                <text x="554" y="160" font-size="11" fill="#8B8375">通过→进入试单；存疑→二次</text>
+                <text x="554" y="176" font-size="11" fill="#8B8375">回访；硬伤→归档婉拒</text>
+                <circle cx="538" cy="212" r="9" fill="#F3EFE7"/><text x="538" y="216" text-anchor="middle" font-size="10.5" fill="#26231D" font-weight="700">11</text>
+                <text x="554" y="210" font-weight="600">书面纪要发出</text>
+                <text x="554" y="228" font-size="11" fill="#8B8375">谈定的条款请对方回复确认</text>
+                <circle cx="538" cy="264" r="9" fill="#F3EFE7"/><text x="538" y="268" text-anchor="middle" font-size="10.5" fill="#26231D" font-weight="700">12</text>
+                <text x="554" y="262" font-weight="600">建档</text>
+                <text x="554" y="280" font-size="11" fill="#8B8375">评分表 + 照片 + 纪要存供应商库</text>
+              </g>
+            </g>
+            <!-- 列间箭头 -->
+            <g stroke="#C7BFAE" stroke-width="2" fill="#C7BFAE">
+              <line x1="248" y1="156" x2="254" y2="156"/><polygon points="262,156 254,151.5 254,160.5"/>
+              <line x1="498" y1="156" x2="504" y2="156"/><polygon points="512,156 504,151.5 504,160.5"/>
+            </g>
+            <!-- 底注 -->
+            <rect x="14" y="312" width="732" height="44" rx="10" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="380" y="330" text-anchor="middle" font-size="12" fill="#8F6E2F" font-weight="600">核心原则：行前筛掉 50%，现场看证据不听故事，行后 24 小时内固化结论。</text>
+            <text x="380" y="348" text-anchor="middle" font-size="11" fill="#8B8375">两套人马效果更好：一人主谈商务，另一人「闲逛」车间与仓库——两路信息当晚合并对账。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-2</span><b>考察全流程（行前 → 现场 → 行后）。</b>流程图为教学示例节奏：单家工厂现场考察半天足够，一天最多看两家；超过两家的信息会互相串味，评估表当晚填不准。</figcaption>
+      </figure>
+
+      <h3 class="sub-title">行前：三件准备工作</h3>
+      <ul class="plain">
+        <li><b>资料收集。</b>通过公开渠道核查：营业执照成立年限与经营范围、社保参保人数、行政处罚与诉讼记录、经营异常名录。这些信息 20 分钟能查完，却能提前发现「注册 3 个月」「社保 2 人却自称百人厂」的硬伤。</li>
+        <li><b>名单分级。</b>候选 5-8 家，按 A（首选）/ B（备选）/ C（观望）分级，只对 A 档安排实地考察；同档次至少 2-3 家同行，现场才有对比基准。</li>
+        <li><b>预约与声明。</b>提前 1-2 周预约，直接说明「要看车间、返修区和检针环节」。遮遮掩掩的厂会婉拒——婉拒本身就是初筛信号，帮你省下路费。</li>
+      </ul>
+
+      <h3 class="sub-title">现场：看什么、问什么、防什么</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">看什么</div><div class="kv-v">开机率、机头数量与新旧、首件/检针/返修记录、裁床排料、查货区照度、版房实物、仓库管理（原料分区、缸号标识、先进先出）。</div></div>
+        <div class="kv-row"><div class="kv-k">问什么</div><div class="kv-v">问具体不问宏观：「这几台绷缝几针几线？」「上月出了几缸这个色？回修几件？」「你的版师在这行几年？」——具体问题造不了假，宏观问题全是话术。</div></div>
+        <div class="kv-row"><div class="kv-k">防什么</div><div class="kv-v">防「样板间动线」：全程只走展厅→会议室→样板车间。破解方法见下一节的动线技巧；防「临时借用」：参观时满负荷、第二天停一半的产能是租来的。</div></div>
+      </div>
+
+      <h3 class="sub-title">行后：评估与决策</h3>
+      <p>离开工厂 24 小时内完成三件事：①按第 04 节清单逐项确认并补记备注与照片；②给五个维度打分，与同行考察的其他厂横向排序；③做出决策——通过则发试单（第 06 节），存疑则安排二次回访（换一天、不预约时段），有硬伤（如检针机都没有、拒绝进车间）则礼貌归档。考察资料要建档：评分表、照片、纪要，这将成为你逐年积累的<b>供应商库资产</b>。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-checklist" data-sec="s-checklist"><span class="sec-no">04</span>工厂考察清单（可打勾 · 31 项）</h2>
+
+      <p>这是本页的核心交付物，把前面所有方法固化成一张可执行的清单。五个组、31 项，覆盖资质合规、设备产能、品控、开发与商务。使用建议：打印或存手机带进工厂，两人分头（一人谈商务、一人看车间），<b>现场只记录不纠结，回酒店当晚统一补备注并打分</b>。进度保存在本页，可作为多家工厂的核对底稿（如需多家独立进度，可截图存档）。</p>
+
+      <div data-checklist="soran-supplier-audit">
+        <div class="chk-group">一、资质与合规（6 项）<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">营业执照年限与经营范围<span class="chk-d">怎么看：原件或高清照片。注册满 3 年更稳（示例口径）；经营范围须含「针织内衣/服装制造」而不仅是「销售」；注册地址与实际经营地址一致。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">环保排污许可（印染/洗水环节尤其）<span class="chk-d">怎么看：自有印染定型的厂必须出示排污许可证；多数车缝厂外发印染——问清合作印染中心名称与资质文件，记入档案。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">社保参保人数与申报口径<span class="chk-d">怎么看：公开渠道查询参保人数，与自称工人数对照。参保 30 人却自称 200 工人：要么严重依赖外发，要么大量用工未申报——两种都要追问清楚。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">厂房产权或租约<span class="chk-d">怎么看：自有厂房看产权证；租赁看合同剩余租期——不足 1 年的厂存在搬迁、拆迁风险，你压在厂的模具与物料可能受牵连。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">一般纳税人资格与开票能力<span class="chk-d">怎么看：能否开具增值税专用发票、税率多少。决定你的进项抵扣与合规成本；个体户模式不是不能用，但成本账要按含税/不含税统一口径重算。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">无重大诉讼与行政处罚<span class="chk-d">怎么看：公开信息平台查买卖合同纠纷与劳动仲裁数量。偶尔的合同纠纷正常；密集的欠款、欠薪记录=商务健康差，合作风险高。</span></span></label>
+
+        <div class="chk-group">二、设备与产能（7 项）<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">车缝设备数量与型号（数机头！）<span class="chk-d">怎么看：亲自数机头并按机型分组记录（平车/包缝/绷缝各多少台），拍视频存档；对照其自称月产能反推是否匹配——按每台包缝机日产 200-400 件量级估算（示例）。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">模杯成型炉数量与规格（文胸线）<span class="chk-d">怎么看：数炉数、问班次；每台炉的日产量视杯型而异（数百对/台/日量级，示例），用「炉数 × 班次 × 单炉日产量」核算其自称模杯产能的真实性。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">无缝机具体机型与台数（如涉及无缝品类）<span class="chk-d">怎么看：问品牌与针数（如圣东尼 8/12/16/28 针）并进车间核对铭牌。机型保有量直接决定能做的品类档位；含糊说「无缝机很多台」的多半是外发。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">检针机有无与每日校准记录<span class="chk-d">怎么看：检针机是品质管理的标志性设备；要求演示用标准测试块（Fe 探试卡）验证灵敏度，并翻看近期校准与拦截台账。没有检针机的厂直接降档。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">设备新旧与保养状态<span class="chk-d">怎么看：看机台铭牌年份、机身油污与飞花堆积、线架与针位配件状态。设备保养反映的就是品控文化——机台脏乱的厂，衣服也好不到哪去。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">夜班灯火（真实性核验）<span class="chk-d">怎么看：傍晚或次日「顺路」经过车间窗外的灯火与机器声；只在接待日满负荷运转的产能是借来的。不可到场时可要求对方拍当日车间实时视频（看时间水印）。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">裁床与排料方式<span class="chk-d">怎么看：手推刀裁还是自动裁床；看排料图与面料利用率。针织排料利用率天然偏低（有方向与弹性约束），但有无电脑排料直接影响用料稳定性与损耗口径。</span></span></label>
+
+        <div class="chk-group">三、品控体系（6 项）<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">首件确认记录<span class="chk-d">怎么看：翻近一个月的首件确认单——有没有逐款签字、实物封存、记录大货与产前样的差异。制度空白=「大货与样品不一致」风险高的直接证据。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">中查 / 尾查流程<span class="chk-d">怎么看：问清生产中查的比例与频次（如每 2 小时抽查、按码抽样）、尾期查验由谁执行；关键点：查货组是否独立于生产主管——既当运动员又当裁判的品控等于没有。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">返修区与返修记录<span class="chk-d">怎么看：返修区是否分区明显、有台账与责任工序标注；问<dfn class="term" data-term="回修率">回修率</dfn>数字并核对台账——稳定厂可做到 1% 以下（示例口径），说不出数字或数字与台账对不上的都要警惕。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">第三方测试报告（曾合作项目）<span class="chk-d">怎么看：请其出示为其他客户做过的 GB 18401 全项报告（可隐去客户名）。说明其供应链（尤其印染）真送检过、真合格过；从来没有报告=你的品类要当小白鼠。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">量具校准<span class="chk-d">怎么看：卷尺/钢尺有无定期更换、灰卡是否褪色还在用、软尺拉伸是否变形。量具失准，一切「合格」都不可信——这是成本最低也最常被忽视的检查项。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">灯检环境<span class="chk-d">怎么看：查货台照度是否充足、有无标准光源/灰底灯箱；在暖黄灯下查深色货=色差与污渍漏检。顺手拿一件深色成品在自然光下复核一眼。</span></span></label>
+
+        <div class="chk-group">四、开发能力（6 项）<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">版房人数与配置<span class="chk-d">怎么看：专职版师、纸样工、样衣工各几人，版房是否独立成间。无独立版房的厂改版靠外发，一轮修改多 5-10 天——对迭代型产品是硬伤。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">版师资历<span class="chk-d">怎么看：主版师从业年限与品类专长（文胸版型门槛远高于内裤）；请其展示手工纸样与放码档案。版师在厂年限低于 1 年的要追问前任去向与交接情况。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">驻厂试穿机制<span class="chk-d">怎么看：有无固定码数的真人试穿员或标准人台；「上身试过再说」的厂版型迭代更快、对夹裆/空杯/压胸类问题更有经验。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">打样周期承诺<span class="chk-d">怎么看：当场问出头样与修改样的周期并记入考察表（行业常见：头样 7-15 天、修改样 5-10 天，示例）；试单时回头验证承诺兑现度。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">过往开发案例实物<span class="chk-d">怎么看：看开发样衣柜里近半年、多客户的实物（新款=开发活跃）；全部是两三年前的旧款说明开发业务萎缩，版房可能在养人待散。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">规格书解读能力（现场小测）<span class="chk-d">怎么看：带一页自己的尺寸表（含公差）问「腰口半宽 ±0.5 怎么量、量到哪」；答不上来=从未按规格书生产的经验，未来沟通成本极高。</span></span></label>
+
+        <div class="chk-group">五、商务与健康（6 项）<span class="cg-line"></span><span class="cg-n"></span></div>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">现有客户结构<span class="chk-d">怎么看：内销/外贸比例、品牌客户与档口客户比例。全档口客户=习惯「快但糙」；全外贸大单=小单响应慢。与 Soran 定位匹配的是「有品牌客户基础」的厂。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">月产能与饱和度<span class="chk-d">怎么看：问当前排产到第几周、最大单客户占产能几成。排产过满=你的小单排不上；长期「随时都有空」=经营可能有问题。健康的厂忙闲有度、敢承诺交期。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">付款方式弹性<span class="chk-d">怎么看：定金比例（常见 30% 左右，示例）与尾款节点；只肯 100% 现款现货的厂通常没有品牌客户，也说明其现金流紧张或对品质无担当。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">报价透明度（愿不愿拆 BOM）<span class="chk-d">怎么看：当场要求按「材料/工缴/管理费/利润」四段拆分。愿意拆=可长期管理成本；拒绝拆=永远糊涂账，且大概率在材料端藏差价。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">对接人架构<span class="chk-d">怎么看：跟单、版房、品控是否各有专人且能直达老板/厂长；只有一个业务员对接一切的小厂，你的问题会被过滤后才到决策层，出事时响应最慢。</span></span></label>
+        <label class="chk"><input type="checkbox"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg></span>
+          <span class="chk-t">经营稳定性软信号<span class="chk-d">怎么看：员工食堂/宿舍状态、近期是否有新设备进场、老板是否亲自出面、对接人是否频繁更换。这些软信号比任何口头报表都诚实。</span></span></label>
+
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-chk-bar style="height:100%;width:0;background:var(--green)"></div></div>
+          <span data-chk-sum style="font-size:12.5px;color:var(--ink-faint)"></span>
+          <button class="btn ghost sm" data-chk-reset>重置</button>
+        </div>
+      </div>
+
+      <div class="callout data">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          清单使用口径（建议）
+        </div>
+        <p><b>一票否决项</b>（任一不过直接降档）：无检针机、拒绝进车间、拒绝拆 BOM、资质造假。<b>通过标准</b>：确认率 ≥80% 且一票否决项全过 → 进入试单；60-80% → 二次回访复核；&lt;60% → 归档。清单为通用底版，文胸品类需追加模杯与钢圈相关项（见第四篇）。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-onsite" data-sec="s-onsite"><span class="sec-no">05</span>现场考察技巧：动线、访谈与报价深挖</h2>
+
+      <h3 class="sub-title">参观动线里藏的信息</h3>
+      <p>工厂接待是有「剧本」的：展厅 → 会议室 → 样板车间，一路光鲜。你要主动改写动线，<b>先去仓库和返修区，最后才看展厅</b>。仓库不会说谎：原料是否分区堆放、缸号有没有标识、成品区是否积压着发不走的货（资金链信号）；返修区更不会说谎：堆得多不多、什么工序的货最多、有没有台账。把最真实的地方看完，再看展厅——那时你已知道该问什么。</p>
+
+      <h3 class="sub-title">工人访谈的自然方式</h3>
+      <p>不要拿着录音笔对工人「正式采访」，那只会收获沉默。自然的做法是：在机台边看一位熟手操作时随口聊——「这道工序做多久了？」「这一步最难的是什么？」。三个信息点最有价值：①<b>工龄</b>——核心工序工人平均工龄长，说明工厂稳定、品质一致性好；②<b>计件还是计时</b>——纯计件且近期单价大幅下调，质量波动风险大；③<b>淡旺季状态</b>——工人自己会告诉你「上个月赶货赶通宵」还是「这个月活少」。</p>
+
+      <h3 class="sub-title">「突然要求看某工序」的反应</h3>
+      <p>走到一半，随机点名：「带我看一下你们的中查台 / 检针机 / 版房」。这是成本最低的压力测试：<b>真工厂会自然带路</b>（也许嘴上说「那边乱」但仍会去）；贸易商或「借用」车间的厂会立刻找借口绕开——「那片在盘点」「负责人不在」。<b>借口本身不重要，绕开的动作就是答案。</b>同一套路可对同一工厂在不同日期使用一次：两次都绕开同一区域，基本可以下结论。</p>
+
+      <h3 class="sub-title">报价单深挖：四段拆分的意愿度</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">材料</div><div class="kv-v">面料单价 × 单件用量（克）× 损耗 + 辅料逐项。核对点：用量是否合理、损耗是否夸大、辅料有没有以次充好的空间。</div></div>
+        <div class="kv-row"><div class="kv-k">工缴</div><div class="kv-v">裁剪+车缝+整烫+包装的人工与设备摊销。核对点：工序道数与报价是否对应——把「四线包缝」写成「三线」就差一笔钱。</div></div>
+        <div class="kv-row"><div class="kv-k">管理费</div><div class="kv-v">车间管理与间接分摊，通常含在利润里报一口价。愿不愿意单列不重要，重要的是<b>结构可谈</b>。</div></div>
+        <div class="kv-row"><div class="kv-k">利润</div><div class="kv-v">健康工厂的总利润率约 5%-15%（示例）。低于材料+工缴的成本拆解值报价=一定有猫腻（材料降级、克重缩水或账期套利）。</div></div>
+      </div>
+      <p>操作要领：当场要求拆分，对方说「回去算」时约定回复时间并记入纪要。<b>24 小时内给出四段拆分的厂，谈判效率高一个量级；坚持只报一口价的厂，你永远不知道降价时砍掉的是他的利润还是你的品质。</b></p>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          档口挂靠与中介陷阱
+        </div>
+        <p>常见手法：①<b>档口挂靠</b>——批发档口挂着「工厂直营」招牌，接单后转手给小厂，赚差价且不承担品质管理；②<b>借壳接待</b>——租用他人车间接待你，签约主体是皮包公司；③<b>中介套娃</b>——你以为是工厂，工厂以为他是品牌方，中间隔了两层转手，出问题时互相推诿。防范：<b>核实开票主体与厂房一致、要求「随时可回访车间」写入合作条件、首款直接打入与执照同名的对公账户</b>。对方推脱对公收款时，钱货风险自担的成分就很高了。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-trial" data-sec="s-trial"><span class="sec-no">06</span>试单管理：从 300 件到年度框架</h2>
+
+      <p>考察通过只说明「看起来能行」，试单才回答「大货行不行」。试单是品牌花小钱买真相的过程，设计原则是<b>规模小、标准严、信息全</b>：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:22%">设计项</th><th>建议（示例）</th><th>理由</th></tr></thead>
+          <tbody>
+            <tr><td><b>规模</b></td><td>1-2 款 × 200-500 件/款</td><td>覆盖一条完整产线换型的最小批量，足以暴露大货问题；资金占用可控</td></tr>
+            <tr><td><b>款式选择</b></td><td>选打样中暴露过问题的款，而不是最简单的款</td><td>试单的目的是压测短板；最简单的款人人都做得好，没有信息量</td></tr>
+            <tr><td><b>颜色数量</b></td><td>≤2 色，用现货色布</td><td>减少缸差变量，把注意力集中在工艺与尺寸上</td></tr>
+            <tr><td><b>交期约定</b></td><td>写明「自面料到厂之日起 N 天」，并约定延误责任</td><td>试单同时也是交期能力的实测，<dfn class="term" data-term="交期">交期</dfn>偏差要记入评分卡</td></tr>
+          </tbody>
+          <caption>首批试单设计建议（示例）。核心逻辑：用最小批量复现「大货生产」的全部环节，一个环节都不少。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">试单验货要加严：关键项全检</h3>
+      <p>大货验收用 <dfn class="term" data-term="AQL">AQL</dfn> 抽检（见上一页），试单则建议对关键项<b>全检</b>——200-500 件的全检成本很低，信息价值极高：</p>
+      <ul class="plain">
+        <li><b>尺寸全检</b>：每件对照规格书尺寸表，统计超差率——超差集中于某一部位=版型或工位问题，可定位到工序。</li>
+        <li><b>色差全检</b>：同批比对主料与辅料、件与件（灰卡 ≥4 级口径，示例）。</li>
+        <li><b>缝迹全检</b>：关键缝位的线迹类型、针距、拉伸不断线。</li>
+        <li><b>检针全检</b>：100% 过检针机并保留记录。</li>
+        <li><b>洗后抽测</b>：抽 10-20 件按标准方法水洗一次，量缩率与外观（参考 ±5% 内口径，示例）。</li>
+      </ul>
+
+      <h3 class="sub-title">试单后的评估维度</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">品质结果</div><div class="kv-v">关键项合格率、疵点类型分布（集中在哪个工序）；合格率与工厂此前自报数据的吻合度——「说 1% 实测 5%」比 5% 本身更说明问题。</div></div>
+        <div class="kv-row"><div class="kv-k">过程配合</div><div class="kv-v">首件确认是否主动找你签字、异常是否第一时间报告（而不是偷偷挑货）、跟单回复速度。</div></div>
+        <div class="kv-row"><div class="kv-k">交期兑现</div><div class="kv-v">实际交期与承诺的偏差及原因；「面料晚到」算半责，「排产插单」算全责。</div></div>
+        <div class="kv-row"><div class="kv-k">账目清晰</div><div class="kv-v">结算单据与 BOM/报价是否一致；损耗、回修数量有没有按约定口径计算。</div></div>
+      </div>
+
+      <h3 class="sub-title">放大与年度框架协议</h3>
+      <p>试单通过后按「放量—固约」两步走：先把验证过的款逐步放大（300 → 1000 → 5000 件级），观察两个量级下的品质稳定性；放量稳定后，与主力供应商签<b>年度框架协议</b>——约定年度预估量与阶梯价、本品牌的产能保留窗口、新品的<dfn class="term" data-term="打样费">打样费</dfn>与抵扣规则、账期与对账周期、品质责任与<dfn class="term" data-term="回修率">回修</dfn>处理、以及保密条款（你的版型与销售数据）。框架协议不是购销合同本身，而是「下每一单时不再重新谈判」的效率工具。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="380" y="28" text-anchor="middle" font-size="12.5" fill="#5D574B" font-weight="600">供应商放量漏斗（数字为教学示例）</text>
+            <g text-anchor="middle">
+              <rect x="20" y="56" width="128" height="86" rx="10" fill="#3D6B57"/>
+              <text x="84" y="90" fill="#fff" font-size="15" font-weight="700">8-12 家</text>
+              <text x="84" y="112" fill="#CDE0D6" font-size="11">初筛名单</text>
+              <text x="84" y="128" fill="#CDE0D6" font-size="10.5">桌面尽调 + 样品</text>
+              <rect x="164" y="56" width="128" height="86" rx="10" fill="#4B7A63"/>
+              <text x="228" y="90" fill="#fff" font-size="15" font-weight="700">3-5 家</text>
+              <text x="228" y="112" fill="#DCEAE3" font-size="11">实地考察通过</text>
+              <text x="228" y="128" fill="#DCEAE3" font-size="10.5">清单 ≥80%</text>
+              <rect x="308" y="56" width="128" height="86" rx="10" fill="#B98F45"/>
+              <text x="372" y="90" fill="#fff" font-size="15" font-weight="700">2-3 家</text>
+              <text x="372" y="112" fill="#F6EFDF" font-size="11">首轮试单</text>
+              <text x="372" y="128" fill="#F6EFDF" font-size="10.5">关键项全检</text>
+              <rect x="452" y="56" width="128" height="86" rx="10" fill="#B0603F"/>
+              <text x="516" y="90" fill="#fff" font-size="15" font-weight="700">1-2+1</text>
+              <text x="516" y="112" fill="#F7EAE2" font-size="11">主力 + 备份</text>
+              <text x="516" y="128" fill="#F7EAE2" font-size="10.5">放量验证两档量级</text>
+              <rect x="596" y="56" width="144" height="86" rx="10" fill="#26231D"/>
+              <text x="668" y="90" fill="#fff" font-size="15" font-weight="700">年度框架</text>
+              <text x="668" y="112" fill="#B9B29F" font-size="11">阶梯价 · 产能窗口</text>
+              <text x="668" y="128" fill="#B9B29F" font-size="10.5">季度评分卡管理</text>
+            </g>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="150" y1="99" x2="156" y2="99"/><polygon points="164,99 156,94.5 156,103.5"/>
+              <line x1="294" y1="99" x2="300" y2="99"/><polygon points="308,99 300,94.5 300,103.5"/>
+              <line x1="438" y1="99" x2="444" y2="99"/><polygon points="452,99 444,94.5 444,103.5"/>
+              <line x1="582" y1="99" x2="588" y2="99"/><polygon points="596,99 588,94.5 588,103.5"/>
+            </g>
+            <rect x="20" y="176" width="720" height="120" rx="10" fill="#F3EFE7" stroke="#E6E0D3"/>
+            <text x="40" y="202" font-size="12.5" font-weight="700" fill="#26231D">每道闸门的判据（示例）</text>
+            <g font-size="11.5" fill="#5D574B">
+              <text x="40" y="228">闸门① 样品合格 + 回复速度达标；闸门② 考察清单 ≥80% 且一票否决项全过；</text>
+              <text x="40" y="250">闸门③ 试单关键项合格 + 交期偏差 ≤3 天 + 过程配合无硬伤；闸门④ 放量稳定 + 连续两季评分 ≥85%。</text>
+              <text x="40" y="276" fill="#B0603F" font-weight="600">任何一道闸门不过就停下——供应商品质问题的根源，几乎都是「跳级」。</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-3</span><b>试单与放量漏斗（示例）。</b>从初筛到框架协议，每一级都有明确判据；「主力 + 备份」的结构让 Soran 在任何时刻都保有替换选项，不被单一供应商锁定。</figcaption>
+      </figure>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-score" data-sec="s-score"><span class="sec-no">07</span>供应商评价体系：季度评分卡</h2>
+
+      <p>考察解决「准入」，评分卡解决「在管」。每季度对主力供应商打一次分，权重体现 Soran 的优先级：<b>质量是底线（40%），交期是命脉（25%）</b>，配合意愿决定长期关系（15%），价格与沟通是调节项（各 10%）——权重为 Soran 建议值（教学参考），可按品类调整。逐项按 1-5 分评定后，加权得分自动换算为 A/B/C 级：</p>
+
+      <div data-rate="soran-supplier-quarter">
+        <div class="rate-row" data-key="quality" data-weight="40"><span class="rr-label">质量（疵点率·客诉）</span></div>
+        <div class="rate-row" data-key="delivery" data-weight="25"><span class="rr-label">交期（偏差率）</span></div>
+        <div class="rate-row" data-key="coop" data-weight="15"><span class="rr-label">配合（改版·异常响应）</span></div>
+        <div class="rate-row" data-key="price" data-weight="10"><span class="rr-label">价格（竞争力·稳定）</span></div>
+        <div class="rate-row" data-key="comm" data-weight="10"><span class="rr-label">沟通（准确·及时）</span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-rate-bar style="height:100%;width:0;background:var(--gold)"></div></div>
+          <span data-rate-sum style="font-size:13px;font-weight:650"></span>
+          <button class="btn ghost sm" data-rate-reset>重置</button>
+        </div>
+      </div>
+
+      <div id="supplier-verdict" style="margin-top:14px;padding:13px 16px;border-radius:9px;background:var(--surface-2);font-size:14px;line-height:1.8">
+        <b>评级结论：</b>完成 5 项评分后自动生成。
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px">打分口径：5=季度内零重大问题 · 4=偶发且及时纠正 · 3=可接受但需提醒 · 2=反复出现 · 1=造成损失。建议以验货记录、交期台账等客观记录打分，避免凭印象。</p>
+
+      <h3 class="sub-title">分级与订单分配联动</h3>
+      <p>评分必须挂钩订单，否则就是形式主义。分级联动的参考规则（示例）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:16%">等级</th><th style="width:20%">季度加权得分</th><th>订单与政策联动（示例）</th></tr></thead>
+          <tbody>
+            <tr class="hl"><td><b>A 级</b></td><td class="num">≥85%</td><td>新品优先打样权；订单份额上调；可谈更长账期与年度框架；重大排期冲突时优先保障</td></tr>
+            <tr><td><b>B 级</b></td><td class="num">70%-84%</td><td>份额维持；发出改进要求（写明低分项与下季度目标）；暂缓新品导入</td></tr>
+            <tr><td><b>C 级</b></td><td class="num">&lt;70%</td><td>淘汰预警：订单逐步转移至 A/B 级或备份厂；连续两个季度 C 级 → 启动淘汰</td></tr>
+          </tbody>
+          <caption>供应商 A/B/C 分级与订单联动（示例规则）。「淘汰预警 + 订单转移」要给供应商申述与整改窗口，规则提前书面约定。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">淘汰机制</h3>
+      <ul class="plain">
+        <li><b>触发条件</b>：连续两季 C 级；或单次发生红线事件（材料造假、擅自转厂外发、检出禁用物质）即刻淘汰，不设缓冲。</li>
+        <li><b>淘汰动作</b>：完成在手订单与尾款结算、收回模具与物料、书面告知原因；不做情绪化拉黑——好聚好散，行业圈子小，体面结束合作是长期资产。</li>
+        <li><b>备份原则</b>：任何主力品类始终保持一家已通过考察的备份厂（哪怕暂时不接单），淘汰才有底气。备份厂每半年小额定单保温，避免「临时抱佛脚」。</li>
+      </ul>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：评分卡是管理工具，不是秋后算账
+        </div>
+        <p>每季度把评分结果与低分依据<b>反馈给工厂</b>，并一起定下季度的改进目标——多数中小工厂从未被客户系统性地反馈过，你的评分卡同时是他们的免费管理咨询。真正长期赚到你钱的，往往是那些「被你管出来」的 B 级厂变成的 A 级厂；而只挑现成 A 级厂的品牌，永远在为别人的管理成果支付溢价。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">08</span>成本谈判要点</h2>
+
+      <p>成本谈判的目标不是「砍到最低」，而是<b>让价格回到可解释的结构上</b>。上一页已建立成本公式（出厂价 = 材料 + 工缴 + 管理费 + 利润），本节把它变成谈判桌上的动作。</p>
+
+      <h3 class="sub-title">基于 BOM 拆解的对话方式</h3>
+      <p>示例对话框架（数据为教学示例）：</p>
+      <ul class="plain">
+        <li>开场定调：「我们长期做，价格要能对得上结构。这单先按 BOM 拆：面料 60 元/kg、单件 40g、损耗 6%，材料约 2.54 元；辅料 0.45 元；您报的工缴 0.85 元我们认可——管理费和利润合计按 10% 走，出厂价 4.2 元，您看有没有要修的地方？」</li>
+        <li>对方抬价时的标准反问：「这 0.3 元差在哪个材料项？是克重变了还是损耗估大了？」——把「总价的讨价还价」变成「参数的核对确认」，既不伤关系，也砍得有依据。</li>
+        <li>对方低价抢单时反向核验：「比成本拆解还低 0.4 元，您是从哪省出来的？」——省得出来（工艺真效率高）是本事，省不出来（会在大货偷回去）是隐患。</li>
+      </ul>
+
+      <h3 class="sub-title">量大价减的合理区间</h3>
+      <p>降价幅度必须符合摊销逻辑（第一篇 MOQ 曲线），谈判才有共同的尺子。参考锚点（示例）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:30%">订量变化</th><th style="width:26%">合理降价区间（示例）</th><th>逻辑</th></tr></thead>
+          <tbody>
+            <tr><td class="num">300 → 1000 件</td><td class="num">-8% ~ -15%</td><td>换型与起订摊销被摊薄，降幅最大</td></tr>
+            <tr><td class="num">1000 → 5000 件</td><td class="num">-5% ~ -10%</td><td>边际主要来自面料批量与工位效率</td></tr>
+            <tr><td class="num">5000 件以上 / 年度框架</td><td class="num">-3% ~ -6%</td><td>已接近成本地板，再压就动了材料</td></tr>
+          </tbody>
+          <caption>量价联动参考（教学示例，随行情浮动）。对方报出的降幅显著超出区间时，第一反应应是「哪里会被偷工」，而不是「赚到了」。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">原料价格联动的合同条款</h3>
+      <p>棉价等原料波动会传导到纱线与面料。长期订单可约定<b>价格联动条款</b>（示例写法）：「结算价以签约时面料单价为基准；合同期内主流棉纱价格指数波动超过 ±8%（示例阈值）且持续 30 天以上时，双方按面料成本占比相应调整出厂价，调整需书面确认后执行。」——联动条款保护是双向的：涨价你认账有据，跌价他也得让利，避免工厂在成本下行时闷声吃差价、在上行时偷工减料。</p>
+
+      <h3 class="sub-title">付款与账期的平衡</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">常见节奏（示例）</div><div class="kv-v">定金 30%（下单付）+ 尾款 70%（出货前或见提单付）；年度框架客户可谈「月结 30 天」。</div></div>
+        <div class="kv-row"><div class="kv-k">用付款换价格</div><div class="kv-v">付现=给工厂资金安全感，通常可换 2%-5% 的价格空间（示例）；起步品牌没有议价筹码时，付款条件是你最便宜的谈判工具。</div></div>
+        <div class="kv-row"><div class="kv-k">用账期换责任</div><div class="kv-v">保留 10%-20% 尾款至验货合格后 7 天内支付（示例），把品质责任留在结算环节；比例过高会伤关系，明确写进合同就都不伤。</div></div>
+        <div class="kv-row"><div class="kv-k">红线</div><div class="kv-v">不付私人账户、不预付全款给从未合作过的厂、不在无合同状态下只凭微信口头下单。</div></div>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：Soran「高质价比」≠ 最低价
+        </div>
+        <p>把供应商砍到利润为零，工厂只剩三条路：换更差的材料、跳过工序、拖延你的单去保更大的客户——<b>每一种都是把成本转嫁回你的品质与口碑</b>。Soran 的质价比来自「砍无效成本」（渠道层级、过度包装、虚高营销），而不是砍工厂的利润与材料。谈判桌上的正确姿态：给工厂留出 5%-15% 的健康利润（示例），换的是他把你排进产线、把你的单交给熟手、在你出问题时第一时间返修。你省下的每一分「过头的价」，将来都会以回修率、客诉和断货的形式加倍还回去。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">考察逻辑</div><div class="kv-v">验厂验证五件事：产能真实性、品质体系、版房开发力、商务健康、配合意愿；只认「看得见的证据」，不听「听得见的承诺」。流程是初筛→实地→试单→放大，每阶段有闸门。</div></div>
+        <div class="kv-row"><div class="kv-k">谷饶生态</div><div class="kv-v">全链分工、打样快（头样常 7-10 天，示例）、小单友好，是 Soran 起步首选；分清模杯专厂/车缝厂/全能厂；用五个识别点分清贸易商与直工厂。</div></div>
+        <div class="kv-row"><div class="kv-k">现场技巧</div><div class="kv-v">动线先仓库返修区后展厅；工人访谈聊工龄与计件；「突然要求看某工序」的绕开动作就是答案；报价单坚持材料/工缴/管理费/利润四段拆分。</div></div>
+        <div class="kv-row"><div class="kv-k">考察清单</div><div class="kv-v">5 组 31 项（资质合规 6 / 设备产能 7 / 品控 6 / 开发 6 / 商务 6）；一票否决：无检针机、拒绝进车间、拒绝拆 BOM、资质造假。</div></div>
+        <div class="kv-row"><div class="kv-k">试单</div><div class="kv-v">1-2 款 × 200-500 件（示例）；关键项全检（尺寸/色差/缝迹/检针）；试单后评品质、过程、交期、账目；放量后签年度框架协议。</div></div>
+        <div class="kv-row"><div class="kv-k">评分卡</div><div class="kv-v">季度评分：质量 40 / 交期 25 / 配合 15 / 价格 10 / 沟通 10（Soran 建议权重）；A（≥85%）加码、B 观察整改、C（&lt;70%）淘汰预警，连续两季 C 淘汰；始终保持一家备份厂。</div></div>
+        <div class="kv-row"><div class="kv-k">成本谈判</div><div class="kv-v">用 BOM 拆解代替总价博弈；量价联动按摊销逻辑给区间；棉价波动写联动条款；用付款条件换价格、留尾款保品质；给工厂留 5%-15% 健康利润（示例）——砍到偷工，双输。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q1" data-q="场景：你在谷饶接触一家「工厂」——展厅光鲜、报价三家里最低；业务员自称「200 多工人什么都能做」，但你问车间里无缝机是什么机型几台时，他说「要问一下老板」；参观 40 分钟全程在展厅与样品间，以「车间赶外单不便打扰」婉拒进车间。最专业的判断是？" data-a="1" data-exp="三个信号叠加（说不清自家设备、拒绝进车间、报价低于同行）指向贸易商或借用产能的概率很高。正确做法是不预设敌意但提高核实门槛：厂房产权/租约、设备清单、随时回访车间的权利作为继续谈判的前提。A「直接拉黑」过于武断——部分贸易商拼单能力强，且你尚未拿到确凿证据；C 报价最低更可能是层级或材料猫腻而非效率优势，先下大单等于把风险最大化；D 展厅和样品只能证明「展示能力」，无法证明「生产能力」，本页的核心方法恰恰是绕开展厅看车间。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>就是贸易商，立刻拉黑不再接触</li>
+            <li>按疑似贸易商处理：把「核实厂房产权/租约、设备清单、随时可回访车间」作为继续谈判的前提，再决定是否合作</li>
+            <li>报价最低说明供应链效率高，先下大单把价格锁住</li>
+            <li>展厅和样品已经能说明实力，进不进车间无所谓</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q2" data-q="场景：你在谷饶通过了一家车缝厂的考察，准备上 3 款女内裤。以下试单方案最符合本页原则的是？" data-a="2" data-exp="试单的目的是用最小批量暴露大货问题：1-2 款 × 200-500 件（示例）覆盖完整产线换型，同时资金风险可控；关键项（尺寸/色差/缝迹/检针）全检拿到最完整的质量信息。A 直接按 3000 件下单等于跳过试单闸门，把首次合作当放量；B 每款 100 件低于产线换型的最小经济批量，数据不完整且工厂多不接单；D 三家各下 3000 件是「用市场检验」的豪赌——试单的成本优势就是让你在市场检验之前先完成供应商标定。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>3 款 × 3000 件，直接按目标量下单摊薄单价</li>
+            <li>3 款 × 100 件，把试单成本压到最低</li>
+            <li>1-2 款 × 200-500 件，关键项（尺寸/色差/缝迹/检针）加严全检，验完再决定是否放大</li>
+            <li>同时给 3 家厂各下 3000 件，让市场检验谁做得好</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q3" data-q="场景：某供应商本季度评分——质量 4 分、交期 2 分、配合 4 分、价格 4 分、沟通 3 分（5 分制，权重 40/25/15/10/10）。按本页评分卡，加权得分与合理动作是？" data-a="0" data-exp="加权得分 =（4×40+2×25+4×15+4×10+3×10）÷500 = 340÷500 = 68%，落入 C 级（<70%）。合理动作是按规则发出整改要求（明确指向交期低分项）并预警订单下调，连续两季 C 级再启动淘汰。B 质量好不等于没有风险——交期占 25% 权重，反复延误同样致命；C 评分卡的价值恰恰在于用统一尺度替代主观印象，随机定级等于没有管理；D 立即淘汰过于激进，规则要求给整改窗口与订单转移的缓冲期，这也是合作的基本商业伦理。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>加权约 68%，C 级：发出整改要求（聚焦交期）并预警订单下调，连续两季 C 再启动淘汰</li>
+            <li>质量有 4 分说明厂不错，交期延误不算大事，维持 A 级待遇</li>
+            <li>凭整体感觉定级即可，评分卡只是给公司内部看的形式</li>
+            <li>低于 70% 立即终止合作，不给任何机会</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：季度评分卡 → A/B/C 评级结论 */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var LS_KEY = 'soran-textbook-v1';
+    var RATE_ID = 'soran-supplier-quarter';
+    var root = document.querySelector('[data-rate="' + RATE_ID + '"]');
+    var verdict = document.getElementById('supplier-verdict');
+    if (!root || !verdict) return;
+
+    var rows = [];
+    Array.prototype.forEach.call(root.querySelectorAll('.rate-row'), function (r) {
+      rows.push({ key: r.getAttribute('data-key'), w: parseFloat(r.getAttribute('data-weight')) || 1 });
+    });
+    var MAXV = 5;
+
+    function readRate() {
+      try {
+        var s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+        return (s.rate && s.rate[RATE_ID]) || {};
+      } catch (e) { return {}; }
+    }
+    function render() {
+      var vals = readRate();
+      var total = 0, max = 0, done = 0;
+      rows.forEach(function (it) {
+        max += MAXV * it.w;
+        var v = vals[it.key];
+        if (v) { total += v * it.w; done++; }
+      });
+      var pct = max ? Math.round(total / max * 100) : 0;
+      if (done < rows.length) {
+        verdict.style.background = 'var(--surface-2)';
+        verdict.innerHTML = '<b>评级结论：</b>已评 ' + done + ' / ' + rows.length + ' 项，当前加权 <b>' + pct + '%</b>。评满后按分级规则给结论：≥85% A 级 · 70-84% B 级 · &lt;70% C 级。';
+      } else if (pct >= 85) {
+        verdict.style.background = 'var(--green-soft)';
+        verdict.innerHTML = '<b>评级：A 级（' + pct + '%）。</b>新品优先打样、订单份额上调、可谈年度框架与更优账期；同时把本季低分项作为下季度改进点继续跟踪。';
+      } else if (pct >= 70) {
+        verdict.style.background = 'var(--gold-soft)';
+        verdict.innerHTML = '<b>评级：B 级（' + pct + '%）。</b>份额维持，向工厂发出书面改进要求——写明低分项、改进目标与复核时间；下季度复核，连续 B 级无改善按 C 级处理。';
+      } else {
+        verdict.style.background = 'var(--clay-soft)';
+        verdict.innerHTML = '<b>评级：C 级（' + pct + '%）。</b>淘汰预警：新订单转移至 A/B 级或备份厂，给一个季度的整改窗口；连续两季 C 级启动淘汰（先结清在手订单、收回模具物料）。';
+      }
+    }
+    root.addEventListener('click', function () { setTimeout(render, 0); });
+    render();
+  })();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文胸 · 材料与版型 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="bras-materials" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第四篇 · 文胸 / 材料版型</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">BRAS · MATERIALS</div>
+        <h1 class="page-title">文胸 · 材料与版型</h1>
+        <p class="page-lede">上一页你学会了把文胸拆成十来个结构部件；本页回答这些部件「用什么做」。我们从一张材料清单出发，逐层讲清杯面与里布面料、四种模杯芯材、钢圈与辅料，再讲版型参数与放码规则——为什么同样的尺码，不同品牌上身天差地别。读完你应能看懂供应商的材料卡，判断一份 BOM 的用料诚意，并用三个典型配置路线定位自己的产品。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 28 分钟</span>
+          <span class="chip">前置：文胸 · 原理结构</span>
+          <span class="chip">建议对照上一页的结构拆解阅读</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-bom" data-sec="s-bom"><span class="sec-no">01</span>一件文胸的材料清单：从外到内四层</h2>
+
+      <p>把上一页解剖的十来个部件按「材料」重新归类，会发现一件文胸其实是一个<b>四层复合结构</b>：最外面是决定颜值的装饰层，中间是决定性能的杯面与弹力层，再往里是决定胸感的芯材层，最贴皮肤的是决定亲肤感的里层。每一层都是一次「用什么布」的决策，也各有一个最容易翻车的点。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="240" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">罩杯的四层材料（爆炸视图 · 示意）</text>
+            <!-- 层1 装饰层 -->
+            <path d="M70,60 C90,36 170,34 194,62 C202,82 176,96 132,96 C92,96 62,82 70,60 Z" fill="none" stroke="#B98F45" stroke-width="2.4" stroke-dasharray="7 4"/>
+            <text x="132" y="52" text-anchor="middle" fill="#8F6E2F" font-size="11">蕾丝 / 绣花（可选层）</text>
+            <!-- 层2 杯面 -->
+            <path d="M96,116 C116,92 196,90 220,118 C228,138 202,152 158,152 C118,152 88,138 96,116 Z" fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+            <text x="158" y="126" text-anchor="middle" fill="#2C5142" font-size="11.5">杯面：锦氨特里科 / 网布</text>
+            <!-- 层3 芯材 -->
+            <path d="M122,172 C142,148 222,146 246,174 C254,194 228,208 184,208 C144,208 114,194 122,172 Z" fill="#F7EAE2" stroke="#B0603F" stroke-width="2"/>
+            <text x="184" y="182" text-anchor="middle" fill="#7A4429" font-size="11.5">芯材：模杯棉 / 薄棉（可无）</text>
+            <!-- 层4 里布 -->
+            <path d="M148,228 C168,204 248,202 272,230 C280,250 254,264 210,264 C170,264 140,250 148,228 Z" fill="#E9EFF3" stroke="#44657F" stroke-width="2"/>
+            <text x="210" y="238" text-anchor="middle" fill="#44657F" font-size="11.5">杯里：纯棉针棉 / 锦氨里布</text>
+            <!-- 贴肤箭头 -->
+            <line x1="300" y1="228" x2="352" y2="228" stroke="#44657F" stroke-width="1.8"/>
+            <polygon points="358,228 348,224 348,232" fill="#44657F"/>
+            <text x="300" y="212" text-anchor="start" fill="#8B8375" font-size="10.5">贴肤方向 →</text>
+            <!-- 右侧清单 -->
+            <g font-size="12">
+              <rect x="400" y="44" width="340" height="64" rx="9" fill="#F6EFDF" stroke="#E4D6B4" stroke-width="1.4"/>
+              <text x="416" y="66" fill="#8F6E2F" font-size="12" font-weight="700">① 装饰层（选配）</text>
+              <text x="416" y="84" fill="#5D574B" font-size="11">弹力蕾丝 / 水溶花边 / 绣片 / 刺绣</text>
+              <text x="416" y="100" fill="#8B8375" font-size="10.5">翻车点：勾丝、洗后花型塌陷</text>
+              <rect x="400" y="116" width="340" height="64" rx="9" fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.4"/>
+              <text x="416" y="138" fill="#2C5142" font-size="12" font-weight="700">② 杯面与弹力层（必选）</text>
+              <text x="416" y="156" fill="#5D574B" font-size="11">锦氨特里科、弹力网、光面 / 磨毛布</text>
+              <text x="416" y="172" fill="#8B8375" font-size="10.5">翻车点：克重偷轻、氨纶降含量</text>
+              <rect x="400" y="188" width="340" height="64" rx="9" fill="#F7EAE2" stroke="#E4CDBE" stroke-width="1.4"/>
+              <text x="416" y="210" fill="#7A4429" font-size="12" font-weight="700">③ 芯材层（决定胸感）</text>
+              <text x="416" y="228" fill="#5D574B" font-size="11">海绵 / 记忆棉 / 乳胶 / 间隔织物 / 无芯</text>
+              <text x="416" y="244" fill="#8B8375" font-size="10.5">翻车点：密度虚标、洗后塌陷黄变</text>
+              <rect x="400" y="260" width="340" height="64" rx="9" fill="#E9EFF3" stroke="#C9D6DE" stroke-width="1.4"/>
+              <text x="416" y="282" fill="#44657F" font-size="12" font-weight="700">④ 里层（贴肤三处之一）</text>
+              <text x="416" y="300" fill="#5D574B" font-size="11">纯棉针棉、锦氨平滑里、经编网里</text>
+              <text x="416" y="316" fill="#8B8375" font-size="10.5">翻车点：手感粗糙、闷热、起球</text>
+            </g>
+            <!-- 底部：其余材料族 -->
+            <text x="380" y="360" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">罩杯之外的材料族：钢圈 · 胶骨 · 肩带橡筋 · 背扣 · 调节扣 · 捆条 · 水洗唛</text>
+            <text x="380" y="382" text-anchor="middle" fill="#8B8375" font-size="11">它们合计约占单件材料成本的 25%-45%（示例区间），却是「承托与耐久」的主要来源</text>
+            <text x="380" y="410" text-anchor="middle" fill="#5D574B" font-size="11.5">读 BOM 的正确姿势：先看 ③④（穿感），再看 ②（性能），最后看 ①（颜值预算）</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-6</span><b>一件文胸的材料分层。</b>罩杯由装饰层、杯面、芯材、里布四层复合而成；各层的「翻车点」就是验货与谈判时最该盯的位置。装饰层是选配，芯材与里层直接决定复购体验。</figcaption>
+      </figure>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角
+        </div>
+        <p>看懂材料分层，你就能看懂<b>成本花在哪里、差评来自哪里</b>：装饰层是「拍照的钱」，芯材和里层是「复购的钱」。同样标「无钢圈舒适文胸」，用间隔织物和用 3mm 低密度海绵的出厂成本能差 3-6 元（示例区间），但差评率的差距更大——材料决策不是省钱决策，是退货率决策。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-shell" data-sec="s-shell"><span class="sec-no">02</span>杯面与里布：锦氨特里科家族</h2>
+
+      <p>文胸杯面的绝对主力是<dfn class="term" data-term="锦氨面料">锦氨面料</dfn>——锦纶提供强度、耐磨和细腻光泽，氨纶提供弹性。行业里说的「光面布」，绝大多数是<dfn class="term" data-term="特里科">特里科</dfn>经编锦氨：布面平滑得像上了一层蜡、横向高弹、边缘不脱散，是光面 T 恤文胸的标配。理解它的第一性原理很简单：<b>经编织法把线圈「锁」在稳定结构里，所以它不脱散、尺寸稳定，正好符合罩杯「要稳定成形」的需求</b>。</p>
+
+      <p>选杯面布时的四问逻辑：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">是什么</div><div class="kv-v">经编锦氨（特里科）为骨架：常用克重 170-240 g/m²（教学参考区间），成分常见 80/20 或 82/18（锦/氨）。同族还有光面、消光、磨毛手感三种表面处理。</div></div>
+        <div class="kv-row"><div class="kv-k">为什么用它</div><div class="kv-v">要同时满足三件事：贴肤平滑（穿外衣不显痕）、横向高弹（跟胸走）、结构稳定（杯型不垮）。纬编汗布弹性更好但太「软」，撑不起杯型——这正是光面杯布不用纬编的原因。</div></div>
+        <div class="kv-row"><div class="kv-k">与替代方案比</div><div class="kv-v">网布透气但视觉单薄；蕾丝华丽但受力弱、需拼接；纯棉亲肤但无弹、不能做杯面主力。所以实际产品几乎都是「主力布 + 功能布 + 装饰布」的组合，而不是单一布种。</div></div>
+        <div class="kv-row"><div class="kv-k">成本与品质</div><div class="kv-v">克重和氨纶含量是两个最容易动手脚的参数：同价格克重偷轻 10%，布就稀松露底；氨纶从 18% 降到 10%（示例），弹性和回复明显变差、穿两月就松。比价必须统一「克重 × 幅宽 × 成分比」三要素。</div></div>
+      </div>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>五种常用杯面 / 里布材料的对比（手感与支撑为相对评级；克重为教学参考区间，非硬性标准）</caption>
+          <thead><tr><th style="width:15%">材料</th><th style="width:20%">典型用法</th><th style="width:34%">优势</th><th style="width:31%">短板与风险</th></tr></thead>
+          <tbody>
+            <tr><td><b>光面特里科<br>（经编锦氨）</b></td><td>光面 T 恤文胸杯面、无痕侧翼</td><td>平滑不挂外衣、横向高弹、尺寸稳定、耐洗不变形</td><td>闷热感强于网布；克重虚标难以肉眼识别，需称重验证</td></tr>
+            <tr><td><b>磨毛锦氨</b></td><td>秋冬款杯面、家居风文胸</td><td>手感温暖细腻、哑光高级感</td><td>毛羽增加起球与勾丝风险；磨毛过度会牺牲强力</td></tr>
+            <tr><td><dfn class="term" data-term="弹力网">弹力网</dfn>（经编网布）</td><td>侧比、杯里、背心式文胸主体</td><td>透气最好、轻、回弹快、可叠层增支撑</td><td>低价网洗后松弛是侧比失效主因；密度偷减后透底</td></tr>
+            <tr><td><dfn class="term" data-term="蕾丝">蕾丝</dfn>（拉舍尔经编）</td><td>杯面拼接、装饰条、法式款主面</td><td>花纹立体、视觉价值高、弹力蕾丝可参与受力</td><td>勾丝、耐洗性弱；水溶蕾丝无弹只能做装饰，成本更高</td></tr>
+            <tr><td><b>纯棉针棉 / 棉里</b></td><td>杯里贴肤层、敏感肌款</td><td>吸湿亲肤、触感温和，敏感肌友好</td><td>无弹（需拼氨纶）、厚、慢干；不能独立承担杯面</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区 · 营销噱头识别
+        </div>
+        <p>「天然乳胶杯垫」「桑蚕丝里布」等卖点层出不穷，比名称更可靠的是三件事：<b>成分检测报告</b>（按 GB/T 29862 核对纤维含量标识）、<b>克重实测</b>（剪 10cm×10cm 称重 ×100）、<b>洗涤后复测</b>（弹力、外观）。另外「冰丝」「牛奶丝」这类商业俗称不指向任何确定纤维（见第一篇），出现在文胸详情页时，请直接翻译回「锦纶或涤纶长丝 + 凉感整理」再评估价值。</p>
+      </div>
+
+      <h3 class="sub-title">里布：被低估的「贴肤三处」之一</h3>
+      <p>杯里、内裤底裆、袜口是贴身衣物里最该花预算的三个部位（第一篇讲过的「贴身三处」逻辑）。杯里的两条路线：<b>纯棉针棉里</b>——吸湿温和、敏感肌友好，但厚、慢干，与光面杯面叠加后透气下降；<b>锦氨平滑里 / 经编网里</b>——轻薄速干、不起球，但吸湿性不如棉。夏季与运动场景选网里，敏感肌与秋冬选棉里，是行业常见的取舍。</p>
+
+      <div class="wg">
+        <div class="wg-panel">
+          <div class="wg-head"><span class="wg-tag">交互</span>克重计算器：面料克重与单件面料成本的关系</div>
+          <div class="wg-body">
+            <div class="ctl-row" id="m-gauge-row"><label>面料克重（g/m²）</label></div>
+            <div class="ctl-row" id="m-price-row"><label>面料单价（元/kg，示例）</label></div>
+            <div class="calc-grid">
+              <div class="calc-card acc-b"><div class="cc-l">单件用料（约）</div><div class="cc-v"><span id="m-area">0.045</span><small>m²/件</small></div></div>
+              <div class="calc-card acc-gold"><div class="cc-l">单件布重</div><div class="cc-v"><span id="m-wt">9.0</span><small>g</small></div></div>
+              <div class="calc-card acc-g"><div class="cc-l">单件面料成本</div><div class="cc-v"><span id="m-cost">0.50</span><small>元</small></div></div>
+              <div class="calc-card acc-c"><div class="cc-l">面料占出厂价</div><div class="cc-v"><span id="m-share">约 5%</span></div></div>
+            </div>
+            <div class="wg-note" id="m-note">拖动滑杆观察：克重 +10g/m²，单件成本只涨几厘钱——所以「加厚加密」是性价比最高的品质投入之一；同时注意用料面积随款式（罩杯大小、侧比宽度）变化，此处为 3/4 杯中码的示例值。</div>
+          </div>
+          <div class="wg-note">教学示例：用料面积按 3/4 薄杯中码约 0.045m²（不含侧里布辅料）估算；出厂价按 10 元（示例）计算占比。实际请以打样实测排料为准——排料利用率 80%-88%（示例）意味着还有边角损耗。</div>
+        </div>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-core" data-sec="s-core"><span class="sec-no">03</span>模杯芯材：四种材料的正面对决</h2>
+
+      <p>芯材决定「胸感」：压上去什么感觉、洗三次之后还回不回得来。主流芯材只有四种——<dfn class="term" data-term="海绵">海绵</dfn>（PU 泡棉）、<dfn class="term" data-term="记忆棉">记忆棉</dfn>、<dfn class="term" data-term="乳胶杯">乳胶</dfn>、<dfn class="term" data-term="间隔织物">间隔织物</dfn>。先看剖面长什么样，再逐个讲它们的脾气。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="100" y="26" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">海绵（开孔 PU）</text>
+            <rect x="30" y="44" width="140" height="90" rx="8" fill="#F7EAE2" stroke="#B0603F" stroke-width="2"/>
+            <g fill="none" stroke="#B0603F" stroke-width="1.1" opacity=".75">
+              <circle cx="62" cy="72" r="9"/><circle cx="92" cy="66" r="7"/><circle cx="118" cy="76" r="10"/><circle cx="74" cy="98" r="8"/><circle cx="104" cy="102" r="9"/><circle cx="138" cy="98" r="7"/><circle cx="52" cy="116" r="7"/><circle cx="86" cy="120" r="6"/><circle cx="122" cy="120" r="8"/><circle cx="146" cy="118" r="6"/>
+            </g>
+            <text x="100" y="156" text-anchor="middle" fill="#5D574B" font-size="10.5">气孔连通 · 软 · 厚度范围最广</text>
+            <text x="100" y="172" text-anchor="middle" fill="#8B8375" font-size="10.5">短板：黄变 · 洗后回弹衰减</text>
+            <text x="290" y="26" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">记忆棉（慢回弹）</text>
+            <rect x="220" y="44" width="140" height="90" rx="8" fill="#E9EFF3" stroke="#44657F" stroke-width="2"/>
+            <g stroke="#44657F" stroke-width="1.1" fill="none" opacity=".7">
+              <path d="M232,60 h116 M232,78 h116 M232,96 h116 M232,114 h116"/>
+              <path d="M232,60 c20,8 40,-8 60,0 c20,8 36,-8 56,0"/>
+            </g>
+            <text x="290" y="156" text-anchor="middle" fill="#5D574B" font-size="10.5">受压缓慢贴合 · 压感最柔</text>
+            <text x="290" y="172" text-anchor="middle" fill="#8B8375" font-size="10.5">短板：透气差 · 怕高温水洗</text>
+            <text x="480" y="26" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">乳胶（发泡）</text>
+            <rect x="410" y="44" width="140" height="90" rx="8" fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+            <g fill="none" stroke="#3D6B57" stroke-width="1.1" opacity=".75">
+              <circle cx="440" cy="70" r="11"/><circle cx="474" cy="64" r="8"/><circle cx="504" cy="74" r="12"/><circle cx="452" cy="98" r="10"/><circle cx="486" cy="102" r="9"/><circle cx="522" cy="100" r="8"/><circle cx="434" cy="118" r="8"/><circle cx="466" cy="120" r="7"/><circle cx="502" cy="122" r="9"/><circle cx="530" cy="118" r="6"/>
+              <circle cx="440" cy="70" r="3"/><circle cx="504" cy="74" r="4"/><circle cx="452" cy="98" r="3"/><circle cx="486" cy="102" r="3"/>
+            </g>
+            <text x="480" y="156" text-anchor="middle" fill="#5D574B" font-size="10.5">回弹快 · 开孔透气 · 弹性耐久</text>
+            <text x="480" y="172" text-anchor="middle" fill="#8B8375" font-size="10.5">短板：贵 · 过敏人群 · 老化发黏</text>
+            <text x="660" y="26" text-anchor="middle" fill="#26231D" font-size="13" font-weight="700">间隔织物（三明治）</text>
+            <g>
+              <rect x="590" y="48" width="140" height="14" rx="4" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+              <rect x="590" y="120" width="140" height="14" rx="4" fill="#EAF1ED" stroke="#3D6B57" stroke-width="1.6"/>
+              <g stroke="#5D574B" stroke-width="1.6" fill="none">
+                <path d="M598,62 L598,120 M598,120 L606,62"/>
+                <path d="M618,62 L618,120 M618,120 L626,62"/>
+                <path d="M638,62 L638,120 M638,120 L646,62"/>
+                <path d="M658,62 L658,120 M658,120 L666,62"/>
+                <path d="M678,62 L678,120 M678,120 L686,62"/>
+                <path d="M698,62 L698,120 M698,120 L706,62"/>
+                <path d="M716,62 L716,120 M716,120 L724,62"/>
+              </g>
+              <text x="660" y="96" text-anchor="middle" fill="#5D574B" font-size="9.5">单丝 Z 字支撑层</text>
+            </g>
+            <text x="660" y="156" text-anchor="middle" fill="#5D574B" font-size="10.5">可水洗不塌 · 透气最优 · 无黄变</text>
+            <text x="660" y="172" text-anchor="middle" fill="#8B8375" font-size="10.5">短板：最贵 · 厚度档位少</text>
+            <!-- 对比条 -->
+            <line x1="30" y1="196" x2="730" y2="196" stroke="#E6E0D3" stroke-width="1.2"/>
+            <g font-size="11.5" fill="#5D574B">
+              <text x="30" y="222" font-weight="700" fill="#26231D">怎么选（主理人速查）</text>
+              <text x="30" y="246">日常薄杯走量</text><text x="230" y="246">→ 海绵：成本可控、工艺最成熟，锁死「密度 + 回弹」指标即可</text>
+              <text x="30" y="270">中高端舒适款</text><text x="230" y="270">→ 记忆棉 / 乳胶：买的是「胸感差异」，需实测慢回弹或乳胶含量</text>
+              <text x="30" y="294">高端无钢圈 / 运动款</text><text x="230" y="294">→ 间隔织物：可机洗不塌不黄变，把「洗后状态」变成卖点</text>
+              <text x="30" y="318">敏感肌 / 哺乳</text><text x="230" y="318">→ 优先杯里材质与可拆卸杯垫，芯材反而不是第一变量</text>
+            </g>
+            <text x="380" y="346" text-anchor="middle" fill="#8B8375" font-size="11">剖面为结构示意，非显微比例；各材料厚度均可按款式定制（常见 2-40mm，示例范围）</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-7</span><b>四种模杯芯材的剖面结构与选型速查。</b>海绵是连通开孔结构、记忆棉是致密慢回弹体、乳胶是天然发泡开孔、间隔织物则是「两面布 + 单丝 Z 字支撑层」的三明治——结构决定了它们各自的舒适点与短板。</figcaption>
+      </figure>
+
+      <div class="wg">
+        <div class="wg-panel" data-tabs>
+          <div class="tabs">
+            <button class="tab active" data-tab="core-1">海绵</button>
+            <button class="tab" data-tab="core-2">记忆棉</button>
+            <button class="tab" data-tab="core-3">乳胶</button>
+            <button class="tab" data-tab="core-4">间隔织物</button>
+          </div>
+          <div class="wg-body">
+            <div class="tab-pane active" id="core-1">
+              <h4 class="mini-title">海绵：行业标准答案，也是最需要「锁指标」的材料</h4>
+              <p>聚氨酯软质泡棉，成本最低、工艺最成熟、厚度档位最全（1-40mm+ 都能做），<dfn class="term" data-term="模压">模压</dfn>性能稳定，是光面 T 恤文胸的默认选择。它的问题只有一个：<b>品质波动大</b>。密度虚标、回弹差、抗氧化差的海绵，会在几次水洗后瘪塌、黄变——这正是文胸差评的最大单项来源之一。谈判时不要问「是不是好海绵」，直接锁三个可检测参数：<b>密度（kg/m³，要求书面标注）、回弹率、耐黄变等级</b>，并约定洗三次复测样。</p>
+            </div>
+            <div class="tab-pane" id="core-2">
+              <h4 class="mini-title">记忆棉：把「压感柔和」做成卖点</h4>
+              <p>慢回弹聚氨酯，受压后缓慢贴合再缓慢回复，胸感「无压」，是中高端舒适款的主打材料。短板明确：透气与回弹速度不如常规海绵，<b>怕高温</b>——60℃ 以上水洗或暴晒可能导致性能衰减与变形，洗标必须写低温。判断真伪的土办法：用手指用力按压 3 秒后移开，真记忆棉的压痕会在 2-5 秒内缓慢消退；瞬间回弹的「记忆棉」是普通海绵换标签。</p>
+            </div>
+            <div class="tab-pane" id="core-3">
+              <h4 class="mini-title">乳胶：性能优秀，但两大代价要想清楚</h4>
+              <p>天然乳胶发泡成杯，回弹快、支撑耐久、开孔结构透气相对好。代价：一是<b>贵</b>（示例：同等厚度成本可达普通海绵 3-6 倍），二是<b>天然乳胶蛋白过敏</b>人群不适用（必须标注），且长期水洗易老化发黏。营销上「天然乳胶 = 防螨抗菌」的说法要理性看待：发泡工艺本身有一定物理阻隔意义，但「抗菌防螨」作为功能宣称需要按相应标准的洗涤后数据支撑，否则就是话术。</p>
+            </div>
+            <div class="tab-pane" id="core-4">
+              <h4 class="mini-title">间隔织物：把「洗后状态」变成产品力</h4>
+              <p>双面经编织物中间由单丝「Z 字」撑起空气层（三明治结构），<b>可以机洗、不吸水、不塌陷、不黄变、透气最好</b>——它没有泡棉的老化问题，因为它根本不是泡。短板是成本最高（示例：同厚度比海绵贵 2-4 倍）、厚度档位少、手感偏「Q 弹」而非「绵软」。适合定位：高端无钢圈、运动文胸、哺乳文胸等「反复洗、讲功能」的场景。判断真伪：剪开看剖面有没有立起的单丝层，捏压回弹应「即时」而非「缓慢」。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout deep">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>
+          深入理解 · 芯材的「回弹」为什么是命门
+        </div>
+        <p>罩杯的功能是「维持一个稳定的立体空间」。新杯谁都能做到；三个月后还能维持的才是真功夫。泡棉类芯材（海绵 / 记忆棉）的劣化路径是：泡孔壁在反复压缩 + 水解 + 氧化下变脆塌陷——表现为「洗后瘪、边缘塌、变硬发黄」。间隔织物的劣化路径只有「单丝弯折疲劳」一种，且远慢于泡棉水解。这就是为什么高端无钢圈品牌几乎都在用间隔织物或高密度直立棉：它们把「耐久」写进了材料结构里。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-hardware" data-sec="s-hardware"><span class="sec-no">04</span>钢圈、胶骨与辅料：看不见的骨架</h2>
+
+      <p>面料和芯材决定「穿感」，辅料决定「撑不撑得住、穿不穿得久」。这部分单价占比不高，却是承托性能与安全性的直接来源。</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">钢圈</div><div class="kv-v">按材质分三档：高碳钢弹簧圈（主流，便宜刚性好，怕弯折变形）、<dfn class="term" data-term="记忆合金钢圈">记忆合金钢圈</dfn>（可反复弯折回弹，成本高）、树脂圈（轻、可过检针机无金属报警，支撑略弱）。规格两个参数：<b>圈径（弧长）</b>与<b>开口（两端距离）</b>，随罩杯每档约 0.5-1cm 步进（示例）。钢圈必须装布套入槽，端头封死——脱圈与戳出是安全级缺陷。</div></div>
+        <div class="kv-row"><div class="kv-k">胶骨</div><div class="kv-v"><dfn class="term" data-term="胶骨">胶骨</dfn>是侧比里的细长支撑条（PP / 尼龙），防止侧比翻卷、辅助收侧乳。长度约 6-12cm（示例），过顶肋骨就是选长了。</div></div>
+        <div class="kv-row"><div class="kv-k">背扣</div><div class="kv-v"><dfn class="term" data-term="背扣">背扣</dfn>钩扣常见 2排2扣 / 2排3扣 / 3排3扣：大杯与运动款宜多排。评价两点：钩扣拉力（反复扣合不脱落、不掉齿）与车缝平整度。尼龙包胶钩扣手感更滑、不易钩坏面料。</div></div>
+        <div class="kv-row"><div class="kv-k">肩带与橡筋</div><div class="kv-v"><dfn class="term" data-term="肩带">肩带</dfn>是锦纶包氨纶织带，宽 1.0-2.5cm（示例），大杯要加宽加防滑纹；配「日」字扣调长度、8 字环连接前后带。织带的弹性回复率决定「穿一天松不松」，是辅料里最值得多花钱的一项。</div></div>
+        <div class="kv-row"><div class="kv-k">捆条与小件</div><div class="kv-v"><dfn class="term" data-term="捆条">捆条</dfn>分弹力带与无弹定带（稳定杯口）；水洗唛、吊粒、装饰扣等小件合计成本占比极低，但水洗唛的成分标注与洗护等级是<b>合规项</b>，不是装饰项。</div></div>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="380" y="24" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">钢圈开口与杯型的对应关系（俯视示意）</text>
+            <!-- 全罩杯 宽开口 -->
+            <text x="130" y="52" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="700">全罩杯 · 宽开口</text>
+            <path d="M60,90 C60,150 90,196 130,196 C170,196 200,150 200,90" fill="none" stroke="#44657F" stroke-width="6" stroke-linecap="round"/>
+            <line x1="60" y1="90" x2="200" y2="90" stroke="#B0603F" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="130" y="80" text-anchor="middle" fill="#B0603F" font-size="11">开口宽 · 深弧</text>
+            <text x="130" y="226" text-anchor="middle" fill="#5D574B" font-size="11">包容最大 · 稳定型</text>
+            <text x="130" y="244" text-anchor="middle" fill="#8B8375" font-size="10.5">侧比高 · 收侧乳</text>
+            <!-- 3/4 中开口 -->
+            <text x="380" y="52" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="700">3/4 杯 · 中开口</text>
+            <path d="M318,86 C322,142 348,182 380,182 C412,182 438,142 442,86" fill="none" stroke="#3D6B57" stroke-width="6" stroke-linecap="round"/>
+            <line x1="318" y1="86" x2="442" y2="86" stroke="#B0603F" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="380" y="76" text-anchor="middle" fill="#B0603F" font-size="11">开口适中</text>
+            <text x="380" y="226" text-anchor="middle" fill="#5D574B" font-size="11">日常主流 · 兼顾聚拢</text>
+            <text x="380" y="244" text-anchor="middle" fill="#8B8375" font-size="10.5">最常见配置 · 适配面最广</text>
+            <!-- 聚拢 窄开口 -->
+            <text x="630" y="52" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="700">聚拢款 · 窄开口</text>
+            <path d="M576,80 C586,136 606,168 630,168 C654,168 674,136 684,80" fill="none" stroke="#B98F45" stroke-width="6" stroke-linecap="round"/>
+            <line x1="576" y1="80" x2="684" y2="80" stroke="#B0603F" stroke-width="2" stroke-dasharray="5 4"/>
+            <text x="630" y="70" text-anchor="middle" fill="#B0603F" font-size="11">开口窄 · 浅弧</text>
+            <text x="630" y="226" text-anchor="middle" fill="#5D574B" font-size="11">向中聚拢 · 造型强</text>
+            <text x="630" y="244" text-anchor="middle" fill="#8B8375" font-size="10.5">胸距近者慎选 · 易压胸</text>
+            <text x="380" y="278" text-anchor="middle" fill="#5D574B" font-size="11.5">同一罩杯尺码下，开口与弧度决定钢圈「抱」的位置——钢圈不合胸型是鸡心浮起、压胃、跑杯的常见根因</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-8</span><b>钢圈开口与杯型的对应。</b>钢圈不是「一根圈用到底」：杯型越深、越要包容，开口越宽、弧越深；聚拢款开口窄，对胸距有要求。选品时把「钢圈开口」当成一个正式版型参数来问供应商。</figcaption>
+      </figure>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          常见误区 · 低价辅料的隐藏代价
+        </div>
+        <p>低价文胸最先偷的三样辅料：<b>回炉钢圈</b>（易断、端头毛糙戳布）、<b>劣质橡筋</b>（洗两次松弛、肩带失去弹性）、<b>廉价钩扣</b>（扣合脱落、齿口割线）。它们的单价差每件不到 1 元（示例），但对应的全是「退货级」体验。验货时钢圈抽出来弯折 90° 看是否回弹复原、钩扣反复扣合 20 次看是否松动——这两个动作 10 秒钟能做完。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-grade" data-sec="s-grade"><span class="sec-no">05</span>版型与放码：同样的尺码，不同的身体</h2>
+
+      <p>材料定「料」，版型定「形」。上一页讲过尺码只是起点，这里补齐背后的版型参数：一款罩杯的合体度，由<b>杯深（立体深度）、杯宽（横向跨度）、钢圈开口、下扒高度、侧比高度、鸡心宽度</b>共同决定；其中杯深与杯宽的比例，是亚洲版型与欧美版型最核心的差异——亚洲女性胸型普遍偏「圆盘 / 圆锥、胸距稍宽」，欧美版型直接照搬常出现「压尖不压根、鸡心不服帖」。</p>
+
+      <h3 class="sub-title"><dfn class="term" data-term="放码">放码</dfn>：文胸不是「等比放大」</h3>
+      <p>普通服装放码近似等比缩放，文胸完全不行，因为它的三个变化不同步：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>文胸放码的三条独立规则（教学归纳）</caption>
+          <thead><tr><th style="width:18%">变化维度</th><th style="width:30%">档差规则</th><th>连带变化</th></tr></thead>
+          <tbody>
+            <tr><td><b>下围档</b></td><td>下胸围每档 +5cm（65/70/75…）</td><td>下扒与后比加长；钢圈换大一号（弧长 +0.5-1cm，示例）；杯底弧随胸廓变宽</td></tr>
+            <tr><td><b>罩杯档</b></td><td>上下差值每档约 +2.5cm（A→B→C）</td><td>杯深、杯容非线性增加；侧比与肩带承压上升，需加宽；钢圈开口同步加深</td></tr>
+            <tr><td><b>姐妹码</b></td><td>下围上移一档 + 字母下调一档</td><td>杯容近似守恒，但钢圈弧长不同——<b>同杯容不同底盘</b>，版型必须分别放码</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <text x="200" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">同字母跨下围：底盘必须换（70B → 75B → 80B）</text>
+            <path d="M70,120 C70,170 92,206 120,206 C148,206 170,170 170,120" fill="none" stroke="#44657F" stroke-width="5" stroke-linecap="round"/>
+            <text x="120" y="234" text-anchor="middle" fill="#44657F" font-size="12.5" font-weight="700">70B</text>
+            <text x="120" y="252" text-anchor="middle" fill="#8B8375" font-size="10.5">钢圈弧长最小</text>
+            <path d="M180,112 C180,168 206,212 240,212 C274,212 300,168 300,112" fill="none" stroke="#3D6B57" stroke-width="5.5" stroke-linecap="round"/>
+            <text x="240" y="234" text-anchor="middle" fill="#2C5142" font-size="12.5" font-weight="700">75B</text>
+            <text x="240" y="252" text-anchor="middle" fill="#8B8375" font-size="10.5">圈径 +0.5-1cm（示例）</text>
+            <path d="M310,104 C310,166 340,218 380,218 C420,218 450,166 450,104" fill="none" stroke="#B98F45" stroke-width="6" stroke-linecap="round"/>
+            <text x="380" y="234" text-anchor="middle" fill="#8F6E2F" font-size="12.5" font-weight="700">80B</text>
+            <text x="380" y="252" text-anchor="middle" fill="#8B8375" font-size="10.5">圈径再加一档 · 下扒加长</text>
+            <text x="240" y="288" text-anchor="middle" fill="#5D574B" font-size="11.5">字母不变，杯面近似——但底盘（钢圈 + 下扒）逐级放大，这就是「姐妹码必须分别放码」的原因</text>
+            <line x1="500" y1="48" x2="500" y2="300" stroke="#E6E0D3" stroke-width="1.4"/>
+            <text x="628" y="26" text-anchor="middle" fill="#26231D" font-size="13.5" font-weight="700">同下围跨字母：杯容非线性长（75A → 75C）</text>
+            <path d="M530,110 C530,146 546,170 568,170 C590,170 606,146 606,110" fill="none" stroke="#8B8375" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="8 5"/>
+            <text x="568" y="198" text-anchor="middle" fill="#8B8375" font-size="12.5" font-weight="700">75A</text>
+            <path d="M616,102 C616,152 640,186 670,186 C700,186 724,152 724,102" fill="none" stroke="#B0603F" stroke-width="6" stroke-linecap="round"/>
+            <text x="670" y="214" text-anchor="middle" fill="#B0603F" font-size="12.5" font-weight="700">75C</text>
+            <text x="628" y="252" text-anchor="middle" fill="#5D574B" font-size="11.5">杯深、杯宽、开口同步加大，</text>
+            <text x="628" y="270" text-anchor="middle" fill="#5D574B" font-size="11.5">侧比与肩带承压上升 → 需加宽</text>
+            <text x="628" y="296" text-anchor="middle" fill="#8B8375" font-size="10.5">大杯款「用料更多、结构更强」不是营销，是力学</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 4-9</span><b>放码的两个方向。</b>横向（跨下围）变的是底盘尺寸，纵向（跨字母）变的是杯容与受力——两个方向叠加出完整的尺码矩阵。放码粗糙的典型症状：中间码合体、两端的码「变形」，退货集中在最大与最小码。</figcaption>
+      </figure>
+
+      <div class="callout deep">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg>
+          深入理解 · 为什么大杯文胸更难做、更贵、更容易退货
+        </div>
+        <p>罩杯每上一档，三个东西同时变大：杯容（用料面积）、钢圈号（模具与库存）、结构受力（侧比、肩带、背扣都要加强）。而且受力是「杠杆式」放大的——罩杯悬在钢圈上，钢圈架在底围上，杯越大力臂越长，对底盘刚性的要求指数级上升。这就是为什么 D 杯以上的文胸几乎必然出现宽侧比、多排扣、加宽肩带；也是为什么「一个版型打天下」的品牌，退货永远集中在两端码。给 Soran 的启示：<b>上新先集中做中间档（70-80 / A-C），验证版型后再向两端扩码</b>，扩码时要求工厂重新放码并提交两端码的真人试穿记录。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-config" data-sec="s-config"><span class="sec-no">06</span>三条典型配置路线：把材料组合成产品</h2>
+
+      <p>单个材料讲完，落点是组合。下面三条配置路线覆盖了绝大多数新品牌的首发场景——注意每条路线都是「面料 + 芯材 + 辅料 + 版型」的联动，只换其中一项不成立。</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>三条典型配置路线（BOM 示例，教学参考；成本为单件材料与加工合计的出厂价参考区间）</caption>
+          <thead><tr><th style="width:16%">项目</th><th style="width:28%">A · 入门光面模杯款</th><th style="width:28%">B · 主流舒适夹棉款</th><th style="width:28%">C · 高端间隔织物无钢圈款</th></tr></thead>
+          <tbody>
+            <tr><td><b>杯面 / 里布</b></td><td>光面特里科锦氨 82/18，约 180 g/m²（示例）</td><td>磨毛锦氨 + 纯棉针棉里</td><td>高密度锦氨 + 经编网里</td></tr>
+            <tr><td><b>芯材</b></td><td>模杯海绵约 3-5mm（外购模杯）</td><td>薄棉夹棉 + 可拆卸杯垫</td><td>间隔织物一体杯（约 8-12mm，示例）</td></tr>
+            <tr><td><b>骨架辅料</b></td><td>无钢圈 / 软钢圈，常规橡筋</td><td>无钢圈 + 胶骨</td><td>无钢圈 + 高回弹橡筋 + 加宽下扒</td></tr>
+            <tr><td><b>版型要点</b></td><td>标准 3/4 杯版，买版或微调 ODM 版</td><td>自开版或买版 + 微调</td><td>必须自开版：一体杯的支撑全靠版型与织造密度</td></tr>
+            <tr><td><b>工艺路线</b></td><td>模杯光面（见工艺篇）</td><td>传统车缝 + 夹棉</td><td>车缝 + 间隔织物成型（或无缝织造）</td></tr>
+            <tr><td><b>单件成本（示例）</b></td><td class="num">约 7-12 元</td><td class="num">约 9-16 元</td><td class="num">约 15-28 元</td></tr>
+            <tr><td><b>适用定位</b></td><td>引流基础款、走量 SKU</td><td>主力利润款、舒适日常</td><td>品牌形象款、高质价比旗舰</td></tr>
+            <tr><td><b>核心风险</b></td><td>同质化严重、拼价格</td><td>车缝品质波动、起球</td><td>版型门槛高、面料起订量大</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 给 Soran 的组合建议
+        </div>
+        <p>「高品质、高质价比」不等于全线高端，而是<b>把预算花在感知差异最大的层</b>。一条被反复验证的路径：走量款用路线 A，但把海绵密度与橡筋等级拉到主流款标准（差价 1-2 元/件，示例），差异体现在「洗三次之后」；主力款用路线 B，里布必须棉或高支网；形象款用路线 C 承担品牌叙事。三条路线共用同一套钢圈 / 钩扣 / 橡筋供应商，能把辅料品质稳定性锁在同一水平线上。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-verify" data-sec="s-verify"><span class="sec-no">07</span>看懂材料卡：问价、验货与常见偷工点</h2>
+
+      <p>向供应商要材料报价时，一张合格的材料卡（或叫「材料规格表」）至少包含：纤维成分与比例、克重、幅宽、（芯材）密度与厚度、颜色编号、染整方式、适用标准与检测报告编号。<b>缺任何一项，报价都不可比价</b>——你比的不是同一块布。</p>
+
+      <div class="duo">
+        <div class="d-cell d-good">
+          <h5><span class="d-ico">A</span>下单前必收的四样东西</h5>
+          <ul>
+            <li><b>材料卡</b>：成分 / 克重 / 幅宽 / 密度，逐项书面化。</li>
+            <li><b>检测报告</b>：GB 18401 B 类全项（甲醛、pH、色牢度、异味、禁用偶氮），报告主体须对应该色号面料。</li>
+            <li><b>留样封样</b>：手感、颜色、克重三方各存一份，大货对样验收。</li>
+            <li><b>洗三次复测样</b>：弹力回复、外观、黄变——文胸品质的分水岭在洗后。</li>
+          </ul>
+        </div>
+        <div class="d-cell d-bad">
+          <h5><span class="d-ico" style="background:var(--clay-soft);color:var(--clay)">B</span>五个常见偷工点（按出现频率）</h5>
+          <ul>
+            <li>面料克重偷轻 10-15%（布面变稀、透底）。</li>
+            <li>氨纶降含量（82/18 → 90/10），弹力与回复断崖下降。</li>
+            <li>海绵密度虚标（洗后瘪塌黄变）。</li>
+            <li>橡筋 / 肩带用低价织带（穿一月松弛）。</li>
+            <li>钢圈用回炉钢（易断、端头毛糙）。</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>到手验料的三个 10 秒动作：<b>称</b>——剪 10cm×10cm 称重换算克重，对不上材料卡即停；<b>拉</b>——横向拉伸 50% 松开，观察是否立刻回复、有无松弛白痕；<b>搓</b>——里布对着手背搓 20 下，起球起毛的里布直接否掉。这三个动作不能替代检测报告，但能替你拦下八成明显问题。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">四层结构</div><div class="kv-v">装饰层（颜值预算）→ 杯面弹力层（性能）→ 芯材层（胸感）→ 里布层（亲肤）。装饰层可选，芯材与里层决定复购。</div></div>
+        <div class="kv-row"><div class="kv-k">杯面主力</div><div class="kv-v">经编锦氨特里科：平滑、横向高弹、稳定不脱散；比价必须统一「克重 × 幅宽 × 成分比」。弹力网透气、蕾丝装饰、纯棉亲肤但无弹。</div></div>
+        <div class="kv-row"><div class="kv-k">四种芯材</div><div class="kv-v">海绵（成熟便宜、锁密度回弹指标）、记忆棉（慢回弹胸感、怕热）、乳胶（回弹耐久但贵且需注意过敏）、间隔织物（可水洗不塌不黄变、最贵）。芯材品质的试金石是「洗后状态」。</div></div>
+        <div class="kv-row"><div class="kv-k">骨架辅料</div><div class="kv-v">钢圈（钢 / 记忆合金 / 树脂）按圈径 × 开口配套杯型；胶骨防卷边；背扣排数匹配杯量；橡筋回弹决定耐久。低价辅料差价不到 1 元，代价全是退货级。</div></div>
+        <div class="kv-row"><div class="kv-k">版型放码</div><div class="kv-v">文胸放码三条独立规则：下围档变底盘、罩杯档变杯容、姐妹码分别放码。大杯 = 力学问题，结构必须同步加强。扩码先做中间档，两端码要试穿记录。</div></div>
+        <div class="kv-row"><div class="kv-k">配置决策</div><div class="kv-v">入门模杯款 / 主流夹棉款 / 高端间隔织物款三条路线联动选材；预算优先投在感知差异最大的层（洗后不塌、贴肤不痒）。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="bras-materials-q1" data-q="供应商报价单写着「光面模杯文胸，面料：冰丝面料，高级海绵模杯」。作为主理人，最专业的下一步是？" data-a="2" data-exp="「冰丝」是商业俗称，不指向确定纤维；「高级海绵」没有可验证指标。可比价、可验收的写法必须落实到成分与参数：锦氨比例、克重、海绵密度 / 回弹 / 耐黄变等级。A 让虚标合法化；B 用手感验收等于放弃检测证据；D 放弃了压价与控制品质的依据。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>接受报价，但要求在合同备注「面料为高级冰丝」</li>
+            <li>只比价格，谁便宜定谁，品质靠收货时手感判断</li>
+            <li>要求改写为可验证参数：锦纶/氨纶比例、克重、海绵密度与回弹指标，并附检测报告</li>
+            <li>拒绝与该供应商合作，只找能提供进口材料的工厂</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="bras-materials-q2" data-q="两款同为 75B 的无钢圈文胸：甲款用 3mm 普通海绵模杯，乙款用间隔织物一体杯，乙款出厂成本高约 6 元（示例）。以下判断哪个最准确？" data-a="1" data-exp="间隔织物的核心差异在「洗后状态」：可机洗、不塌陷、不黄变、透气最好——这正是差评率与复购的分水岭，把耐久写进了材料结构。A 错在新杯状态下两者差异不大，差异在使用数周后显现；C 错在间隔织物回弹是「即时」的，慢回弹是记忆棉特征；D 错在乳胶过敏需标注，间隔织物是聚酯/锦纶单丝结构，无乳胶蛋白问题。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>两款新杯手感接近，乙款溢价不值，成本差异主要来自织造工艺噱头</li>
+            <li>乙款的价值在洗后：可机洗、不塌陷、不黄变，直接对应更低的「洗后变形」差评率</li>
+            <li>间隔织物回弹慢、贴身更闷，只适合冬季款，夏季款不应考虑</li>
+            <li>乙款天然乳胶成分需在吊牌标注过敏提示，否则有合规风险</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="bras-materials-q3" data-q="工厂提供的现有版型只做到 75B，你希望新品直接覆盖 65A 到 90E。以下做法风险最低的是？" data-a="0" data-exp="放码不是等比放大：下围档变底盘（钢圈换号、下扒加长），罩杯档变杯容与受力（侧比、肩带、背扣都要加强）。先集中验证中间档（70-80 / A-C），再向两端扩码并要求两端码真人试穿记录，是把版型风险压到最低的路径。B 等比放码必然两端变形；C 大杯结构不加强是安全与承托双重风险；D 现成版型的中间档通常是调过的，直接沿用两端等于放弃验证。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>首发先做 70-80 / A-C 中间档验证版型，扩码时要求工厂重新放码并提交两端码试穿记录</li>
+            <li>让工厂把 75B 版型等比缩放放大缩小，一次生成全尺码，最省开版费</li>
+            <li>直接下单 90E，罩杯做大即可，承托靠把肩带做宽解决</li>
+            <li>全部沿用工厂现有版型的最大与最小码，不再单独验证</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：克重成本计算器（教学示例） */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var AREA = 0.045;            // 单件用料 m²（示例：3/4 薄杯中码）
+    var REF_PRICE = 10;          // 参考出厂价（示例）
+    var gaugeRow = document.getElementById('m-gauge-row');
+    var priceRow = document.getElementById('m-price-row');
+    var elArea = document.getElementById('m-area');
+    var elWt = document.getElementById('m-wt');
+    var elCost = document.getElementById('m-cost');
+    var elShare = document.getElementById('m-share');
+    var elNote = document.getElementById('m-note');
+    if (!gaugeRow || !priceRow || !elArea || !elWt || !elCost || !elShare || !elNote) return;
+    if (!window.W || !W.slider) return;
+
+    var gauge = 200, price = 55;
+    function calc() {
+      var wt = AREA * gauge;                 // g
+      var cost = wt / 1000 * price;          // 元
+      elArea.textContent = AREA.toFixed(3);
+      elWt.textContent = wt.toFixed(1);
+      elCost.textContent = cost.toFixed(2);
+      var share = Math.round(cost / REF_PRICE * 100);
+      elShare.textContent = '约 ' + share + '%';
+      elNote.textContent = '克重 ' + gauge + ' g/m² × 用料 ' + AREA.toFixed(3) + ' m² = 单件布重约 ' + wt.toFixed(1) +
+        'g；按 ' + price + ' 元/kg（示例）计算，面料成本约 ' + cost.toFixed(2) + ' 元/件。克重每 +10g/m²，成本增加约 ' + (AREA * 10 / 1000 * price).toFixed(2) + ' 元——「加厚加密」是单件差价最小、感知差异最大的品质投入之一。';
+    }
+    var s1 = W.slider({ min: 160, max: 280, step: 5, value: gauge, fmt: function (v) { return v + ' g/m²'; }, onInput: function (v) { gauge = v; calc(); } });
+    s1.input.setAttribute('aria-label', '面料克重');
+    gaugeRow.appendChild(s1.input); gaugeRow.appendChild(s1.val);
+    var s2 = W.slider({ min: 35, max: 90, step: 1, value: price, fmt: function (v) { return v + ' 元/kg'; }, onInput: function (v) { price = v; calc(); } });
+    s2.input.setAttribute('aria-label', '面料单价');
+    priceRow.appendChild(s2.input); priceRow.appendChild(s2.val);
+    calc();
+  })();
+};
+</script>
+</body>
+</html>

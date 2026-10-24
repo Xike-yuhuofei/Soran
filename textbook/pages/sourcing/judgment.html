@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品质判断与产品决策 — 素然之境 Soran</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page-id="sourcing-judgment" data-root="../../">
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="menu-btn" aria-label="菜单">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="crumb"><b>第五篇 · 选品实战 · 品质判断</b></div>
+      <div class="spacer"></div>
+      <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
+    </div>
+
+    <div class="content">
+      <header class="page-head">
+        <div class="page-kicker">SOURCING · JUDGMENT</div>
+        <h1 class="page-title">品质判断与产品决策</h1>
+        <p class="page-lede">这是收官的「实用工具页」：不再铺陈新知识，而是把前面四篇学到的纤维、面料、工艺、标准，压缩成一套可操作的判断与决策方法——识别营销噱头、六种徒手快速评估、竞品拆解分析、写产品技术规格书（Tech Pack）、定验收标准（AQL）、给样品加权打分。读完本页，你能独立完成一轮「样品评审 → 规格书 → 验收标准」的完整闭环。</p>
+        <div class="page-meta">
+          <span class="chip">阅读时间 约 22 分钟</span>
+          <span class="chip">前置：第一篇全部 + 对应品类篇</span>
+          <span class="chip">建议准备：电子秤 · 一件待评样品 · 两件竞品</span>
+        </div>
+      </header>
+
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-good" data-sec="s-good"><span class="sec-no">01</span>好产品的共同特征</h2>
+
+      <p>把内裤、袜子、文胸放在一起看，「好」是有共同公式的。跨品类的通则是这条优先级链：</p>
+
+      <div class="callout data">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          好产品的优先级链
+        </div>
+        <p><b>版型合体 &gt; 材料真实 &gt; 工艺扎实 &gt; 细节到位</b></p>
+        <p style="font-size:13.5px;color:var(--ink-soft)">贴身衣物的第一性是「穿上 8 小时的合体与舒适」——版型错了，材料再贵也是折磨；材料是支撑（真实成分与克重，不虚标不掺假）；工艺决定持久（洗 30 次之后还像不像样）；细节决定溢价与信任（唛头、缝线整齐度、包装、洗标合规）。评审任何样品，都按这个顺序打分。</p>
+      </div>
+
+      <p>「贵」和「好」是两个独立维度。把它们画成四象限，所有产品与品牌都能落位：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 400" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- 轴 -->
+            <line x1="380" y1="16" x2="380" y2="384" stroke="#D4CCBB" stroke-width="1.6"/>
+            <line x1="24" y1="200" x2="736" y2="200" stroke="#D4CCBB" stroke-width="1.6"/>
+            <polygon points="380,10 375,20 385,20" fill="#8B8375"/>
+            <polygon points="742,200 732,195 732,205" fill="#8B8375"/>
+            <text x="380" y="398" text-anchor="middle" font-size="11.5" fill="#8B8375">价格 →</text>
+            <text x="16" y="200" font-size="11.5" fill="#8B8375" transform="rotate(-90 16 200)" text-anchor="middle">品质 ↑</text>
+            <!-- 左上：高质低价 -->
+            <rect x="30" y="20" width="342" height="172" rx="12" fill="#EAF1ED" stroke="#3D6B57" stroke-width="2"/>
+            <text x="201" y="52" text-anchor="middle" font-size="15.5" font-weight="700" fill="#2C5142">高质 · 质价比</text>
+            <text x="201" y="76" text-anchor="middle" font-size="11.5" fill="#5D574B">材料真实 + 工艺扎实 + 砍掉无效成本</text>
+            <text x="201" y="96" text-anchor="middle" font-size="11.5" fill="#5D574B">靠供应链效率与诚实用料实现</text>
+            <g>
+              <polygon points="201,107 202.7,114.3 211.5,114.6 205.4,119.4 207.5,126.9 201,122.6 194.5,126.9 196.6,119.4 190.5,114.6 198.3,114.3" fill="#B98F45"/>
+              <text x="201" y="152" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3D6B57">Soran 的目标象限</text>
+            </g>
+            <!-- 右上：高质高价 -->
+            <rect x="388" y="20" width="342" height="172" rx="12" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+            <text x="559" y="52" text-anchor="middle" font-size="15.5" font-weight="700" fill="#26231D">高质 · 高价</text>
+            <text x="559" y="76" text-anchor="middle" font-size="11.5" fill="#5D574B">国际大牌 / 设计师款 / 高端百货</text>
+            <text x="559" y="96" text-anchor="middle" font-size="11.5" fill="#5D574B">品质与品牌溢价并存</text>
+            <text x="559" y="116" text-anchor="middle" font-size="11.5" fill="#8B8375">需要多年品牌资产与渠道力支撑</text>
+            <!-- 左下：低质低价 -->
+            <rect x="30" y="208" width="342" height="172" rx="12" fill="#F3EFE7" stroke="#E6E0D3" stroke-width="1.5"/>
+            <text x="201" y="240" text-anchor="middle" font-size="15.5" font-weight="700" fill="#5D574B">低质 · 低价</text>
+            <text x="201" y="264" text-anchor="middle" font-size="11.5" fill="#8B8375">白牌内卷区：拼料、拼工价、拼流量</text>
+            <text x="201" y="284" text-anchor="middle" font-size="11.5" fill="#8B8375">9.9 包邮聚集地</text>
+            <text x="201" y="304" text-anchor="middle" font-size="11.5" fill="#8B8375">可以学习其成本结构，但不该去定居</text>
+            <!-- 右下：低质高价 -->
+            <rect x="388" y="208" width="342" height="172" rx="12" fill="#F7EAE2" stroke="#E6C9B8" stroke-width="1.5"/>
+            <text x="559" y="240" text-anchor="middle" font-size="15.5" font-weight="700" fill="#B0603F">低质 · 高价</text>
+            <text x="559" y="264" text-anchor="middle" font-size="11.5" fill="#B0603F">营销溢价区：噱头叙事 &gt; 真实材料</text>
+            <text x="559" y="284" text-anchor="middle" font-size="11.5" fill="#B0603F">首单靠广告，复购靠运气</text>
+            <text x="559" y="304" text-anchor="middle" font-size="11.5" fill="#B0603F">差评与退货的温床——务必避开</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-1</span><b>「贵」与「好」的四象限。</b>Soran「高品质、高质价比」的定位对应左上象限：品质做高、价格克制。注意实现路径是「砍无效成本」（渠道层级、过度包装、虚高营销费），而不是砍材料——砍材料的所谓质价比会滑向左下，且不可逆。</figcaption>
+      </figure>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：怎么进左上象限
+        </div>
+        <p>四个动作：①<b>材料诚实</b>——成分标写什么就是什么，溢价花在精梳、高支、品牌纤维等可验证处；②<b>工艺达标</b>——规格书+验收把品质固化，不靠工人发挥；③<b>砍无效成本</b>——包装适度、渠道扁平、SKU 精简；④<b>不碰右下</b>——任何「故事讲得好但拆开看不值」的决策，都在透支复购。质价比的本质是：<b>把成本花在用户穿得到的地方。</b></p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-hype" data-sec="s-hype"><span class="sec-no">02</span>营销噱头识别清单</h2>
+
+      <p>右下象限的产品最依赖语言包装。下表是贴身衣物最常见的五个噱头，逐个拆解真实成分与实证方法。核心原则只有一条：<b>名称不是成分，成分标和检测报告才是。</b></p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:16%">宣称</th><th>通常的真实成分</th><th>实证方法</th></tr></thead>
+          <tbody>
+            <tr><td><b>「冰丝」</b></td><td><dfn class="term" data-term="冰丝">冰丝</dfn>不是法定纤维名：多为黏胶长丝或涤/锦细旦长丝，叠加凉感整理。凉感本身可量化（接触凉感系数 Qmax，GB/T 35263 要求 ≥0.15）。</td><td>看成分标法定名称（涤纶/锦纶/黏胶）；索要 Qmax 检测报告；无数据=营销话术</td></tr>
+            <tr><td><b>「牛奶丝」</b></td><td>市场上绝大多数「牛奶丝」是<dfn class="term" data-term="牛奶纤维">涤纶/锦纶长丝</dfn>的营销叫法；真牛奶蛋白纤维产量小、成本高、多与其他纤维共混且蛋白含量有限。</td><td>第三方成分定量检测（GB/T 2910）；要求标明牛奶蛋白纤维的真实占比</td></tr>
+            <tr><td><b>「蚕丝蛋白」</b></td><td>多为丝胶蛋白整理剂附着在涤/锦面料上，并非真蚕丝成分；水洗数次后效果衰减。</td><td>看成分标蚕丝占比是否≥5%（GB/T 29862）；追问「蛋白」是纤维还是整理剂</td></tr>
+            <tr><td><b>「抗菌竹炭 / 竹纤维」</b></td><td>竹浆纤维本质是黏胶（再生纤维素）；「天然抗菌」经纺丝加工后所剩有限。抗菌效果主要来自<dfn class="term" data-term="抗菌整理">抗菌整理剂</dfn>，关键看洗涤后的抗菌率。</td><td>要求洗涤 N 次后的抗菌率报告（FZ/T 73023 或 AATCC 100）；只有「抗菌率 99%」没有洗涤次数=无效宣称</td></tr>
+            <tr><td><b>「航天科技 / 石墨烯远红外」</b></td><td>石墨烯添加量通常极低或仅为黑色色浆；远红外性能可测（GB/T 30127），但「发射率高」不等于「保暖/保健」。</td><td>问石墨烯具体含量与分散方式；索要远红外发射率检测报告；保健类宣称直接存疑</td></tr>
+          </tbody>
+          <caption>营销噱头识别清单。共同点：真实成分在成分标上有法定名称，而宣称用的全部是「故事名」。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">认证识别：三种值得看的证书</h3>
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">OEKO-TEX Standard 100</div><div class="kv-v">国际生态纺织品认证，检测有害物质（甲醛、重金属、禁用偶氮等）。<b>验证方法：证书号可在 OEKO-TEX 官方网站的证书查询页核验</b>，注意核对证书持有人、有效期与产品类别是否与你采购的货物一致。</div></div>
+        <div class="kv-row"><div class="kv-k">GB 18401 安全类别</div><div class="kv-v">国标强制标准的 A/B/C 类标注：A 类最严（婴幼儿），B 类直接接触皮肤（内裤、文胸、袜子的基本要求），C 类非直接接触。「A 类标准」可作为宣传点，但要<b>核对吊牌类别与检测报告一致</b>，而非只看详情页大字。</div></div>
+        <div class="kv-row"><div class="kv-k">GOTS</div><div class="kv-v">全球有机纺织品标准，覆盖有机纤维含量与生产全链条。验证同样走官网数据库：核对证书主体（TC 交易证书）、范围与数量。有机棉溢价高，证书造假的动机也高。</div></div>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          证书挂靠与过期证书——重灾区
+        </div>
+        <p>常见手法：①<b>挂靠</b>——把别家工厂或别家产品的证书复印件拿来冒充自己的；②<b>过期</b>——证书早已失效仍印在详情页；③<b>范围错位</b>——证书覆盖 A 产品，你买的是 B 产品；④<b>报告张冠李戴</b>——检测报告的样品名/批号与实际出货对不上。防范四步：<b>索要证书原件或编号 → 官网核验 → 核对主体与产品范围 → 抽货送检比对报告</b>。凡拒绝提供可核验编号的「认证」，一律按没有处理。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-touch" data-sec="s-touch"><span class="sec-no">03</span>快速手评六法</h2>
+
+      <p>不需要实验室，一张桌子、一个电子秤、一杯 30℃ 的水，就能完成对样品的初步判断。六种方法各有分工，共同前提是：<b>同一方法、同一条件、做对比才有意义</b>——单独说「回弹不错」没有信息量，「比竞品 A 回得快」才是判断。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- ① 拉伸回复 -->
+            <g>
+              <rect x="14" y="12" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="40" cy="38" r="11" fill="#3D6B57"/><text x="40" y="42.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">1</text>
+              <text x="58" y="43" font-size="13.5" font-weight="700" fill="#26231D">拉伸回复</text>
+              <rect x="48" y="112" width="150" height="34" rx="8" fill="#EAF1ED" stroke="#C7D8CE"/>
+              <rect x="48" y="112" width="150" height="34" rx="8" fill="none" stroke="#B98F45" stroke-dasharray="4 3" transform="translate(24,0)"/>
+              <g stroke="#B0603F" stroke-width="2" fill="#B0603F">
+                <line x1="20" y1="129" x2="42" y2="129"/><polygon points="40,129 32,124.5 32,133.5"/>
+                <line x1="226" y1="129" x2="248" y2="129"/><polygon points="246,129 238,124.5 238,133.5"/>
+              </g>
+              <text x="130" y="98" text-anchor="middle" font-size="11.5" fill="#5D574B">拉到 30% 保持 5 秒</text>
+              <text x="130" y="172" text-anchor="middle" font-size="11.5" fill="#5D574B">松手 → 立即量长度</text>
+              <text x="130" y="196" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">回复差 = 一天就松</text>
+              <text x="130" y="240" text-anchor="middle" font-size="11" fill="#8B8375">松开后残留拉伸越小越好</text>
+            </g>
+            <!-- ② 揉搓起球 -->
+            <g>
+              <rect x="264" y="12" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="290" cy="38" r="11" fill="#3D6B57"/><text x="290" y="42.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">2</text>
+              <text x="308" y="43" font-size="13.5" font-weight="700" fill="#26231D">揉搓起球预判</text>
+              <rect x="296" y="120" width="168" height="56" rx="10" fill="#EAF1ED" stroke="#C7D8CE"/>
+              <path d="M312 148 q10 -14 24 -8 q14 6 24 -4 q12 -10 26 -2" fill="none" stroke="#3D6B57" stroke-width="2"/>
+              <circle cx="380" cy="132" r="4" fill="#B0603F"/><circle cx="420" cy="140" r="3.5" fill="#B0603F"/><circle cx="446" cy="130" r="4.5" fill="#B0603F"/>
+              <circle cx="356" cy="136" r="3" fill="#B0603F"/>
+              <text x="380" y="102" text-anchor="middle" font-size="11.5" fill="#5D574B">湿布包住揉 50 次</text>
+              <text x="380" y="200" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">毛球多 = 短绒/普梳/低捻</text>
+              <text x="380" y="240" text-anchor="middle" font-size="11" fill="#8B8375">与竞品同法对比才有效</text>
+            </g>
+            <!-- ③ 对光看密度 -->
+            <g>
+              <rect x="514" y="12" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="540" cy="38" r="11" fill="#3D6B57"/><text x="540" y="42.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">3</text>
+              <text x="558" y="43" font-size="13.5" font-weight="700" fill="#26231D">对光看密度均匀度</text>
+              <circle cx="630" cy="94" r="16" fill="#F6EFDF" stroke="#B98F45" stroke-width="2"/>
+              <g stroke="#B98F45" stroke-width="1.6">
+                <line x1="630" y1="76" x2="630" y2="66"/><line x1="616" y1="80" x2="609" y2="73"/><line x1="644" y1="80" x2="651" y2="73"/>
+              </g>
+              <rect x="560" y="132" width="140" height="42" rx="8" fill="#fff" stroke="#C7D8CE"/>
+              <g stroke="#3D6B57" stroke-width="1.4">
+                <line x1="570" y1="140" x2="690" y2="140"/><line x1="570" y1="149" x2="690" y2="149"/>
+                <line x1="570" y1="158" x2="690" y2="158"/><line x1="570" y1="167" x2="640" y2="167"/>
+              </g>
+              <text x="630" y="124" text-anchor="middle" font-size="11.5" fill="#5D574B">举到灯前</text>
+              <text x="630" y="200" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">稀密不均 = 偷密度/纬斜</text>
+              <text x="630" y="240" text-anchor="middle" font-size="11" fill="#8B8375">透光孔洞、云斑即扣分</text>
+            </g>
+            <!-- ④ 称重法 -->
+            <g>
+              <rect x="14" y="288" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="40" cy="314" r="11" fill="#3D6B57"/><text x="40" y="318.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">4</text>
+              <text x="58" y="319" font-size="13.5" font-weight="700" fill="#26231D">称重法</text>
+              <rect x="60" y="360" width="140" height="14" rx="4" fill="#E6E0D3"/>
+              <rect x="76" y="342" width="108" height="20" rx="6" fill="#fff" stroke="#C7D8CE"/>
+              <rect x="92" y="322" width="76" height="22" rx="10" fill="#EAF1ED" stroke="#C7D8CE"/>
+              <rect x="70" y="380" width="120" height="26" rx="5" fill="#26231D"/>
+              <text x="130" y="398" text-anchor="middle" font-size="12.5" fill="#E8C87E" font-family="SF Mono, Menlo, monospace">38.2 g</text>
+              <text x="130" y="432" text-anchor="middle" font-size="11.5" fill="#5D574B">单件克重 → 换算</text>
+              <text x="130" y="452" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">克重单价 = 零售价 ÷ 克重</text>
+              <text x="130" y="492" text-anchor="middle" font-size="11" fill="#8B8375">同价位比克重，同克重比成分</text>
+            </g>
+            <!-- ⑤ 水洗速测 -->
+            <g>
+              <rect x="264" y="288" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="290" cy="314" r="11" fill="#3D6B57"/><text x="290" y="318.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">5</text>
+              <text x="308" y="319" font-size="13.5" font-weight="700" fill="#26231D">水洗速测</text>
+              <path d="M300 372 L464 372 L452 428 Q 382 446 312 428 Z" fill="#E9EFF3" stroke="#C9D7E0" stroke-width="1.5"/>
+              <text x="382" y="408" text-anchor="middle" font-size="14" fill="#44657F" font-weight="700">30℃</text>
+              <path d="M348 396 q8 -10 18 -2 q10 8 20 -2" fill="none" stroke="#8FB2C6" stroke-width="1.6"/>
+              <path d="M408 396 q8 -10 18 -2 q8 6 16 0" fill="none" stroke="#8FB2C6" stroke-width="1.6"/>
+              <text x="382" y="356" text-anchor="middle" font-size="11.5" fill="#5D574B">洗 1 次 · 自然晾干</text>
+              <text x="382" y="472" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">量缩率 · 看褪色 · 查变形</text>
+              <text x="382" y="516" text-anchor="middle" font-size="11" fill="#8B8375">缩水 &gt;3% 起就要警惕</text>
+            </g>
+            <!-- ⑥ 白纸摩擦测色 -->
+            <g>
+              <rect x="514" y="288" width="232" height="256" rx="10" fill="#FAF8F3" stroke="#E6E0D3"/>
+              <circle cx="540" cy="314" r="11" fill="#3D6B57"/><text x="540" y="318.5" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">6</text>
+              <text x="558" y="319" font-size="13.5" font-weight="700" fill="#26231D">白纸摩擦测色</text>
+              <rect x="576" y="366" width="108" height="66" rx="8" fill="#F6EFDF" stroke="#E4D6B4" transform="rotate(-8 630 399)"/>
+              <rect x="560" y="420" width="140" height="20" rx="6" fill="#26231D"/>
+              <g stroke="#B0603F" stroke-width="2" fill="#B0603F">
+                <line x1="662" y1="380" x2="692" y2="362"/><polygon points="694,361 685,361 689,369"/>
+              </g>
+              <text x="630" y="348" text-anchor="middle" font-size="11.5" fill="#5D574B">白纸干擦面料 10 次</text>
+              <text x="630" y="472" text-anchor="middle" font-size="11.5" fill="#B98F45" font-weight="600">纸上沾色明显 = 干摩不达 3 级</text>
+              <text x="630" y="516" text-anchor="middle" font-size="11" fill="#8B8375">深色产品的头号翻车项</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-2</span><b>快速手评六法示意。</b>六法分别考察弹性、起球、密度、成本效率、水洗稳定性与色牢度。方法示意仅为初筛，不能替代实验室检测；正式验收以标准方法报告为准。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:13%">方法</th><th style="width:29%">怎么做</th><th style="width:28%">看什么</th><th>判断标准（教学参考）</th></tr></thead>
+          <tbody>
+            <tr><td><b>① 拉伸回复</b></td><td>沿主弹方向拉伸至约 30% 伸长，保持 5 秒后松开，立即测量长度</td><td>松手后的残留伸长；重复 5 次看是否越来越松</td><td>残留伸长越小越好；5 次后明显变松=氨纶含量不足或品质差</td></tr>
+            <tr><td><b>② 揉搓起球预判</b></td><td>把样品稍加湿，用同色布包住，掌心揉搓约 50 次</td><td>表面冒出的毛球与毛羽量</td><td>毛球多而快=短绒多/普梳/低捻纱；<dfn class="term" data-term="精梳棉">精梳棉</dfn>与长丝几乎不起球</td></tr>
+            <tr><td><b>③ 对光看密度</b></td><td>面料举到灯前，从正反面观察透光均匀度</td><td>云斑、稀密路、透光孔洞、纬斜</td><td>透光均匀=密度到位；「同克重更稀松」是低价布的常用偷法</td></tr>
+            <tr><td><b>④ 称重法</b></td><td>电子秤称整件净重（g），记录后再称竞品</td><td>单件<dfn class="term" data-term="克重">克重</dfn> → 与零售价换算克重单价</td><td>同价位克重更高=用料更足；同克重比成分与工艺才公平</td></tr>
+            <tr><td><b>⑤ 水洗速测</b></td><td>30℃ 中性洗剂手洗一次，量洗前洗后关键尺寸，平铺晾干</td><td>缩水率、褪色、变形（卷边/扭曲）</td><td>缩水超 3% 警惕（产品标准一般要求 ±5% 内）；洗后卷边=工艺问题</td></tr>
+            <tr><td><b>⑥ 白纸摩擦测色</b></td><td>白纸在深色面料上干擦 10 次（力度一致）</td><td>白纸沾色程度</td><td>沾色明显≈干摩<dfn class="term" data-term="色牢度">色牢度</dfn>不足 3 级（GB 18401 B 类强制 ≥3 级）</td></tr>
+          </tbody>
+          <caption>快速手评六法操作表。全部为初筛手段，量级判断与进货验收请以标准检测（GB/T 系列方法）为准。</caption>
+        </table>
+      </div>
+
+      <div class="callout warn">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
+          手评最大的坑：孤立打分
+        </div>
+        <p>「回弹不错」「不起球」这类孤立结论没有意义——你没有基准。正确姿势是<b>同条件对比</b>：同一天、同一温度湿度、同一手法，把待评样品与 1-2 件竞品并排做完六法，记录成表。手评的价值不在绝对值，在<b>差异排序</b>。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-teardown" data-sec="s-teardown"><span class="sec-no">04</span>竞品拆解分析法</h2>
+
+      <p>手评看表面，拆解看真相。买回竞品（同价位 2-3 件 + 1 件高端标杆），从外观到内部逐层拆开，你能看到工厂不愿主动告诉你的全部信息。以内裤为例的拆解部位与方法：</p>
+
+      <div data-hotroot>
+        <figure class="fig">
+          <div class="fig-canvas">
+            <svg viewBox="0 0 760 430" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+              <!-- 内裤正面示意 -->
+              <g>
+                <rect x="104" y="76" width="196" height="30" rx="14" fill="#3D6B57"/>
+                <path d="M112 106 L292 106 C 300 150 302 196 292 216 Q 286 262 240 274 Q 220 252 202 252 Q 184 252 164 274 Q 118 262 112 216 C 102 196 104 150 112 106 Z"
+                  fill="#EAF1ED" stroke="#C7D8CE" stroke-width="1.8"/>
+                <rect x="166" y="212" width="72" height="54" rx="16" fill="none" stroke="#B0603F" stroke-width="1.8" stroke-dasharray="5 4"/>
+                <path d="M164 274 Q 184 252 202 252 Q 220 252 240 274" fill="none" stroke="#B98F45" stroke-width="1.6" stroke-dasharray="3 3"/>
+              </g>
+              <!-- 热点 -->
+              <g text-anchor="middle" font-size="12" font-weight="700">
+                <g class="svg-hot" data-tip="腰头橡筋|拆开看宽度、织法与弹力：锦纶包覆氨纶还是裸氨、宽度是否与报价相符。劣质橡筋是「穿两次就松垮」的头号原因。">
+                  <circle cx="202" cy="91" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="202" cy="91" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="202" y="95.5" fill="#B0603F">1</text>
+                </g>
+                <g class="svg-hot" data-tip="侧缝与线迹|确认线迹类型（三线504/四线514/绷缝605）与针距。很多内裤无侧缝，改查拼裆缝与腰头绷缝线迹。">
+                  <circle cx="108" cy="160" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="108" cy="160" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="108" y="164.5" fill="#B0603F">2</text>
+                </g>
+                <g class="svg-hot" data-tip="底裆|数层数、辨成分、看缝法——卫生与舒适的核心，也是偷工重灾区：单层裆、非吸湿成分、深色低牢度都藏在这里。">
+                  <circle cx="202" cy="240" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="202" cy="240" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="202" y="244.5" fill="#B0603F">3</text>
+                </g>
+                <g class="svg-hot" data-tip="腿口包边|包缝、绷缝还是切边？勒腿、卷边多源于这里。无痕款在此检查胶条宽度与切边熔合手感。">
+                  <circle cx="276" cy="252" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="276" cy="252" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="276" y="256.5" fill="#B0603F">4</text>
+                </g>
+                <g class="svg-hot" data-tip="面布|拆一两根纱做燃烧观察（仅辅助判断成分族），整件称重换算克重单价；对光看密度均匀度。">
+                  <circle cx="202" cy="150" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="202" cy="150" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="202" y="154.5" fill="#B0603F">5</text>
+                </g>
+                <g class="svg-hot" data-tip="唛头与水洗唛|对照成分标与你的判断：纤维含量排序、安全类别、洗涤符号是否合规（GB/T 29862、GB 5296.4）。虚标即红牌。">
+                  <circle cx="296" cy="120" r="13" fill="#fff" stroke="#B0603F" stroke-width="2.2"/>
+                  <circle class="hot-ring" cx="296" cy="120" r="18" fill="none" stroke="#B98F45" stroke-width="2"/>
+                  <text x="296" y="124.5" fill="#B0603F">6</text>
+                </g>
+              </g>
+              <!-- 右侧：拆解五步 -->
+              <g>
+                <text x="392" y="52" font-size="12.5" font-weight="700" fill="#26231D">拆解五步（点击左侧编号看部位说明）</text>
+                <g font-size="11.5">
+                  <rect x="392" y="64" width="330" height="42" rx="8" fill="#fff" stroke="#E6E0D3"/>
+                  <text x="410" y="82" fill="#3D6B57" font-weight="700">① 外观测量</text>
+                  <text x="410" y="98" fill="#5D574B">量关键尺寸、称整件重、拍细节照片存档</text>
+                  <polygon points="553,112 549,106 557,106" fill="#C7BFAE"/><line x1="553" y1="106" x2="553" y2="112" stroke="#C7BFAE" stroke-width="1.4"/>
+                  <rect x="392" y="118" width="330" height="42" rx="8" fill="#fff" stroke="#E6E0D3"/>
+                  <text x="410" y="136" fill="#3D6B57" font-weight="700">② 拆缝线</text>
+                  <text x="410" y="152" fill="#5D574B">拆开关键接缝：线迹类型、针距、有无加固</text>
+                  <polygon points="553,166 549,160 557,160" fill="#C7BFAE"/><line x1="553" y1="160" x2="553" y2="166" stroke="#C7BFAE" stroke-width="1.4"/>
+                  <rect x="392" y="172" width="330" height="42" rx="8" fill="#fff" stroke="#E6E0D3"/>
+                  <text x="410" y="190" fill="#3D6B57" font-weight="700">③ 拆面料层次</text>
+                  <text x="410" y="206" fill="#5D574B">分层：表布 / 里布 / 衬垫——每层成分与克重</text>
+                  <polygon points="553,220 549,214 557,214" fill="#C7BFAE"/><line x1="553" y1="214" x2="553" y2="220" stroke="#C7BFAE" stroke-width="1.4"/>
+                  <rect x="392" y="226" width="330" height="42" rx="8" fill="#fff" stroke="#E6E0D3"/>
+                  <text x="410" y="244" fill="#3D6B57" font-weight="700">④ 成分观察与称重</text>
+                  <text x="410" y="260" fill="#5D574B">燃烧/试剂观察仅示意（见下方局限说明），逐层称重</text>
+                  <polygon points="553,274 549,268 557,268" fill="#C7BFAE"/><line x1="553" y1="268" x2="553" y2="274" stroke="#C7BFAE" stroke-width="1.4"/>
+                  <rect x="392" y="280" width="330" height="42" rx="8" fill="#fff" stroke="#E6E0D3"/>
+                  <text x="410" y="298" fill="#3D6B57" font-weight="700">⑤ 拆辅料</text>
+                  <text x="410" y="314" fill="#5D574B">橡筋宽度弹力、钢圈规格、背扣、捆条逐一记录</text>
+                </g>
+                <rect x="392" y="336" width="330" height="76" rx="8" fill="#F3EFE7" stroke="#E6E0D3"/>
+                <text x="410" y="358" font-size="11.5" fill="#5D574B" font-weight="600">燃烧观察的局限（务必知晓）</text>
+                <text x="410" y="376" font-size="11" fill="#8B8375">棉/黏胶烧纸灰味、灰烬细软；锦纶熔融拉丝；</text>
+                <text x="410" y="391" font-size="11" fill="#8B8375">涤纶熔融冒黑烟——只能分辨纤维族，</text>
+                <text x="410" y="406" font-size="11" fill="#8B8375">无法区分精梳/普梳、混纺比例与是否虚标。</text>
+              </g>
+              <text x="202" y="420" text-anchor="middle" font-size="11" fill="#8B8375">内裤拆解部位示意（点击编号查看说明）</text>
+            </svg>
+          </div>
+          <figcaption class="fig-cap"><span class="fig-no">图 5-3</span><b>竞品拆解部位图（内裤示例）。</b>点击图中编号查看该部位的拆解要点。文胸、袜子同理：文胸重点拆模杯层次与钢圈规格，袜子重点拆橡筋、袜头缝合与加固纱。</figcaption>
+        </figure>
+        <div class="wg-note" data-hotout>点击图中编号查看结构说明</div>
+      </div>
+
+      <p>拆解结果要沉淀成<b>拆解记录表</b>——这是你能反复复用的资产。模板如下，可复制到表格软件使用：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th style="width:22%">拆解项</th><th>观察点</th><th style="width:24%">记录（示例格式）</th></tr></thead>
+          <tbody>
+            <tr><td>面料成分与<dfn class="term" data-term="纱支">纱支</dfn></td><td>成分标核对 + 拆纱观察 + 手感/光泽</td><td>「精梳棉92/氨纶8 · 40S」（以检测为准）</td></tr>
+            <tr><td>克重与克重单价</td><td>整件称重（g）→ 换算 g/m²；零售价 ÷ 克重</td><td class="num">38g / 170g/m² / 0.9 元·g</td></tr>
+            <tr><td>组织与层次</td><td>汗布/罗纹/网眼；表布-里布-衬垫各层</td><td>「裆部双层，里层纯棉」</td></tr>
+            <tr><td>线迹与针距</td><td>各缝位线迹类型（504/514/605）、针距（针/3cm）</td><td>「四线 514，11 针/3cm」</td></tr>
+            <tr><td>橡筋/腰部</td><td>宽度、弹力方向、包覆方式、回弹对比</td><td>「12mm 双包覆橡筋，回弹好」</td></tr>
+            <tr><td>辅料清单</td><td>唛头、水洗唛、胶袋、装饰件</td><td>「主唛织唛 · 水洗唛印标」</td></tr>
+            <tr><td>工艺亮点 / 硬伤</td><td>加固、缝头平整度、切边手感、洗标合规</td><td>「亮点：裆部无骨；硬伤：腰头波浪」</td></tr>
+            <tr><td>估算出厂价</td><td>用第一篇成本口径反推</td><td class="num">≈ 4.3 元（示例）</td></tr>
+            <tr><td>结论与借鉴</td><td>值不值得学、学什么、怎么写进自己的规格书</td><td>「裆宽档位与四线工艺纳入 B 款」</td></tr>
+          </tbody>
+          <caption>竞品拆解记录表模板。每拆一款填一行，积累 20 款后你对成本与品质的手感会完全不同。</caption>
+        </table>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角：拆解的合法与伦理边界
+        </div>
+        <p><b>合法且普遍的</b>：购买竞品进行研究性拆解，学习版型结构思路、材料构成、工艺路线、克重与成本逻辑——这是全世界服装行业的通行做法。<b>越界的</b>：1:1 扫描复刻纸样直接开裁生产、抄袭受版权保护的花型图案与商标、照抄他牌规格书原样打自有 logo——有法律风险且丧失差异化。记住：拆解的目的是建立<b>判断力与对话能力</b>，最终输出是你自己的规格书与版型资产，而不是复制品。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-techpack" data-sec="s-techpack"><span class="sec-no">05</span>产品技术规格书（Tech Pack）详解</h2>
+
+      <p><dfn class="term" data-term="规格书">规格书</dfn>是品牌与工厂的「合同语言」：它把你的口头要求翻译成可验收的参数。没有规格书的订单，品质标准默认由工厂定义——这不是夸张，是行业现实。一份完整的规格书由七大部分组成：</p>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">① 款式图与部位标注</div><div class="kv-v">正/背面线稿，标注关键部位与测量点位；有参考实物则拍照附页。图不追求美术水平，追求<b>无歧义</b>。</div></div>
+        <div class="kv-row"><div class="kv-k">② 尺寸表（含公差）</div><div class="kv-v">每个尺码每个关键部位的尺寸与允许误差。公差是验收的尺子——没有公差的尺寸表无法执行验收。</div></div>
+        <div class="kv-row"><div class="kv-k">③ BOM 表</div><div class="kv-v"><dfn class="term" data-term="BOM">BOM</dfn>（物料清单）：全部材料、规格、用量、损耗、供应商。没有 BOM 的成本谈判都是糊涂账。</div></div>
+        <div class="kv-row"><div class="kv-k">④ 工艺说明</div><div class="kv-v">线迹类型、针距、部位工艺（腰头、底裆、加固）、整烫要求。写「四线包缝」而不是「缝好」。</div></div>
+        <div class="kv-row"><div class="kv-k">⑤ 测试要求</div><div class="kv-v">执行标准（GB 18401 B 类等）、色牢度级别、缩水率、功能项目（抗菌/凉感需洗涤后数据）。</div></div>
+        <div class="kv-row"><div class="kv-k">⑥ 包装与唛头</div><div class="kv-v">主唛/水洗唛材质与位置、胶袋与法务标、装箱规格、外箱唛头。</div></div>
+        <div class="kv-row"><div class="kv-k">⑦ 验收标准</div><div class="kv-v">AQL 等级、检验依据、判定与处置方式（详见下一节）。</div></div>
+      </div>
+
+      <p>下面给出一套<b>可直接套用的内裤规格书模板区块</b>（数据为示例，按实际款式替换）：</p>
+
+      <div class="wg">
+        <div class="wg-panel" data-tabs>
+          <div class="tabs">
+            <button class="tab active" data-tab="tp1">② 尺寸表模板</button>
+            <button class="tab" data-tab="tp2">③ BOM 模板</button>
+            <button class="tab" data-tab="tp3">④ 工艺说明模板</button>
+            <button class="tab" data-tab="tp4">⑤⑥⑦ 测试·包装·验收模板</button>
+          </div>
+          <div class="wg-body">
+            <div class="tab-pane active" id="tp1">
+              <p style="margin-top:0;font-size:13.5px;color:var(--ink-soft)">女式三角内裤 M 码示例（单位 cm，平铺无张力测量，量至缝线中点）：</p>
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>部位</th><th>代号</th><th>M 码规格</th><th>公差</th></tr></thead>
+                <tbody>
+                  <tr><td>腰口半宽（松驰态）</td><td class="num">W</td><td class="num">13.5</td><td class="num">±0.5</td></tr>
+                  <tr><td>前中长（腰口至裆底）</td><td class="num">CF</td><td class="num">20.0</td><td class="num">±1.0</td></tr>
+                  <tr><td>后中长（腰口至裆底）</td><td class="num">CB</td><td class="num">24.5</td><td class="num">±1.0</td></tr>
+                  <tr><td>裆宽</td><td class="num">CW</td><td class="num">6.5</td><td class="num">±0.5</td></tr>
+                  <tr><td>底裆长</td><td class="num">CL</td><td class="num">15.0</td><td class="num">±0.8</td></tr>
+                </tbody>
+                <caption>尺寸表模板（示例）。其余尺码按放码档差另行列出；S/M/L 全码数据随产前样确认。</caption>
+              </table></div>
+            </div>
+            <div class="tab-pane" id="tp2">
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>#</th><th>材料</th><th>规格</th><th>用量</th><th>损耗</th><th>参考单价（示例）</th></tr></thead>
+                <tbody>
+                  <tr><td class="num">1</td><td>面布</td><td>精梳棉/氨纶 92/8 汗布 180g/m²</td><td class="num">40g/件</td><td class="num">6%</td><td class="num">60 元/kg</td></tr>
+                  <tr><td class="num">2</td><td>底裆布</td><td>纯棉汗布 160g/m²（本色/浅色）</td><td class="num">12g/件</td><td class="num">8%</td><td class="num">56 元/kg</td></tr>
+                  <tr><td class="num">3</td><td>腰头橡筋</td><td>12mm 锦纶包覆氨纶（双包）</td><td class="num">0.62m/件</td><td class="num">3%</td><td class="num">0.28 元/m</td></tr>
+                  <tr><td class="num">4</td><td>主唛 + 水洗唛</td><td>织唛 / 印标（法规信息齐全）</td><td class="num">1 套/件</td><td class="num">—</td><td class="num">0.12 元/套</td></tr>
+                  <tr><td class="num">5</td><td>胶袋</td><td>PP 透明自粘袋（印法务信息）</td><td class="num">1 只/件</td><td class="num">2%</td><td class="num">0.06 元/只</td></tr>
+                </tbody>
+                <caption>BOM 模板（示例）。供应商列在实际使用中必须填写；单价随行情与订量浮动。</caption>
+              </table></div>
+            </div>
+            <div class="tab-pane" id="tp3">
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>部位</th><th>工艺 / 线迹</th><th>要求</th></tr></thead>
+                <tbody>
+                  <tr><td>拼裆 / 侧缝</td><td>四线包缝（514）</td><td>针距 10-12 针/3cm，缝份 0.6cm，拉伸不断线</td></tr>
+                  <tr><td>腰头</td><td>三针绷缝（605）穿橡筋</td><td>橡筋搭头 1.5cm、不外露；腰头拉伸回复好、无波浪</td></tr>
+                  <tr><td>底裆</td><td>四线包缝四周 + 前端平缝固定</td><td>双层里布朝裆前，边缘平整不外吐</td></tr>
+                  <tr><td>腿口</td><td>三线包缝（504）或绷缝</td><td>张力均匀，不卷不皱</td></tr>
+                  <tr><td>整烫</td><td>蒸汽整烫</td><td>低温避橡筋部位过热；成品无烫黄反光</td></tr>
+                </tbody>
+                <caption>工艺说明模板（示例）。凡样品评审通过的关键工艺，全部以封样为准写入此处。</caption>
+              </table></div>
+            </div>
+            <div class="tab-pane" id="tp4">
+              <div class="tbl-wrap"><table class="tbl">
+                <thead><tr><th>板块</th><th>模板内容</th></tr></thead>
+                <tbody>
+                  <tr><td><b>⑤ 测试要求</b></td><td>GB 18401-2010 B 类全项；纤维含量定量（GB/T 2910）；耐水/耐汗渍/耐干摩擦色牢度 ≥3 级；水洗尺寸变化率 ±5% 内；（如宣称）抗菌率按 FZ/T 73023 洗后数据</td></tr>
+                  <tr><td><b>⑥ 包装与唛头</b></td><td>主唛缝于后腰内侧居中；水洗唛缝于侧缝下部；独立 PP 袋 + 法务标；20 件/内盒，装箱数量与外箱唛按我方装箱单</td></tr>
+                  <tr><td><b>⑦ 验收标准</b></td><td>按 GB/T 2828.1 一般检验水平 Ⅱ 抽检：主要疵点 AQL 2.5 / 次要疵点 AQL 4.0；尺寸公差按②表；功能性条款（如无痕款「洗 5 次后胶条不开胶、不起泡」）</td></tr>
+                </tbody>
+                <caption>测试·包装·验收模板（示例）。此三块连同尺寸表、BOM，就是工厂报价与验收的完整依据。</caption>
+              </table></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+          规格书的复用价值
+        </div>
+        <p>规格书一次编写、全链受益：工厂按它报价（BOM 清晰=报价透明）、版房按它打样（少两轮修改样）、验货按它判定（有公差有等级）、纠纷按它仲裁（封样+规格书即证据）。花一天写规格书，通常能在打样与验收环节省回两周。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-aql" data-sec="s-aql"><span class="sec-no">06</span>验收标准制定</h2>
+
+      <p>验收回答一个问题：<b>这批货收，还是不收？</b>行业通行的框架是 <dfn class="term" data-term="AQL">AQL</dfn>（可接受质量限，依据 GB/T 2828.1 / ISO 2859 的<dfn class="term" data-term="抽检">抽检</dfn>体系）：按批量随机抽样，疵点数在可接受范围内则整批接收，超出则拒收。贴身衣物常用：<b>主要疵点 AQL 2.5、次要疵点 AQL 4.0</b>。</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 280" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <rect x="26" y="90" width="180" height="86" rx="10" fill="#F3EFE7" stroke="#E6E0D3" stroke-width="1.5"/>
+            <text x="116" y="122" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">交验批量</text>
+            <text x="116" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#B0603F">3000 件（示例）</text>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="208" y1="133" x2="236" y2="133"/><polygon points="244,133 236,128.5 236,137.5"/>
+            </g>
+            <rect x="250" y="90" width="200" height="86" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+            <text x="350" y="122" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">随机抽样</text>
+            <text x="350" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#3D6B57">n = 125 件</text>
+            <text x="350" y="166" text-anchor="middle" font-size="11" fill="#8B8375">一般检验水平 Ⅱ</text>
+            <g stroke="#C7BFAE" stroke-width="1.8" fill="#C7BFAE">
+              <line x1="452" y1="133" x2="480" y2="133"/><polygon points="488,133 480,128.5 480,137.5"/>
+            </g>
+            <rect x="494" y="90" width="240" height="86" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.5"/>
+            <text x="614" y="118" text-anchor="middle" font-size="13" font-weight="700" fill="#26231D">判定（主要疵点 AQL 2.5）</text>
+            <rect x="510" y="130" width="98" height="34" rx="8" fill="#EAF1ED" stroke="#3D6B57"/>
+            <text x="559" y="151" text-anchor="middle" font-size="12" fill="#2C5142" font-weight="600">疵点 ≤7 → 接收</text>
+            <rect x="618" y="130" width="98" height="34" rx="8" fill="#F7EAE2" stroke="#B0603F"/>
+            <text x="667" y="151" text-anchor="middle" font-size="12" fill="#B0603F" font-weight="600">疵点 ≥8 → 拒收</text>
+            <rect x="26" y="200" width="708" height="56" rx="10" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="44" y="224" font-size="12" fill="#5D574B">次要疵点 AQL 4.0：同抽样量下 Ac 10 / Re 11。抽样依据 GB/T 2828.1（计数抽样检验程序），以上为教学示例。</text>
+            <text x="44" y="244" font-size="12" fill="#5D574B">注意：抽检是概率判定，允许约定比例的疵点存在——它不是零缺陷承诺，所以「功能性条款」必须单独写。</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-4</span><b>AQL 抽样判定逻辑（示例）。</b>批量 3000 件按一般检验水平 Ⅱ 抽 125 件；主要疵点（破洞、断线、尺寸超差、污渍等影响穿着的缺陷）AQL 2.5 对应 Ac 7 / Re 8。数字随批量与检验水平变化，查 GB/T 2828.1 抽样表。</figcaption>
+      </figure>
+
+      <p>完整的内裤验收标准示例表（作为合同附件）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>检验项</th><th>标准 / 公差</th><th>量具 / 方法</th><th>判定</th></tr></thead>
+          <tbody>
+            <tr><td>尺寸公差</td><td>按规格书尺寸表（腰口半宽 ±0.5、前中/后中长 ±1.0、裆宽 ±0.5，cm）</td><td>钢卷尺，平铺无张力</td><td>超差计主要疵点</td></tr>
+            <tr><td>外观疵点</td><td>主要疵点 AQL 2.5 / 次要疵点 AQL 4.0（GB/T 2828.1 水平 Ⅱ）</td><td>灯检台 + 抽样表</td><td>超 Re 判整批拒收</td></tr>
+            <tr><td>材料一致性</td><td>面料、橡筋、唛头与规格书 BOM 及封样一致</td><td>对照封样 + BOM</td><td>不符计主要疵点</td></tr>
+            <tr><td>色差与色牢度</td><td>同批主料间色差 ≥4 级（灰卡）；耐干摩擦 ≥3 级（GB 18401 B 类）</td><td>灰卡 / 摩擦棉布</td><td>不合格项整批拒收</td></tr>
+            <tr><td>缩水率</td><td>水洗后尺寸变化率 ±5% 内</td><td>洗前后测量（GB/T 8628-8630 方法）</td><td>超标整批拒收</td></tr>
+            <tr><td>功能性（示例条款）</td><td>无痕款：洗 5 次后胶条不开胶、不起泡；普通款：腰头拉伸 100 次无明显松弛</td><td>抽样模拟洗涤测试</td><td>不合格整批返工</td></tr>
+            <tr><td>检针</td><td>全检通过检针机（断针/金属异物零容忍）</td><td>检针机 + 台账</td><td>检出即整箱复检</td></tr>
+          </tbody>
+          <caption>内裤验收标准示例表（教学模板）。数值按品类与品牌定位调整，正式使用前请与质量工程师确认。</caption>
+        </table>
+      </div>
+
+      <h3 class="sub-title">验收条款如何写进合同</h3>
+      <ul class="plain">
+        <li><b>标准即附件</b>：验收标准表与封样照片作为采购合同附件，与合同同效——只写在聊天记录里的标准等于没有。</li>
+        <li><b>检验依据与方式</b>：写明「按 GB/T 2828.1 一般检验水平 Ⅱ 抽检」，并约定检验方（品牌自检 / 第三方如 SGS、ITS）。</li>
+        <li><b>拒收处置</b>：写明拒收批次的三选一处置——返工（费用供方担）、全检挑货、退换货；以及由此导致的交期延误责任。</li>
+        <li><b>回修与索赔</b>：出厂后发现批量性问题的追溯窗口（如 60 天内）与赔偿口径；<dfn class="term" data-term="回修率">回修率</dfn>超约定的处理方式。</li>
+        <li><b>复检机制</b>：对判定结果有异议时，以第三方检测复检为准，检测费由败诉方承担。</li>
+      </ul>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>案例研究：两款「精梳棉女内裤」对比</h2>
+
+      <p>以下为<b>教学案例</b>（数据为示例，用于演示方法，不指向任何真实品牌）。A、B 两款在电商页面上都写着「精梳棉女内裤」，售价一个 29 元、一个 39 元。拆解之后差异全暴露了：</p>
+
+      <figure class="fig">
+        <div class="fig-canvas">
+          <svg viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
+            <!-- A 款 -->
+            <rect x="20" y="16" width="344" height="256" rx="10" fill="#fff" stroke="#E6E0D3" stroke-width="1.5"/>
+            <rect x="20" y="16" width="344" height="36" rx="10" fill="#F3EFE7"/>
+            <text x="192" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#5D574B">A 款 · 零售 29 元（示例）</text>
+            <text x="44" y="78" font-size="12" fill="#26231D" font-weight="600">面料：200g/m² · 32S 普梳棉</text>
+            <rect x="44" y="92" width="296" height="20" rx="4" fill="#E6E0D3"/>
+            <text x="44" y="134" font-size="12" fill="#26231D" font-weight="600">裆部：单层</text>
+            <rect x="44" y="146" width="140" height="16" rx="4" fill="#E6E0D3"/>
+            <text x="44" y="188" font-size="12" fill="#26231D" font-weight="600">缝线：三线包缝（504）</text>
+            <g stroke="#B0603F" stroke-width="1.6" fill="none">
+              <path d="M44 198 q6 -8 12 0 q6 8 12 0"/>
+              <path d="M44 204 q6 -8 12 0 q6 8 12 0"/>
+            </g>
+            <text x="44" y="248" font-size="11.5" fill="#8B8375">用更厚的布掩盖低支普梳纱——</text>
+            <text x="44" y="264" font-size="11.5" fill="#8B8375">厚 ≠ 好，短绒多易起球、手感糙</text>
+            <!-- B 款 -->
+            <rect x="396" y="16" width="344" height="256" rx="10" fill="#fff" stroke="#C7D8CE" stroke-width="1.8"/>
+            <rect x="396" y="16" width="344" height="36" rx="10" fill="#EAF1ED"/>
+            <text x="568" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#2C5142">B 款 · 零售 39 元（示例）</text>
+            <text x="420" y="78" font-size="12" fill="#26231D" font-weight="600">面料：170g/m² · 40S 精梳棉</text>
+            <rect x="420" y="92" width="296" height="20" rx="4" fill="#C7D8CE"/>
+            <text x="420" y="134" font-size="12" fill="#26231D" font-weight="600">裆部：双层（里层纯棉）</text>
+            <rect x="420" y="146" width="140" height="16" rx="4" fill="#C7D8CE"/>
+            <rect x="420" y="146" width="140" height="10" rx="4" fill="#EAF1ED" transform="translate(0,6)"/>
+            <text x="420" y="188" font-size="12" fill="#26231D" font-weight="600">缝线：四线包缝（514）+ 腰头三针绷缝</text>
+            <g stroke="#3D6B57" stroke-width="1.6" fill="none">
+              <path d="M420 198 q6 -8 12 0 q6 8 12 0"/>
+              <path d="M420 204 q6 -8 12 0 q6 8 12 0"/>
+              <path d="M420 210 q6 -8 12 0 q6 8 12 0"/>
+              <path d="M420 216 q6 -8 12 0 q6 8 12 0"/>
+            </g>
+            <text x="420" y="248" font-size="11.5" fill="#5D574B">细支精梳更细腻耐用，双层裆更卫生，</text>
+            <text x="420" y="264" font-size="11.5" fill="#5D574B">四线更耐洗——钱花在穿得到的地方</text>
+            <!-- 成本差 -->
+            <rect x="20" y="284" width="720" height="34" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/>
+            <text x="380" y="306" text-anchor="middle" font-size="12.5" fill="#8F6E2F" font-weight="600">出厂价差拆解（示例）：精梳纱 +0.40 元 · 双层裆 +0.25 元 · 四线缝制 +0.15 元 ≈ 共 0.80 元</text>
+          </svg>
+        </div>
+        <figcaption class="fig-cap"><span class="fig-no">图 5-5</span><b>同名称、不同真相（教学案例）。</b>A 款把成本做「厚」而不是做「好」，B 款把多出的 0.8 元花在可感知、可验证的升级上——这正是用拆解法看穿宣传语的完整示范。</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>维度</th><th>A 款（教学案例）</th><th>B 款（教学案例）</th></tr></thead>
+          <tbody>
+            <tr><td>宣传语</td><td>「精梳棉女内裤」</td><td>「精梳棉女内裤」</td></tr>
+            <tr><td>真实用纱</td><td>32S <dfn class="term" data-term="普梳棉">普梳棉</dfn>（虚标风险高）</td><td>40S <dfn class="term" data-term="精梳棉">精梳棉</dfn>（可检测验证）</td></tr>
+            <tr><td>面料克重</td><td class="num">200g/m²（厚，遮丑）</td><td class="num">170g/m²（适中）</td></tr>
+            <tr><td>裆部</td><td>单层</td><td>双层，里层纯棉（卫生优先）</td></tr>
+            <tr><td><dfn class="term" data-term="包缝">包缝</dfn>线迹</td><td>三线（504），成本低、易脱线</td><td>四线（514），更强更耐洗</td></tr>
+            <tr><td>估料/工缴（示例）</td><td class="num">出厂价 ≈ 3.6 元</td><td class="num">出厂价 ≈ 4.4 元</td></tr>
+            <tr><td>零售价（示例）</td><td class="num">29 元</td><td class="num">39 元</td></tr>
+            <tr><td>目标客群</td><td>价格敏感引流款；退货与差评率风险高</td><td>Soran 主力复购款：可感知品质支撑溢价</td></tr>
+          </tbody>
+          <caption>教学案例对比。0.8 元的出厂价差，在零售端对应 10 元价差与完全不同的复购表现——这就是「同名称、不同品质」的经济学。</caption>
+        </table>
+      </div>
+
+      <p>复用这套方法的动作序列：<b>买回同价位竞品 → 拆解记录（第 04 节模板）→ 手评六法交叉验证 → 估算对方出厂价 → 定位自己要做的象限 → 写进自己的规格书。</b>案例里的 A/B 差异，恰好是快速手评六法全部能捕捉到的：称重（A 克重高但面料糙）、揉搓（A 起球快）、对光（A 密度松）、水洗（A 缩率大）、摩擦（A 深色掉色风险）。</p>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-rate" data-sec="s-rate"><span class="sec-no">08</span>交互工具：样品评审评分表</h2>
+
+      <p>把前面所有方法压缩成一张表：拿到打样或大货样品时，逐项打分（1-5 分），加权汇总后直接给出决策建议。<b>权重为 Soran 建议值（教学参考）</b>——版型与车缝合计占 45%，因为它们决定「穿 8 小时」的体验与「洗 30 次」的耐久；卫生安全占 15%，因为它是贴身衣物的底线；包装与成本合理性只占 10%，因为它们是加分项不是本质。</p>
+
+      <div data-rate="soran-judgment-sample">
+        <div class="rate-row" data-key="fit" data-weight="25"><span class="rr-label">版型合体度</span></div>
+        <div class="rate-row" data-key="fabric" data-weight="20"><span class="rr-label">面料品质</span></div>
+        <div class="rate-row" data-key="stitch" data-weight="20"><span class="rr-label">车缝工艺</span></div>
+        <div class="rate-row" data-key="hygiene" data-weight="15"><span class="rr-label">卫生安全</span></div>
+        <div class="rate-row" data-key="trim" data-weight="10"><span class="rr-label">辅料品质</span></div>
+        <div class="rate-row" data-key="pack" data-weight="5"><span class="rr-label">包装细节</span></div>
+        <div class="rate-row" data-key="cost" data-weight="5"><span class="rr-label">成本合理性</span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
+          <div style="flex:1;height:5px;background:var(--surface-2);border-radius:3px;overflow:hidden"><div data-rate-bar style="height:100%;width:0;background:var(--gold)"></div></div>
+          <span data-rate-sum style="font-size:13px;font-weight:650"></span>
+          <button class="btn ghost sm" data-rate-reset>重置</button>
+        </div>
+      </div>
+      <p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px">评分标准：5=远超预期 · 4=达到目标 · 3=勉强可用 · 2=有硬伤 · 1=不合格。打分时请对照封样与手评六法的记录，逐项独立评。</p>
+
+      <div id="sample-verdict" style="margin-top:14px;padding:13px 16px;border-radius:9px;background:var(--surface-2);font-size:14px;line-height:1.8">
+        <b>评审结论：</b>完成 7 项评分后自动生成。
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+
+      <div class="kv">
+        <div class="kv-row"><div class="kv-k">好产品公式</div><div class="kv-v">版型合体 &gt; 材料真实 &gt; 工艺扎实 &gt; 细节到位；Soran 目标是「高质 · 质价比」象限，路径是砍无效成本而不是砍材料。</div></div>
+        <div class="kv-row"><div class="kv-k">噱头与认证</div><div class="kv-v">名称不是成分（冰丝/牛奶丝/蚕丝蛋白皆是故事名）；认证要官网核验证书号、主体、有效期与产品范围，警惕挂靠与过期。</div></div>
+        <div class="kv-row"><div class="kv-k">手评与拆解</div><div class="kv-v">六法（拉伸/揉搓/对光/称重/水洗/摩擦）做对比才有意义；拆解五步（外观→缝线→层次→成分→辅料）沉淀为记录表，学习结构不等于抄款。</div></div>
+        <div class="kv-row"><div class="kv-k">规格书七件套</div><div class="kv-v">款式图、尺寸表（含公差）、BOM、工艺说明、测试要求、包装唛头、验收标准——品牌与工厂的合同语言。</div></div>
+        <div class="kv-row"><div class="kv-k">验收</div><div class="kv-v">AQL 2.5（主要）/4.0（次要）+ 尺寸公差表 + 功能性条款，作为合同附件并写明拒收处置与复检机制。</div></div>
+        <div class="kv-row"><div class="kv-k">决策工具</div><div class="kv-v">样品评审评分表：版型 25 / 面料 20 / 车缝 20 / 卫生安全 15 / 辅料 10 / 包装 5 / 成本 5（Soran 建议权重）；≥85 优先大货，70-85 修改复评，&lt;70 淘汰。</div></div>
+      </div>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q1" data-q="直播间一款「冰丝抗菌」女内裤卖 9.9 元包邮，月销十万条。作为 Soran 主理人，最有价值的动作是？" data-a="1" data-exp="9.9 包邮的成本结构决定了它只能用最低价纱线与最简工艺，属于「低质·低价」象限，与 Soran「高质·质价比」是不同客群，跟进只会拖垮定位。C 把竞品数据做成对比广告有商誉与法律风险，测竞品只能作为内参；D 「消费者只看价格」是以偏概全——愿意为合体与卫生付 3 倍价格的人群真实存在，这正是 Soran 的目标客群。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>立刻跟进同款同价，先把流量抢过来再说</li>
+            <li>判断其与 Soran 分属不同象限与客群，不跟进；但可买回拆解，研究其成本结构与版型痛点</li>
+            <li>买回送检 Qmax 与抗菌率，把检测报告做成对比广告投流</li>
+            <li>说明消费者只看价格，Soran 应降价跟进</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q2" data-q="你在验收标准中写明「主要疵点 AQL 2.5」，工厂说：「行业都是口头标准，写这么严我们做不了」。最专业的应对是？" data-a="2" data-exp="AQL 2.5/4.0 正是内衣行业的常规等级（GB/T 2828.1 / ISO 2859 框架），工厂的抗拒通常源于「从未被要求过」而非做不到——正确做法是解释抽样判定逻辑（示例如批量 3000 件抽 125 件、疵点 ≤7 接收），并将其与封样一起作为合同附件。A 口头标准等于无标准，出了问题无据可依；B 主动放松到 6.5 等于放弃品质底线；D 自己全检成本极高，且解除了工厂的品质责任，方向反了。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>接受口头标准，先靠信任合作，出问题再说</li>
+            <li>把 AQL 放宽到 6.5，先让工厂接受书面标准</li>
+            <li>说明 AQL 2.5/4.0 即行业常规（GB/T 2828.1），讲清抽样判定与拒收处置逻辑，作为合同附件坚持写入</li>
+            <li>取消 AQL 条款，由品牌自己全检</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q3" data-q="你拆解了一款竞品内裤，非常喜欢它的版型（前后浪差与裆宽设计）。以下哪种做法越过了合法与伦理边界？" data-a="1" data-exp="版型结构思路、尺寸档位区间、工艺路线（如四线包缝+双层裆）都属于行业通用知识，学习并融入自己的开发完全正当；而 1:1 扫描复刻纸样直接开裁生产涉嫌侵权，且意味着放弃差异化——拆解的目的永远是建立判断力、输出自己的规格书与版型资产，而不是做复制品。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>记录其结构思路，结合自己客群重新做版并试穿迭代</li>
+            <li>扫描其纸样 1:1 复刻，直接交给工厂按原样开裁生产</li>
+            <li>参考其裆宽档位范围，在自己的规格书里设定相近的数值区间</li>
+            <li>把它的工艺路线（四线包缝+裆部双层）写进自己的规格书</li>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<script src="../../assets/js/glossary.js"></script>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/widgets.js"></script>
+<script src="../../assets/js/app.js"></script>
+<script>
+/* 页面专属交互：样品评审评分表 → 加权结论 */
+window.__SORAN_PAGE_INIT__ = function () {
+  (function () {
+    var LS_KEY = 'soran-textbook-v1';
+    var RATE_ID = 'soran-judgment-sample';
+    var root = document.querySelector('[data-rate="' + RATE_ID + '"]');
+    var verdict = document.getElementById('sample-verdict');
+    if (!root || !verdict) return;
+
+    /* 权重（与 DOM data-weight 一致，Soran 建议权重，总和 100） */
+    var weights = [];
+    Array.prototype.forEach.call(root.querySelectorAll('.rate-row'), function (r) {
+      weights.push({ key: r.getAttribute('data-key'), w: parseFloat(r.getAttribute('data-weight')) || 1 });
+    });
+    var MAXW = 5; /* 评分档 1-5 */
+
+    function readRate() {
+      try {
+        var s = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+        return (s.rate && s.rate[RATE_ID]) || {};
+      } catch (e) { return {}; }
+    }
+    function render() {
+      var vals = readRate();
+      var total = 0, max = 0, done = 0;
+      weights.forEach(function (it) {
+        max += MAXW * it.w;
+        var v = vals[it.key];
+        if (v) { total += v * it.w; done++; }
+      });
+      var pct = max ? Math.round(total / max * 100) : 0;
+      if (done < weights.length) {
+        verdict.style.background = 'var(--surface-2)';
+        verdict.style.borderLeft = 'none';
+        verdict.innerHTML = '<b>评审结论：</b>已评 ' + done + ' / ' + weights.length + ' 项，当前加权得分 <b>' + pct +
+          '%</b>。评满后按以下分段给出结论：≥85% 优先大货 · 70-85% 修改复评 · &lt;70% 淘汰。';
+      } else if (pct >= 85) {
+        verdict.style.background = 'var(--green-soft)';
+        verdict.innerHTML = '<b>评审结论：优先安排大货（' + pct + '%）。</b>样品达到封样基准，可将规格书与验收标准定稿下单；仍建议首件确认与大货抽检不省略。';
+      } else if (pct >= 70) {
+        verdict.style.background = 'var(--gold-soft)';
+        verdict.innerHTML = '<b>评审结论：修改后复评（' + pct + '%）。</b>先逐项查看低分项，定位是版型、材料还是工艺问题，写清修改要求后再打一轮修改样；复评仍低于 85% 则考虑换供应商或改方案。';
+      } else {
+        verdict.style.background = 'var(--clay-soft)';
+        verdict.innerHTML = '<b>评审结论：淘汰该样品（' + pct + '%）。</b>低分项若集中于版型与车缝（权重 45%），说明工厂能力边界如此，换方案或换厂比反复修改更省时间。';
+      }
+    }
+    /* 点击打分点后（widgets 同步写 localStorage），下一轮读取并刷新结论 */
+    root.addEventListener('click', function () { setTimeout(render, 0); });
+    render();
+  })();
+};
+</script>
+</body>
+</html>
