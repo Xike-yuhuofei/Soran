@@ -6,6 +6,9 @@
 <title>供应商考察与成本管理 · 汕头实战 — 素然之境 Soran</title>
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style>
+  [data-rate="soran-supplier-quarter"] .rr-label { flex: 0 0 200px; }
+</style>
 </head>
 <body data-page-id="sourcing-supplier" data-root="../../">
 <div class="layout">
@@ -554,9 +557,12 @@
       <!-- ====================================================== -->
       <h2 class="sec-title" id="s-score" data-sec="s-score"><span class="sec-no">07</span>供应商评价体系：季度评分卡</h2>
 
-      <p>考察解决「准入」，评分卡解决「在管」。每季度对主力供应商打一次分，权重体现 Soran 的优先级：<b>质量是底线（40%），交期是命脉（25%）</b>，配合意愿决定长期关系（15%），价格与沟通是调节项（各 10%）——权重为 Soran 建议值（教学参考），可按品类调整。逐项按 1-5 分评定后，加权得分自动换算为 A/B/C 级：</p>
+      <p>考察解决「准入」，评分卡解决「在管」。每季度对主力供应商打一次分，结构同样是「红线 + 加权」：<b>红线</b>是本季是否发生一票否决事件（材料造假、擅自转厂外发、检出禁用物质）——发生即淘汰，不参与加权，防止「分数很好看但踩了红线」的误判；<b>加权项</b>权重体现 Soran 的优先级：<b>质量是底线（40%），交期是命脉（25%）</b>，配合意愿决定长期关系（15%），价格与沟通是调节项（各 10%）——权重为 Soran 建议值（教学参考），可按品类调整。逐项按 1-5 分评定后，加权得分自动换算为 A/B/C 级：</p>
 
       <div data-rate="soran-supplier-quarter">
+        <div class="rate-gate-head">红线检查（一票否决 · 不计入加权分）</div>
+        <div class="rate-row" data-key="gate-redline" data-weight="0" data-gate="1" data-gate-min="5"><span class="rr-label">本季无红线事件（材料造假 · 擅自转厂外发 · 检出禁用物质）</span></div>
+        <div class="rate-gate-head">加权评价（按权重计分）</div>
         <div class="rate-row" data-key="quality" data-weight="40"><span class="rr-label">质量（疵点率·客诉）</span></div>
         <div class="rate-row" data-key="delivery" data-weight="25"><span class="rr-label">交期（偏差率）</span></div>
         <div class="rate-row" data-key="coop" data-weight="15"><span class="rr-label">配合（改版·异常响应）</span></div>
@@ -570,9 +576,9 @@
       </div>
 
       <div id="supplier-verdict" style="margin-top:14px;padding:13px 16px;border-radius:9px;background:var(--surface-2);font-size:14px;line-height:1.8">
-        <b>评级结论：</b>完成 5 项评分后自动生成。
+        <b>评级结论：</b>确认红线检查并完成 5 项评分后自动生成。
       </div>
-      <p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px">打分口径：5=季度内零重大问题 · 4=偶发且及时纠正 · 3=可接受但需提醒 · 2=反复出现 · 1=造成损失。建议以验货记录、交期台账等客观记录打分，避免凭印象。</p>
+      <p class="rr-gate-note" style="margin-bottom:0">红线行口径：5=本季零红线事件（唯一通过档）；≤4 分或未确认 = 红线触发，直接进入淘汰程序，加权得分仅作记录。加权项打分口径：5=季度内零重大问题 · 4=偶发且及时纠正 · 3=可接受但需提醒 · 2=反复出现 · 1=造成损失。建议以验货记录、交期台账等客观记录打分，避免凭印象。</p>
 
       <h3 class="sub-title">分级与订单分配联动</h3>
       <p>评分必须挂钩订单，否则就是形式主义。分级联动的参考规则（示例）：</p>
@@ -585,7 +591,7 @@
             <tr><td><b>B 级</b></td><td class="num">70%-84%</td><td>份额维持；发出改进要求（写明低分项与下季度目标）；暂缓新品导入</td></tr>
             <tr><td><b>C 级</b></td><td class="num">&lt;70%</td><td>淘汰预警：订单逐步转移至 A/B 级或备份厂；连续两个季度 C 级 → 启动淘汰</td></tr>
           </tbody>
-          <caption>供应商 A/B/C 分级与订单联动（示例规则）。「淘汰预警 + 订单转移」要给供应商申述与整改窗口，规则提前书面约定。</caption>
+          <caption>供应商 A/B/C 分级与订单联动（示例规则）。前提是红线检查通过——红线事件不进入分级计算，直接触发淘汰机制（见下）。「淘汰预警 + 订单转移」要给供应商申述与整改窗口，规则提前书面约定。</caption>
         </table>
       </div>
 
@@ -660,11 +666,11 @@
         <div class="kv-row"><div class="kv-k">现场技巧</div><div class="kv-v">动线先仓库返修区后展厅；工人访谈聊工龄与计件；「突然要求看某工序」的绕开动作就是答案；报价单坚持材料/工缴/管理费/利润四段拆分。</div></div>
         <div class="kv-row"><div class="kv-k">考察清单</div><div class="kv-v">5 组 31 项（资质合规 6 / 设备产能 7 / 品控 6 / 开发 6 / 商务 6）；一票否决：无检针机、拒绝进车间、拒绝拆 BOM、资质造假。</div></div>
         <div class="kv-row"><div class="kv-k">试单</div><div class="kv-v">1-2 款 × 200-500 件（示例）；关键项全检（尺寸/色差/缝迹/检针）；试单后评品质、过程、交期、账目；放量后签年度框架协议。</div></div>
-        <div class="kv-row"><div class="kv-k">评分卡</div><div class="kv-v">季度评分：质量 40 / 交期 25 / 配合 15 / 价格 10 / 沟通 10（Soran 建议权重）；A（≥85%）加码、B 观察整改、C（&lt;70%）淘汰预警，连续两季 C 淘汰；始终保持一家备份厂。</div></div>
+        <div class="kv-row"><div class="kv-k">评分卡</div><div class="kv-v">季度评分先过红线（本季无材料造假 / 擅自外发 / 检出禁用物质，一票否决即淘汰），再加权：质量 40 / 交期 25 / 配合 15 / 价格 10 / 沟通 10（Soran 建议权重）；A（≥85%）加码、B 观察整改、C（&lt;70%）淘汰预警，连续两季 C 淘汰；始终保持一家备份厂。</div></div>
         <div class="kv-row"><div class="kv-k">成本谈判</div><div class="kv-v">用 BOM 拆解代替总价博弈；量价联动按摊销逻辑给区间；棉价波动写联动条款；用付款条件换价格、留尾款保品质；给工厂留 5%-15% 健康利润（示例）——砍到偷工，双输。</div></div>
       </div>
 
-      <section class="quiz" data-quiz="sourcing-supplier-q1" data-q="场景：你在谷饶接触一家「工厂」——展厅光鲜、报价三家里最低；业务员自称「200 多工人什么都能做」，但你问车间里无缝机是什么机型几台时，他说「要问一下老板」；参观 40 分钟全程在展厅与样品间，以「车间赶外单不便打扰」婉拒进车间。最专业的判断是？" data-a="1" data-exp="三个信号叠加（说不清自家设备、拒绝进车间、报价低于同行）指向贸易商或借用产能的概率很高。正确做法是不预设敌意但提高核实门槛：厂房产权/租约、设备清单、随时回访车间的权利作为继续谈判的前提。A「直接拉黑」过于武断——部分贸易商拼单能力强，且你尚未拿到确凿证据；C 报价最低更可能是层级或材料猫腻而非效率优势，先下大单等于把风险最大化；D 展厅和样品只能证明「展示能力」，无法证明「生产能力」，本页的核心方法恰恰是绕开展厅看车间。">
+      <section class="quiz" data-quiz="sourcing-supplier-q1" data-level="L4" data-kp="sp-factory" data-q="场景：你在谷饶接触一家「工厂」——展厅光鲜、报价三家里最低；业务员自称「200 多工人什么都能做」，但你问车间里无缝机是什么机型几台时，他说「要问一下老板」；参观 40 分钟全程在展厅与样品间，以「车间赶外单不便打扰」婉拒进车间。最专业的判断是？" data-a="1" data-exp="三个信号叠加（说不清自家设备、拒绝进车间、报价低于同行）指向贸易商或借用产能的概率很高。正确做法是不预设敌意但提高核实门槛：厂房产权/租约、设备清单、随时回访车间的权利作为继续谈判的前提。A「直接拉黑」过于武断——部分贸易商拼单能力强，且你尚未拿到确凿证据；C 报价最低更可能是层级或材料猫腻而非效率优势，先下大单等于把风险最大化；D 展厅和样品只能证明「展示能力」，无法证明「生产能力」，本页的核心方法恰恰是绕开展厅看车间。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>就是贸易商，立刻拉黑不再接触</li>
@@ -675,7 +681,7 @@
         </div>
       </section>
 
-      <section class="quiz" data-quiz="sourcing-supplier-q2" data-q="场景：你在谷饶通过了一家车缝厂的考察，准备上 3 款女内裤。以下试单方案最符合本页原则的是？" data-a="2" data-exp="试单的目的是用最小批量暴露大货问题：1-2 款 × 200-500 件（示例）覆盖完整产线换型，同时资金风险可控；关键项（尺寸/色差/缝迹/检针）全检拿到最完整的质量信息。A 直接按 3000 件下单等于跳过试单闸门，把首次合作当放量；B 每款 100 件低于产线换型的最小经济批量，数据不完整且工厂多不接单；D 三家各下 3000 件是「用市场检验」的豪赌——试单的成本优势就是让你在市场检验之前先完成供应商标定。">
+      <section class="quiz" data-quiz="sourcing-supplier-q2" data-level="L4" data-kp="sp-trial" data-q="场景：你在谷饶通过了一家车缝厂的考察，准备上 3 款女内裤。以下试单方案最符合本页原则的是？" data-a="2" data-exp="试单的目的是用最小批量暴露大货问题：1-2 款 × 200-500 件（示例）覆盖完整产线换型，同时资金风险可控；关键项（尺寸/色差/缝迹/检针）全检拿到最完整的质量信息。A 直接按 3000 件下单等于跳过试单闸门，把首次合作当放量；B 每款 100 件低于产线换型的最小经济批量，数据不完整且工厂多不接单；D 三家各下 3000 件是「用市场检验」的豪赌——试单的成本优势就是让你在市场检验之前先完成供应商标定。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>3 款 × 3000 件，直接按目标量下单摊薄单价</li>
@@ -686,7 +692,7 @@
         </div>
       </section>
 
-      <section class="quiz" data-quiz="sourcing-supplier-q3" data-q="场景：某供应商本季度评分——质量 4 分、交期 2 分、配合 4 分、价格 4 分、沟通 3 分（5 分制，权重 40/25/15/10/10）。按本页评分卡，加权得分与合理动作是？" data-a="0" data-exp="加权得分 =（4×40+2×25+4×15+4×10+3×10）÷500 = 340÷500 = 68%，落入 C 级（<70%）。合理动作是按规则发出整改要求（明确指向交期低分项）并预警订单下调，连续两季 C 级再启动淘汰。B 质量好不等于没有风险——交期占 25% 权重，反复延误同样致命；C 评分卡的价值恰恰在于用统一尺度替代主观印象，随机定级等于没有管理；D 立即淘汰过于激进，规则要求给整改窗口与订单转移的缓冲期，这也是合作的基本商业伦理。">
+      <section class="quiz" data-quiz="sourcing-supplier-q3" data-level="L4" data-kp="sp-score" data-q="场景：某供应商本季红线检查通过（无红线事件），季度加权评分——质量 4 分、交期 2 分、配合 4 分、价格 4 分、沟通 3 分（5 分制，权重 40/25/15/10/10）。按本页评分卡，加权得分与合理动作是？" data-a="0" data-exp="加权得分 =（4×40+2×25+4×15+4×10+3×10）÷500 = 340÷500 = 68%，红线通过，落入 C 级（&lt;70%）。合理动作是按规则发出整改要求（明确指向交期低分项）并预警订单下调，连续两季 C 级再启动淘汰。B 质量好不等于没有风险——交期占 25% 权重，反复延误同样致命；C 评分卡的价值恰恰在于用统一尺度替代主观印象，随机定级等于没有管理；D 立即淘汰过于激进——红线事件才触发「不设缓冲」的即刻淘汰，普通低分项要给整改窗口与订单转移的缓冲期，这也是合作的基本商业伦理。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>加权约 68%，C 级：发出整改要求（聚焦交期）并预警订单下调，连续两季 C 再启动淘汰</li>
@@ -697,12 +703,79 @@
         </div>
       </section>
 
+      <section class="quiz" data-quiz="sourcing-supplier-q4" data-level="L2" data-kp="sp-cluster" data-q="Soran 首发选内裤与袜子，把供应链首选放在汕头潮南（谷饶一带）。这个选择的核心逻辑是？" data-a="0" data-exp="谷饶是「中国内衣名镇」：文胸、内裤、家居服的全产业链分工（织带、橡筋、模杯、印染、车缝厂一应俱全）、打样快（头样常 7-10 天，示例）、小单友好——对新品牌起步期「小批量、多轮次、快速迭代」的需求命中率最高。B 恰恰相反，小单正是产业集群生态的优势；C 产业集群里价格竞争充分、报价可多方比对；D 贸易商在哪个产业带都有，识别靠考察方法而非靠换地方。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>全产业链分工＋打样快＋小单友好，与起步期「小批量快迭代」需求匹配</li>
+            <li>产业集群只接大单，需要先攒够订单量</li>
+            <li>产业集群的报价没有可比性，只能靠砍价</li>
+            <li>谷饶全是贸易商，去别的城市更保险</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q5" data-level="L4" data-kp="sp-audit" data-q="实地考察一家文胸厂，最有效的动线安排是？" data-a="1" data-exp="考察动线的原则是「先仓库返修区，后展厅」：仓库与返修区是藏不住问题的地方——库存结构能看出真实客户构成，返修区能看出真实品质水平；展厅永远只展示最好的一面。工人访谈聊工龄与计件（判断稳定性与真实产能），「突然要求看某工序」时对方的绕开动作本身就是答案。A 全程展厅等于只看广告；C 借口之下的流程恰恰在暴露短板；D 全程自己找不到重点，应有清单逐项核对（5 组 31 项，示例）。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>直接进展厅看样品，规格越高越好</li>
+            <li>先仓库与返修区看库存结构与返修原因，再进车间看工序与设备，最后才看展厅，对照考察清单逐项记录</li>
+            <li>跟着厂方安排的贵宾流程走完全程</li>
+            <li>不看现场，回来凭感觉评分</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q6" data-level="L3" data-kp="sp-tier" data-q="某供应商连续两个季度评 B 级，改进要求始终没有落实。按分级联动规则，正确动作是？" data-a="0" data-exp="B 级的定义是「观察整改」：份额维持但发出书面改进要求；连续 B 级无改善按 C 级处理——进入淘汰预警流程（订单转移、整改窗口），连续两季 C 级启动淘汰。规则的价值在于提前写明、按章执行，避免「关系绑架标准」。B 越过预警直接淘汰，违反自己定的缓冲规则；C 维持现状等于纵容「假整改」；D 订单翻倍与改进要求落空自相矛盾。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>按规则升级处理：连续 B 级无改善按 C 级处理，启动淘汰预警与订单转移</li>
+            <li>直接立刻淘汰，不设缓冲</li>
+            <li>老供应商了，继续维持原份额</li>
+            <li>给订单刺激一下，翻倍下单促改进</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q7" data-level="L4" data-kp="sp-cost" data-q="3000 件返单时，供应商主动降价 20%（示例区间通常为 -3%~-6%）。你的第一反应应该是？" data-a="0" data-exp="量价联动必须符合摊销逻辑：5000 件以上/年度框架的合理降幅也只有 -3%~-6%（示例）——3000 件返单降 20% 远超成本地板，说明价格里原本就有水分，或这 20% 会在大货从材料、工序、交期里「偷」回去。正确反应是反向核验：「比成本拆解还低的差价从哪省出来的？」省得出来（真效率）是本事，省不出来（偷工）是隐患。B 贪便宜等于把验证成本转嫁给品质；C 加单换不来超出摊销逻辑的降幅；D 敏感期涨价仍要回归 BOM 结构核对，不是「人家涨就认」。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>警惕：先反问「这 20% 从哪省出来的」，用 BOM 拆解核对每一项</li>
+            <li>直接接受，立省 20% 成本</li>
+            <li>加订到 1 万件，让它名正言顺</li>
+            <li>行业波动期正常现象，无需多想</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q8" data-level="L3" data-kp="sp-payment" data-q="以下付款安排中，踩了本页「红线」的是？" data-a="0" data-exp="付款红线：不付私人账户、不预付全款给从未合作过的厂、不在无合同状态下凭微信口头下单——三条都是「出了问题没有抓手」的高危动作。规范节奏（示例）：定金 30%＋尾款 70%（出货前/见提单），留 10%-20% 尾款至验货合格后 7 天内支付，把品质责任留在结算环节。B 用付款换 2%-5% 价格空间是本页鼓励的谈判工具；C 验货合格后 7 天付尾款是标准做法；D 月结 30 天是年度框架客户的常见条件。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>新厂首单：微信口头确认款式与数量，全款打到老板个人账户赶交期</li>
+            <li>合作两年：付现换 3% 价格空间，签书面合同</li>
+            <li>留 15% 尾款至验货合格后 7 天内支付</li>
+            <li>年度框架谈月结 30 天</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-supplier-q9" data-level="L5" data-kp="sp-profit" data-q="采购总监提议：把主力内裤出厂价从 4.2 元砍到 3.4 元（工厂已诉苦），「反正羊毛出在羊身上，工厂会想办法」。从 Soran 的质价比定位看，这个提议的问题与正确做法是？" data-a="1" data-exp="把供应商砍到利润为零，工厂只剩三条路：换更差的材料、跳过工序、拖延你的单去保更大的客户——每一种都是把成本转嫁回你的品质与口碑。Soran 的质价比来自「砍无效成本」（渠道层级、过度包装、虚高营销），不是砍工厂的利润与材料；给工厂留 5%-15% 健康利润（示例），换的是熟手做工、优先排产与出问题时的第一时间返修。A 压价后的「品质不变」无法用机制保证，靠抽检兜底是概率游戏；C 涨价买好料同样要有 BOM 依据，盲目加价不等于买到品质；D 反复砍价破坏的是长期合作信用，备份厂是风险预案，不是压价工具。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>没问题，抽检把住品质关就行</li>
+            <li>砍过头会以回修率、客诉与断货的形式还回来：应回到 BOM 结构谈价，给工厂留 5%-15% 健康利润，把「高质价比」落在砍无效成本上</li>
+            <li>正确做法是反过来加价 20%，材料一定更好</li>
+            <li>砍价没问题，大不了随时换厂</li>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 </div>
 
 <script src="../../assets/js/glossary.js"></script>
 <script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/knowledge-map.js"></script>
 <script src="../../assets/js/widgets.js"></script>
 <script src="../../assets/js/app.js"></script>
 <script>
@@ -717,7 +790,12 @@ window.__SORAN_PAGE_INIT__ = function () {
 
     var rows = [];
     Array.prototype.forEach.call(root.querySelectorAll('.rate-row'), function (r) {
-      rows.push({ key: r.getAttribute('data-key'), w: parseFloat(r.getAttribute('data-weight')) || 1 });
+      rows.push({
+        key: r.getAttribute('data-key'),
+        w: parseFloat(r.getAttribute('data-weight')) || 1,
+        gate: r.getAttribute('data-gate') === '1',
+        gmin: parseInt(r.getAttribute('data-gate-min'), 10) || 4
+      });
     });
     var MAXV = 5;
 
@@ -730,24 +808,38 @@ window.__SORAN_PAGE_INIT__ = function () {
     function render() {
       var vals = readRate();
       var total = 0, max = 0, done = 0;
+      var gateOk = true, gateUnset = false;
       rows.forEach(function (it) {
-        max += MAXV * it.w;
         var v = vals[it.key];
+        if (it.gate) {
+          if (!v) gateUnset = true;
+          else if (v < it.gmin) gateOk = false;
+          return;
+        }
+        max += MAXV * it.w;
         if (v) { total += v * it.w; done++; }
       });
       var pct = max ? Math.round(total / max * 100) : 0;
-      if (done < rows.length) {
+      if (gateUnset || !gateOk) {
+        verdict.style.background = 'var(--clay-soft)';
+        verdict.innerHTML = '<b>评级：红线触发——即刻启动淘汰程序。</b>' +
+          (gateUnset ? '红线检查未确认（未确认 = 不通过）。' : '本季发生红线事件（材料造假 / 擅自转厂外发 / 检出禁用物质）。') +
+          '红线是一票否决项，<b>不与加权得分合并权衡</b>：加权 ' + pct + '% 再高也仅作记录。按「淘汰机制」执行：结清在手订单、收回模具物料、书面告知原因。';
+        return;
+      }
+      if (done < rows.length - 1) {
         verdict.style.background = 'var(--surface-2)';
-        verdict.innerHTML = '<b>评级结论：</b>已评 ' + done + ' / ' + rows.length + ' 项，当前加权 <b>' + pct + '%</b>。评满后按分级规则给结论：≥85% A 级 · 70-84% B 级 · &lt;70% C 级。';
+        verdict.innerHTML = '<b>评级结论：</b>红线检查通过 ✓；加权项已评 ' + done + ' / ' + (rows.length - 1) +
+          '，当前加权 <b>' + pct + '%</b>。评满后按分级规则给结论：≥85% A 级 · 70-84% B 级 · &lt;70% C 级。';
       } else if (pct >= 85) {
         verdict.style.background = 'var(--green-soft)';
-        verdict.innerHTML = '<b>评级：A 级（' + pct + '%）。</b>新品优先打样、订单份额上调、可谈年度框架与更优账期；同时把本季低分项作为下季度改进点继续跟踪。';
+        verdict.innerHTML = '<b>评级：A 级（加权 ' + pct + '%，红线通过）。</b>新品优先打样、订单份额上调、可谈年度框架与更优账期；同时把本季低分项作为下季度改进点继续跟踪。';
       } else if (pct >= 70) {
         verdict.style.background = 'var(--gold-soft)';
-        verdict.innerHTML = '<b>评级：B 级（' + pct + '%）。</b>份额维持，向工厂发出书面改进要求——写明低分项、改进目标与复核时间；下季度复核，连续 B 级无改善按 C 级处理。';
+        verdict.innerHTML = '<b>评级：B 级（加权 ' + pct + '%，红线通过）。</b>份额维持，向工厂发出书面改进要求——写明低分项、改进目标与复核时间；下季度复核，连续 B 级无改善按 C 级处理。';
       } else {
         verdict.style.background = 'var(--clay-soft)';
-        verdict.innerHTML = '<b>评级：C 级（' + pct + '%）。</b>淘汰预警：新订单转移至 A/B 级或备份厂，给一个季度的整改窗口；连续两季 C 级启动淘汰（先结清在手订单、收回模具物料）。';
+        verdict.innerHTML = '<b>评级：C 级（加权 ' + pct + '%，红线通过）。</b>淘汰预警：新订单转移至 A/B 级或备份厂，给一个季度的整改窗口；连续两季 C 级启动淘汰（先结清在手订单、收回模具物料）。';
       }
     }
     root.addEventListener('click', function () { setTimeout(render, 0); });

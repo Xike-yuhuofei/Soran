@@ -99,31 +99,77 @@
     paint();
   };
 
-  /* ---------- 评分行（样品评价表） ---------- */
+  /* ---------- 评分行（样品评价表） ----------
+     普通行：data-key + data-weight，1-5 分加权汇总。
+     合规红线行：追加 data-gate="1"（可加 data-gate-min="N"，默认 4）。
+     红线行不计入加权分；未达 gate-min 或未评 = 红线未通过，整表结论无效。 */
   W.rates = function (root, id) {
     var rows = root.querySelectorAll('.rate-row');
     var st = load();
     var vals = (st.rate && st.rate[id]) || {};
     var scale = (root.getAttribute('data-rate-scale') || '1,2,3,4,5').split(',').map(Number);
+    var MAXV = Math.max.apply(null, scale);
+
+    function isGate(r) { return r.getAttribute('data-gate') === '1'; }
+    function gateMin(r) { return parseInt(r.getAttribute('data-gate-min'), 10) || 4; }
+    function gateState() {
+      var s = { pass: 0, fail: 0, unset: 0, total: 0 };
+      rows.forEach(function (r) {
+        if (!isGate(r)) return;
+        s.total++;
+        var v = vals[r.getAttribute('data-key')];
+        if (!v) s.unset++;
+        else if (v >= gateMin(r)) s.pass++;
+        else s.fail++;
+      });
+      return s;
+    }
+
     function paint() {
       var total = 0, max = 0;
       rows.forEach(function (r) {
         var k = r.getAttribute('data-key');
         var v = vals[k];
-        var w = +(r.getAttribute('data-weight') || 1);
-        if (v) total += v * w;
-        max += Math.max.apply(null, scale) * w;
         r.querySelectorAll('.dot-b').forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-v') === v); });
         var sum = r.querySelector('.rr-sum');
-        if (sum) sum.textContent = v ? v + ' / ' + Math.max.apply(null, scale) + ' 分' : '未评';
+        if (isGate(r)) {
+          if (sum) {
+            if (!v) { sum.textContent = '未确认'; sum.style.color = 'var(--ink-faint)'; }
+            else if (v >= gateMin(r)) { sum.textContent = '通过'; sum.style.color = 'var(--green-deep)'; }
+            else { sum.textContent = '未通过'; sum.style.color = 'var(--clay)'; }
+          }
+          return;
+        }
+        var w = +(r.getAttribute('data-weight') || 1);
+        if (v) total += v * w;
+        max += MAXV * w;
+        if (sum) sum.textContent = v ? v + ' / ' + MAXV + ' 分' : '未评';
       });
+      var gs = gateState();
+      var pct = max ? Math.round(total / max * 100) : 0;
       var sumEl = root.querySelector('[data-rate-sum]');
-      if (sumEl) sumEl.textContent = '总分：' + total + ' / ' + max + (max ? '（' + Math.round(total / max * 100) + '%）' : '');
       var barEl = root.querySelector('[data-rate-bar]');
-      if (barEl) barEl.style.width = (max ? total / max * 100 : 0) + '%';
+      if (sumEl) {
+        if (gs.total) {
+          var gt = '红线 ' + gs.pass + '/' + gs.total + ' 通过 ｜ 质量分 ' + total + ' / ' + max + '（' + pct + '%）';
+          if (gs.fail || gs.unset) { gt += ' —— 红线未全部通过，加权分不作为决策依据'; sumEl.style.color = 'var(--clay)'; }
+          else sumEl.style.color = '';
+          sumEl.textContent = gt;
+        } else {
+          sumEl.style.color = '';
+          sumEl.textContent = '总分：' + total + ' / ' + max + (max ? '（' + pct + '%）' : '');
+        }
+      }
+      if (barEl) barEl.style.width = pct + '%';
+      root.classList.toggle('rate-blocked', gs.total > 0 && (gs.fail > 0 || gs.unset > 0));
     }
     rows.forEach(function (r) {
       var k = r.getAttribute('data-key');
+      if (isGate(r)) {
+        r.classList.add('rate-gate');
+        var lbl = r.querySelector('.rr-label');
+        if (lbl && !lbl.querySelector('.rr-gate-tag')) lbl.appendChild(el('span', 'rr-gate-tag', '红线'));
+      }
       var dots = r.querySelector('.rr-dots');
       if (!dots) { dots = el('span', 'rr-dots'); r.appendChild(dots); }
       if (!dots.children.length) {

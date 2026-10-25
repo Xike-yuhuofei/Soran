@@ -124,6 +124,7 @@ co-head 内 svg 统一：owner 用星形、warn 用三角警示、info 用圆圈
 ### 自测题（每题独立 data-quiz，全站唯一）
 ```html
 <section class="quiz" data-quiz="{pageId}-q1"
+  data-level="L3" data-kp="kp-id1 kp-id2"
   data-q="题干（可含提问场景）" data-a="2" data-exp="解析：为什么对、为什么其他错。">
   <div class="quiz-body"><div class="quiz-opts">
     <li>选项一</li><li>选项二</li><li>选项三</li><li>选项四</li>
@@ -131,6 +132,8 @@ co-head 内 svg 统一：owner 用星形、warn 用三角警示、info 用圆圈
 </section>
 ```
 - `data-a` 为正确选项序号（0 起）。选项 3-5 个。题干侧重判断/决策/对比，不出纯记忆题。解析必须解释错误选项。
+- `data-level`（L1 识记 / L2 理解 / L3 分析 / L4 应用 / L5 综合决策）与 `data-kp`（空格分隔的知识点 id）为**必填**，缺省会导致章末覆盖面板失真。
+- `data-kp` 可引用其他页面的知识点 id 做跨知识点综合题（如 `sd-blend`）；章末面板只统计本页 KMAP 登记的知识点，跨页引用不会误报。
 
 ### 术语、键值表、对比栏
 ```html
@@ -189,6 +192,9 @@ acc-g 绿 / acc-c 陶土 / acc-gold 金 / acc-b 蓝。输入用 `<input class="n
 ### 评分表（样品评价等）
 ```html
 <div data-rate="unique-rate-id">
+  <div class="rate-gate-head">第一部分 · 合规红线（一票否决 · 不计入质量分）</div>
+  <div class="rate-row" data-key="gate-x" data-weight="0" data-gate="1" data-gate-min="4"><span class="rr-label">红线项说明</span></div>
+  <div class="rate-gate-head">第二部分 · 可权衡品质（加权计分）</div>
   <div class="rate-row" data-key="fabric" data-weight="2"><span class="rr-label">面料手感</span></div>
   <!-- dots/sum 由 JS 生成 -->
   <div style="display:flex;align-items:center;gap:10px;margin-top:14px">
@@ -198,6 +204,8 @@ acc-g 绿 / acc-c 陶土 / acc-gold 金 / acc-b 蓝。输入用 `<input class="n
   </div>
 </div>
 ```
+- **红线行（合规门）**：`data-gate="1"` 的行不计入加权总分；达到 `data-gate-min`（默认 4）显示「通过」，否则显示「未通过」并使整表结论无效。用于安全合规类不可妥协项，**不允许被其他高分项抵消**。
+- 普通行按 `data-weight` 加权；页面脚本自行读取 localStorage 的 `rate[id]` 计算结论（红线行 `gate`/`gmin` 逻辑见 sourcing/judgment.html 样例）。
 
 ### SVG 热点图（结构拆解）
 ```html
@@ -232,7 +240,35 @@ acc-g 绿 / acc-c 陶土 / acc-gold 金 / acc-b 蓝。输入用 `<input class="n
 1. 骨架与 data-root 正确；head/body 结构与样板一致。
 2. 所有 `data-term` 均存在于 glossary.js。
 3. 所有图 SVG 在窄屏（<560px）不溢出（viewBox 缩放天然安全，但要检查文字密度）。
-4. quiz data-quiz 全站唯一（用 pageId 前缀）、data-a 正确、解析完整。
+4. quiz data-quiz 全站唯一（用 pageId 前缀）、data-a 正确、解析完整、data-level/data-kp 已标注。
 5. 示例数据均标注；标准引用写编号+名称。
-6. 每页 ≥1 owner callout、≥1 warn callout、1 个小结、2-4 道自测。
+6. 每页 ≥1 owner callout、≥1 warn callout、1 个小结；自测题量按知识密度定（一般 8-14 题/页），核心知识点必须挂题。
 7. 用浏览器打开过自己写的页面（http 任意端口），无 console 报错、交互可用。
+
+## 9. 知识点地图与覆盖面板维护规范
+
+章末「知识点覆盖面板」的数据源是 [assets/js/knowledge-map.js](assets/js/knowledge-map.js)（`window.SORAN_KMAP`）。改题、加题、改章节时同步维护：
+
+### 9.1 数据结构
+```js
+'page-id': {
+  points: [
+    { id: '前缀-缩写', name: '知识点名（≤22字，括注关键参数）', core: true, level: 'L3' }
+  ]
+}
+```
+- `id` 全站唯一，用页面缩写前缀（如 `pd-` 内裤设计、`sd-` 袜子设计、`bc-` 文胸工艺）。
+- `core: true` 的知识点**必须**有题目挂接，否则面板显示「⚠ 覆盖缺口」。
+- `level` 是该知识点的目标认知层次，出题应至少达到该层次。
+
+### 9.2 出题与挂接规则
+1. 题量由知识密度决定，不设上限也不凑数；核心知识点可从多角度出多题（场景/计算/决策），避免同一题型机械重复。
+2. 每题 `data-level` + `data-kp` 必填；跨知识点综合题允许引用他页 KP id（如 `data-kp="sc-reinforce sd-blend"`）。
+3. 新增知识点：先在正文确认有对应内容，再登记 KMAP，最后出题挂接——三点缺一即出现「有图无题」或「有题无图」。
+4. guide 页不渲染覆盖面板（app.js 显式排除），其 KP 仅用于全站统计；非知识页（导学/工具页）的核心点可标 `core: false`。
+
+### 9.3 校验（提交前跑一遍）
+用 node 校验脚本核对：quiz id 无重复、data-level/data-kp 无缺失、data-kp 均已登记、core 点无覆盖缺口、HTML 闭合完整。改动后必须打开对应页面确认：层级徽标渲染、覆盖面板无「⚠ 覆盖缺口」误报。
+
+### 9.4 案例小节与小结编号
+带「完整案例」小节的页面，案例插在判断清单/验货要点之前、小结之前；插入后需顺延后续 `<span class="sec-no">` 编号，并确认 page-toc 自动收录。案例必须包含：需求翻译 → 技术方案 → 打样验证 → 成本核算 → 验收标准五步 + 至少一次「方案取舍」+ 一条「品质异常归因练习」，并挂一道 L5 复盘决策题。

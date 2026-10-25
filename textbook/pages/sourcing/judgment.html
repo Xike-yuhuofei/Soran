@@ -6,6 +6,9 @@
 <title>品质判断与产品决策 — 素然之境 Soran</title>
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style>
+  [data-rate="soran-judgment-sample"] .rr-label { flex: 0 0 210px; }
+</style>
 </head>
 <body data-page-id="sourcing-judgment" data-root="../../">
 <div class="layout">
@@ -596,13 +599,17 @@
       <!-- ====================================================== -->
       <h2 class="sec-title" id="s-rate" data-sec="s-rate"><span class="sec-no">08</span>交互工具：样品评审评分表</h2>
 
-      <p>把前面所有方法压缩成一张表：拿到打样或大货样品时，逐项打分（1-5 分），加权汇总后直接给出决策建议。<b>权重为 Soran 建议值（教学参考）</b>——版型与车缝合计占 45%，因为它们决定「穿 8 小时」的体验与「洗 30 次」的耐久；卫生安全占 15%，因为它是贴身衣物的底线；包装与成本合理性只占 10%，因为它们是加分项不是本质。</p>
+      <p>把前面所有方法压缩成一张表。结构上分成两个部分，对应选品决策的两类判断：<b>合规红线</b>——安全类别、成分真实、标签与安全细节，任何一项不达标即一票否决，再高的品质分也不能下单，因为它们不可妥协、不可用其他优点「抵消」；<b>可权衡品质</b>——版型、面料、车缝等，允许互相权衡、按权重加总。<b>权重为 Soran 建议值（教学参考）</b>：版型与面料合计占 55%，因为它们决定「穿 8 小时」的体验与「洗 30 次」的耐久；包装与成本只占 10%，因为它们是加分项不是本质。</p>
 
       <div data-rate="soran-judgment-sample">
-        <div class="rate-row" data-key="fit" data-weight="25"><span class="rr-label">版型合体度</span></div>
-        <div class="rate-row" data-key="fabric" data-weight="20"><span class="rr-label">面料品质</span></div>
+        <div class="rate-gate-head">第一部分 · 合规红线（一票否决 · 不计入质量分）</div>
+        <div class="rate-row" data-key="gate-compliance" data-weight="0" data-gate="1" data-gate-min="4"><span class="rr-label">安全合规：GB 18401 B 类全项达标，检测报告可核验</span></div>
+        <div class="rate-row" data-key="gate-label" data-weight="0" data-gate="1" data-gate-min="4"><span class="rr-label">成分一致：第三方定量实测与成分标相符（GB/T 29862）</span></div>
+        <div class="rate-row" data-key="gate-safety" data-weight="0" data-gate="1" data-gate-min="4"><span class="rr-label">安全细节：标签项目齐全（GB 5296.4）、检针通过、无锐利附件</span></div>
+        <div class="rate-gate-head">第二部分 · 可权衡品质（加权计分）</div>
+        <div class="rate-row" data-key="fit" data-weight="30"><span class="rr-label">版型合体度</span></div>
+        <div class="rate-row" data-key="fabric" data-weight="25"><span class="rr-label">面料品质</span></div>
         <div class="rate-row" data-key="stitch" data-weight="20"><span class="rr-label">车缝工艺</span></div>
-        <div class="rate-row" data-key="hygiene" data-weight="15"><span class="rr-label">卫生安全</span></div>
         <div class="rate-row" data-key="trim" data-weight="10"><span class="rr-label">辅料品质</span></div>
         <div class="rate-row" data-key="pack" data-weight="5"><span class="rr-label">包装细节</span></div>
         <div class="rate-row" data-key="cost" data-weight="5"><span class="rr-label">成本合理性</span></div>
@@ -612,25 +619,78 @@
           <button class="btn ghost sm" data-rate-reset>重置</button>
         </div>
       </div>
-      <p style="font-size:12.5px;color:var(--ink-faint);margin-top:2px">评分标准：5=远超预期 · 4=达到目标 · 3=勉强可用 · 2=有硬伤 · 1=不合格。打分时请对照封样与手评六法的记录，逐项独立评。</p>
+      <p class="rr-gate-note" style="margin-bottom:0">红线行评分口径：4=达标（有报告支撑）· 5=达标且证据链完整；≤3 分或未确认 = 红线未通过，直接进入「淘汰」结论——品质分再高也不能带病下单。质量行评分口径：5=远超预期 · 4=达到目标 · 3=勉强可用 · 2=有硬伤 · 1=不合格。打分时请对照封样与手评六法的记录，逐项独立评。</p>
 
       <div id="sample-verdict" style="margin-top:14px;padding:13px 16px;border-radius:9px;background:var(--surface-2);font-size:14px;line-height:1.8">
-        <b>评审结论：</b>完成 7 项评分后自动生成。
+        <b>评审结论：</b>完成合规红线与质量评分后自动生成。
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-consumer" data-sec="s-consumer"><span class="sec-no">09</span>消费者验证与零售价值：从出厂价到成交价</h2>
+
+      <p>样品评审通过只是「工厂视角的合格」。产品最终要回答两个商业问题：<b>品质差异消费者感知得到吗？</b>以及<b>零售价里到底还剩多少利润？</b></p>
+
+      <h3 class="sub-title">感知分级：钱要花在「摸得到、洗得出」的地方</h3>
+      <p>不是所有品质差异都能被消费者感知，投入前先分级（教学归纳）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>品质差异的感知分级与投入策略（教学归纳）</caption>
+          <thead><tr><th style="width:16%">等级</th><th style="width:34%">典型差异</th><th>投入策略</th></tr></thead>
+          <tbody>
+            <tr><td><b>强感知</b></td><td>扎感/勒感、夹裆上钻、袜头硌脚、掉跟、腰头起浪——第一次穿着就出现</td><td>不计代价消除：这些直接写进差评，是退货与流失的第一来源</td></tr>
+            <tr><td><b>洗后感知</b></td><td>起球、缩水、海绵黄变瘪塌、橡筋松弛、胶条开胶——3-10 次洗涤后出现</td><td>用书面指标锁住：消费者说不清原因，但会用「越洗越差」复购投票</td></tr>
+            <tr><td><b>弱感知</b></td><td>纱支从 40S 提到 60S、锦纶多 5%、色牢度从 4 级到 4-5 级</td><td>谨慎投入：实验室可测、体感难辨——除非支撑「洗后感知」（如耐磨防破洞），否则优先级靠后</td></tr>
+            <tr><td><b>无感知</b></td><td>「进口氨纶」「航天级纤维」等无法验证的故事</td><td>拒绝付费：为本节最不诚实的支出，检验话术见第 02 节</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="sub-title">消费者验证三步：试穿、洗测、回访</h3>
+      <p>大货前的消费者验证不必复杂，但必须真实：<b>① 真人试穿</b>——目标人群 3-5 人、覆盖中间码与两端码、穿满一个工作日（含久坐/通勤工况），收集固定问卷（勒感/痒感/卷边/下滑四问）；<b>② 洗涤耐久</b>——按洗标程序机洗 3-5 次，对比封样评估外观、弹性、尺寸（品类篇的「洗后复评」方法）；<b>③ 上市回访</b>——把退货原因单独归档成「尺码不合 / 品质问题 / 不符合预期」三栏按月分析：尺码不合指向教育（文胸篇结论），品质问题指向工序归因，预期落差指向详情页管理。</p>
+
+      <h3 class="sub-title">零售价瀑布：出厂价 5 元的裤子，卖 39 元剩多少</h3>
+      <p>出厂成本分析只是账的第一段。以一条出厂价 5 元（示例）的女三角裤、零售定价 39 元走电商渠道为例，钱的去向大致是（各渠道比例差异大，以下为教学示例口径）：</p>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <caption>零售价瀑布示例：39 元定价的结构拆解（教学示例，非真实渠道账）</caption>
+          <thead><tr><th style="width:26%">科目</th><th style="width:16%">金额（示例）</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>出厂价（货值）</td><td class="num">5.0 元</td><td>面料＋辅料＋工缴＋损耗——前面各章拆解的部分</td></tr>
+            <tr><td>头程物流＋仓储</td><td class="num">≈ 1.2 元</td><td>工厂→仓→消费者履约链</td></tr>
+            <tr><td>平台佣金＋推广费</td><td class="num">≈ 10-14 元</td><td>佣金 5% 上下＋投流成本，电商最大变量，可能吃掉定价三成以上</td></tr>
+            <tr><td>退货逆向物流与损耗</td><td class="num">≈ 1.5-3 元</td><td>贴身衣物退货通常无法二次销售——退货率每升 10%，利润直接减一截</td></tr>
+            <tr><td>包装＋售后＋运营分摊</td><td class="num">≈ 2-3 元</td><td>包材、客服、退换处理与团队分摊</td></tr>
+            <tr class="hl"><td>税前利润（示例）</td><td class="num">≈ 8-12 元</td><td>毛利率约 20-30%；若投流失控或退货率走高，极易转负</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout owner">
+        <div class="co-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
+          主理人视角 · 在品质、成本与消费者价值之间权衡
+        </div>
+        <p>把三笔账连起来看：出厂价 +1 元的强感知升级（如橡筋、里裆），零售端只需 +3-5 元即可覆盖（示例倍数），却直接命中差评与退货两大利润杀手——这是回报最高的投资；而投流买来的流量若落在「洗两次就松」的产品上，退货逆向成本会加倍偿还。<b>质价比的完整公式是：消费者可感知的品质 ÷ 消费者支付的全部价格</b>——降价促销救不了不可感知的品质，品质投入也救不了失控的渠道成本。两端的账都要会算，定价才有底气。</p>
+      </div>
+
+      <!-- ====================================================== -->
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">好产品公式</div><div class="kv-v">版型合体 &gt; 材料真实 &gt; 工艺扎实 &gt; 细节到位；Soran 目标是「高质 · 质价比」象限，路径是砍无效成本而不是砍材料。</div></div>
         <div class="kv-row"><div class="kv-k">噱头与认证</div><div class="kv-v">名称不是成分（冰丝/牛奶丝/蚕丝蛋白皆是故事名）；认证要官网核验证书号、主体、有效期与产品范围，警惕挂靠与过期。</div></div>
+        <div class="kv-row"><div class="kv-k">感知与瀑布</div><div class="kv-v">品质投入按感知分级：强感知不计代价、洗后感知书面锁死、弱感知谨慎、无感知拒绝；利润要拆零售价瀑布看科目——渠道与退货，往往比货值更决定盈亏。</div></div>
         <div class="kv-row"><div class="kv-k">手评与拆解</div><div class="kv-v">六法（拉伸/揉搓/对光/称重/水洗/摩擦）做对比才有意义；拆解五步（外观→缝线→层次→成分→辅料）沉淀为记录表，学习结构不等于抄款。</div></div>
         <div class="kv-row"><div class="kv-k">规格书七件套</div><div class="kv-v">款式图、尺寸表（含公差）、BOM、工艺说明、测试要求、包装唛头、验收标准——品牌与工厂的合同语言。</div></div>
         <div class="kv-row"><div class="kv-k">验收</div><div class="kv-v">AQL 2.5（主要）/4.0（次要）+ 尺寸公差表 + 功能性条款，作为合同附件并写明拒收处置与复检机制。</div></div>
-        <div class="kv-row"><div class="kv-k">决策工具</div><div class="kv-v">样品评审评分表：版型 25 / 面料 20 / 车缝 20 / 卫生安全 15 / 辅料 10 / 包装 5 / 成本 5（Soran 建议权重）；≥85 优先大货，70-85 修改复评，&lt;70 淘汰。</div></div>
+        <div class="kv-row"><div class="kv-k">决策工具</div><div class="kv-v">样品评审评分表：先过合规红线（安全合规 / 成分一致 / 安全细节，一票否决、不可被高分抵消），再按质量权重加总——版型 30 / 面料 25 / 车缝 20 / 辅料 10 / 包装 5 / 成本 5（Soran 建议权重）；红线全过且质量分 ≥85 优先大货，70-85 修改复评，&lt;70 淘汰。</div></div>
       </div>
 
-      <section class="quiz" data-quiz="sourcing-judgment-q1" data-q="直播间一款「冰丝抗菌」女内裤卖 9.9 元包邮，月销十万条。作为 Soran 主理人，最有价值的动作是？" data-a="1" data-exp="9.9 包邮的成本结构决定了它只能用最低价纱线与最简工艺，属于「低质·低价」象限，与 Soran「高质·质价比」是不同客群，跟进只会拖垮定位。C 把竞品数据做成对比广告有商誉与法律风险，测竞品只能作为内参；D 「消费者只看价格」是以偏概全——愿意为合体与卫生付 3 倍价格的人群真实存在，这正是 Soran 的目标客群。">
+      <h3 class="sub-title">本页自测（知识覆盖型 · L1-L5）</h3>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q1" data-level="L4" data-kp="jg-hype jg-quadrant" data-q="直播间一款「冰丝抗菌」女内裤卖 9.9 元包邮，月销十万条。作为 Soran 主理人，最有价值的动作是？" data-a="1" data-exp="9.9 包邮的成本结构决定了它只能用最低价纱线与最简工艺，属于「低质·低价」象限，与 Soran「高质·质价比」是不同客群，跟进只会拖垮定位。C 把竞品数据做成对比广告有商誉与法律风险，测竞品只能作为内参；D 「消费者只看价格」是以偏概全——愿意为合体与卫生付 3 倍价格的人群真实存在，这正是 Soran 的目标客群。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>立刻跟进同款同价，先把流量抢过来再说</li>
@@ -641,7 +701,7 @@
         </div>
       </section>
 
-      <section class="quiz" data-quiz="sourcing-judgment-q2" data-q="你在验收标准中写明「主要疵点 AQL 2.5」，工厂说：「行业都是口头标准，写这么严我们做不了」。最专业的应对是？" data-a="2" data-exp="AQL 2.5/4.0 正是内衣行业的常规等级（GB/T 2828.1 / ISO 2859 框架），工厂的抗拒通常源于「从未被要求过」而非做不到——正确做法是解释抽样判定逻辑（示例如批量 3000 件抽 125 件、疵点 ≤7 接收），并将其与封样一起作为合同附件。A 口头标准等于无标准，出了问题无据可依；B 主动放松到 6.5 等于放弃品质底线；D 自己全检成本极高，且解除了工厂的品质责任，方向反了。">
+      <section class="quiz" data-quiz="sourcing-judgment-q2" data-level="L4" data-kp="jg-aql" data-q="你在验收标准中写明「主要疵点 AQL 2.5」，工厂说：「行业都是口头标准，写这么严我们做不了」。最专业的应对是？" data-a="2" data-exp="AQL 2.5/4.0 正是内衣行业的常规等级（GB/T 2828.1 / ISO 2859 框架），工厂的抗拒通常源于「从未被要求过」而非做不到——正确做法是解释抽样判定逻辑（示例如批量 3000 件抽 125 件、疵点 ≤7 接收），并将其与封样一起作为合同附件。A 口头标准等于无标准，出了问题无据可依；B 主动放松到 6.5 等于放弃品质底线；D 自己全检成本极高，且解除了工厂的品质责任，方向反了。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>接受口头标准，先靠信任合作，出问题再说</li>
@@ -652,7 +712,7 @@
         </div>
       </section>
 
-      <section class="quiz" data-quiz="sourcing-judgment-q3" data-q="你拆解了一款竞品内裤，非常喜欢它的版型（前后浪差与裆宽设计）。以下哪种做法越过了合法与伦理边界？" data-a="1" data-exp="版型结构思路、尺寸档位区间、工艺路线（如四线包缝+双层裆）都属于行业通用知识，学习并融入自己的开发完全正当；而 1:1 扫描复刻纸样直接开裁生产涉嫌侵权，且意味着放弃差异化——拆解的目的永远是建立判断力、输出自己的规格书与版型资产，而不是做复制品。">
+      <section class="quiz" data-quiz="sourcing-judgment-q3" data-level="L3" data-kp="jg-legal" data-q="你拆解了一款竞品内裤，非常喜欢它的版型（前后浪差与裆宽设计）。以下哪种做法越过了合法与伦理边界？" data-a="1" data-exp="版型结构思路、尺寸档位区间、工艺路线（如四线包缝+双层裆）都属于行业通用知识，学习并融入自己的开发完全正当；而 1:1 扫描复刻纸样直接开裁生产涉嫌侵权，且意味着放弃差异化——拆解的目的永远是建立判断力、输出自己的规格书与版型资产，而不是做复制品。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>记录其结构思路，结合自己客群重新做版并试穿迭代</li>
@@ -663,16 +723,149 @@
         </div>
       </section>
 
+      <section class="quiz" data-quiz="sourcing-judgment-q4" data-level="L2" data-kp="jg-priority" data-q="两款内裤样品：A 版型合体度极好但面料普通；B 用料豪华但后浪差做错、坐姿夹裆。按好产品优先级链，评审结论应该是？" data-a="0" data-exp="优先级链：版型合体 &gt; 材料真实 &gt; 工艺扎实 &gt; 细节到位——贴身衣物的第一性是「穿上 8 小时的合体与舒适」，版型错了材料再贵也是折磨。A 可作为主力款方向继续优化面料；B 需要回炉改版而不是改料。C 把成本当品质；D 掉进了「拆开看很豪华」的营销视角，丢了第一性。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>A 有潜力：版型是硬约束，面料可升级；B 版型硬伤优先回炉，材料豪华不能补救合体</li>
+            <li>B 更好：材料决定品质上限，版型小事</li>
+            <li>看谁出厂价更低，成本优先</li>
+            <li>拆开看 B 用料豪华，消费者会买账</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q5" data-level="L3" data-kp="jg-cert" data-q="供应商出示一张 OEKO-TEX Standard 100 证书复印件，产品级别 I 级。你的核验动作是？" data-a="0" data-exp="认证核验口诀：索编号 → 官网验 → 对主体 → 对产品范围 → 看有效期——OEKO-TEX 证书有效期 1 年，可在官网证书查询页核验证书号、持有人、有效期与产品级别；证书持有人须与你采购的供应商一致（防挂靠），级别与产品对应（I 级婴幼儿）。B 复印件与原件可以分离，挂靠常用手法；C 级别数字与检测项目含义不同，I 级才是婴幼儿最严档；D 挂靠证书恰恰最爱挂在「大厂」名下。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>索要证书编号，官网查询页核验证书号/持有人/有效期/产品级别，并核对持有人与你采购主体一致</li>
+            <li>有复印件就够了，贴到审核材料里</li>
+            <li>看证书编号里有没有「I」，有就是婴幼儿级</li>
+            <li>工厂是大厂，证书不会假</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q6" data-level="L4" data-kp="jg-handtest" data-q="快速手评六法测得：待评样品「回弹不错、不起球」。这两条结论的问题在哪？" data-a="0" data-exp="手评最大的坑是孤立打分：「回弹不错」「不起球」没有基准就没有信息量——手评的价值不在绝对值，在差异排序。正确姿势是同一天、同一温湿度、同一手法，把待评样品与 1-2 件竞品并排做完六法并记录成表。B 六法不能替代实验室检测，出报告是检测机构的事；C 六法各有分工，混在一起做反而失去可复现性；D 温湿度对手感弹力影响很大，条件不对比不出真差异。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>没有对比基准：孤立结论没有信息量——应与竞品同条件并排测试，记录差异排序</li>
+            <li>手评可以替代实验室检测，直接出报告</li>
+            <li>六法应该混合在一次操作里同时完成</li>
+            <li>温湿度对手评结果没有影响</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q7" data-level="L4" data-kp="jg-teardown" data-q="竞品拆解五步的正确顺序是？" data-a="1" data-exp="拆解五步：① 外观测量（量尺寸、称重、拍照存档）→ ② 拆缝线（线迹类型、针距、加固）→ ③ 拆面料层次（表布/里布/衬垫各层）→ ④ 成分观察与称重（燃烧观察仅示意、逐层称重）→ ⑤ 拆辅料（橡筋、钢圈、背扣、唛头）。先外后内、先整体后局部——先拆缝线就量不到整件尺寸了。A 跳过外观测量丢失基准数据；C 燃烧只能分辨纤维族，先做成分会带着错误预期拆结构；D 辅料信息附着在结构上，最后拆才完整。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>拆缝线 → 拆层次 → 外观测量 → 拆辅料</li>
+            <li>外观测量 → 拆缝线 → 拆面料层次 → 成分观察与称重 → 拆辅料</li>
+            <li>先燃烧看成分 → 再拆结构 → 最后量尺寸</li>
+            <li>拆辅料 → 拆缝线 → 称重 → 外观测量</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q8" data-level="L3" data-kp="jg-techpack" data-q="审查一份内裤规格书：有款式图、尺寸表、BOM、工艺说明、测试要求、包装唛头，但没有验收标准（AQL 与判定处置）。这个缺口的后果是？" data-a="0" data-exp="规格书七件套里「验收标准」回答「这批货收还是不收」：没有 AQL 等级、检验依据与拒收处置，验货就没有共同尺子——疵点怎么算、超了怎么办全靠现场吵，品质条款形同虚设。B 尺寸表管不了外观疵点与批次判定；C 品牌自检同样需要抽样规则，全检不现实；D 「出问题再谈」恰恰把谈判筹码让给了工厂——标准要写进合同附件才有牙齿。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>验货没有判定依据：疵点分类、抽样方案、拒收处置都无法执行，品质条款落空</li>
+            <li>影响不大，尺寸表已经足够约束品质</li>
+            <li>品牌可以自己全检，不需要抽样规则</li>
+            <li>出问题后再和工厂谈处置就行</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q9" data-level="L3" data-kp="jg-case" data-q="教学案例：A 款「精梳棉女内裤」实为 32S 普梳棉 200g/m²（零售 29 元）；B 款为 40S 精梳棉 170g/m² 双层裆四线工艺（零售 39 元），出厂价差约 0.8 元。A 款的竞争策略错在哪？" data-a="1" data-exp="A 款把成本做「厚」而不是做「好」：用更厚的布掩盖低支普梳纱——厚 ≠ 好，短绒多易起球、手感糙，克重反而在同价位里更亏。B 款把 0.8 元差价花在可感知、可验证处（精梳细腻、双层裆卫生、四线耐洗），支撑 10 元零售差与复购。A 的做法正是「低质·低价」象限的做法；C 成本与品质本来就该一起看；D 克重高低是手段不是目的，脱离用途谈克重没有意义。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>定价太低，应该卖到 39 元同价竞争</li>
+            <li>把成本做「厚」而不是做「好」：加厚遮丑掩盖低支普梳，钱没花在可感知可验证处</li>
+            <li>成本控制太严，应该同时升级纱支与克重</li>
+            <li>克重越高越好，200g/m² 反而是优势</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q10" data-level="L5" data-kp="jg-gate" data-q="样品评审：一款内裤版型、面料、车缝全部接近满分，质量分 88%，但成分定量检出氨纶 3%（标 8%），GB 18401 报告也过了。按红线+加权评分体系，正确结论是？" data-a="0" data-exp="合规红线与可权衡质量是两套独立的判断：成分一致属于红线（一票否决、不可被高分抵消）——检出氨纶 3% vs 标 8%，已超出 GB/T 29862 的 ≤10% 允差（±3），属虚标，红线不通过 → 直接淘汰，88% 的质量分不参与决策。这正是「红线不进加权」的机制意义：防止「分数好看但带病」。B 把合规当成可以权衡的 15% 权重项，正是被修复的旧版评分表的漏洞；C 违规虚标不是话术问题；D 批量成本越高、法律与口碑风险越大。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>红线不通过（成分虚标），一票否决：直接淘汰，质量分 88% 不参与决策</li>
+            <li>综合得分仍有 88%×85%+15%×低分，加权后可下单</li>
+            <li>成分标改小数字改成 3% 即可上架</li>
+            <li>虚标仅影响文案，品质好就能卖</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q11" data-level="L5" data-kp="jg-cross" data-q="跨章综合：供应商报价一款女士内裤——「兰精莫代尔 100%（氨纶除外）汗布 180g/m²，出厂 3.2 元」。评审时你按什么顺序核对它的真实性？" data-a="1" data-exp="顺序对应三层证据链（纤维篇→标准篇→实战篇）：① 商标纤维要授权凭证（兰精吊牌/授权书）——「莫代尔」与「兰精莫代尔」成分标都写莫代尔，品牌要靠供应链单据核验；② 成分标合规性——「100%（氨纶除外）」必须满足氨纶 ≤5% 且注明除外，否则违规（GB/T 29862）；③ 实物验证——第三方 GB/T 2910 定量＋实测克重对照报价；④ 成本合理性——180g/m² 莫代尔汗布对 3.2 元出厂价做 BOM 反推。A 顺序反了：先打样是把验证责任推给市场；C 「手感像」不构成任何证据；D 只测成分无法发现克重与价格水分。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>直接下试单，让消费者检验</li>
+            <li>授权凭证 → 成分标合规（除外写法与氨纶 ≤5%）→ GB/T 2910 定量＋实测克重 → 出厂价 BOM 反推</li>
+            <li>摸手感判断，像莫代尔就行</li>
+            <li>只做成分定量，其余不测</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q12" data-level="L5" data-kp="jg-cross" data-q="跨章综合：一款运动文胸宣称「高强度减震」，采购评审时应如何组织证据链？" data-a="0" data-exp="完整证据链跨四篇：① 承托设计合理性（人体工学篇：底盘/下扒/肩带分工，复合式结构）——看版型结构而非文案；② 材料真实性（纤维/面料篇：锦氨弹力网克重回弹、模杯材料、FZ/T 74002 对应的功能项数据）；③ 合规底线（质量篇：GB 18401 B 类报告 + 罩杯尺码标注规范）；④ 供应商能力（实战篇：有运动文胸开发记录的工厂＋试穿验证数据）。B 标准只覆盖部分功能项，版型与材料证据不可替代；C 减震是「减震率+位移控制」的结构结果，弹性大反而位移大；D 网红数据无法核验主体与样品，只作参考。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>结构（承托底盘设计）→ 材料（弹力网/模杯参数与 FZ/T 74002 对应数据）→ 合规（GB 18401 报告与尺码标注）→ 供应商（开发记录与试穿验证）</li>
+            <li>只看 FZ/T 74002 报告，其他不用查</li>
+            <li>面料弹性越大减震越好，测弹力即可</li>
+            <li>采信网红试穿测评数据即可</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q13" data-level="L4" data-kp="jg-perception" data-q="面料主管提议：把主力内裤纱支从 40S 提到 60S（出厂 +0.6 元，示例），宣称「手感明显升级」。按感知分级框架评估，这笔钱该花吗？" data-a="1" data-exp="纱支提升属于「弱感知」差异：实验室可测、上身体感多数消费者难分辨，+0.6 元换不来详情页可验证的卖点，也不减少差评。除非该升级同时服务「洗后感知」（如更细纱起球更少），否则优先级应让位于强感知与洗后感知项（橡筋、里裆、腰头）。A「手感明显」往往是对着样品吹毛求疵的从业错觉，消费者的第一触点在穿着工况中；C 与 D 都没有回应「感知分级」这一判断框架——营销可以放大真实差异，但放不大消费者感受不到的差异。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>该花：手感是第一体验，详情页立刻写「60S 高支」</li>
+            <li>缓投：纱支是弱感知差异——优先把同样的预算投给强感知与洗后感知项（橡筋/里裆/腰头），除非纱支升级同时改善起球等洗后指标</li>
+            <li>该花：成本涨 12% 说明面料档次整体提高</li>
+            <li>不该花：所有看不见摸不着的升级都拒绝</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q14" data-level="L5" data-kp="jg-waterfall jg-perception" data-q="零售复盘：内裤定价 39 元（出厂 5 元），投流费用从占定价 20% 涨到 35%，月利润由正转负。运营提议「出厂压到 4.2 元补利润」。按零售价瀑布与感知分级，正确的判断是？" data-a="2" data-exp="利润转负的科目是「渠道成本」（投流 20%→35%），不是「货值」——压出厂价 0.8 元只补回定价 2%，对 15 个百分点的投流涨幅是杯水车薪，且大概率触发偷工（橡筋/里裆降级→洗后差评→退货率升→逆向成本再涨），瀑布的两段恶性联动。正确动作是把账拆到科目：先查投流 ROI 与转化（渠道科目），再查退货原因归档（品质科目），「高质价比」的利润来自渠道效率与低退货，不是货值。A C 都在错误的科目上动刀；D 关店止损回避了归因。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>同意压价：出厂价是唯一能自己控制的科目，能省则省</li>
+            <li>反向操作：把出厂提到 6 元换更高品质，自然有人买单</li>
+            <li>先拆科目：利润漏洞在投流（+15% 定价）而非货值——查投流 ROI 与退货归档（退货率升会经逆向成本放大亏损），压出厂价只补 2% 且可能触发偷工-差评-退货的恶性循环</li>
+            <li>立即下架该 SKU 止损，换新品重来</li>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz" data-quiz="sourcing-judgment-q15" data-level="L3" data-kp="jg-verify3" data-q="新品内裤大货前要做消费者验证。以下做法最符合本页「试穿、洗测、回访」三步的是？" data-a="0" data-exp="正确组合＝目标人群 3-5 人覆盖中间码与两端码、穿满一个工作日（含久坐/通勤工况）＋固定问卷（勒/痒/卷边/下滑）＋按洗标机洗 3-5 次对比封样＋上市后退货原因按「尺码/品质/预期」三栏按月归档。B 员工不是目标人群画像，试穿半天覆盖不了久坐工况；C 挂晾 vs 机洗是两个世界——不按洗标机洗的「耐洗」是假数据；D 三个品类的差评结构不同（文胸七成尺码问题），退货不归档等于白交学费。">
+        <div class="quiz-body">
+          <div class="quiz-opts">
+            <li>目标人群 3-5 人穿满一个工作日＋固定四问问卷；机洗 3-5 次对比封样；上市后退货原因按「尺码/品质/预期」三栏按月归档</li>
+            <li>让公司女同事每人试穿半天，收集口头感受</li>
+            <li>样品挂阳台晾晒一个月没变形就算耐洗达标</li>
+            <li>退货统一记「七天无理由」，不做细分归档</li>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 </div>
 
 <script src="../../assets/js/glossary.js"></script>
 <script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/knowledge-map.js"></script>
 <script src="../../assets/js/widgets.js"></script>
 <script src="../../assets/js/app.js"></script>
 <script>
-/* 页面专属交互：样品评审评分表 → 加权结论 */
+/* 页面专属交互：样品评审评分表 → 红线判定 + 加权结论 */
 window.__SORAN_PAGE_INIT__ = function () {
   (function () {
     var LS_KEY = 'soran-textbook-v1';
@@ -681,10 +874,15 @@ window.__SORAN_PAGE_INIT__ = function () {
     var verdict = document.getElementById('sample-verdict');
     if (!root || !verdict) return;
 
-    /* 权重（与 DOM data-weight 一致，Soran 建议权重，总和 100） */
-    var weights = [];
+    /* 行配置（与 DOM data-* 一致；gate=true 为合规红线行，不参与加权） */
+    var rows = [];
     Array.prototype.forEach.call(root.querySelectorAll('.rate-row'), function (r) {
-      weights.push({ key: r.getAttribute('data-key'), w: parseFloat(r.getAttribute('data-weight')) || 1 });
+      rows.push({
+        key: r.getAttribute('data-key'),
+        w: parseFloat(r.getAttribute('data-weight')) || 1,
+        gate: r.getAttribute('data-gate') === '1',
+        gmin: parseInt(r.getAttribute('data-gate-min'), 10) || 4
+      });
     });
     var MAXW = 5; /* 评分档 1-5 */
 
@@ -696,27 +894,45 @@ window.__SORAN_PAGE_INIT__ = function () {
     }
     function render() {
       var vals = readRate();
-      var total = 0, max = 0, done = 0;
-      weights.forEach(function (it) {
-        max += MAXW * it.w;
+      var total = 0, max = 0, qDone = 0, qTotal = 0;
+      var gateFail = false, gateUnset = false, gatePass = 0, gateTotal = 0, failKeys = [];
+      rows.forEach(function (it) {
         var v = vals[it.key];
-        if (v) { total += v * it.w; done++; }
+        if (it.gate) {
+          gateTotal++;
+          if (!v) gateUnset = true;
+          else if (v >= it.gmin) gatePass++;
+          else { gateFail = true; failKeys.push(it.key); }
+        } else {
+          qTotal++;
+          max += MAXW * it.w;
+          if (v) { total += v * it.w; qDone++; }
+        }
       });
       var pct = max ? Math.round(total / max * 100) : 0;
-      if (done < weights.length) {
-        verdict.style.background = 'var(--surface-2)';
-        verdict.style.borderLeft = 'none';
-        verdict.innerHTML = '<b>评审结论：</b>已评 ' + done + ' / ' + weights.length + ' 项，当前加权得分 <b>' + pct +
-          '%</b>。评满后按以下分段给出结论：≥85% 优先大货 · 70-85% 修改复评 · &lt;70% 淘汰。';
+      var setBg = function (c) { verdict.style.background = c; };
+
+      if (gateFail || gateUnset) {
+        setBg('var(--clay-soft)');
+        var why = gateFail ? '红线项不达标（评分 ≤3 视为不合格）' : '红线项尚未确认（未评 = 不通过）';
+        verdict.innerHTML = '<b>评审结论：淘汰该样品——合规红线未通过（' + why + '）。</b>' +
+          '安全合规、成分真实、安全细节属于不可妥协项，<b>不能被其他高分项抵消</b>：质量分 ' + pct +
+          '% 再高，只要红线未过就不允许下单。先整改红线问题并取得可核验报告，再重新送样评审。';
+        return;
+      }
+      if (qDone < qTotal) {
+        setBg('var(--surface-2)');
+        verdict.innerHTML = '<b>评审结论：</b>红线 ' + gatePass + ' / ' + gateTotal + ' 通过 ✓；质量项已评 ' + qDone + ' / ' + qTotal +
+          '，当前质量分 <b>' + pct + '%</b>。评满后按分段给出结论：≥85% 优先大货 · 70-85% 修改复评 · &lt;70% 淘汰。';
       } else if (pct >= 85) {
-        verdict.style.background = 'var(--green-soft)';
-        verdict.innerHTML = '<b>评审结论：优先安排大货（' + pct + '%）。</b>样品达到封样基准，可将规格书与验收标准定稿下单；仍建议首件确认与大货抽检不省略。';
+        setBg('var(--green-soft)');
+        verdict.innerHTML = '<b>评审结论：优先安排大货（质量分 ' + pct + '%，红线 ' + gatePass + '/' + gateTotal + ' 通过）。</b>样品达到封样基准，可将规格书与验收标准定稿下单；仍建议首件确认与大货抽检不省略。';
       } else if (pct >= 70) {
-        verdict.style.background = 'var(--gold-soft)';
-        verdict.innerHTML = '<b>评审结论：修改后复评（' + pct + '%）。</b>先逐项查看低分项，定位是版型、材料还是工艺问题，写清修改要求后再打一轮修改样；复评仍低于 85% 则考虑换供应商或改方案。';
+        setBg('var(--gold-soft)');
+        verdict.innerHTML = '<b>评审结论：修改后复评（质量分 ' + pct + '%，红线已通过）。</b>先逐项查看低分项，定位是版型、材料还是工艺问题，写清修改要求后再打一轮修改样；复评仍低于 85% 则考虑换供应商或改方案。';
       } else {
-        verdict.style.background = 'var(--clay-soft)';
-        verdict.innerHTML = '<b>评审结论：淘汰该样品（' + pct + '%）。</b>低分项若集中于版型与车缝（权重 45%），说明工厂能力边界如此，换方案或换厂比反复修改更省时间。';
+        setBg('var(--clay-soft)');
+        verdict.innerHTML = '<b>评审结论：淘汰该样品（质量分 ' + pct + '%，红线已通过）。</b>低分项若集中于版型、面料与车缝（权重 75%），说明工厂能力边界如此，换方案或换厂比反复修改更省时间。';
       }
     }
     /* 点击打分点后（widgets 同步写 localStorage），下一轮读取并刷新结论 */

@@ -248,6 +248,26 @@
         var b = el('span', 'q-badge', '自测');
         head.insertBefore(b, head.firstChild);
       }
+      /* 认知层级徽标 + 知识点标签（知识覆盖型自测，R3） */
+      var KMAP = window.SORAN_KMAP || null;
+      var level = qEl.getAttribute('data-level') || '';
+      if (level && KMAP && KMAP.levels[level]) {
+        head.appendChild(el('span', 'q-level q-lv-' + level.toLowerCase(), level + ' · ' + KMAP.levels[level]));
+      }
+      var kpIds = (qEl.getAttribute('data-kp') || '').split(/\s+/).filter(Boolean);
+      if (kpIds.length && KMAP) {
+        var pmeta = KMAP.pages[document.body.getAttribute('data-page-id')];
+        if (pmeta && pmeta.points) {
+          var nameOf = {};
+          pmeta.points.forEach(function (p) { nameOf[p.id] = p; });
+          kpIds.forEach(function (k) {
+            if (nameOf[k]) {
+              var t = el('span', 'q-kp' + (nameOf[k].core ? ' q-kp-core' : ''), nameOf[k].name);
+              head.appendChild(t);
+            }
+          });
+        }
+      }
       opts.forEach(function (o, i) {
         if (!o.classList.contains('quiz-opt')) {
           var text = o.innerHTML;
@@ -311,6 +331,107 @@
 
       if (saved === true || saved === false) apply(saved === true ? ans : -2);
     });
+  }
+
+  /* ---------------- 章末知识点覆盖面板（R3） ---------------- */
+  function buildKpPanel() {
+    var pid = document.body.getAttribute('data-page-id');
+    if (!pid || pid === 'home' || pid === 'guide') return;
+    var KMAP = window.SORAN_KMAP;
+    var meta = KMAP && KMAP.pages[pid];
+    if (!meta || !meta.points || !meta.points.length) return;
+    var content = document.querySelector('.content');
+    if (!content) return;
+
+    /* 收集本页自测题 */
+    var quizzes = [];
+    document.querySelectorAll('.quiz[data-quiz]').forEach(function (qEl) {
+      quizzes.push({
+        id: qEl.getAttribute('data-quiz'),
+        level: qEl.getAttribute('data-level') || '',
+        kps: (qEl.getAttribute('data-kp') || '').split(/\s+/).filter(Boolean)
+      });
+    });
+    if (!quizzes.length) return;
+
+    var byKp = {};
+    quizzes.forEach(function (q) {
+      q.kps.forEach(function (k) { (byKp[k] = byKp[k] || []).push(q); });
+    });
+
+    /* 层级分布 */
+    var lvCount = { L1: 0, L2: 0, L3: 0, L4: 0, L5: 0 };
+    quizzes.forEach(function (q) { if (lvCount[q.level] !== undefined) lvCount[q.level]++; });
+
+    /* 知识点状态 */
+    function pointState(p) {
+      var qs = byKp[p.id] || [];
+      if (!qs.length) return { cls: 'gap', label: p.core ? '⚠ 覆盖缺口' : '未挂题', qs: 0 };
+      var n = 0, right = 0, wrong = 0;
+      qs.forEach(function (q) {
+        n++;
+        var v = state.quiz[q.id];
+        if (v === true) right++;
+        else if (v === false) wrong++;
+      });
+      if (right === n) return { cls: 'ok', label: '已掌握', qs: n };
+      if (wrong > 0) return { cls: 're', label: '答错待复习', qs: n };
+      return { cls: 'todo', label: '未测试', qs: n };
+    }
+
+    var cores = meta.points.filter(function (p) { return p.core; });
+    var others = meta.points.filter(function (p) { return !p.core; });
+    var answered = 0, correct = 0;
+    quizzes.forEach(function (q) {
+      var v = state.quiz[q.id];
+      if (v === true || v === false) answered++;
+      if (v === true) correct++;
+    });
+    var gaps = cores.filter(function (p) { return !(byKp[p.id] || []).length; });
+
+    var h = '';
+    h += '<div class="kp-head"><span class="kp-title">本章知识点覆盖面板</span>' +
+      '<span class="kp-stat">知识点 <b>' + meta.points.length + '</b>（核心 ' + cores.length + '）· 自测题 <b>' + quizzes.length + '</b> 道 · 已答 ' + answered + ' · 正确 ' + correct + '</span></div>';
+
+    h += '<div class="kp-levels">';
+    Object.keys(lvCount).forEach(function (lv) {
+      h += '<span class="kp-lv q-lv-' + lv.toLowerCase() + (lvCount[lv] ? '' : ' zero') + '">' + lv + ' ' + KMAP.levels[lv] + ' × ' + lvCount[lv] + '</span>';
+    });
+    h += '</div>';
+
+    if (gaps.length) {
+      h += '<div class="kp-alert">⚠ 以下核心知识点暂无题目覆盖：' + gaps.map(function (p) { return esc(p.name); }).join('、') + '</div>';
+    }
+
+    h += '<div class="kp-list">';
+    cores.forEach(function (p) {
+      var s = pointState(p);
+      var lv = KMAP.levels[p.level] || '';
+      h += '<div class="kp-row"><span class="kp-chip ' + s.cls + '">' + s.label + '</span>' +
+        '<span class="kp-name">' + esc(p.name) + '</span>' +
+        '<span class="kp-meta">' + lv + ' · ' + s.qs + ' 题</span></div>';
+    });
+    h += '</div>';
+
+    if (others.length) {
+      h += '<details class="kp-more"><summary>其他知识点（' + others.length + '）</summary><div class="kp-list kp-sub">';
+      others.forEach(function (p) {
+        var s = pointState(p);
+        h += '<div class="kp-row"><span class="kp-chip ' + s.cls + '">' + s.label + '</span>' +
+          '<span class="kp-name">' + esc(p.name) + '</span>' +
+          '<span class="kp-meta">' + (KMAP.levels[p.level] || '') + ' · ' + s.qs + ' 题</span></div>';
+      });
+      h += '</div></details>';
+    }
+
+    h += '<div class="kp-tip">覆盖面板说明：每道自测题按「认知层次（L1 识记 → L5 综合决策）」与所属知识点标注；核心知识点必须得到有效考查。答错的知识点建议回到对应小节复习后再重做。</div>';
+
+    var panel = el('div', 'kp-panel');
+    panel.id = 'kp-panel';
+    panel.innerHTML = h;
+    var pager = document.getElementById('page-pager');
+    if (pager) content.insertBefore(panel, pager);
+    else content.appendChild(panel);
   }
 
   /* ---------------- 全局搜索 ---------------- */
@@ -484,6 +605,7 @@
     initKeys();
     buildPager();
     buildPageToc();
+    buildKpPanel();
     if (window.SORAN_WIDGETS && window.SORAN_WIDGETS.initAll) window.SORAN_WIDGETS.initAll();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
