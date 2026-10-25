@@ -240,7 +240,11 @@
       var opts = Array.prototype.slice.call(qEl.querySelectorAll('.quiz-opts > li, .quiz-opts > .quiz-opt'));
 
       var head = qEl.querySelector('.quiz-head');
-      if (head && !head.querySelector('.q-badge')) {
+      if (!head) {
+        head = el('div', 'quiz-head');
+        qEl.insertBefore(head, qEl.firstChild);
+      }
+      if (!head.querySelector('.q-badge')) {
         var b = el('span', 'q-badge', '自测');
         head.insertBefore(b, head.firstChild);
       }
@@ -256,6 +260,15 @@
       });
 
       var body = qEl.querySelector('.quiz-body') || qEl;
+      if (q) {
+        var qText = qEl.querySelector('.quiz-q');
+        if (!qText) {
+          qText = el('p', 'quiz-q');
+          var optsWrap = qEl.querySelector('.quiz-opts');
+          body.insertBefore(qText, optsWrap || body.firstChild);
+        }
+        qText.textContent = q;
+      }
       var expEl = qEl.querySelector('.quiz-exp');
       if (!expEl) { expEl = el('div', 'quiz-exp'); body.appendChild(expEl); }
       expEl.innerHTML = '<b>解析：</b>' + exp;
