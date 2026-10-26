@@ -59,6 +59,24 @@ for (const m of html.matchAll(/<script(?:\s+[^>]*)?>([\s\S]*?)<\/script>/g)){
  if(!m[1].trim())continue;
  try{new vm.Script(m[1],{filename:file});}catch(e){errors.push('页面 JS 语法错误: '+e.message);}
 }
+
+/* 独立检查页面宽度与 @scope 转换问题，避免 CSS 解析失败但 JS 门禁通过。 */
+const layoutStyle = html.match(/<style id="soran-v3-integrated-style">([\s\S]*?)<\/style>/);
+const fixedStyle = html.match(/<style id="soran-v3-responsive-layout-fix">([\s\S]*?)<\/style>/);
+assert(!!layoutStyle && !!fixedStyle, 'V3 布局样式与独立兜底样式必须存在');
+if(layoutStyle) {
+  assert(!/\.\s*:scope\s*\{/.test(layoutStyle[1]), '检测到无效 CSS 选择器 .:scope');
+  assert(/\.body\s*\{\s*max-width\s*:\s*1130px/.test(layoutStyle[1]), '缺少 V3 原版正文最大宽度');
+}
+if(fixedStyle) {
+  assert(/#soran-v3-root\s*>\s*main\.body\s*\{[^}]*max-width\s*:\s*1130px/s.test(fixedStyle[1]), '缺少带命名空间的宽度兜底');
+  for(const [width,pad] of [[1200,32],[890,28],[600,18]]) {
+    const m = fixedStyle[1].match(new RegExp('@media\\s*\\(max-width\\s*:\\s*'+width+'px\\)\\s*\\{([\\s\\S]*?)\\n\\}'));
+    assert(!!m && new RegExp('padding\\s*:[^;]*\\s'+pad+'px').test(m[1]), '缺少 '+width+'px 的响应式侧边留白');
+  }
+  assert(/\.chapter\s*>\s*\.chapter-sub/.test(fixedStyle[1]), '缺少普通文字宽度限制');
+}
+
 if(warn.length)console.warn(warn.join('\n'));
 if(errors.length){console.error('纤维 V3 质量门禁失败 ('+errors.length+')\n'+errors.join('\n'));process.exit(1);}
 console.log('PASS V3: '+raw.length+' questions, answer distribution '+counts.join('/'));
