@@ -46,6 +46,52 @@ revoke all on public.annotations from anon;
 grant select, insert, update, delete on public.annotations to authenticated;
 
 -- ------------------------------------------------------------
+-- 学习进度表
+-- kind: read 阅读小节 / quiz 自测对错 / chk 清单勾选 / rate 评分
+-- value 为 jsonb；null 表示该条记录已被用户重置（墓碑）
+-- ------------------------------------------------------------
+create table if not exists public.learning_state (
+  user_id uuid not null default auth.uid() references auth.users (id) on delete cascade,
+  kind text not null check (kind in ('read', 'quiz', 'chk', 'rate')),
+  item_key text not null check (char_length(item_key) between 1 and 200),
+  value jsonb,
+  updated_at timestamptz not null default now(),
+  primary key (user_id, kind, item_key),
+  constraint learning_state_value_type check (
+    value is null or jsonb_typeof(value) in ('array', 'boolean', 'object')
+  )
+);
+
+alter table public.learning_state enable row level security;
+
+drop policy if exists "learning_state_own" on public.learning_state;
+create policy "learning_state_own"
+  on public.learning_state
+  for all
+  to authenticated
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
+
+revoke all on public.learning_state from anon;
+grant select, insert, update, delete on public.learning_state to authenticated;
+
+-- 每次写入由服务端刷新 updated_at，避免设备时钟偏差影响合并顺序
+create or replace function public.learning_state_touch()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists learning_state_touch on public.learning_state;
+create trigger learning_state_touch
+  before insert or update on public.learning_state
+  for each row execute function public.learning_state_touch();
+
+-- ------------------------------------------------------------
 -- 保活心跳表
 -- 外部定时器每天请求一次：
 --   GET https://<project-ref>.supabase.co/rest/v1/heartbeat?select=id&limit=1

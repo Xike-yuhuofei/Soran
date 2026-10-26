@@ -49,10 +49,24 @@
   } catch (e) { /* file:// 下个别浏览器禁用时静默降级 */ }
 
   function save() {
-    try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {}
+    try {
+      /* 只写本模块负责的字段，避免覆盖 widgets.js 刚写入的清单/评分 */
+      var cur = {};
+      try {
+        var raw = localStorage.getItem(LS_KEY);
+        if (raw) { var prev = JSON.parse(raw); if (prev && typeof prev === 'object') cur = prev; }
+      } catch (e) {}
+      cur.read = state.read;
+      cur.quiz = state.quiz;
+      if (state.secCount) cur.secCount = state.secCount;
+      localStorage.setItem(LS_KEY, JSON.stringify(cur));
+    } catch (e) {}
+    try { document.dispatchEvent(new Event('soran:state-saved')); } catch (e) {}
   }
   function pageProgress(pid) {
-    var total = document.querySelectorAll('[data-sec]').length;
+    /* 分母优先取该章节自身存储的小节数 secCount，而不是"当前页面"的 DOM 小节数，
+       否则用当前页的小节数去判断其他章节，会导致已读完的 ✓ 跳页后时有时无 */
+    var total = (state.secCount && state.secCount[pid]) || document.querySelectorAll('[data-sec]').length;
     if (!total) return null;
     var read = (state.read[pid] || []).length;
     return Math.min(1, read / total);
@@ -73,7 +87,9 @@
     return d;
   }
   function rootPath() {
-    return document.body.getAttribute('data-root') || '.';
+    /* data-root 形如 "../"、"../../"；去掉尾部斜杠，避免拼接后产生空路径段，
+       否则每切换一次页面 URL 就会多出一个 "/"（如 /Soran//pages/...） */
+    return (document.body.getAttribute('data-root') || '.').replace(/\/+$/, '');
   }
 
   /* ---------------- 侧边栏 ---------------- */
@@ -596,7 +612,17 @@
   }
 
   /* ---------------- 启动 ---------------- */
+  function normalizeUrl() {
+    /* 旧地址可能带有多余斜杠（如 /Soran/////pages/...），先收敛为单斜杠，
+       避免后续相对链接继续带上空路径段 */
+    try {
+      var p = location.pathname.replace(/\/{2,}/g, '/');
+      if (p !== location.pathname) history.replaceState(null, '', p + location.search + location.hash);
+    } catch (e) { /* file:// 或受限环境下静默降级 */ }
+  }
+
   function boot() {
+    normalizeUrl();
     buildSidebar();
     buildMenuBtn();
     initProgress();

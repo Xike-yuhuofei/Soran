@@ -14,11 +14,16 @@
 
   var AUTH_KEY = 'soran-auth-v1';
   var CACHE_PREFIX = 'soran-ann-cache-v1:';
+  var PROGRESS_KEY = 'soran-textbook-v1';
+  var PROGRESS_META_KEY = 'soran-progress-meta-v1';
+  var PROGRESS_BACKUP_PREFIX = 'soran-progress-backup-v1:';
+  var PROGRESS_KINDS = ['read', 'quiz', 'chk', 'rate'];
   var BLOCK_SELECTOR = 'p, li, td, th, blockquote, figcaption, dt, dd, h1, h2, h3, h4, h5, h6, .kv-k, .kv-v';
   var MAX_QUOTE = 1200;
   var REQUEST_TIMEOUT = 20000;
 
   var session = loadSession();
+  var refreshPromise = null;
   var annotations = [];
   var blockEls = [];
   var markRects = [];
@@ -144,7 +149,15 @@
     return { needsConfirm: true };
   }
 
-  async function refreshSession() {
+  function refreshSession() {
+    /* 笔记与学习进度可能同时触发刷新，共用同一个刷新请求，避免旧 refresh token 被并发作废 */
+    if (refreshPromise) return refreshPromise;
+    refreshPromise = doRefreshSession();
+    refreshPromise.then(function () { refreshPromise = null; }, function () { refreshPromise = null; });
+    return refreshPromise;
+  }
+
+  async function doRefreshSession() {
     if (!session || !session.refresh_token) throw httpError('登录已过期', 401);
     var data = await authRequest('/auth/v1/token?grant_type=refresh_token', {
       refresh_token: session.refresh_token
@@ -256,6 +269,362 @@
     if (/rate limit|too many/i.test(m)) return '请求过于频繁，请稍后再试';
     if (/Failed to fetch|NetworkError|Load failed|aborted/i.test(m)) return '网络不可用，请检查连接';
     return m || '操作失败，请稍后重试';
+  }
+
+  /* ---------------- 学习进度同步 ---------------- */
+  var progressLast = readProgressState();
+  var progressTimer = 0;
+  var progressRetryTimer = 0;
+  var progressSyncing = false;
+  var progressAgain = false;
+
+  function readProgressState() {
+    try {
+      var s = JSON.parse(localStorage.getItem(PROGRESS_KEY) || 'null');
+      if (s && typeof s === 'object') return s;
+    } catch (e) {}
+    return {};
+  }
+  function writeProgressState(s) {
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(s)); } catch (e) {}
+  }
+  function hasOwn(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+  function progressPair(kind, key) { return kind + '\u0000' + key; }
+
+  function loadProgressMeta() {
+    var m = {};
+    try {
+      var p = JSON.parse(localStorage.getItem(PROGRESS_META_KEY) || 'null');
+      if (p && typeof p === 'object') m = p;
+    } catch (e) {}
+    if (!m.owner) m.owner = '';
+    if (!m.ts || typeof m.ts !== 'object') m.ts = {};
+    if (!m.dirty || typeof m.dirty !== 'object') m.dirty = {};
+    PROGRESS_KINDS.forEach(function (k) {
+      if (!m.ts[k] || typeof m.ts[k] !== 'object') m.ts[k] = {};
+      if (!m.dirty[k] || typeof m.dirty[k] !== 'object') m.dirty[k] = {};
+    });
+    return m;
+  }
+  function saveProgressMeta(m) {
+    try { localStorage.setItem(PROGRESS_META_KEY, JSON.stringify(m)); } catch (e) {}
+  }
+
+  /* 统一数组顺序 / 评分对象键顺序，便于比较本地值与云端值 */
+  function progressNorm(kind, v) {
+    if (kind === 'read' || kind === 'chk') {
+      if (!Array.isArray(v)) return [];
+      var seen = {};
+      v.forEach(function (x) { seen[String(x)] = x; });
+      var out = Object.keys(seen).sort(function (a, b) {
+        if (kind === 'chk') return (+a) - (+b);
+        return a < b ? -1 : (a > b ? 1 : 0);
+      }).map(function (k) { return seen[k]; });
+      return kind === 'chk' ? out.map(Number) : out.map(String);
+    }
+    if (kind === 'rate') {
+      var vals = {};
+      if (v && typeof v === 'object' && !Array.isArray(v)) {
+        Object.keys(v).sort().forEach(function (k) {
+          var n = Number(v[k]);
+          if (isFinite(n) && n) vals[k] = n;
+        });
+      }
+      return vals;
+    }
+    if (kind === 'quiz') return v === true ? true : (v === false ? false : null);
+    return v == null ? null : v;
+  }
+  function progressSig(kind, v) { return JSON.stringify(progressNorm(kind, v)); }
+
+  function progressMergeLegacy(kind, localV, cloudV) {
+    if (kind === 'read' || kind === 'chk') {
+      return progressNorm(kind, progressNorm(kind, localV).concat(progressNorm(kind, cloudV)));
+    }
+    if (kind === 'quiz') {
+      if (localV === true || cloudV === true) return true;
+      if (localV === false || cloudV === false) return false;
+      return null;
+    }
+    if (kind === 'rate') {
+      var a = progressNorm('rate', localV);
+      var b = progressNorm('rate', cloudV);
+      return Object.keys(b).length > Object.keys(a).length ? b : a;
+    }
+    return localV;
+  }
+
+  /* localStorage 每次写入后，与上一快照对比，标记变化项并记下本地时间 */
+  function captureProgressChanges() {
+    var next = readProgressState();
+    var meta = loadProgressMeta();
+    var changed = false;
+
+    PROGRESS_KINDS.forEach(function (kind) {
+      var prev = (progressLast && progressLast[kind]) || {};
+      var cur = next[kind] || {};
+      var keys = {};
+      Object.keys(prev).forEach(function (k) { keys[k] = 1; });
+      Object.keys(cur).forEach(function (k) { keys[k] = 1; });
+
+      Object.keys(keys).forEach(function (key) {
+        var a = hasOwn(prev, key) ? prev[key] : undefined;
+        var b = hasOwn(cur, key) ? cur[key] : undefined;
+        if (progressSig(kind, a) === progressSig(kind, b)) return;
+        meta.ts[kind][key] = Date.now();
+        meta.dirty[kind][key] = true;
+        changed = true;
+      });
+    });
+
+    progressLast = next;
+    if (changed) {
+      saveProgressMeta(meta);
+      scheduleProgressPush();
+    }
+  }
+
+  function scheduleProgressPush() {
+    if (!session || !isConfigured()) return;
+    clearTimeout(progressTimer);
+    progressTimer = setTimeout(function () { pushProgressDirty(); }, 900);
+  }
+
+  async function pushProgressDirty() {
+    if (!session || !isConfigured()) return false;
+    var local = readProgressState();
+    var meta = loadProgressMeta();
+    var rows = [];
+    var sent = {};
+
+    PROGRESS_KINDS.forEach(function (kind) {
+      Object.keys(meta.dirty[kind] || {}).forEach(function (key) {
+        var has = hasOwn(local[kind] || {}, key);
+        rows.push({
+          user_id: session.user.id,
+          kind: kind,
+          item_key: key,
+          value: has ? progressNorm(kind, local[kind][key]) : null
+        });
+        sent[progressPair(kind, key)] = meta.ts[kind][key] || 0;
+      });
+    });
+    if (!rows.length) return true;
+
+    try {
+      var res = await rest('/rest/v1/learning_state?on_conflict=user_id,kind,item_key', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Prefer': 'resolution=merge-duplicates,return=representation'
+        },
+        body: JSON.stringify(rows)
+      });
+
+      var fresh = loadProgressMeta();
+      var serverTs = {};
+      (Array.isArray(res) ? res : []).forEach(function (r) {
+        serverTs[progressPair(r.kind, r.item_key)] = Date.parse(r.updated_at) || Date.now();
+      });
+
+      Object.keys(sent).forEach(function (sig) {
+        var i = sig.indexOf('\u0000');
+        var kind = sig.slice(0, i);
+        var key = sig.slice(i + 1);
+        /* 上传期间该条又被改动，或服务端未回传时间：保留 dirty，等待下一轮 */
+        if ((fresh.ts[kind][key] || 0) !== sent[sig] || !serverTs[sig]) return;
+        fresh.ts[kind][key] = serverTs[sig];
+        delete fresh.dirty[kind][key];
+      });
+
+      saveProgressMeta(fresh);
+      return true;
+    } catch (e) {
+      if (e.status === 401) updateAccountUI();
+      clearTimeout(progressRetryTimer);
+      progressRetryTimer = setTimeout(function () {
+        if (navigator.onLine !== false) pushProgressDirty();
+      }, 15000);
+      return false;
+    }
+  }
+
+  /* 云端为主账号数据，本地按条合并；返回是否改写了本地状态 */
+  function mergeCloudProgress(rows) {
+    var local = readProgressState();
+    var meta = loadProgressMeta();
+    var cloud = {};
+    (rows || []).forEach(function (r) {
+      if (PROGRESS_KINDS.indexOf(r.kind) < 0 || !r.item_key) return;
+      if (!cloud[r.kind]) cloud[r.kind] = {};
+      cloud[r.kind][r.item_key] = { value: r.value, ts: Date.parse(r.updated_at) || 0 };
+    });
+
+    var changed = false;
+    PROGRESS_KINDS.forEach(function (kind) {
+      var loc = local[kind] || {};
+      var ts = meta.ts[kind] || {};
+      var dirty = meta.dirty[kind] || {};
+      var cloudKind = cloud[kind] || {};
+      var keys = {};
+      Object.keys(loc).forEach(function (k) { keys[k] = 1; });
+      Object.keys(cloudKind).forEach(function (k) { keys[k] = 1; });
+
+      Object.keys(keys).forEach(function (key) {
+        var hasLoc = hasOwn(loc, key);
+        var cell = cloudKind[key];
+        var lts = ts[key] || 0;
+
+        /* 本地新增、云端还没有 */
+        if (!cell) {
+          if (hasLoc) {
+            if (!lts) ts[key] = Date.now();
+            dirty[key] = true;
+          }
+          return;
+        }
+
+        var cts = cell.ts || 0;
+
+        /* 云端墓碑：用户已重置这条记录 */
+        if (cell.value === null) {
+          if (hasLoc && lts > cts) { dirty[key] = true; return; }
+          if (hasLoc) { delete loc[key]; delete ts[key]; delete dirty[key]; changed = true; }
+          return;
+        }
+
+        /* 云端有、本地没有 */
+        if (!hasLoc) {
+          loc[key] = progressNorm(kind, cell.value);
+          ts[key] = cts;
+          delete dirty[key];
+          changed = true;
+          return;
+        }
+
+        var lv = loc[key];
+        var cv = progressNorm(kind, cell.value);
+        var same = progressSig(kind, lv) === progressSig(kind, cv);
+
+        /* 双方都有时间戳：按时间取新 */
+        if (lts && cts && lts !== cts) {
+          if (lts > cts) { dirty[key] = true; return; }
+          if (!same) { loc[key] = cv; changed = true; }
+          ts[key] = cts;
+          delete dirty[key];
+          return;
+        }
+        if (lts && cts) {
+          if (!same) {
+            if (dirty[key]) return;
+            loc[key] = cv;
+            changed = true;
+          }
+          delete dirty[key];
+          return;
+        }
+
+        /* 老数据没有时间戳：按类型合并后回传，建立云端记录 */
+        var merged = progressMergeLegacy(kind, lv, cv);
+        if (progressSig(kind, lv) !== progressSig(kind, merged)) {
+          loc[key] = merged;
+          changed = true;
+        }
+        ts[key] = Date.now();
+        dirty[key] = true;
+      });
+
+      local[kind] = loc;
+      meta.ts[kind] = ts;
+      meta.dirty[kind] = dirty;
+    });
+
+    writeProgressState(local);
+    saveProgressMeta(meta);
+    progressLast = local;
+    return changed;
+  }
+
+  function reloadForProgressSync() {
+    try {
+      var last = parseInt(sessionStorage.getItem('soran-progress-reload-at') || '0', 10);
+      if (Date.now() - last < 5000) return;
+      sessionStorage.setItem('soran-progress-reload-at', String(Date.now()));
+      sessionStorage.setItem('soran-progress-toast', '学习进度已同步');
+    } catch (e) {}
+    location.reload();
+  }
+
+  async function syncLearningProgress(opts) {
+    opts = opts || {};
+    if (!isConfigured() || !session) return false;
+    if (progressSyncing) { progressAgain = true; return false; }
+
+    progressSyncing = true;
+    var changed = false;
+    try {
+      await ensureSession();
+      if (!session) throw httpError('请先登录', 401);
+
+      /* 先拉取，成功后再决定是否切换本机进度归属，避免表未建时清空本地记录 */
+      var rows = await rest('/rest/v1/learning_state?select=kind,item_key,value,updated_at');
+      var meta = loadProgressMeta();
+      var local = readProgressState();
+
+      if (meta.owner && meta.owner !== session.user.id) {
+        try {
+          localStorage.setItem(PROGRESS_BACKUP_PREFIX + meta.owner, JSON.stringify(local));
+        } catch (e) {}
+        PROGRESS_KINDS.forEach(function (k) { local[k] = {}; });
+        writeProgressState(local);
+        meta = { owner: session.user.id, ts: {}, dirty: {} };
+        PROGRESS_KINDS.forEach(function (k) { meta.ts[k] = {}; meta.dirty[k] = {}; });
+        saveProgressMeta(meta);
+        changed = true;
+      } else if (!meta.owner) {
+        meta.owner = session.user.id;
+        saveProgressMeta(meta);
+      }
+
+      changed = mergeCloudProgress(rows || []) || changed;
+      await pushProgressDirty();
+    } catch (e) {
+      if (e.status === 401) updateAccountUI();
+      if (opts.reason !== 'init' && e.status !== 401 &&
+          /relation .* does not exist|Could not find the table|schema cache/i.test(e.message || '')) {
+        toast('学习进度未同步：请先在 Supabase 运行最新的 supabase/schema.sql', 'warn');
+      }
+    } finally {
+      progressSyncing = false;
+      if (progressAgain) {
+        progressAgain = false;
+        scheduleProgressPush();
+      }
+    }
+
+    if (changed) {
+      if (opts.deferReload) toast('学习进度已同步，将在下次打开页面时生效');
+      else reloadForProgressSync();
+    }
+    return changed;
+  }
+
+  function initProgressSync() {
+    progressLast = readProgressState();
+    document.addEventListener('soran:state-saved', captureProgressChanges);
+    window.addEventListener('online', function () {
+      if (session) syncLearningProgress({ reason: 'online' });
+    });
+
+    try {
+      var pendingToast = sessionStorage.getItem('soran-progress-toast');
+      if (pendingToast) {
+        sessionStorage.removeItem('soran-progress-toast');
+        setTimeout(function () { toast(pendingToast); }, 500);
+      }
+    } catch (e) {}
+
+    if (session) setTimeout(function () { syncLearningProgress({ reason: 'init' }); }, 120);
   }
 
   /* ---------------- 本地缓存 ---------------- */
@@ -898,7 +1267,7 @@
 
     if (!session) {
       list.innerHTML =
-        '<div class="ann-empty">登录后可查看和管理笔记。<br>账号只用于保存笔记，教材正文无需登录。<br>' +
+        '<div class="ann-empty">登录后可查看和管理笔记。<br>账号用于同步学习进度与笔记，教材正文无需登录。<br>' +
         '<button type="button" class="btn sm" id="ann-drawer-login">登录 / 注册</button></div>';
       return;
     }
@@ -969,7 +1338,7 @@
 
     if (!isConfigured()) {
       box.innerHTML =
-        '<div class="aa-title">云端笔记未配置</div>' +
+        '<div class="aa-title">云端同步未配置</div>' +
         '<div class="aa-sub">填写 supabase-config.js 后启用</div>' +
         '<button type="button" class="btn ghost sm aa-btn" id="ann-setup">查看说明</button>';
       var setup = box.querySelector('#ann-setup');
@@ -982,7 +1351,7 @@
     if (session && session.user) {
       box.innerHTML =
         '<div class="aa-mail">' + esc(session.user.email || '已登录') + '</div>' +
-        '<div class="aa-sub">笔记已按账号隔离</div>' +
+        '<div class="aa-sub">学习进度与笔记已按账号隔离</div>' +
         '<button type="button" class="btn ghost sm aa-btn" id="ann-logout">退出登录</button>';
       var lo = box.querySelector('#ann-logout');
       if (lo) lo.addEventListener('click', doSignOut);
@@ -990,8 +1359,8 @@
     }
 
     box.innerHTML =
-      '<div class="aa-title">登录后保存笔记</div>' +
-      '<div class="aa-sub">划线、下划线与笔记按账号隔离</div>' +
+      '<div class="aa-title">登录后同步学习进度</div>' +
+      '<div class="aa-sub">阅读、自测、清单、评分与笔记按账号隔离</div>' +
       '<button type="button" class="btn sm aa-btn" id="ann-login">登录 / 注册</button>';
     var li = box.querySelector('#ann-login');
     if (li) li.addEventListener('click', function () { openAuth('login'); });
@@ -1026,6 +1395,8 @@
   function doSignOut() {
     var old = session;
     clearSession();
+    clearTimeout(progressTimer);
+    clearTimeout(progressRetryTimer);
     annotations = [];
     closeEditor();
     closeDrawer();
@@ -1054,7 +1425,7 @@
       '<div class="ann-modal-card">' +
         '<div class="am-head"><div class="am-title" id="ann-mode-title">登录</div>' +
           '<button type="button" class="ann-x" data-auth-close aria-label="关闭">×</button></div>' +
-        '<p class="am-sub">登录后，划线、下划线与笔记会按账号隔离保存在云端。</p>' +
+        '<p class="am-sub">登录后，学习进度与笔记会按账号隔离保存在云端。</p>' +
         '<div class="am-tabs">' +
           '<button type="button" class="am-tab active" data-mode="login">登录</button>' +
           '<button type="button" class="am-tab" data-mode="signup">注册</button>' +
@@ -1065,7 +1436,7 @@
           '<div class="am-error" id="ann-error"></div>' +
           '<button type="submit" class="btn" id="ann-submit" style="width:100%;justify-content:center">登录</button>' +
         '</form>' +
-        '<div class="am-tip">账号仅用于同步笔记；教材正文无需登录即可阅读。</div>' +
+        '<div class="am-tip">账号仅用于同步学习进度与笔记；教材正文无需登录即可阅读。</div>' +
       '</div>';
     document.body.appendChild(modal);
 
@@ -1181,6 +1552,7 @@
     loadAnnotations(true).then(function () {
       if (pendingAction) createAnnotation(pendingAction.anchor, pendingAction.style);
     });
+    syncLearningProgress({ reason: 'login', deferReload: !!pendingAction });
   }
 
   /* ---------------- 提示 ---------------- */
@@ -1346,6 +1718,7 @@
       saveSession(next);
       updateAccountUI();
       toast('邮箱已验证，已自动登录');
+      syncLearningProgress({ reason: 'login' });
       return loadAnnotations(true).then(function () { return true; });
     }).catch(function (e) {
       clearSession();
@@ -1358,6 +1731,7 @@
 
   /* ---------------- 启动 ---------------- */
   function init() {
+    initProgressSync();
     buildAccountUI();
     buildNotesButton();
     updateAccountUI();
