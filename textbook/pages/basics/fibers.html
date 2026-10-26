@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="stylesheet" href="../../assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+
+<style id="soran-fiber-lab-layout">
+#fiber-lab-host{position:relative;width:min(1160px,calc(100vw - var(--sidebar-w,264px) - 64px));max-width:calc(100vw - var(--sidebar-w,264px) - 40px);left:50%;transform:translateX(-50%);margin:24px 0 48px}
+@media(max-width:800px){#fiber-lab-host{width:100%;max-width:100%;left:auto;transform:none}}
+</style>
 </head>
 <body data-page-id="basics-fibers" data-root="../../">
 <div class="layout">
@@ -188,31 +193,58 @@
 
       <p>九种主力纤维的关键性能对比如下。请先接受一个前提：<b>没有全能纤维</b>——这张表的每一行都是一组取舍，混纺的意义就是让不同行互补。</p>
 
-      <div class="tbl-wrap">
-        <table class="tbl">
-          <caption>教学参考值：通行纺织材料学常见区间（约值），随纤维规格、纱线与织物结构变化；相对成本随行情波动（示例，以涤纶≈1 为基准）</caption>
-          <thead><tr><th>纤维</th><th>回潮率%（约）</th><th>强度量级</th><th>弹性回复</th><th>耐磨</th><th>耐热</th><th>耐氯</th><th>起球倾向</th><th>相对成本</th></tr></thead>
-          <tbody>
-            <tr><td><b>棉</b></td><td class="num">8.5</td><td>中（湿强＞干强）</td><td>差</td><td>中</td><td>好（可高温烫洗）</td><td>中</td><td>高（短纤纱）</td><td class="num">1.5–2.5</td></tr>
-            <tr><td><b>粘胶</b></td><td class="num">13–14</td><td>中（湿强骤降约 50%）</td><td>差</td><td>差</td><td>中</td><td>中</td><td>中–高</td><td class="num">1.2–1.6</td></tr>
-            <tr><td><b>莫代尔</b></td><td class="num">12–13</td><td>中高（湿强保持好）</td><td>中</td><td>中</td><td>中</td><td>中</td><td>中</td><td class="num">2.5–3.5</td></tr>
-            <tr><td><b>莱赛尔</b></td><td class="num">11–13</td><td>高</td><td>中</td><td>好</td><td>中</td><td>中</td><td>低–中（原纤化）</td><td class="num">3–4.5</td></tr>
-            <tr><td><b>涤纶</b></td><td class="num">0.4</td><td>高</td><td>好</td><td>好</td><td>好</td><td>优</td><td>低（长丝）</td><td class="num">1（基准）</td></tr>
-            <tr><td><b>锦纶</b></td><td class="num">4–4.5</td><td>高</td><td>优</td><td>优（冠军）</td><td>中（怕高温熨烫）</td><td>差（易黄变）</td><td>低（长丝）</td><td class="num">1.5–2.5</td></tr>
-            <tr><td><b>氨纶</b></td><td class="num">1.3</td><td>低（专司弹性）</td><td>优（5–8 倍拉伸）</td><td>中</td><td>差（怕高温）</td><td>差（氯→脆断）</td><td>—</td><td class="num">3–6</td></tr>
-            <tr><td><b>丙纶</b></td><td class="num">0</td><td>中高</td><td>好</td><td>好</td><td>差（低温软化）</td><td>优</td><td>低</td><td class="num">0.8–1.2</td></tr>
-            <tr><td><b>羊毛（美利奴）</b></td><td class="num">15</td><td>中低</td><td>好</td><td>中–差</td><td>中（怕碱怕高温）</td><td>差</td><td>高</td><td class="num">6–15</td></tr>
-          </tbody>
-        </table>
-      </div>
+      
+      <!-- 纤维性能交互对比：样式与状态逻辑封装在 Shadow DOM，避免影响全站共享组件 -->
+      <div id="fiber-lab-host" aria-label="纤维性能交互对比"></div>
+      <template id="fiber-lab-template">
+      <style>
+:host{--paper:#FAF8F3;--surface:#fff;--surface2:#F3EFE7;--sidebar:#F5F1E9;--ink:#26231D;--soft:#5D574B;--faint:#8B8375;--line:#E6E0D3;--line2:#D4CCBB;--green:#3D6B57;--green2:#2C5142;--greenlight:#EAF1ED;--gold:#B98F45;--goldlight:#F6EFDF;--clay:#B0603F;--claylight:#F7EAE2;--blue:#44657F;--bluelight:#E9EFF3;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;--serif:"Songti SC","STSong","Noto Serif SC",serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}body{margin:0;color:var(--ink);font:14px/1.65 var(--sans);background:var(--paper)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #8FBCA5;outline-offset:3px}a{color:inherit;text-decoration:none}.layout{display:flex;min-height:100vh}.side{width:235px;flex:none;position:sticky;top:0;height:100vh;background:var(--sidebar);border-right:1px solid var(--line);display:flex;flex-direction:column}.brand{padding:27px 20px 25px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--line)}.brandmark{width:38px;height:38px;background:var(--green);border-radius:10px;color:white;display:grid;place-items:center;font:bold 20px var(--serif)}.brand b{font:700 17px var(--serif);letter-spacing:.06em}.brand small{display:block;font:10px/1.8 var(--sans);color:var(--faint);letter-spacing:.21em}.side-inner{padding:22px 13px;flex:1}.side-label{font-size:10px;letter-spacing:.19em;color:#A49A8A;font-weight:800;margin:2px 12px 14px}.side-link{display:flex;gap:12px;align-items:center;padding:11px 13px;margin:2px 0;border-radius:8px;color:#686253;font-size:12px}.side-link span{font:11px var(--sans);color:#AAA192}.side-link.active{background:var(--green);color:white;font-weight:650}.side-link.active span{color:#D6E4D8}.side-link:not(.active):hover{background:#EBE6DC}.side-foot{padding:17px 22px;border-top:1px solid var(--line);color:var(--faint);font-size:11px}.side-foot b{font-weight:650;color:var(--green)}.main{flex:1;min-width:0}.top{height:60px;padding:0 46px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;background:rgba(250,248,243,.95);position:sticky;top:0;z-index:40;backdrop-filter:blur(15px)}.crumb{font-size:12px;color:var(--faint)}.crumb strong{font-weight:650;color:var(--soft)}.status{display:flex;align-items:center;gap:8px;border:1px solid #C7D8CE;border-radius:30px;background:var(--greenlight);color:var(--green2);font-size:11px;font-weight:650;padding:5px 12px}.status i{height:6px;width:6px;border-radius:100%;background:var(--green)}.content{max-width:1190px;margin:0 auto;padding:46px 46px 110px}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.24em;font-weight:800}.heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin:14px 0 10px}.heading h1{font:600 clamp(30px,4vw,44px)/1.3 var(--serif);margin:0;letter-spacing:-.035em}.heading h1 em{font:400 20px var(--serif);color:#B5AA99;font-style:normal;margin-left:13px}.heading a{border-bottom:1px solid var(--line2);font-size:12px;color:var(--soft);padding-bottom:3px;white-space:nowrap}.lede{font-size:14px;color:var(--soft);margin:0;max-width:770px;line-height:1.9}.intro{border-left:3px solid var(--green);background:var(--greenlight);margin-top:24px;padding:13px 18px;display:flex;gap:13px;align-items:center;font-size:12px;color:var(--green2);border-radius:0 7px 7px 0}.intro .icon{font:600 16px var(--serif)}.section{margin-top:45px;scroll-margin-top:90px}.sectop{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:17px}.section-title{display:flex;gap:13px;align-items:baseline;margin:0;font-size:21px;font-weight:700;letter-spacing:-.02em}.section-title span{font-size:11px;letter-spacing:.15em;color:var(--green);font-weight:800}.sectop small{color:var(--faint);font-size:12px}.panel{border:1px solid var(--line);background:white;border-radius:12px;box-shadow:0 3px 16px rgba(60,51,39,.025)}.toolbar{padding:18px 20px 16px;border-bottom:1px solid var(--line)}.toolrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.segment{display:inline-flex;gap:3px;padding:4px;border-radius:8px;background:var(--surface2)}.segment button{border:0;background:transparent;color:var(--soft);border-radius:6px;padding:8px 14px;font-weight:600;font-size:12px}.segment button[aria-pressed="true"]{background:white;color:var(--green2);box-shadow:0 1px 5px #00000013}.tool-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.search{display:flex;align-items:center;gap:6px;background:#FBFAF7;border:1px solid var(--line);border-radius:7px;padding:0 9px;color:var(--faint)}.search input{background:none;border:0;outline:none;width:125px;padding:7px 0;font-size:12px;color:var(--ink)}.select{border:1px solid var(--line);background:#FBFAF7;color:var(--soft);border-radius:7px;padding:7px 10px;font-size:12px}.filterrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:15px;flex-wrap:wrap}.filters{display:flex;flex-wrap:wrap;gap:7px}.filter{border:1px solid var(--line);background:#fff;color:var(--soft);border-radius:20px;padding:5px 12px;font-size:12px}.filter[aria-pressed="true"]{background:var(--greenlight);color:var(--green2);border-color:#BAD4C4;font-weight:700}.count{color:var(--faint);font-size:11px;white-space:nowrap}.legend{display:flex;gap:13px;align-items:center;flex-wrap:wrap;padding:12px 19px;background:#FCFBF8;border-top:1px solid var(--line);font-size:11px;color:var(--faint)}.legend strong{color:var(--soft)}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px;background:#D5D0C8}.dot.good{background:#7BA690}.dot.mid{background:#C6AF7A}.dot.poor{background:#C38F7C}.table-overflow{overflow-x:auto;overscroll-behavior-x:contain}.matrix{border-collapse:separate;border-spacing:0;width:100%;min-width:830px;text-align:center;table-layout:fixed}.matrix thead th{font-size:11px;color:var(--soft);font-weight:750;background:#F6F3EC;padding:15px 11px;border-bottom:1px solid var(--line);white-space:nowrap}.matrix thead th:first-child{text-align:left;position:sticky;left:0;z-index:4;background:#F6F3EC;width:180px;padding-left:20px}.matrix thead th:last-child{width:140px}.matrix tbody td{border-bottom:1px solid #F0EBE3;padding:14px 10px;vertical-align:middle;font-size:13px;line-height:1.35;height:68px}.matrix tbody tr:last-child td{border-bottom:0}.matrix tbody tr:hover td{background:#FBFAF6}.matrix tbody tr:hover td:first-child{background:#FBFAF6}.matrix tbody td:first-child{position:sticky;left:0;background:white;text-align:left;padding-left:18px;z-index:2;border-right:1px solid #F0EBE3}.matrix tr.current td{background:#F6FAF7}.matrix tr.current td:first-child{background:#F6FAF7}.fiber-cell{display:flex;align-items:center;gap:12px}.fiber-name{border:0;background:transparent;color:var(--ink);font-size:13px;font-weight:750;padding:0;text-align:left}.fiber-name:hover{text-decoration:underline;text-decoration-color:var(--green);text-underline-offset:4px}.fiber-cat{display:block;color:var(--faint);font-size:10px;font-weight:400;margin-top:2px}.check{accent-color:var(--green);width:15px;height:15px;cursor:pointer;flex:none}.value{display:block;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.005em}.grade{display:inline-block;min-width:36px;padding:3px 9px;border-radius:5px;font-size:11px;font-weight:650}.grade.good{background:#EAF1ED;color:#396850}.grade.mid{background:#F6F0E4;color:#92733F}.grade.poor{background:#F7ECE7;color:#A26650}.grade.neutral{background:#F0EFEC;color:#777368}.trait{font-size:11px;color:var(--soft);text-align:left;line-height:1.55}.minor{display:block;font-size:10px;color:var(--faint);margin-top:4px;line-height:1.25}.cellhint{color:var(--faint);font-size:10px;margin-left:2px}.empty{padding:42px;color:var(--faint);text-align:center}.descbox{background:#FCFBF8;border-top:1px solid var(--line);padding:12px 20px;color:var(--faint);font-size:11px;line-height:1.75}.descbox b{color:var(--soft)}.detail{margin-top:15px;border:1px solid #CDDED3;background:#F8FBF9;border-radius:11px;padding:20px 23px;display:grid;grid-template-columns:1.15fr 1fr;gap:26px}.detail-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}.detail-head h3{font-size:18px;margin:0}.category-pill{font-size:10px;color:var(--green2);background:var(--greenlight);border-radius:4px;padding:3px 8px}.detail p{margin:0;color:var(--soft);font-size:12px;line-height:1.9}.detail aside{border-left:1px solid #DAE8DE;padding-left:25px}.detail-label{font-size:10px;color:var(--faint);font-weight:750;letter-spacing:.12em;margin:0 0 6px}.detail-risk{color:#A16245!important}.selection-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;gap:10px;flex-wrap:wrap}.selection-hint{font-size:12px;color:var(--faint)}.reset{border:1px solid var(--line);background:white;border-radius:7px;padding:7px 12px;font-size:11px;color:var(--soft)}.compare{overflow:hidden}.compare .compare-head{display:grid;grid-template-columns:155px repeat(var(--n),minmax(0,1fr));border-bottom:1px solid var(--line);background:#F6F3EC}.compare .compare-head>div{padding:16px 17px;font-size:13px;font-weight:750;border-left:1px solid var(--line)}.compare .compare-head>div:first-child{border-left:0;color:var(--faint);font-size:11px;font-weight:500}.compare .compare-head small{display:block;font-size:10px;font-weight:400;color:var(--faint);margin-top:3px}.compare-row{display:grid;grid-template-columns:155px repeat(var(--n),minmax(0,1fr));border-bottom:1px solid #F0EBE3}.compare-row:last-child{border-bottom:0}.compare-row .cell{padding:12px 17px;border-left:1px solid #F0EBE3;min-width:0}.compare-row .cell:first-child{border-left:0;background:#FCFBF8;color:var(--soft);font-weight:650;font-size:12px}.compare-row .cell:not(:first-child){text-align:center;font-size:12px}.compare-row .cell .grade{font-size:10px}.compare-row .cell .minor{display:block}.selection-note{padding:14px 20px;font-size:11px;color:var(--faint);border-top:1px solid var(--line);line-height:1.8;background:#FCFBF8}.preset{display:flex;gap:6px;flex-wrap:wrap;margin:15px 0 12px}.preset button{border:1px solid var(--line);background:white;color:var(--soft);font-size:12px;padding:8px 12px;border-radius:7px}.preset button.active{background:var(--green);border-color:var(--green);color:white}.insight{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.insight-card{padding:21px;border:1px solid var(--line);background:white;border-radius:10px;min-height:157px}.insight-card .letter{display:block;font-weight:800;color:var(--gold);font-size:11px;letter-spacing:.1em;margin-bottom:8px}.insight-card h4{font-size:15px;margin:0 0 7px}.insight-card p{margin:0;font-size:12px;color:var(--soft);line-height:1.8}.guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:15px}.guide-card{border:1px solid var(--line);border-radius:10px;padding:17px 18px;background:white}.guide-card h4{margin:0 0 6px;font-size:13px}.guide-card p{margin:0;font-size:12px;color:var(--soft);line-height:1.85}.guide-card strong{color:var(--green2)}.footnote{border-top:1px solid var(--line);padding:28px 0;margin-top:52px;color:var(--faint);font-size:11px;line-height:1.85}.footnote strong{color:var(--soft)}.mobile-info{display:none}.chip-row{display:flex;gap:6px;align-items:center;margin-top:6px}.chip-row span{font-size:10px;color:var(--faint);border:1px solid var(--line);border-radius:4px;padding:1px 6px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+@media(max-width:1100px){.side{width:192px}.content{padding:40px 27px 85px}.top{padding:0 27px}.brand{padding-left:14px;padding-right:9px}.side-link{padding:10px 8px}}@media(max-width:800px){.side{display:none}.top{height:50px;padding:0 18px}.content{padding:31px 17px 65px}.heading h1{font-size:32px}.heading h1 em{display:block;font-size:16px;margin:3px 0 0}.heading{align-items:start}.heading a{margin-top:8px}.mobile-info{display:block;font-size:11px;color:var(--faint);margin:8px 0 0}.detail{grid-template-columns:1fr;gap:12px}.detail aside{border-left:0;border-top:1px solid #DAE8DE;padding:12px 0 0}.insight{grid-template-columns:1fr}.guide{grid-template-columns:1fr}.compare{overflow-x:auto}.compare-head,.compare-row{min-width:620px}.sectop{align-items:start}.sectop small{max-width:130px;text-align:right}.table-overflow{scrollbar-width:thin}}@media(max-width:450px){.status{font-size:10px;padding:4px 8px}.crumb{font-size:10px}.heading a{display:none}.toolbar{padding:14px}.tool-actions{width:100%;justify-content:space-between}.search input{width:100px}.intro{align-items:start}.section-title{font-size:18px}.sectop small{font-size:10px;max-width:104px}.compare .compare-head,.compare .compare-row{grid-template-columns:115px repeat(var(--n),minmax(120px,1fr))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-      <div class="callout data">
-        <div class="co-head">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-          怎么用这张表
+:host{display:block;font:14px/1.65 var(--sans);color:var(--ink)}.content{max-width:none!important;padding:0!important;margin:0!important}.section:first-of-type{margin-top:18px}
+</style>
+      <div class="content"><section class="section" id="overview" aria-labelledby="h-overview">
+    <div class="sectop"><h2 class="section-title" id="h-overview"><span>01 /</span> 全景速览矩阵</h2><small>9 种主力纤维 · 两种阅读深度</small></div>
+    <div class="panel">
+      <div class="toolbar">
+        <div class="toolrow">
+          <div class="segment" role="group" aria-label="表格视图"><button type="button" id="v-simple" aria-pressed="true">选材速览</button><button type="button" id="v-full" aria-pressed="false">专业参数</button></div>
+          <div class="tool-actions"><label class="search"><span aria-hidden="true">⌕</span><input id="search" placeholder="搜索纤维" aria-label="搜索纤维名称"></label><label class="sr-only" for="sort">排序</label><select id="sort" class="select"><option value="original">默认排序</option><option value="moisture">回潮率 ↓</option><option value="cost">成本参考 ↑</option><option value="wear">耐磨性 ↓</option></select></div>
         </div>
-        <p>先记住三条主线：<b>棉</b>＝吸湿舒适但弱弹性（所以永远配氨纶）；<b>锦纶</b>＝强韧耐磨（所以永远做骨架与加固）；<b>氨纶</b>＝只管弹性（所以含量是配方表的信号灯）。再记两组「软肋对」：粘胶怕湿强、涤纶怕吸湿——这两个弱点在织物结构层面互为答案。看任何配比时，先用这张表预判它的强项与死穴，再用第 07 节的成分标知识验证真实性。</p>
+        <div class="filterrow"><div class="filters" role="group" aria-label="纤维分类筛选">
+          <button class="filter" data-filter="全部" aria-pressed="true">全部纤维</button><button class="filter" data-filter="天然" aria-pressed="false">天然纤维</button><button class="filter" data-filter="再生" aria-pressed="false">再生纤维素</button><button class="filter" data-filter="合成" aria-pressed="false">合成纤维</button>
+        </div><span class="count" id="count">显示 9 / 9 种纤维</span></div>
       </div>
+      <div class="table-overflow" role="region" tabindex="0" aria-label="可横向滚动的纤维性能表">
+        <table class="matrix" id="matrix"><caption class="sr-only">九种主力纤维性能比较表，等级为教学参考而非统一实测结果</caption><thead id="matrix-head"></thead><tbody id="matrix-body"></tbody></table>
+      </div>
+      <div class="legend"><strong>如何阅读</strong><span><i class="dot good"></i>优势明显</span><span><i class="dot mid"></i>一般 / 依场景</span><span><i class="dot poor"></i>需要注意</span><span>单击纤维名称查看解释；勾选左侧方框加入下方对比。</span></div>
+      <div class="descbox" id="matrix-foot"><b>数据说明</b>　沿用原教材 9 种主力纤维的性能范围与相对成本示例；部分主观等级仅用于快速理解，并不代表跨品牌、跨工艺的实测排序。成本指数以涤纶约为 1 作示意。</div>
+    </div>
+    <div class="mobile-info">↔ 手机可左右滑动表格；首列纤维名称保持固定。</div>
+    <div class="detail" id="detail" role="region" aria-label="当前纤维的详细说明" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="compare" aria-labelledby="h-compare">
+    <div class="sectop"><h2 class="section-title" id="h-compare"><span>02 /</span> 自选纤维 · 并排对比</h2><small>一次专注 2–4 种材料</small></div>
+    <div class="selection-head"><span class="selection-hint" id="selected-count">已选 3 种纤维 · 可在上方勾选更换</span><button class="reset" id="reset" type="button">恢复默认组合</button></div>
+    <div class="panel compare" id="compare-box" aria-live="polite"></div>
+  </section>
+
+  <section class="section" id="cases" aria-labelledby="h-cases">
+    <div class="sectop"><h2 class="section-title" id="h-cases"><span>03 /</span> 同类材料 · 怎么选择</h2><small>从参数走向实际选材</small></div>
+    <div class="preset" role="group" aria-label="切换选材场景"><button type="button" class="active" data-case="cellulosic">棉 / 莫代尔 / 莱赛尔</button><button type="button" data-case="synthetic">涤纶 / 锦纶</button><button type="button" data-case="stretch">锦纶 / 氨纶</button></div>
+    <div id="insight" class="insight" aria-live="polite"></div>
+    <div class="guide">
+      <div class="guide-card"><h4>01　先辨来源</h4><p>确认天然、再生纤维素或合成纤维，<strong>不要把商标当纤维名称</strong>，例如“天丝”并非独立纤维类别。</p></div>
+      <div class="guide-card"><h4>02　再看短板</h4><p>重点检查湿强、弹性回复、耐磨、耐热与洗护限制。<strong>没有单一万能材料</strong>，混纺是在弥补取舍。</p></div>
+      <div class="guide-card"><h4>03　最后验证成品</h4><p>用纱支与面料组织、弹性回复、洗后尺寸变化、起球和色牢度验证，<strong>别用原料名称代替品质检验</strong>。</p></div>
+    </div>
+  </section>
+  <div class="footnote"><strong>教学与数据说明</strong>　回潮率、强度、弹性、耐磨、耐热、耐氯、起球与相对成本沿用本章教学参考范围，不属于统一实测排名。实际表现受纱线规格、组织结构、染整和成衣工艺影响；选材后仍需进行成品验证。</div></div>
+      </template>
 
       <!-- ====================================================== -->
       <h2 class="sec-title" id="s-yarn" data-sec="s-yarn"><span class="sec-no">06</span>纱线：从纤维到纱，细度的三把尺子</h2>
@@ -772,6 +804,83 @@ window.__SORAN_PAGE_INIT__ = function () {
     }
   })();
 };
+</script>
+
+<!-- 第 05 节交互对比模块：仅访问局部 ShadowRoot，保留原教材脚本与样式 -->
+<script>
+(function () {
+  'use strict';
+  const host = window.document.getElementById('fiber-lab-host');
+  const template = window.document.getElementById('fiber-lab-template');
+  if (!host || !template || host.shadowRoot) return;
+  const shadow = host.attachShadow({mode:'open'});
+  shadow.innerHTML = template.innerHTML;
+  (function (document) {
+
+'use strict';
+const fibers=[
+ {name:'棉',category:'天然',catName:'天然 · 植物',moisture:8.5,moistureTxt:'8.5',strength:'中',elastic:'差',wear:'中',heat:'好',chlorine:'中',pill:'高',pillType:'短纤纱',cost:'1.5–2.5',costMin:1.5,trait:'吸湿亲肤 · 反复洗涤',strengthNote:'湿强通常高于干强',elasticNote:'纤维本身回复有限',wearNote:'取决于纱线与组织',heatNote:'相对耐热；须看染整与洗标',chlorineNote:'不建议泛化为耐氯',pillNote:'短纤与毛羽更易起球',summary:'日常贴身品类的基础选择。耐洗和吸湿有优势，但弹性回复有限，常通过氨纶混纺补足。',risk:'纯棉并不自动代表高耐磨、免起球；需看纱线质量、缩水控制与成品洗护结果。'},
+ {name:'粘胶',category:'再生',catName:'再生 · 纤维素',moisture:13.5,moistureTxt:'13–14',strength:'中',elastic:'差',wear:'差',heat:'中',chlorine:'中',pill:'中–高',cost:'1.2–1.6',costMin:1.2,trait:'吸湿垂顺 · 价格友好',strengthNote:'普通粘胶湿强可能大幅下降',elasticNote:'形态稳定性需关注',wearNote:'湿态洗护要特别注意',heatNote:'按具体织物洗标',chlorineNote:'视条件与整理变化',pillNote:'看纱线与起毛情况',summary:'吸湿好、垂感强，是经济型柔软面料的常见原料。',risk:'普通粘胶的湿强和洗后尺寸稳定性是核心风险；需要实物洗涤测试。'},
+ {name:'莫代尔',category:'再生',catName:'再生 · 纤维素',moisture:12.5,moistureTxt:'12–13',strength:'中高',elastic:'中',wear:'中',heat:'中',chlorine:'中',pill:'中',cost:'2.5–3.5',costMin:2.5,trait:'柔软垂顺 · 湿强改善',strengthNote:'相较普通粘胶有更好的湿态表现',elasticNote:'不等同于高弹氨纶',wearNote:'依织物结构而变',heatNote:'按面料洗标执行',chlorineNote:'不宜直接推定为耐氯',pillNote:'起球还受纱线与整理影响',summary:'保留再生纤维素纤维的吸湿、柔软与垂坠特征，同时改善普通粘胶的湿态表现。',risk:'莫代尔是纤维品类，不是单一品质等级；认证、细度、纺纱与成衣工艺都会影响价格和质感。'},
+ {name:'莱赛尔',category:'再生',catName:'再生 · 纤维素',moisture:12,moistureTxt:'11–13',strength:'高',elastic:'中',wear:'好',heat:'中',chlorine:'中',pill:'低–中',cost:'3–4.5',costMin:3,trait:'干湿强度好 · 滑爽',strengthNote:'干湿强度相对较高',elasticNote:'并非弹性纤维',wearNote:'耐用性仍看组织工艺',heatNote:'按面料洗标执行',chlorineNote:'依具体处理条件',pillNote:'需关注原纤化，而非简单等同起球',summary:'具有较好的干湿强度与滑爽触感，适用于重视强度和柔顺体验的品类。',risk:'高湿摩擦可能出现原纤化；不能把“天丝®”直接等同于莱赛尔的全部产品。'},
+ {name:'涤纶',category:'合成',catName:'合成 · 聚酯',moisture:0.4,moistureTxt:'0.4',strength:'高',elastic:'好',wear:'好',heat:'好',chlorine:'优',pill:'低',pillType:'长丝',cost:'1（基准）',costMin:1,trait:'尺寸稳定 · 快干',strengthNote:'常见品种强度较高',elasticNote:'织物弹性仍受组织影响',wearNote:'整体较耐磨',heatNote:'相对耐热，仍需遵洗标',chlorineNote:'受整理与处理条件影响',pillNote:'长丝一般毛羽少；短纤可起球',summary:'吸湿率低，但适当的纱线截面和织物结构可帮助液态汗液导湿，因此常用于运动速干与结构面料。',risk:'“回潮率低”不等于“穿着一定不透气”；“快干”也不等于“天然吸湿”。'},
+ {name:'锦纶',category:'合成',catName:'合成 · 聚酰胺',moisture:4.25,moistureTxt:'4–4.5',strength:'高',elastic:'优',wear:'优',heat:'中',chlorine:'差',pill:'低',pillType:'长丝',cost:'1.5–2.5',costMin:1.5,trait:'高耐磨 · 光滑强韧',strengthNote:'强度较高',elasticNote:'原纤维回弹较好；并非氨纶',wearNote:'常见纤维中的优势项',heatNote:'不宜高温熨烫',chlorineNote:'漂白条件下需关注黄变与老化',pillNote:'长丝通常毛羽较少',summary:'耐磨、强度和光滑手感兼具，是文胸、运动内衣、袜子加固结构的重要材料。',risk:'锦纶能提供耐磨与形态支持，但高弹拉伸主要仍靠氨纶；不能把锦氨面料的回复全归功于锦纶。'},
+ {name:'氨纶',category:'合成',catName:'合成 · 弹性聚氨酯',moisture:1.3,moistureTxt:'1.3',strength:'低',elastic:'优',wear:'中',heat:'差',chlorine:'差',pill:'—',cost:'3–6',costMin:3,trait:'大幅拉伸 · 回弹核心',strengthNote:'主要职能并非承力',elasticNote:'典型拉伸可达数倍',wearNote:'需结合包覆纱与织物',heatNote:'高温可能加速性能下降',chlorineNote:'含氯条件下可能老化',pillNote:'不宜独立按常规纱线比较',summary:'赋予面料弹性与贴合力的关键纤维，通常与棉、莫代尔、锦纶等混用。',risk:'怕高温和含氯处理。氨纶本身成本指数较高，不代表整件产品成本同比例上升。'},
+ {name:'丙纶',category:'合成',catName:'合成 · 聚丙烯',moisture:0,moistureTxt:'≈0',strength:'中高',elastic:'好',wear:'好',heat:'差',chlorine:'优',pill:'低',cost:'0.8–1.2',costMin:0.8,trait:'低吸湿 · 轻量导湿',strengthNote:'具体等级差异存在',elasticNote:'不等于高弹氨纶',wearNote:'一般耐磨',heatNote:'软化温度较低',chlorineNote:'依实际化学处理条件',pillNote:'受纱线和表面结构影响',summary:'几乎不吸湿、密度小，依靠合适的结构可用于导湿层和功能袜。',risk:'难以常规染色，工艺与配色选择受限；导湿必须看织物设计。'},
+ {name:'美利奴羊毛',category:'天然',catName:'天然 · 动物蛋白',moisture:15,moistureTxt:'≈15',strength:'中低',elastic:'好',wear:'中–差',heat:'中',chlorine:'差',pill:'高',cost:'6–15',costMin:6,trait:'调湿保暖 · 抑味潜力',strengthNote:'强度不以此为核心优势',elasticNote:'天然卷曲与回复带来弹性',wearNote:'需关注摩擦部位耐久',heatNote:'怕高温及不当洗护',chlorineNote:'需警惕氯损伤',pillNote:'绒毛与组织影响明显',summary:'高回潮率与卷曲结构使其在温湿管理、保暖和穿着舒适方面有特长。',risk:'贴身体验高度依赖纤维细度；缩水、毡缩、起球和洗护条件需要特别验证。'}
+];
+const scores={优:5,好:4,高:4,'中高':3,'中–差':2,'低–中':2,中:2,差:1,低:1,'中低':2,'中–高':3,高风险:1,'—':0};
+const grade=(t,reverse=false)=>{if(t==='—')return 'neutral';let n=scores[t]??2;if(reverse){if(t==='低'||t==='低–中')return 'good';if(t==='中')return 'mid';return 'poor'}return n>=4?'good':n>=2?'mid':'poor'};
+const moistTag=x=>x>=11?'高':x>=4?'中':'低';
+const state={view:'simple',filter:'全部',query:'',sort:'original',focused:'莫代尔',selected:['棉','莫代尔','莱赛尔'],case:'cellulosic'};
+const $=id=>document.getElementById(id);
+function esc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+const pill=(v,rev=false)=>`<span class="grade ${grade(v,rev)}">${esc(v)}</span>`;
+function renderMatrix(){let list=fibers.filter(x=>(state.filter==='全部'||x.category===state.filter)&&x.name.includes(state.query.trim()));
+ if(state.sort==='moisture')list.sort((a,b)=>b.moisture-a.moisture);
+ if(state.sort==='cost')list.sort((a,b)=>a.costMin-b.costMin);
+ if(state.sort==='wear')list.sort((a,b)=>(scores[b.wear]||0)-(scores[a.wear]||0));
+ $('count').textContent=`显示 ${list.length} / ${fibers.length} 种纤维`;
+ $('v-simple').setAttribute('aria-pressed',String(state.view==='simple'));
+ $('v-full').setAttribute('aria-pressed',String(state.view==='full'));
+ document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===state.filter)));
+ let headers=state.view==='simple'?['纤维','回潮率','强度','弹性回复','耐磨','成本指数','材料画像']:['纤维','回潮率','强度','弹性回复','耐磨','耐热','耐氯','起球风险','成本指数'];
+ $('matrix-head').innerHTML='<tr>'+headers.map(h=>`<th scope="col">${h}</th>`).join('')+'</tr>';
+ $('matrix').style.minWidth=state.view==='simple'?'810px':'990px';
+ let out=list.map(f=>{
+ let td=`<td><div class="fiber-cell"><input type="checkbox" class="check" data-check="${esc(f.name)}" ${state.selected.includes(f.name)?'checked':''} aria-label="选择${esc(f.name)}参与并排对比"><div><button type="button" class="fiber-name" data-focus="${esc(f.name)}" aria-label="查看${esc(f.name)}详情">${esc(f.name)}</button><span class="fiber-cat">${esc(f.catName)}</span></div></div></td>`;
+ td+=`<td><span class="value">${esc(f.moistureTxt)}<span class="cellhint">%</span></span><span class="minor">${moistTag(f.moisture)}吸湿量级</span></td>`;
+ td+=`<td>${pill(f.strength)}</td><td>${pill(f.elastic)}</td><td>${pill(f.wear)}</td>`;
+ if(state.view==='full'){td+=`<td>${pill(f.heat)}</td><td>${pill(f.chlorine)}</td><td>${pill(f.pill,true)}</td>`;}
+ td+=`<td><span class="value">${esc(f.cost)}</span><span class="minor">相对涤纶</span></td>`;
+ if(state.view==='simple')td+=`<td class="trait">${esc(f.trait)}</td>`;
+ return `<tr class="${state.focused===f.name?'current':''}">${td}</tr>`;}).join('');
+ $('matrix-body').innerHTML=out||`<tr><td colspan="${headers.length}" class="empty">没有找到对应纤维，请调整筛选条件。</td></tr>`;
+ $('matrix-body').querySelectorAll('[data-focus]').forEach(b=>b.addEventListener('click',()=>{state.focused=b.dataset.focus;renderMatrix();renderDetail()}));
+ $('matrix-body').querySelectorAll('[data-check]').forEach(c=>c.addEventListener('change',()=>{
+ if(c.checked){if(state.selected.length>=4){c.checked=false;window.alert('最多同时比较 4 种纤维。请先取消一项。');return;}state.selected.push(c.dataset.check)}else{state.selected=state.selected.filter(n=>n!==c.dataset.check)}renderMatrix();renderCompare();
+ }));
+}
+function renderDetail(){const f=fibers.find(x=>x.name===state.focused);$('detail').innerHTML=`<div><div class="detail-head"><h3>${esc(f.name)} · 材料档案</h3><span class="category-pill">${esc(f.catName)}</span></div><p>${esc(f.summary)}</p><div class="chip-row"><span>回潮率 ${esc(f.moistureTxt)}%</span><span>耐磨 ${esc(f.wear)}</span><span>弹性 ${esc(f.elastic)}</span></div></div><aside><div class="detail-label">需要注意的取舍</div><p class="detail-risk">${esc(f.risk)}</p><div class="detail-label" style="margin-top:14px">专业补充</div><p>${esc(f.strengthNote)}；${esc(f.heatNote)}。</p></aside>`;}
+function renderCompare(){const sel=state.selected.map(n=>fibers.find(f=>f.name===n)).filter(Boolean);$('selected-count').textContent=`已选 ${sel.length} 种纤维 · ${sel.length<2?'再勾选至少 1 种即可比较':'在上方勾选或取消材料即可更新'}`;
+ if(sel.length<2){$('compare-box').innerHTML='<div class="empty">请选择至少 2 种纤维开始对比。建议先比较棉、莫代尔和莱赛尔。</div>';return}
+ const dims=[['回潮率（约）',f=>`${esc(f.moistureTxt)}%`],['强度',f=>pill(f.strength)],['弹性回复',f=>pill(f.elastic)],['耐磨',f=>pill(f.wear)],['耐热',f=>pill(f.heat)],['耐氯',f=>pill(f.chlorine)],['起球风险',f=>pill(f.pill,true)],['相对成本',f=>esc(f.cost)],['优势画像',f=>`<span class="trait">${esc(f.trait)}</span>`]];
+ $('compare-box').innerHTML=`<div style="--n:${sel.length}"><div class="compare-head"><div>对比维度</div>${sel.map(f=>`<div>${esc(f.name)}<small>${esc(f.catName)}</small></div>`).join('')}</div>${dims.map(([title,fn])=>`<div class="compare-row"><div class="cell">${title}</div>${sel.map(f=>`<div class="cell">${fn(f)}</div>`).join('')}</div>`).join('')}</div><div class="selection-note">注：对比仅提示材料特征，不自动给出优胜者。尤其是弹性、起球、热处理表现，必须结合纱线、组织和具体工艺判断。</div>`;
+}
+const cases={
+ cellulosic:[['01 / 棉','基础耐洗','湿态强力与易维护是优势；但天然弹性回复有限，缩水和短纤起球仍须把关。'],['02 / 莫代尔','柔软垂顺','适合追求柔糯触感的贴身产品；重点核对真实纤维来源和洗后稳定性。'],['03 / 莱赛尔','强度与滑爽','干湿强度较好，适合希望兼顾滑爽与耐用的方案；关注原纤化控制。']],
+ synthetic:[['01 / 涤纶','结构稳定、易快干','回潮率低，但可以通过异形纱和组织设计实现导湿。常见于运动与功能面料。'],['02 / 锦纶','耐磨与细腻表面','表面光滑且耐磨，在袜子加固、锦氨贴身面料里应用广泛。'],['判断标准','看最终用途','不是哪个纤维“更高级”，而是面料触感、导湿性能、耐磨与成本的综合取舍。']],
+ stretch:[['01 / 锦纶','承担面料骨架','强度、耐磨和表面光泽是它的主要贡献；有一定回复，但不是主要弹力来源。'],['02 / 氨纶','提供大幅拉伸','在常见贴身弹力面料中承担核心伸长与回弹功能。'],['配方逻辑','两者彼此互补','锦氨比例不同，贴合力、强度与洗护表现也不同，必须回到成品伸长回复测试。']]
+};
+function renderCases(){document.querySelectorAll('[data-case]').forEach(b=>b.classList.toggle('active',b.dataset.case===state.case));$('insight').innerHTML=cases[state.case].map(([l,t,p])=>`<article class="insight-card"><span class="letter">${esc(l)}</span><h4>${esc(t)}</h4><p>${esc(p)}</p></article>`).join('')}
+$('v-simple').addEventListener('click',()=>{state.view='simple';renderMatrix()});$('v-full').addEventListener('click',()=>{state.view='full';renderMatrix()});$('search').addEventListener('input',e=>{state.query=e.target.value;renderMatrix()});$('sort').addEventListener('change',e=>{state.sort=e.target.value;renderMatrix()});document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.filter;renderMatrix()}));$('reset').addEventListener('click',()=>{state.selected=['棉','莫代尔','莱赛尔'];renderMatrix();renderCompare()});document.querySelectorAll('[data-case]').forEach(b=>b.addEventListener('click',()=>{state.case=b.dataset.case;renderCases()}));
+renderMatrix();renderDetail();renderCompare();renderCases();
+
+  })({
+    getElementById: id => shadow.getElementById(id),
+    querySelectorAll: selector => shadow.querySelectorAll(selector)
+  });
+})();
 </script>
 </body>
 </html>
