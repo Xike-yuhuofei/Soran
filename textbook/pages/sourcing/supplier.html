@@ -10,8 +10,50 @@
 <style>
   [data-rate="soran-supplier-quarter"] .rr-label { flex: 0 0 200px; }
 </style>
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="sourcing-supplier" data-root="../../">
+<body data-v3-curriculum data-page-id="sourcing-supplier" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -24,7 +66,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">SOURCING · SUPPLIER</div>
         <h1 class="page-title">供应商考察与成本管理 · 汕头实战</h1>
@@ -36,10 +78,17 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>让工厂考察变成证据链</h2><p class="v3-hook">工厂样衣漂亮、报价低，怎样判断它是否值得第一笔订单？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>考察目标是验证能力，既看实物，也看管理记录与交付表现。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>供应商评估必须覆盖材料可追溯、工艺能力、质量系统与产能真实性。<br><b>供应链验证：</b>索取排产单、制程记录、签样规范与试单验收条款。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>工厂说产量高如何核实？</summary><p>对照设备、班组、实际产线节拍和在制品记录。</p></details><details><summary>为什么试单比口头承诺可靠？</summary><p>小批量交付可以观察一致性、返工、沟通和履约。</p></details><details><summary>压低单价前应先统一什么？</summary><p>统一面辅料、包装检验、损耗与售后责任口径。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-why" data-sec="s-why"><span class="sec-no">01</span>考察的目标与逻辑</h2>
+      <h2 class="sec-title" id="s-why" data-sec="s-why"><span class="sec-no">01</span>考察的目标与逻辑</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节对应商品的哪项实际体验？</span></div>
 
       <p>样品会骗人，报价会话术，只有工厂本身骗不了人。邮件里「我们是十年老厂、品质一流」是零成本的；而一间真实运转的车间、一叠翻得起了毛边的首件确认单、一台保养得当的检针机，是要真金白银与多年管理换来的——<b>实地考察的本质，是把语言换成证据。</b>供应商开发里 90% 的坑（交期跳票、大货掉样、报价注水），都能在考察阶段提前识别。</p>
 
@@ -102,7 +151,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-gurao" data-sec="s-gurao"><span class="sec-no">02</span>汕头谷饶生态深读</h2>
+      <h2 class="sec-title" id="s-gurao" data-sec="s-gurao"><span class="sec-no">02</span>汕头谷饶生态深读</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>第一篇讲过产业集群地图，本节把 Soran 起步的首选地——<dfn class="term" data-term="汕头潮南">汕头潮南</dfn>的<dfn class="term" data-term="谷饶">谷饶</dfn>——单独放大看。谷饶被称为「中国内衣名镇」，镇域及周边聚集了文胸、家居服、内裤的全产业链。对 Soran 这样的起步品牌，它的价值集中在三点：</p>
 
@@ -247,7 +296,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">03</span>考察全流程：行前 → 现场 → 行后</h2>
+      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">03</span>考察全流程：行前 → 现场 → 行后</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>一次高效的考察，功夫一半在场外。完整流程分三段，每段有明确的任务与产出：</p>
 
@@ -351,7 +400,7 @@
       <p>离开工厂 24 小时内完成三件事：①按第 04 节清单逐项确认并补记备注与照片；②给五个维度打分，与同行考察的其他厂横向排序；③做出决策——通过则发试单（第 06 节），存疑则安排二次回访（换一天、不预约时段），有硬伤（如检针机都没有、拒绝进车间）则礼貌归档。考察资料要建档：评分表、照片、纪要，这将成为你逐年积累的<b>供应商库资产</b>。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-checklist" data-sec="s-checklist"><span class="sec-no">04</span>工厂考察清单（可打勾 · 31 项）</h2>
+      <h2 class="sec-title" id="s-checklist" data-sec="s-checklist"><span class="sec-no">04</span>工厂考察清单（可打勾 · 31 项）</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>这是本页的核心交付物，把前面所有方法固化成一张可执行的清单。五个组、31 项，覆盖资质合规、设备产能、品控、开发与商务。使用建议：打印或存手机带进工厂，两人分头（一人谈商务、一人看车间），<b>现场只记录不纠结，回酒店当晚统一补备注并打分</b>。进度保存在本页，可作为多家工厂的核对底稿（如需多家独立进度，可截图存档）。</p>
 
@@ -444,7 +493,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-onsite" data-sec="s-onsite"><span class="sec-no">05</span>现场考察技巧：动线、访谈与报价深挖</h2>
+      <h2 class="sec-title" id="s-onsite" data-sec="s-onsite"><span class="sec-no">05</span>现场考察技巧：动线、访谈与报价深挖</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <h3 class="sub-title">参观动线里藏的信息</h3>
       <p>工厂接待是有「剧本」的：展厅 → 会议室 → 样板车间，一路光鲜。你要主动改写动线，<b>先去仓库和返修区，最后才看展厅</b>。仓库不会说谎：原料是否分区堆放、缸号有没有标识、成品区是否积压着发不走的货（资金链信号）；返修区更不会说谎：堆得多不多、什么工序的货最多、有没有台账。把最真实的地方看完，再看展厅——那时你已知道该问什么。</p>
@@ -473,7 +522,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-trial" data-sec="s-trial"><span class="sec-no">06</span>试单管理：从 300 件到年度框架</h2>
+      <h2 class="sec-title" id="s-trial" data-sec="s-trial"><span class="sec-no">06</span>试单管理：从 300 件到年度框架</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>考察通过只说明「看起来能行」，试单才回答「大货行不行」。试单是品牌花小钱买真相的过程，设计原则是<b>规模小、标准严、信息全</b>：</p>
 
@@ -556,7 +605,7 @@
       </figure>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-score" data-sec="s-score"><span class="sec-no">07</span>供应商评价体系：季度评分卡</h2>
+      <h2 class="sec-title" id="s-score" data-sec="s-score"><span class="sec-no">07</span>供应商评价体系：季度评分卡</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>考察解决「准入」，评分卡解决「在管」。每季度对主力供应商打一次分，结构同样是「红线 + 加权」：<b>红线</b>是本季是否发生一票否决事件（材料造假、擅自转厂外发、检出禁用物质）——发生即淘汰，不参与加权，防止「分数很好看但踩了红线」的误判；<b>加权项</b>权重体现 Soran 的优先级：<b>质量是底线（40%），交期是命脉（25%）</b>，配合意愿决定长期关系（15%），价格与沟通是调节项（各 10%）——权重为 Soran 建议值（教学参考），可按品类调整。逐项按 1–5 分评定后，加权得分自动换算为 A/B/C 级：</p>
 
@@ -612,7 +661,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">08</span>成本谈判要点</h2>
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">08</span>成本谈判要点</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>成本谈判的目标不是「砍到最低」，而是<b>让价格回到可解释的结构上</b>。上一页已建立成本公式（出厂价 = 材料 + 工缴 + 管理费 + 利润），本节把它变成谈判桌上的动作。</p>
 
@@ -659,7 +708,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">考察逻辑</div><div class="kv-v">验厂验证五件事：产能真实性、品质体系、版房开发力、商务健康、配合意愿；只认「看得见的证据」，不听「听得见的承诺」。流程是初筛→实地→试单→放大，每阶段有闸门。</div></div>
@@ -849,6 +898,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     render();
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>
