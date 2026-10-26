@@ -1,0 +1,483 @@
+/* ============================================================
+   Soran 教材 · 云端账号与笔记标注
+   依赖 main.css 的设计变量；本文件只负责标注与账号相关 UI
+   ============================================================ */
+
+/* ---------- 标注覆盖层 ---------- */
+.content { position: relative; }
+
+.ann-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ann-mark {
+  position: absolute;
+  border-radius: 2px;
+  mix-blend-mode: multiply;
+}
+.ann-mark.ann-highlight.ann-c-green { background: rgba(61, 107, 87, .22); }
+.ann-mark.ann-highlight.ann-c-clay  { background: rgba(176, 96, 63, .22); }
+.ann-mark.ann-highlight.ann-c-gold  { background: rgba(185, 143, 69, .30); }
+
+.ann-mark.ann-underline { border-radius: 0; }
+.ann-mark.ann-underline.ann-c-green { background: rgba(61, 107, 87, .80); }
+.ann-mark.ann-underline.ann-c-clay  { background: rgba(176, 96, 63, .80); }
+.ann-mark.ann-underline.ann-c-gold  { background: rgba(185, 143, 69, .85); }
+
+.ann-mark.ann-flash { animation: ann-flash 1.1s ease; }
+@keyframes ann-flash {
+  0%, 100% { opacity: 1; }
+  40% { opacity: .12; }
+}
+
+/* ---------- 选中文字后的工具条 ---------- */
+.ann-toolbar {
+  position: fixed;
+  z-index: 150;
+  display: flex;
+  gap: 2px;
+  padding: 5px;
+  background: var(--ink);
+  border-radius: 9px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity .16s, transform .16s;
+  visibility: hidden;
+}
+.ann-toolbar.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+.ann-toolbar button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #F3EFE6;
+  font-size: 12.5px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ann-toolbar button:hover { background: rgba(255, 255, 255, .13); }
+.ann-swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: 0 0 8px;
+}
+
+/* ---------- 笔记编辑卡 ---------- */
+.ann-editor {
+  position: fixed;
+  z-index: 160;
+  width: 340px;
+  max-width: calc(100vw - 24px);
+  padding: 14px 16px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  display: none;
+}
+.ann-editor.show { display: block; }
+
+.ae-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.ae-title { font-size: 13.5px; font-weight: 700; }
+.ann-x {
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 18px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ann-x:hover { background: var(--surface-2); color: var(--ink); }
+
+.ae-quote {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  max-height: 96px;
+  overflow: auto;
+}
+
+.ae-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+.ae-label { flex: 0 0 32px; width: 32px; font-size: 11.5px; color: var(--ink-faint); }
+.ae-seg { display: flex; gap: 4px; }
+.ae-seg button {
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 11.5px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.ae-seg button.active {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green-deep);
+  font-weight: 600;
+}
+
+.ae-colors { display: flex; gap: 7px; }
+.ae-colors button {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.ae-colors button.active { border-color: var(--ink); }
+.ae-colors button[data-color="green"] { background: var(--green); }
+.ae-colors button[data-color="clay"]  { background: var(--clay); }
+.ae-colors button[data-color="gold"]  { background: var(--gold); }
+
+.ann-editor textarea {
+  width: 100%;
+  min-height: 88px;
+  resize: vertical;
+  padding: 9px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13px;
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  outline: none;
+}
+.ann-editor textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(61, 107, 87, .12);
+}
+
+.ae-foot { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.ae-spacer { flex: 1; }
+
+/* ---------- 侧边栏账号卡 ---------- */
+.ann-account {
+  margin: 6px 16px 10px;
+  padding: 11px 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.ann-account .aa-title { font-size: 12.5px; font-weight: 650; color: var(--ink); }
+.ann-account .aa-mail {
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ann-account .aa-sub { font-size: 11.5px; color: var(--ink-faint); line-height: 1.5; margin-top: 2px; }
+.ann-account .aa-btn { width: 100%; justify-content: center; margin-top: 8px; }
+
+/* ---------- 顶栏笔记按钮 ---------- */
+.ann-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ann-toggle:hover { border-color: var(--green); color: var(--green-deep); }
+.ann-toggle svg { width: 14px; height: 14px; }
+.ann-toggle .at-count {
+  min-width: 16px;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-deep);
+  font-size: 10.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- 笔记抽屉 ---------- */
+.ann-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(38, 35, 29, .36);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.ann-backdrop.show { opacity: 1; pointer-events: auto; }
+
+.ann-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 130;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  max-width: 100vw;
+  height: 100vh;
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform .22s ease;
+}
+.ann-drawer.show { transform: translateX(0); }
+
+.ann-drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.adh-title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; }
+.adh-sub { margin-top: 3px; font-size: 11.5px; color: var(--ink-faint); }
+
+.ann-drawer-list { flex: 1; overflow-y: auto; padding: 10px 12px 18px; }
+.ann-empty {
+  padding: 46px 18px;
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 13px;
+  line-height: 1.9;
+}
+.ann-empty .btn { margin-top: 10px; }
+
+.ann-note-item {
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  margin-bottom: 9px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.ann-note-item:hover { border-color: var(--green-line); background: #FCFAF6; }
+
+.ani-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.ani-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; }
+.ani-dot.ann-c-green { background: var(--green); }
+.ani-dot.ann-c-clay  { background: var(--clay); }
+.ani-dot.ann-c-gold  { background: var(--gold); }
+.ani-style { font-size: 10.5px; color: var(--ink-faint); }
+.ani-orphan {
+  font-size: 10px;
+  color: var(--clay);
+  background: var(--clay-soft);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+.ani-del {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 3px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ani-del:hover { background: var(--clay-soft); color: var(--clay); }
+
+.ani-quote {
+  padding-left: 8px;
+  border-left: 2px solid var(--line-strong);
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ani-note {
+  margin-top: 7px;
+  color: var(--ink);
+  font-size: 12.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ann-drawer-foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+/* ---------- 登录 / 注册弹层 ---------- */
+.ann-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 80px 20px 40px;
+  background: rgba(38, 35, 29, .48);
+  backdrop-filter: blur(3px);
+}
+.ann-modal.show { display: flex; }
+
+.ann-modal-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 22px;
+  background: var(--surface);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+}
+.am-head { display: flex; align-items: center; justify-content: space-between; }
+.am-title { font-family: var(--font-serif); font-size: 17px; font-weight: 700; }
+.am-sub { margin: 6px 0 14px; font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; }
+
+.am-tabs {
+  display: flex;
+  gap: 6px;
+  padding: 3px;
+  margin-bottom: 14px;
+  background: var(--surface-2);
+  border-radius: 8px;
+}
+.am-tab {
+  flex: 1;
+  padding: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.am-tab.active {
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(38, 35, 29, .08);
+}
+
+.am-label { display: block; margin-bottom: 10px; font-size: 12px; color: var(--ink-soft); }
+.am-label input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 13.5px;
+  font-family: var(--font-sans);
+  outline: none;
+}
+.am-label input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(61, 107, 87, .12);
+}
+.am-error { min-height: 18px; margin: 2px 0 8px; font-size: 12px; line-height: 1.5; color: var(--danger); }
+.am-tip {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  line-height: 1.6;
+}
+
+/* ---------- 提示 ---------- */
+.ann-toast-host {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+.ann-toast {
+  max-width: min(520px, calc(100vw - 32px));
+  padding: 9px 15px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #F3EFE6;
+  font-size: 12.5px;
+  line-height: 1.5;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .18s, transform .18s;
+}
+.ann-toast.show { opacity: 1; transform: none; }
+.ann-toast.warn { background: var(--clay); }
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 640px) {
+  .ann-editor {
+    left: 12px !important;
+    right: 12px;
+    top: auto !important;
+    bottom: 12px !important;
+    width: auto;
+    max-width: none;
+  }
+  .ann-drawer { width: 100%; }
+  .ann-toggle .at-label { display: none; }
+  .ann-modal { align-items: center; padding: 24px 14px; }
+}
+
+@media print {
+  .ann-toolbar,
+  .ann-editor,
+  .ann-drawer,
+  .ann-backdrop,
+  .ann-modal,
+  .ann-account,
+  .ann-toggle,
+  .ann-toast-host { display: none !important; }
+}

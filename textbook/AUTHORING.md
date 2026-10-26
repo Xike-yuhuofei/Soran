@@ -6,9 +6,10 @@
 ## 0. 硬性约束
 
 1. **禁止修改共享文件**：`assets/css/main.css`、`assets/js/app.js`、`assets/js/widgets.js`、`assets/js/glossary.js`、`index.html`。并行编写期间这些文件是冻结的。需要新增术语或样式变体时，写入你的交付报告，由主编统一合并。
-2. **纯离线**：禁止引用任何外部 URL（字体/CDN/图片）。所有图形用内联 SVG 手绘，禁止位图。
+2. **正文纯离线**：禁止引用任何外部 URL（字体/CDN/图片）。所有图形用内联 SVG 手绘，禁止位图。登录后的云端笔记需要联网，未登录不影响正文、图表与自测的离线使用。
 3. **纯原生 JS**：页面专属交互写在页面底部 `<script>` 中，入口统一挂到 `window.__SORAN_PAGE_INIT__ = function(){...}`（widgets.js 会自动调用，无需自己监听 DOMContentLoaded）。
-4. 依赖只允许：`main.css`、`glossary.js`、`search-index.js`、`widgets.js`、`app.js`、`window.W`（widgets API）。
+4. 依赖只允许：`main.css`、`annotations.css`、`glossary.js`、`search-index.js`、`widgets.js`、`app.js`、`annotations.js`、`supabase-config.js`、`window.W`（widgets API）。
+5. **笔记功能自动接入**：新增页面按骨架引入 `annotations.css` 与 `annotations.js` 即可，无需编写额外代码；账号入口、标注层、笔记抽屉由 `annotations.js` 自动注入。
 
 ## 1. 页面骨架（必须完整照抄结构）
 
@@ -25,6 +26,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{页标题} — 素然之境 Soran</title>
 <link rel="stylesheet" href="{root}assets/css/main.css">
+<link rel="stylesheet" href="{root}assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
 </head>
 <body data-page-id="{pageId}" data-root="{root}">
@@ -63,6 +65,8 @@
 <script src="{root}assets/js/search-index.js"></script>
 <script src="{root}assets/js/widgets.js"></script>
 <script src="{root}assets/js/app.js"></script>
+<script src="{root}assets/js/supabase-config.js"></script>
+<script src="{root}assets/js/annotations.js"></script>
 <script>
 /* 页面专属交互 */
 window.__SORAN_PAGE_INIT__ = function () {
