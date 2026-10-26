@@ -7,8 +7,50 @@
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="stylesheet" href="../../assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="basics-supply" data-root="../../">
+<body data-v3-curriculum data-page-id="basics-supply" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -21,7 +63,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">BASICS · SUPPLY</div>
         <h1 class="page-title">生产制造与供应链</h1>
@@ -32,10 +74,20 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div>
+<h2>从样品追到稳定量产的能力</h2><p class="v3-hook">样衣做得不错，怎样判断这家工厂能否按时交付整批货？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>打样与量产是不同能力，原料备货、工序平衡、质量控制都要验证。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>交期、成本、MOQ、签样和验货属于相互制约的生产系统。<br><b>供应链验证：</b>索取生产排期、工序设备、产能记录和试单验收安排。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3>
+<div class="v3-practice-grid"><details><summary>为什么量产比样衣更难？</summary><p>要稳定复制工序质量，并控制损耗、返工与批次差异。</p></details><details><summary>较低 MOQ 是否意味着更划算？</summary><p>应合并核算开机费、原料起订、排产及单件损耗。</p></details><details><summary>交期谈判先确认哪些节点？</summary><p>先确认定版签样、面辅料到位、主要工序和验货安排。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p>
+</section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">01</span>从纤维到成衣：全链路地图</h2>
+      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">01</span>从纤维到成衣：全链路地图</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>先找出本章真实商品问题，再判断有哪些影响因素与可验证指标。</span></div>
 
       <p>先做一个思想实验：你在商场花 39 元买了一条女式内裤。这条内裤的棉，可能在新疆采摘；纱在山东纺；布在广东织、又在福建定型；橡筋来自浙江；最后在汕头谷饶的一间车缝厂里，被一位工人用四线包缝机在 90 秒内缝合成型。整条链路上有七八类玩家，每换一手，价格就往上叠一层。<b>看不懂链路，就看不懂报价。</b></p>
 
@@ -154,7 +206,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cat" data-sec="s-cat"><span class="sec-no">02</span>三大品类的制造差异</h2>
+      <h2 class="sec-title" id="s-cat" data-sec="s-cat"><span class="sec-no">02</span>三大品类的制造差异</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>内裤、袜子、文胸虽然都叫「贴身衣物」，但制造逻辑完全是三种物种：<b>内裤是「裁剪+车缝」</b>，布是布、衣是衣；<b>袜子是「织造成型」</b>，纱进去、袜子出来，几乎没有裁剪；<b>文胸是「部件组装」</b>，20 来种来自不同行业的部件汇合到一条流水线上。这个差异直接决定了成本结构、打样难度和供应商类型。</p>
 
@@ -246,7 +298,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cluster" data-sec="s-cluster"><span class="sec-no">03</span>产业集群地图</h2>
+      <h2 class="sec-title" id="s-cluster" data-sec="s-cluster"><span class="sec-no">03</span>产业集群地图</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>贴身衣物在中国的生产高度集聚：<dfn class="term" data-term="产业集群">产业集群</dfn>的意义在于——集群里你能在一小时内看完全部供应商（面料、辅料、成衣、印染），打样不用等快递，小单有人接，出问题当天能到现场。选集群就是选你的供应链半径。</p>
 
@@ -322,7 +374,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-mode" data-sec="s-mode"><span class="sec-no">04</span>OEM / ODM / 自研：模式选择</h2>
+      <h2 class="sec-title" id="s-mode" data-sec="s-mode"><span class="sec-no">04</span>OEM / ODM / 自研：模式选择</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>确定了品类与产地，下一个决策是：<b>设计和版型从哪来？</b>三种模式对应三种控制点与成本结构：</p>
 
@@ -353,7 +405,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-sample" data-sec="s-sample"><span class="sec-no">05</span>打样链路：从头样到船样</h2>
+      <h2 class="sec-title" id="s-sample" data-sec="s-sample"><span class="sec-no">05</span>打样链路：从头样到船样</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>打样是品牌与工厂「对齐想象」的过程，也是新品牌最容易低估时间与钱的环节。标准链路五步：</p>
 
@@ -441,7 +493,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-moq" data-sec="s-moq"><span class="sec-no">06</span>MOQ 与价格的真实关系</h2>
+      <h2 class="sec-title" id="s-moq" data-sec="s-moq"><span class="sec-no">06</span>MOQ 与价格的真实关系</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p><dfn class="term" data-term="MOQ">MOQ</dfn>（起订量）不是工厂「刁难」你，而是<b>固定成本摊销</b>的数学结果：换一次色要洗缸调机、换一次款要重新排料调机、开一批料要承担最低起织量。产量越小，这些固定成本摊到每件上越多，单价自然越高。链路上每一环都有自己的 MOQ：</p>
 
@@ -523,7 +575,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本结构拆解</h2>
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本结构拆解</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>所有报价，无论包装成什么话术，都能拆进同一个公式：</p>
 
@@ -627,7 +679,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-lead" data-sec="s-lead"><span class="sec-no">08</span>交期与品质成本</h2>
+      <h2 class="sec-title" id="s-lead" data-sec="s-lead"><span class="sec-no">08</span>交期与品质成本</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <h3 class="sub-title">典型交期链</h3>
       <div class="tbl-wrap">
@@ -673,7 +725,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-vendor" data-sec="s-vendor"><span class="sec-no">09</span>供应商评估维度总览</h2>
+      <h2 class="sec-title" id="s-vendor" data-sec="s-vendor"><span class="sec-no">09</span>供应商评估维度总览</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>本页是总览，第五篇「供应商考察」会给出可带去现场的完整清单与话术。先建立框架：<b>评估一家工厂看五个维度</b>，缺一个都可能踩坑：</p>
 
@@ -700,7 +752,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">链路</div><div class="kv-v">纤维 → 纺纱/纺丝 → 织造 → 染整 → 裁剪 → 缝制/成型 → 整烫检针 → 包装；上游按公斤/米计价，下游按件计价，中间用「单价 × 单件克重」换算。</div></div>
@@ -906,6 +958,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     calc();
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>
