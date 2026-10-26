@@ -1,0 +1,26 @@
+name: Validate Soran Fibers V3
+
+on:
+  pull_request:
+    paths:
+      - 'textbook/pages/basics/fibers.html'
+      - 'scripts/validate-fibers-v3.cjs'
+      - '.github/workflows/validate-fibers-v3.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'textbook/pages/basics/fibers.html'
+      - 'scripts/validate-fibers-v3.cjs'
+      - '.github/workflows/validate-fibers-v3.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  fibers-content-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check V3 quizzes and inline scripts
+        run: node scripts/validate-fibers-v3.cjs
