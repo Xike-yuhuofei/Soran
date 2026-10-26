@@ -156,6 +156,26 @@
     return next;
   }
 
+  async function fetchUser(accessToken) {
+    var res;
+    try {
+      res = await timedFetch(apiUrl('/auth/v1/user'), {
+        headers: {
+          'apikey': CFG.anonKey || '',
+          'Authorization': 'Bearer ' + accessToken
+        }
+      });
+    } catch (e) {
+      throw httpError('网络不可用，请检查连接', 0);
+    }
+    var data = {};
+    try { data = await res.json(); } catch (e) {}
+    if (!res.ok) {
+      throw httpError(data.message || data.msg || '无法读取账号信息', res.status);
+    }
+    return data;
+  }
+
   async function ensureSession() {
     if (!session) return null;
     if (session.expires_at && session.expires_at < Date.now() + 60000) {
@@ -1288,6 +1308,54 @@
     });
   }
 
+  /* ---------------- 邮箱确认回调 ---------------- */
+  function consumeAuthHash() {
+    var hash = location.hash || '';
+    if (!hash) return Promise.resolve(false);
+
+    if (hash.indexOf('access_token=') < 0) {
+      if (hash.indexOf('error=') > -1) {
+        var ep = new URLSearchParams(hash.slice(1));
+        var emsg = ep.get('error_description') || ep.get('error') || '确认失败';
+        try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+        toast('邮箱确认失败：' + emsg, 'warn');
+      }
+      return Promise.resolve(false);
+    }
+
+    var params = new URLSearchParams(hash.slice(1));
+    var access = params.get('access_token');
+    var refresh = params.get('refresh_token') || '';
+    var expiresIn = parseInt(params.get('expires_in') || '', 10);
+    if (!access) return Promise.resolve(false);
+    if (!expiresIn || isNaN(expiresIn)) expiresIn = 3600;
+
+    var next = {
+      access_token: access,
+      refresh_token: refresh,
+      expires_at: Date.now() + expiresIn * 1000,
+      user: null
+    };
+
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+    setSyncStatus('同步中…');
+
+    return fetchUser(access).then(function (user) {
+      if (!user || !user.id) throw httpError('无法读取账号信息', 0);
+      next.user = user;
+      saveSession(next);
+      updateAccountUI();
+      toast('邮箱已验证，已自动登录');
+      return loadAnnotations(true).then(function () { return true; });
+    }).catch(function (e) {
+      clearSession();
+      updateAccountUI();
+      setSyncStatus('未登录');
+      toast('确认链接已失效：' + authErrorText(e.message) + '，请重新登录或重发确认邮件', 'warn');
+      return false;
+    });
+  }
+
   /* ---------------- 启动 ---------------- */
   function init() {
     buildAccountUI();
@@ -1306,12 +1374,15 @@
     bindHitTest();
     bindResize();
 
-    if (session) {
-      setSyncStatus('加载中…');
-      loadAnnotations(true);
-    } else {
-      setSyncStatus('未登录');
-    }
+    consumeAuthHash().then(function (handled) {
+      if (handled) return;
+      if (session) {
+        setSyncStatus('加载中…');
+        loadAnnotations(true);
+      } else {
+        setSyncStatus('未登录');
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
