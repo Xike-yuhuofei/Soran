@@ -35,3 +35,29 @@ for(const cfg of pages){
  assert.ok(!s.includes('.:scope{'),cfg.path+' invalid CSS');
  console.log('PASS substantive rewrite '+cfg.path+' / '+cfg.p.reduce((a,b)=>a+b,0)+' paragraphs');
 }
+
+
+/* Fabrics is substantively rewritten: text, decision examples and original tools must coexist. */
+{
+ const path='textbook/pages/basics/fabrics.html',html=fs.readFileSync(path,'utf8');
+ const sec=[...html.matchAll(/<h2 class="sec-title" id="([^"]+)" data-sec="\1"[^>]*>/g)];
+ const sectionIds=['s-knit','s-weft','s-warp','s-spec','s-dye','s-shade','s-finish','s-owner','s-sum'];
+ const chunks=[...html.matchAll(/<h2 class="sec-title" id="(s-[^"]+)" data-sec="[^"]+"[^>]*>/g)];
+ assert.deepEqual(chunks.map(x=>x[1]),sectionIds,path+' section order changed');
+ const counts=[3,6,1,5,6,2,2,3,1];
+ chunks.forEach((x,i)=>{
+   const txt=html.slice(x.index,chunks[i+1]?.index??html.indexOf('<script src=',x.index));
+   assert.equal([...txt.matchAll(/<p(?:\s[^>]*)?>[\s\S]*?<\/p>/g)].length,counts[i],path+' prose count '+x[1]);
+   assert.ok(txt.includes('class="fabrics-judgement"'),path+' section missing practical task '+x[1]);
+ });
+ assert.equal((html.match(/class="fabrics-judgement"/g)||[]).length,9,path+' practical panels');
+ assert.equal((html.match(/<figure\b/g)||[]).length,8,path+' diagrams');
+ assert.equal((html.match(/<section class="quiz"/g)||[]).length,11,path+' 11 preserved questions');
+ for(const phrase of ['GB/T 250-2008','GB/T 251-2008','机号不等于成品布','同样写“棉＋锦纶＋氨纶”','理论上每延米约有 0.304kg']) {
+    assert.ok(html.includes(phrase),path+' missing verified concept '+phrase);
+ }
+ for(const phrase of ['经编家族：文胸面料的绝对主角','一台 28G 单面机永远','否则按一洗就没','缸间色差（如 &lt;4 级）']) {
+    assert.ok(!html.includes(phrase),path+' obsolete text '+phrase);
+ }
+ console.log('PASS substantive rewrite '+path+' / 9 sections / 29 prose / 9 practice / 8 figures / 11 quizzes');
+}

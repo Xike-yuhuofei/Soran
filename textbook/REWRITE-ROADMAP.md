@@ -19,7 +19,7 @@
 |---|---|---|---|
 | 01 | `pages/guide.html` | 已重写（PR #5） | 学习路径、实物观察、证据意识 |
 | 02 | `pages/basics/fundamentals.html` | 已重写（PR #5） | 湿热舒适、人体结构、尺寸与产品定位 |
-| 03 | `pages/basics/fabrics.html` | 待重写 | 纬编/经编、针织组织识别、克重幅宽、染整 |
+| 03 | `pages/basics/fabrics.html` | 已重写（PR #6） | 纬编/经编、针织组织识别、克重幅宽、染整 |
 | 04 | `pages/basics/quality.html` | 待重写 | 检测报告、标准边界、AQL、缺陷归因 |
 | 05 | `pages/basics/supply.html` | 待重写 | 制造链、成本、MOQ、打样、交期 |
 | 06 | `pages/panties/design.html` | 待重写 | 部位图、裆宽/浪线、试穿与分码 |

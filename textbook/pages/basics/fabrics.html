@@ -56,6 +56,15 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
 @media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
 @media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
 </style>
+<style id="soran-fabrics-rewrite-style">
+body[data-page-id="basics-fabrics"] .fabrics-judgement{margin:14px 0 28px;padding:18px 20px;background:#F2F6F2;border:1px solid #D7E2D9;border-radius:12px;max-width:100%;}
+body[data-page-id="basics-fabrics"] .fabrics-judgement .fj-kicker{font-size:11px;letter-spacing:.12em;font-weight:750;color:#3D6B57;margin-bottom:8px;}
+body[data-page-id="basics-fabrics"] .fabrics-judgement h3{font-size:16px;line-height:1.6;margin:0 0 10px;color:#273D32;}
+body[data-page-id="basics-fabrics"] .fabrics-judgement dl{display:grid;grid-template-columns:85px minmax(0,1fr);margin:0;gap:9px 13px;}
+body[data-page-id="basics-fabrics"] .fabrics-judgement dt{font-size:12px;font-weight:750;color:#586D5E;}
+body[data-page-id="basics-fabrics"] .fabrics-judgement dd{font-size:13px;line-height:1.85;margin:0;color:#3D493F;}
+@media(max-width:600px){body[data-page-id="basics-fabrics"] .fabrics-judgement{padding:14px 13px}body[data-page-id="basics-fabrics"] .fabrics-judgement dl{grid-template-columns:1fr;gap:3px}body[data-page-id="basics-fabrics"] .fabrics-judgement dd{margin-bottom:7px}}
+</style>
 </head>
 <body data-v3-curriculum data-page-id="basics-fabrics" data-root="../../">
 <div class="layout">
@@ -74,7 +83,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
       <header class="page-head">
         <div class="page-kicker">BASICS · FABRICS</div>
         <h1 class="page-title">针织面料与染整</h1>
-        <p class="page-lede">面料是内衣品质与成本的第一决定因素。这一页回答四个问题：为什么贴身衣物几乎全是针织；纬编和经编两大家族各有什么成员、分别用在哪个品类；机号、克重、幅宽三件套如何决定布的身价；坯布到成品布的染整流程里，钱和品质在哪些环节被决定。读完你能用「成分+克重+组织+整理」四个要素向供应商准确描述你要的面料，并识破最常见的低价手法。</p>
+        <p class="page-lede">同样写着“棉＋氨纶”的两块布，为什么一块舒服耐洗，另一块容易卷边、缩水或掉色？本章把面料拆成五个你在工厂能看见、能提问的部分：针织结构、纬编与经编组织、机号克重幅宽、染整与色差、功能整理。每节先看真实商品问题，再学识别方法和验证依据。读完以后，你应该能拿着两块样布，说明差异可能来自哪里，并把质量、成本与采购条款写成可执行的要求。</p>
         <div class="page-meta">
           <span class="chip">阅读时间 约 30 分钟</span>
           <span class="chip">前置：纤维与纱线</span>
@@ -95,11 +104,11 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
  </section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-knit" data-sec="s-knit"><span class="sec-no">01</span>针织 vs 梭织：内衣为什么几乎全是针织</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-knit" data-sec="s-knit"><span class="sec-no">01</span>为什么同样是棉，针织布更容易拉伸？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>同为棉纤维，为何针织与梭织的拉伸体验不同？</span></div>
 
-      <p>先做一个十秒钟的小实验：把毛衣和衬衫分别放在手里横向拉一拉。毛衣能拉开一大截、松手基本弹回去；衬衫几乎拉不动。差别不在纱线——两者都可能是棉的——而在<b>结构</b>：毛衣的纱线被弯成了一个个小圈（<dfn class="term" data-term="针织物">针织物</dfn>的线圈），拉的时候是<b>线圈在变形</b>；衬衫的经纬纱彼此垂直绞死，几乎没有让步的余地（<dfn class="term" data-term="梭织物">梭织物</dfn>）。</p>
+      <p>先看一条普通棉内裤和一件棉衬衫：两者的纤维都可以是棉，为什么内裤横向更容易拉开？答案通常在<b>布的结构</b>，而不只在原料。内裤常用<dfn class="term" data-term="针织物">针织物</dfn>，纱线弯成一排排互相串套的线圈；衬衫常用<dfn class="term" data-term="梭织物">梭织物</dfn>，经纱与纬纱交叉形成相对稳定的格子。试着横向拉开两块布，再观察线圈是否在改变形状。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>一条棉内裤为什么通常比棉衬衫更容易拉伸？</h3><dl><dt>要弄清的知识</dt><dd>分清线圈伸长与回复，不把“天然纤维”误解为“没有弹性”。</dd><dt>采购时怎么验证</dt><dd>让供应商提供同成分、不同组织的样布；记录横向拉伸、卷边与洗后尺寸。</dd></dl></aside>
 
-      <p>这就是针织的核心秘密：<b>弹性来自线圈变形，而不是纱线本身有弹性</b>。纯棉纱几乎没有弹性，但织成汗布就能横向拉开 10%-20%——因为每个线圈都像一枚缝进布里的小弹簧。这也是为什么一件没有任何「弹力纤维」的老式棉毛衫，依然比同样纱线的衬衫贴合身体。</p>
+      <p>针织布能够伸长，一个重要原因是<b>线圈可以转动、展开和重新排列</b>，不代表纱线本身具有像橡皮筋那样的高弹性。没有氨纶的针织棉布也可能有可观的伸长；但“拉得开”和“松手能恢复原样”是两件事。加入氨纶、调整组织与密度，往往是为了改善回复和合体稳定性。反过来，含弹性纱线的梭织布也能有弹力，因此不宜把“梭织不弹、针织很弹”背成定律。</p>
 
       <figure class="fig">
         <div class="fig-canvas">
@@ -138,34 +147,34 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
               <rect x="455" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="485" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="515" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="545" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="575" y="182" width="30" height="30" fill="#EAF1ED"/><rect x="605" y="182" width="30" height="30" fill="#FFFFFF"/><rect x="635" y="182" width="30" height="30" fill="#EAF1ED"/>
             </g>
             <text x="560" y="258" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">经纱 × 纬纱垂直交织，没有线圈</text>
-            <text x="560" y="278" text-anchor="middle" font-size="11.5" fill="#8B8375">结构稳定 · 挺括 · 不脱散，但弹性很小</text>
+            <text x="560" y="278" text-anchor="middle" font-size="11.5" fill="#8B8375">结构通常较稳，弹性与伸长取决于织法和纱线</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–6</span><b>两种织物的本质区别。</b>针织物是线圈相互串套：拉伸时线圈弯曲变形，所以柔软贴身；梭织物是经纬垂直交织：纱线被锁死，只有纱线本身伸长（极小）才变形。梭织结构稳定的另一面，就是它无法贴合会呼吸、会活动的身体——这是内衣选针织的根本原因。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–6</span><b>两种织物的本质区别。</b>针织用线圈串套，梭织用经纬纱交织。图为基础结构示意，帮助理解伸长方式；两类织物的实际弹性也受纱线、组织与后整理影响，不能把梭织理解成完全没有伸长。</figcaption>
       </figure>
 
-      <p>硬币的另一面是针织的三个固有代价，也是日后验货时要盯的重点：</p>
+      <p>针织面料通常适合需要贴身和活动余量的产品，但选品时还要检查三项风险：<b>脱散</b>（线圈被勾破后可能继续抽脱）、<b>卷边</b>（某些单面组织的裁切边自然卷曲）与<b>尺寸变化</b>（洗涤或穿着后线圈重新松弛）。风险大小取决于组织、纱线和整理，不是每种针织布都同样严重。下面的图和对照框，帮助你把这些现象与实际工序联系起来。</p>
       <div class="kv">
-        <div class="kv-row"><div class="kv-k">脱散</div><div class="kv-v">线圈是一环扣一环的串套，一处断裂会沿着串套方向「抽丝」越脱越长。汗布最明显，罗纹次之，经编基本不脱散。对策在边口：包缝、罗纹收口、激光切边熔合。</div></div>
-        <div class="kv-row"><div class="kv-k">卷边</div><div class="kv-v">布边（尤其汗布）会持续向反面卷曲，裁剪时必须先「定幅」，否则裁片歪斜。这也是无痕内裤切边工艺要先做定型的原因。</div></div>
-        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">线圈形态容易被改变：洗一次缩一圈、穿一天松一圈。针织物的缩水率控制是染整（第 05 节）与检测（下一页）的核心课题。</div></div>
+        <div class="kv-row"><div class="kv-k">脱散</div><div class="kv-v">线圈受损后某些组织容易继续脱圈，风险因组织、纱线与边口处理而异。可检查裁切边是否有连续脱圈，洗后是否扩大；车缝包边或其他合适的边缘固定方式可用于控制问题。</div></div>
+        <div class="kv-row"><div class="kv-k">卷边</div><div class="kv-v">普通单面平针的自由边容易卷曲，但程度受线圈结构、密度和整理影响。打版与裁剪前应看实际成品布的卷边表现，不能假定所有针织布都要同一种处理。</div></div>
+        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">穿着和洗涤可能让线圈重新松弛，引起长宽变化。对照相同方法下的洗后尺寸变化和拉伸回复，才能判断这款面料适不适合目标产品。</div></div>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-weft" data-sec="s-weft"><span class="sec-no">02</span>纬编家族：内裤、背心、无缝的组织语言</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-weft" data-sec="s-weft"><span class="sec-no">02</span>平针、罗纹、毛圈、添纱该用在哪？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>袜口、袜身与脚底为什么适合不同组织？</span></div>
 
-      <p><dfn class="term" data-term="纬编">纬编</dfn>的主力设备是<b>圆机</b>：一台把纱线织成布筒的「旋转编织机」——机头带着几十路成圈系统高速旋转，每一路喂一根纱线织一个横列，产出的连续布筒剖开就是坯布。你会在面料商口中听到「单面机、双面机、罗纹机」，它们的区别只是成圈系统的配置不同；袜机、无缝机（圣东尼）本质上也是纬编圆机的特种型号。纬编是内衣行业的绝对主力：<b>内裤、背心、秋衣裤、无缝衣片全部是纬编</b>。</p>
+      <p>袜子、内裤和很多背心都能找到<dfn class="term" data-term="纬编">纬编</dfn>结构。想象织毛衣时，一根纱线沿着同一横列连续成圈，再逐列连接；工业圆机则用很多织针高速重复这件事，常织出筒状坯布。平针机、罗纹机、双面机的织针配置不同，所以产生不同组织。注意：袜机和无缝成衣机也可采用纬编原理，但<b>不能据此认为所有内衣都由纬编圆机制造</b>，经编文胸面料与梭织辅料仍然存在。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>为什么袜口需要弹性，主体需要贴肤平整？</h3><dl><dt>要弄清的知识</dt><dd>平针、罗纹、毛圈、提花和添纱各解决不同部位的设计任务。</dd><dt>采购时怎么验证</dt><dd>拿一双袜子翻看正反面、袜跟加固和袜口组织，让工厂说明面纱、地纱位置。</dd></dl></aside>
 
       <h3 class="sub-title">平针（汗布）：一切的基础</h3>
-      <p><dfn class="term" data-term="平针组织">平针组织</dfn>俗称<b>汗布</b>，是最基本的纬编组织。识别正反面是入门基本功：正面是一列列 <b>V 形线圈柱</b>，光滑细腻；反面是一排排<b>横向弧线（圈弧）</b>，略见横纹。翻一翻手边内裤的布面：亮而平的一面是正面。轻薄柔软是它的优点，易卷边、易脱散是它的脾气。</p>
+      <p>先学会认最常见的<dfn class="term" data-term="平针组织">平针组织</dfn>（常称汗布）。把布放在明亮处、稍微拉平：一面常能看到纵向排列的 V 形针目，另一面更容易看到横向弧形线圈。这个方法适合学习基本单面平针，但磨毛、涂层、印花或复合整理会遮盖纹理，不能凭表面光泽断定正反面。汗布通常柔软、重量可设计得较轻；实际卷边、脱散与起球情况仍需看纱线、密度和后整理。</p>
 
       <h3 class="sub-title">罗纹与双罗纹：收口与厚实的分工</h3>
-      <p><dfn class="term" data-term="罗纹">罗纹</dfn>把正面线圈纵行和反面线圈纵行交替排布：<b>1×1</b> 是一正一反，<b>2×2</b> 是两正两反（俗称「灯芯弹力条」）。它横向可以拉开接近一倍且<b>不卷边</b>——所有需要「收紧回弹」的位置都是它：袜口、裤腰、领口、袖口。 <dfn class="term" data-term="双罗纹">双罗纹</dfn>俗称<b>棉毛布</b>，是两个罗纹背靠背复合：两面外观相同、厚实平整、不易脱散，是秋衣秋裤的经典面料。</p>
+      <p>在袜口和内裤腰头，常看到一条条凸起的纵向纹路，这可能是<dfn class="term" data-term="罗纹">罗纹</dfn>。它把正面和反面线圈纵行按规律交替，例如 1×1 或 2×2，横向伸长能力通常较好，边缘卷曲倾向较小。<dfn class="term" data-term="双罗纹">双罗纹</dfn>（棉毛组织、interlock）不是“罗纹对折缝成两层”，而是通过两组针协同形成的双面组织，布面相对平整、结构更厚实。罗纹和双罗纹可用于不同部位，不能用“名称里都有罗纹”推断它们弹性、厚度完全相同。</p>
 
       <h3 class="sub-title">毛圈、提花与添纱</h3>
-      <p><dfn class="term" data-term="毛圈组织">毛圈组织</dfn>在线圈上再挂一个拉长的线圈，布面长出无数小环——袜机直接织成毛巾圈（毛圈袜），割断拉毛就是绒。<dfn class="term" data-term="提花">提花</dfn>按花型选针成圈，可以直接把图案「织」出来而不是印上去，无缝内衣的图形、袜子的 logo 都靠它，耐洗不掉色。</p>
+      <p><dfn class="term" data-term="毛圈组织">毛圈组织</dfn>可以在织物某一面形成凸出的纱线圈：运动袜脚底的毛圈常用于缓冲和吸纳液态水，但也占用鞋内空间。<dfn class="term" data-term="提花">提花</dfn>是通过选针或线圈变化在织物里形成花纹；也有印花和后加工形成图案，验货时要分清织出、印出与绣出的差别，分别检查洗后变化、表面摩擦以及勾丝风险。</p>
 
-      <p><dfn class="term" data-term="添纱">添纱</dfn>是本节最值得吃透的概念：<b>两根纱线同时垫入同一个线圈</b>，张力与垫纱角度决定一根露在正面（<b>面纱</b>）、一根藏在反面（<b>地纱</b>）。棉袜的经典配方就是添纱逻辑：棉做面纱——皮肤要吸汗亲肤；锦纶包覆氨纶做地纱——弹力与耐磨藏在里层。凉感内裤反过来：凉感长丝做面纱贴皮肤。以后你看成分标时多问一句「每种纤维到底在哪一面」，答案几乎都在添纱结构里。</p>
+      <p>再理解一个采购里很容易被忽略的词：<dfn class="term" data-term="添纱">添纱</dfn>。某些针织组织可以让两根纱线同时参与同一成圈过程，使不同纱线在织物两面呈现不同覆盖关系。工厂可能把一种纱线安排在更靠近皮肤的一面，另一种纱线承担耐磨或弹力支撑。<b>但总成分标注不能说明每种纱线在布上的具体位置</b>；同样写“棉＋锦纶＋氨纶”的袜子，面纱、地纱和跟尖加固配置可能完全不同。采购时应要求组织图或实物拆样验证。</p>
 
       <figure class="fig">
         <div class="fig-canvas">
@@ -216,7 +225,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="624" y="272" text-anchor="middle" font-size="11" fill="#8B8375">横弹大 · 不卷边 · 袜口裤腰领口</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–7</span><b>平针正反面与罗纹。</b>正面看 V、反面看弧——这是验货时判断布面朝向最快的一招。罗纹的正反线圈纵行交替排列，形成肉眼可见的凸条纹，横向弹性远大于平针。图中线圈画法为教学示意。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–7</span><b>平针正反面与罗纹。</b>单面平针常见正面 V 形针目、反面圈弧；罗纹以正反针纵行交替形成条纹。图只展示典型结构，印花、磨毛及复合织物的正反面需结合实际样布辨认。</figcaption>
       </figure>
 
       <figure class="fig">
@@ -255,7 +264,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="402" y="296" text-anchor="start" font-size="11.5" fill="#8B8375">「氨纶添纱」= 氨纶以不成圈方式衬垫进线圈 → 汗布获得横向弹性</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–8</span><b>添纱原理与典型应用。</b>面纱决定布面的手感与功能，地纱决定弹力与牢度——低价产品常在这里做手脚：把昂贵的面纱换便宜的地纱顶包，成分标上却写总配比。合同里应直接约定「面纱 / 地纱」各自的规格。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–8</span><b>添纱原理与典型应用。</b>添纱让多种纱线在针织结构中形成不同的覆盖关系，适合做贴肤层与耐磨层的功能分配。具体面纱、地纱位置依机器与工艺而定，成分比例不能直接证明纱线位置。</figcaption>
       </figure>
 
       <div class="tbl-wrap"><table class="tbl">
@@ -277,18 +286,18 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
           主理人视角
         </div>
-        <p>组织选择就是「用哪个部位弹、弹多少」的分配：<b>主体要平贴 → 平针；边口要回弹 → 罗纹；要图案 → 提花；要两种功能分层 → 添纱</b>。无缝内衣（<dfn class="term" data-term="无缝针织">无缝针织</dfn>）仍然是纬编——只是把织布与裁剪合并成直接织出筒状衣片，组织以添纱 + 提花为主。它对织机和打版的要求极高，品类细节在内裤篇展开。</p>
+        <p>为产品分配组织时，先明确部位的任务，而不是记一个“最好组织排行榜”：贴身主体可能重视平整与柔软，袜口或腰口看稳定回复，脚底可能需要局部毛圈，花纹区域才考虑提花，双层功能布可以研究添纱。<dfn class="term" data-term="无缝针织">无缝针织</dfn>常减少部分车缝工序，但“无缝”通常指减少侧缝等特定接缝，不等于成衣没有任何连接、切割或后加工。</p>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-warp" data-sec="s-warp"><span class="sec-no">03</span>经编家族：文胸面料的绝对主角</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-warp" data-sec="s-warp"><span class="sec-no">03</span>为什么文胸光面布和蕾丝常采用经编？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>经编与纬编的区别对光面文胸有什么实际意义？</span></div>
 
-      <p>纬编是一根纱「绕着布幅来回跑」：织完一个横列，再织下一个。而 <dfn class="term" data-term="经编">经编</dfn>是<b>一整排经纱（成百上千根）同时成圈</b>——像一排人同时打结，步调一致。这个成圈方式的差别，带来三个决定性结果：</p>
+      <p>现在拿起一件光面文胸或网眼背心：轻薄布面不容易沿一个破口连续脱圈，通常更重视尺寸与外观稳定性。这时应认识<dfn class="term" data-term="经编">经编</dfn>。与纬编按横列连续成圈不同，经编利用多根经纱和导纱机构形成相互连接的线圈结构。它既可以织出较平滑的布，也可以形成蕾丝与网眼；<b>经编通常具有不同于普通纬编的脱散与稳定性特点，但也不是“永远不勾丝、不变形”</b>。决定品质的仍包括原料、组织、密度、氨纶配置和定型处理。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>薄杯、弹力网、蕾丝为何经常采用经编？</h3><dl><dt>要弄清的知识</dt><dd>经编适合多种轻薄及稳定组织，但仍需按纱线、结构与拉伸回复验证。</dd><dt>采购时怎么验证</dt><dd>在同用途下比较经编与纬编样布的变形、勾丝和洗后稳定性。</dd></dl></aside>
 
       <div class="kv">
-        <div class="kv-row"><div class="kv-k">不脱散</div><div class="kv-v">每根纱都被相邻纱锁定，剪开边缘几乎不抽丝。薄至 30–50 g/m² 的网布也能稳定存在——纬编汗布做到这个克重早脱散了。</div></div>
-        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">线圈相互锁紧，形态不易被改变。受力后回弹一致，这是罩杯面料「保形」的命根子。</div></div>
-        <div class="kv-row"><div class="kv-k">可织极细网眼</div><div class="kv-v">导纱针控制每根纱的垫纱轨迹，可织出规律、细密、弹性可控的网孔——弹力网、蕾丝、杯里网布全是这条技术路线。</div></div>
+        <div class="kv-row"><div class="kv-k">不脱散</div><div class="kv-v">部分经编组织较不易沿断线处连续脱圈，但也可能勾丝、破洞或局部脱散。应根据具体经编组织与裁剪边缘检查，而不是把“不脱散”当作免检承诺。</div></div>
+        <div class="kv-row"><div class="kv-k">尺寸稳定</div><div class="kv-v">经编的尺寸稳定性取决于组织、纱线、密度和后整理。用拉伸回复与水洗尺寸变化评估，比直接推断“经编必定保形”可靠。</div></div>
+        <div class="kv-row"><div class="kv-k">可织极细网眼</div><div class="kv-v">经编可以设计细密网眼与图案，用于弹力网、蕾丝和杯里布；但网孔大小、勾丝风险、覆盖与弹力需要根据具体用途验证。</div></div>
       </div>
 
       <figure class="fig">
@@ -320,7 +329,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="552" y="248" text-anchor="middle" font-size="12" font-weight="600" fill="#26231D">上千根经纱各自成圈、彼此锁定（教学示意）</text>
             <text x="552" y="266" text-anchor="middle" font-size="11" fill="#8B8375">高速高效、化纤长丝量产 → 适合大批量标准化面料</text>
             <!-- 底部结论与产品 -->
-            <text x="380" y="296" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2C5142">结果：不脱散 · 尺寸稳定 · 可织极细网眼 —— 文胸面料几乎全是经编</text>
+            <text x="380" y="296" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2C5142">经编可实现多种稳定网眼与光面组织，仍需评估伸长和勾丝</text>
             <g font-size="11.5" text-anchor="middle">
               <rect x="25" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="110" y="327" fill="#8F6E2F" font-weight="600">特里科光布｜光杯 · 侧比</text>
               <rect x="205" y="308" width="170" height="30" rx="8" fill="#F6EFDF" stroke="#E4D6B4"/><text x="290" y="327" fill="#8F6E2F" font-weight="600">拉舍尔蕾丝｜杯面 · 花边</text>
@@ -329,27 +338,27 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             </g>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–9</span><b>经编与纬编的成圈差异。</b>纬编一根纱逐列编织、灵活性高；经编一排纱同时成圈、相互锁定，因此不脱散、稳定、能织极细网眼。文胸对「保形 + 轻薄 + 大批量稳定」的要求，正好全部命中经编的优势区。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–9</span><b>经编与纬编的成圈差异。</b>纬编与经编采用不同成圈方式。图为原理示意；经编可形成不同的延伸与稳定特征，但不意味着完全不脱圈、不变形，需结合具体组织及检测结论。</figcaption>
       </figure>
 
       <h3 class="sub-title">认识四位成员</h3>
       <div class="kv">
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="特里科">特里科</dfn> Tricot</div><div class="kv-v">高速经编机织出的细密平纹经编布。锦氨特里科（常见 80/20、82/18，<span class="num">170–240</span> g/m²，示例）是<b>文胸光面杯、侧比、无痕内裤光面</b>的标准料：布面平滑、横向高弹、纵向略弹、不脱散。你摸过的每一件「光面无痕」产品，八成是它。</div></div>
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="拉舍尔">拉舍尔</dfn> Raschel</div><div class="kv-v">另一类经编机，擅长花型与网孔：内衣<b>蕾丝花边</b>主要是拉舍尔经编蕾丝，花纹立体、弹性可控。评价点看花纹清晰度、弹性均匀性与勾丝耐洗性。</div></div>
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="弹力网">弹力网</dfn> Power Mesh</div><div class="kv-v">经编细网眼弹力织物：透气轻薄、回弹好，用于文胸侧翼、杯里、塑身拼接。低价弹力网洗后松弛是侧比失效的主因——采购时看克重与回弹数据，不要只看价格。</div></div>
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="间隔织物">间隔织物</dfn> Spacer</div><div class="kv-v">双面经编、中间由单丝撑起空隙层的「三明治」结构：透气、回弹好、可水洗不塌陷，是模杯海绵的替代升级材料，成本更高，多用于中高端无钢圈文胸。文胸篇详讲。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="特里科">特里科</dfn> Tricot</div><div class="kv-v">特里科（Tricot）是常见的经编结构路线之一。锦氨面料可用于光面文胸等产品，配比与克重应按产品设计决定；采购时重点检查表面平整度、弹性方向和洗后稳定性。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="拉舍尔">拉舍尔</dfn> Raschel</div><div class="kv-v">拉舍尔（Raschel）经编可形成蕾丝与多样网孔结构。判断价值时看花型完整性、勾丝和洗后稳定性，也应与其他花边制作路线作同条件比较。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="弹力网">弹力网</dfn> Power Mesh</div><div class="kv-v">Power mesh 一类弹力网常用于文胸侧翼与塑身拼片，但具体可能采用不同原料与织造组织。检验应覆盖伸长、回复、网孔稳定及洗后松弛，不以“网眼多”判断透气舒适。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="间隔织物">间隔织物</dfn> Spacer</div><div class="kv-v">Spacer 间隔织物由两面织物及连接纱形成一定厚度的空间层，可能采用经编等结构。是否适合模杯要同时比较回弹、透气、重量、洗护以及贴合工艺，不能把它默认视为海绵的全面升级。</div></div>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-spec" data-sec="s-spec"><span class="sec-no">04</span>规格三件套：机号 · 克重 · 幅宽</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-spec" data-sec="s-spec"><span class="sec-no">04</span>28G、190 g/m²、160cm 分别是什么？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>28G、190 g/m²、160cm 分别是什么单位和含义？</span></div>
 
-      <p>向供应商要一块布，行话里绕不开三个数字。它们共同决定这块布「能织什么、多厚实、怎么排料」，也是比价时不被绕进去的坐标系。</p>
+      <p>和工厂谈面料时，最容易遇到三个数字：28G、190 g/m²、160cm。先别急着比较谁的数字大，而是分别问：它们描述的是<b>织机可加工的细度</b>、<b>布的单位面积质量</b>还是<b>布卷的横向宽度</b>？三者属于不同层次。再加上线圈长度、成品密度、洗后变化，才能判断两块布是否真的可比。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>同样190 g/m²，为什么两块布价格和穿着差异很大？</h3><dl><dt>要弄清的知识</dt><dd>机号、克重、幅宽描述不同维度，不能互相当成品质评分。</dd><dt>采购时怎么验证</dt><dd>核对开幅/筒布门幅、报价单位、线圈密度、洗后尺寸与成分。</dd></dl></aside>
 
       <h3 class="sub-title">机号 E：这块布的「像素密度」</h3>
-      <p><dfn class="term" data-term="机号">机号</dfn>指针织机<b>每英寸针床上的针数</b>，如 28G、32G、40G。针距 = 25.4 ÷ E 毫米：40G 的针距约 0.64mm，28G 约 0.91mm。机号越高，针越细越密，<b>能吃的纱就越细</b>——用纱过粗会顶断织针（断针、破洞），过细则布面稀松没骨架。所以机号直接决定「这个厂织不织得出这种布」：一台 28G 单面机永远做不出 40G 光布的细腻感。纬编大圆机常用 24G-40G；文胸锦氨光布多在 32G-40G 档（教学参考）。</p>
+      <p><dfn class="term" data-term="机号">机号</dfn>（gauge，常写 G 或 E）描述针床每英寸约有多少枚针；例如 28G 的名义针距约为 25.4÷28≈0.91mm，40G 约 0.64mm。机号会限制可稳定加工的纱线细度范围，也与织物外观有关；但<b>机号不等于成品布每厘米的线圈密度，更不是品质分数</b>。同样 32G 的织机可以因线圈长度、纱线与整理不同织出差异很大的面料。问供应商时要确认具体机器类型、用纱规格和组织。</p>
 
       <h3 class="sub-title">克重与幅宽：报价的统一坐标系</h3>
-      <p><dfn class="term" data-term="克重">克重</dfn>是每平方米克数（g/m²），反映用料厚实度；<dfn class="term" data-term="幅宽">幅宽</dfn>是布卷的门幅宽度。两者必须<b>成对出现</b>才有意义——「190 克的布」在不同幅宽下用料量差 20%。比价时统一基准：<b>单价 × 克重 × 幅宽 = 每米布价与每件用料成本</b>。</p>
+      <p><dfn class="term" data-term="克重">克重</dfn>通常指面料每平方米的质量，单位 g/m²；<dfn class="term" data-term="幅宽">幅宽</dfn>指布料横向宽度，但需要说清是开幅、筒布平铺宽度还是可裁有效门幅。举例：面料为 190 g/m²，开幅宽 1.6m，则理论上每延米约有 0.304kg 布（190×1.6÷1000）。<b>若供应商按公斤报价</b>，可用每延米理论重量乘元/kg估算每米原料成本；若已按元/米报价，就不能再次乘克重与幅宽。实际耗料还要扣除边损、缩水和排料损耗。</p>
 
       <div class="tbl-wrap"><table class="tbl">
   <caption>贴身衣物常见克重区间（教学示例区间，随品类与设计浮动）</caption>
@@ -363,8 +372,8 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
         </tbody>
       </table></div>
 
-      <h3 class="sub-title">线圈长度与密度：「同克重偷密度」的把戏</h3>
-      <p>同样克重的两块布，品质可能差一个档次——差别在<b>线圈织得松还是紧</b>。<dfn class="term" data-term="线圈长度">线圈长度</dfn>指一个线圈用掉的纱线长度，由织机的「弯纱深度」控制：弯纱越深线圈越长，同样克重的纱能覆盖更大面积，<dfn class="term" data-term="密度">密度</dfn>就稀。<b>「偷密度」就是调大线圈长度、织得松松垮垮，再用克重数字撑住报价</b>——上秤是 190 g/m²，上手是「虚胖」：拉伸后露底、变形、缩水厉害。识别方法：同条件下对比纵横密（线圈数/5cm）、拉伸回复手感，以及洗后尺寸变化。</p>
+      <h3 class="sub-title">线圈长度与密度：同克重为何不同质</h3>
+      <p><dfn class="term" data-term="线圈长度">线圈长度</dfn>可以理解为编织一个线圈耗用了多长的纱。某些条件下，线圈较长的布会更松、更容易拉伸，但影响还要结合纱支、组织、针距和整理。<dfn class="term" data-term="密度">密度</dfn>则常按单位长度内的线圈横列与纵行数描述。<b>两块同为 190 g/m² 的面料，并不意味着它们一定同样紧密或耐穿</b>：可以对照相同条件下的横纵密、拉伸回复、透光情况与洗后尺寸，而不是把柔软感当作“偷密度”的直接证据。</p>
 
       <figure class="fig">
         <div class="wg">
@@ -392,7 +401,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <div class="wg-note" id="gm-note">教学简化模型：纱线直径 ≈ 0.0118 × √dtex（mm），直径 / 针距比在 0.10–0.19 视为匹配（教学锚点，示例）。实际还受组织、针型、张力影响；旦尼尔 D 越大纱越粗，可配合「纤维与纱线」一章复习。布面示意图中线圈随机号变密、随纱线变粗。</div>
           </div>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–10</span><b>机号与纱线细度的匹配关系。</b>拖动两个滑杆：同样的纱放到更高机号上，布面更细腻，但旦数超过上限就会「粗纱上细机」——断针、破洞、横条；反过来低机号配细纱则稀松露底。这也是供应商说「这个我们织不了」时，背后真正的技术约束。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–10</span><b>机号与纱线细度的匹配关系。</b>机号与纱线规格必须匹配，图中滑杆用于建立“织机有加工窗口”的直觉，不代表任意纤维和织机都适用同一条精确边界。实际生产能力需结合机型、组织、纱线与织造工艺确认。</figcaption>
       </figure>
 
       <div class="callout warn">
@@ -400,13 +409,13 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
           常见误区：克重一样 ≠ 用料一样
         </div>
-        <p>低价面料的三板斧：① <b>偷密度</b>——线圈织松，同克重下更稀更软，一洗就垮；② <b>减氨纶</b>——20% 报 18% 甚至 15%，成分标不上克扣的是弹性寿命；③ <b>换原料等级</b>——精梳棉换普梳棉、原生锦纶换回收料。三招都发生在「克重数字」看不见的地方。所以面料验收永远要<b>实测克重 + 纤维定量 + 洗后对比</b>三件套，不能只信吊牌与报价单。</p>
+        <p>发现报价明显偏低时，先比较材料与交付口径，再做判断。需要核对的是：纤维含量是否与合同一致、面纱和地纱规格是否相同、针织组织与线圈密度是否一致、染整是否包含预缩、检验和包装是否计入价格。对于无法直接观察的差异，采用第三方检测或约定抽样方法。<b>价格较低只是进一步调查的信号，不是偷料或虚标的证据。</b></p>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-dye" data-sec="s-dye"><span class="sec-no">05</span>染整全流程：坯布到成品布的分水岭</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-dye" data-sec="s-dye"><span class="sec-no">05</span>染整如何影响颜色、手感和缩水？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>染色均匀和洗后稳定究竟是哪些不同工序的结果？</span></div>
 
-      <p>同一支坯布，进不同的染厂出来可以是两块布——<b>价差 30% 以上（教学示例）</b>并不夸张。染整是内衣面料价值链里最「看不见」、也最容易做手脚的一段。全程六步：</p>
+      <p>同一块坯布交给两家染整厂，成品可能在色泽、手感、缩水和洗后掉色表现上不同。<b>染整就是把织造后的布转变为可以稳定使用、染出目标颜色并满足验收要求的过程</b>。先看工艺路线：依据纤维成分与产品目标安排前处理、染色、洗涤/皂洗、定型和其他整理；流程次序可能因纤维、设备及工艺路线而变化。报价时应明确哪些工序已包含。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>刚出厂很漂亮的布，为什么洗后缩水、色花或掉色？</h3><dl><dt>要弄清的知识</dt><dd>染色与定型涉及不同纤维和工艺，不是同一套万能配方。</dd><dt>采购时怎么验证</dt><dd>要求供应商说明染整工序、成品目标和同方法的洗后测试结果。</dd></dl></aside>
 
       <figure class="fig">
         <div class="fig-canvas">
@@ -434,9 +443,9 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             </g>
             <g font-size="11.5" fill="#5D574B" text-anchor="middle">
               <text x="72" y="128">织机下机 · 未染整</text><text x="72" y="146" fill="#8B8375" font-size="11">克重密度基准</text>
-              <text x="194" y="128">煮练 · 漂白 · 除油</text><text x="194" y="146" fill="#B0603F" font-size="11">偷减→色花色点、糙手感</text>
+              <text x="194" y="128">煮练 · 漂白 · 除油</text><text x="194" y="146" fill="#B0603F" font-size="11">工艺不合适可能导致色花、油点或手感问题</text>
               <text x="316" y="128">活性(棉) · 分散(涤) · 酸性(锦)</text><text x="316" y="146" fill="#B0603F" font-size="11">缸差在此产生</text>
-              <text x="438" y="128">去浮色 · 固色</text><text x="438" y="146" fill="#B0603F" font-size="11">偷减→摩擦牢度差</text>
+              <text x="438" y="128">去浮色 · 固色</text><text x="438" y="146" fill="#B0603F" font-size="11">浮色清洗不充分可能影响色牢度</text>
               <text x="560" y="128">定型 · 柔软 · 预缩</text><text x="560" y="146" fill="#B0603F" font-size="11">手感与缩水分水岭</text>
               <text x="682" y="128">四分制验布 · 留样</text><text x="682" y="146" fill="#8B8375" font-size="11">出具面料测试单</text>
             </g>
@@ -445,18 +454,18 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="380" y="214" text-anchor="middle" font-size="11" fill="#8F6E2F">报价异常低时，先问前处理和皂洗做没做足——这两步最省成本，也最先出问题</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–11</span><b>染整六步流程（高亮随流程滚动）。</b>绿框依次点亮表示工序推进。注意两个「高危偷减点」（陶土色标注）：前处理与皂洗固色——省的是药剂与时间，赔的是色花、色点和摩擦牢度。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–11</span><b>染整六步流程（高亮随流程滚动）。</b>染整流程示意。前处理、染色、洗涤和定型的先后与条件因纤维及工艺而异；图中风险节点用于提示如何核查染色均匀度、浮色和洗后尺寸，不能直接据此判断供应商偷减工序。</figcaption>
       </figure>
 
       <h3 class="sub-title">前处理：底子打不好，后面全白搭</h3>
-      <p><dfn class="term" data-term="坯布">坯布</dfn>上带着织造时的油剂、棉蜡、杂质，染色前必须经<b>煮练、漂白、除油</b>（<dfn class="term" data-term="前处理">前处理</dfn>）。偷减药剂或缩短时间的后果是<b>滞后的</b>：染色时上色不匀出「色花」，油点处不上色出「色点」，布面手感发糙、吸水性差。它是最常被偷减的环节，因为问题要到染色甚至成衣后才暴露，追责困难。</p>
+      <p><dfn class="term" data-term="坯布">坯布</dfn>指织造后尚未完成主要染整的布。棉布可能带有棉蜡等天然杂质，合成纤维织物可能带有纺丝油剂或织造油污，因此染色前常需要适当的<dfn class="term" data-term="前处理">前处理</dfn>，如除油、精练或漂白。并非每块布都需要相同的高温煮练与漂白；例如深色与浅色、棉与锦纶的工艺要求就不同。处理不当可能出现色花、油点或吸水不均，验货时应记录具体瑕疵部位再追溯工序。</p>
 
       <h3 class="sub-title">染色：三类纤维，三套染料</h3>
-      <p>染料与纤维的匹配是「锁与钥匙」的关系，错配就染不上：</p>
+      <p>为什么不同面料不能拿同一种染料随意染？因为纤维的化学结构和染料的上染机理不同。<b>棉、莫代尔等纤维素纤维常用活性染料；涤纶常用分散染料；锦纶、羊毛与蚕丝常见酸性染料</b>。这些是典型路线，并非唯一可行路线。混纺织物还涉及两种纤维的色泽匹配、染浴温度与助剂兼容，不能靠“统一上黑色”跳过工艺开发。</p>
       <div class="kv">
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="活性染料">活性染料</dfn> → 棉、莫代尔等纤维素纤维</div><div class="kv-v">与纤维共价结合（真正「长」在纤维上），色牢度好、色谱全。深色必须加强皂洗，否则浮色多、摩擦牢度差。</div></div>
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="分散染料">分散染料</dfn> → 涤纶</div><div class="kv-v">需约 130℃ 高温染色（涤纶结构致密），色牢度好。锦纶、氨纶不耐此温度——涤氨交织染涤时要控制氨纶损伤。</div></div>
-        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="酸性染料">酸性染料</dfn> → 锦纶、蚕丝、羊毛</div><div class="kv-v">色泽鲜艳，是锦氨弹力布的主力染料。关键局限：锦纶上染，<b>氨纶基本不着色</b>——这就是深色弹力布「露白芯」的根源（下文）。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="活性染料">活性染料</dfn> → 棉、莫代尔等纤维素纤维</div><div class="kv-v">棉、莫代尔等纤维素纤维常用活性染料。部分活性染料可与纤维形成化学结合；洗后浮色清除、工艺控制仍会影响摩擦与洗涤牢度。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="分散染料">分散染料</dfn> → 涤纶</div><div class="kv-v">涤纶常用分散染料，传统高温高压工艺可接近 130℃，但实际温度和工艺随纤维及设备变化。含氨纶织物尤其要确认热历史、弹性损伤及染料沾污风险。</div></div>
+        <div class="kv-row"><div class="kv-k"><dfn class="term" data-term="酸性染料">酸性染料</dfn> → 锦纶、蚕丝、羊毛</div><div class="kv-v">锦纶、羊毛和蚕丝常采用酸性染料。锦氨混纺的上染差异可能造成拉伸露浅色的视觉问题，但氨纶着色情况受染料配方与工艺影响，不能断言它完全无法染色。</div></div>
       </div>
 
       <figure class="fig">
@@ -481,31 +490,31 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="380" y="262" text-anchor="middle" font-size="11.5" fill="#5D574B">缓解方向（示例）：组织更紧密 · 面纱加粗盖住地纱 · 控制定型拉伸——可减轻，难根除</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–12</span><b>深色弹力布「露白芯」机理。</b>这不是掉色（色牢度问题），而是染色物理结构问题：色在锦纶皮层，白在氨纶芯。判断方法：拉伸出现的浅色纹路水洗后依旧、且与拉伸方向一致的线圈纹路重合——即为露白芯，属于品类固有现象，程度可用组织与纱线配置控制。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–12</span><b>深色弹力布「露白芯」机理。</b>深色锦氨面料拉伸后出现浅色纹路可能与不同纤维着色差异、纱线覆盖或组织结构有关。先做拉伸与水洗对照，再排查染色、磨损和纱线缺陷，不能直接判定为氨纶白芯。</figcaption>
       </figure>
 
       <h3 class="sub-title">后整理：定型是手感与缩水的分水岭</h3>
-      <p>染色后的布进入后整理。核心工序是 <dfn class="term" data-term="定型">定型</dfn>：布在设定温度与张力下通过定型机针板链，<b>幅宽、克重、线圈形态在这里被锁定</b>，缩水率与螺旋（布面歪斜）也在这里被控制。可以把它理解为「熨斗 + 拉幅机」的工业版——参数做老实还是做花活，直接决定这块布此后一生的尺寸稳定性。<dfn class="term" data-term="预缩">预缩</dfn>则用机械挤压让布预先回缩，把成品水洗缩率压进标准（常见要求 ±5% 以内，面料层面）。</p>
+      <p>染色后还需要把布稳定在适合裁剪、缝制和穿着的状态。<dfn class="term" data-term="定型">定型</dfn>会通过热、湿度和张力等条件调整尺寸与形态；对含热塑性纤维的织物，热定型作用尤为重要。<dfn class="term" data-term="预缩">预缩</dfn>则旨在提前释放部分可预见的收缩。<b>定型不等于一次加工就永久锁住克重和幅宽</b>，合同仍要规定洗后尺寸变化、布面歪斜及不同批次的一致性。</p>
 
       <div class="callout deep">
         <div class="co-head">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 1 3.6 10.8c-.7.55-1.1 1.2-1.1 2.2h-5c0-1-.4-1.65-1.1-2.2A6 6 0 0 1 12 3z"/></svg>
           深入理解：超喂与张力（可跳过）
         </div>
-        <p>定型机上布是被针板链条「拽」着走的。<b>超喂</b>=喂布速度大于链条速度，布在松弛状态下定型、内部应力小，成品缩水率小；<b>张力过大</b>=强行拉宽拉长，下机幅宽克重都「好看」，但布内蓄着应力——消费者水洗一次全部缩回去。看一份缩水率报告，本质上是在看定型参数有没有做老实。这也是「洗标上写着会缩」与「真的一缩到底」的差别所在。</p>
+        <p>举个实际场景：供应商给你的布下机时门幅合适、手感紧实，试做成内裤却在水洗后明显缩短。可能的原因包括织造张力释放、整理参数不合理、纱线回缩以及实际洗涤条件与报告不符。检查时，<b>先确认洗前取样、洗涤方法、晾干条件和复测方法一致</b>，再对照定型与超喂参数。超喂量或张力不是越大越好，需要围绕目标尺寸与面料结构优化。</p>
       </div>
 
-      <p>其余常见整理各有取舍：<dfn class="term" data-term="柔软整理">柔软整理</dfn>用硅油类柔软剂换手感（过量会牺牲吸湿、影响缝制，下文 warn 框）；<dfn class="term" data-term="磨毛">磨毛</dfn>用砂辊磨出细绒，桃皮绒手感温暖，多用于秋冬内裤与秋衣裤，代价是毛羽增加、起球风险上升；功能整理（吸湿速干、凉感、抗菌）见第 07 节。</p>
+      <p>其他整理也有收益与代价：<dfn class="term" data-term="柔软整理">柔软整理</dfn>可改善手感，但整理剂类型与用量可能影响亲水、后续贴合或洗后耐久；<dfn class="term" data-term="磨毛">磨毛</dfn>通过对布面机械作用形成细绒，可能增加蓬松与柔软触感，也可能改变起球、强力和掉毛表现。验收时不要只摸刚下机的样布，应将洗前与规定洗次后的样品并排比较。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-shade" data-sec="s-shade"><span class="sec-no">06</span>色差与缸差管理：让整批货是「同一个色」</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-shade" data-sec="s-shade"><span class="sec-no">06</span>不同染缸颜色不一样，怎么管控？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>不同染缸的色光差异和湿摩擦掉色如何分别验收？</span></div>
 
-      <p>颜色的统一性是消费者对品质最直观的感知之一——两个缸染出的内裤色光差一点，放在一起卖就是「批次混乱」。色差的量化语言是<b>灰卡</b>（GB/T 250）：1–5 级，5 级为无色差，成衣验收通常要求主料间 ≥4 级、辅料配伍 ≥3–4 级（按产品标准与合同约定）。</p>
+      <p>假设你开发了奶茶色内裤，同一款需要用三个染缸生产。拿出三缸布并排看，有的偏红、有的偏黄：这就是批次间色光差异。要把“看起来差不多”变成验收语言，先区分<b>同一块布洗前洗后的变色、染色在摩擦时的沾色，以及不同染缸之间的颜色差异</b>。GB/T 250-2008 的灰色样卡用于评定变色，不能把它直接理解为所有缸差的统一验收尺；批次匹配还应约定标准光源、确认样及合适的仪器或目视评判方法。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>同色号三缸布出现偏红偏黄，如何避免混到同件衣服里？</h3><dl><dt>要弄清的知识</dt><dd>分别识别洗后变色、摩擦沾色和缸间色差，采用对应的验收方法。</dd><dt>采购时怎么验证</dt><dd>封存确认样，注明光源与容差，按缸号标识、分批裁剪及追溯。</dd></dl></aside>
 
       <figure class="fig">
         <div class="fig-canvas">
           <svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg" font-family="PingFang SC, Microsoft YaHei, sans-serif">
-            <text x="380" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">灰卡 1–5 级（GB/T 250 变色灰卡）：两块色差越小级数越高，5 级 = 无可辨色差</text>
+            <text x="380" y="38" text-anchor="middle" font-size="12.5" font-weight="700" fill="#26231D">GB/T 250-2008 用于评定变色，GB/T 251-2008 用于评定沾色；缸差依约定的标准光源与色差方法判断</text>
             <g stroke="#E6E0D3" stroke-width="1">
               <rect x="26"  y="64" width="32" height="44" fill="#9A9484"/><rect x="62"  y="64" width="32" height="44" fill="#9A9484"/>
               <rect x="106" y="64" width="32" height="44" fill="#9A9484"/><rect x="142" y="64" width="32" height="44" fill="#A8A292"/>
@@ -545,7 +554,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
             <text x="630" y="270" text-anchor="middle" font-size="11" fill="#8B8375">浮色迁移或被异色物沾污</text>
           </svg>
         </div>
-        <figcaption class="fig-cap"><span class="fig-no">图 1–13</span><b>灰卡与三种常见色差形态。</b>灰卡把「差不多是一个色吗」变成可沟通的数字；边中色差、缸差、沾色是面料订单最常见的三类问题，责任分属染整工艺与生产管理（定责详见下一页缺陷图鉴）。</figcaption>
+        <figcaption class="fig-cap"><span class="fig-no">图 1–13</span><b>灰卡与三种常见色差形态。</b>灰卡主要用于色牢度试验中的变色或沾色等级评价，缸差还需约定确认样、标准光源、允许偏差及相应的目视或仪器方法。边中色差、缸差与沾色要分别记录和追溯。</figcaption>
       </figure>
 
       <h3 class="sub-title">分缸管理实务：五步把缸差关进笼子</h3>
@@ -554,7 +563,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
         <li><b>缸号留样</b>：大货每一缸都剪小样留存、标注缸号，与确认样在<b>标准光源箱</b>（D65 / TL84 等多光源）下比对，避免「路灯下看色」的坑。</li>
         <li><b>分缸裁剪</b>：成衣厂按缸号分开排料开裁，<b>同一件衣服只用同一缸布</b>——边中色差再小，也经不起同件混裁。</li>
         <li><b>按缸配比出货</b>：成衣按缸号分批入库出货；零售端整箱混发时按缸号配比装箱，防止单个订单收到「两个色」。</li>
-        <li><b>超缸差回修</b>：某缸与确认样超出约定灰卡级数（如 &lt;4 级）→ 回修重染或降级使用，触发条款写进面料合同。</li>
+        <li><b>超缸差回修</b>：某染缸与确认样不符，应按合同约定的光源、色差容差和处置流程复核，再决定返工、分批使用或拒收。</li>
       </ol>
 
       <div class="callout info">
@@ -562,19 +571,19 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
           延伸：为什么深色比浅色更难管
         </div>
-        <p>深色上染率高、浮色多，摩擦牢度与缸差的波动都更大；特黑、大红、宝蓝是内衣行业公认的「难关色」。如果你首发色板里有这些颜色，请给染整多留打样轮次与交期，并把湿摩擦牢度列为必测项。</p>
+        <p>深色布的风险并不是“深色必然掉色”。特黑、大红等颜色可能因为染料配方、浮色清除、纤维混纺、深度要求而增加工艺难度，湿摩擦牢度尤其值得验证。对于内裤底裆、袜口或文胸杯面，既要确认同批、跨批颜色一致，又要分别检查耐洗、耐汗渍与耐摩擦等适用项目。实际生产中应按染缸编号留样、标识批次，尽量避免同件成衣混用存在可见色差的布料。</p>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-finish" data-sec="s-finish"><span class="sec-no">07</span>功能整理鉴别：声称 vs 实证</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-finish" data-sec="s-finish"><span class="sec-no">07</span>吸湿、凉感和抗菌如何证明？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>“吸湿速干”“凉感”“抗菌”如何分别拿证据？</span></div>
 
-      <p>「吸汗速干」「冰凉一夏」「抗菌除螨」是内衣货架最高频的卖点，也是水分最大的地方。判断一个功能宣称，永远问三个问题：<b>机理是什么？有没有对应标准与检测方法？数据是「初始值」还是「洗涤 N 次后」？</b>——第三个问题最致命，因为多数整理剂一洗就衰减。</p>
+      <p>“吸湿速干”“接触凉感”“抗菌”听上去都像能直接解决穿着痛点，但它们对应的物理机制和验证方法不同。先把宣传语拆成<b>可测量的性能</b>：例如液态水扩散、接触瞬间热流、对指定测试菌的抑制效果；再确认样品是面料还是成衣、试验是否符合适用方法、数据来自初始状态还是规定洗次之后。通过某项测试，并不自动等于所有穿着场景都更舒适。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>供应商说“洗后仍抗菌”，怎样判断？</h3><dl><dt>要弄清的知识</dt><dd>功能宣称要有定义、对象、方法和耐久数据，不能以材料名替代结果。</dd><dt>采购时怎么验证</dt><dd>要求规定洗次后的对应报告，并审查实际宣传所覆盖的范围。</dd></dl></aside>
 
       <div class="tbl-wrap"><table class="tbl">
   <caption>常见功能整理：原理与实证要点（标准号以最新有效版本为准）</caption>
         <thead><tr><th>功能</th><th>原理</th><th>标准与指标</th><th>声称 vs 实证</th></tr></thead>
         <tbody>
-          <tr><td><dfn class="term" data-term="吸湿速干">吸湿速干</dfn></td><td>亲水整理或异形截面纱线加速吸排汗</td><td>GB/T 21655.1：吸水率、滴水扩散、芯吸高度、蒸发速率多项组合达标</td><td>涤纶最容易「达标」（本体不吸湿，靠结构与整理）；必须看全项报告而非单一指标</td></tr>
+          <tr><td><dfn class="term" data-term="吸湿速干">吸湿速干</dfn></td><td>亲水整理、纱线结构和织物孔隙可影响吸水与液态水传输</td><td>GB/T 21655.1：吸水率、滴水扩散、芯吸高度、蒸发速率多项组合达标</td><td>不同纤维与组织都有可达标方案；应核对相应项目、测试方法和用途</td></tr>
           <tr><td><dfn class="term" data-term="凉感整理">接触凉感</dfn></td><td>凉感助剂或高导热 / 大接触面纱线</td><td>GB/T 35263：接触凉感系数 Qmax ≥ 0.15 J/(cm²·s)</td><td>「上身冰凉」无 Qmax 数据即话术；初始凉感会随水洗衰减，可要求洗后复测（示例要求）</td></tr>
           <tr><td><dfn class="term" data-term="抗菌整理">抗菌</dfn></td><td>银离子、季铵盐等抑制细菌繁殖、减异味</td><td>GB/T 20944 系列 / FZ/T 73023：洗涤 N 次后抑菌率仍需达标</td><td><b>只看洗涤后数据</b>；「纳米银持久抗菌」先问洗几次后测的</td></tr>
           <tr><td>抗静电</td><td>降低摩擦起电或导出静电</td><td>GB/T 12703 系列（按季节与织物类型选用方法）</td><td>锦 / 涤低湿环境易起电；数据随湿度波动大，看测试条件</td></tr>
@@ -587,11 +596,11 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
           延伸：功能整理与「底裆卫生」的关系
         </div>
-        <p>内裤底裆的健康逻辑是「吸湿优先、抗菌辅助」：吸湿透气的棉 / 莫代尔保持干爽，本身就能抑制细菌滋生条件；抗菌整理是加分项而不是替代品。纯功能布（如银离子锦纶）若不透气不吸湿，反而制造闷湿环境。内裤篇的「底裆与卫生设计」会展开这个取舍。</p>
+        <p>以贴肤底裆为例，品牌首先需要保证符合适用的安全与质量要求，并评估吸湿、摩擦、接缝和日常洗护表现。抗菌整理可以作为一个有验证条件的功能方案，但不能替代清洗，也不能据此推断能够预防感染。采购时应索取明确的试验对象、洗后保持数据以及适用的产品与宣传合规资料；若供应商只能提供“初始抗菌率 99%”，仍不足以证明“持久”。</p>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">08</span>主理人视角：面料采购实务</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
+      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">08</span>如何写出可以验收的面料采购要求？</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>两家面料商价格不同，应该先统一哪五项规格？</span></div>
 
       <h3 class="sub-title">现货还是定制</h3>
       <div class="duo">
@@ -606,7 +615,7 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
         <div class="d-cell d-good">
           <h5><span class="d-ico">定</span>定制面料（坯布 + 染整）</h5>
           <ul>
-            <li>成分、组织、克重、幅宽、颜色全部按你的四要素定制，构成产品壁垒</li>
+            <li>成分、组织、克重、幅宽和颜色按确认规格定制，需留出起订量、染缸差与复购一致性的管理成本</li>
             <li>代价：染色 MOQ 约 300–500 kg/色（示例）、交期 20–35 天（示例）、需自行承担缸差与试色轮次</li>
             <li>适合：已验证的爆款返单、品牌主打系列</li>
           </ul>
@@ -614,14 +623,14 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
       </div>
 
       <h3 class="sub-title">一张面料测试单该有什么</h3>
-      <p>无论现货还是定制，进大货前让供应商出（或自行送检）一张测试单，至少覆盖：<b>纤维含量定量</b>（GB/T 2910，对照标称配比）、<b>克重与幅宽实测</b>、<b>水洗尺寸变化率</b>（±5% 常见要求，示例）、<b>色牢度三项</b>（耐洗 / 耐摩擦 / 耐汗渍）、<b>pH 与甲醛</b>（GB 18401 B 类限值）、<b>异味</b>；有功能宣称的加测对应功能标准。这张单子既是品质门槛，也是下一页检测标准知识的直接应用。</p>
+      <p>与面料商确认合作前，先把样布测试范围约定清楚。基本项目通常包括纤维含量、面料克重与有效幅宽、洗后尺寸变化、耐摩擦/耐洗/耐汗渍色牢度，以及按产品安全类别判断适用的 pH、甲醛和异味项目。<b>检测必须与最终交付物及适用标准对应</b>：面料报告不能自动代替成衣所有项目，不同成分的纤维含量检测也要采用适合的分析方法。功能宣称则另外增加相应的性能与耐久评价。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>两家面料报价相差12%，能否直接选择便宜的？</h3><dl><dt>要弄清的知识</dt><dd>先统一规格、单位、实际耗布、质量要求与检验口径。</dd><dt>采购时怎么验证</dt><dd>建立五字段规格表，签样、测试和批次追溯共同写入采购条件。</dd></dl></aside>
 
       <div class="callout owner">
         <div class="co-head">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5-6.3 4.5L8 13.6 2 9.2h7.6z"/></svg>
           主理人视角：用「四要素」描述你要的面料
         </div>
-        <p>对供应商下指令，请永远用四要素造句：<b>① 成分与比例</b>（锦氨 82/18，锦纶注明长丝规格如 70D/48F，氨纶注明粗细）；<b>② 组织</b>（经编特里科 / 平针汗布 / 罗纹 2×2）；<b>③ 克重与幅宽</b>（190 g/m² × 160cm，公差 ±5%）；<b>④ 整理与颜色</b>（定型预缩、手感丝柔不过硅、按确认样对色、缸差 ≥4 级）——再加一条：随货附第三方测试单。四要素锁死，报价才有可比性；供应商答不上来任何一条，就换一家。</p>
+        <p>写给供应商的需求可按五个字段组织：①纤维成分及含量（例如锦纶/氨纶 82/18）；②纱线规格及组织（例如锦纶长丝细度、经编特里科）；③成品布克重与有效门幅，以及测量和公差；④颜色、染整与洗后尺寸目标；⑤验收方式、抽样与批次追溯要求。<b>同规格才能比价格</b>，而且报价单位需要统一为元/kg、元/米或元/m²后再计算。供应商一时不能回答的项目应列入确认表，优先要求补样和佐证，而不是凭一句话判断能力。</p>
       </div>
 
       <div class="callout warn">
@@ -629,21 +638,21 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3L2.5 20h19z"/><path d="M12 10v4.5"/><circle cx="12" cy="17.3" r=".5" fill="currentColor"/></svg>
           常见误区：手感软 ≠ 品质好
         </div>
-        <p>上手极软的布，很可能是<b>硅油过量</b>：柔软剂裹住纤维，牺牲吸湿透气（滴水测试水珠滚留）、缝制时打皱起皱、水洗几轮后手感「塌」回原形。正确姿势：摸了湿态再摸——<b>过水晾干后的手感才是真手感</b>；把样品滴水看吸收速度；并要求「洗 5 次后复样对比」（示例轮次）。记住：柔软整理是权衡，不是指标。</p>
+        <p>极软的布可能经过柔软整理，也可能因为纱线细、组织疏松或纤维本身特性，<b>不能仅凭手感判定“硅油过量”</b>。可以做同条件的洗前/洗后手感、吸水或扩散、尺寸与起球比较；简易滴水观察适合初筛，但不能代替规范实验室测试。正式签样时应保留洗前样和规定洗次后的样品，避免生产样与确认样口径不同。</p>
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">09</span>本页小结</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>这一节你能否用自己的语言说出三个关键判断，并解释依据？</span></div>
+      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">09</span>本章判断方法与自测</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>你能把一块面料的结构、成本和检验要求说清楚吗？</span></div>
 
       <div class="kv">
-        <div class="kv-row"><div class="kv-k">针织 vs 梭织</div><div class="kv-v">弹性来自线圈变形而非纱线本身；代价是脱散、卷边、尺寸不稳——边口处理与定型预缩是对策。</div></div>
-        <div class="kv-row"><div class="kv-k">纬编家族</div><div class="kv-v">圆机织布筒；汗布（正 V 反弧）、罗纹（收口回弹）、棉毛布、毛圈、提花、添纱（面纱/地纱各占一面）。内裤、背心、无缝全是纬编。</div></div>
-        <div class="kv-row"><div class="kv-k">经编家族</div><div class="kv-v">一组经纱同时成圈 → 不脱散、尺寸稳定、可织细网眼；特里科光布、拉舍尔蕾丝、弹力网、间隔织物——文胸面料几乎全是经编。</div></div>
-        <div class="kv-row"><div class="kv-k">规格三件套</div><div class="kv-v">机号 E 决定用纱粗细上限；克重与幅宽成对出现才可比价；线圈长度决定松紧，「同克重偷密度」是低价第一把戏。</div></div>
-        <div class="kv-row"><div class="kv-k">染整六步</div><div class="kv-v">前处理与皂洗固色最常被偷减；定型参数（温度/超喂/张力）是手感与缩水的分水岭；活性染棉、分散染涤、酸性染锦。</div></div>
-        <div class="kv-row"><div class="kv-k">露白芯</div><div class="kv-v">深色锦氨拉伸发白是氨纶芯不着色的物理现象，可缓解难根除——不是色牢度事故，别按掉色去返修。</div></div>
-        <div class="kv-row"><div class="kv-k">色差管理</div><div class="kv-v">灰卡 1–5 级量化；确认样封存 → 缸号留样 → 分缸裁剪 → 按缸配比出货，缸差靠管理不靠运气。</div></div>
-        <div class="kv-row"><div class="kv-k">功能宣称</div><div class="kv-v">一律看标准方法 + 洗涤 N 次后的实证数据；手感软可能只是硅油，过水再摸才算数。</div></div>
+        <div class="kv-row"><div class="kv-k">针织 vs 梭织</div><div class="kv-v">针织的线圈可改变形状，带来活动伸长；回复、卷边、脱散与洗后尺寸还受纱线、组织及整理影响。梭织布也可能通过弹性纱获得伸长。</div></div>
+        <div class="kv-row"><div class="kv-k">纬编家族</div><div class="kv-v">纬编常见平针、罗纹、双罗纹、毛圈、提花与添纱结构；应按主体、腰口、脚底等不同功能部位选择，不能认定所有内衣都由纬编生产。</div></div>
+        <div class="kv-row"><div class="kv-k">经编家族</div><div class="kv-v">经编可以形成光面、网眼与蕾丝等结构，常见于文胸面料；不同经编组织也有各自的勾丝、延伸和洗后稳定风险。</div></div>
+        <div class="kv-row"><div class="kv-k">规格三件套</div><div class="kv-v">机号表示织机针距等级，克重描述面料单位面积质量，幅宽要注明开幅或筒布口径；比较报价还须统一单位、组织、线圈密度与验收要求。</div></div>
+        <div class="kv-row"><div class="kv-k">染整六步</div><div class="kv-v">前处理、染色、清洗和定型各影响不同性能。常见路线有活性染纤维素、分散染涤纶、酸性染锦纶；混纺品需核验具体工艺与洗后结果。</div></div>
+        <div class="kv-row"><div class="kv-k">露白芯</div><div class="kv-v">深色弹力布拉伸时出现浅纹可能与纱线覆盖或两种纤维着色差异有关，也可能是其他瑕疵。应先区分露底、褪色与染色不匀再判断责任。</div></div>
+        <div class="kv-row"><div class="kv-k">色差管理</div><div class="kv-v">分清色牢度变色、摩擦沾色与染缸间颜色差异；按确认样、光源与适用评价方法设定容差，记录染缸和裁剪批次。</div></div>
+        <div class="kv-row"><div class="kv-k">功能宣称</div><div class="kv-v">功能宣称应有对应试验方法、样品状态与必要的耐洗证据；柔软手感可能由多种材料和整理因素造成，需配合穿着与检测判断。</div></div>
       </div>
 
       <h3 class="sub-title">本页自测（知识覆盖型 · L1-L5）</h3>
@@ -758,18 +767,18 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
         </div>
       </section>
 
-      <section class="quiz" data-quiz="basics-fabrics-q11" data-level="L4" data-kp="fb-func" data-q="供应商推荐「纳米银持久抗菌内裤」，报告显示「初始抗菌率 99%」。你的追问与判断是？" data-a="3" data-exp="抗菌宣称要看洗涤若干次后的数据；初始 99% 不能支撑持久，无洗后报告应按一洗就没处理。 A 初始值无法证明持久性。 B 细菌繁殖与异味相关，抗菌并非与内裤无关。 C 成分表出现银元素不构成抗菌效果证据。">
+      <section class="quiz" data-quiz="basics-fabrics-q11" data-level="L4" data-kp="fb-func" data-q="供应商推荐「纳米银持久抗菌内裤」，报告显示「初始抗菌率 99%」。你的追问与判断是？" data-a="3" data-exp="初始抗菌率只是指定试验条件下的一个结果，不能据此证明耐洗后仍能达到宣称水平。D 要求按明确洗涤次数与方法复测持久效果；A 将初始值外推至洗后；B 将功能与穿着价值混为一谈；C 把原料成分当成实际性能证明。">
         <div class="quiz-body">
           <div class="quiz-opts">
             <li>初始抗菌率 99% 已足够，可对外宣称持久抗菌</li>
             <li>抗菌与内裤穿着体验无关，可直接放弃该品类</li>
             <li>成分表中出现银元素，可作为抗菌效果的依据</li>
-            <li>要求洗涤若干次后的抗菌率报告，否则按一洗就没</li>
+            <li>核对规定洗涤次数的抗菌报告，再判断持久效果</li>
           </div>
         </div>
       </section>
 
-      <p>下一页把面料知识变成验收语言：<a href="quality.html" style="color:var(--green);font-weight:600">性能、检测与质量标准</a>——看懂检测报告、认识缺陷图鉴、用 AQL 做抽样判定。</p>
+      <p>当你能把一份面料报价拆成“原料与纱线—针织组织—机号与规格—染整—验收”五个部分，就具备了继续学习质量检测的前提。下一页<a href="quality.html" style="color:var(--green);font-weight:600">《性能、检测与质量标准》</a>会把这些采购问题转成报告判读、缺陷管理与抽样验收的方法。</p><aside class="fabrics-judgement" aria-label="主理人场景训练"><div class="fj-kicker">本节任务 · 从观察到判断</div><h3>学完后如何独立评估一块面料？</h3><dl><dt>要弄清的知识</dt><dd>从材料、组织、规格、染整和验证五个维度总结，不背单项排名。</dd><dt>采购时怎么验证</dt><dd>拿两块样布做一份可复核的比较表，并注明尚未验证的风险。</dd></dl></aside>
 
     </div>
   </div>

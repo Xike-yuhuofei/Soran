@@ -18,7 +18,7 @@ const server=http.createServer((req,res)=>{
  try{
    let tested=0;
    for(const [i,p] of paths.entries()){
-     const widths=i===0?[390,768,1024,1440,1920]:[390,1440];
+     const widths=(i===0 || p==='basics/fabrics.html')?[390,768,1024,1440,1920]:[390,1440];
      for(const width of widths){
        const page=await browser.newPage({viewport:{width,height:900}});
        const errors=[];page.on('pageerror',e=>errors.push(e.message));
