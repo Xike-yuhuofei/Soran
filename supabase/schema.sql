@@ -81,9 +81,11 @@ revoke all on public.learning_state from anon;
 grant select, insert, update, delete on public.learning_state to authenticated;
 
 -- 每次写入由服务端刷新 updated_at，避免设备时钟偏差影响合并顺序
+-- SET search_path TO '' 防止 search_path 劫持（Supabase 官方安全规范）
 create or replace function public.learning_state_touch()
 returns trigger
 language plpgsql
+set search_path to ''
 as $$
 begin
   new.updated_at = now();
@@ -95,6 +97,16 @@ drop trigger if exists learning_state_touch on public.learning_state;
 create trigger learning_state_touch
   before insert or update on public.learning_state
   for each row execute function public.learning_state_touch();
+
+-- 防御性事件触发器（若存在）：新建表自动启用 RLS。
+-- 收回 PUBLIC 的执行权限，避免被当作公开 RPC 调用；事件触发器本身不受影响。
+do $$
+begin
+  if exists (select 1 from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+             where n.nspname = 'public' and p.proname = 'rls_auto_enable') then
+    execute 'revoke execute on function public.rls_auto_enable() from public';
+  end if;
+end $$;
 
 -- ------------------------------------------------------------
 -- 保活心跳表
