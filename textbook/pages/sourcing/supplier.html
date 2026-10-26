@@ -52,6 +52,13 @@ body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;co
 @media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
 @media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
 </style>
+<style id="soran-v3-supplier-mobile-fix">
+/* 复杂考察表格保持局部横向滚动，不让其最小表宽撑开整个页面。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{overflow-x:clip;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;}
+body[data-v3-curriculum] .content.v3-curriculum .wg,
+body[data-v3-curriculum] .content.v3-curriculum .wg-panel{max-width:100%;min-width:0;}
+</style>
 </head>
 <body data-v3-curriculum data-page-id="sourcing-supplier" data-root="../../">
 <div class="layout">
