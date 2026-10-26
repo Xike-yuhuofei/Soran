@@ -18,8 +18,50 @@
 .seg-btn:hover { border-color: var(--green); color: var(--green-deep); }
 .seg-btn.active { background: var(--green); border-color: var(--green); color: #fff; }
 </style>
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="bras-craft" data-root="../../">
+<body data-v3-curriculum data-page-id="bras-craft" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -32,7 +74,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">BRAS · CRAFT</div>
         <h1 class="page-title">文胸 · 工艺、品质与成本</h1>
@@ -44,10 +86,17 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>追踪一件文胸的成型与洗后缺陷</h2><p class="v3-hook">模杯文胸洗几次后表面鼓包，怎样区分材料与贴合问题？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>胶材兼容、温压参数、模具和洗涤条件都可能影响杯面状态。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>沿材料、裁剪、模压、贴合、车缝和整烫逐步定位成因。<br><b>供应链验证：</b>索取胶材规格、温压记录、粘结与洗后外观数据。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>新衣外观光滑就说明热压可靠？</summary><p>还应检查反复洗后剥离、边缘翘起及回弹表现。</p></details><details><summary>模杯变形先归因于哪一步？</summary><p>应联合核对杯材热稳定性、模具和冷却成型工艺。</p></details><details><summary>缺陷为什么需要标注工序？</summary><p>定位制造环节才能提出具体整改与复检要求。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>四条工艺路线：一张图看全行业</h2>
+      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>四条工艺路线：一张图看全行业</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节对应商品的哪项实际体验？</span></div>
 
       <p>市面上的文胸款式上千，但制造路线只有四条。<b>选路线就是选商业模式</b>：它同时锁定了你的设备门槛、起订量、交期、品质上限与成本区间。看任何一款文胸，先判断它走的是哪条路线，再谈价格与品质。</p>
 
@@ -172,7 +221,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">02</span>传统车缝工序链：一件文胸的 40 道工序</h2>
+      <h2 class="sec-title" id="s-chain" data-sec="s-chain"><span class="sec-no">02</span>传统车缝工序链：一件文胸的 40 道工序</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>文胸是「零件最多的贴身衣物」：传统车缝路线的单件工时约 20–40 分钟（示例），工序 30–60 道（示例）。不必背下全链，但要理解<b>工序的顺序逻辑：先做「碗」（罩杯），再做「架子」（下扒、侧比），最后总装（肩带、背扣）</b>——顺序错了就返工。</p>
 
@@ -246,7 +295,7 @@
       <p>车缝工缴（加工费）的底层逻辑是<b>「工序秒数 × 秒单价」</b>。文胸为什么工缴高于内裤与袜子？因为它的车缝线路短而多变：捆条要拐弧线、钢圈槽要拐角打结、8 字环要来回穿绕——机器跑不快，全靠车工手上功夫。这也解释了两件事：<b>一是</b>同一条工序链在不同厂报出的工缴能差 30%（示例），差的不是设备是熟练度；<b>二是</b>版型越复杂（剪接线越多、装饰越多），工缴越高——简化剪接就是最直接的降本手段，但会牺牲支撑指向性。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-molding" data-sec="s-molding"><span class="sec-no">03</span>模压成型：模杯是怎么「烙」出来的</h2>
+      <h2 class="sec-title" id="s-molding" data-sec="s-molding"><span class="sec-no">03</span>模压成型：模杯是怎么「烙」出来的</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p><dfn class="term" data-term="模压">模压</dfn>是把「平的布 + 平的海绵」变成「立体的碗」的工序：叠片置入上下金属模，加热加压数十秒，纤维与海绵在温度下软化贴合、冷却后定型。它的品质三要素——<b>温度、压力、时间</b>——决定了杯型对称性、贴合牢度与耐洗寿命。</p>
 
@@ -317,7 +366,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-bondless" data-sec="s-bondless"><span class="sec-no">04</span>热压贴合与无缝针织：两条「去车缝」路线</h2>
+      <h2 class="sec-title" id="s-bondless" data-sec="s-bondless"><span class="sec-no">04</span>热压贴合与无缝针织：两条「去车缝」路线</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>车缝的痕迹与针眼是舒适感的物理上限，于是出现了两条绕开车缝的路线：<b>热压无痕</b>用胶与热替代线，<b>无缝针织</b>用织造直接织出成形衣片。</p>
 
@@ -345,7 +394,7 @@
       <p>两条路线的共同点是：<b>把品质风险从「车工水平」转移到「参数与材料」</b>——热压看胶条与温压参数，无缝看织法程序与纱线。对品牌方的好处是品质更可标准化；坏处是一旦参数错误，问题是批量的，返修不可逆（胶开胶无法车缝修复、织坏无法拆线重来），所以首件确认比车缝路线更要严格。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-defects" data-sec="s-defects"><span class="sec-no">05</span>文胸缺陷图鉴：从现象溯源到责任方</h2>
+      <h2 class="sec-title" id="s-defects" data-sec="s-defects"><span class="sec-no">05</span>文胸缺陷图鉴：从现象溯源到责任方</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>验货发现问题的价值不在「挑刺」，而在<b>溯源</b>：同一现象可能是材料、工艺或版型三个方向的问题，责任方与整改动作完全不同。下表是最常见的十二项，按「现象 → 机理 → 归因 → 整改」组织。</p>
 
@@ -379,7 +428,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本拆解：一件文胸的钱花在哪</h2>
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本拆解：一件文胸的钱花在哪</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>文胸出厂价的典型结构是五个部分：<b>面料 + 芯材 / 模杯 + 辅料 + 工缴（含后道）+ 损耗与管理</b>。不同路线的构成差异很大：车缝路线工缴占大头，模杯路线芯材占大头，无缝路线织造占大头。理解结构，才能知道跟谁谈价、谈哪一项。</p>
 
@@ -474,7 +523,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>完整案例：光面无痕 T 恤文胸「洗三次还是新」开发复盘</h2>
+      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>完整案例：光面无痕 T 恤文胸「洗三次还是新」开发复盘</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>设定：Soran 主力款——75B 为主力码的光面模杯文胸（模杯光面＋热压无痕侧翼组合路线），消费者核心诉求「外衣下无痕、穿一天不勒、洗三次像新的」，目标出厂价约 12 元（示例）。以下是完整决策记录（教学案例，数据均为示例）。</p>
 
@@ -509,7 +558,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-inspect" data-sec="s-inspect"><span class="sec-no">08</span>验货要点：把品质写进流程</h2>
+      <h2 class="sec-title" id="s-inspect" data-sec="s-inspect"><span class="sec-no">08</span>验货要点：把品质写进流程</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>供应商承诺的品质不值钱，<b>写进流程的品质才值钱</b>。文胸验货分三个节点：产前（首件确认）、大货中期（抽检）、出货前（终验）。下面这份清单可直接用于打样与大货验收——勾选进度会自动保存在本机。</p>
 
@@ -557,7 +606,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">四条路线</div><div class="kv-v">传统车缝（灵活、工缴高）、模杯光面（光洁、模具账）、热压无痕（无痕、胶条是命门）、无缝针织（舒适上限、打版周期长）。选路线 = 选商业模式。</div></div>
@@ -787,6 +836,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     render();
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>
