@@ -34,7 +34,13 @@ const server=http.createServer((req,res)=>{
        const expectPad=width<=680?18:width<=890?28:width<=1200?32:52;
        assert.ok(metric.padding>=expectPad-1,p+' no left margin '+width+' '+JSON.stringify(metric));
        assert.ok(metric.body<=1131,p+' wide body '+width+' '+JSON.stringify(metric));
-       assert.ok(metric.scroll<=width+2,p+' horizontal overflow '+width+' '+JSON.stringify(metric));
+       if(metric.scroll>width+2){
+        const offenders=await page.evaluate(()=>[...document.querySelectorAll('*')].map(el=>({tag:el.tagName.toLowerCase(),id:el.id,cls:typeof el.className==='string'?el.className.slice(0,90):'',rect:el.getBoundingClientRect().toJSON(),scrollWidth:el.scrollWidth}))
+          .filter(x=>x.rect.right>innerWidth+2&&x.rect.width>0).sort((a,b)=>b.rect.right-a.rect.right).slice(0,12));
+        console.error('OVERFLOW DIAGNOSTIC '+p+' '+width+' '+JSON.stringify(offenders));
+        await page.screenshot({path:path.join(out,'overflow-'+p.replace('/','-')+'-'+width+'.png'),fullPage:false});
+      }
+      assert.ok(metric.scroll<=width+2,p+' horizontal overflow '+width+' '+JSON.stringify(metric));
        assert.ok(metric.guide>=2,p+' section guides missing '+width);
        assert.equal(metric.modes,2,p+' missing mode controls');
        await page.locator('button[data-v3-mode="expert"]').click();
