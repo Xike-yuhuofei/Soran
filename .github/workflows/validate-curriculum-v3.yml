@@ -4,6 +4,7 @@ on:
     paths:
       - 'textbook/pages/**'
       - 'scripts/validate-curriculum-v3.cjs'
+      - 'scripts/validate-curriculum-rewrite.cjs'
       - 'scripts/test-curriculum-v3.cjs'
       - '.github/workflows/validate-curriculum-v3.yml'
   push:
@@ -11,6 +12,7 @@ on:
     paths:
       - 'textbook/pages/**'
       - 'scripts/validate-curriculum-v3.cjs'
+      - 'scripts/validate-curriculum-rewrite.cjs'
       - 'scripts/test-curriculum-v3.cjs'
       - '.github/workflows/validate-curriculum-v3.yml'
 permissions:
@@ -22,7 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Check chapter structure, exercises, option length, banned terms and JS syntax
-        run: node scripts/validate-curriculum-v3.cjs
+        run: |
+          node scripts/validate-curriculum-v3.cjs
+          node scripts/validate-curriculum-rewrite.cjs
   curriculum-browser-qa:
     runs-on: ubuntu-latest
     timeout-minutes: 20
