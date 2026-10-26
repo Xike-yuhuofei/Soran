@@ -7,8 +7,50 @@
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="stylesheet" href="../../assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="panties-craft" data-root="../../">
+<body data-v3-curriculum data-page-id="panties-craft" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -21,7 +63,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">PANTIES · CRAFT</div>
         <h1 class="page-title">内裤 · 工艺、成本与品质</h1>
@@ -33,10 +75,20 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div>
+<h2>从无痕外观走向可验证的耐久</h2><p class="v3-hook">两条刚买来很相似的无痕内裤，为什么其中一条洗后容易开胶？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>视觉无痕和贴合耐久是两件事，胶膜、温压参数与洗护都影响质量。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>选择车缝、热压贴合与无缝织造，需要结合工艺可靠性、良率和成本。<br><b>供应链验证：</b>索取洗后外观、剥离强度、回弹及关键工序记录。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3>
+<div class="v3-practice-grid"><details><summary>软边手感好就不会勒吗？</summary><p>边缘压力还取决于弹性模量、包边宽度和加工张力。</p></details><details><summary>热压无痕要验证哪些风险？</summary><p>关注粘结均匀性、洗后起翘、拉伸开胶与边缘硬点。</p></details><details><summary>不同工艺报价如何公平比较？</summary><p>统一材料、款式、尺码、损耗率、检验与包装规格。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p>
+</section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>三大工艺路线：先选赛道，再谈产品</h2>
+      <h2 class="sec-title" id="s-routes" data-sec="s-routes"><span class="sec-no">01</span>三大工艺路线：先选赛道，再谈产品</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>先找出本章真实商品问题，再判断有哪些影响因素与可验证指标。</span></div>
 
       <p>内裤的工艺路线只有三条主线：<b>传统车缝</b>、<b>无痕切边</b>、<b>无缝针织</b>。路线选择不是「哪个高级」的问题，而是「你的定位愿意为什么买单」的问题——它同时决定了外观上限、耐用下限、单件成本与起订门槛。</p>
 
@@ -108,7 +160,7 @@
       <p>一句话总结：<b>车缝是基本盘</b>（耐用、便宜、开发快），<b>无痕买的是外观溢价</b>（赌胶条耐洗），<b>无缝买的是织造成形</b>（门槛在机台与打版）。新品牌的第一条内裤线，多数时候应该从车缝或「车缝 + 部分无痕边」起步。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-sew" data-sec="s-sew"><span class="sec-no">02</span>车缝工艺细讲：线迹是一门组合学</h2>
+      <h2 class="sec-title" id="s-sew" data-sec="s-sew"><span class="sec-no">02</span>车缝工艺细讲：线迹是一门组合学</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>车缝内裤的品质感，等于「每个部位用对线迹」。先认识两台主力机器：</p>
 
@@ -175,7 +227,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-bond" data-sec="s-bond"><span class="sec-no">03</span>无痕工艺细讲：外观的溢价，耐用性的分水岭</h2>
+      <h2 class="sec-title" id="s-bond" data-sec="s-bond"><span class="sec-no">03</span>无痕工艺细讲：外观的溢价，耐用性的分水岭</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p><dfn class="term" data-term="无痕内裤">无痕内裤</dfn>的外观溢价来自三件事：<dfn class="term" data-term="激光切边">激光切边</dfn>、热压胶条、以及「把缝藏到没有」。先纠正一个常见混淆——<b>无痕 ≠ 无缝</b>：绝大多数无痕款的裆部与里裆仍要车缝，只是边口和腰头不再有线迹。</p>
 
@@ -230,7 +282,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-seamless" data-sec="s-seamless"><span class="sec-no">04</span>无缝工艺细讲：织出来的内裤</h2>
+      <h2 class="sec-title" id="s-seamless" data-sec="s-seamless"><span class="sec-no">04</span>无缝工艺细讲：织出来的内裤</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>无缝内裤在 <dfn class="term" data-term="圣东尼">圣东尼</dfn>类圆机上一次织成筒状：腰口织<dfn class="term" data-term="罗纹">罗纹</dfn>（氨纶喂入形成回弹），裆部织<dfn class="term" data-term="平针组织">平纹</dfn>保证贴肤平整，图案用<dfn class="term" data-term="提花">提花</dfn>直接织出——无侧缝、少裁切，本质是「织出来的版型」。</p>
 
@@ -293,7 +345,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">05</span>品质缺陷图鉴：长相 → 成因 → 验货判断</h2>
+      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">05</span>品质缺陷图鉴：长相 → 成因 → 验货判断</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>缺陷图的用法：先认「长相」，再顺着「成因」定位责任工序，最后落到「验货判断」的可执行动作。<b>能否定责，取决于你能不能把缺陷映射到具体工序</b>——这也是这张表最大的价值。</p>
 
@@ -343,7 +395,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本对比实操：同一定位，三条 BOM</h2>
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">06</span>成本对比实操：同一定位，三条 BOM</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>把同一个定位——「基础女中腰三角、锦氨汗布主体 + 棉里裆」——放到三条路线下拆解（<b>示例数据，教学参考，非实际报价</b>）：</p>
 
@@ -412,7 +464,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>完整案例：无痕中腰三角裤「一整天下来的舒适」开发复盘</h2>
+      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>完整案例：无痕中腰三角裤「一整天下来的舒适」开发复盘</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>设定：Soran 首发主力款——女式中腰无痕三角裤，目标消费者反馈词是「外裤下无痕、久坐不勒、底裆安心」，目标出厂价约 5.5 元（示例）。以下是完整决策记录（教学案例，数据均为示例）。</p>
 
@@ -447,7 +499,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">08</span>选品判断清单：14 项可勾选</h2>
+      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">08</span>选品判断清单：14 项可勾选</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <p>下面这张清单把本页全部判断点收拢成验货与选品动作，勾选进度会保存在浏览器中，可直接用于样品评审与大货验货现场。数字阈值均为教学示例，正式执行请写入规格书。</p>
 
@@ -492,7 +544,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">09</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这项知识对应怎样的实际产品问题？要用哪项证据判断，而不是凭名称猜测？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">路线选择</div><div class="kv-v">车缝是基本盘；无痕买外观溢价、赌胶条耐洗；无缝买织造成形、门槛在机台与打版。选路线≈选产业带与供应商圈层。</div></div>
@@ -637,5 +689,17 @@
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/supabase-config.js"></script>
 <script src="../../assets/js/annotations.js"></script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
+</script>
 </body>
 </html>
