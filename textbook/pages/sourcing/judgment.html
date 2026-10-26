@@ -10,8 +10,50 @@
 <style>
   [data-rate="soran-judgment-sample"] .rr-label { flex: 0 0 210px; }
 </style>
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="sourcing-judgment" data-root="../../">
+<body data-v3-curriculum data-page-id="sourcing-judgment" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -24,7 +66,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">SOURCING · JUDGMENT</div>
         <h1 class="page-title">品质判断与产品决策</h1>
@@ -36,10 +78,14 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导"><div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>通过拆解与复检区分真实品质</h2><p class="v3-hook">两件内裤都宣称精梳棉，如何决定哪件更值得更高的售价？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>纤维名称不等于成品品质，应联合判断面料、版型、工艺与穿着表现。</p><p class="v3-explain v3-expert"><b>进一步判断：</b>产品评分需按目标用户和失效风险确定权重，尽量以重复样本和检测支持。<br><b>供应链验证：</b>对照技术规格书、洗后测试、试穿记录、报价与复购数据。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>手感更软是否意味着品质更高？</summary><p>比较整理剂洗后保持、缩水、起球和耐穿表现。</p></details><details><summary>怎样拆解竞品才有价值？</summary><p>按材料、结构、缝制、尺寸与包装逐项记录，避免主观整体印象。</p></details><details><summary>先有验收标准还是先选工厂？</summary><p>应先确定目标人群和核心失效风险，再明确关键指标与验收条件。</p></details></div><p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-good" data-sec="s-good"><span class="sec-no">01</span>好产品的共同特征</h2>
+      <h2 class="sec-title" id="s-good" data-sec="s-good"><span class="sec-no">01</span>好产品的共同特征</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节要解决什么真实选品或验证问题？</span></div>
 
       <p>把内裤、袜子、文胸放在一起看，「好」是有共同公式的。跨品类的通则是这条优先级链：</p>
 
@@ -105,7 +151,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-hype" data-sec="s-hype"><span class="sec-no">02</span>营销噱头识别清单</h2>
+      <h2 class="sec-title" id="s-hype" data-sec="s-hype"><span class="sec-no">02</span>营销噱头识别清单</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>右下象限的产品最依赖语言包装。下表是贴身衣物最常见的五个噱头，逐个拆解真实成分与实证方法。核心原则只有一条：<b>名称不是成分，成分标和检测报告才是。</b></p>
 
@@ -139,7 +185,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-touch" data-sec="s-touch"><span class="sec-no">03</span>快速手评六法</h2>
+      <h2 class="sec-title" id="s-touch" data-sec="s-touch"><span class="sec-no">03</span>快速手评六法</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>不需要实验室，一张桌子、一个电子秤、一杯 30℃ 的水，就能完成对样品的初步判断。六种方法各有分工，共同前提是：<b>同一方法、同一条件、做对比才有意义</b>——单独说「回弹不错」没有信息量，「比竞品 A 回得快」才是判断。</p>
 
@@ -263,7 +309,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-teardown" data-sec="s-teardown"><span class="sec-no">04</span>竞品拆解分析法</h2>
+      <h2 class="sec-title" id="s-teardown" data-sec="s-teardown"><span class="sec-no">04</span>竞品拆解分析法</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>手评看表面，拆解看真相。买回竞品（同价位 2–3 件 + 1 件高端标杆），从外观到内部逐层拆开，你能看到工厂不愿主动告诉你的全部信息。以内裤为例的拆解部位与方法：</p>
 
@@ -379,7 +425,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-techpack" data-sec="s-techpack"><span class="sec-no">05</span>产品技术规格书（Tech Pack）详解</h2>
+      <h2 class="sec-title" id="s-techpack" data-sec="s-techpack"><span class="sec-no">05</span>产品技术规格书（Tech Pack）详解</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p><dfn class="term" data-term="规格书">规格书</dfn>是品牌与工厂的「合同语言」：它把你的口头要求翻译成可验收的参数。没有规格书的订单，品质标准默认由工厂定义——这不是夸张，是行业现实。一份完整的规格书由七大部分组成：</p>
 
@@ -468,7 +514,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-aql" data-sec="s-aql"><span class="sec-no">06</span>验收标准制定</h2>
+      <h2 class="sec-title" id="s-aql" data-sec="s-aql"><span class="sec-no">06</span>验收标准制定</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>验收回答一个问题：<b>这批货收，还是不收？</b>行业通行的框架是 <dfn class="term" data-term="AQL">AQL</dfn>（可接受质量限，依据 GB/T 2828.1 / ISO 2859 的<dfn class="term" data-term="抽检">抽检</dfn>体系）：按批量随机抽样，疵点数在可接受范围内则整批接收，超出则拒收。贴身衣物常用：<b>主要疵点 AQL 2.5、次要疵点 AQL 4.0</b>。</p>
 
@@ -530,7 +576,7 @@
       </ul>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>案例研究：两款「精梳棉女内裤」对比</h2>
+      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">07</span>案例研究：两款「精梳棉女内裤」对比</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>以下为<b>教学案例</b>（数据为示例，用于演示方法，不指向任何真实品牌）。A、B 两款在电商页面上都写着「精梳棉女内裤」，售价一个 29 元、一个 39 元。拆解之后差异全暴露了：</p>
 
@@ -598,7 +644,7 @@
       <p>复用这套方法的动作序列：<b>买回同价位竞品 → 拆解记录（第 04 节模板）→ 手评六法交叉验证 → 估算对方出厂价 → 定位自己要做的象限 → 写进自己的规格书。</b>案例里的 A/B 差异，恰好是快速手评六法全部能捕捉到的：称重（A 克重高但面料糙）、揉搓（A 起球快）、对光（A 密度松）、水洗（A 缩率大）、摩擦（A 深色掉色风险）。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-rate" data-sec="s-rate"><span class="sec-no">08</span>交互工具：样品评审评分表</h2>
+      <h2 class="sec-title" id="s-rate" data-sec="s-rate"><span class="sec-no">08</span>交互工具：样品评审评分表</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>把前面所有方法压缩成一张表。结构上分成两个部分，对应选品决策的两类判断：<b>合规红线</b>——安全类别、成分真实、标签与安全细节，任何一项不达标即一票否决，再高的品质分也不能下单，因为它们不可妥协、不可用其他优点「抵消」；<b>可权衡品质</b>——版型、面料、车缝等，允许互相权衡、按权重加总。<b>权重为 Soran 建议值（教学参考）</b>：版型与面料合计占 55%，因为它们决定「穿 8 小时」的体验与「洗 30 次」的耐久；包装与成本只占 10%，因为它们是加分项不是本质。</p>
 
@@ -627,7 +673,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-consumer" data-sec="s-consumer"><span class="sec-no">09</span>消费者验证与零售价值：从出厂价到成交价</h2>
+      <h2 class="sec-title" id="s-consumer" data-sec="s-consumer"><span class="sec-no">09</span>消费者验证与零售价值：从出厂价到成交价</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <p>样品评审通过只是「工厂视角的合格」。产品最终要回答两个商业问题：<b>品质差异消费者感知得到吗？</b>以及<b>零售价里到底还剩多少利润？</b></p>
 
@@ -677,7 +723,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">好产品公式</div><div class="kv-v">版型合体 &gt; 材料真实 &gt; 工艺扎实 &gt; 细节到位；Soran 目标是「高质 · 质价比」象限，路径是砍无效成本而不是砍材料。</div></div>
@@ -965,6 +1011,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     render();
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>
