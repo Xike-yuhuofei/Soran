@@ -14,6 +14,17 @@
 
   var AUTH_KEY = 'soran-auth-v1';
   var CACHE_PREFIX = 'soran-ann-cache-v1:';
+  var PREFS_PREFIX = 'soran-ann-prefs-v1:';
+  var COLOR_KEYS = ['green', 'clay', 'gold', 'blue', 'rose', 'violet', 'gray'];
+  var COLOR_NAMES = {
+    green: '石绿',
+    clay: '陶土',
+    gold: '米金',
+    blue: '黛蓝',
+    rose: '绛红',
+    violet: '藕紫',
+    gray: '烟灰'
+  };
   var PROGRESS_KEY = 'soran-textbook-v1';
   var PROGRESS_META_KEY = 'soran-progress-meta-v1';
   var PROGRESS_BACKUP_PREFIX = 'soran-progress-backup-v1:';
@@ -40,6 +51,10 @@
   var currentEditorAnn = null;
   var editStyle = 'highlight';
   var editColor = 'green';
+  var defaultColor = 'green';
+  var drawerQuery = '';
+  var drawerColor = 'all';
+  var drawerStyle = 'all';
   var authMode = 'login';
   var busy = false;
   var repaintTimer = 0;
@@ -78,6 +93,81 @@
       if (String(annotations[i].id) === String(id)) return annotations[i];
     }
     return null;
+  }
+  function colorKey(c) {
+    return COLOR_NAMES[c] ? c : 'green';
+  }
+  function colorName(c) {
+    return COLOR_NAMES[colorKey(c)];
+  }
+  function prefsKey() {
+    return session && session.user ? PREFS_PREFIX + session.user.id : '';
+  }
+  function loadPrefs() {
+    var key = prefsKey();
+    defaultColor = 'green';
+    if (!key) return;
+    try {
+      var p = JSON.parse(localStorage.getItem(key) || 'null');
+      if (p && COLOR_NAMES[p.color]) defaultColor = p.color;
+    } catch (e) {}
+  }
+  function savePrefs() {
+    var key = prefsKey();
+    if (!key) return;
+    try { localStorage.setItem(key, JSON.stringify({ color: defaultColor })); } catch (e) {}
+  }
+  function pad2(n) {
+    return n < 10 ? '0' + n : String(n);
+  }
+  function formatTime(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var now = new Date();
+    if (d.toDateString() === now.toDateString()) {
+      return '今天 ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+    }
+    var y = new Date(now.getTime() - 86400000);
+    if (d.toDateString() === y.toDateString()) {
+      return '昨天 ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+    }
+    var diff = now.getTime() - d.getTime();
+    if (diff >= 0 && diff < 7 * 86400000) {
+      return Math.max(1, Math.floor(diff / 86400000)) + ' 天前';
+    }
+    return (d.getMonth() + 1) + '月' + d.getDate() + '日';
+  }
+  function copyText(text) {
+    var value = String(text || '');
+    if (!value) return;
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(value).then(function () {
+        toast('已复制原文');
+      }).catch(function () {
+        fallbackCopy(value);
+      });
+      return;
+    }
+    fallbackCopy(value);
+  }
+  function fallbackCopy(value) {
+    var ta = document.createElement('textarea');
+    ta.value = value;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    ta.style.top = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) {}
+    if (ta.parentNode) ta.parentNode.removeChild(ta);
+    toast(ok ? '已复制原文' : '复制失败，请手动选择', ok ? '' : 'warn');
+  }
+  function copyAnnotationQuote(id) {
+    var ann = findAnn(id);
+    if (ann) copyText(ann.quote || '');
   }
 
   /* ---------------- 登录会话 ---------------- */
@@ -266,6 +356,7 @@
     if (/Email not confirmed/i.test(m)) return '邮箱尚未确认，请先查收确认邮件';
     if (/JWT expired|invalid JWT|token is expired/i.test(m)) return '登录已过期，请重新登录';
     if (/permission denied|row-level security/i.test(m)) return '没有权限访问这条笔记';
+    if (/annotations_color_check|violates check constraint/i.test(m)) return '数据库尚未启用新颜色，请重新运行 supabase/schema.sql';
     if (/rate limit|too many/i.test(m)) return '请求过于频繁，请稍后再试';
     if (/Failed to fetch|NetworkError|Load failed|aborted/i.test(m)) return '网络不可用，请检查连接';
     return m || '操作失败，请稍后重试';
@@ -847,7 +938,7 @@
         var top = rc.top - cr.top + CONTENT.scrollTop;
         list.push({ left: left, top: top, width: rc.width, height: rc.height });
 
-        var mk = el('div', 'ann-mark ann-' + ann.style + ' ann-c-' + (ann.color || 'green'));
+        var mk = el('div', 'ann-mark ann-' + ann.style + ' ann-c-' + colorKey(ann.color));
         mk.style.left = left + 'px';
         mk.style.top = (ann.style === 'underline' ? top + rc.height - 3 : top) + 'px';
         mk.style.width = rc.width + 'px';
@@ -910,11 +1001,12 @@
     });
   }
 
-  async function createAnnotation(anchor, style) {
+  async function createAnnotation(anchor, style, color) {
     if (busy || !session) return;
     busy = true;
 
     var annStyle = style === 'underline' ? 'underline' : 'highlight';
+    var annColor = colorKey(color || defaultColor);
     var body = {
       page_id: PID,
       start_block: anchor.start_block,
@@ -923,7 +1015,7 @@
       end_offset: anchor.end_offset,
       quote: anchor.quote,
       style: annStyle,
-      color: 'green',
+      color: annColor,
       note: ''
     };
 
@@ -946,7 +1038,7 @@
     } catch (e) {
       if (e.status === 401) {
         toast('登录已过期，请重新登录', 'warn');
-        openAuth('login', { style: style, anchor: anchor });
+        openAuth('login', { style: style, anchor: anchor, color: annColor });
       } else {
         toast('保存失败：' + authErrorText(e.message), 'warn');
       }
@@ -979,10 +1071,15 @@
     if (toolbar) return;
     toolbar = el('div', 'ann-toolbar');
     toolbar.setAttribute('role', 'toolbar');
+    var colorHtml = COLOR_KEYS.map(function (c) {
+      return '<button type="button" class="ann-color-dot ann-c-' + c + '" data-color="' + c + '" aria-label="' + COLOR_NAMES[c] + '" title="' + COLOR_NAMES[c] + '"></button>';
+    }).join('');
     toolbar.innerHTML =
-      '<button type="button" data-style="highlight" aria-label="高亮"><span class="ann-swatch" style="background:#3D6B57"></span>高亮</button>' +
-      '<button type="button" data-style="underline" aria-label="下划线"><span class="ann-swatch" style="background:#44657F"></span>下划线</button>' +
-      '<button type="button" data-style="note" aria-label="记笔记"><span class="ann-swatch" style="background:#B98F45"></span>笔记</button>';
+      '<div class="ann-toolbar-colors">' + colorHtml + '</div>' +
+      '<span class="ann-toolbar-sep"></span>' +
+      '<button type="button" data-style="highlight" aria-label="高亮">高亮</button>' +
+      '<button type="button" data-style="underline" aria-label="下划线">下划线</button>' +
+      '<button type="button" data-style="note" aria-label="记笔记">笔记</button>';
     document.body.appendChild(toolbar);
 
     toolbar.addEventListener('mousedown', function (e) {
@@ -990,21 +1087,38 @@
       e.stopPropagation();
     });
     toolbar.addEventListener('click', function (e) {
+      var dot = e.target.closest ? e.target.closest('button[data-color]') : null;
+      if (dot) {
+        defaultColor = colorKey(dot.getAttribute('data-color'));
+        savePrefs();
+        paintToolbarColors();
+        return;
+      }
       var b = e.target.closest ? e.target.closest('button[data-style]') : null;
       if (!b || !pending) return;
       var style = b.getAttribute('data-style');
       var anchor = pending.anchor;
       hideToolbar();
       if (!session) {
-        openAuth('login', { style: style, anchor: anchor });
+        openAuth('login', { style: style, anchor: anchor, color: defaultColor });
         return;
       }
-      createAnnotation(anchor, style);
+      createAnnotation(anchor, style, defaultColor);
+    });
+
+    paintToolbarColors();
+  }
+
+  function paintToolbarColors() {
+    if (!toolbar) return;
+    toolbar.querySelectorAll('[data-color]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-color') === defaultColor);
     });
   }
 
   function showToolbar(rect) {
     if (!toolbar) return;
+    paintToolbarColors();
     toolbar.classList.add('show');
 
     requestAnimationFrame(function () {
@@ -1029,6 +1143,9 @@
     editor = el('div', 'ann-editor');
     editor.setAttribute('role', 'dialog');
     editor.setAttribute('aria-label', '笔记编辑');
+    var colorHtml = COLOR_KEYS.map(function (c) {
+      return '<button type="button" data-color="' + c + '" aria-label="' + COLOR_NAMES[c] + '" title="' + COLOR_NAMES[c] + '"></button>';
+    }).join('');
     editor.innerHTML =
       '<div class="ae-head"><span class="ae-title">标注</span><button type="button" class="ann-x" data-editor-close aria-label="关闭">×</button></div>' +
       '<div class="ae-quote"></div>' +
@@ -1037,12 +1154,11 @@
         '<button type="button" data-style="underline">下划线</button>' +
       '</div></div>' +
       '<div class="ae-row"><span class="ae-label">颜色</span><div class="ae-colors">' +
-        '<button type="button" data-color="green" aria-label="石绿"></button>' +
-        '<button type="button" data-color="clay" aria-label="陶土"></button>' +
-        '<button type="button" data-color="gold" aria-label="米金"></button>' +
-      '</div></div>' +
+        colorHtml +
+      '</div><span class="ae-color-name" data-color-name></span></div>' +
       '<textarea placeholder="写点什么…"></textarea>' +
       '<div class="ae-foot">' +
+        '<button type="button" class="btn ghost sm" data-editor-copy>复制原文</button>' +
         '<button type="button" class="btn ghost sm" data-editor-delete>删除</button>' +
         '<div class="ae-spacer"></div>' +
         '<button type="button" class="btn ghost sm" data-editor-cancel>取消</button>' +
@@ -1055,6 +1171,9 @@
     editor.querySelector('[data-editor-close]').addEventListener('click', closeEditor);
     editor.querySelector('[data-editor-cancel]').addEventListener('click', closeEditor);
     editor.querySelector('[data-editor-save]').addEventListener('click', saveEditor);
+    editor.querySelector('[data-editor-copy]').addEventListener('click', function () {
+      if (currentEditorAnn) copyText(currentEditorAnn.quote || '');
+    });
     editor.querySelector('[data-editor-delete]').addEventListener('click', function () {
       if (currentEditorAnn) deleteAnnotation(currentEditorAnn.id);
     });
@@ -1067,7 +1186,9 @@
     });
     editor.querySelectorAll('[data-color]').forEach(function (b) {
       b.addEventListener('click', function () {
-        editColor = b.getAttribute('data-color');
+        editColor = colorKey(b.getAttribute('data-color'));
+        defaultColor = editColor;
+        savePrefs();
         paintEditorControls();
       });
     });
@@ -1087,6 +1208,8 @@
     editor.querySelectorAll('.ae-colors [data-color]').forEach(function (b) {
       b.classList.toggle('active', b.getAttribute('data-color') === editColor);
     });
+    var nameEl = editor.querySelector('[data-color-name]');
+    if (nameEl) nameEl.textContent = colorName(editColor);
   }
 
   function openEditor(ann, focusNote) {
@@ -1097,7 +1220,7 @@
     buildEditor();
     currentEditorAnn = ann;
     editStyle = ann.style === 'underline' ? 'underline' : 'highlight';
-    editColor = ann.color || 'green';
+    editColor = colorKey(ann.color || defaultColor);
 
     var quoteEl = editor.querySelector('.ae-quote');
     quoteEl.textContent = trimQuote(ann.quote);
@@ -1193,12 +1316,31 @@
     backdrop = el('div', 'ann-backdrop');
     backdrop.addEventListener('click', closeDrawer);
 
+    var filterColors = '<button type="button" class="ann-filter-all" data-filter-color="all">全部</button>' +
+      COLOR_KEYS.map(function (c) {
+        return '<button type="button" class="ann-c-' + c + '" data-filter-color="' + c + '" aria-label="' + COLOR_NAMES[c] + '" title="' + COLOR_NAMES[c] + '"></button>';
+      }).join('');
+
     drawer = el('aside', 'ann-drawer');
     drawer.setAttribute('aria-label', '本页笔记');
     drawer.innerHTML =
       '<div class="ann-drawer-head">' +
         '<div><div class="adh-title">本页笔记</div><div class="adh-sub" id="ann-sync">—</div></div>' +
         '<button type="button" class="ann-x" data-drawer-close aria-label="关闭">×</button>' +
+      '</div>' +
+      '<div class="ann-drawer-tools">' +
+        '<div class="ann-search">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>' +
+          '<input id="ann-search-input" type="search" placeholder="搜索原文或笔记…" autocomplete="off">' +
+        '</div>' +
+        '<div class="ann-filter-row">' +
+          '<div class="ann-filter-colors" id="ann-filter-colors">' + filterColors + '</div>' +
+          '<div class="ann-filter-styles" id="ann-filter-styles">' +
+            '<button type="button" data-filter-style="all">全部</button>' +
+            '<button type="button" data-filter-style="highlight">高亮</button>' +
+            '<button type="button" data-filter-style="underline">下划线</button>' +
+          '</div>' +
+        '</div>' +
       '</div>' +
       '<div class="ann-drawer-list" id="ann-list"></div>' +
       '<div class="ann-drawer-foot">' +
@@ -1213,10 +1355,34 @@
       setSyncStatus('同步中…');
       loadAnnotations(false);
     });
+    drawer.querySelector('#ann-search-input').addEventListener('input', function (e) {
+      drawerQuery = e.target.value || '';
+      renderDrawer();
+    });
+    drawer.querySelector('#ann-filter-colors').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-filter-color]') : null;
+      if (!b) return;
+      drawerColor = b.getAttribute('data-filter-color');
+      paintDrawerFilters();
+      renderDrawer();
+    });
+    drawer.querySelector('#ann-filter-styles').addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('button[data-filter-style]') : null;
+      if (!b) return;
+      drawerStyle = b.getAttribute('data-filter-style');
+      paintDrawerFilters();
+      renderDrawer();
+    });
 
     drawer.querySelector('#ann-list').addEventListener('click', function (e) {
       if (e.target.id === 'ann-drawer-login') {
         openAuth('login');
+        return;
+      }
+      var cp = e.target.closest ? e.target.closest('.ani-copy') : null;
+      if (cp) {
+        e.stopPropagation();
+        copyAnnotationQuote(cp.getAttribute('data-copy'));
         return;
       }
       var del = e.target.closest ? e.target.closest('.ani-del') : null;
@@ -1233,6 +1399,18 @@
           scrollToAnn(ann);
         }
       }
+    });
+  }
+
+  function paintDrawerFilters() {
+    if (!drawer) return;
+    var input = drawer.querySelector('#ann-search-input');
+    if (input && input.value !== drawerQuery) input.value = drawerQuery;
+    drawer.querySelectorAll('[data-filter-color]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-filter-color') === drawerColor);
+    });
+    drawer.querySelectorAll('[data-filter-style]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-filter-style') === drawerStyle);
     });
   }
 
@@ -1261,9 +1439,28 @@
 
   function renderDrawer() {
     if (!drawer) return;
+    paintDrawerFilters();
+
     var list = drawer.querySelector('#ann-list');
     var title = drawer.querySelector('.adh-title');
-    if (title) title.textContent = '本页笔记' + (annotations.length ? ' · ' + annotations.length : '');
+    var q = drawerQuery.trim().toLowerCase();
+    var hasFilter = !!q || drawerColor !== 'all' || drawerStyle !== 'all';
+
+    var filtered = annotations.filter(function (a) {
+      if (drawerColor !== 'all' && colorKey(a.color) !== drawerColor) return false;
+      if (drawerStyle !== 'all' && a.style !== drawerStyle) return false;
+      if (q) {
+        var hay = (a.quote || '') + ' ' + (a.note || '');
+        if (hay.toLowerCase().indexOf(q) < 0) return false;
+      }
+      return true;
+    });
+
+    if (title) {
+      title.textContent = '本页笔记' + (annotations.length
+        ? ' · ' + (hasFilter ? filtered.length + '/' + annotations.length : annotations.length)
+        : '');
+    }
 
     if (!session) {
       list.innerHTML =
@@ -1277,7 +1474,12 @@
       return;
     }
 
-    var sorted = annotations.slice().sort(function (a, b) {
+    if (!filtered.length) {
+      list.innerHTML = '<div class="ann-empty">没有匹配的笔记。<br>试试清空搜索，或切换颜色 / 样式筛选。</div>';
+      return;
+    }
+
+    var sorted = filtered.slice().sort(function (a, b) {
       if (a.start_block !== b.start_block) return a.start_block - b.start_block;
       return a.start_offset - b.start_offset;
     });
@@ -1287,10 +1489,14 @@
       var styleLabel = a.style === 'underline' ? '下划线' : '高亮';
       h += '<div class="ann-note-item" data-id="' + esc(a.id) + '">' +
         '<div class="ani-top">' +
-          '<span class="ani-dot ann-c-' + esc(a.color || 'green') + '"></span>' +
+          '<span class="ani-dot ann-c-' + colorKey(a.color) + '"></span>' +
           '<span class="ani-style">' + styleLabel + '</span>' +
+          '<span class="ani-time">' + esc(formatTime(a.updated_at || a.created_at)) + '</span>' +
           (a._orphan ? '<span class="ani-orphan">原文已变更</span>' : (a._hidden ? '<span class="ani-orphan">内容已折叠</span>' : '')) +
-          '<button type="button" class="ani-del" data-del="' + esc(a.id) + '" aria-label="删除">×</button>' +
+          '<span class="ani-actions">' +
+            '<button type="button" class="ani-copy" data-copy="' + esc(a.id) + '" aria-label="复制原文" title="复制原文">复制</button>' +
+            '<button type="button" class="ani-del" data-del="' + esc(a.id) + '" aria-label="删除">×</button>' +
+          '</span>' +
         '</div>' +
         '<div class="ani-quote">' + esc(trimQuote(a.quote)) + '</div>' +
         (a.note ? '<div class="ani-note">' + esc(a.note) + '</div>' : '') +
@@ -1398,10 +1604,16 @@
     clearTimeout(progressTimer);
     clearTimeout(progressRetryTimer);
     annotations = [];
+    loadPrefs();
+    drawerQuery = '';
+    drawerColor = 'all';
+    drawerStyle = 'all';
     closeEditor();
     closeDrawer();
     renderAll();
     renderDrawer();
+    paintToolbarColors();
+    paintDrawerFilters();
     updateAccountUI();
     setSyncStatus('未登录');
     updateCount();
@@ -1543,14 +1755,19 @@
 
   function afterAuth(s) {
     saveSession(s);
+    loadPrefs();
     updateAccountUI();
     var pendingAction = pendingAfterLogin;
     pendingAfterLogin = null;
+    if (pendingAction && pendingAction.color) {
+      defaultColor = colorKey(pendingAction.color);
+      savePrefs();
+    }
     closeAuth(false);
     toast('已登录');
     setSyncStatus('同步中…');
     loadAnnotations(true).then(function () {
-      if (pendingAction) createAnnotation(pendingAction.anchor, pendingAction.style);
+      if (pendingAction) createAnnotation(pendingAction.anchor, pendingAction.style, defaultColor);
     });
     syncLearningProgress({ reason: 'login', deferReload: !!pendingAction });
   }
@@ -1716,6 +1933,7 @@
       if (!user || !user.id) throw httpError('无法读取账号信息', 0);
       next.user = user;
       saveSession(next);
+      loadPrefs();
       updateAccountUI();
       toast('邮箱已验证，已自动登录');
       syncLearningProgress({ reason: 'login' });
@@ -1741,6 +1959,7 @@
 
     createLayer();
     buildDrawer();
+    loadPrefs();
     createToolbar();
     createToastHost();
     bindGlobalEvents();

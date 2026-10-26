@@ -21,11 +21,19 @@
 .ann-mark.ann-highlight.ann-c-green { background: rgba(61, 107, 87, .22); }
 .ann-mark.ann-highlight.ann-c-clay  { background: rgba(176, 96, 63, .22); }
 .ann-mark.ann-highlight.ann-c-gold  { background: rgba(185, 143, 69, .30); }
+.ann-mark.ann-highlight.ann-c-blue  { background: rgba(68, 101, 127, .22); }
+.ann-mark.ann-highlight.ann-c-rose  { background: rgba(168, 87, 107, .22); }
+.ann-mark.ann-highlight.ann-c-violet { background: rgba(110, 90, 126, .22); }
+.ann-mark.ann-highlight.ann-c-gray  { background: rgba(124, 119, 107, .20); }
 
 .ann-mark.ann-underline { border-radius: 0; }
 .ann-mark.ann-underline.ann-c-green { background: rgba(61, 107, 87, .80); }
 .ann-mark.ann-underline.ann-c-clay  { background: rgba(176, 96, 63, .80); }
 .ann-mark.ann-underline.ann-c-gold  { background: rgba(185, 143, 69, .85); }
+.ann-mark.ann-underline.ann-c-blue  { background: rgba(68, 101, 127, .80); }
+.ann-mark.ann-underline.ann-c-rose  { background: rgba(168, 87, 107, .80); }
+.ann-mark.ann-underline.ann-c-violet { background: rgba(110, 90, 126, .80); }
+.ann-mark.ann-underline.ann-c-gray  { background: rgba(124, 119, 107, .70); }
 
 .ann-mark.ann-flash { animation: ann-flash 1.1s ease; }
 @keyframes ann-flash {
@@ -38,6 +46,7 @@
   position: fixed;
   z-index: 150;
   display: flex;
+  align-items: center;
   gap: 2px;
   padding: 5px;
   background: var(--ink);
@@ -70,12 +79,39 @@
   white-space: nowrap;
 }
 .ann-toolbar button:hover { background: rgba(255, 255, 255, .13); }
-.ann-swatch {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  flex: 0 0 8px;
+
+.ann-toolbar-colors {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 3px;
 }
+.ann-toolbar-sep {
+  flex: 0 0 1px;
+  width: 1px;
+  height: 16px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, .18);
+}
+.ann-toolbar .ann-color-dot {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+.ann-toolbar .ann-color-dot.active {
+  border-color: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .55);
+}
+.ann-color-dot.ann-c-green { background: #3D6B57; }
+.ann-color-dot.ann-c-clay  { background: #B0603F; }
+.ann-color-dot.ann-c-gold  { background: #B98F45; }
+.ann-color-dot.ann-c-blue  { background: #44657F; }
+.ann-color-dot.ann-c-rose  { background: #A8576B; }
+.ann-color-dot.ann-c-violet { background: #6E5A7E; }
+.ann-color-dot.ann-c-gray  { background: #7C776B; }
 
 /* ---------- 笔记编辑卡 ---------- */
 .ann-editor {
@@ -142,7 +178,7 @@
   font-weight: 600;
 }
 
-.ae-colors { display: flex; gap: 7px; }
+.ae-colors { display: flex; gap: 6px; flex-wrap: wrap; }
 .ae-colors button {
   width: 20px;
   height: 20px;
@@ -155,6 +191,11 @@
 .ae-colors button[data-color="green"] { background: var(--green); }
 .ae-colors button[data-color="clay"]  { background: var(--clay); }
 .ae-colors button[data-color="gold"]  { background: var(--gold); }
+.ae-colors button[data-color="blue"]  { background: #44657F; }
+.ae-colors button[data-color="rose"]  { background: #A8576B; }
+.ae-colors button[data-color="violet"] { background: #6E5A7E; }
+.ae-colors button[data-color="gray"]  { background: #7C776B; }
+.ae-color-name { margin-left: auto; font-size: 11px; color: var(--ink-faint); white-space: nowrap; }
 
 .ann-editor textarea {
   width: 100%;
@@ -175,7 +216,7 @@
   box-shadow: 0 0 0 3px rgba(61, 107, 87, .12);
 }
 
-.ae-foot { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.ae-foot { display: flex; align-items: center; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
 .ae-spacer { flex: 1; }
 
 /* ---------- 侧边栏账号卡 ---------- */
@@ -271,6 +312,96 @@
 .adh-title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; }
 .adh-sub { margin-top: 3px; font-size: 11.5px; color: var(--ink-faint); }
 
+.ann-drawer-tools {
+  padding: 12px 16px 11px;
+  border-bottom: 1px solid var(--line);
+}
+.ann-search { position: relative; }
+.ann-search input {
+  width: 100%;
+  padding: 7px 10px 7px 30px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-family: var(--font-sans);
+  outline: none;
+}
+.ann-search input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(61, 107, 87, .12);
+}
+.ann-search svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  color: var(--ink-faint);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.ann-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 9px;
+}
+.ann-filter-colors { display: flex; align-items: center; gap: 5px; }
+.ann-filter-colors button {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.ann-filter-colors button.active { border-color: var(--ink); }
+.ann-filter-colors button.ann-filter-all {
+  width: auto;
+  height: auto;
+  flex: 0 0 auto;
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  font-size: 10.5px;
+  font-family: var(--font-sans);
+}
+.ann-filter-colors button.ann-filter-all.active {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green-deep);
+}
+.ann-filter-colors button[data-filter-color="green"] { background: var(--green); }
+.ann-filter-colors button[data-filter-color="clay"]  { background: var(--clay); }
+.ann-filter-colors button[data-filter-color="gold"]  { background: var(--gold); }
+.ann-filter-colors button[data-filter-color="blue"]  { background: #44657F; }
+.ann-filter-colors button[data-filter-color="rose"]  { background: #A8576B; }
+.ann-filter-colors button[data-filter-color="violet"] { background: #6E5A7E; }
+.ann-filter-colors button[data-filter-color="gray"]  { background: #7C776B; }
+.ann-filter-styles { display: flex; gap: 3px; margin-left: auto; }
+.ann-filter-styles button {
+  padding: 2px 7px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--ink-soft);
+  font-size: 10.5px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.ann-filter-styles button.active {
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--green-deep);
+  font-weight: 600;
+}
+
 .ann-drawer-list { flex: 1; overflow-y: auto; padding: 10px 12px 18px; }
 .ann-empty {
   padding: 46px 18px;
@@ -292,12 +423,17 @@
 }
 .ann-note-item:hover { border-color: var(--green-line); background: #FCFAF6; }
 
-.ani-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; }
+.ani-top { display: flex; align-items: center; gap: 6px; margin-bottom: 5px; flex-wrap: wrap; }
 .ani-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; }
 .ani-dot.ann-c-green { background: var(--green); }
 .ani-dot.ann-c-clay  { background: var(--clay); }
 .ani-dot.ann-c-gold  { background: var(--gold); }
+.ani-dot.ann-c-blue  { background: #44657F; }
+.ani-dot.ann-c-rose  { background: #A8576B; }
+.ani-dot.ann-c-violet { background: #6E5A7E; }
+.ani-dot.ann-c-gray  { background: #7C776B; }
 .ani-style { font-size: 10.5px; color: var(--ink-faint); }
+.ani-time { font-size: 10.5px; color: var(--ink-faint); }
 .ani-orphan {
   font-size: 10px;
   color: var(--clay);
@@ -305,8 +441,20 @@
   border-radius: 4px;
   padding: 1px 6px;
 }
+.ani-actions { margin-left: auto; display: flex; align-items: center; gap: 2px; }
+.ani-copy {
+  border: 0;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 10.5px;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ani-copy:hover { background: var(--surface-2); color: var(--green-deep); }
 .ani-del {
-  margin-left: auto;
+  margin-left: 0;
   border: 0;
   background: transparent;
   color: var(--ink-faint);
@@ -458,6 +606,11 @@
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 640px) {
+  .ann-toolbar {
+    max-width: calc(100vw - 16px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .ann-editor {
     left: 12px !important;
     right: 12px;

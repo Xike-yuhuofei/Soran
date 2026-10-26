@@ -21,13 +21,18 @@ create table if not exists public.annotations (
   end_offset integer not null check (end_offset >= 0),
   quote text not null,
   style text not null default 'highlight' check (style in ('highlight', 'underline')),
-  color text not null default 'green' check (color in ('green', 'clay', 'gold')),
+  color text not null default 'green' check (color in ('green', 'clay', 'gold', 'blue', 'rose', 'violet', 'gray')),
   note text not null default '',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   constraint annotations_block_range check (end_block >= start_block),
   constraint annotations_quote_len check (char_length(quote) between 1 and 2000)
 );
+
+-- 兼容已建好的项目：把旧的 3 色约束升级为 7 色（整段脚本可重复执行）
+alter table public.annotations drop constraint if exists annotations_color_check;
+alter table public.annotations add constraint annotations_color_check
+  check (color in ('green', 'clay', 'gold', 'blue', 'rose', 'violet', 'gray'));
 
 create index if not exists annotations_user_page_idx
   on public.annotations (user_id, page_id, created_at);
