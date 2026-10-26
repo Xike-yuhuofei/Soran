@@ -7,8 +7,50 @@
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="stylesheet" href="../../assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="socks-craft" data-root="../../">
+<body data-v3-curriculum data-page-id="socks-craft" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -21,7 +63,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">SOCKS · CRAFT</div>
         <h1 class="page-title">袜子 · 工艺、性能与品质</h1>
@@ -33,10 +75,17 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>从袜头缝合看一双袜子的品质</h2><p class="v3-hook">新袜外观整齐，为什么穿上后袜头接缝容易硌脚？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>缝头位置、接缝高度和缝合张力会影响局部触感。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>织袜后的缝头、定型、整烫和检验是不同的品质控制点。<br><b>供应链验证：</b>核对袜头内侧接缝、实穿记录、洗后缩率与成双尺寸。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>对目缝头的实际价值是什么？</summary><p>对比接缝平整度、穿着感、缝线强度与工序成本。</p></details><details><summary>为什么要控制袜子定型温度？</summary><p>材料热稳定性不同，过度定型可能损害弹性与尺寸保持。</p></details><details><summary>出现漏针怎么寻找原因？</summary><p>检查纱线品质、张力、针舌状态和缺陷出现的工序。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">01</span>织袜全流程：从纱到袜的六道主工序</h2>
+      <h2 class="sec-title" id="s-flow" data-sec="s-flow"><span class="sec-no">01</span>织袜全流程：从纱到袜的六道主工序</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节对应商品的哪项实际体验？</span></div>
 
       <p>袜子的生产动线比内裤短得多——没有裁剪、没有大件缝纫，主体只有「织、缝、定」三步。但每一步都是「机器+程序」驱动，<b>品质波动不来自工人手艺，而来自机台状态与参数设定</b>，这决定了袜子验货的思路与服装完全不同。</p>
 
@@ -105,7 +154,7 @@
       <p>三个对主理人有直接含义的流程事实：<b>第一</b>，染色在缝头之后（先织后染是主流），所以<dfn class="term" data-term="缸差">缸差</dfn>、掉色、色花问题都集中在织完之后才暴露，返工损失大；<b>第二</b>，定型直接决定「上手脚感与洗后尺寸」，是低价厂最爱压缩时间的环节；<b>第三</b>，袜机产能低、单价低，袜厂的利润靠<b>机器数量 × 翻单率</b>——这解释了为什么袜子产业高度集聚（全球最大的是诸暨<dfn class="term" data-term="大唐袜业">大唐袜业</dfn>集群），也解释了为什么小厂对「小批量多款式」的响应反而更慢、更贵。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-toe" data-sec="s-toe"><span class="sec-no">02</span>缝头工艺：一双袜子的品质分水岭</h2>
+      <h2 class="sec-title" id="s-toe" data-sec="s-toe"><span class="sec-no">02</span>缝头工艺：一双袜子的品质分水岭</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>袜机织完的袜子是一端开口的「袜坯」，脚趾端必须缝合封闭。怎么缝这最后一道口，是袜子行业公认的品质分水岭：<b>缝得糙，一条硬棱顶在五个脚趾尖上，穿一次就有体感；缝得好，指腹摸不出缝的存在</b>。</p>
 
@@ -170,7 +219,7 @@
       <p>为什么机缝会有棱？袜坯脚趾端开口处是上下两排线圈，机缝把两排<b>错位</b>地叠在一起缝死，两排布的厚度叠加就是那条棱；对目（linking）则先用对目机（或人手）把两排线圈<b>逐针挑齐</b>再缝合，缝线只落在线圈本身的位置，所以平整。一只好袜子和一双普通袜子的差距，很多时候消费者说不出来，但脚趾尖每一步都替他们记着。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-heel" data-sec="s-heel"><span class="sec-no">03</span>袜跟与立体织造：收放针的魔法</h2>
+      <h2 class="sec-title" id="s-heel" data-sec="s-heel"><span class="sec-no">03</span>袜跟与立体织造：收放针的魔法</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>袜子最神奇的工艺在脚跟：一条平面的筒状织物，怎么「转」出一个立体的口袋？答案是<b>收放针</b>（行业叫「转跟」）：织到跟部时，袜机不再整圈编织，而是只在一半针上往复织造，每织一行收掉两端各一针，收到中间后再逐行放针——布料就这样被「折」出一个袋状。做过编织的人会认出：这就是手编袜后跟的手法，袜机只是把它自动化了。</p>
 
@@ -202,7 +251,7 @@
       <p>船袜的「无跟」是一种主动取舍：为了隐形必须压低后跟，跟袋做不深，于是防滑全部押在<b>后跟内侧硅胶条</b>与橡筋压力上。硅胶条的品质（耐洗、耐老化）与贴合位置决定船袜「穿三次还是穿三个月不掉跟」——验货时洗测几次再看胶条状态，是最诚实的检验方式。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-terry" data-sec="s-terry"><span class="sec-no">04</span>毛圈与加固：运动袜的里子工程</h2>
+      <h2 class="sec-title" id="s-terry" data-sec="s-terry"><span class="sec-no">04</span>毛圈与加固：运动袜的里子工程</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>运动袜踩下去那种「厚实的脚感」，来自<dfn class="term" data-term="毛圈组织">毛圈组织</dfn>：<dfn class="term" data-term="毛圈袜">毛圈袜</dfn>在织造时让部分纱线形成拉长的线圈（毛圈），留在袜子<b>内侧</b>——脚踩的就是一层织出来的「毛巾」。毛圈不是垫上去的，是织进去的，所以洗不脱、跑不偏。</p>
 
@@ -270,7 +319,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-set" data-sec="s-set"><span class="sec-no">05</span>定型与后整理：板正与缩水的最后关卡</h2>
+      <h2 class="sec-title" id="s-set" data-sec="s-set"><span class="sec-no">05</span>定型与后整理：板正与缩水的最后关卡</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>缝好头的袜子是皱的、扭的、尺寸不定的——必须套在金属<b>烫袜板</b>上，经蒸汽或热风定形烘干，把线圈形态「锁」住。定型是袜子出厂前最后一道关键工序，决定了四件事：</p>
 
@@ -284,7 +333,7 @@
       <p>验货时给定型留两个动作：<b>洗测对比</b>（洗前洗后量长度与筒口围）与<b>回弹测试</b>（袜口拉开约 50% 放开，观察回位速度）。这两步能把「定型省时间」的工厂精确筛出来。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">06</span>性能缺陷图鉴：袜子专项八大问题</h2>
+      <h2 class="sec-title" id="s-defect" data-sec="s-defect"><span class="sec-no">06</span>性能缺陷图鉴：袜子专项八大问题</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>沿用内裤篇的方法论：先认「长相」，再顺着「成因」定位<b>责任环节</b>（原料 / 织造 / 缝头 / 定型 / 染整），最后落到可执行的验货动作。袜子缺陷的最大特点是「穿出来才暴露」——所以图鉴的最后一列尤其重要：能在样品阶段拦住的问题，绝不要等大货差评。</p>
 
@@ -346,7 +395,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本拆解实操：三档袜子的账</h2>
+      <h2 class="sec-title" id="s-cost" data-sec="s-cost"><span class="sec-no">07</span>成本拆解实操：三档袜子的账</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>袜子是所有品类里 BOM 最短、最容易自算成本的。公式只有一条：<b>原料成本 ≈ 单双克重 × 各纤维占比 × 纱价</b>，再加上橡筋、工缴与染整损耗。下面用三档袜子把账拆开（<b>示例数据，教学参考，非实际报价</b>）：</p>
 
@@ -423,7 +472,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">08</span>完整案例：通勤女袜「久站不累」的开发复盘</h2>
+      <h2 class="sec-title" id="s-case" data-sec="s-case"><span class="sec-no">08</span>完整案例：通勤女袜「久站不累」的开发复盘</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>把本页与上一页的方法串成一条完整链路。设定：Soran 要为「通勤久站、鞋内闷热、抱怨掉跟与脚趾顶」的女性用户开发一款中筒日常棉袜，目标出厂价约 3 元（示例）。以下是完整决策记录（教学案例，数据均为示例）。</p>
 
@@ -458,7 +507,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">09</span>选品判断清单：12 项可勾选</h2>
+      <h2 class="sec-title" id="s-check" data-sec="s-check"><span class="sec-no">09</span>选品判断清单：12 项可勾选</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>这张清单把本页全部判断点收拢为样品评审与大货验货动作，勾选进度保存在浏览器中，可直接带去工厂现场使用。数字阈值均为教学示例，正式执行请写入<dfn class="term" data-term="规格书">规格书</dfn>并约定 <dfn class="term" data-term="AQL">AQL</dfn> 抽检方案。</p>
 
@@ -499,7 +548,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">10</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">全流程</div><div class="kv-v">络纱 → 织造 → 缝头 → 染色 → 定型 → 检验包装；品质是「机台参数管理」，产能概念为单机约 8–15 双/小时（示例）。</div></div>
@@ -699,5 +748,17 @@
 <script src="../../assets/js/app.js"></script>
 <script src="../../assets/js/supabase-config.js"></script>
 <script src="../../assets/js/annotations.js"></script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
+</script>
 </body>
 </html>
