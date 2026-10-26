@@ -7,8 +7,50 @@
 <link rel="stylesheet" href="../../assets/css/main.css">
 <link rel="stylesheet" href="../../assets/css/annotations.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6B57'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='serif'%3E素%3C/text%3E%3C/svg%3E">
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="bras-materials" data-root="../../">
+<body data-v3-curriculum data-page-id="bras-materials" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -21,7 +63,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">BRAS · MATERIALS</div>
         <h1 class="page-title">文胸 · 材料与版型</h1>
@@ -33,10 +75,17 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+<div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>认识罩杯外层、芯材与弹性骨架</h2><p class="v3-hook">同为无钢圈文胸，为什么有的轻薄却承托不错，有的厚却容易闷？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>罩杯材料、底围弹力、后比和肩带的职责不同，应整体选型。</p>
+<p class="v3-explain v3-expert"><b>进一步判断：</b>复合面料的透气、回弹与成型能力受层数、胶材、厚度和组织共同影响。<br><b>供应链验证：</b>核对材料规格、模压参数、弹性回复与洗后层间粘结。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>薄杯一定更加透气吗？</summary><p>还要看杯材孔隙、贴肤层与实际覆盖面积。</p></details><details><summary>杯芯选好能否直接量产？</summary><p>需要与面布及胶材一起测试模压、回弹和清洗稳定性。</p></details><details><summary>辅料为什么要同步打样？</summary><p>底围、肩带与扣件直接影响承托和尺码稳定。</p></details></div>
+<p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-bom" data-sec="s-bom"><span class="sec-no">01</span>一件文胸的材料清单：从外到内四层</h2>
+      <h2 class="sec-title" id="s-bom" data-sec="s-bom"><span class="sec-no">01</span>一件文胸的材料清单：从外到内四层</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节对应商品的哪项实际体验？</span></div>
 
       <p>把上一页解剖的十来个部件按「材料」重新归类，会发现一件文胸其实是一个<b>四层复合结构</b>：最外面是决定颜值的装饰层，中间是决定性能的杯面与弹力层，再往里是决定胸感的芯材层，最贴皮肤的是决定亲肤感的里层。每一层都是一次「用什么布」的决策，也各有一个最容易翻车的点。</p>
 
@@ -97,7 +146,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-shell" data-sec="s-shell"><span class="sec-no">02</span>杯面与里布：锦氨特里科家族</h2>
+      <h2 class="sec-title" id="s-shell" data-sec="s-shell"><span class="sec-no">02</span>杯面与里布：锦氨特里科家族</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>文胸杯面的绝对主力是<dfn class="term" data-term="锦氨面料">锦氨面料</dfn>——锦纶提供强度、耐磨和细腻光泽，氨纶提供弹性。行业里说的「光面布」，绝大多数是<dfn class="term" data-term="特里科">特里科</dfn>经编锦氨：布面平滑得像上了一层蜡、横向高弹、边缘不脱散，是光面 T 恤文胸的标配。理解它的第一性原理很简单：<b>经编织法把线圈「锁」在稳定结构里，所以它不脱散、尺寸稳定，正好符合罩杯「要稳定成形」的需求</b>。</p>
 
@@ -154,7 +203,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-core" data-sec="s-core"><span class="sec-no">03</span>模杯芯材：四种材料的正面对决</h2>
+      <h2 class="sec-title" id="s-core" data-sec="s-core"><span class="sec-no">03</span>模杯芯材：四种材料的正面对决</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>芯材决定「胸感」：压上去什么感觉、洗三次之后还回不回得来。主流芯材只有四种——<dfn class="term" data-term="海绵">海绵</dfn>（PU 泡棉）、<dfn class="term" data-term="记忆棉">记忆棉</dfn>、<dfn class="term" data-term="乳胶杯">乳胶</dfn>、<dfn class="term" data-term="间隔织物">间隔织物</dfn>。先看剖面长什么样，再逐个讲它们的脾气。</p>
 
@@ -254,7 +303,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-hardware" data-sec="s-hardware"><span class="sec-no">04</span>钢圈、胶骨与辅料：看不见的骨架</h2>
+      <h2 class="sec-title" id="s-hardware" data-sec="s-hardware"><span class="sec-no">04</span>钢圈、胶骨与辅料：看不见的骨架</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>面料和芯材决定「穿感」，辅料决定「撑不撑得住、穿不穿得久」。这部分单价占比不高，却是承托性能与安全性的直接来源。</p>
 
@@ -306,7 +355,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-grade" data-sec="s-grade"><span class="sec-no">05</span>版型与放码：同样的尺码，不同的身体</h2>
+      <h2 class="sec-title" id="s-grade" data-sec="s-grade"><span class="sec-no">05</span>版型与放码：同样的尺码，不同的身体</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>材料定「料」，版型定「形」。上一页讲过尺码只是起点，这里补齐背后的版型参数：一款罩杯的合体度，由<b>杯深（立体深度）、杯宽（横向跨度）、钢圈开口、下扒高度、侧比高度、鸡心宽度</b>共同决定；其中杯深与杯宽的比例，是亚洲版型与欧美版型最核心的差异——亚洲女性胸型普遍偏「圆盘 / 圆锥、胸距稍宽」，欧美版型直接照搬常出现「压尖不压根、鸡心不服帖」。</p>
 
@@ -362,7 +411,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-config" data-sec="s-config"><span class="sec-no">06</span>三条典型配置路线：把材料组合成产品</h2>
+      <h2 class="sec-title" id="s-config" data-sec="s-config"><span class="sec-no">06</span>三条典型配置路线：把材料组合成产品</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>单个材料讲完，落点是组合。下面三条配置路线覆盖了绝大多数新品牌的首发场景——注意每条路线都是「面料 + 芯材 + 辅料 + 版型」的联动，只换其中一项不成立。</p>
 
@@ -392,7 +441,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-verify" data-sec="s-verify"><span class="sec-no">07</span>看懂材料卡：问价、验货与常见偷工点</h2>
+      <h2 class="sec-title" id="s-verify" data-sec="s-verify"><span class="sec-no">07</span>看懂材料卡：问价、验货与常见偷工点</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <p>向供应商要材料报价时，一张合格的材料卡（或叫「材料规格表」）至少包含：纤维成分与比例、克重、幅宽、（芯材）密度与厚度、颜色编号、染整方式、适用标准与检测报告编号。<b>缺任何一项，报价都不可比价</b>——你比的不是同一块布。</p>
 
@@ -421,7 +470,7 @@
       <p>到手验料的三个 10 秒动作：<b>称</b>——剪 10cm×10cm 称重换算克重，对不上材料卡即停；<b>拉</b>——横向拉伸 50% 松开，观察是否立刻回复、有无松弛白痕；<b>搓</b>——里布对着手背搓 20 下，起球起毛的里布直接否掉。这三个动作不能替代检测报告，但能替你拦下八成明显问题。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">08</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>如何把这一知识点转成可观察的现象和可检查的证据？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">四层结构</div><div class="kv-v">装饰层（颜值预算）→ 杯面弹力层（性能）→ 芯材层（胸感）→ 里布层（亲肤）。装饰层可选，芯材与里层决定复购。</div></div>
@@ -625,6 +674,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     calc();
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>

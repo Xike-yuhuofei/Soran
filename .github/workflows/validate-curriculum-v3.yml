@@ -1,0 +1,46 @@
+name: Validate Soran Curriculum V3
+on:
+  pull_request:
+    paths:
+      - 'textbook/pages/**'
+      - 'scripts/validate-curriculum-v3.cjs'
+      - 'scripts/test-curriculum-v3.cjs'
+      - '.github/workflows/validate-curriculum-v3.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'textbook/pages/**'
+      - 'scripts/validate-curriculum-v3.cjs'
+      - 'scripts/test-curriculum-v3.cjs'
+      - '.github/workflows/validate-curriculum-v3.yml'
+permissions:
+  contents: read
+jobs:
+  curriculum-content-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check chapter structure, exercises, option length, banned terms and JS syntax
+        run: node scripts/validate-curriculum-v3.cjs
+  curriculum-browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Test mobile and desktop layouts for all chapters
+        run: node scripts/test-curriculum-v3.cjs
+      - name: Upload responsive screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: curriculum-v3-screenshots
+          path: artifacts/curriculum-v3/
+          if-no-files-found: ignore

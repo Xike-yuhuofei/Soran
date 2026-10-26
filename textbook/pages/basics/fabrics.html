@@ -14,8 +14,50 @@
 .dst  { animation: dstPulse 14s infinite; }
 .dstx { animation: dstxPulse 14s infinite; }
 </style>
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
 </head>
-<body data-page-id="basics-fabrics" data-root="../../">
+<body data-v3-curriculum data-page-id="basics-fabrics" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -28,7 +70,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">BASICS · FABRICS</div>
         <h1 class="page-title">针织面料与染整</h1>
@@ -40,10 +82,20 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导">
+ <div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div>
+ <h2>从面料外观追问组织与染整</h2><p class="v3-hook">同为莫代尔面料，为什么有的挺、有的软，有的洗后变形？</p>
+ <div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+ <div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+ <p class="v3-explain v3-basic"><b>先建立直觉：</b>纤维只是原料，针织组织、克重与染整共同决定成品手感和稳定性。</p>
+ <p class="v3-explain v3-expert"><b>进一步判断：</b>比较样布时应尽量控制纤维成分、克重和后整理变量，避免跨条件归因。<br><b>供应链验证：</b>向工厂索取组织名称、克重、幅宽、缩水和色牢度记录。</p>
+ <h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3>
+ <div class="v3-practice-grid"><details><summary>两块同成分面料手感不同，先看哪个层次？</summary><p>先区分纱线规格和针织组织，再比较克重、预缩与柔软整理。</p></details><details><summary>询问面料幅宽为什么重要？</summary><p>幅宽会影响排料利用率与单件耗布，筒布还需确认平铺宽度口径。</p></details><details><summary>功能整理的宣传怎么验证？</summary><p>先定义所宣称的功能，再要求对应检测方法与洗后保持数据。</p></details></div>
+ <p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p>
+ </section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-knit" data-sec="s-knit"><span class="sec-no">01</span>针织 vs 梭织：内衣为什么几乎全是针织</h2>
+      <h2 class="sec-title" id="s-knit" data-sec="s-knit"><span class="sec-no">01</span>针织 vs 梭织：内衣为什么几乎全是针织</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>先做一个十秒钟的小实验：把毛衣和衬衫分别放在手里横向拉一拉。毛衣能拉开一大截、松手基本弹回去；衬衫几乎拉不动。差别不在纱线——两者都可能是棉的——而在<b>结构</b>：毛衣的纱线被弯成了一个个小圈（<dfn class="term" data-term="针织物">针织物</dfn>的线圈），拉的时候是<b>线圈在变形</b>；衬衫的经纬纱彼此垂直绞死，几乎没有让步的余地（<dfn class="term" data-term="梭织物">梭织物</dfn>）。</p>
 
@@ -100,7 +152,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-weft" data-sec="s-weft"><span class="sec-no">02</span>纬编家族：内裤、背心、无缝的组织语言</h2>
+      <h2 class="sec-title" id="s-weft" data-sec="s-weft"><span class="sec-no">02</span>纬编家族：内裤、背心、无缝的组织语言</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p><dfn class="term" data-term="纬编">纬编</dfn>的主力设备是<b>圆机</b>：一台把纱线织成布筒的「旋转编织机」——机头带着几十路成圈系统高速旋转，每一路喂一根纱线织一个横列，产出的连续布筒剖开就是坯布。你会在面料商口中听到「单面机、双面机、罗纹机」，它们的区别只是成圈系统的配置不同；袜机、无缝机（圣东尼）本质上也是纬编圆机的特种型号。纬编是内衣行业的绝对主力：<b>内裤、背心、秋衣裤、无缝衣片全部是纬编</b>。</p>
 
@@ -229,7 +281,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-warp" data-sec="s-warp"><span class="sec-no">03</span>经编家族：文胸面料的绝对主角</h2>
+      <h2 class="sec-title" id="s-warp" data-sec="s-warp"><span class="sec-no">03</span>经编家族：文胸面料的绝对主角</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>纬编是一根纱「绕着布幅来回跑」：织完一个横列，再织下一个。而 <dfn class="term" data-term="经编">经编</dfn>是<b>一整排经纱（成百上千根）同时成圈</b>——像一排人同时打结，步调一致。这个成圈方式的差别，带来三个决定性结果：</p>
 
@@ -289,7 +341,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-spec" data-sec="s-spec"><span class="sec-no">04</span>规格三件套：机号 · 克重 · 幅宽</h2>
+      <h2 class="sec-title" id="s-spec" data-sec="s-spec"><span class="sec-no">04</span>规格三件套：机号 · 克重 · 幅宽</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>向供应商要一块布，行话里绕不开三个数字。它们共同决定这块布「能织什么、多厚实、怎么排料」，也是比价时不被绕进去的坐标系。</p>
 
@@ -352,7 +404,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-dye" data-sec="s-dye"><span class="sec-no">05</span>染整全流程：坯布到成品布的分水岭</h2>
+      <h2 class="sec-title" id="s-dye" data-sec="s-dye"><span class="sec-no">05</span>染整全流程：坯布到成品布的分水岭</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>同一支坯布，进不同的染厂出来可以是两块布——<b>价差 30% 以上（教学示例）</b>并不夸张。染整是内衣面料价值链里最「看不见」、也最容易做手脚的一段。全程六步：</p>
 
@@ -446,7 +498,7 @@
       <p>其余常见整理各有取舍：<dfn class="term" data-term="柔软整理">柔软整理</dfn>用硅油类柔软剂换手感（过量会牺牲吸湿、影响缝制，下文 warn 框）；<dfn class="term" data-term="磨毛">磨毛</dfn>用砂辊磨出细绒，桃皮绒手感温暖，多用于秋冬内裤与秋衣裤，代价是毛羽增加、起球风险上升；功能整理（吸湿速干、凉感、抗菌）见第 07 节。</p>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-shade" data-sec="s-shade"><span class="sec-no">06</span>色差与缸差管理：让整批货是「同一个色」</h2>
+      <h2 class="sec-title" id="s-shade" data-sec="s-shade"><span class="sec-no">06</span>色差与缸差管理：让整批货是「同一个色」</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>颜色的统一性是消费者对品质最直观的感知之一——两个缸染出的内裤色光差一点，放在一起卖就是「批次混乱」。色差的量化语言是<b>灰卡</b>（GB/T 250）：1–5 级，5 级为无色差，成衣验收通常要求主料间 ≥4 级、辅料配伍 ≥3–4 级（按产品标准与合同约定）。</p>
 
@@ -514,7 +566,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-finish" data-sec="s-finish"><span class="sec-no">07</span>功能整理鉴别：声称 vs 实证</h2>
+      <h2 class="sec-title" id="s-finish" data-sec="s-finish"><span class="sec-no">07</span>功能整理鉴别：声称 vs 实证</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <p>「吸汗速干」「冰凉一夏」「抗菌除螨」是内衣货架最高频的卖点，也是水分最大的地方。判断一个功能宣称，永远问三个问题：<b>机理是什么？有没有对应标准与检测方法？数据是「初始值」还是「洗涤 N 次后」？</b>——第三个问题最致命，因为多数整理剂一洗就衰减。</p>
 
@@ -539,7 +591,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">08</span>主理人视角：面料采购实务</h2>
+      <h2 class="sec-title" id="s-owner" data-sec="s-owner"><span class="sec-no">08</span>主理人视角：面料采购实务</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>面对这一主题，先确定它解决什么穿着或供应链问题，再考虑怎样实证判断。</span></div>
 
       <h3 class="sub-title">现货还是定制</h3>
       <div class="duo">
@@ -581,7 +633,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">09</span>本页小结</h2>
+      <h2 class="sec-title" id="s-sum" data-sec="s-sum"><span class="sec-no">09</span>本页小结</h2><div class="v3-section-guide" aria-label="本节学习提示"><b>阅读前想一想</b><span>这一节你能否用自己的语言说出三个关键判断，并解释依据？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">针织 vs 梭织</div><div class="kv-v">弹性来自线圈变形而非纱线本身；代价是脱散、卷边、尺寸不稳——边口处理与定型预缩是对策。</div></div>
@@ -801,6 +853,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     drawLoops(cur.e, cur.d);
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>

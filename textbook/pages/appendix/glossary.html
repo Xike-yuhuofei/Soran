@@ -55,8 +55,57 @@
 }
 @media (prefers-reduced-motion: reduce) { .g-card.flash { animation: none; } }
 </style>
+<style id="soran-v3-curriculum-style">
+/* V3 学习层：所有规则限当前页面，不修改全站共享样式。 */
+body[data-v3-curriculum] .main > .content.v3-curriculum{width:100%;max-width:1130px;min-width:0;margin-inline:auto;padding:48px 52px 112px;}
+body[data-v3-curriculum] .content.v3-curriculum > p,
+body[data-v3-curriculum] .content.v3-curriculum > ul,
+body[data-v3-curriculum] .content.v3-curriculum > ol,
+body[data-v3-curriculum] .content.v3-curriculum .page-lede{max-width:820px;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap{max-width:100%;overflow-x:auto;}
+body[data-v3-curriculum] .content.v3-curriculum figure svg{max-width:100%;height:auto;}
+body[data-v3-curriculum] .v3-storyboard{margin:25px 0 31px;border:1px solid #D8E2D9;background:linear-gradient(140deg,#F4F8F4 0%,#FFFFFF 70%);border-radius:16px;padding:25px 28px;box-shadow:0 8px 28px #20382707}
+body[data-v3-curriculum] .v3-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;color:#3D6B57;margin:0 0 9px}
+body[data-v3-curriculum] .v3-storyboard h2{font:650 clamp(20px,2.4vw,27px)/1.45 var(--font-serif);margin:0 0 12px;color:#26231D}
+body[data-v3-curriculum] .v3-storyboard .v3-hook{font-size:15px;color:#3A493F;max-width:790px;line-height:1.85;margin:0 0 19px}
+body[data-v3-curriculum] .v3-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:17px 0 18px}
+body[data-v3-curriculum] .v3-route-item{border:1px solid #DEE6DF;background:white;border-radius:10px;padding:12px 14px;min-width:0}
+body[data-v3-curriculum] .v3-route-item span{display:block;font-size:11px;color:#7E877D;font-weight:750;margin-bottom:4px}
+body[data-v3-curriculum] .v3-route-item b{font-size:13px;color:#2C5142;line-height:1.6;display:block}
+body[data-v3-curriculum] .v3-switch{display:flex;gap:4px;align-items:center;padding:4px;border-radius:10px;background:#F0F3EE;width:max-content;max-width:100%;margin:17px 0}
+body[data-v3-curriculum] .v3-switch button{background:transparent;border:0;border-radius:7px;padding:7px 15px;color:#516456;font-size:13px;font-weight:650;cursor:pointer}
+body[data-v3-curriculum] .v3-switch button[aria-pressed="true"]{color:#255040;background:white;box-shadow:0 1px 5px #20382718}
+body[data-v3-curriculum] .v3-explain{font-size:14px;line-height:1.85;color:#3D493F;max-width:820px;margin:0;padding:15px 17px;border-left:3px solid #3D6B57;background:#fff;border-radius:0 9px 9px 0}
+body[data-v3-curriculum] .v3-explain b{color:#2C5142}
+body[data-v3-curriculum] .v3-expert{display:none}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-expert{display:block}
+body[data-v3-curriculum] .v3-storyboard[data-mode="expert"] .v3-basic{display:none}
+body[data-v3-curriculum] .v3-practice-title{font-size:13px;font-weight:750;color:#2C5142;margin:24px 0 12px}
+body[data-v3-curriculum] .v3-practice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+body[data-v3-curriculum] .v3-practice-grid details{min-width:0;border:1px solid #E5E0D5;background:#FFF;border-radius:10px;padding:13px 14px}
+body[data-v3-curriculum] .v3-practice-grid summary{font-size:13px;line-height:1.65;font-weight:650;cursor:pointer;color:#33352E;list-style:revert}
+body[data-v3-curriculum] .v3-practice-grid p{font-size:12.5px;color:#5D574B;line-height:1.8;margin:10px 0 0;border-top:1px solid #EFE9DF;padding-top:9px}
+body[data-v3-curriculum] .v3-section-guide{display:flex;align-items:flex-start;gap:12px;background:#FAF8F3;border-left:3px solid #B98F45;border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0 22px;max-width:820px}
+body[data-v3-curriculum] .v3-section-guide b{flex:0 0 auto;color:#886626;font-size:11px;white-space:nowrap}
+body[data-v3-curriculum] .v3-section-guide span{font-size:13px;color:#504B42;line-height:1.7}
+body[data-v3-curriculum] .sec-title{scroll-margin-top:76px}
+body[data-v3-curriculum] .page-head{max-width:100%}
+body[data-v3-curriculum] .content.v3-curriculum>.quiz{max-width:900px}
+body[data-v3-curriculum] .content.v3-curriculum .v3-study-note{font-size:12px;color:#7C756B;margin:12px 0 0}
+@media(max-width:1200px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:42px 32px 90px}}
+@media(max-width:890px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:35px 28px 80px}}
+@media(max-width:680px){body[data-v3-curriculum] .main>.content.v3-curriculum{padding:26px 18px 65px}body[data-v3-curriculum] .v3-storyboard{padding:18px 15px;margin:18px 0 24px}body[data-v3-curriculum] .v3-route{grid-template-columns:1fr;gap:7px}body[data-v3-curriculum] .v3-route-item{padding:8px 11px}body[data-v3-curriculum] .v3-practice-grid{grid-template-columns:1fr}body[data-v3-curriculum] .v3-storyboard h2{font-size:21px}}
+@media print{body[data-v3-curriculum] .main>.content.v3-curriculum{max-width:none;padding:0}body[data-v3-curriculum] .v3-expert{display:block!important}}
+</style>
+<style id="soran-v3-wide-data-fix">
+/* Wide legacy tables, charts and glossary panels must remain inside the viewport. */
+body[data-v3-curriculum] .main>.content.v3-curriculum {overflow-x:clip;}
+body[data-v3-curriculum] .content.v3-curriculum .tbl-wrap {width:100%;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;}
+body[data-v3-curriculum] .content.v3-curriculum .wg,
+body[data-v3-curriculum] .content.v3-curriculum .wg-panel {max-width:100%;min-width:0;}
+</style>
 </head>
-<body data-page-id="appendix-glossary" data-root="../../">
+<body data-v3-curriculum data-page-id="appendix-glossary" data-root="../../">
 <div class="layout">
   <aside class="sidebar" id="sidebar"></aside>
   <div class="main">
@@ -69,7 +118,7 @@
       <div class="read-meter"><i id="read-fill"></i></div><span class="read-pct" id="read-pct"></span>
     </div>
 
-    <div class="content">
+    <div class="content v3-curriculum">
       <header class="page-head">
         <div class="page-kicker">APPENDIX · GLOSSARY</div>
         <h1 class="page-title">专业术语索引</h1>
@@ -81,10 +130,14 @@
         </div>
       </header>
 
-      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div>
+      <div id="page-toc" style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:10px"></div><section class="v3-storyboard" data-mode="basic" aria-label="零基础主理人学习引导"><div class="v3-kicker">SORAN · BEGINNER FIRST / V3</div><h2>用术语解决产品问题，而不是背词</h2><p class="v3-hook">供应商说高支、细旦、包覆纱，怎样判断三个词分别描述什么？</p>
+<div class="v3-route"><div class="v3-route-item"><span>01 · 从商品出发</span><b>观察一件真实产品</b></div><div class="v3-route-item"><span>02 · 弄清原理</span><b>分辨影响因素与边界</b></div><div class="v3-route-item"><span>03 · 学会决策</span><b>向供应商索要可验证证据</b></div></div>
+<div class="v3-switch" role="group" aria-label="切换教学深度"><button type="button" data-v3-mode="basic" aria-pressed="true">基础理解</button><button type="button" data-v3-mode="expert" aria-pressed="false">专业深入</button></div>
+<p class="v3-explain v3-basic"><b>先建立直觉：</b>先确认术语属于纤维、纱线、面料还是工艺类别。</p><p class="v3-explain v3-expert"><b>进一步判断：</b>名称对应的概念、适用条件和性能证据必须分开，不以术语替代品质。<br><b>供应链验证：</b>搜索定义后回到具体商品章节核对材料规格和检测要求。</p>
+<h3 class="v3-practice-title">带着三个真实问题开始学习 · 点击问题查看分析</h3><div class="v3-practice-grid"><details><summary>碰到多个专业词怎么拆？</summary><p>分别标出材料、纱线、织法与性能宣称，避免互相混淆。</p></details><details><summary>看懂术语定义之后怎么办？</summary><p>再确认其应用场景、可观测结果和适用检验方法。</p></details><details><summary>怎样记住重要术语？</summary><p>将术语与具体样品和供应商问题建立对应关系。</p></details></div><p class="v3-study-note">建议：先自己回答，再展开提示；完整图表、技术定义及原有自测均保留在下方正文。</p></section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-use" data-sec="s-use"><span class="sec-no">01</span>如何使用本索引</h2>
+      <h2 class="sec-title" id="s-use" data-sec="s-use"><span class="sec-no">01</span>如何使用本索引</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>这一节要解决什么真实选品或验证问题？</span></div>
 
       <p>这本索引有三种打开方式，对应三种真实场景：</p>
 
@@ -105,7 +158,7 @@
       </div>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">02</span>本页小结与自测</h2>
+      <h2 class="sec-title" id="s-summary" data-sec="s-summary"><span class="sec-no">02</span>本页小结与自测</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <div class="kv">
         <div class="kv-row"><div class="kv-k">三种入口</div><div class="kv-v">正文虚线词弹卡直达、搜索框中英文/定义实时过滤、分类标签系统浏览。</div></div>
@@ -150,7 +203,7 @@
       </section>
 
       <!-- ====================================================== -->
-      <h2 class="sec-title" id="s-index" data-sec="s-index"><span class="sec-no">03</span>术语总览（动态生成）</h2>
+      <h2 class="sec-title" id="s-index" data-sec="s-index"><span class="sec-no">03</span>术语总览（动态生成）</h2><div class="v3-section-guide"><b>阅读前想一想</b><span>要用什么样的具体证据判断这一概念的适用性？</span></div>
 
       <div class="g-toolbar">
         <div class="g-stats" id="g-stats">正在加载术语库…</div>
@@ -281,6 +334,18 @@ window.__SORAN_PAGE_INIT__ = function () {
     window.addEventListener('hashchange', jumpToHash);
   })();
 };
+</script>
+<script id="soran-v3-curriculum-script">
+(function(){
+  "use strict";
+  var root=document.querySelector(".v3-storyboard");
+  if(!root)return;
+  var btns=root.querySelectorAll("[data-v3-mode]");
+  btns.forEach(function(b){b.addEventListener("click",function(){
+    root.dataset.mode=b.dataset.v3Mode;
+    btns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+  });});
+})();
 </script>
 </body>
 </html>
