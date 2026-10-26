@@ -38,6 +38,16 @@ const server=http.createServer((req,res)=>{
         const offenders=await page.evaluate(()=>[...document.querySelectorAll('*')].filter(el=>!el.closest('.ann-drawer')&&!el.closest('.search-overlay')).map(el=>({tag:el.tagName.toLowerCase(),id:el.id,cls:typeof el.className==='string'?el.className.slice(0,90):'',rect:el.getBoundingClientRect().toJSON(),scrollWidth:el.scrollWidth}))
           .filter(x=>x.rect.right>innerWidth+2&&x.rect.width>0).sort((a,b)=>b.rect.right-a.rect.right).slice(0,12));
         console.error('OVERFLOW DIAGNOSTIC '+p+' '+width+' '+JSON.stringify(offenders));
+        const probe=await page.evaluate(()=>{
+          const all=[...document.querySelectorAll('.tbl-wrap')];const saved=all.map(x=>x.style.display);
+          all.forEach(x=>x.style.display='none');
+          const noTables=document.documentElement.scrollWidth;
+          all.forEach((x,i)=>x.style.display=saved[i]);
+          const c=document.querySelector('.content.v3-curriculum');
+          const css=c?getComputedStyle(c):null;
+          return {noTables,contentOverflow:css?.overflowX,contentBounds:c?.getBoundingClientRect().toJSON(),tables:all.length};
+        });
+        console.error('OVERFLOW PROBE '+p+' '+width+' '+JSON.stringify(probe));
         await page.screenshot({path:path.join(out,'overflow-'+p.replace('/','-')+'-'+width+'.png'),fullPage:false});
       }
       assert.ok(metric.scroll<=width+2,p+' horizontal overflow '+width+' '+JSON.stringify(metric));
