@@ -5,9 +5,9 @@ const fs=require('node:fs');
 const assert=require('node:assert/strict');
 const pages=[
 {path:'textbook/pages/guide.html',ids:['s-position','s-map','s-path','s-tools','s-method','s-link'],p:[3,1,4,1,4,1],quizzes:3,
- expected:['从“听到一个词”到“作出可验证的产品判断”','从原料走向消费者','单件重量不能直接等同']},
+ expected:['从“听到一个词”到“作出可验证的产品判断”','从原料走向消费者','整件克重不能直接等同']},
 {path:'textbook/pages/basics/fundamentals.html',ids:['s-position','s-science','s-ergo','s-size','s-category','s-summary'],p:[7,8,7,6,3,0],quizzes:13,
- expected:['液态导湿','固定的胸部形状','还需结合','三层着装只是理解功能分工']},
+ expected:['液态导湿','固定不变的胸部形状','还需结合','三层着装只是理解功能分工']},
 ];
 const forbidden=[
  /日抛型消费品/,
