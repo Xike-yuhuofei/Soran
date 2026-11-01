@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-11-01T16:54:17.679436",
+  "generated_at": "2026-11-01T17:22:03.029371",
   "dataset": ".data/real-eval/manifest.json",
-  "sample_count": 20,
+  "sample_count": 25,
   "notes": "仅基于当前人工标注样本；空测试集或未标注项不会产生精度结论。",
   "policy": {
-    "checked_at": "2026-11-01T08:54:17.666381+00:00",
+    "checked_at": "2026-11-01T09:22:03.027865+00:00",
     "age_seconds": 0,
     "snapshot_fresh": true,
     "max_snapshot_age_hours": 24,
@@ -45,35 +45,35 @@
   "variants": {
     "B": {
       "aggregate": {
-        "items": 20,
-        "evaluated": 20,
+        "items": 25,
+        "evaluated": 25,
         "status_counts": {
-          "completed": 20
+          "completed": 25
         },
         "cer": {
-          "count": 20,
-          "mean": 0.12845681203930268,
+          "count": 25,
+          "mean": 0.13374557862833858,
           "p50": 0.07534246575342465,
           "p95": 0.4375,
-          "max": 0.5294117647058824
+          "max": 0.6764705882352942
         },
         "line_recall": {
-          "count": 20,
-          "mean": 0.8741260760383895,
-          "p50": 0.9104477611940298,
+          "count": 25,
+          "mean": 0.8722532417830925,
+          "p50": 0.8888888888888888,
           "p95": 1.0,
           "max": 1.0
         },
         "key_field_accuracy": {
-          "count": 9,
-          "mean": 0.8888888888888888,
+          "count": 10,
+          "mean": 0.9,
           "p50": 1.0,
           "p95": 1.0,
           "max": 1.0
         },
         "introduced_duplicate_rate": {
-          "count": 20,
-          "mean": 0.017864400744119796,
+          "count": 25,
+          "mean": 0.016743964259328614,
           "p50": 0.0,
           "p95": 0.11764705882352941,
           "max": 0.18181818181818182
@@ -86,27 +86,27 @@
           "max": 0.2
         },
         "latency_ms": {
-          "count": 20,
-          "mean": 3938.95,
-          "p50": 2197.0,
-          "p95": 11085.0,
-          "max": 13919.0
+          "count": 25,
+          "mean": 2652.8,
+          "p50": 1808.0,
+          "p95": 9010.0,
+          "max": 10176.0
         },
         "api_requests": {
-          "count": 20,
-          "mean": 1.7,
+          "count": 25,
+          "mean": 1.6,
           "p50": 1.0,
           "p95": 2.0,
           "max": 7.0
         },
         "cache_hits": {
-          "count": 20,
+          "count": 25,
           "mean": 0.0,
           "p50": 0.0,
           "p95": 0.0,
           "max": 0.0
         },
-        "needs_manual_check_rate": 0.25
+        "needs_manual_check_rate": 0.28
       },
       "items": [
         {
@@ -143,7 +143,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 10321,
+          "latency_ms": 2210,
           "errors": [],
           "warnings": [],
           "text_preview": "面料成分\n\n面料:95%棉 5%氨纶\n里料: 100%棉\n\n选择合适的尺码\n穿着更舒适\n\n单位(cm)\n卡码建议拍大一码\n\n尺寸\t腰围\t臀围\t体重\t直量腰围\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t58cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t62cm\nXL\t76cm~82cm\t95cm~102cm\t约120~140斤\t66cm\n2XL\t82cm~88cm\t100cm~107cm\t约140~160斤\t69cm\n\n洗护时的“不”和“要”\n\n维护方法\n[ 要 ]\n要采用轻柔/缓和的洗涤方式"
@@ -174,7 +174,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 1734,
+          "latency_ms": 1798,
           "errors": [],
           "warnings": [],
           "text_preview": "主料：95%棉 5%氨纶\n裆部：100%棉\n\n【升级后-烫印无感水洗标】\n主料：95%棉 5%氨纶\n裆部：100%棉\n\n产品升级中：车缝水洗标升级成无感水洗标；升级款新增腰头/脚口面料信息，迭代期间车缝标无感标内裤混发，敬请理解~\n\n尺码参考\t平铺腰围\t建议臀围\t建议体重\nM\t29\t80-90\t80-105\nL\t31\t90-100\t105-130\nXL\t33\t100-110\t130-150\n\n因每个人身材体型不同，且手工测量存在1-3cm误差，数据仅供参考！"
@@ -205,7 +205,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 1198,
+          "latency_ms": 1504,
           "errors": [],
           "warnings": [],
           "text_preview": "选择合适的尺码\n穿着更舒适\n\n单位(cm)\n卡码建议拍大一码\n\n尺寸\t腰围\t臀围\t体重\t直量腰围\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t56cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t60cm\nXL\t76cm~82cm\t95cm~102cm\t约120~140斤\t64cm"
@@ -236,7 +236,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 3391,
+          "latency_ms": 1008,
           "errors": [],
           "warnings": [],
           "text_preview": "洗护时的“不”和“要”\n\n维护方法\n\n[ 要 ]\n[ 不要 ]\n\n要采用轻柔/缓和的洗涤方式\n不要用尖锐物摩擦\n不要用力拉拽扯\n不可用热水洗/消毒\n不可用高温干燥\n\n[ 要 ]\n[ 不要 ]"
@@ -280,7 +280,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 962,
+          "latency_ms": 1214,
           "errors": [],
           "warnings": [],
           "text_preview": "拉伸力高达1.5倍\n不勒腰腹 活动自如\n\n各种腰围都好穿\n回弹不易变形\n\n拉伸力\n拉伸前\n拉伸后\n\n*来自SW内部数据，存在一定误差范围，仅供参考\n\n中腰三角版型\n恰到好处的舒适\n\n三角中腰\n舒适不卷边"
@@ -302,7 +302,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 1667,
+          "latency_ms": 4721,
           "errors": [],
           "warnings": [],
           "text_preview": "价格说明：\n\n被比较价格\n商品的专柜价、吊牌价、厂家建议零售价、厂商指导价、品牌供应商提供的指导价、商家在后台设置的一口价、减价（折价）前的基准价或该商品曾经展示过的销售价等。该价格仅供您在购买时参考。\n\n标价/销售价\n商品的实时标价。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。\n\n商家详情页所展示的可优惠金额是根据用户当前可使用的优惠券、满减、立减、可参与的特定活动（如多件多折、限时秒杀）、红包（含消费券）、淘金币抵扣等四舍五入计算得出，优惠获取及使用条件等详见活动页面及相关规则（如有），实际价格以结算页面展示为准。\n\n此说明仅当出现价格比较时有效，具体请参见《淘宝平台价格管理规则》，若商家单独对被比较价格进行说明的，以商家的表述为准。"
@@ -313,28 +313,26 @@
           "status": "completed",
           "notes": "由 5 张真实详情切片纵向拼接，用于长图切分与边界漏字检查；非完整商品页。",
           "metrics": {
-            "cer": 0.16185897435897437,
+            "cer": 0.1794871794871795,
             "line_recall": 0.9104477611940298,
             "key_field_accuracy": null,
             "key_field_total": 0,
             "key_field_details": [],
-            "introduced_duplicate_rate": 0.02985074626865672,
+            "introduced_duplicate_rate": 0.032338308457711434,
             "boundary_miss_rate": 0.2
           },
           "needs_manual_check": true,
           "api_requests": 7,
           "cache_hits": 0,
-          "latency_ms": 13919,
+          "latency_ms": 10176,
           "errors": [],
           "warnings": [
             "chunks 2181-3381: removed 2 overlap line(s) (fuzzy_overlap_match:0.87)",
             "重叠去重移除 2 行（保留在 JSON 审计字段中）",
-            "关键字段冲突：size = 腰围 臀围 体重 直量腰围",
-            "关键字段冲突：size = 腰围 臀围 体重 直量腰围（产品平铺状态下测量）",
             "分块 2/3 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本",
             "分块 5/6 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
           ],
-          "text_preview": "面料成分\n\n面料:95%棉 5%氨纶\n里料: 100%棉\n\n选择合适的尺码\n穿着更舒适\n\n单位(cm)\n卡码建议拍大一码\n\n尺寸\t腰围\t臀围\t体重\t直量腰围\n\t\t\t\t(产品平铺状态下测量)\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t58cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t62cm\nXL\t76cm~82cm\t95cm~102cm\t约120~140斤\t66cm\n2XL\t82cm~88cm\t100cm~107cm\t约140~160斤\t69cm\n\n洗护时的“不”和“要”\n\n维护方法\n「要」\n要采用轻柔/缓和的洗涤方式\n\n选择合适的尺码\n穿着更舒适\n\n尺寸\t腰围\t臀围\t体重\t直量腰围（产品平铺状态下测量）\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t56cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t60c"
+          "text_preview": "面料成分\n\n面料:95%棉 5%氨纶\n里料: 100%棉\n\n选择合适的尺码\n穿着更舒适\n\n单位(cm)\n卡码建议拍大一码\n\n尺寸\t腰围\t臀围\t体重\t直量腰围\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t58cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t62cm\nXL\t76cm~82cm\t95cm~102cm\t约120~140斤\t66cm\n2XL\t82cm~88cm\t100cm~107cm\t约140~160斤\t69cm\n\n洗护时的“不”和“要”\n\n维护方法\n「要」\n要采用轻柔/缓和的洗涤方式\n\n选择合适的尺码\n穿着更舒适\n\n尺寸\t腰围\t臀围\t体重\t直量腰围（产品平铺状态下测量）\nM\t64cm~70cm\t85cm~92cm\t约80~100斤\t56cm\nL\t70cm~76cm\t90cm~97cm\t约100~120斤\t60cm\nXL\t76cm~82cm\t9"
         },
         {
           "id": "real-normal-1038464992282-13",
@@ -362,7 +360,7 @@
           "needs_manual_check": true,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 1616,
+          "latency_ms": 2654,
           "errors": [],
           "warnings": [
             "分块 1 疑似编造内容，保留原始结果但不计入合并文本，请人工核验。"
@@ -395,7 +393,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 1793,
+          "latency_ms": 1271,
           "errors": [],
           "warnings": [],
           "text_preview": "[ 不要 ]\n\n不要用尖硬物摩擦\n不要用力拉拽扯\n不可用热水洗/消毒\n不可用高温干燥"
@@ -417,7 +415,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 615,
+          "latency_ms": 651,
           "errors": [],
           "warnings": [],
           "text_preview": "挑个顺眼的色号。\n\n燕麦\n烟灰\n咖啡\n灰绿"
@@ -439,7 +437,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 11085,
+          "latency_ms": 9010,
           "errors": [],
           "warnings": [],
           "text_preview": "价格说明：\n\n被比较价格\n商品的专柜价、吊牌价、厂家建议零售价、厂商指导价、品牌供应商提供的指导价、商家在后台设置的一口价、减价（折价）前的基准价或该商品曾经展示过的销售价等。该价格仅供您在购买时参考。\n\n标价/销售价\n商品的实时标价。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。\n\n商家详情页所展示的可优惠金额是根据用户当前可使用的优惠券、满减、立减、可参与的特定活动（如多件多折、限时秒杀）、红包（含消费券）、淘金币抵扣等四舍五入计算得出，优惠获取及使用条件等详见活动页面及相关规则（如有），实际价格以结算页面展示为准。\n\n此说明仅当出现价格比较时有效，具体请参见《淘宝平台价格管理规则》，若商家单独对被比较价格进行说明的，以商家的表述为准。"
@@ -461,7 +459,7 @@
           "needs_manual_check": false,
           "api_requests": 1,
           "cache_hits": 0,
-          "latency_ms": 6350,
+          "latency_ms": 1812,
           "errors": [],
           "warnings": [],
           "text_preview": "零染棉底裆 贴身安心健康\n\n- Health\n0添加\n无化学添加剂\n生产减少化工染料使用\n\n- Protection\n0污染\n绿色环保面料\n环保从源头开始\n\n- Soft\n0刺激\n越穿越亲肤\n还原天然的亲肤性\n\n全裤10A抑菌 全方位贴身守护\n\n- 抑菌加持\n远离异味\n\n- 全棉10A抑菌\n- 全方位贴身守护"
@@ -492,7 +490,7 @@
           "needs_manual_check": false,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 1518,
+          "latency_ms": 1334,
           "errors": [],
           "warnings": [],
           "text_preview": "商品名称    时尚轻运动凉感内裤\n面料成分    85.3%锦纶  14.7%氨纶（面料）\n84%锦纶  16%氨纶（网料）\n100%棉（里裆）\n\n选择合适的尺码\n穿着更舒适\n\n单位(cm)\n卡码建议拍大一码"
@@ -523,7 +521,7 @@
           "needs_manual_check": true,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 5915,
+          "latency_ms": 5656,
           "errors": [],
           "warnings": [
             "分块 0/1 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
@@ -536,7 +534,7 @@
           "status": "completed",
           "notes": "人工转写；大字标题+三个认证标签；图片底部文案被裁切。",
           "metrics": {
-            "cer": 0.5294117647058824,
+            "cer": 0.6764705882352942,
             "line_recall": 0.75,
             "key_field_accuracy": null,
             "key_field_total": 0,
@@ -547,12 +545,12 @@
           "needs_manual_check": true,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 3255,
+          "latency_ms": 3342,
           "errors": [],
           "warnings": [
             "分块 0/1 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
           ],
-          "text_preview": "裸肌体感拒绝闷热\n让肌肤自由呼吸\n\n- 无异味\n- 无甲醛\n- 无芳香胺\n\n2017年 2018年 2019年\n\n比普通安全裤更透气"
+          "text_preview": "裸肌体感拒绝闷热\n让肌肤自由呼吸\n\n- 无异味\n- 无甲醛\n- 无芳香胺\n\n2017年 2018年 2019年 2020年\n\n比普通安全裤更透气"
         },
         {
           "id": "real-table-984119970673-27",
@@ -580,13 +578,13 @@
           "needs_manual_check": false,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 5806,
+          "latency_ms": 1766,
           "errors": [],
           "warnings": [
             "chunks 1069-2472: removed 1 overlap line(s)",
             "重叠去重移除 1 行（保留在 JSON 审计字段中）"
           ],
-          "text_preview": "秘密的世界\nSecret World\n\n功能\n\n棉莫面料\n全裤10A抑菌\n四角常规版型\n\n版型\n合体\n\n弹性\n适中\n\n体感\n适中\n\n厚度\n适中\n\n内裤面料成分\n面料：47.5%莫代尔/44.8%棉/7.7%氨纶\n里料：100%棉"
+          "text_preview": "秘密的世界\nSecret World\n\n功能\n\n棉莫面料\n全裤10A抑菌\n四角常规版型\n\n版型\n合体\n弹性\n适中\n体感\n适中\n厚度\n适中\n\n内裤面料成分\n面料：47.5%莫代尔/44.8%棉/7.7%氨纶\n里料：100%棉"
         },
         {
           "id": "real-table-984119970673-29",
@@ -605,7 +603,7 @@
           "needs_manual_check": false,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 2461,
+          "latency_ms": 2347,
           "errors": [],
           "warnings": [
             "chunks 1080-2472: removed 1 overlap line(s)",
@@ -630,7 +628,7 @@
           "needs_manual_check": false,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 2197,
+          "latency_ms": 2000,
           "errors": [],
           "warnings": [],
           "text_preview": "放大细节\n心意不藏私\n\n宽边腰头\n好看不勒腰"
@@ -652,12 +650,136 @@
           "needs_manual_check": true,
           "api_requests": 2,
           "cache_hits": 0,
-          "latency_ms": 1566,
+          "latency_ms": 1808,
           "errors": [],
           "warnings": [
             "分块 0/1 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
           ],
           "text_preview": "普通安全裤\n透气度\n本款安全裤\n透气度\n\n高弹纱线编织\n大动作也不紧绷"
+        },
+        {
+          "id": "real-table-984119970673-28",
+          "category": "table",
+          "status": "completed",
+          "notes": "人工转写；模特试穿信息+双层尺码表，底部表格被裁切。",
+          "metrics": {
+            "cer": 0.2897196261682243,
+            "line_recall": 0.6666666666666666,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.058823529411764705,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 3162,
+          "errors": [],
+          "warnings": [
+            "关键字段冲突：size = 186CM",
+            "关键字段冲突：size = 厘米/体重: 千克"
+          ],
+          "text_preview": "尺码快选\n要合心也要合身\n\nModal A\n\n身高: 186CM\n体重: 75KG\n试穿: XL码\n\n尺码参考\n身高: 厘米/体重: 千克\n\n内裤尺码快选表\n\n\tL\tXL\t2XL\t3XL\t4XL\n**腰围**\t75~80\t80~85\t85~90\t90~95\t95~100\n**臀围**\t85~90\t90~95\t95~100\t100~105\t105~110\n\n体重 (KG)\n160~165\n\n\tL\tXL\t2XL\t3XL\t4XL\n**身高 (CM)**\t50~55\t55~60\t60~65\t65~70\t70~75\t75~80\t80~85\t85~90\n**160~165**\tL\tXL\t2XL\t3XL\t4XL\t/"
+        },
+        {
+          "id": "real-table-1047204140501-51",
+          "category": "table",
+          "status": "completed",
+          "notes": "人工转写；五行尺码表+温馨提示。",
+          "metrics": {
+            "cer": 0.10256410256410256,
+            "line_recall": 0.8571428571428571,
+            "key_field_accuracy": 1.0,
+            "key_field_total": 1,
+            "key_field_details": [
+              {
+                "field": "size_chart",
+                "expected": "M 50-55 60-70 约95斤以内 54；L 55-60 70-80 约115斤以内 58；XL 60-65 80-90 约125斤以内 62；2XL 65-70 90-100 约145斤以内 66",
+                "actual": [
+                  "M 50-55 60-70 约 95 斤以内 54；L 55-60 70-80 约 115 斤以内 58；XL 60-65 80-90 约 125 斤以内 62；2XL 65-70 90-100 约 145 斤以内 66"
+                ],
+                "correct": true
+              }
+            ],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 3072,
+          "errors": [],
+          "warnings": [
+            "分块 0/1 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
+          ],
+          "text_preview": "选择你的尺码。\n\n尺寸    腰围    臀围    建议体重    平铺腰围直量（cm）\n\n尺寸\t长度\t直径\t最大尺寸\t(cm)\nM\t50-55\t60-70\t约 95 斤以内\t54\nL\t55-60\t70-80\t约 115 斤以内\t58\nXL\t60-65\t80-90\t约 125 斤以内\t62\n2XL\t65-70\t90-100\t约 145 斤以内\t66\n\n温馨提示：以上数据均为人为测量，存在些许误差，且因个人体型差异和穿衣习惯不同，以上数据仅供参考！"
+        },
+        {
+          "id": "real-complex-1038464992282-16",
+          "category": "complex",
+          "status": "completed",
+          "notes": "人工转写；按左大字/右小字的行优先阅读顺序。",
+          "metrics": {
+            "cer": 0.18181818181818182,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 961,
+          "errors": [],
+          "warnings": [],
+          "text_preview": "超柔体感\n液态蚕丝般丝滑\n\n保持清新 守护私处健康\n\n高弹裸感腰边\n轻薄0感织带 不磨肤\n\n无松紧条\n拒绝刺痒"
+        },
+        {
+          "id": "real-complex-1038464992282-18",
+          "category": "complex",
+          "status": "completed",
+          "notes": "人工转写；大字标题+右侧两行小字。",
+          "metrics": {
+            "cer": 0.0,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 627,
+          "errors": [],
+          "warnings": [],
+          "text_preview": "隐形脚口 薄如蝉翼\n“膜”感般的轻薄体验\n\n动态贴合\n静态无痕"
+        },
+        {
+          "id": "real-complex-984119970673-26",
+          "category": "complex",
+          "status": "completed",
+          "notes": "人工转写；双栏产品细节+大字文案+礼盒标签；logo 被裁切未标注。",
+          "metrics": {
+            "cer": 0.03571428571428571,
+            "line_recall": 0.8,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 806,
+          "errors": [],
+          "warnings": [],
+          "text_preview": "立体大空间囊袋\n不卷边无痕脚口\n\n这份妥帖\n只对你限定\n\n贴身好物"
         }
       ]
     }
