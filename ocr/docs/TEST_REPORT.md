@@ -14,9 +14,9 @@
 - 边界完整性 PR：[#15](https://github.com/Xike-yuhuofei/Soran/pull/15) 增加重叠区墨迹比例与“有墨迹但无共享文本”边界检测，并记录被否决的官方图表提示词实验；已 squash-merge 至 `main`（`45265b9`）。
 - 质量修复 PR：[#16](https://github.com/Xike-yuhuofei/Soran/pull/16) 增加空白区域编造内容检测与自动排除、洗护“不要”行提取，并把真实标注样本从 8 条扩展到 13 条；已 squash-merge 至 `main`（`70bc761`）。
 - 表格与图标清理 PR：[#18](https://github.com/Xike-yuhuofei/Soran/pull/18) 支持表格式标签/区间尺码字段提取、清理图标占位伪文本，并把真实标注样本扩展到 15 条；已 squash-merge 至 `main`（`e7c89f1`）。
-- 布局顺序 PR：[#19](https://github.com/Xike-yuhuofei/Soran/pull/19) 修复 2×2 caption 网格被读成列优先的问题，并加入 15 条 text vs markdown 对比证据。
+- 布局顺序 PR：[#19](https://github.com/Xike-yuhuofei/Soran/pull/19) 修复 2×2 caption 网格被读成列优先的问题，并加入 15 条 text vs markdown 对比证据；已 squash-merge 至 `main`（`5320d93`）。
 - PR CI：PR #15/#16 为 105 测试，PR #18 为 108 测试，PR #19 为 109 测试；Python 3.11 / 3.13 矩阵均通过（Ruff、Bandit、构建、覆盖率门槛）。
-- `main` 在 PR #15–#18 合并后 OCR CI 均通过。
+- `main` 在 PR #15–#19 合并后 OCR CI 均通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
@@ -247,8 +247,8 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
 | 完整测试报告与实际精度指标 | 已给出 15 条真实样本实际指标与 8 条 A/B/C/D 对比；**未达到 200 条建议规模**，不能宣称 CER ≤1% / 关键字段 ≥99% |
 | 可复现部署说明 | 见 `docs/DEPLOYMENT.md`；`ocr/run.sh` 一键创建环境/启动；CI 含 `bash -n` |
-| GitHub Actions 适配 | OCR CI 在 PR #8–#16 与 `main` 推送均通过（Python 3.11 / 3.13） |
-| PR 自动合并 | PR #8–#16 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
+| GitHub Actions 适配 | OCR CI 在 PR #8–#19 与 `main` 推送均通过（Python 3.11 / 3.13） |
+| PR 自动合并 | PR #8–#19 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
 
 ## 4. 未验证/已知问题
 
