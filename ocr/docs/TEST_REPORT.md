@@ -16,9 +16,9 @@
 - 表格与图标清理 PR：[#18](https://github.com/Xike-yuhuofei/Soran/pull/18) 支持表格式标签/区间尺码字段提取、清理图标占位伪文本，并把真实标注样本扩展到 15 条；已 squash-merge 至 `main`（`e7c89f1`）。
 - 布局顺序 PR：[#19](https://github.com/Xike-yuhuofei/Soran/pull/19) 修复 2×2 caption 网格被读成列优先的问题，并加入 15 条 text vs markdown 对比证据；已 squash-merge 至 `main`（`5320d93`）。
 - 20 条评测 PR：[#21](https://github.com/Xike-yuhuofei/Soran/pull/21) 修复 Markdown 标题前缀导致的重叠去重失败，新增 5 条真实标注（表格/刺绣/认证标签/对比图），把评测扩展到 20 条；已 squash-merge 至 `main`（`e7d2eb5`）。
-- 字段噪声修复 PR：[#22](https://github.com/Xike-yuhuofei/Soran/pull/22) 避免把“尺寸 腰围 臀围 体重…”表头误提取为 size 字段，消除长图上的伪关键字段冲突。
+- 字段噪声修复 PR：[#22](https://github.com/Xike-yuhuofei/Soran/pull/22) 避免把“尺寸 腰围 臀围 体重…”表头误提取为 size 字段，消除长图上的伪关键字段冲突；已 squash-merge 至 `main`（`19694c1`）。
 - PR CI：PR #15/#16 为 105 测试，PR #18 为 108 测试，PR #19 为 109 测试，PR #21 为 110 测试，PR #22 为 111 测试；Python 3.11 / 3.13 矩阵均通过（Ruff、Bandit、构建、覆盖率门槛）。
-- `main` 在 PR #15–#21 合并后 OCR CI 均通过。
+- `main` 在 PR #15–#22 合并后 OCR CI 均通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
@@ -258,8 +258,8 @@ B 方案结果：
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
 | 完整测试报告与实际精度指标 | 已给出 20 条真实样本实际指标与 8 条 A/B/C/D 对比；**未达到 200 条建议规模**，不能宣称 CER ≤1% / 关键字段 ≥99% |
 | 可复现部署说明 | 见 `docs/DEPLOYMENT.md`；`ocr/run.sh` 一键创建环境/启动；CI 含 `bash -n` |
-| GitHub Actions 适配 | OCR CI 在 PR #8–#19 与 `main` 推送均通过（Python 3.11 / 3.13） |
-| PR 自动合并 | PR #8–#19 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
+| GitHub Actions 适配 | OCR CI 在 PR #8–#22 与 `main` 推送均通过（Python 3.11 / 3.13） |
+| PR 自动合并 | PR #8–#22 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
 
 ## 4. 未验证/已知问题
 
