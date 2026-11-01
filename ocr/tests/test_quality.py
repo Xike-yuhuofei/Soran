@@ -98,6 +98,23 @@ def test_boundary_potential_miss():
     assert boundary_potential_miss("", "另一段文字", overlap_px=120, overlap_ink_ratio=0.05)
 
 
+def test_blank_region_hallucination_is_flagged():
+    fabricated = (
+        "<table><tr><td>Category</td><td>Value</td></tr>"
+        "<tr><td>Blue</td><td>100</td></tr><tr><td>Red</td><td>100</td></tr></table>"
+    )
+    report = assess_quality(fabricated, ink_ratio=0.0016, forced_cut=False)
+    assert "text_without_ink" in report.flags
+    assert report.needs_review
+    assert report.score < 0.6
+
+
+def test_sparse_real_text_is_not_flagged_as_hallucination():
+    report = assess_quality("品牌：SECRET WORLD", ink_ratio=0.01, forced_cut=False)
+    assert "text_without_ink" not in report.flags
+    assert not report.needs_review
+
+
 def test_table_structure_issues():
     markdown = "| 尺码 | 身高 | 衣长 |\n|---|---|---|\n| M | 170/90A | 68cm |\n| L | 175/95A |"
     issues = table_issues(markdown)

@@ -145,6 +145,21 @@ M       170/90A
     assert "129" in price.value
 
 
+def test_extract_negative_wash_lines():
+    text = "[ 不要 ]\n不要用尖硬物摩擦\n不要用力拉拽扯\n不可用热水洗/消毒\n不可用高温干燥"
+    fields = extract_key_fields(text)
+    values = [field.value for field in fields if field.name == "wash_instruction"]
+    assert values == [
+        "不要用尖硬物摩擦",
+        "不要用力拉拽扯",
+        "不可用热水洗/消毒",
+        "不可用高温干燥",
+    ]
+    merged = merge_key_fields(fields)
+    wash = next(field for field in merged if field.name == "wash_instruction")
+    assert wash.value == "；".join(values)
+
+
 def test_percent_validation():
     assert percent_issues("面料成分：92%莫代尔 8%氨纶") == []
     issues = percent_issues("面料成分：92%莫代尔 5%氨纶")

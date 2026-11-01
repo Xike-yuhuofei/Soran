@@ -36,7 +36,14 @@ _STANDARD_RE = re.compile(
 )
 _SAFETY_RE = re.compile(r"(GB\s*18401[-\s]?[ABC]?|GB\s*31701[-\s]?[ABC]?)", re.IGNORECASE)
 _PRICE_RE = re.compile(r"(?:¥|￥)\s*(\d+(?:\.\d+)?(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*元")
-_WASH_RE = re.compile(r"(?:洗涤|水洗|手洗|机洗|不可漂白|不可熨烫|干洗|低温|悬挂晾干|反面洗涤)")
+_WASH_RE = re.compile(
+    r"(?:洗涤|水洗|手洗|机洗|不可漂白|不可熨烫|干洗|低温|悬挂晾干|反面洗涤)"
+)
+_WASH_CARE_RE = re.compile(
+    r"(?:洗涤|水洗|手洗|机洗|漂白|熨烫|干洗|晾干|晾晒|暴晒|曝晒|低温|高温|干燥|"
+    r"摩擦|拉拽|拉扯|拧干|浸泡|脱水|消毒|轻柔|缓和|悬挂|反面|单独)"
+)
+_WASH_NEGATIVE_RE = re.compile(r"^(?:不要|不可|请勿|勿|切勿|禁止)")
 _SIZE_ROW_RE = re.compile(
     r"^(?:XS|S|M|L|XL|XXL|XXXL|XXXXL|\d+XL|均码|\d{2,3})\s+"
     r".*(?:\d{2,3}\s*/\s*\d{2,3}|\d+(?:\.\d+)?\s*cm)",
@@ -92,7 +99,9 @@ def extract_key_fields(text: str, chunk_index: int | None = None) -> list[KeyFie
         if fabric:
             add("fabric_composition", fabric)
 
-        if _WASH_RE.search(line):
+        if _WASH_RE.search(line) or (
+            _WASH_NEGATIVE_RE.match(line) and _WASH_CARE_RE.search(line)
+        ):
             add("wash_instruction", line)
 
         if _SIZE_ROW_RE.match(line):

@@ -9,7 +9,13 @@ from app.config import Settings
 from app.imaging import segment_image, validate_image_bytes
 from app.pipeline import OCRPipeline
 from app.policy import PolicyViolation
-from app.schemas import OCRJobRequest, SessionInfo, utc_now
+from app.schemas import (
+    ChunkResult,
+    ImageResult,
+    OCRJobRequest,
+    SessionInfo,
+    utc_now,
+)
 from app.siliconflow import OCRRequestError, OCRResponse
 from app.storage import JobStore, SessionStore, UsageLedger
 
@@ -404,3 +410,54 @@ def test_session_result_contains_no_secret(settings):
     dumped = json.dumps(jobs.load_result(job_id).model_dump(mode="json"), ensure_ascii=False)
     assert "test-key-not-real" not in dumped
     assert "sk-" not in dumped
+
+
+def test_finalize_excludes_fabricated_blank_chunk(settings):
+    pipeline = make_pipeline(settings, StubPolicy(), FakeClient(settings, ["unused"]))
+    chunks = [
+        ChunkResult(
+            chunk_id="image:0",
+            index=0,
+            image_id="image",
+            y0=0,
+            y1=1200,
+            overlap_top=0,
+            overlap_bottom=120,
+            scale=0.6,
+            forced_cut=False,
+            text="久坐不闷汗\n穿一整天也不黏腻感",
+            ink_ratio=0.1372,
+        ),
+        ChunkResult(
+            chunk_id="image:1",
+            index=1,
+            image_id="image",
+            y0=1080,
+            y1=2988,
+            overlap_top=120,
+            overlap_bottom=0,
+            scale=0.6,
+            forced_cut=False,
+            text="<table><tr><td>Category</td><td>Value</td></tr><tr><td>Blue</td><td>100</td></tr></table>",
+            ink_ratio=0.0016,
+            quality_flags=["text_without_ink"],
+            suspected_hallucination=True,
+            needs_review=True,
+        ),
+    ]
+    image = ImageResult(
+        image_id="image",
+        filename="sample.png",
+        order=0,
+        width=2480,
+        height=2988,
+        text="",
+        markdown="",
+        chunks=chunks,
+    )
+    warnings: list[str] = []
+    pipeline._finalize_image(image, "text", warnings)
+    assert "久坐不闷汗" in image.text
+    assert "Category" not in image.text
+    assert image.needs_manual_check
+    assert any("编造" in warning for warning in image.warnings)

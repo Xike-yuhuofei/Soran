@@ -328,6 +328,12 @@ class OCRPipeline:
                         chunk.quality_flags = quality.flags
                         if quality.needs_review:
                             chunk.needs_review = True
+                        if "text_without_ink" in quality.flags:
+                            chunk.suspected_hallucination = True
+                            chunk.uncertain = True
+                            warnings.append(
+                                f"分块 {plan.index} 疑似在空白区域编造文字，已从合并文本中排除。"
+                            )
 
                         reasons = self._review_reasons(
                             chunk.text,
@@ -635,7 +641,9 @@ class OCRPipeline:
         successful = [
             (chunk.text, chunk.y0, chunk.y1)
             for chunk in image.chunks
-            if chunk.text and not (chunk.error and chunk.engine is None)
+            if chunk.text
+            and not chunk.suspected_hallucination
+            and not (chunk.error and chunk.engine is None)
         ]
         merged = merge_chunk_texts(successful)
         image.text = to_plain_text(merged.text)
@@ -647,10 +655,17 @@ class OCRPipeline:
             image.warnings.append(
                 f"重叠去重移除 {len(merged.removed_lines)} 行（保留在 JSON 审计字段中）"
             )
+        suspicious = [chunk.index for chunk in image.chunks if chunk.suspected_hallucination]
+        if suspicious:
+            image.warnings.append(
+                f"分块 {', '.join(str(index) for index in suspicious)} 疑似编造内容，"
+                "保留原始结果但不计入合并文本，请人工核验。"
+            )
+            image.needs_manual_check = True
 
         all_fields = []
         for chunk in image.chunks:
-            if chunk.text:
+            if chunk.text and not chunk.suspected_hallucination:
                 all_fields.extend(extract_key_fields(to_plain_text(chunk.text), chunk.index))
         if image.text:
             all_fields.extend(extract_key_fields(image.text))
@@ -665,9 +680,11 @@ class OCRPipeline:
             current = image.chunks[index]
             if current.overlap_top <= 0:
                 continue
+            previous_text = "" if previous.suspected_hallucination else previous.text
+            current_text = "" if current.suspected_hallucination else current.text
             issue = boundary_potential_miss(
-                previous.text,
-                current.text,
+                previous_text,
+                current_text,
                 current.overlap_top,
                 current.overlap_ink_ratio or 0.0,
             )
@@ -861,8 +878,6 @@ class OCRPipeline:
             chunk.layout_blocks = []
             chunk.manual_override = True
             chunk.override_source = "review"
-            chunk.needs_review = False
-            chunk.uncertain = False
         elif source == "primary":
             if not chunk.manual_override or chunk.original_text is None:
                 raise ValueError("该分块没有可恢复的主模型文本。")
@@ -880,6 +895,18 @@ class OCRPipeline:
             chunk.override_source = None
         else:
             raise ValueError("source 必须是 review 或 primary。")
+
+        quality = assess_quality(
+            chunk.text,
+            chunk.ink_ratio or 0.0,
+            chunk.forced_cut,
+            chunk.risk_flags,
+        )
+        chunk.quality_score = quality.score
+        chunk.quality_flags = quality.flags
+        chunk.suspected_hallucination = "text_without_ink" in quality.flags
+        chunk.needs_review = quality.needs_review
+        chunk.uncertain = bool(chunk.conflicts) or chunk.suspected_hallucination
 
         image.warnings = []
         image.errors = [
