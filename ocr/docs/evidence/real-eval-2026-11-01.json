@@ -1,0 +1,798 @@
+{
+  "generated_at": "2026-11-01T15:12:24.944533",
+  "kind": "real_secretworld_annotated_smoke",
+  "sample_count": 8,
+  "category_counts": {
+    "table": 3,
+    "normal": 2,
+    "complex": 2,
+    "long": 1
+  },
+  "note": "8 张真实 SecretWorld 商品详情图/拼接切片的人工转写样本；样本量远低于 200 张建议目标，指标只对当前样本有效。图片不提交仓库。",
+  "variants": {
+    "A": {
+      "aggregate": {
+        "items": 8,
+        "evaluated": 8,
+        "status_counts": {
+          "completed": 8
+        },
+        "cer": {
+          "count": 8,
+          "mean": 0.8627151016345634,
+          "p50": 0.09859154929577464,
+          "p95": 6.014423076923077,
+          "max": 6.014423076923077
+        },
+        "line_recall": {
+          "count": 8,
+          "mean": 0.7520745346071839,
+          "p50": 0.8461538461538461,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "key_field_accuracy": {
+          "count": 4,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "introduced_duplicate_rate": {
+          "count": 8,
+          "mean": 0.1250342352070553,
+          "p50": 0.0,
+          "p95": 0.7904836718662327,
+          "max": 0.7904836718662327
+        },
+        "boundary_miss_rate": {
+          "count": 1,
+          "mean": 0.6,
+          "p50": 0.6,
+          "p95": 0.6,
+          "max": 0.6
+        },
+        "latency_ms": {
+          "count": 8,
+          "mean": 13128.75,
+          "p50": 2793.0,
+          "p95": 82692.0,
+          "max": 82692.0
+        },
+        "api_requests": {
+          "count": 8,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "cache_hits": {
+          "count": 8,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "needs_manual_check_rate": 0.125
+      },
+      "items": [
+        {
+          "id": "real-table-1061280669442-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046610169491525424,
+            "line_recall": 0.9375,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2416,
+          "errors": []
+        },
+        {
+          "id": "real-table-962070911751-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046948356807511735,
+            "line_recall": 0.8461538461538461,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.02797202797202797,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 6932,
+          "errors": []
+        },
+        {
+          "id": "real-table-1070411333016-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.07534246575342465,
+            "line_recall": 0.8888888888888888,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 5488,
+          "errors": []
+        },
+        {
+          "id": "real-wash-1070411333016-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.24242424242424243,
+            "line_recall": 0.75,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.18181818181818182,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1890,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-12",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.09859154929577464,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1710,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.37142857142857144,
+            "line_recall": 0.6111111111111112,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1109,
+          "errors": []
+        },
+        {
+          "id": "real-price-1035170166687-29",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.005952380952380952,
+            "line_recall": 0.7142857142857143,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2793,
+          "errors": []
+        },
+        {
+          "id": "real-long-stitched",
+          "status": "completed",
+          "metrics": {
+            "cer": 6.014423076923077,
+            "line_recall": 0.26865671641791045,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.7904836718662327,
+            "boundary_miss_rate": 0.6
+          },
+          "needs_manual_check": true,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 82692,
+          "errors": []
+        }
+      ]
+    },
+    "B": {
+      "aggregate": {
+        "items": 8,
+        "evaluated": 8,
+        "status_counts": {
+          "completed": 8
+        },
+        "cer": {
+          "count": 8,
+          "mean": 0.12752184326863567,
+          "p50": 0.09859154929577464,
+          "p95": 0.37142857142857144,
+          "max": 0.37142857142857144
+        },
+        "line_recall": {
+          "count": 8,
+          "mean": 0.8401109152041988,
+          "p50": 0.8888888888888888,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "key_field_accuracy": {
+          "count": 4,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "introduced_duplicate_rate": {
+          "count": 8,
+          "mean": 0.030266064780990153,
+          "p50": 0.0,
+          "p95": 0.18181818181818182,
+          "max": 0.18181818181818182
+        },
+        "boundary_miss_rate": {
+          "count": 1,
+          "mean": 0.2,
+          "p50": 0.2,
+          "p95": 0.2,
+          "max": 0.2
+        },
+        "latency_ms": {
+          "count": 8,
+          "mean": 3939.5,
+          "p50": 4104.0,
+          "p95": 10817.0,
+          "max": 10817.0
+        },
+        "api_requests": {
+          "count": 8,
+          "mean": 1.75,
+          "p50": 1.0,
+          "p95": 7.0,
+          "max": 7.0
+        },
+        "cache_hits": {
+          "count": 8,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "needs_manual_check_rate": 0.125
+      },
+      "items": [
+        {
+          "id": "real-table-1061280669442-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.0,
+            "line_recall": 1.0,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 4104,
+          "errors": []
+        },
+        {
+          "id": "real-table-962070911751-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046948356807511735,
+            "line_recall": 0.8461538461538461,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.02797202797202797,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2171,
+          "errors": []
+        },
+        {
+          "id": "real-table-1070411333016-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.07534246575342465,
+            "line_recall": 0.8888888888888888,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1649,
+          "errors": []
+        },
+        {
+          "id": "real-wash-1070411333016-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.24242424242424243,
+            "line_recall": 0.75,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.18181818181818182,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1012,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-12",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.09859154929577464,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 5274,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.37142857142857144,
+            "line_recall": 0.6111111111111112,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 4299,
+          "errors": []
+        },
+        {
+          "id": "real-price-1035170166687-29",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.005952380952380952,
+            "line_recall": 0.7142857142857143,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2190,
+          "errors": []
+        },
+        {
+          "id": "real-long-stitched",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.1794871794871795,
+            "line_recall": 0.9104477611940298,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.032338308457711434,
+            "boundary_miss_rate": 0.2
+          },
+          "needs_manual_check": true,
+          "api_requests": 7,
+          "cache_hits": 0,
+          "latency_ms": 10817,
+          "errors": []
+        }
+      ]
+    },
+    "C": {
+      "aggregate": {
+        "items": 8,
+        "evaluated": 8,
+        "status_counts": {
+          "completed": 8
+        },
+        "cer": {
+          "count": 8,
+          "mean": 0.13154522983969172,
+          "p50": 0.09859154929577464,
+          "p95": 0.37142857142857144,
+          "max": 0.37142857142857144
+        },
+        "line_recall": {
+          "count": 8,
+          "mean": 0.8360297584877809,
+          "p50": 0.8888888888888888,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "key_field_accuracy": {
+          "count": 4,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "introduced_duplicate_rate": {
+          "count": 8,
+          "mean": 0.026223776223776224,
+          "p50": 0.0,
+          "p95": 0.18181818181818182,
+          "max": 0.18181818181818182
+        },
+        "boundary_miss_rate": {
+          "count": 1,
+          "mean": 0.2,
+          "p50": 0.2,
+          "p95": 0.2,
+          "max": 0.2
+        },
+        "latency_ms": {
+          "count": 8,
+          "mean": 59419.25,
+          "p50": 12666.0,
+          "p95": 224104.0,
+          "max": 224104.0
+        },
+        "api_requests": {
+          "count": 8,
+          "mean": 2.5,
+          "p50": 2.0,
+          "p95": 8.0,
+          "max": 8.0
+        },
+        "cache_hits": {
+          "count": 8,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "needs_manual_check_rate": 0.625
+      },
+      "items": [
+        {
+          "id": "real-table-1061280669442-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046610169491525424,
+            "line_recall": 0.9375,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 120981,
+          "errors": []
+        },
+        {
+          "id": "real-table-962070911751-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046948356807511735,
+            "line_recall": 0.8461538461538461,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.02797202797202797,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 3,
+          "cache_hits": 0,
+          "latency_ms": 224104,
+          "errors": []
+        },
+        {
+          "id": "real-table-1070411333016-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.07534246575342465,
+            "line_recall": 0.8888888888888888,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 96364,
+          "errors": []
+        },
+        {
+          "id": "real-wash-1070411333016-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.24242424242424243,
+            "line_recall": 0.75,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.18181818181818182,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 12096,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-12",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.09859154929577464,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 5335,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.37142857142857144,
+            "line_recall": 0.6111111111111112,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1198,
+          "errors": []
+        },
+        {
+          "id": "real-price-1035170166687-29",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.005952380952380952,
+            "line_recall": 0.7142857142857143,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2610,
+          "errors": []
+        },
+        {
+          "id": "real-long-stitched",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.16506410256410256,
+            "line_recall": 0.9402985074626866,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": 0.2
+          },
+          "needs_manual_check": true,
+          "api_requests": 8,
+          "cache_hits": 0,
+          "latency_ms": 12666,
+          "errors": []
+        }
+      ]
+    },
+    "D": {
+      "aggregate": {
+        "items": 8,
+        "evaluated": 8,
+        "status_counts": {
+          "completed": 8
+        },
+        "cer": {
+          "count": 8,
+          "mean": 0.1311445888140507,
+          "p50": 0.09859154929577464,
+          "p95": 0.37142857142857144,
+          "max": 0.37142857142857144
+        },
+        "line_recall": {
+          "count": 8,
+          "mean": 0.8322984152041988,
+          "p50": 0.8888888888888888,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "key_field_accuracy": {
+          "count": 4,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "introduced_duplicate_rate": {
+          "count": 8,
+          "mean": 0.029955119507358314,
+          "p50": 0.0,
+          "p95": 0.18181818181818182,
+          "max": 0.18181818181818182
+        },
+        "boundary_miss_rate": {
+          "count": 1,
+          "mean": 0.2,
+          "p50": 0.2,
+          "p95": 0.2,
+          "max": 0.2
+        },
+        "latency_ms": {
+          "count": 8,
+          "mean": 6724.5,
+          "p50": 3023.0,
+          "p95": 22750.0,
+          "max": 22750.0
+        },
+        "api_requests": {
+          "count": 8,
+          "mean": 2.375,
+          "p50": 2.0,
+          "p95": 8.0,
+          "max": 8.0
+        },
+        "cache_hits": {
+          "count": 8,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "needs_manual_check_rate": 0.625
+      },
+      "items": [
+        {
+          "id": "real-table-1061280669442-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046610169491525424,
+            "line_recall": 0.9375,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 22750,
+          "errors": []
+        },
+        {
+          "id": "real-table-962070911751-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.046948356807511735,
+            "line_recall": 0.8461538461538461,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.02797202797202797,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 3023,
+          "errors": []
+        },
+        {
+          "id": "real-table-1070411333016-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.07534246575342465,
+            "line_recall": 0.8888888888888888,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 2538,
+          "errors": []
+        },
+        {
+          "id": "real-wash-1070411333016-17",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.24242424242424243,
+            "line_recall": 0.75,
+            "key_field_accuracy": 1.0,
+            "introduced_duplicate_rate": 0.18181818181818182,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 1418,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-12",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.09859154929577464,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 4773,
+          "errors": []
+        },
+        {
+          "id": "real-complex-1080800063120-16",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.37142857142857144,
+            "line_recall": 0.6111111111111112,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1103,
+          "errors": []
+        },
+        {
+          "id": "real-price-1035170166687-29",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.005952380952380952,
+            "line_recall": 0.7142857142857143,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 2247,
+          "errors": []
+        },
+        {
+          "id": "real-long-stitched",
+          "status": "completed",
+          "metrics": {
+            "cer": 0.16185897435897437,
+            "line_recall": 0.9104477611940298,
+            "key_field_accuracy": null,
+            "introduced_duplicate_rate": 0.02985074626865672,
+            "boundary_miss_rate": 0.2
+          },
+          "needs_manual_check": true,
+          "api_requests": 8,
+          "cache_hits": 0,
+          "latency_ms": 15944,
+          "errors": []
+        }
+      ]
+    }
+  }
+}

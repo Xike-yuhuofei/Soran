@@ -38,13 +38,13 @@ _SAFETY_RE = re.compile(r"(GB\s*18401[-\s]?[ABC]?|GB\s*31701[-\s]?[ABC]?)", re.I
 _PRICE_RE = re.compile(r"(?:¥|￥)\s*(\d+(?:\.\d+)?(?:\.\d+)?)|(\d+(?:\.\d+)?)\s*元")
 _WASH_RE = re.compile(r"(?:洗涤|水洗|手洗|机洗|不可漂白|不可熨烫|干洗|低温|悬挂晾干|反面洗涤)")
 _SIZE_ROW_RE = re.compile(
-    r"^(?:XS|S|M|L|XL|XXL|XXXL|均码|\d{2,3})\s+"
+    r"^(?:XS|S|M|L|XL|XXL|XXXL|XXXXL|\d+XL|均码|\d{2,3})\s+"
     r".*(?:\d{2,3}\s*/\s*\d{2,3}|\d+(?:\.\d+)?\s*cm)",
     re.IGNORECASE,
 )
 _PERCENT_SUM_RE = re.compile(r"\d+(?:\.\d+)?%")
 
-MULTI_VALUE_FIELDS = {"wash_instruction", "size_chart"}
+MULTI_VALUE_FIELDS = {"wash_instruction", "size_chart", "fabric_composition"}
 
 MAX_VALUE_LEN = 200
 
@@ -130,7 +130,7 @@ def merge_key_fields(fields: list[KeyField]) -> list[KeyField]:
                     value="；".join(unique_values),
                     chunk_index=items[0].chunk_index,
                     confidence="cross_checked" if len(unique_values) > 1 else "unverified",
-                    note=f"合并 {len(unique_values)} 条多行内容",
+                    note=f"合并 {len(unique_values)} 条多行/多部位内容",
                 )
             )
             continue

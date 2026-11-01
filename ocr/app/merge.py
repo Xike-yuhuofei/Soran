@@ -66,7 +66,7 @@ def to_plain_text(text: str) -> str:
         if _MD_TABLE_SEPARATOR_RE.match(line):
             continue
         stripped = line.strip()
-        if stripped.startswith("|") and stripped.endswith("|") and stripped.count("|") >= 3:
+        if stripped.count("|") >= 2:
             cells = [cell.strip() for cell in stripped.strip("|").split("|")]
             lines.append("\t".join(cells))
             continue

@@ -231,6 +231,20 @@ async def test_pipeline_uses_grounding_layout_blocks(settings):
 
 
 @pytest.mark.asyncio
+async def test_pipeline_review_can_be_enabled_per_job(settings):
+    settings.review_enabled = False
+    sessions, session, _ = build_session(settings, height=800)
+    client = FakeClient(
+        settings, ["面料成分：92%莫代尔 8%氨纶"], review_texts=["面料成分：92%莫代尔 8%氨纶"]
+    )
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=True)
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    assert result.images[0].chunks[0].reviewed is True
+
+
+@pytest.mark.asyncio
 async def test_pipeline_blocks_when_policy_not_free(settings):
     sessions, session, _ = build_session(settings, height=800)
     client = FakeClient(settings, ["文本"])

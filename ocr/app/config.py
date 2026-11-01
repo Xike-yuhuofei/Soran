@@ -34,7 +34,7 @@ class Settings(BaseSettings):
 
     primary_model: str = "deepseek-ai/DeepSeek-OCR"
     review_model: str = "PaddlePaddle/PaddleOCR-VL-1.5"
-    review_enabled: bool = True
+    review_enabled: bool = False
     prompt_mode: str = "text"  # text | markdown
 
     chunk_target_height: int = 1200
@@ -56,7 +56,7 @@ class Settings(BaseSettings):
     request_min_interval_ms: int = 200
     request_timeout_seconds: float = 120.0
     max_retries: int = 3
-    max_output_tokens: int = 4096
+    max_output_tokens: int = 6000
 
     policy_refresh_seconds: int = 3600
     policy_max_snapshot_age_hours: int = 24

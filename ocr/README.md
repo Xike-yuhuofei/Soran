@@ -9,7 +9,7 @@
 - 多图上传、拖拽、顺序调整；PNG / JPEG / WebP、手机截图、超长详情图。
 - 电商详情页专用切图：按投影空白带/文字行间切分，固定 120px 重叠，保留原图坐标；默认目标高度 1200px，可配置。
 - DeepSeek-OCR 主识别（纯文字与 Markdown 两种官方提示词），分块并发、限流、超时、指数退避重试。
-- PaddleOCR-VL-1.5 按需复核：仅对可疑分块、数字/百分比/型号/表格等关键内容调用。
+- PaddleOCR-VL-1.5 按需复核（默认关闭；开启后只对可疑分块、数字/百分比/型号/表格等关键内容调用）。
 - 文本合并与重叠去重，去重记录可审计；TXT / Markdown / JSON 三种导出；结果可人工编辑。
 - Markdown/grounding 模式解析逐块 bbox，保存原图坐标并用递归 XY-cut 恢复复杂布局阅读顺序；本地 PP-OCR 使用文本框 XY-cut。
 - 关键字段提取：品牌、品名、面料成分、尺码、型号/SKU、洗涤、执行标准、安全类别、价格、包装。
@@ -84,7 +84,7 @@ python3 -m venv .venv
 | `SILICONFLOW_API_KEY` | — | 必填；也支持 `OCR_SILICONFLOW_API_KEY` |
 | `OCR_PRIMARY_MODEL` | `deepseek-ai/DeepSeek-OCR` | 必须在白名单内且核实免费 |
 | `OCR_REVIEW_MODEL` | `PaddlePaddle/PaddleOCR-VL-1.5` | 同上 |
-| `OCR_REVIEW_ENABLED` | `true` | 是否允许按需复核 |
+| `OCR_REVIEW_ENABLED` | `false` | 默认是否开启复核；UI/API 可显式开启。真实 8 样本评测未显示 CER 收益 |
 | `OCR_PROMPT_MODE` | `text` | `text`（Free OCR）或 `markdown`（文档转 Markdown） |
 | `OCR_CHUNK_TARGET_HEIGHT` | `1200` | 目标分块高度，建议 1000–1500 |
 | `OCR_CHUNK_OVERLAP` | `120` | 相邻分块重叠 |
@@ -120,7 +120,7 @@ python3 -m venv .venv
 | `quality_score` | 启发式 | 墨迹/文字量、垃圾字符、重复行、百分比、切分风险；0–1 |
 | `consistency_score` | 多模型 | 主模型与复核模型文本相似度；冲突另存 `conflicts` |
 
-复核策略：质量异常（空块、墨迹不匹配、垃圾字符、数字冲突、表格列数错位、强制切分、模型标记不确定）+ 关键内容（百分比、型号、尺码、标准、面料、价格）+ 表格样文本，按需调用 PaddleOCR-VL；默认不逐张全量复核。复核结果**不会**被自动替换为主结果，冲突只标记待人工确认。复核/本地 OCR 还会报告 `possible_missing_text`（第二模型发现主模型缺失行）和 `primary_only_text`（主模型有、复核没有的行），便于追查漏识别或多识别。
+复核策略：默认关闭（真实 8 样本评测中复核未改善 CER，但显著增加延迟与人工核验标记）。开启后对质量异常（空块、墨迹不匹配、垃圾字符、数字冲突、表格列数错位、强制切分、模型标记不确定）+ 关键内容（百分比、型号、尺码、标准、面料、价格）+ 表格样文本按需调用 PaddleOCR-VL；复核结果**不会**被自动替换为主结果，冲突只标记待人工确认。复核/本地 OCR 还会报告 `possible_missing_text`（第二模型发现主模型缺失行）和 `primary_only_text`（主模型有、复核没有的行），便于追查漏识别或多识别。
 
 ## 输出
 
@@ -159,7 +159,29 @@ SILICONFLOW_API_KEY=... .venv/bin/python tools/evaluate.py \
   --manifest datasets/manifest.json --variants B,C,D --real
 ```
 
-评测说明与标注格式见 [datasets/README.md](datasets/README.md)。仓库没有真实商品标注数据，因此**没有可对外宣称的验收精度**；合成图片冒烟结果只用于验证工程链路，见 [docs/TEST_REPORT.md](docs/TEST_REPORT.md)。
+评测说明与标注格式见 [datasets/README.md](datasets/README.md)。仓库不提交真实商品图片；本地可从 `product-research/` 素材建立标注集。
+
+### 真实样本评测（8 条，非验收规模）
+
+使用仓库现有 SecretWorld 真实详情图，人工转写 8 条（table 3、normal 2、complex 2、long 1），禁用缓存并真实调用免费模型：
+
+| 方案 | CER 均值 | 行召回 | 关键字段完全正确率 | 重复引入率 | P95 延迟 | 单图请求 | 需人工核验率 |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| A 单模型 | 86.27% | 75.21% | 100%（4/4） | 12.50% | 82.7s | 1.0 | 12.5% |
+| B 智能分块 | **12.75%** | **84.01%** | **100%（4/4）** | **3.03%** | **10.8s** | **1.8** | 12.5% |
+| C + Paddle 复核 | 13.15% | 83.60% | 100%（4/4） | 2.62% | 224.1s | 2.5 | 62.5% |
+| D 完整融合 | 13.11% | 83.23% | 100%（4/4） | 3.00% | 22.8s | 2.4 | 62.5% |
+
+关键结论：
+
+- 长图 A 因整图缩小 CER 高达 601.4%，B 智能分块降至 17.9%，分块是必要模块。
+- 清晰表格/价格样本 CER 可低至 0% / 0.6% / 4.7% / 7.5%；复杂图表与艺术字仍高（9.9% / 37.1%），洗涤说明 24.2%。
+- 关键字段 4/4 全部正确（成分、尺码参数、洗涤）。
+- C/D 复核未改善 CER，但显著增加延迟与人工核验标记；因此 **Paddle 复核默认关闭**，需要风险审计时再开启。
+- 长图边界漏字率 20%（1/5 标注片段），已标记人工核验。
+- 样本量 8，远低于建议 200；**不能**据此宣称 CER ≤1% 或 ≥99% 验收达成。
+
+证据：[`docs/evidence/real-eval-2026-11-01.json`](docs/evidence/real-eval-2026-11-01.json) 与 [`.md`](docs/evidence/real-eval-2026-11-01.md)。完整测试结论见 [docs/TEST_REPORT.md](docs/TEST_REPORT.md)。
 
 ## 可选本地 PP-OCR
 
@@ -193,7 +215,7 @@ ocr/
     storage.py       会话、任务、额度账本、缓存
     metrics.py       CER/行召回/关键字段/重复率
     static/          本地 Web 界面
-  tests/             94 个单元/集成测试
+  tests/             96 个单元/集成测试
   tools/             真实冒烟、数据集导入/校验、评测
   datasets/          标注格式与测试集导入说明
   docs/              部署说明、测试报告、证据
@@ -202,7 +224,7 @@ ocr/
 
 ## 已知限制
 
-- 没有真实标注测试集，无法给出 CER、关键字段 ≥99% 等验收结论；必须先导入并人工标注。
+- 真实人工标注样本仅 8 条，远低于建议的 200 条；已给出实际指标，但无法据此宣称 CER ≤1%、关键字段 ≥99% 等验收目标。
 - SiliconFlow 当前不返回 OCR 置信度，`confidence` 为 `null`；不要把它与启发式质量分混用。
 - DeepSeek-OCR 的 `Free OCR.` 仍可能输出 Markdown 排版；系统对 TXT 做格式剥离，JSON 保留原始文本。
 - Markdown 模式的 grounding 输出包含 bbox token；系统会解析并保存为原图坐标的 `layout_blocks`，用 XY-cut 重排。纯文字模式无 bbox，只能依赖模型原生顺序。
