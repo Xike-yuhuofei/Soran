@@ -63,6 +63,13 @@ class ChunkResult(BaseModel):
     local_engine: str | None = None
     layout_method: str | None = None
     layout_blocks: list[LayoutBlock] = Field(default_factory=list)
+    original_text: str | None = None
+    original_engine: str | None = None
+    original_confidence: float | None = None
+    original_layout_method: str | None = None
+    original_layout_blocks: list[LayoutBlock] = Field(default_factory=list)
+    manual_override: bool = False
+    override_source: str | None = None
     conflicts: list[TextConflict] = Field(default_factory=list)
     uncertain: bool = False
     error: str | None = None
@@ -165,3 +172,9 @@ class EditDocument(BaseModel):
 
 class EditResultRequest(BaseModel):
     documents: list[EditDocument]
+
+
+class ApplyChunkRequest(BaseModel):
+    image_id: str
+    chunk_index: int
+    source: str = "review"  # review | primary

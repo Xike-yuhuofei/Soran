@@ -301,6 +301,63 @@ async def test_pipeline_resume(settings):
     assert second.api_requests >= first.api_requests
 
 
+@pytest.mark.asyncio
+async def test_apply_review_text_and_restore_primary(settings):
+    sessions, session, _ = build_session(settings, height=800)
+    primary = "面料成分：92%莫代尔 8%氨纶"
+    review = "面料成分：95%莫代尔 5%氨纶"
+    client = FakeClient(settings, [primary], review_texts=[review])
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=True)
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    image = result.images[0]
+    chunk = image.chunks[0]
+    assert chunk.review_text == review
+
+    applied = pipeline.apply_chunk_text(
+        job_id,
+        image_id=image.image_id,
+        chunk_index=0,
+        source="review",
+    )
+    chunk = applied.images[0].chunks[0]
+    assert chunk.text == review
+    assert chunk.manual_override is True
+    assert chunk.override_source == "review"
+    assert chunk.original_text == primary
+    assert review in applied.text
+
+    restored = pipeline.apply_chunk_text(
+        job_id,
+        image_id=image.image_id,
+        chunk_index=0,
+        source="primary",
+    )
+    chunk = restored.images[0].chunks[0]
+    assert chunk.text == primary
+    assert chunk.manual_override is False
+    assert chunk.original_text is None
+    assert review not in restored.text
+
+
+@pytest.mark.asyncio
+async def test_apply_review_requires_review_text(settings):
+    sessions, session, _ = build_session(settings, height=800)
+    client = FakeClient(settings, ["主模型文本"])
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=False)
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    with pytest.raises(ValueError, match="复核文本"):
+        pipeline.apply_chunk_text(
+            job_id,
+            image_id=result.images[0].image_id,
+            chunk_index=0,
+            source="review",
+        )
+
+
 def test_apply_edits_updates_exports(settings):
     sessions, session, image = build_session(settings, height=800)
     client = FakeClient(settings, ["面料成分：92%莫代尔 8%氨纶\n价格：¥129.00"])

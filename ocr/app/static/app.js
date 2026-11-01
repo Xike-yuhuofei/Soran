@@ -581,6 +581,7 @@
         chunk.needs_review ? '<span class="tag tag-warn">需核验</span>' : "",
         chunk.forced_cut ? '<span class="tag tag-bad">强制切分</span>' : "",
         chunk.layout_method ? `<span class="tag tag-ok">布局 ${escapeHtml(chunk.layout_method)}</span>` : "",
+        chunk.manual_override ? '<span class="tag tag-warn">已人工采用复核文本</span>' : "",
         chunk.error ? '<span class="tag tag-bad">错误</span>' : "",
       ].join(" ");
       node.innerHTML = `
@@ -605,7 +606,15 @@
           chunk.review_text
             ? `<details style="margin-top:8px"><summary class="muted">查看复核文本（${escapeHtml(
                 chunk.review_engine || "复核模型"
-              )}）</summary><div class="chunk-text">${escapeHtml(chunk.review_text)}</div></details>`
+              )}）</summary>
+                <div class="chunk-text">${escapeHtml(chunk.review_text)}</div>
+                <div class="tool-actions" style="margin-top:8px">
+                  ${
+                    chunk.manual_override
+                      ? '<button class="btn btn-ghost btn-sm" data-apply-primary="1" type="button">恢复主模型文本</button>'
+                      : '<button class="btn btn-primary btn-sm" data-apply-review="1" type="button">采用复核文本</button>'
+                  }
+                </div></details>`
             : ""
         }
         ${
@@ -622,7 +631,48 @@
             : ""
         }`;
       el.chunkList.appendChild(node);
+      const reviewButton = node.querySelector("[data-apply-review]");
+      if (reviewButton) {
+        reviewButton.addEventListener("click", () =>
+          applyChunkText(image.image_id, chunk.index, "review")
+        );
+      }
+      const primaryButton = node.querySelector("[data-apply-primary]");
+      if (primaryButton) {
+        primaryButton.addEventListener("click", () =>
+          applyChunkText(image.image_id, chunk.index, "primary")
+        );
+      }
     });
+  }
+
+  async function applyChunkText(imageId, chunkIndex, source) {
+    if (!state.jobId) return;
+    const action = source === "review" ? "采用复核文本" : "恢复主模型文本";
+    if (
+      !window.confirm(
+        `${action}会基于所有分块重新生成该图片文字，可能覆盖当前整段人工编辑。是否继续？`
+      )
+    ) {
+      return;
+    }
+    try {
+      const updated = await api(`/api/ocr/jobs/${state.jobId}/chunks/apply`, {
+        method: "POST",
+        body: JSON.stringify({
+          image_id: imageId,
+          chunk_index: chunkIndex,
+          source,
+        }),
+      });
+      state.result = updated;
+      state.dirty = false;
+      state.activeDocId = imageId;
+      renderResult();
+      toast(source === "review" ? "已采用复核文本" : "已恢复主模型文本");
+    } catch (error) {
+      toast(`${action}失败：${error.message}`, true);
+    }
   }
 
   async function saveEdits(silent = false) {
