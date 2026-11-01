@@ -80,6 +80,18 @@ def test_chunk_ink_ratio(settings):
     assert ratio > 0.01
 
 
+def test_extreme_long_image_segments_without_failure(settings):
+    image = make_ecommerce_image(height=30000)
+    plans = segment_image(image, settings)
+    assert len(plans) >= 20
+    assert plans[0].y0 == 0
+    assert plans[-1].y1 == 30000
+    assert all(plan.y1 > plan.y0 for plan in plans)
+    assert all(
+        plan.crop_width * plan.crop_height <= settings.chunk_max_pixels + 2 for plan in plans
+    )
+
+
 def test_long_image_thumbnail_is_height_capped(tmp_path):
     from app.imaging import save_thumbnail
 

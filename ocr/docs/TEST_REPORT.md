@@ -23,7 +23,7 @@ cd ocr
 结果：
 
 - `ruff check`：通过，0 错误。
-- `pytest`：**91 passed，0 failed，1 warning**（FastAPI TestClient 的第三方弃用提示）。
+- `pytest`：**92 passed，0 failed，1 warning**（FastAPI TestClient 的第三方弃用提示）。
 - 覆盖率：**85.32%**（语句覆盖；`coverage` 明细见终端输出）。
 - 默认测试使用 `httpx.MockTransport`，**不访问云端、不消耗额度**。
 
@@ -32,7 +32,7 @@ cd ocr
 | 类别 | 测试内容 |
 |---|---|
 | 免费策略 | 官方定价页解析、免费/付费/未注册模型、快照过期阻止、刷新失败保留新鲜快照 |
-| 长图切分 | 空白行切分、120px 重叠与坐标、短图单块、密集图强制切分标记、分块缩放、墨迹比、长图缩略图高度限制 |
+| 长图切分 | 空白行切分、120px 重叠与坐标、短图单块、密集图强制切分标记、分块缩放、墨迹比、30000px 超长图覆盖、长图缩略图高度限制 |
 | 布局 | grounding bbox 解析、原图坐标映射、双栏 XY-cut 顺序、纯文本回退 |
 | 合并去重 | 相邻前缀/后缀去重、物理无重叠不误删、中间分块失败时对最近成功分块去重、拼接块字符级重叠兜底、审计记录 |
 | 文本还原 | grounding token 清理、Markdown→纯文本、HTML/管道表格→TSV、结构化 Markdown 保留 |
@@ -135,7 +135,7 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 | 完整文字查看、编辑、导出 | 已实现并通过 API 测试 |
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
 | 完整测试报告与实际精度指标 | 本报告为工程测试；真实商品数据精度**未验证**，因仓库无标注数据 |
-| 可复现部署说明 | 见 `docs/DEPLOYMENT.md` |
+| 可复现部署说明 | 见 `docs/DEPLOYMENT.md`；`ocr/run.sh` 一键创建环境/启动；CI 含 `bash -n` |
 | GitHub Actions 适配 | 已新增 OCR CI；PR #8 与 `main` 推送均通过（Python 3.11 / 3.13） |
 | PR 自动合并 | PR #8 在所有必要 CI 通过后自动 squash-merge 至 `main`，未绕过任何保护规则 |
 

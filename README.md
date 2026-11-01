@@ -25,6 +25,13 @@
 
 ```bash
 cd ocr
+./run.sh   # 首次运行自动创建 .venv/.env，填写 Key 后再次运行
+```
+
+或手动：
+
+```bash
+cd ocr
 uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python -e ".[dev]"
 cp .env.example .env   # 填入 SILICONFLOW_API_KEY
