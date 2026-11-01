@@ -20,6 +20,15 @@ def test_strip_icon_placeholder_lines():
     assert strip_artifacts(text) == "不要用尖硬物摩擦"
 
 
+def test_overlap_dedupe_ignores_markdown_prefix():
+    previous = "秘密的世界\nSecret World\n功能"
+    current = "# 功能\n\n棉莫面料\n全裤10A抑菌"
+    outcome = dedupe_overlap(previous, current, overlap_px=120)
+    assert outcome.matched_lines == 1
+    assert outcome.text.startswith("棉莫面料")
+    assert "功能" in outcome.removed_lines[0]
+
+
 def test_overlap_dedupe_removes_prefix():
     previous = "标题\n尺码表\nM 170/90A\nL 175/95A"
     current = "M 170/90A\nL 175/95A\n颜色：黑色"

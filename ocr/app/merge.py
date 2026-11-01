@@ -31,6 +31,7 @@ _MD_TABLE_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?[-=]{3,}")
 _MD_HEADING_RE = re.compile(r"^(#{1,6})\s+", re.MULTILINE)
 _MD_EMPHASIS_RE = re.compile(r"(?<!\*)\*\*([^*\n]+)\*\*(?!\*)|__([^_\n]+)__")
 _MD_HR_RE = re.compile(r"^\s*(?:---|\*\*\*|___)\s*$", re.MULTILINE)
+_COMPARE_PREFIX_RE = re.compile(r"^\s{0,3}(?:#{1,6}|[-*+]|>|\d+[.)])\s*")
 
 
 def strip_artifacts(text: str) -> str:
@@ -87,6 +88,8 @@ def to_plain_text(text: str) -> str:
 
 
 def normalize_for_compare(line: str) -> str:
+    line = _COMPARE_PREFIX_RE.sub("", line)
+    line = _MD_EMPHASIS_RE.sub(lambda match: match.group(1) or match.group(2) or "", line)
     line = unicodedata.normalize("NFKC", line)
     line = _MULTISPACE_RE.sub(" ", line).strip().casefold()
     return line
@@ -179,7 +182,8 @@ def dedupe_overlap(
         scores = [_line_similarity(a, b) for a, b in zip(prev_tail, curr_head, strict=False)]
         avg = sum(scores) / len(scores)
         block_chars = sum(len(line) for line in curr_head)
-        if avg >= threshold and block_chars >= 4:
+        exact_single = k == 1 and avg == 1.0
+        if avg >= threshold and (block_chars >= 4 or exact_single):
             best_k = k
             best_score = avg
 
