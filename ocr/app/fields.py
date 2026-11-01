@@ -50,6 +50,17 @@ _SIZE_ROW_RE = re.compile(
     re.IGNORECASE,
 )
 _PERCENT_SUM_RE = re.compile(r"\d+(?:\.\d+)?%")
+_SIZE_HEADER_TOKENS = (
+    "腰围",
+    "臀围",
+    "体重",
+    "衣长",
+    "裤长",
+    "胸围",
+    "肩宽",
+    "袖长",
+    "身高",
+)
 
 MULTI_VALUE_FIELDS = {"wash_instruction", "size_chart", "fabric_composition"}
 
@@ -60,6 +71,10 @@ def _clean_value(value: str) -> str:
     value = unicodedata.normalize("NFC", value)
     value = re.sub(r"[ \t\u00a0\u3000]+", " ", value).strip(" ：:，,；;")
     return value[:MAX_VALUE_LEN]
+
+
+def _is_size_header(value: str) -> bool:
+    return sum(1 for token in _SIZE_HEADER_TOKENS if token in value) >= 2
 
 
 def _fabric_value(line: str) -> str | None:
@@ -91,6 +106,8 @@ def extract_key_fields(text: str, chunk_index: int | None = None) -> list[KeyFie
             match = pattern.search(line)
             if match:
                 value = match.group(1)
+                if name == "size" and _is_size_header(value):
+                    continue
                 if name == "price" and not value.strip().startswith(("¥", "￥")):
                     value = f"¥{value.strip()}"
                 add(name, value)

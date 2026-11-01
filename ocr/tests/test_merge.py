@@ -181,6 +181,13 @@ def test_size_rows_with_unit_only_in_header():
     assert values == ["M 80~100 64~70 57", "2XL 140~160 82~88 69"]
 
 
+def test_size_table_header_not_extracted_as_size():
+    fields = extract_key_fields("尺寸\t腰围\t臀围\t体重\t直量腰围")
+    assert not [field for field in fields if field.name == "size"]
+    fields = extract_key_fields("尺码：M")
+    assert [field.value for field in fields if field.name == "size"] == ["M"]
+
+
 def test_label_value_separated_by_table_whitespace():
     fields = extract_key_fields("商品名称    时尚轻运动凉感内裤\n价格    ¥129.00")
     product = next(field for field in fields if field.name == "product_name")
