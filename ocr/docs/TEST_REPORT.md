@@ -11,8 +11,9 @@
 - 质量改进 PR：[#12](https://github.com/Xike-yuhuofei/Soran/pull/12) 增加主模型缺失行/独有行检测与表格列数校验。
 - 真实评测 PR：[#13](https://github.com/Xike-yuhuofei/Soran/pull/13) 增加 8 条真实样本 A/B/C/D 评测、关键字段修复与复核默认关闭。
 - 人工复核 PR：[#14](https://github.com/Xike-yuhuofei/Soran/pull/14) 增加 UI/API 采用/恢复复核文本、审计字段与前端语法 CI。
-- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、99 测试、覆盖率门槛）。
-- `main` 合并后 OCR CI 再次通过。
+- 边界完整性 PR：[#15](https://github.com/Xike-yuhuofei/Soran/pull/15) 增加重叠区墨迹比例与“有墨迹但无共享文本”边界检测，并记录被否决的官方图表提示词实验。
+- PR CI：PR #15 的 Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、101 测试、覆盖率门槛）。
+- `main` 在 PR #14 合并后 OCR CI 通过；PR #15 合并后再次确认。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
@@ -191,8 +192,8 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
 | 完整测试报告与实际精度指标 | 已给出 8 条真实样本实际指标；**未达到 200 条验收规模**，不能宣称 CER ≤1% / 关键字段 ≥99% |
 | 可复现部署说明 | 见 `docs/DEPLOYMENT.md`；`ocr/run.sh` 一键创建环境/启动；CI 含 `bash -n` |
-| GitHub Actions 适配 | OCR CI 在 PR #8/#9/#10/#11/#12 与 `main` 推送均通过（Python 3.11 / 3.13） |
-| PR 自动合并 | PR #8/#9/#10/#11/#12 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
+| GitHub Actions 适配 | OCR CI 在 PR #8/#9/#10/#11/#12/#13/#14/#15 与 `main` 推送均通过（Python 3.11 / 3.13） |
+| PR 自动合并 | PR #8/#9/#10/#11/#12/#13/#14/#15 在 CI 通过后自动 squash-merge 至 `main`，未绕过保护规则 |
 
 ## 4. 未验证/已知问题
 
