@@ -648,7 +648,12 @@ class OCRPipeline:
             image.needs_manual_check = True
 
         for chunk in image.chunks:
-            if chunk.needs_review or chunk.uncertain or chunk.conflicts or chunk.error:
+            if (
+                chunk.needs_review
+                or chunk.uncertain
+                or (chunk.conflicts and not chunk.manual_override)
+                or chunk.error
+            ):
                 image.needs_manual_check = True
             if chunk.engine and chunk.engine.startswith("local:"):
                 image.warnings.append(f"分块 {chunk.index} 使用本地 OCR（{chunk.engine}）")
@@ -783,6 +788,90 @@ class OCRPipeline:
         self._save_progress(
             job_id, status, "blocked", 1.0, 0, 0, 0, [message], result_available=True
         )
+
+    def apply_chunk_text(
+        self,
+        job_id: str,
+        *,
+        image_id: str,
+        chunk_index: int,
+        source: str,
+    ) -> JobResult:
+        """Manually adopt review text (or restore primary) for one chunk.
+
+        This is an explicit user action; the pipeline never chooses a model's
+        more fluent-looking output automatically.
+        """
+
+        result = self.jobs.load_result(job_id)
+        if result.status not in {JobStatus.completed, JobStatus.partial}:
+            raise ValueError("任务尚未完成，无法采用/恢复分块文本。")
+        image = next((item for item in result.images if item.image_id == image_id), None)
+        if image is None:
+            raise ValueError("图片不在结果中。")
+        chunk = next((item for item in image.chunks if item.index == chunk_index), None)
+        if chunk is None:
+            raise ValueError("分块不在结果中。")
+
+        if source == "review":
+            if not chunk.review_text:
+                raise ValueError("该分块没有可用的复核文本。")
+            if not chunk.manual_override:
+                chunk.original_text = chunk.text
+                chunk.original_engine = chunk.engine
+                chunk.original_confidence = chunk.confidence
+                chunk.original_layout_method = chunk.layout_method
+                chunk.original_layout_blocks = list(chunk.layout_blocks)
+            chunk.text = strip_artifacts(chunk.review_text)
+            chunk.engine = chunk.review_engine or f"manual:{source}"
+            chunk.confidence = None
+            chunk.layout_method = None
+            chunk.layout_blocks = []
+            chunk.manual_override = True
+            chunk.override_source = "review"
+            chunk.needs_review = False
+            chunk.uncertain = False
+        elif source == "primary":
+            if not chunk.manual_override or chunk.original_text is None:
+                raise ValueError("该分块没有可恢复的主模型文本。")
+            chunk.text = chunk.original_text
+            chunk.engine = chunk.original_engine
+            chunk.confidence = chunk.original_confidence
+            chunk.layout_method = chunk.original_layout_method
+            chunk.layout_blocks = list(chunk.original_layout_blocks)
+            chunk.original_text = None
+            chunk.original_engine = None
+            chunk.original_confidence = None
+            chunk.original_layout_method = None
+            chunk.original_layout_blocks = []
+            chunk.manual_override = False
+            chunk.override_source = None
+        else:
+            raise ValueError("source 必须是 review 或 primary。")
+
+        image.warnings = []
+        image.errors = [
+            f"分块 {item.index} ({item.y0}-{item.y1}px)：{item.error}"
+            for item in image.chunks
+            if item.error
+        ]
+        image.needs_manual_check = False
+        old_image_errors = {
+            error for result_image in result.images for error in result_image.errors
+        }
+        old_image_warnings = {
+            warning for result_image in result.images for warning in result_image.warnings
+        }
+        result.errors = [error for error in result.errors if error not in old_image_errors]
+        result.warnings = [
+            warning for warning in result.warnings if warning not in old_image_warnings
+        ]
+        mode = (result.options or {}).get("mode", self.settings.prompt_mode)
+        self._finalize_image(image, mode, result.warnings)
+        self._finalize_job(result, mode)
+        result.updated_at = utc_now()
+        self.jobs.save_result(result)
+        return result
 
     def apply_edits(self, job_id: str, documents: list[EditDocument]) -> JobResult:
         result = self.jobs.load_result(job_id)

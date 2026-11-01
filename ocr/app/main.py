@@ -20,6 +20,7 @@ from .local_ocr import LocalPaddleOCR
 from .pipeline import JobConflictError, OCRPipeline
 from .policy import FreePolicy, PolicyViolation
 from .schemas import (
+    ApplyChunkRequest,
     EditResultRequest,
     JobProgress,
     JobResult,
@@ -359,6 +360,18 @@ def create_app(
     async def edit_result(job_id: str, payload: EditResultRequest) -> JobResult:
         try:
             return pipeline.apply_edits(job_id, payload.documents)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    @app.post("/api/ocr/jobs/{job_id}/chunks/apply", response_model=JobResult)
+    async def apply_chunk(job_id: str, payload: ApplyChunkRequest) -> JobResult:
+        try:
+            return pipeline.apply_chunk_text(
+                job_id,
+                image_id=payload.image_id,
+                chunk_index=payload.chunk_index,
+                source=payload.source,
+            )
         except ValueError as exc:
             raise HTTPException(status_code=400, detail=str(exc)) from exc
 

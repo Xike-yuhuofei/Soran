@@ -123,6 +123,76 @@ def test_full_api_flow(settings):
         assert "daily_usage" in health
 
 
+def test_apply_review_text_endpoint(settings):
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.host == "www.siliconflow.cn":
+            return httpx.Response(200, text=PRICING_FIXTURE)
+        if request.url.path.endswith("/chat/completions"):
+            payload = json.loads(request.content)
+            text = (
+                "面料成分：92%莫代尔 8%氨纶"
+                if payload.get("model") == settings.primary_model
+                else "面料成分：95%莫代尔 5%氨纶"
+            )
+            return httpx.Response(
+                200,
+                json={
+                    "id": "mock-review",
+                    "choices": [
+                        {
+                            "message": {"role": "assistant", "content": text},
+                            "finish_reason": "stop",
+                        }
+                    ],
+                    "usage": {"prompt_tokens": 100, "completion_tokens": 20, "total_tokens": 120},
+                },
+            )
+        return httpx.Response(404)
+
+    app = create_app(settings, transport=httpx.MockTransport(handler))
+    with TestClient(app) as client:
+        session = upload_sample(client, filename="review.png")
+        image_id = session["images"][0]["image_id"]
+        response = client.post(
+            "/api/ocr/jobs",
+            json={
+                "session_id": session["session_id"],
+                "image_order": [image_id],
+                "consent_cloud_upload": True,
+                "use_review": True,
+                "use_cache": False,
+            },
+        )
+        job_id = response.json()["job_id"]
+        for _ in range(30):
+            progress = client.get(f"/api/ocr/jobs/{job_id}").json()
+            if progress["status"] in {"completed", "partial", "failed", "blocked"}:
+                break
+            time.sleep(0.1)
+        result = client.get(f"/api/ocr/jobs/{job_id}/result").json()
+        chunk = result["images"][0]["chunks"][0]
+        assert chunk["review_text"] == "面料成分：95%莫代尔 5%氨纶"
+
+        applied = client.post(
+            f"/api/ocr/jobs/{job_id}/chunks/apply",
+            json={"image_id": image_id, "chunk_index": 0, "source": "review"},
+        )
+        assert applied.status_code == 200
+        chunk = applied.json()["images"][0]["chunks"][0]
+        assert chunk["manual_override"] is True
+        assert "95%莫代尔" in applied.json()["text"]
+        assert "92%莫代尔" not in applied.json()["text"]
+
+        restored = client.post(
+            f"/api/ocr/jobs/{job_id}/chunks/apply",
+            json={"image_id": image_id, "chunk_index": 0, "source": "primary"},
+        )
+        assert restored.status_code == 200
+        chunk = restored.json()["images"][0]["chunks"][0]
+        assert chunk["manual_override"] is False
+        assert "92%莫代尔" in restored.json()["text"]
+
+
 def test_consent_required(settings):
     with make_client(settings) as client:
         session = upload_sample(client)

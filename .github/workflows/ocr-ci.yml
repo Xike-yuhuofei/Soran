@@ -47,6 +47,10 @@ jobs:
         working-directory: ocr
         run: bash -n run.sh
 
+      - name: Frontend JS syntax
+        working-directory: ocr
+        run: node --check app/static/app.js
+
       - name: Ruff lint
         working-directory: ocr
         run: |
