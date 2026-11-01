@@ -12,6 +12,7 @@ from .schemas import ChunkResult, TextConflict
 UNCERTAIN_MARKERS = ("⟦UNCERTAIN⟧", "[不确定]", "【不确定】", "无法识别", "无法辨认")
 BLANK_INK_THRESHOLD = 0.003
 HALLUCINATION_MIN_CHARS = 40
+_YEAR_TOKEN_RE = re.compile(r"(?:19|20)\d{2}(?:年)?")
 _COMMON_CHAR_RE = re.compile(
     r"[\u4e00-\u9fff\u3400-\u4dbfA-Za-z0-9"
     r"\u3000-\u303f\uff00-\uffef"
@@ -151,6 +152,24 @@ def looks_hallucinated(text: str, ink_ratio: float | None) -> bool:
     return chars >= HALLUCINATION_MIN_CHARS
 
 
+def has_year_sequence(text: str) -> bool:
+    """Detect an isolated run of three or more years.
+
+    DeepSeek-OCR invented "2017年 2018年 2019年" over a certification-badge
+    graphic. Real timelines are possible, so this only triggers manual review
+    and never deletes the line.
+    """
+
+    for line in strip_artifacts(text).splitlines():
+        years = _YEAR_TOKEN_RE.findall(line)
+        if len(years) < 3:
+            continue
+        rest = re.sub(r"[\s,，、/&|~\-]", "", _YEAR_TOKEN_RE.sub("", line))
+        if len(rest) <= 3:
+            return True
+    return False
+
+
 def assess_quality(
     text: str,
     ink_ratio: float,
@@ -181,6 +200,13 @@ def assess_quality(
             "text_without_ink",
             f"墨迹比例仅 {ink_ratio:.3f} 但输出 {chars} 字，疑似模型在空白区域编造内容",
             0.55,
+        )
+
+    if has_year_sequence(text):
+        add(
+            "year_sequence",
+            "检测到连续年份序列，可能来自背景图形/时间轴，需人工确认",
+            0.15,
         )
 
     if chars == 0 and ink_ratio > 0.01:
@@ -221,6 +247,7 @@ def assess_quality(
         "empty_with_ink",
         "very_short_for_ink",
         "text_without_ink",
+        "year_sequence",
         "garbage_ratio",
         "numeric_inconsistency",
         "model_uncertain",

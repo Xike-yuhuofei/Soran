@@ -98,6 +98,25 @@ def test_boundary_potential_miss():
     assert boundary_potential_miss("", "另一段文字", overlap_px=120, overlap_ink_ratio=0.05)
 
 
+def test_year_sequence_flags_manual_review():
+    report = assess_quality(
+        "2017年 2018年 2019年\n比普通安全裤更透气",
+        ink_ratio=0.06,
+        forced_cut=False,
+    )
+    assert "year_sequence" in report.flags
+    assert report.needs_review
+
+
+def test_single_year_or_contextual_year_not_flagged():
+    report = assess_quality(
+        "上市时间：2019年\n2019年春季系列",
+        ink_ratio=0.03,
+        forced_cut=False,
+    )
+    assert "year_sequence" not in report.flags
+
+
 def test_blank_region_hallucination_is_flagged():
     fabricated = (
         "<table><tr><td>Category</td><td>Value</td></tr>"
