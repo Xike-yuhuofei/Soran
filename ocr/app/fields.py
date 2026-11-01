@@ -43,10 +43,16 @@ _WASH_CARE_RE = re.compile(
     r"摩擦|拉拽|拉扯|拧干|浸泡|脱水|消毒|轻柔|缓和|悬挂|反面|单独)"
 )
 _WASH_NEGATIVE_RE = re.compile(r"^(?:不要|不可|请勿|勿|切勿|禁止)")
+_SIZE_TOKEN = r"(?:XS|S|M|L|XL|XXL|XXXL|XXXXL|\d+XL|/)"
 _SIZE_ROW_RE = re.compile(
     r"^(?:XS|S|M|L|XL|XXL|XXXL|XXXXL|\d+XL|均码|\d{2,3})\s+"
     r".*(?:\d{2,3}\s*/\s*\d{2,3}|\d+(?:\.\d+)?\s*cm|"
     r"\d+(?:\.\d+)?\s*[~～-]\s*\d+(?:\.\d+)?)",
+    re.IGNORECASE,
+)
+_SIZE_RANGE_ROW_RE = re.compile(
+    rf"^\d{{2,3}}\s*[-~～]\s*\d{{2,3}}\s+{_SIZE_TOKEN}"
+    rf"(?:[ \t]+{_SIZE_TOKEN}){{2,}}",
     re.IGNORECASE,
 )
 _PERCENT_SUM_RE = re.compile(r"\d+(?:\.\d+)?%")
@@ -75,6 +81,16 @@ def _clean_value(value: str) -> str:
 
 def _is_size_header(value: str) -> bool:
     return sum(1 for token in _SIZE_HEADER_TOKENS if token in value) >= 2
+
+
+def _is_size_measurement(value: str) -> bool:
+    """Reject model measurements and numeric table headers masquerading as size."""
+
+    if re.search(r"\d+(?:\.\d+)?\s*(?:cm|kg|斤|毫米|厘米|千克)", value, re.IGNORECASE):
+        return True
+    if "厘米" in value and "体重" in value:
+        return True
+    return bool(len(re.findall(r"\d{2,3}", value)) >= 3 and not re.search(_SIZE_TOKEN, value, re.I))
 
 
 def _fabric_value(line: str) -> str | None:
@@ -112,7 +128,7 @@ def extract_key_fields(text: str, chunk_index: int | None = None) -> list[KeyFie
             match = pattern.search(line)
             if match:
                 value = match.group(1)
-                if name == "size" and _is_size_header(value):
+                if name == "size" and (_is_size_header(value) or _is_size_measurement(value)):
                     continue
                 if name == "price" and not value.strip().startswith(("¥", "￥")):
                     value = f"¥{value.strip()}"
@@ -125,7 +141,7 @@ def extract_key_fields(text: str, chunk_index: int | None = None) -> list[KeyFie
         if _WASH_RE.search(line) or (_WASH_NEGATIVE_RE.match(line) and _WASH_CARE_RE.search(line)):
             add("wash_instruction", line)
 
-        if _SIZE_ROW_RE.match(line):
+        if _SIZE_ROW_RE.match(line) or _SIZE_RANGE_ROW_RE.match(line):
             add("size_chart", line)
 
         has_safety_label = bool(_LABEL_PATTERNS["safety_category"].search(line))

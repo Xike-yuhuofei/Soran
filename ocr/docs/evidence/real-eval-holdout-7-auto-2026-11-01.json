@@ -1,0 +1,288 @@
+{
+  "generated_at": "2026-11-01T18:34:53.157964",
+  "dataset": ".data/real-eval/holdout-7-auto.json",
+  "sample_count": 7,
+  "notes": "仅基于当前人工标注样本；空测试集或未标注项不会产生精度结论。",
+  "policy": {
+    "checked_at": "2026-11-01T10:34:53.155474+00:00",
+    "age_seconds": 0,
+    "snapshot_fresh": true,
+    "max_snapshot_age_hours": 24,
+    "source": "https://www.siliconflow.cn/pricing",
+    "models": {
+      "deepseek-ai/DeepSeek-OCR": {
+        "model_id": "deepseek-ai/DeepSeek-OCR",
+        "free": true,
+        "reason": "official_pricing_page_price_zero",
+        "operation_label": "",
+        "registered": true
+      },
+      "PaddlePaddle/PaddleOCR-VL-1.5": {
+        "model_id": "PaddlePaddle/PaddleOCR-VL-1.5",
+        "free": true,
+        "reason": "official_pricing_page_price_zero",
+        "operation_label": "",
+        "registered": true
+      }
+    },
+    "paid_models_allowed": false,
+    "registered_models": [
+      {
+        "model_id": "deepseek-ai/DeepSeek-OCR",
+        "display_name": "DeepSeek-OCR",
+        "role": "primary",
+        "note": "官方定价页 2026-11-01 显示 price=0、操作标签为“限免”。"
+      },
+      {
+        "model_id": "PaddlePaddle/PaddleOCR-VL-1.5",
+        "display_name": "PaddleOCR-VL-1.5",
+        "role": "review",
+        "note": "官方定价页 2026-11-01 显示“免费”。"
+      }
+    ],
+    "refresh_error": null
+  },
+  "variants": {
+    "B": {
+      "aggregate": {
+        "items": 7,
+        "evaluated": 7,
+        "status_counts": {
+          "completed": 7
+        },
+        "cer": {
+          "count": 7,
+          "mean": 0.11080432589997047,
+          "p50": 0.008982035928143712,
+          "p95": 0.35106382978723405,
+          "max": 0.35106382978723405
+        },
+        "line_recall": {
+          "count": 7,
+          "mean": 0.8649143868073546,
+          "p50": 0.8947368421052632,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "key_field_accuracy": {
+          "count": 1,
+          "mean": 1.0,
+          "p50": 1.0,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "introduced_duplicate_rate": {
+          "count": 7,
+          "mean": 0.02197802197802198,
+          "p50": 0.0,
+          "p95": 0.15384615384615385,
+          "max": 0.15384615384615385
+        },
+        "boundary_miss_rate": {
+          "count": 0,
+          "mean": null,
+          "p50": null,
+          "p95": null,
+          "max": null
+        },
+        "latency_ms": {
+          "count": 7,
+          "mean": 3513.1428571428573,
+          "p50": 1613.0,
+          "p95": 16185.0,
+          "max": 16185.0
+        },
+        "api_requests": {
+          "count": 7,
+          "mean": 1.5714285714285714,
+          "p50": 2.0,
+          "p95": 2.0,
+          "max": 2.0
+        },
+        "cache_hits": {
+          "count": 7,
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "needs_manual_check_rate": 0.2857142857142857
+      },
+      "items": [
+        {
+          "id": "holdout-1086688954703-016",
+          "category": "complex",
+          "status": "completed",
+          "notes": "独立留出样本；拉伸标注+大字+右侧小字。人工转写自原图。",
+          "metrics": {
+            "cer": 0.0,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 872,
+          "errors": [],
+          "warnings": [
+            "数字校验：百分比超过 100%：拉伸力约200%"
+          ],
+          "text_preview": "拉伸力约200%\n回弹不易变形\n\n约30cm\n约69cm\n\n* 来自有棵树内部数据。\n\n丝滑脚口\n不磨大腿根\n\n走再多路\n也不怕\n磨出红印"
+        },
+        {
+          "id": "holdout-1086688954703-033",
+          "category": "table",
+          "status": "completed",
+          "notes": "独立留出样本；双层表头尺码表。人工转写自原图，保留表头数字与对角线字段。",
+          "metrics": {
+            "cer": 0.14285714285714285,
+            "line_recall": 0.8947368421052632,
+            "key_field_accuracy": 1.0,
+            "key_field_total": 1,
+            "key_field_details": [
+              {
+                "field": "size_chart",
+                "expected": "150-160 M L XL 2XL /；160-165 M L XL 2XL /；165-170 M L L XL 2XL；170-175 / M L XL 2XL",
+                "actual": [
+                  "150 - 160 M L XL 2XL /；160 - 165 M L XL 2XL /；165 - 170 M L L XL 2XL；170 - 175 / M L XL 2XL"
+                ],
+                "correct": true
+              }
+            ],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 16185,
+          "errors": [],
+          "warnings": [
+            "分块 0 复核原因：layout_fusion:table_like"
+          ],
+          "text_preview": "选适合的尺码\n\nModel\n身高: 178CM\n体重: 54KG\n试穿: M码\n\n尺码参考\n- 身高: 厘米 / 体重: 斤\n\n体重\t95 - 105\t105 - 115\t115 - 130\t130 - 145\t145 - 160\n身高\t\t\t\t\t\n\n150 - 160\tM\tL\tXL\t2XL\t/\n160 - 165\tM\tL\tXL\t2XL\t/\n165 - 170\tM\tL\tL\tXL\t2XL\n170 - 175\t/\tM\tL\tXL\t2XL\n\n*数据来源第三方检测机构*"
+        },
+        {
+          "id": "holdout-1086688954703-025",
+          "category": "normal",
+          "status": "completed",
+          "notes": "独立留出样本；大字+右上小字。人工转写自原图。",
+          "metrics": {
+            "cer": 0.0,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 1613,
+          "errors": [],
+          "warnings": [
+            "分块 0 复核原因：layout_fusion:short_caption_like"
+          ],
+          "text_preview": "底裆添加\n珍贵桑蚕丝\n\n柔软透气\n顺滑亲肤"
+        },
+        {
+          "id": "holdout-1087782156628-026",
+          "category": "complex",
+          "status": "completed",
+          "notes": "独立留出样本；三个编号标注+双栏面料说明。人工转写自原图。",
+          "metrics": {
+            "cer": 0.35106382978723405,
+            "line_recall": 0.8571428571428571,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.15384615384615385,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": true,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 1672,
+          "errors": [],
+          "warnings": [
+            "分块 0/1 边界完整性：重叠区有墨迹，但相邻分块未检测到共享文本"
+          ],
+          "text_preview": "- 不勒肉 才裸感\n加宽高弹腰头\n\n- 不夹臀 才裸感\n3D全包裹版型\n\n- 不磨肤 才裸感\n加宽轻薄腿边\n\n奥地利\n意大利\n\n奥地利\n\n意大利\n\n兰精莱赛尔面料\n\n进口织造机器\n\n*来自于有棵树内部和微康益生菌(苏州)股份有限公司官方数据，仅供参考。*"
+        },
+        {
+          "id": "holdout-705185129261-15",
+          "category": "normal",
+          "status": "completed",
+          "notes": "独立留出样本；三列温度说明+大字。人工转写自原图。",
+          "metrics": {
+            "cer": 0.0,
+            "line_recall": 1.0,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 745,
+          "errors": [],
+          "warnings": [],
+          "text_preview": "梯度高温 把「稳定」烤进胸贴\n\n95℃初烤\n防胶体剥落\n\n110℃二烤\n黏性提高3倍\n\n120℃三烤\n撕离不留胶\n\n不惜成本\n升级烤胶"
+        },
+        {
+          "id": "holdout-705185129261-25",
+          "category": "complex",
+          "status": "completed",
+          "notes": "独立留出样本；柱状图坐标轴+柱顶百分比+图例+脚注。人工转写自原图。",
+          "metrics": {
+            "cer": 0.2727272727272727,
+            "line_recall": 0.5882352941176471,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 2,
+          "cache_hits": 0,
+          "latency_ms": 2039,
+          "errors": [],
+          "warnings": [
+            "分块 0 复核原因：layout_fusion:table_like"
+          ],
+          "text_preview": "抗菌性能，远超国家标准\n金黄色葡萄球菌\t大肠杆菌\t白色念珠菌\n国标\t83\t69\t71\n本款\t90\t80\t77\n*数据由第三方检测机构测试所得，不同批次、不同颜色会存在一定误差范围，但仍符合国家标准。*指的是胸贴杯面布料具有7A级抗菌性能，仅供参考。"
+        },
+        {
+          "id": "holdout-705185129261-68",
+          "category": "normal",
+          "status": "completed",
+          "notes": "独立留出样本；长篇价格说明，人工转写自原图。",
+          "metrics": {
+            "cer": 0.008982035928143712,
+            "line_recall": 0.7142857142857143,
+            "key_field_accuracy": null,
+            "key_field_total": 0,
+            "key_field_details": [],
+            "introduced_duplicate_rate": 0.0,
+            "boundary_miss_rate": null
+          },
+          "needs_manual_check": false,
+          "api_requests": 1,
+          "cache_hits": 0,
+          "latency_ms": 1466,
+          "errors": [],
+          "warnings": [],
+          "text_preview": "价格说明：\n\n被比较价格\n商品的专柜价、吊牌价、厂家建议零售价、厂商指导价、品牌供应商提供的指导价、商家在后台设置的一口价、减价（折价）前的基准价或该商品曾经展示过的销售价等。该价格仅供您在购买时参考。\n\n标价/销售价\n商品的实时标价。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。\n\n商家详情页所展示的可优惠金额是根据用户当前可使用的优惠券、满减、立减，可参与的特定活动（如多件多折、限时秒杀）、红包（含消费券）、淘金币抵扣等四舍五入计算得出，优惠获取及使用条件等详见活动页面及相关规则（如有），实际价格以结算页面展示为准。\n\n此说明仅当出现价格比较时有效，具体请参见《淘宝平台价格管理规则》，若商家单独对被比较价格进行说明的，以商家的表述为准。"
+        }
+      ]
+    }
+  }
+}
