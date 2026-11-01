@@ -11,6 +11,7 @@
 - DeepSeek-OCR 主识别（纯文字与 Markdown 两种官方提示词），分块并发、限流、超时、指数退避重试。
 - PaddleOCR-VL-1.5 按需复核：仅对可疑分块、数字/百分比/型号/表格等关键内容调用。
 - 文本合并与重叠去重，去重记录可审计；TXT / Markdown / JSON 三种导出；结果可人工编辑。
+- Markdown/grounding 模式解析逐块 bbox，保存原图坐标并用递归 XY-cut 恢复复杂布局阅读顺序；本地 PP-OCR 使用文本框 XY-cut。
 - 关键字段提取：品牌、品名、面料成分、尺码、型号/SKU、洗涤、执行标准、安全类别、价格、包装。
 - 两级质量检查：空块/墨迹不符、垃圾字符、数字百分比冲突、重复噪声、强制切分、模型不确定标记；模型置信度、启发式质量分、多模型一致性分别记录，不混为一谈。
 - 免费模型策略守卫：官方定价页运行时校验 + 快照过期即阻止；模型白名单；无付费兜底。
@@ -95,7 +96,8 @@ python3 -m venv .venv
 - 在 `[min, max]` 高度范围内优先选择宽空白带中心切分；找不到则扩大搜索；仍找不到才选择墨迹最少行，并标记 `forced_cut`、加大重叠。
 - 每个分块记录 `y0/y1`、上下重叠、缩放比例、是否强制切分；JSON 可追溯。
 - 分块按原始图片从上到下顺序合并；分块内部保留模型原生阅读顺序。
-- 本地 PP-OCR 返回文本框时，使用递归 XY-cut 恢复多栏/分栏阅读顺序；云端模型返回纯文本时无法取得逐行坐标，这一点在限制中明确说明。
+- Markdown/grounding 模式的响应包含 `<|det|>[[x0,y0,x1,y1]]<|/det|>` 块坐标；系统解析标签、文本和 bbox，映射回原图坐标，并用递归 XY-cut 恢复多栏/复杂布局顺序。TXT/Markdown 仍可从这些布局块重建。
+- 本地 PP-OCR 返回文本框时同样使用 XY-cut 恢复多栏/分栏阅读顺序；纯文字提示词模式没有 bbox，需依赖模型原生顺序。
 
 ## 合并去重
 
@@ -115,7 +117,7 @@ python3 -m venv .venv
 
 - `TXT`：NFKC 排版格式剥离后的纯文字，按阅读顺序，表格转为制表符分隔行。
 - `Markdown`：保留模型输出的标题/列表/表格结构；纯文字模式按段落生成，不编造标题。
-- `JSON`：图片编号、原图尺寸、分块坐标/缩放/重叠、文本、引擎、原始响应文本、置信度、质量分、一致性、是否复核、复核文本、冲突、是否需人工检查、错误、API 请求数、免费策略快照。
+- `JSON`：图片编号、原图尺寸、分块坐标/缩放/重叠、文本、引擎、原始响应文本、布局块（label + 原图 bbox + 文本）、置信度、质量分、一致性、是否复核、复核文本、冲突、是否需人工检查、错误、API 请求数、免费策略快照。
 
 ## 测试
 
@@ -133,9 +135,17 @@ cd ocr
 SILICONFLOW_API_KEY=... .venv/bin/python tools/smoke_test.py --real
 ```
 
-- 数据集评测（需先人工标注）：
+- 数据集评测（需先导入并人工标注）：
 
 ```bash
+# 1) 扫描真实图片，生成待标注清单（不会编造标注）
+.venv/bin/python tools/import_dataset.py \
+  --images-dir datasets/images --manifest datasets/manifest.json
+
+# 2) 人工填写 ground_truth_text / key_fields / boundary_texts 后校验
+.venv/bin/python tools/validate_dataset.py --manifest datasets/manifest.json
+
+# 3) 运行评测
 SILICONFLOW_API_KEY=... .venv/bin/python tools/evaluate.py \
   --manifest datasets/manifest.json --variants B,C,D --real
 ```
@@ -150,10 +160,10 @@ SILICONFLOW_API_KEY=... .venv/bin/python tools/evaluate.py \
 
 ```bash
 OCR_LOCAL_OCR_ENABLED=true
-OCR_LOCAL_OCR_MODEL=PP-OCRv5   # 视已安装 PaddleOCR 支持的版本调整
+OCR_LOCAL_OCR_MODEL=PP-OCRv6   # 不支持时自动回退 PP-OCRv5 / 已安装默认版本
 ```
 
-本地 OCR 用于交叉验证或云端失败兜底，不改变“云端免费白名单”策略。
+本地 OCR 用于交叉验证或云端失败兜底，不改变“云端免费白名单”策略。PaddleOCR 3.x 当前默认使用 PP-OCRv6；插件会尝试请求的版本，失败时自动回退并记录实际模型。
 
 ## 目录
 
@@ -164,16 +174,18 @@ ocr/
     policy.py        免费模型白名单与官方定价页校验
     siliconflow.py   云端客户端、重试、限流、缓存
     imaging.py       图片校验、长图切分、分块渲染
+    layout.py        grounding bbox 解析、原图坐标映射、XY-cut 阅读顺序
     merge.py         重叠去重、纯文本/Markdown 转换
+    dataset.py       测试集导入、清单校验、类别统计
     fields.py        关键字段提取与数字校验
     quality.py       质量分、模型一致性、冲突
     pipeline.py      分块识别编排、复核、断点续跑
-    local_ocr.py     可选 PP-OCR 插件 + XY-cut
+    local_ocr.py     可选 PP-OCRv6/v5 插件 + XY-cut
     storage.py       会话、任务、额度账本、缓存
     metrics.py       CER/行召回/关键字段/重复率
     static/          本地 Web 界面
-  tests/             79 个单元/集成测试
-  tools/             真实冒烟、数据集评测
+  tests/             91 个单元/集成测试
+  tools/             真实冒烟、数据集导入/校验、评测
   datasets/          标注格式与测试集导入说明
   docs/              部署说明、测试报告、证据
 ```
@@ -183,8 +195,8 @@ ocr/
 - 没有真实标注测试集，无法给出 CER、关键字段 ≥99% 等验收结论；必须先导入并人工标注。
 - SiliconFlow 当前不返回 OCR 置信度，`confidence` 为 `null`；不要把它与启发式质量分混用。
 - DeepSeek-OCR 的 `Free OCR.` 仍可能输出 Markdown 排版；系统对 TXT 做格式剥离，JSON 保留原始文本。
-- Markdown 模式的 grounding 输出包含 bbox token，系统会移除标记但不会把 bbox 当作逐行坐标使用。
-- 云端模型返回纯文本，不提供逐行坐标；复杂多栏布局的阅读顺序主要依赖模型输出与分块顺序，本地 PP-OCR 才提供 XY-cut。
+- Markdown 模式的 grounding 输出包含 bbox token；系统会解析并保存为原图坐标的 `layout_blocks`，用 XY-cut 重排。纯文字模式无 bbox，只能依赖模型原生顺序。
+- 云端模型返回纯文本，不提供逐行坐标；复杂多栏布局的阅读顺序主要依赖模型输出与分块顺序，Markdown 模式或本地 PP-OCR 才能使用几何信息重排。
 - 强制切分（极密集、无空白行）会标记风险并增大重叠，但仍可能影响极端图片。
 - 免费状态会变化；快照过期时系统会阻止调用，需要联网刷新并人工核实。
 - 单进程运行；多 worker 会破坏请求账本/任务锁，详见部署说明。

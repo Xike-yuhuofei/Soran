@@ -41,6 +41,7 @@ class LocalPaddleOCR:
         self.settings = settings
         self._engine: Any | None = None
         self._import_error: str | None = None
+        self._actual_model: str | None = None
 
     def available(self) -> bool:
         if not self.settings.local_ocr_enabled:
@@ -49,40 +50,56 @@ class LocalPaddleOCR:
             return True
         try:
             from paddleocr import PaddleOCR  # type: ignore
-
-            kwargs: dict[str, Any] = {"lang": "ch", "use_textline_orientation": True}
-            # PaddleOCR 3.x uses ocr_version; older versions ignore it.
-            if self.settings.local_ocr_model:
-                kwargs["ocr_version"] = self.settings.local_ocr_model
-            self._engine = PaddleOCR(**kwargs)
-            return True
         except Exception as exc:  # noqa: BLE001 - optional dependency boundary
             self._import_error = f"{type(exc).__name__}: {exc}"
             logger.info("Local PP-OCR unavailable: %s", self._import_error)
             return False
+
+        candidates = [self.settings.local_ocr_model, "PP-OCRv5", ""]
+        errors: list[str] = []
+        seen: set[str] = set()
+        for candidate in candidates:
+            if candidate in seen:
+                continue
+            seen.add(candidate)
+            kwargs: dict[str, Any] = {"lang": "ch", "use_textline_orientation": True}
+            if candidate:
+                kwargs["ocr_version"] = candidate
+            try:
+                self._engine = PaddleOCR(**kwargs)
+                self._actual_model = candidate or "paddleocr-default"
+                self._import_error = "; ".join(errors) or None
+                return True
+            except Exception as exc:  # noqa: BLE001
+                errors.append(f"{candidate or 'default'}: {type(exc).__name__}: {exc}")
+        self._import_error = "; ".join(errors)
+        logger.info("Local PP-OCR unavailable: %s", self._import_error)
+        return False
 
     def status(self) -> dict[str, Any]:
         return {
             "enabled": self.settings.local_ocr_enabled,
             "available": self._engine is not None,
             "model": self.settings.local_ocr_model,
+            "actual_model": self._actual_model,
             "error": self._import_error,
         }
 
     def run(self, image: Image.Image) -> LocalOCRResult:
+        engine_name = f"local:{self._actual_model or self.settings.local_ocr_model}"
         if not self.available() or self._engine is None:
             return LocalOCRResult(
-                engine=f"local:{self.settings.local_ocr_model}",
+                engine=engine_name,
                 error=self._import_error or "local OCR disabled",
             )
         try:
             raw = self._engine.ocr(np.asarray(image.convert("RGB")))
             lines = _parse_paddle_result(raw)
             lines = order_lines_xy_cut(lines, image.width, image.height)
-            return LocalOCRResult(lines=lines, engine=f"local:{self.settings.local_ocr_model}")
+            return LocalOCRResult(lines=lines, engine=engine_name)
         except Exception as exc:  # noqa: BLE001
             return LocalOCRResult(
-                engine=f"local:{self.settings.local_ocr_model}",
+                engine=engine_name,
                 error=f"{type(exc).__name__}: {exc}",
             )
 

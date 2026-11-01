@@ -202,6 +202,35 @@ async def test_pipeline_partial_when_one_chunk_fails(settings):
 
 
 @pytest.mark.asyncio
+async def test_pipeline_uses_grounding_layout_blocks(settings):
+    sessions, session, image = build_session(settings, height=800)
+    grounding = """<|ref|>title<|/ref|><|det|>[[40, 20, 300, 60]]<|/det|>
+左栏标题
+
+<|ref|>text<|/ref|><|det|>[[40, 90, 300, 120]]<|/det|>
+左栏正文
+
+<|ref|>title<|/ref|><|det|>[[400, 20, 700, 60]]<|/det|>
+右栏标题
+
+<|ref|>text<|/ref|><|det|>[[400, 90, 700, 120]]<|/det|>
+右栏正文
+"""
+    client = FakeClient(settings, [grounding])
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=False, mode="markdown")
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    chunk = result.images[0].chunks[0]
+    assert chunk.layout_method == "grounding_xy_cut"
+    assert len(chunk.layout_blocks) == 4
+    assert chunk.layout_blocks[0].bbox[0] > 0
+    assert "左栏标题" in chunk.text
+    assert "右栏正文" in chunk.text
+    assert result.images[0].text.index("左栏标题") < result.images[0].text.index("右栏标题")
+
+
+@pytest.mark.asyncio
 async def test_pipeline_blocks_when_policy_not_free(settings):
     sessions, session, _ = build_session(settings, height=800)
     client = FakeClient(settings, ["文本"])

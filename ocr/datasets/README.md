@@ -28,8 +28,16 @@ ocr/datasets/
 ## 标注流程
 
 1. 获取你有权使用的商品详情图，去除订单号、收货信息、个人水印等隐私内容。
-2. 用任意文本编辑器或标注工具逐字转写图片文字，保存为 `ground_truth_text`。
-3. 标注关键字段 `key_fields`，建议至少覆盖：
+2. 扫描图片并生成待标注清单：
+
+```bash
+cd ocr
+.venv/bin/python tools/import_dataset.py \
+  --images-dir datasets/images --manifest datasets/manifest.json
+```
+
+3. 用任意文本编辑器或标注工具逐字转写图片文字，填写 `ground_truth_text`。
+4. 标注关键字段 `key_fields`，建议至少覆盖：
    - `brand` 品牌
    - `product_name` 商品名称
    - `fabric_composition` 面料成分（如 `92%莫代尔 8%氨纶`）
@@ -41,8 +49,15 @@ ocr/datasets/
    - `safety_category` 安全类别
    - `price` 价格
    - `packaging` 包装 / 数量
-4. 对长图，建议在 `boundary_texts` 中标注分块边界附近的关键文字片段（例如跨切分线的整行），用于计算边界漏字率。
-5. 一条样本由同一人转写、另一人抽查；有争议的字段记录在 `notes`。
+5. 对长图，建议在 `boundary_texts` 中标注分块边界附近的关键文字片段（例如跨切分线的整行），用于计算边界漏字率。
+6. 一条样本由同一人转写、另一人抽查；有争议的字段记录在 `notes`。
+7. 校验清单完整性（图片可解码、ID 唯一、标注齐全、类别数量）：
+
+```bash
+.venv/bin/python tools/validate_dataset.py --manifest datasets/manifest.json
+```
+
+未完成 `ground_truth_text` 时校验会失败，这是有意设计：没有人工标注就不得运行精度评测。
 
 ## 清单格式
 

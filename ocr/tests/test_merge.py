@@ -24,6 +24,15 @@ def test_overlap_dedupe_removes_prefix():
     assert outcome.removed_lines == ["M 170/90A", "L 175/95A"]
 
 
+def test_overlap_dedupe_handles_concatenated_blocks():
+    previous = "颜色：黑色 / 白色 / 灰蓝\n包装规格：1件/袋"
+    current = "颜色：黑色 / 白色 / 灰蓝包装规格：1件/袋\n价格：¥129.00"
+    outcome = dedupe_overlap(previous, current, overlap_px=120)
+    assert outcome.text == "价格：¥129.00"
+    assert outcome.matched_lines == 1
+    assert "character_overlap" in (outcome.note or "")
+
+
 def test_overlap_dedupe_keeps_genuine_duplicate_without_overlap():
     previous = "温馨提示\n请以实物为准"
     current = "温馨提示\n请以实物为准\n价格：¥129"

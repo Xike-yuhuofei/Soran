@@ -11,6 +11,12 @@ from PIL import Image
 from .config import Settings
 from .fields import extract_key_fields, merge_key_fields, percent_issues
 from .imaging import chunk_ink_ratio, render_chunk, segment_image
+from .layout import (
+    layout_text,
+    order_parsed_blocks,
+    parse_grounding_blocks,
+    to_layout_blocks,
+)
 from .local_ocr import LocalPaddleOCR
 from .merge import (
     build_document_markdown,
@@ -28,6 +34,7 @@ from .schemas import (
     JobProgress,
     JobResult,
     JobStatus,
+    LayoutBlock,
     OCRJobRequest,
     utc_now,
 )
@@ -263,6 +270,22 @@ class OCRPipeline:
                                 chunk.latency_ms = response.latency_ms
                                 chunk.from_cache = response.from_cache
                                 chunk.api_requests += response.attempts
+                                parsed_blocks = parse_grounding_blocks(response.raw_text)
+                                if parsed_blocks:
+                                    ordered_blocks = order_parsed_blocks(
+                                        parsed_blocks,
+                                        page_width=plan.crop_width,
+                                        page_height=plan.crop_height,
+                                    )
+                                    chunk.layout_blocks = to_layout_blocks(
+                                        ordered_blocks,
+                                        image_width=rgb.width,
+                                        image_height=rgb.height,
+                                        y_offset=plan.y0,
+                                        scale=plan.scale,
+                                    )
+                                    chunk.layout_method = "grounding_xy_cut"
+                                    chunk.text = layout_text(ordered_blocks)
                                 if response.truncated:
                                     chunk.risk_flags.append("output_truncated")
                                     chunk.needs_review = True
@@ -569,6 +592,21 @@ class OCRPipeline:
         chunk.engine = local.engine
         chunk.local_text = local.text
         chunk.local_engine = local.engine
+        chunk.layout_method = "local_xy_cut"
+        chunk.layout_blocks = [
+            LayoutBlock(
+                label="text",
+                bbox=[
+                    round(max(0.0, min(float(image.width), line.box[0])), 1),
+                    round(max(0.0, min(float(image.height), plan.y0 + line.box[1])), 1),
+                    round(max(0.0, min(float(image.width), line.box[2])), 1),
+                    round(max(0.0, min(float(image.height), plan.y0 + line.box[3])), 1),
+                ],
+                text=line.text,
+            )
+            for line in local.lines
+            if line.text.strip()
+        ]
         chunk.review_reasons.append(
             f"local_fallback_after_cloud_error:{type(error).__name__ if error else 'no_api_key'}"
         )

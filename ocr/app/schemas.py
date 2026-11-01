@@ -61,6 +61,8 @@ class ChunkResult(BaseModel):
     review_engine: str | None = None
     local_text: str | None = None
     local_engine: str | None = None
+    layout_method: str | None = None
+    layout_blocks: list[LayoutBlock] = Field(default_factory=list)
     conflicts: list[TextConflict] = Field(default_factory=list)
     uncertain: bool = False
     error: str | None = None
@@ -77,6 +79,12 @@ class TextConflict(BaseModel):
     primary: str
     secondary: str | None = None
     severity: str = "warning"
+
+
+class LayoutBlock(BaseModel):
+    label: str
+    bbox: list[float]  # original-image coordinates: x0, y0, x1, y1
+    text: str
 
 
 class KeyField(BaseModel):

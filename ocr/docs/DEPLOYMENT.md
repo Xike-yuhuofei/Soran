@@ -111,9 +111,10 @@ server {
 
 ```bash
 OCR_LOCAL_OCR_ENABLED=true
-OCR_LOCAL_OCR_MODEL=PP-OCRv5
+OCR_LOCAL_OCR_MODEL=PP-OCRv6
 ```
 
+- PaddleOCR 3.x 当前默认 PP-OCRv6；插件会尝试指定版本，失败时自动回退 PP-OCRv5 / 已安装默认版本，并在 `/api/health` 的 `actual_model` 中记录实际加载版本。
 - 本地模型首次运行可能需要下载模型文件，请在受控网络完成。
 - 本地 OCR 只在可疑分块交叉验证或云端失败时兜底；不会改变云端白名单。
 - 未安装/加载失败时自动跳过，不影响主流程。
