@@ -20,9 +20,9 @@
 - 年份序列检测 PR：[#24](https://github.com/Xike-yuhuofei/Soran/pull/24) 对连续年份序列（可能来自背景图形/时间轴）标记人工核验，不自动删除；已 squash-merge 至 `main`（`b58fccd`）。
 - 25 条评测 PR：[#26](https://github.com/Xike-yuhuofei/Soran/pull/26) 新增 5 条真实标注（双层尺码表、长表、面料特写、隐形脚口、细节双栏），把评测扩展到 25 条并更新证据；已 squash-merge 至 `main`（`d2af8a0`）。
 - 重复表头检测 PR：[#27](https://github.com/Xike-yuhuofei/Soran/pull/27) 检测同一首列下出现多个不同表头的编造/错位情况，标记人工核验；已 squash-merge 至 `main`（`55403fc`）。
-- 智能布局融合 PR：[#28](https://github.com/Xike-yuhuofei/Soran/pull/28) 增加 `auto` 模式：纯文字主识别 + 表格/标题网格的 grounding 结构校验；主模型原文保留在 `alternate_*`，UI/API 可切换；同时修复全角百分号导致的面料字段漏提。
+- 智能布局融合 PR：[#28](https://github.com/Xike-yuhuofei/Soran/pull/28) 增加 `auto` 模式：纯文字主识别 + 表格/标题网格的 grounding 结构校验；主模型原文保留在 `alternate_*`，UI/API 可切换；同时修复全角百分号导致的面料字段漏提；已 squash-merge 至 `main`（`5b4023a`）。
 - PR CI：PR #15/#16 为 105 测试，PR #18 为 108 测试，PR #19 为 109 测试，PR #21 为 110 测试，PR #22 为 111 测试，PR #24 为 113 测试，PR #27 为 115 测试，PR #28 为 126 测试；Python 3.11 / 3.13 矩阵均通过。
-- `main` 在 PR #15–#27 合并后 OCR CI 均通过。
+- `main` 在 PR #15–#28 合并后 OCR CI 均通过（PR #28 main run `41297450578`）。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
