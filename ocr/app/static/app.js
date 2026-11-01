@@ -579,6 +579,9 @@
         chunk.reviewed ? '<span class="tag tag-ok">已复核</span>' : '<span class="tag tag-muted">未复核</span>',
         chunk.from_cache ? '<span class="tag tag-muted">缓存</span>' : "",
         chunk.needs_review ? '<span class="tag tag-warn">需核验</span>' : "",
+        chunk.suspected_hallucination
+          ? '<span class="tag tag-bad">疑似编造，已排除</span>'
+          : "",
         chunk.forced_cut ? '<span class="tag tag-bad">强制切分</span>' : "",
         chunk.layout_method ? `<span class="tag tag-ok">布局 ${escapeHtml(chunk.layout_method)}</span>` : "",
         chunk.manual_override ? '<span class="tag tag-warn">已人工采用复核文本</span>' : "",

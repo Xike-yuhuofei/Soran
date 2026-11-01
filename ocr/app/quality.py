@@ -10,6 +10,8 @@ from .merge import dedupe_overlap, normalize_for_compare, strip_artifacts, to_pl
 from .schemas import ChunkResult, TextConflict
 
 UNCERTAIN_MARKERS = ("⟦UNCERTAIN⟧", "[不确定]", "【不确定】", "无法识别", "无法辨认")
+BLANK_INK_THRESHOLD = 0.003
+HALLUCINATION_MIN_CHARS = 40
 _COMMON_CHAR_RE = re.compile(
     r"[\u4e00-\u9fff\u3400-\u4dbfA-Za-z0-9"
     r"\u3000-\u303f\uff00-\uffef"
@@ -135,6 +137,20 @@ def boundary_potential_miss(
     return None
 
 
+def looks_hallucinated(text: str, ink_ratio: float | None) -> bool:
+    """Flag substantial text from a nearly blank image region.
+
+    DeepSeek-OCR can emit invented tables or descriptions when a chunk is
+    almost blank (observed: 122 chars at 0.0016 ink ratio). This heuristic is
+    deliberately conservative so sparse real text is not discarded.
+    """
+
+    if ink_ratio is None or ink_ratio >= BLANK_INK_THRESHOLD:
+        return False
+    chars = len(re.sub(r"\s+", "", strip_artifacts(text)))
+    return chars >= HALLUCINATION_MIN_CHARS
+
+
 def assess_quality(
     text: str,
     ink_ratio: float,
@@ -159,6 +175,13 @@ def assess_quality(
             flags.append(flag)
             reasons.append(reason)
             score -= penalty
+
+    if looks_hallucinated(text, ink_ratio):
+        add(
+            "text_without_ink",
+            f"墨迹比例仅 {ink_ratio:.3f} 但输出 {chars} 字，疑似模型在空白区域编造内容",
+            0.55,
+        )
 
     if chars == 0 and ink_ratio > 0.01:
         add("empty_with_ink", "检测到文字/图形墨迹但模型未输出任何文字", 0.55)
@@ -197,6 +220,7 @@ def assess_quality(
     high_flags = {
         "empty_with_ink",
         "very_short_for_ink",
+        "text_without_ink",
         "garbage_ratio",
         "numeric_inconsistency",
         "model_uncertain",

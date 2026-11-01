@@ -70,6 +70,7 @@ class ChunkResult(BaseModel):
     original_layout_blocks: list[LayoutBlock] = Field(default_factory=list)
     manual_override: bool = False
     override_source: str | None = None
+    suspected_hallucination: bool = False
     conflicts: list[TextConflict] = Field(default_factory=list)
     uncertain: bool = False
     error: str | None = None
