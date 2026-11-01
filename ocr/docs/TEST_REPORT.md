@@ -3,6 +3,13 @@
 日期：2026-11-01  
 环境：macOS，Python 3.13.2，FastAPI 0.162.0，httpx 0.28.1，Pillow 12.3.0，NumPy 2.5.4
 
+交付状态：
+
+- GitHub PR：[#8](https://github.com/Xike-yuhuofei/Soran/pull/8) 已 squash-merge 至 `main`（merge commit `39a8bca`）。
+- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、79 测试、覆盖率门槛）。
+- `main` 合并后 OCR CI 再次通过。
+- 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
+
 ## 1. 自动化测试
 
 ```bash
@@ -113,8 +120,8 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
 | 完整测试报告与实际精度指标 | 本报告为工程测试；真实商品数据精度**未验证**，因仓库无标注数据 |
 | 可复现部署说明 | 见 `docs/DEPLOYMENT.md` |
-| GitHub Actions 适配 | 已新增 OCR CI；结果在 PR 上查看 |
-| PR 自动合并 | 见 PR 状态说明 |
+| GitHub Actions 适配 | 已新增 OCR CI；PR #8 与 `main` 推送均通过（Python 3.11 / 3.13） |
+| PR 自动合并 | PR #8 在所有必要 CI 通过后自动 squash-merge 至 `main`，未绕过任何保护规则 |
 
 ## 4. 未验证/已知问题
 
