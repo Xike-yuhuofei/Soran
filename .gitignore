@@ -4,6 +4,7 @@
 # Environment
 .env
 .env.*
+!ocr/.env.example
 
 # Node
 node_modules/
@@ -14,8 +15,24 @@ build/
 __pycache__/
 *.pyc
 .venv/
+*.egg-info/
+.coverage
+coverage.xml
+htmlcov/
+.pytest_cache/
+.ruff_cache/
 
 # IDE
 .idea/
 .vscode/
 .trae-html-share-packages/
+
+# 商品研究原始素材（体积大，不入库）
+product-research/
+
+# OCR 运行时数据与真实测试集（含隐私/版权图片，不入库）
+ocr/.data/
+ocr/.ci-data/
+ocr/datasets/manifest.json
+ocr/datasets/images/
+ocr/datasets/*.local.json

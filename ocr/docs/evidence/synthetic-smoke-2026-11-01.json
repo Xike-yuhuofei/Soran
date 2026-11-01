@@ -1,0 +1,181 @@
+{
+  "generated_at": "2026-11-01T06:02:35.667729+00:00",
+  "kind": "synthetic_engineering_smoke",
+  "not_acceptance_accuracy": true,
+  "policy": {
+    "deepseek-ai/DeepSeek-OCR": {
+      "model_id": "deepseek-ai/DeepSeek-OCR",
+      "free": true,
+      "reason": "official_pricing_page_price_zero",
+      "operation_label": "",
+      "registered": true
+    },
+    "PaddlePaddle/PaddleOCR-VL-1.5": {
+      "model_id": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "free": true,
+      "reason": "official_pricing_page_price_zero",
+      "operation_label": "",
+      "registered": true
+    }
+  },
+  "status": "completed",
+  "needs_manual_check": false,
+  "chunks": 2,
+  "api_requests": 3,
+  "cache_hits": 0,
+  "elapsed_ms": 5465,
+  "metrics": {
+    "cer": 0.0,
+    "line_recall": 1.0,
+    "introduced_duplicate_rate": 0.0,
+    "key_field_accuracy": 1.0
+  },
+  "key_field_details": [
+    {
+      "field": "brand",
+      "expected": "SORAN",
+      "actual": [
+        "SORAN"
+      ],
+      "correct": true
+    },
+    {
+      "field": "fabric_composition",
+      "expected": "92%莫代尔 8%氨纶",
+      "actual": [
+        "92%莫代尔 8%氨纶"
+      ],
+      "correct": true
+    },
+    {
+      "field": "sku",
+      "expected": "SR-M2001",
+      "actual": [
+        "SR-M2001"
+      ],
+      "correct": true
+    },
+    {
+      "field": "standard",
+      "expected": "FZ/T 73020-2019",
+      "actual": [
+        "FZ/T 73020-2019"
+      ],
+      "correct": true
+    },
+    {
+      "field": "safety_category",
+      "expected": "GB 18401-B",
+      "actual": [
+        "GB 18401-B"
+      ],
+      "correct": true
+    },
+    {
+      "field": "price",
+      "expected": "¥129.00",
+      "actual": [
+        "¥129.00"
+      ],
+      "correct": true
+    }
+  ],
+  "text": "素然之境 SORAN\n\n男士莫代尔圆领短袖\n\n商品名称：男士基础圆领短袖T恤\n品牌：SORAN\n型号：SR-M2001\n\n面料成分：92%莫代尔 8%氨纶\n执行标准：FZ/T 73020-2019\n安全类别：GB 18401-B\n\n洗涤说明：手洗，不可漂白，低温熨烫\n悬挂晾干，避免暴晒\n\n尺码表\n\n尺码\t身高/胸围\t衣长\nM\t170/90A\t68cm\nL\t175/95A\t70cm\nXL\t180/100A\t72cm\n\n颜色：黑色 / 白色 / 灰蓝\n包装规格：1件/袋\n\n价格：¥129.00\n\n温馨提示\n商品颜色因拍摄光线不同可能存在轻微色差，请以实物为准。\n\n洗涤后请平铺晾干，避免变形。",
+  "warnings": [
+    "chunks 1080-2000: removed 2 overlap line(s)",
+    "重叠去重移除 2 行（保留在 JSON 审计字段中）",
+    "分块 0 复核原因：critical_fields, table_like",
+    "分块 1 复核原因：critical_fields"
+  ],
+  "chunk_audit": [
+    {
+      "index": 0,
+      "y0": 0,
+      "y1": 1200,
+      "engine": "deepseek-ai/DeepSeek-OCR",
+      "reviewed": true,
+      "review_engine": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "quality_score": 1.0,
+      "from_cache": false,
+      "confidence": null,
+      "conflicts": []
+    },
+    {
+      "index": 1,
+      "y0": 1080,
+      "y1": 2000,
+      "engine": "deepseek-ai/DeepSeek-OCR",
+      "reviewed": false,
+      "review_engine": null,
+      "quality_score": 1.0,
+      "from_cache": false,
+      "confidence": null,
+      "conflicts": []
+    }
+  ],
+  "key_fields": [
+    {
+      "name": "product_name",
+      "value": "男士基础圆领短袖T恤",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "brand",
+      "value": "SORAN",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "sku",
+      "value": "SR-M2001",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "fabric_composition",
+      "value": "92%莫代尔 8%氨纶",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "standard",
+      "value": "FZ/T 73020-2019",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "safety_category",
+      "value": "GB 18401-B",
+      "chunk_index": 0,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    },
+    {
+      "name": "wash_instruction",
+      "value": "洗涤说明：手洗，不可漂白，低温熨烫；悬挂晾干，避免暴晒；洗涤后请平铺晾干，避免变形。",
+      "chunk_index": 0,
+      "confidence": "cross_checked",
+      "note": "合并 3 条多行内容"
+    },
+    {
+      "name": "packaging",
+      "value": "1件/袋",
+      "chunk_index": 0,
+      "confidence": "cross_checked",
+      "note": "在 2 个分块中一致"
+    },
+    {
+      "name": "price",
+      "value": "¥129.00",
+      "chunk_index": 1,
+      "confidence": "unverified",
+      "note": "未经过独立模型复核"
+    }
+  ]
+}
