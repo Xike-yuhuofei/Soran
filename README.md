@@ -17,6 +17,23 @@
 ## 目录结构
 
 - `textbook/` — 贴身衣物专业学习教材（纯离线 HTML，双击即用）
+- `ocr/` — 电商详情页长图 OCR 系统（FastAPI + 本地 Web 界面，免费模型白名单）
+
+## 电商详情页 OCR
+
+`ocr/` 是一套独立可运行的电商详情图 OCR 工具：支持普通图 / 超长图 / 多图排序，自动按空白带切分并去重合并，调用已核实免费的 DeepSeek-OCR 与 PaddleOCR-VL-1.5，按需复核，输出 TXT / Markdown / JSON，并支持人工编辑与断点续跑。
+
+```bash
+cd ocr
+uv venv .venv --python 3.11
+uv pip install --python .venv/bin/python -e ".[dev]"
+cp .env.example .env   # 填入 SILICONFLOW_API_KEY
+.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+```
+
+打开 http://127.0.0.1:8000 。完整说明见 [`ocr/README.md`](ocr/README.md)，部署与费用保护见 [`ocr/docs/DEPLOYMENT.md`](ocr/docs/DEPLOYMENT.md)，测试报告见 [`ocr/docs/TEST_REPORT.md`](ocr/docs/TEST_REPORT.md)。
+
+云端调用强制约束：只调用运行时核实为免费的模型；官方定价页快照过期或无法确认免费时阻止调用；不自动切换付费模型；应用层额度不能替代云账户计费保护。
 
 ## 本地使用教材
 

@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-01T05:38:33.619624+00:00",
+  "source": "https://www.siliconflow.cn/pricing",
+  "source_sha256": "eb4867913ef3e3d25097d9d7678dcb921f95660f7c3fcd617cff1c84d0007212",
+  "models": {
+    "deepseek-ai/DeepSeek-OCR": {
+      "free": true,
+      "reason": "official_pricing_page_price_zero",
+      "model_id": "deepseek-ai/DeepSeek-OCR",
+      "operation_label": "",
+      "markers": {
+        "status_normal": true,
+        "deprecated_empty": true,
+        "price_zero": true,
+        "input_price_zero": true,
+        "balance_not_required": true,
+        "no_nonzero_price": true,
+        "pricing_array_zero": true
+      }
+    },
+    "PaddlePaddle/PaddleOCR-VL-1.5": {
+      "free": true,
+      "reason": "official_pricing_page_price_zero",
+      "model_id": "PaddlePaddle/PaddleOCR-VL-1.5",
+      "operation_label": "",
+      "markers": {
+        "status_normal": true,
+        "deprecated_empty": true,
+        "price_zero": true,
+        "input_price_zero": true,
+        "balance_not_required": true,
+        "no_nonzero_price": true,
+        "pricing_array_zero": true
+      }
+    }
+  },
+  "notes": "免费状态为官方定价页的运行时快照。模型可能随时调整价格；快照过期后系统会自动阻止云端调用。"
+}

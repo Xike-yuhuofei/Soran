@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "schema": {
+    "id": "唯一样本编号",
+    "image": "相对 manifest 的图片路径，或配合 --image-root 使用",
+    "category": "normal | long | table | complex",
+    "ground_truth_text": "逐字人工转写文本",
+    "key_fields": "可选，字段名到期望值",
+    "boundary_texts": "可选，分块边界附近必须保留的文字片段",
+    "notes": "可选，标注说明"
+  },
+  "items": []
+}

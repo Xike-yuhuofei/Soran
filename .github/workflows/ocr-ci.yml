@@ -1,0 +1,74 @@
+name: OCR CI
+
+on:
+  pull_request:
+    paths:
+      - 'ocr/**'
+      - '.github/workflows/ocr-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'ocr/**'
+      - '.github/workflows/ocr-ci.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ocr-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint, test and security (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: ocr/pyproject.toml
+
+      - name: Install
+        working-directory: ocr
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+          pip install build bandit
+
+      - name: Ruff lint
+        working-directory: ocr
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Security scan (Bandit, medium/high)
+        working-directory: ocr
+        run: bandit -r app -ll -q
+
+      - name: Build package
+        working-directory: ocr
+        run: python -m build
+
+      - name: Tests with coverage
+        working-directory: ocr
+        env:
+          # Dummy value only: CI uses MockTransport and never calls the cloud.
+          SILICONFLOW_API_KEY: ci-placeholder-not-a-real-key
+          OCR_DATA_DIR: .ci-data
+        run: pytest -q --cov=app --cov-report=term-missing --cov-fail-under=80
+
+      - name: Upload coverage artifact
+        if: always() && matrix.python-version == '3.13'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ocr-coverage
+          path: ocr/.coverage
+          if-no-files-found: ignore

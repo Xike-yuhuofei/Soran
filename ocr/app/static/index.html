@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Soran OCR · 电商详情页文字提取</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="page-glow" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+          <rect x="3" y="3" width="26" height="26" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M9 12h14M9 17h10M9 22h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-title">Soran OCR</div>
+        <div class="brand-sub">电商详情页 · 长图文字提取</div>
+      </div>
+    </div>
+    <div class="top-status" id="top-status">
+      <span class="pill pill-muted" id="pill-key">检查密钥</span>
+      <span class="pill pill-muted" id="pill-policy">检查免费策略</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card upload-card" aria-labelledby="upload-title">
+      <div class="card-head">
+        <div>
+          <h1 id="upload-title">上传商品详情图片</h1>
+          <p class="muted">支持 PNG / JPEG / WebP、手机截图与超长详情图。多图可调整顺序。</p>
+        </div>
+        <div class="counter" id="file-counter">0 / 12</div>
+      </div>
+
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="选择或拖入图片">
+        <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden />
+        <div class="drop-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="none">
+            <path d="M12 16V5m0 0L8 9m4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="drop-title">拖拽图片到这里，或点击选择</div>
+        <div class="drop-hint">单张不超过 <span id="max-mb">30</span> MB；长图会自动分段，不会整体压缩。</div>
+        <div class="upload-progress hidden" id="upload-progress"><div class="bar"><i></i></div><span>上传中…</span></div>
+      </div>
+
+      <div class="gallery" id="gallery" aria-live="polite">
+        <div class="empty-state" id="empty-state">尚未添加图片</div>
+      </div>
+    </section>
+
+    <section class="card control-card" aria-labelledby="control-title">
+      <div class="card-head">
+        <div>
+          <h2 id="control-title">识别设置</h2>
+          <p class="muted">仅调用经运行时核实的免费模型，不会自动切换付费模型。</p>
+        </div>
+      </div>
+
+      <div class="policy-banner" id="policy-banner">
+        <div class="policy-main">
+          <strong>免费策略校验中</strong>
+          <span class="muted">正在读取官方定价页快照。</span>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="refresh-policy" type="button">刷新校验</button>
+      </div>
+      <div class="banner banner-warn hidden" id="key-banner">
+        未配置 <code>SILICONFLOW_API_KEY</code>。云端识别不可用；如已启用本地 PP-OCR，可仅本地运行。
+      </div>
+
+      <div class="form-grid">
+        <label class="field">
+          <span>识别模式</span>
+          <select id="mode-select">
+            <option value="text">纯文字（Free OCR，忠实转写）</option>
+            <option value="markdown">Markdown（保留标题 / 列表 / 表格）</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>辅助复核</span>
+          <select id="review-select">
+            <option value="true">开启（可疑分块调用 PaddleOCR-VL）</option>
+            <option value="false">关闭（仅主模型）</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" id="consent" />
+        <span>
+          我确认所选图片将上传至硅基流动云端 OCR 服务（免费模型）。请勿在未获授权时上传隐私或敏感图片。
+        </span>
+      </label>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="start-btn" type="button">开始识别</button>
+        <button class="btn btn-ghost hidden" id="resume-btn" type="button">继续未完成任务</button>
+      </div>
+
+      <div class="progress-block hidden" id="progress-block">
+        <div class="progress-head">
+          <span id="progress-stage">准备中</span>
+          <span id="progress-number">0%</span>
+        </div>
+        <div class="bar bar-lg"><i id="progress-bar"></i></div>
+        <div class="progress-meta">
+          <span id="progress-chunks">分块 0 / 0</span>
+          <span id="progress-requests">云端请求 0</span>
+        </div>
+        <div class="error-list" id="job-errors"></div>
+      </div>
+    </section>
+
+    <section class="card result-card hidden" id="result-card" aria-labelledby="result-title">
+      <div class="card-head">
+        <div>
+          <h2 id="result-title">识别结果</h2>
+          <p class="muted">可直接编辑。云端不返回真实置信度时标记为未知，不用启发式分数冒充。</p>
+        </div>
+        <div class="result-badges" id="result-badges"></div>
+      </div>
+
+      <div class="tabs" id="result-tabs" role="tablist"></div>
+
+      <div class="editor-wrap">
+        <textarea id="result-editor" spellcheck="false" aria-label="识别文本编辑区"></textarea>
+        <div class="editor-tools">
+          <span class="muted" id="editor-meta">0 字符</span>
+          <div class="tool-actions">
+            <button class="btn btn-ghost btn-sm" id="copy-btn" type="button">复制当前文本</button>
+            <button class="btn btn-ghost btn-sm" id="save-btn" type="button">保存编辑</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="insights" id="insights"></div>
+
+      <details class="details" id="chunk-details">
+        <summary>分块、引擎与质量审计</summary>
+        <div id="chunk-list" class="chunk-list"></div>
+      </details>
+
+      <div class="export-bar">
+        <div>
+          <strong>导出</strong>
+          <div class="muted">TXT 纯文字 · Markdown 结构 · JSON 含坐标、引擎、冲突与错误</div>
+        </div>
+        <div class="tool-actions">
+          <button class="btn btn-ghost" data-export="txt" type="button">下载 TXT</button>
+          <button class="btn btn-ghost" data-export="md" type="button">下载 Markdown</button>
+          <button class="btn btn-ghost" data-export="json" type="button">下载 JSON</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Soran OCR 0.1 · 本地运行 · 免费模型白名单 · 请求额度与缓存保护</span>
+    <span id="footer-usage"></span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
