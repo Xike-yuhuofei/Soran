@@ -6,6 +6,7 @@ from app.quality import (
     compare_versions,
     find_missing_lines,
     find_primary_only_lines,
+    table_header_conflicts,
     table_issues,
     text_similarity,
 )
@@ -132,6 +133,25 @@ def test_sparse_real_text_is_not_flagged_as_hallucination():
     report = assess_quality("品牌：SECRET WORLD", ink_ratio=0.01, forced_cut=False)
     assert "text_without_ink" not in report.flags
     assert not report.needs_review
+
+
+def test_table_header_conflict_detected():
+    text = (
+        "尺寸    腰围    臀围    建议体重    平铺腰围直量（cm）\n"
+        "\n"
+        "尺寸\t长度\t直径\t最大尺寸\t(cm)\n"
+        "M\t50-55\t60-70\t约95斤以内\t54"
+    )
+    issues = table_header_conflicts(text)
+    assert issues
+    report = assess_quality(text, ink_ratio=0.03, forced_cut=False)
+    assert "table_header_conflict" in report.flags
+    assert report.needs_review
+
+
+def test_table_header_conflict_ignores_data_rows():
+    text = "尺寸\t腰围\t臀围\nM\t50-55\t60-70"
+    assert table_header_conflicts(text) == []
 
 
 def test_table_structure_issues():

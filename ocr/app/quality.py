@@ -86,6 +86,27 @@ _HTML_TABLE_RE = re.compile(r"<table[^>]*>(.*?)</table>", re.IGNORECASE | re.DOT
 _HTML_ROW_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.IGNORECASE | re.DOTALL)
 _HTML_CELL_RE = re.compile(r"<(?:td|th)[^>]*>", re.IGNORECASE)
 _MD_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?[-=]{3,}")
+_TABLE_CELL_RE = re.compile(r"\t|[ \u3000]{2,}")
+
+
+def table_header_conflicts(text: str) -> list[str]:
+    """Detect two different header-like rows sharing the same first column.
+
+    DeepSeek-OCR invented an extra "尺寸/长度/直径/最大尺寸" header above a
+    real size chart. Rows with numeric cells are data rows, not headers.
+    """
+
+    headers: dict[str, set[tuple[str, ...]]] = {}
+    for line in text.splitlines():
+        cells = tuple(cell.strip() for cell in _TABLE_CELL_RE.split(line.strip()) if cell.strip())
+        if len(cells) < 3 or any(re.search(r"\d", cell) for cell in cells):
+            continue
+        headers.setdefault(cells[0], set()).add(cells)
+    issues: list[str] = []
+    for first, variants in headers.items():
+        if len(variants) > 1:
+            issues.append(f"发现 {len(variants)} 个不同表头共享首列“{first}”")
+    return issues
 
 
 def table_issues(text: str) -> list[str]:
@@ -237,6 +258,10 @@ def assess_quality(
     if layout_issues:
         add("table_structure", "；".join(layout_issues[:3]), 0.20)
 
+    header_issues = table_header_conflicts(text)
+    if header_issues:
+        add("table_header_conflict", "；".join(header_issues[:3]), 0.20)
+
     if forced_cut:
         add("forced_cut", "该分块因缺少空白行而强制切分，边界可能受影响", 0.25)
     if "narrow_blank_boundary" in risk_flags:
@@ -253,6 +278,7 @@ def assess_quality(
         "model_uncertain",
         "forced_cut",
         "table_structure",
+        "table_header_conflict",
     }
     needs_review = bool(high_flags.intersection(flags)) or score < 0.60
     return QualityReport(
