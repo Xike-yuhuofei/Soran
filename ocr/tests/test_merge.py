@@ -188,6 +188,21 @@ def test_size_table_header_not_extracted_as_size():
     assert [field.value for field in fields if field.name == "size"] == ["M"]
 
 
+def test_size_rows_with_range_label_and_model_measurements():
+    text = (
+        "身高: 178CM\n体重: 54KG\n"
+        "身高\t105\t115\t130\t145\t160\n"
+        "150 - 160\tM\tL\tXL\t2XL\t/\n"
+        "170 - 175\t/\tM\tL\tXL\t2XL"
+    )
+    fields = extract_key_fields(text)
+    sizes = [field.value for field in fields if field.name == "size"]
+    charts = [field.value for field in fields if field.name == "size_chart"]
+    assert sizes == []
+    assert "150 - 160 M L XL 2XL /" in charts[0]
+    assert "170 - 175 / M L XL 2XL" in charts[1]
+
+
 def test_label_value_separated_by_table_whitespace():
     fields = extract_key_fields("商品名称    时尚轻运动凉感内裤\n价格    ¥129.00")
     product = next(field for field in fields if field.name == "product_name")
