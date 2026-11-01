@@ -15,6 +15,11 @@ from app.merge import (
 )
 
 
+def test_strip_icon_placeholder_lines():
+    text = "- 图标：\n- 图标1：\n图标2\n不要用尖硬物摩擦"
+    assert strip_artifacts(text) == "不要用尖硬物摩擦"
+
+
 def test_overlap_dedupe_removes_prefix():
     previous = "标题\n尺码表\nM 170/90A\nL 175/95A"
     current = "M 170/90A\nL 175/95A\n颜色：黑色"
@@ -158,6 +163,21 @@ def test_extract_negative_wash_lines():
     merged = merge_key_fields(fields)
     wash = next(field for field in merged if field.name == "wash_instruction")
     assert wash.value == "；".join(values)
+
+
+def test_size_rows_with_unit_only_in_header():
+    text = "尺寸 体重建议(斤) 腰围建议(cm)\nM 80~100 64~70 57\n2XL 140~160 82~88 69"
+    fields = extract_key_fields(text)
+    values = [field.value for field in fields if field.name == "size_chart"]
+    assert values == ["M 80~100 64~70 57", "2XL 140~160 82~88 69"]
+
+
+def test_label_value_separated_by_table_whitespace():
+    fields = extract_key_fields("商品名称    时尚轻运动凉感内裤\n价格    ¥129.00")
+    product = next(field for field in fields if field.name == "product_name")
+    assert product.value == "时尚轻运动凉感内裤"
+    price = next(field for field in fields if field.name == "price")
+    assert price.value == "¥129.00"
 
 
 def test_percent_validation():

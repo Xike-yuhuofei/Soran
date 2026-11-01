@@ -18,6 +18,10 @@ ARTIFACT_PATTERNS = [
 _ARTIFACT_RE = re.compile("|".join(ARTIFACT_PATTERNS), re.IGNORECASE)
 _MULTISPACE_RE = re.compile(r"[ \t\u00a0\u3000]+")
 _ZERO_WIDTH_RE = re.compile(r"[\u200b-\u200f\u202a-\u202e\ufeff]")
+_PLACEHOLDER_LINE_RE = re.compile(
+    r"^\s*(?:[-*]\s*)?(?:图标|icon)\s*(?:[：:]\s*)?(?:\d+)?\s*[：:]?\s*$",
+    re.IGNORECASE | re.MULTILINE,
+)
 _HTML_TABLE_RE = re.compile(r"<table[^>]*>(.*?)</table>", re.IGNORECASE | re.DOTALL)
 _HTML_ROW_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.IGNORECASE | re.DOTALL)
 _HTML_CELL_RE = re.compile(r"<(?:td|th)[^>]*>(.*?)</(?:td|th)>", re.IGNORECASE | re.DOTALL)
@@ -33,6 +37,7 @@ def strip_artifacts(text: str) -> str:
     text = DET_BLOCK_RE.sub("", text)
     text = _ARTIFACT_RE.sub("", text)
     text = _ZERO_WIDTH_RE.sub("", text)
+    text = _PLACEHOLDER_LINE_RE.sub("", text)
     return text.replace("\r\n", "\n").replace("\r", "\n").strip()
 
 
