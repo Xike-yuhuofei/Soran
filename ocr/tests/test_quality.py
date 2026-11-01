@@ -1,6 +1,13 @@
 from __future__ import annotations
 
-from app.quality import assess_quality, compare_versions, text_similarity
+from app.quality import (
+    assess_quality,
+    compare_versions,
+    find_missing_lines,
+    find_primary_only_lines,
+    table_issues,
+    text_similarity,
+)
 
 
 def test_empty_with_ink_needs_review():
@@ -56,3 +63,31 @@ def test_percent_mismatch_conflict():
 
 def test_text_similarity_identical():
     assert text_similarity("A B", "A  B") == 1.0
+
+
+def test_missing_line_detection_and_formatting_tolerance():
+    primary = "# 标题\n**品牌**: SORAN\n型号：SR-M2001"
+    review = "标题\n品牌: SORAN\n型号：SR-M2001\n面料成分：92%莫代尔 8%氨纶"
+    missing = find_missing_lines(primary, review)
+    assert missing == ["面料成分：92%莫代尔 8%氨纶"]
+    _, conflicts = compare_versions(primary, review, "PaddleOCR-VL", 1)
+    assert any(conflict.kind == "possible_missing_text" for conflict in conflicts)
+
+    primary_only = find_primary_only_lines("标题\n独有内容仅此一处\n品牌", "标题\n品牌")
+    assert primary_only == ["独有内容仅此一处"]
+
+
+def test_table_structure_issues():
+    markdown = "| 尺码 | 身高 | 衣长 |\n|---|---|---|\n| M | 170/90A | 68cm |\n| L | 175/95A |"
+    issues = table_issues(markdown)
+    assert issues and "Markdown" in issues[0]
+
+    html = (
+        "<table><tr><td>M</td><td>170</td><td>68</td></tr><tr><td>L</td><td>175</td></tr></table>"
+    )
+    issues = table_issues(html)
+    assert issues and "HTML" in issues[0]
+
+    report = assess_quality(markdown, ink_ratio=0.02, forced_cut=False)
+    assert "table_structure" in report.flags
+    assert report.needs_review

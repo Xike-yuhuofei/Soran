@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 
@@ -36,6 +37,79 @@ def _repeated_line_ratio(text: str) -> float:
         counts[line] = counts.get(line, 0) + 1
     repeated = sum(count for count in counts.values() if count >= 3)
     return repeated / len(lines) if lines else 0.0
+
+
+def _compact(text: str) -> str:
+    return re.sub(r"\s+", "", unicodedata.normalize("NFKC", text)).casefold()
+
+
+def find_missing_lines(
+    primary: str, secondary: str, min_compact_chars: int = 6, limit: int = 6
+) -> list[str]:
+    """Return non-trivial secondary lines absent from the primary text."""
+
+    primary_compact = _compact(to_plain_text(primary))
+    missing: list[str] = []
+    for line in to_plain_text(secondary).splitlines():
+        stripped = line.strip()
+        compact = _compact(stripped)
+        if len(compact) < min_compact_chars:
+            continue
+        if compact not in primary_compact:
+            missing.append(stripped)
+            if len(missing) >= limit:
+                break
+    return missing
+
+
+def find_primary_only_lines(
+    primary: str, secondary: str, min_compact_chars: int = 8, limit: int = 6
+) -> list[str]:
+    secondary_compact = _compact(to_plain_text(secondary))
+    only: list[str] = []
+    for line in to_plain_text(primary).splitlines():
+        stripped = line.strip()
+        compact = _compact(stripped)
+        if len(compact) < min_compact_chars:
+            continue
+        if compact not in secondary_compact:
+            only.append(stripped)
+            if len(only) >= limit:
+                break
+    return only
+
+
+_HTML_TABLE_RE = re.compile(r"<table[^>]*>(.*?)</table>", re.IGNORECASE | re.DOTALL)
+_HTML_ROW_RE = re.compile(r"<tr[^>]*>(.*?)</tr>", re.IGNORECASE | re.DOTALL)
+_HTML_CELL_RE = re.compile(r"<(?:td|th)[^>]*>", re.IGNORECASE)
+_MD_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?[-=]{3,}")
+
+
+def table_issues(text: str) -> list[str]:
+    issues: list[str] = []
+    for table in _HTML_TABLE_RE.findall(text):
+        counts = [len(_HTML_CELL_RE.findall(row)) for row in _HTML_ROW_RE.findall(table)]
+        counts = [count for count in counts if count > 0]
+        if counts and min(counts) != max(counts):
+            issues.append(f"HTML 表格行列数不一致：{counts}")
+    rows: list[int] = []
+
+    def flush() -> None:
+        nonlocal rows
+        if rows and min(rows) != max(rows):
+            issues.append(f"Markdown 表格列数不一致：{rows}")
+        rows = []
+
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("|") and stripped.count("|") >= 2:
+            if _MD_SEPARATOR_RE.match(stripped):
+                continue
+            rows.append(len([cell for cell in stripped.strip("|").split("|")]))
+        else:
+            flush()
+    flush()
+    return issues
 
 
 def assess_quality(
@@ -87,6 +161,10 @@ def assess_quality(
     if issues:
         add("numeric_inconsistency", "；".join(issues[:3]), 0.25)
 
+    layout_issues = table_issues(text)
+    if layout_issues:
+        add("table_structure", "；".join(layout_issues[:3]), 0.20)
+
     if forced_cut:
         add("forced_cut", "该分块因缺少空白行而强制切分，边界可能受影响", 0.25)
     if "narrow_blank_boundary" in risk_flags:
@@ -100,6 +178,7 @@ def assess_quality(
         "numeric_inconsistency",
         "model_uncertain",
         "forced_cut",
+        "table_structure",
     }
     needs_review = bool(high_flags.intersection(flags)) or score < 0.60
     return QualityReport(
@@ -179,6 +258,33 @@ def compare_versions(
                     primary=primary[:500],
                     secondary=secondary[:500],
                     severity="high",
+                )
+            )
+
+    missing = find_missing_lines(primary, secondary)
+    if missing:
+        conflicts.append(
+            TextConflict(
+                kind="possible_missing_text",
+                detail=f"{secondary_engine} 发现主模型可能缺失 {len(missing)} 行",
+                primary=primary[:800],
+                secondary="\n".join(missing),
+                severity="warning",
+            )
+        )
+    if similarity < 0.95:
+        primary_only = find_primary_only_lines(primary, secondary)
+        if primary_only:
+            conflicts.append(
+                TextConflict(
+                    kind="primary_only_text",
+                    detail=(
+                        f"主模型有 {len(primary_only)} 行未在{secondary_engine}中出现，"
+                        "可能是主模型多识别或复核漏识别"
+                    ),
+                    primary="\n".join(primary_only),
+                    secondary=secondary[:800],
+                    severity="warning",
                 )
             )
     return similarity, conflicts
