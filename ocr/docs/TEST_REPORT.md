@@ -12,9 +12,9 @@
 - 真实评测 PR：[#13](https://github.com/Xike-yuhuofei/Soran/pull/13) 增加 8 条真实样本 A/B/C/D 评测、关键字段修复与复核默认关闭。
 - 人工复核 PR：[#14](https://github.com/Xike-yuhuofei/Soran/pull/14) 增加 UI/API 采用/恢复复核文本、审计字段与前端语法 CI。
 - 边界完整性 PR：[#15](https://github.com/Xike-yuhuofei/Soran/pull/15) 增加重叠区墨迹比例与“有墨迹但无共享文本”边界检测，并记录被否决的官方图表提示词实验；已 squash-merge 至 `main`（`45265b9`）。
-- 质量修复 PR：[#16](https://github.com/Xike-yuhuofei/Soran/pull/16) 增加空白区域编造内容检测与自动排除、洗护“不要”行提取，并把真实标注样本从 8 条扩展到 13 条。
-- PR CI：PR #15 的 Python 3.11 与 3.13 矩阵已通过；PR #16 推送后等待 CI（Ruff、Bandit、构建、105 测试、覆盖率门槛）。
-- `main` 在 PR #15 合并后 OCR CI 通过；PR #16 合并后需再次确认。
+- 质量修复 PR：[#16](https://github.com/Xike-yuhuofei/Soran/pull/16) 增加空白区域编造内容检测与自动排除、洗护“不要”行提取，并把真实标注样本从 8 条扩展到 13 条；已 squash-merge 至 `main`（`70bc761`）。
+- PR CI：PR #15/#16 的 Python 3.11 与 3.13 矩阵均通过（Ruff、Bandit、构建、105 测试、覆盖率门槛）。
+- `main` 在 PR #15、#16 合并后 OCR CI 均通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
