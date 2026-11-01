@@ -6,7 +6,8 @@
 交付状态：
 
 - GitHub PR：[#8](https://github.com/Xike-yuhuofei/Soran/pull/8) 已 squash-merge 至 `main`（merge commit `39a8bca`）。
-- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、79 测试、覆盖率门槛）。
+- 改进 PR：[#10](https://github.com/Xike-yuhuofei/Soran/pull/10) 增加 grounding 布局重排、拼接块字符级去重、测试集导入/校验与 PP-OCRv6 回退，CI 双矩阵通过后自动合并。
+- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、91 测试、覆盖率门槛）。
 - `main` 合并后 OCR CI 再次通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
