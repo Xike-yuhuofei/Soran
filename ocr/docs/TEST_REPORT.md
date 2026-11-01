@@ -10,7 +10,8 @@
 - 运行脚本 PR：[#11](https://github.com/Xike-yuhuofei/Soran/pull/11) 增加 `run.sh` 一键启动、shell 语法 CI 与 30000px 超长图测试。
 - 质量改进 PR：[#12](https://github.com/Xike-yuhuofei/Soran/pull/12) 增加主模型缺失行/独有行检测与表格列数校验。
 - 真实评测 PR：[#13](https://github.com/Xike-yuhuofei/Soran/pull/13) 增加 8 条真实样本 A/B/C/D 评测、关键字段修复与复核默认关闭。
-- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、96 测试、覆盖率门槛）。
+- 人工复核 PR：[#14](https://github.com/Xike-yuhuofei/Soran/pull/14) 增加 UI/API 采用/恢复复核文本、审计字段与前端语法 CI。
+- PR CI：Python 3.11 与 3.13 两个矩阵均通过（Ruff、Bandit、构建、99 测试、覆盖率门槛）。
 - `main` 合并后 OCR CI 再次通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
