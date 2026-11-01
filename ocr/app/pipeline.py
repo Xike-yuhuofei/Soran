@@ -10,6 +10,7 @@ from PIL import Image
 
 from .config import Settings
 from .fields import extract_key_fields, merge_key_fields, percent_issues
+from .fusion import decide_layout_fusion, looks_like_table, needs_layout_fusion
 from .imaging import chunk_ink_ratio, render_chunk, segment_image
 from .layout import (
     layout_text,
@@ -113,8 +114,9 @@ class OCRPipeline:
         use_review = bool(options["review"] and request.use_review)
         use_local = bool(options["local"])
         mode = request.mode or self.settings.prompt_mode
-        if mode not in {"text", "markdown"}:
-            raise ValueError("mode 必须是 text 或 markdown")
+        if mode not in {"text", "markdown", "auto"}:
+            raise ValueError("mode 必须是 text、markdown 或 auto")
+        primary_mode = "text" if mode == "auto" else mode
         use_cache = bool((request.use_cache and self.settings.cache_enabled) or resume)
 
         if self.settings.require_cloud_consent and not request.consent_cloud_upload:
@@ -275,7 +277,7 @@ class OCRPipeline:
                                     model=self.settings.primary_model,
                                     image_bytes=chunk_bytes,
                                     mime=mime,
-                                    mode=mode,
+                                    mode=primary_mode,
                                     budget=budget,
                                     allow_cache=use_cache,
                                 )
@@ -286,6 +288,7 @@ class OCRPipeline:
                                 chunk.usage = response.usage
                                 chunk.latency_ms = response.latency_ms
                                 chunk.from_cache = response.from_cache
+                                chunk.selected_mode = primary_mode
                                 chunk.api_requests += response.attempts
                                 parsed_blocks = parse_grounding_blocks(response.raw_text)
                                 if parsed_blocks:
@@ -335,6 +338,36 @@ class OCRPipeline:
                                 f"分块 {plan.index} 疑似在空白区域编造文字，已从合并文本中排除。"
                             )
 
+                        if mode == "auto" and chunk.text and not chunk.suspected_hallucination:
+                            trigger = needs_layout_fusion(chunk.text, quality.flags)
+                            if trigger:
+                                selected = await self._run_layout_fusion(
+                                    chunk,
+                                    chunk_bytes,
+                                    mime,
+                                    plan,
+                                    rgb,
+                                    budget,
+                                    use_cache,
+                                    trigger,
+                                )
+                                quality = assess_quality(
+                                    chunk.text,
+                                    ink_ratio,
+                                    chunk.forced_cut,
+                                    chunk.risk_flags,
+                                )
+                                chunk.quality_score = quality.score
+                                chunk.quality_flags = quality.flags
+                                if quality.needs_review:
+                                    chunk.needs_review = True
+                                if selected:
+                                    image_result.warnings.append(
+                                        f"分块 {plan.index} 采用 Markdown/grounding 布局结果"
+                                        f"（{chunk.selection_reason}），主模型原文保留在 JSON 审计字段。"
+                                    )
+                                chunk.review_reasons.append(f"layout_fusion:{trigger}")
+
                         reasons = self._review_reasons(
                             chunk.text,
                             quality.needs_review,
@@ -343,12 +376,12 @@ class OCRPipeline:
                         )
                         if review_enabled and reasons and reviewed_chunks < review_cap:
                             chunk.api_requests += await self._run_cloud_review(
-                                chunk, chunk_bytes, mime, mode, budget, use_cache
+                                chunk, chunk_bytes, mime, primary_mode, budget, use_cache
                             )
                             reviewed_chunks += 1
-                            chunk.review_reasons = reasons
+                            chunk.review_reasons = [*chunk.review_reasons, *reasons]
                         elif review_enabled and reasons:
-                            chunk.review_reasons = reasons
+                            chunk.review_reasons = [*chunk.review_reasons, *reasons]
                             if f"复核次数达到单任务上限 {review_cap}" not in warnings:
                                 warnings.append(
                                     f"复核次数达到单任务上限 {review_cap}，部分可疑分块未复核。"
@@ -517,7 +550,7 @@ class OCRPipeline:
             reasons.append("output_truncated")
         if CRITICAL_CONTENT_RE.search(text):
             reasons.append("critical_fields")
-        if _looks_like_table(text):
+        if looks_like_table(text):
             reasons.append("table_like")
         if (
             self.settings.review_sample_rate > 0
@@ -561,6 +594,106 @@ class OCRPipeline:
             conflicts,
         )
         return response.attempts
+
+    async def _run_layout_fusion(
+        self,
+        chunk: ChunkResult,
+        chunk_bytes: bytes,
+        mime: str,
+        plan,
+        image: Image.Image,
+        budget: JobBudget,
+        use_cache: bool,
+        trigger: str,
+    ) -> bool:
+        """Run a grounding pass and keep the structurally verifiable result.
+
+        The primary text is never discarded. When the layout result is chosen,
+        the primary output is preserved in ``alternate_*`` so users can inspect
+        or restore it. Selection is based on table consistency and caption-grid
+        geometry, never on which text reads more fluently.
+        """
+
+        try:
+            response = await self.client.ocr_chunk(
+                model=self.settings.primary_model,
+                image_bytes=chunk_bytes,
+                mime=mime,
+                mode="markdown",
+                budget=budget,
+                allow_cache=use_cache,
+            )
+        except (PolicyViolation, AuthError, PaymentRejectedError, BudgetExceeded):
+            raise
+        except OCRRequestError as exc:
+            chunk.review_reasons.append(f"layout_fusion_failed:{exc}")
+            return False
+
+        chunk.api_requests += response.attempts
+        parsed_blocks = parse_grounding_blocks(response.raw_text)
+        if parsed_blocks:
+            ordered_blocks = order_parsed_blocks(
+                parsed_blocks,
+                page_width=plan.crop_width,
+                page_height=plan.crop_height,
+            )
+            secondary_text = layout_text(ordered_blocks)
+            secondary_blocks = to_layout_blocks(
+                ordered_blocks,
+                image_width=image.width,
+                image_height=image.height,
+                y_offset=plan.y0,
+                scale=plan.scale,
+            )
+            layout_method = "grounding_xy_cut"
+        else:
+            secondary_text = strip_artifacts(response.text)
+            secondary_blocks = []
+            layout_method = None
+
+        decision = decide_layout_fusion(
+            primary_text=chunk.text,
+            secondary_text=secondary_text,
+            secondary_blocks=parsed_blocks,
+            page_width=plan.crop_width,
+            primary_flags=chunk.quality_flags,
+        )
+        secondary_plain = to_plain_text(strip_artifacts(secondary_text))
+        chunk.selection_reason = f"{trigger}:{decision.reason}"
+        chunk.alternate_text = secondary_plain
+        chunk.alternate_raw_text = response.raw_text
+        chunk.alternate_engine = self.settings.primary_model
+        chunk.alternate_mode = "markdown"
+        chunk.alternate_confidence = response.confidence
+        chunk.alternate_layout_method = layout_method
+        chunk.alternate_layout_blocks = list(secondary_blocks)
+        if not decision.use_secondary:
+            return False
+
+        primary_text = chunk.text
+        primary_raw = chunk.raw_text
+        primary_engine = chunk.engine
+        primary_confidence = chunk.confidence
+        primary_mode = chunk.selected_mode
+        primary_layout_method = chunk.layout_method
+        primary_layout_blocks = list(chunk.layout_blocks)
+
+        chunk.text = secondary_plain
+        chunk.raw_text = response.raw_text
+        chunk.engine = self.settings.primary_model
+        chunk.confidence = response.confidence
+        chunk.selected_mode = "markdown"
+        chunk.layout_method = layout_method
+        chunk.layout_blocks = list(secondary_blocks)
+
+        chunk.alternate_text = primary_text
+        chunk.alternate_raw_text = primary_raw
+        chunk.alternate_engine = primary_engine
+        chunk.alternate_confidence = primary_confidence
+        chunk.alternate_mode = primary_mode
+        chunk.alternate_layout_method = primary_layout_method
+        chunk.alternate_layout_blocks = primary_layout_blocks
+        return True
 
     async def _run_local_crosscheck(self, chunk: ChunkResult, image: Image.Image, plan) -> None:
         if not self.local_ocr.available():
@@ -846,10 +979,11 @@ class OCRPipeline:
         chunk_index: int,
         source: str,
     ) -> JobResult:
-        """Manually adopt review text (or restore primary) for one chunk.
+        """Manually adopt review/alternate text or restore the primary result.
 
-        This is an explicit user action; the pipeline never chooses a model's
-        more fluent-looking output automatically.
+        This is an explicit user action; the automatic pipeline only switches
+        to an alternate layout when a structural rule passes, and it keeps the
+        original output in audit fields.
         """
 
         result = self.jobs.load_result(job_id)
@@ -862,39 +996,81 @@ class OCRPipeline:
         if chunk is None:
             raise ValueError("分块不在结果中。")
 
+        def remember_current() -> None:
+            if chunk.manual_override:
+                return
+            chunk.original_text = chunk.text
+            chunk.original_raw_text = chunk.raw_text
+            chunk.original_engine = chunk.engine
+            chunk.original_confidence = chunk.confidence
+            chunk.original_selected_mode = chunk.selected_mode
+            chunk.original_layout_method = chunk.layout_method
+            chunk.original_layout_blocks = list(chunk.layout_blocks)
+
         if source == "review":
             if not chunk.review_text:
                 raise ValueError("该分块没有可用的复核文本。")
-            if not chunk.manual_override:
-                chunk.original_text = chunk.text
-                chunk.original_engine = chunk.engine
-                chunk.original_confidence = chunk.confidence
-                chunk.original_layout_method = chunk.layout_method
-                chunk.original_layout_blocks = list(chunk.layout_blocks)
+            remember_current()
             chunk.text = strip_artifacts(chunk.review_text)
             chunk.engine = chunk.review_engine or f"manual:{source}"
             chunk.confidence = None
+            chunk.selected_mode = "review"
             chunk.layout_method = None
             chunk.layout_blocks = []
             chunk.manual_override = True
             chunk.override_source = "review"
+        elif source == "alternate":
+            if not chunk.alternate_text:
+                raise ValueError("该分块没有可用的备选文本。")
+            remember_current()
+            previous = (
+                chunk.text,
+                chunk.raw_text,
+                chunk.engine,
+                chunk.confidence,
+                chunk.selected_mode,
+                chunk.layout_method,
+                list(chunk.layout_blocks),
+            )
+            chunk.text = strip_artifacts(chunk.alternate_text)
+            chunk.raw_text = chunk.alternate_raw_text
+            chunk.engine = chunk.alternate_engine
+            chunk.confidence = chunk.alternate_confidence
+            chunk.selected_mode = chunk.alternate_mode
+            chunk.layout_method = chunk.alternate_layout_method
+            chunk.layout_blocks = list(chunk.alternate_layout_blocks)
+            (
+                chunk.alternate_text,
+                chunk.alternate_raw_text,
+                chunk.alternate_engine,
+                chunk.alternate_confidence,
+                chunk.alternate_mode,
+                chunk.alternate_layout_method,
+                chunk.alternate_layout_blocks,
+            ) = previous
+            chunk.manual_override = True
+            chunk.override_source = "alternate"
         elif source == "primary":
             if not chunk.manual_override or chunk.original_text is None:
                 raise ValueError("该分块没有可恢复的主模型文本。")
             chunk.text = chunk.original_text
+            chunk.raw_text = chunk.original_raw_text
             chunk.engine = chunk.original_engine
             chunk.confidence = chunk.original_confidence
+            chunk.selected_mode = chunk.original_selected_mode
             chunk.layout_method = chunk.original_layout_method
             chunk.layout_blocks = list(chunk.original_layout_blocks)
             chunk.original_text = None
+            chunk.original_raw_text = None
             chunk.original_engine = None
             chunk.original_confidence = None
+            chunk.original_selected_mode = None
             chunk.original_layout_method = None
             chunk.original_layout_blocks = []
             chunk.manual_override = False
             chunk.override_source = None
         else:
-            raise ValueError("source 必须是 review 或 primary。")
+            raise ValueError("source 必须是 review、alternate 或 primary。")
 
         quality = assess_quality(
             chunk.text,
@@ -951,16 +1127,6 @@ class OCRPipeline:
         result.updated_at = utc_now()
         self.jobs.save_result(result)
         return result
-
-
-def _looks_like_table(text: str) -> bool:
-    for line in text.splitlines():
-        if line.count("|") >= 2 or "\t" in line:
-            return True
-        columns = re.split(r"\s{3,}", line.strip())
-        if len(columns) >= 3 and sum(len(part) <= 20 for part in columns) >= 3:
-            return True
-    return False
 
 
 __all__ = ["JobConflictError", "OCRPipeline", "VARIANTS"]

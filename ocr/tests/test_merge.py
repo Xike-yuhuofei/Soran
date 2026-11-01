@@ -203,6 +203,17 @@ def test_percent_validation():
     assert "97" in issues[0]
 
 
+def test_fullwidth_percent_is_normalized_for_fields_and_validation():
+    fields = extract_key_fields("主料：95％棉 5％氨纶\n裆部：100％棉")
+    fabric = next(field for field in fields if field.name == "fabric_composition")
+    assert fabric.value == "主料:95%棉 5%氨纶"
+    assert percent_issues("主料：95％棉 5％氨纶") == []
+    issues = percent_issues("主料：95％棉 8％氨纶")
+    assert issues
+    assert "103" in issues[0]
+    assert percent_issues("面料85.3%锦纶 14.7%氨纶；网料84%锦纶 16%氨纶；里裆100%棉") == []
+
+
 def test_merge_key_fields_aggregates_wash_and_normalizes_price():
     fields = extract_key_fields(
         "洗涤说明：手洗\n价格：¥129.00", chunk_index=0

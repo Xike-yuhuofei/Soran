@@ -64,10 +64,21 @@ class ChunkResult(BaseModel):
     layout_method: str | None = None
     layout_blocks: list[LayoutBlock] = Field(default_factory=list)
     original_text: str | None = None
+    original_raw_text: str | None = None
     original_engine: str | None = None
     original_confidence: float | None = None
+    original_selected_mode: str | None = None
     original_layout_method: str | None = None
     original_layout_blocks: list[LayoutBlock] = Field(default_factory=list)
+    alternate_text: str | None = None
+    alternate_raw_text: str | None = None
+    alternate_engine: str | None = None
+    alternate_mode: str | None = None
+    alternate_confidence: float | None = None
+    alternate_layout_method: str | None = None
+    alternate_layout_blocks: list[LayoutBlock] = Field(default_factory=list)
+    selected_mode: str | None = None
+    selection_reason: str | None = None
     manual_override: bool = False
     override_source: str | None = None
     suspected_hallucination: bool = False
@@ -179,4 +190,4 @@ class EditResultRequest(BaseModel):
 class ApplyChunkRequest(BaseModel):
     image_id: str
     chunk_index: int
-    source: str = "review"  # review | primary
+    source: str = "review"  # review | alternate | primary
