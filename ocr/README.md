@@ -23,6 +23,15 @@
 
 ```bash
 cd ocr
+./run.sh
+```
+
+首次运行会自动创建 `.venv` 和 `.env` 并提示填写 `SILICONFLOW_API_KEY`；再次运行即启动 http://127.0.0.1:8000 。
+
+手动方式：
+
+```bash
+cd ocr
 uv venv .venv --python 3.11
 uv pip install --python .venv/bin/python -e ".[dev]"
 cp .env.example .env
@@ -184,10 +193,11 @@ ocr/
     storage.py       会话、任务、额度账本、缓存
     metrics.py       CER/行召回/关键字段/重复率
     static/          本地 Web 界面
-  tests/             91 个单元/集成测试
+  tests/             92 个单元/集成测试
   tools/             真实冒烟、数据集导入/校验、评测
   datasets/          标注格式与测试集导入说明
   docs/              部署说明、测试报告、证据
+  run.sh             一键创建环境并启动
 ```
 
 ## 已知限制

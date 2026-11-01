@@ -43,6 +43,10 @@ jobs:
           pip install -e ".[dev]"
           pip install build bandit
 
+      - name: Shell script syntax
+        working-directory: ocr
+        run: bash -n run.sh
+
       - name: Ruff lint
         working-directory: ocr
         run: |
