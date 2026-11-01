@@ -47,6 +47,12 @@ def success_payload(text: str = "识别文本") -> dict:
     }
 
 
+def test_build_prompt_modes():
+    assert build_prompt("model", "text", "review") == "<image>\nFree OCR."
+    assert build_prompt("model", "markdown", "review").endswith("Convert the document to markdown.")
+    assert "逐字识别" in build_prompt("review", "text", "review")
+
+
 @pytest.mark.asyncio
 async def test_success_and_prompt(settings):
     captured: list[dict] = []

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 
 from .fields import numeric_tokens, percent_issues, percent_tokens
-from .merge import normalize_for_compare, strip_artifacts, to_plain_text
+from .merge import dedupe_overlap, normalize_for_compare, strip_artifacts, to_plain_text
 from .schemas import ChunkResult, TextConflict
 
 UNCERTAIN_MARKERS = ("⟦UNCERTAIN⟧", "[不确定]", "【不确定】", "无法识别", "无法辨认")
@@ -110,6 +110,29 @@ def table_issues(text: str) -> list[str]:
             flush()
     flush()
     return issues
+
+
+def boundary_potential_miss(
+    previous: str,
+    current: str,
+    overlap_px: int,
+    overlap_ink_ratio: float,
+    ink_threshold: float = 0.005,
+) -> str | None:
+    """Detect an overlap band with ink but no shared OCR text.
+
+    This cannot prove a line was lost, but it is a strong boundary-integrity
+    signal that should be surfaced for manual verification.
+    """
+
+    if overlap_px <= 0 or overlap_ink_ratio < ink_threshold:
+        return None
+    if not previous.strip() or not current.strip():
+        return "重叠区有墨迹，但相邻分块之一没有文字结果"
+    outcome = dedupe_overlap(previous, current, overlap_px)
+    if outcome.matched_lines == 0:
+        return "重叠区有墨迹，但相邻分块未检测到共享文本"
+    return None
 
 
 def assess_quality(
