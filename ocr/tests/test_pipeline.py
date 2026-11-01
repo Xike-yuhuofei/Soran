@@ -251,6 +251,59 @@ async def test_pipeline_review_can_be_enabled_per_job(settings):
 
 
 @pytest.mark.asyncio
+async def test_auto_mode_uses_consistent_grounding_table(settings):
+    sessions, session, _ = build_session(settings, height=800)
+    primary = "尺寸\t腰围\t臀围\t体重\nM\t64\t85\t80\nL\t70\t90\t100\t120"
+    grounding = """<|ref|>table<|/ref|><|det|>[[40, 60, 700, 400]]<|/det|>
+<table><tr><td>尺寸</td><td>腰围</td><td>臀围</td><td>体重</td></tr>
+<tr><td>M</td><td>64</td><td>85</td><td>80</td></tr>
+<tr><td>L</td><td>70</td><td>90</td><td>100</td></tr></table>
+"""
+    client = FakeClient(settings, [primary, grounding])
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=False, mode="auto")
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    chunk = result.images[0].chunks[0]
+    assert chunk.selected_mode == "markdown"
+    assert chunk.layout_method == "grounding_xy_cut"
+    assert chunk.selection_reason == "table_like:secondary_table_consistent"
+    assert chunk.alternate_text == primary
+    assert chunk.alternate_mode == "text"
+    assert "M\t64\t85\t80" in result.images[0].text
+    assert result.api_requests == 2
+    assert any("Markdown/grounding" in warning for warning in result.warnings)
+
+    image_id = result.images[0].image_id
+    switched = pipeline.apply_chunk_text(
+        job_id, image_id=image_id, chunk_index=0, source="alternate"
+    )
+    assert switched.images[0].chunks[0].text == primary
+    restored = pipeline.apply_chunk_text(job_id, image_id=image_id, chunk_index=0, source="primary")
+    assert restored.images[0].chunks[0].selected_mode == "markdown"
+
+
+@pytest.mark.asyncio
+async def test_auto_mode_keeps_primary_when_grounding_is_too_short(settings):
+    sessions, session, _ = build_session(settings, height=800)
+    primary = (
+        "尺寸\t腰围\t臀围\t体重\nM\t64\t85\t80\n"
+        "面料成分：92%莫代尔 8%氨纶\n执行标准：FZ/T 73020-2019\n安全类别：GB 18401-B"
+    )
+    grounding = "面料：95%棉"
+    client = FakeClient(settings, [primary, grounding])
+    pipeline = make_pipeline(settings, StubPolicy(), client)
+    jobs, job_id = create_job(settings, session.session_id, use_review=False, mode="auto")
+    await pipeline.run_job(job_id)
+    result = jobs.load_result(job_id)
+    chunk = result.images[0].chunks[0]
+    assert chunk.text == primary
+    assert chunk.alternate_text == grounding
+    assert chunk.selection_reason == "table_like:primary_preferred"
+    assert result.images[0].text == primary
+
+
+@pytest.mark.asyncio
 async def test_pipeline_blocks_when_policy_not_free(settings):
     sessions, session, _ = build_session(settings, height=800)
     client = FakeClient(settings, ["文本"])

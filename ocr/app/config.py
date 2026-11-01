@@ -35,7 +35,7 @@ class Settings(BaseSettings):
     primary_model: str = "deepseek-ai/DeepSeek-OCR"
     review_model: str = "PaddlePaddle/PaddleOCR-VL-1.5"
     review_enabled: bool = False
-    prompt_mode: str = "text"  # text | markdown
+    prompt_mode: str = "auto"  # text | markdown | auto
 
     chunk_target_height: int = 1200
     chunk_min_height: int = 760
@@ -102,8 +102,8 @@ class Settings(BaseSettings):
     def validate(self) -> None:
         if not self.data_dir.is_absolute():
             self.data_dir = BASE_DIR / self.data_dir
-        if self.prompt_mode not in {"text", "markdown"}:
-            raise ValueError("OCR_PROMPT_MODE must be 'text' or 'markdown'")
+        if self.prompt_mode not in {"text", "markdown", "auto"}:
+            raise ValueError("OCR_PROMPT_MODE must be 'text', 'markdown' or 'auto'")
         if not (200 <= self.chunk_min_height <= self.chunk_target_height <= self.chunk_max_height):
             raise ValueError("chunk heights must satisfy min <= target <= max")
         if self.chunk_overlap < 0 or self.chunk_overlap >= self.chunk_min_height:

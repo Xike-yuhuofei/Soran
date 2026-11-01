@@ -78,9 +78,15 @@ def _is_size_header(value: str) -> bool:
 
 
 def _fabric_value(line: str) -> str | None:
-    if "%" not in line or not _FABRIC_RE.search(line):
+    normalized = unicodedata.normalize("NFKC", line)
+    if "%" not in normalized or not _FABRIC_RE.search(normalized):
         return None
-    cleaned = re.sub(r"(?:面料|成分|材质|纤维含量|composition)\s*[:：]?", "", line, flags=re.I)
+    cleaned = re.sub(
+        r"(?:面料|成分|材质|纤维含量|composition)\s*[:：]?",
+        "",
+        normalized,
+        flags=re.I,
+    )
     return _clean_value(cleaned) or None
 
 
@@ -205,7 +211,8 @@ def percent_issues(text: str) -> list[str]:
     """Detect inconsistent percentage groups, especially fabric composition."""
 
     issues: list[str] = []
-    for line in text.splitlines():
+    for raw_line in text.splitlines():
+        line = unicodedata.normalize("NFKC", raw_line)
         if not line.strip():
             continue
         percents = [float(m.group(0).rstrip("%")) for m in _PERCENT_RE.finditer(line)]
@@ -213,7 +220,10 @@ def percent_issues(text: str) -> list[str]:
             continue
         if len(percents) >= 2 and _FABRIC_RE.search(line):
             total = sum(percents)
-            if abs(total - 100.0) > 0.6:
+            # Multi-part garments legitimately sum to 200%, 300% ... A single
+            # composition that sums to 97% (or 103%) is the real error.
+            nearest_hundred = round(total / 100.0) * 100.0
+            if abs(total - nearest_hundred) > 0.6:
                 issues.append(f"成分百分比合计为 {total:.0f}%：{line.strip()[:120]}")
         for value in percents:
             if value > 100:
@@ -223,11 +233,11 @@ def percent_issues(text: str) -> list[str]:
 
 
 def numeric_tokens(text: str) -> set[str]:
-    return set(re.findall(r"\d+(?:\.\d+)?(?:%|‰)?", text))
+    return set(re.findall(r"\d+(?:\.\d+)?(?:%|‰)?", unicodedata.normalize("NFKC", text)))
 
 
 def percent_tokens(text: str) -> set[str]:
-    return set(_PERCENT_SUM_RE.findall(text))
+    return set(_PERCENT_SUM_RE.findall(unicodedata.normalize("NFKC", text)))
 
 
 def critical_lines(text: str) -> list[str]:

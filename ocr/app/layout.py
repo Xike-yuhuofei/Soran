@@ -82,6 +82,15 @@ def _caption_grid_order(
     ]
 
 
+def caption_grid_blocks(
+    blocks: list[ParsedLayoutBlock], page_width: int
+) -> list[ParsedLayoutBlock] | None:
+    """Return captions in row-major order when a grid is detected."""
+
+    captions = [block for block in blocks if block.label in _CAPTION_LABELS]
+    return _caption_grid_order(captions, page_width)
+
+
 def parse_grounding_blocks(raw: str) -> list[ParsedLayoutBlock]:
     """Parse DeepSeek-OCR grounding output into labelled blocks with boxes."""
 

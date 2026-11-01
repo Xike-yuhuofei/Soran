@@ -584,7 +584,12 @@
           : "",
         chunk.forced_cut ? '<span class="tag tag-bad">强制切分</span>' : "",
         chunk.layout_method ? `<span class="tag tag-ok">布局 ${escapeHtml(chunk.layout_method)}</span>` : "",
-        chunk.manual_override ? '<span class="tag tag-warn">已人工采用复核文本</span>' : "",
+        chunk.selected_mode === "markdown" ? '<span class="tag tag-ok">Markdown 布局</span>' : "",
+        chunk.manual_override
+          ? `<span class="tag tag-warn">已人工采用${
+              chunk.override_source === "alternate" ? "备选" : "复核"
+            }文本</span>`
+          : "",
         chunk.error ? '<span class="tag tag-bad">错误</span>' : "",
       ].join(" ");
       node.innerHTML = `
@@ -632,12 +637,33 @@
                   )
                   .join("\n")}</div></details>`
             : ""
+        }
+        ${
+          chunk.alternate_text
+            ? `<details style="margin-top:8px"><summary class="muted">查看备选文本（${escapeHtml(
+                chunk.alternate_mode === "markdown" ? "Markdown/grounding" : "主模型纯文字"
+              )}${chunk.selection_reason ? ` · ${escapeHtml(chunk.selection_reason)}` : ""}）</summary>
+                <div class="chunk-text">${escapeHtml(chunk.alternate_text)}</div>
+                <div class="tool-actions" style="margin-top:8px">
+                  ${
+                    chunk.manual_override
+                      ? '<button class="btn btn-ghost btn-sm" data-apply-primary="1" type="button">恢复采用前文本</button>'
+                      : `<button class="btn btn-primary btn-sm" data-apply-alternate="1" type="button">采用备选文本</button>`
+                  }
+                </div></details>`
+            : ""
         }`;
       el.chunkList.appendChild(node);
       const reviewButton = node.querySelector("[data-apply-review]");
       if (reviewButton) {
         reviewButton.addEventListener("click", () =>
           applyChunkText(image.image_id, chunk.index, "review")
+        );
+      }
+      const alternateButton = node.querySelector("[data-apply-alternate]");
+      if (alternateButton) {
+        alternateButton.addEventListener("click", () =>
+          applyChunkText(image.image_id, chunk.index, "alternate")
         );
       }
       const primaryButton = node.querySelector("[data-apply-primary]");
@@ -651,7 +677,12 @@
 
   async function applyChunkText(imageId, chunkIndex, source) {
     if (!state.jobId) return;
-    const action = source === "review" ? "采用复核文本" : "恢复主模型文本";
+    const action =
+      source === "review"
+        ? "采用复核文本"
+        : source === "alternate"
+          ? "采用备选文本"
+          : "恢复采用前文本";
     if (
       !window.confirm(
         `${action}会基于所有分块重新生成该图片文字，可能覆盖当前整段人工编辑。是否继续？`
@@ -672,7 +703,13 @@
       state.dirty = false;
       state.activeDocId = imageId;
       renderResult();
-      toast(source === "review" ? "已采用复核文本" : "已恢复主模型文本");
+      toast(
+        source === "review"
+          ? "已采用复核文本"
+          : source === "alternate"
+            ? "已采用备选文本"
+            : "已恢复采用前文本"
+      );
     } catch (error) {
       toast(`${action}失败：${error.message}`, true);
     }

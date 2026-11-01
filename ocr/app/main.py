@@ -291,8 +291,8 @@ def create_app(
             missing = [image_id for image_id in requested_ids if image_id not in known]
             if missing:
                 raise HTTPException(status_code=400, detail=f"未知图片：{missing[0]}")
-        if payload.mode and payload.mode not in {"text", "markdown"}:
-            raise HTTPException(status_code=400, detail="mode 必须是 text 或 markdown。")
+        if payload.mode and payload.mode not in {"text", "markdown", "auto"}:
+            raise HTTPException(status_code=400, detail="mode 必须是 text、markdown 或 auto。")
         if payload.variant and payload.variant.upper() not in {"A", "B", "C", "D"}:
             raise HTTPException(status_code=400, detail="variant 必须是 A/B/C/D。")
 

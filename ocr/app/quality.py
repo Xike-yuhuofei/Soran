@@ -133,6 +133,22 @@ def table_issues(text: str) -> list[str]:
         else:
             flush()
     flush()
+
+    tsv_rows: list[int] = []
+
+    def flush_tsv() -> None:
+        nonlocal tsv_rows
+        if len(tsv_rows) >= 2 and min(tsv_rows) != max(tsv_rows):
+            issues.append(f"制表符表格列数不一致：{tsv_rows}")
+        tsv_rows = []
+
+    for line in text.splitlines():
+        cells = [cell.strip() for cell in _TABLE_CELL_RE.split(line.strip()) if cell.strip()]
+        if len(cells) >= 2:
+            tsv_rows.append(len(cells))
+        else:
+            flush_tsv()
+    flush_tsv()
     return issues
 
 

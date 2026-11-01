@@ -26,6 +26,7 @@ def settings(tmp_path: Path) -> Settings:
         max_retries=2,
         review_enabled=True,
         cache_enabled=True,
+        prompt_mode="text",
         max_files_per_session=5,
         chunk_target_height=1000,
         chunk_min_height=600,
