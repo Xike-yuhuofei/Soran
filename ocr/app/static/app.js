@@ -580,6 +580,7 @@
         chunk.from_cache ? '<span class="tag tag-muted">缓存</span>' : "",
         chunk.needs_review ? '<span class="tag tag-warn">需核验</span>' : "",
         chunk.forced_cut ? '<span class="tag tag-bad">强制切分</span>' : "",
+        chunk.layout_method ? `<span class="tag tag-ok">布局 ${escapeHtml(chunk.layout_method)}</span>` : "",
         chunk.error ? '<span class="tag tag-bad">错误</span>' : "",
       ].join(" ");
       node.innerHTML = `
@@ -605,6 +606,19 @@
             ? `<details style="margin-top:8px"><summary class="muted">查看复核文本（${escapeHtml(
                 chunk.review_engine || "复核模型"
               )}）</summary><div class="chunk-text">${escapeHtml(chunk.review_text)}</div></details>`
+            : ""
+        }
+        ${
+          chunk.layout_blocks && chunk.layout_blocks.length
+            ? `<details style="margin-top:8px"><summary class="muted">布局块 ${chunk.layout_blocks.length} 个（原图坐标）</summary>
+                <div class="chunk-text">${chunk.layout_blocks
+                  .map(
+                    (block) =>
+                      `[${escapeHtml(block.label)} ${escapeHtml(
+                        block.bbox.map((value) => Math.round(value)).join(", ")
+                      )}] ${escapeHtml(block.text)}`
+                  )
+                  .join("\n")}</div></details>`
             : ""
         }`;
       el.chunkList.appendChild(node);

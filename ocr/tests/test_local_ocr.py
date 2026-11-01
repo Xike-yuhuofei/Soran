@@ -53,3 +53,29 @@ def test_local_disabled_by_default(settings):
     assert local.available() is False
     result = local.run(Image.new("RGB", (100, 100), "white"))
     assert result.error
+
+
+def test_local_model_falls_back_when_v6_unsupported(settings, monkeypatch):
+    import sys
+    import types
+
+    calls = []
+
+    class FakePaddleOCR:
+        def __init__(self, **kwargs):
+            calls.append(kwargs)
+            if kwargs.get("ocr_version") == "PP-OCRv6":
+                raise ValueError("PP-OCRv6 is not supported by this build")
+
+    module = types.ModuleType("paddleocr")
+    module.PaddleOCR = FakePaddleOCR
+    monkeypatch.setitem(sys.modules, "paddleocr", module)
+    settings.local_ocr_enabled = True
+    settings.local_ocr_model = "PP-OCRv6"
+
+    local = LocalPaddleOCR(settings)
+    assert local.available() is True
+    status = local.status()
+    assert status["actual_model"] == "PP-OCRv5"
+    assert status["model"] == "PP-OCRv6"
+    assert status["error"]

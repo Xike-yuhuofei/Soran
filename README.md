@@ -21,7 +21,7 @@
 
 ## 电商详情页 OCR
 
-`ocr/` 是一套独立可运行的电商详情图 OCR 工具：支持普通图 / 超长图 / 多图排序，自动按空白带切分并去重合并，调用已核实免费的 DeepSeek-OCR 与 PaddleOCR-VL-1.5，按需复核，输出 TXT / Markdown / JSON，并支持人工编辑与断点续跑。
+`ocr/` 是一套独立可运行的电商详情图 OCR 工具：支持普通图 / 超长图 / 多图排序，自动按空白带切分并去重合并，调用已核实免费的 DeepSeek-OCR 与 PaddleOCR-VL-1.5，Markdown/grounding 模式可用 bbox + XY-cut 恢复复杂布局，按需复核，输出 TXT / Markdown / JSON，并支持人工编辑与断点续跑。
 
 ```bash
 cd ocr

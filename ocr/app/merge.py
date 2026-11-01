@@ -102,6 +102,35 @@ class DedupeOutcome:
     note: str | None = None
 
 
+def _character_overlap(previous: str, current: str, overlap_px: int) -> tuple[str, str, int] | None:
+    """Fallback for blocks where multiple original lines were concatenated.
+
+    Line-level matching can miss an overlap such as
+    ``颜色...\n包装规格...`` vs ``颜色...包装规格...``. This compares
+    whitespace-stripped suffix/prefix and removes the duplicated prefix from
+    the current chunk, bounded by the physical overlap height.
+    """
+
+    prev_norm = re.sub(r"\s+", "", previous)
+    curr_norm = re.sub(r"\s+", "", current)
+    max_chars = max(24, min(200, overlap_px))
+    upper = min(len(prev_norm), len(curr_norm), max_chars)
+    for size in range(upper, 11, -1):
+        if prev_norm[-size:] != curr_norm[:size]:
+            continue
+        consumed = 0
+        cut = 0
+        while cut < len(current) and consumed < size:
+            if not current[cut].isspace():
+                consumed += 1
+            cut += 1
+        removed = current[:cut].strip()
+        remaining = current[cut:].lstrip()
+        if remaining or removed:
+            return remaining, removed, size
+    return None
+
+
 def dedupe_overlap(
     previous: str,
     current: str,
@@ -148,6 +177,16 @@ def dedupe_overlap(
             best_score = avg
 
     if best_k == 0:
+        char_match = _character_overlap(previous, current, overlap_px)
+        if char_match:
+            remaining, removed, size = char_match
+            return DedupeOutcome(
+                text=remaining,
+                removed_lines=[removed],
+                matched_lines=1,
+                score=1.0,
+                note=f"character_overlap:{size}",
+            )
         return DedupeOutcome(text=current)
 
     cutoff_index = curr_nonempty_idx[best_k - 1]

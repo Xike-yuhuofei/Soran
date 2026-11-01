@@ -66,7 +66,7 @@ class Settings(BaseSettings):
     data_dir: Path = Field(default_factory=lambda: BASE_DIR / ".data")
 
     local_ocr_enabled: bool = False
-    local_ocr_model: str = "PP-OCRv5"
+    local_ocr_model: str = "PP-OCRv6"
 
     review_sample_rate: float = 0.0
     max_reviews_per_job: int = 40

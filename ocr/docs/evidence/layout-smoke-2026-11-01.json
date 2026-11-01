@@ -1,0 +1,29 @@
+{
+  "generated_at": "2026-11-01T06:30:00+00:00",
+  "kind": "real_grounding_layout_smoke",
+  "note": "真实调用 DeepSeek-OCR Markdown/grounding 提示词，解析 bbox 并使用 XY-cut 恢复顺序；仅用于验证布局链路，不代表真实商品集精度。",
+  "image": "synthetic 750x2000 e-commerce detail sample",
+  "model": "deepseek-ai/DeepSeek-OCR",
+  "prompt_mode": "markdown",
+  "free_policy_verified": true,
+  "raw_chars": 1532,
+  "parsed_blocks": 19,
+  "layout_method": "grounding_xy_cut",
+  "first_blocks": [
+    {"label": "title", "bbox": [52.0, 18.0, 530.0, 42.0], "text": "素然之境 SORAN"},
+    {"label": "title", "bbox": [52.0, 59.0, 440.0, 77.0], "text": "男士莫代尔圆领短袖"},
+    {"label": "text", "bbox": [52.0, 104.0, 565.0, 119.0], "text": "商品名称：男士基础圆领短袖T恤"},
+    {"label": "text", "bbox": [52.0, 129.0, 293.0, 144.0], "text": "品牌：SORAN"},
+    {"label": "text", "bbox": [52.0, 154.0, 340.0, 169.0], "text": "型号：SR-M2001"}
+  ],
+  "read_order_head": [
+    "素然之境 SORAN",
+    "男士莫代尔圆领短袖",
+    "商品名称：男士基础圆领短袖T恤",
+    "品牌：SORAN",
+    "型号：SR-M2001",
+    "面料成分：92％莫代尔 8％氨纶"
+  ],
+  "usage": {"prompt_tokens": 614, "completion_tokens": 566, "total_tokens": 1180},
+  "latency_ms": 2958
+}
