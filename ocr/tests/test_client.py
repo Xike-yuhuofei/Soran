@@ -71,6 +71,7 @@ async def test_success_and_prompt(settings):
     assert response.attempts == 1
     payload = captured[0]
     assert payload["model"] == settings.primary_model
+    assert payload["max_tokens"] == settings.max_output_tokens
     assert payload["messages"][0]["content"][1]["text"] == build_prompt(
         settings.primary_model, "text", settings.review_model
     )

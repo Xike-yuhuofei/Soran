@@ -135,7 +135,7 @@ class OCRPipeline:
 
         warnings: list[str] = []
         errors: list[str] = []
-        review_enabled = bool(cloud_available and use_review and self.settings.review_enabled)
+        review_enabled = bool(cloud_available and use_review)
 
         if cloud_available:
             await self.policy.refresh()
@@ -634,7 +634,9 @@ class OCRPipeline:
         all_fields = []
         for chunk in image.chunks:
             if chunk.text:
-                all_fields.extend(extract_key_fields(chunk.text, chunk.index))
+                all_fields.extend(extract_key_fields(to_plain_text(chunk.text), chunk.index))
+        if image.text:
+            all_fields.extend(extract_key_fields(image.text))
         image.key_fields = merge_key_fields(all_fields)
         for field in image.key_fields:
             if field.confidence == "conflict":

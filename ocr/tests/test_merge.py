@@ -88,6 +88,9 @@ def test_markdown_to_plain_converts_table_and_markers():
 |---|---|---|
 | M | 170/90A | 68cm |
 
+| 尺寸   | 腰围    | 臀围    | 体重    | 直量腰围
+M	64cm~70cm	85cm~92cm	约80~100斤	56cm
+
 <table><tr><td>S</td><td>165/85A</td></tr><tr><td>L</td><td>175/95A</td></tr></table>
 """
     plain = to_plain_text(markdown)
@@ -95,6 +98,7 @@ def test_markdown_to_plain_converts_table_and_markers():
     assert "**" not in plain
     assert "|" not in plain
     assert "尺码\t身高/胸围\t衣长" in plain
+    assert "尺寸\t腰围\t臀围\t体重\t直量腰围" in plain
     assert "S\t165/85A" in plain
     assert "面料成分: 92%莫代尔 8%氨纶" in plain
 
@@ -116,7 +120,8 @@ def test_extract_key_fields():
 包装规格：1件/袋
 尺码：M
 尺码    身高/胸围
-M       170/90A"""
+M       170/90A
+2XL     82cm~88cm"""
     fields = extract_key_fields(text)
     names = {field.name for field in fields}
     assert {
@@ -134,6 +139,8 @@ M       170/90A"""
     }.issubset(names)
     fabric = next(field for field in fields if field.name == "fabric_composition")
     assert "92%" in fabric.value and "8%" in fabric.value
+    size_chart_values = [field.value for field in fields if field.name == "size_chart"]
+    assert any("2XL" in value for value in size_chart_values)
     price = next(field for field in fields if field.name == "price")
     assert "129" in price.value
 
@@ -156,6 +163,19 @@ def test_merge_key_fields_aggregates_wash_and_normalizes_price():
     price = [field for field in merged if field.name == "price"]
     assert len(price) == 2
     assert all(field.confidence == "conflict" for field in price)
+
+
+def test_merge_key_fields_aggregates_fabric_parts():
+    fields = extract_key_fields(
+        "面料:95%棉 5%氨纶\n里料:100%棉", chunk_index=0
+    ) + extract_key_fields("面料:95%棉 5%氨纶\n里料:100%棉", chunk_index=1)
+    merged = merge_key_fields(fields)
+    fabric = [field for field in merged if field.name == "fabric_composition"]
+    assert len(fabric) == 1
+    assert "95%棉" in fabric[0].value
+    assert "100%棉" in fabric[0].value
+    assert "；" in fabric[0].value
+    assert fabric[0].confidence == "cross_checked"
 
 
 def test_merge_key_fields_conflict():

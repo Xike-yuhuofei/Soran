@@ -119,6 +119,7 @@ async def evaluate_item(
             },
             "needs_manual_check": result.needs_manual_check,
             "api_requests": result.api_requests,
+            "cache_hits": int((result.budget or {}).get("cache_hits", 0)),
             "latency_ms": latency_ms,
             "errors": result.errors,
             "warnings": result.warnings,
@@ -162,6 +163,7 @@ def aggregate(items: list[dict[str, Any]]) -> dict[str, Any]:
         "boundary_miss_rate": summarize([item.get("boundary_miss_rate") for item in metrics]),
         "latency_ms": summarize([item.get("latency_ms") for item in successful]),
         "api_requests": summarize([item.get("api_requests") for item in successful]),
+        "cache_hits": summarize([item.get("cache_hits") for item in successful]),
         "needs_manual_check_rate": (
             sum(1 for item in successful if item.get("needs_manual_check")) / len(successful)
             if successful
@@ -187,17 +189,18 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         "## 汇总",
         "",
-        "| 方案 | 评估数 | CER 均值 | 行召回均值 | 关键字段完全正确率 | 重复引入率 | P95 延迟(ms) | 单图请求均值 | 需人工核验率 |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+        "| 方案 | 评估数 | CER 均值 | 行召回均值 | 关键字段完全正确率 | 重复引入率 | P95 延迟(ms) | 单图请求均值 | 缓存命中均值 | 需人工核验率 |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
-    for variant, aggregate_payload in report["variants"].items():
+    for variant, variant_payload in report["variants"].items():
+        aggregate_payload = variant_payload.get("aggregate", variant_payload)
 
         def value(payload: dict[str, Any], name: str, key: str = "mean") -> str:
-            metric = payload.get(name) or {}
-            result = metric.get(key)
+            metric = payload.get(name)
+            result = metric.get(key) if isinstance(metric, dict) else metric
             if result is None:
                 return "—"
-            if name in {"latency_ms", "api_requests"}:
+            if name in {"latency_ms", "api_requests", "cache_hits"}:
                 return f"{result:.1f}"
             return f"{result * 100:.2f}%"
 
@@ -208,6 +211,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"{value(aggregate_payload, 'introduced_duplicate_rate')} | "
             f"{value(aggregate_payload, 'latency_ms', 'p95')} | "
             f"{value(aggregate_payload, 'api_requests')} | "
+            f"{value(aggregate_payload, 'cache_hits')} | "
             f"{value(aggregate_payload, 'needs_manual_check_rate')} |"
         )
     lines += [
@@ -220,6 +224,7 @@ def render_markdown(report: dict[str, Any]) -> str:
         "- 重复引入率：输出重复行比例减去参考文本重复行比例，低于 0 时按 0 计。",
         "- 边界漏字率：仅在清单提供 boundary_texts 时计算，否则显示为 —。",
         "- 延迟包含上传解码、分块、API 往返与合并；P95 为样本内百分位。",
+        "- 单图请求次数与缓存命中分别记录；使用 `--no-cache` 时请求次数为真实独立运行值。",
         "",
         "> 上述结果只对当前标注样本有效，不代表所有电商详情页的普遍精度。",
         "",
@@ -237,12 +242,19 @@ async def main() -> int:
     parser.add_argument("--image-root", type=Path)
     parser.add_argument("--output", type=Path, default=Path(".data") / "evaluation" / "report.json")
     parser.add_argument("--keep", action="store_true", help="保留会话与任务中间文件")
+    parser.add_argument(
+        "--no-cache",
+        action="store_true",
+        help="禁用分块缓存，确保报告中请求次数与延迟是真实独立运行的数值",
+    )
     parser.add_argument("--real", action="store_true", help="确认调用免费云端模型")
     args = parser.parse_args()
     if not args.real:
         print("评测会调用云端免费模型，必须显式传入 --real。")
         return 2
     settings = get_settings()
+    if args.no_cache:
+        settings.cache_enabled = False
     if not settings.api_key_configured:
         print("缺少 SILICONFLOW_API_KEY。")
         return 2
