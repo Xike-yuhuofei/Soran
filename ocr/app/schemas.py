@@ -78,6 +78,7 @@ class ChunkResult(BaseModel):
     latency_ms: int | None = None
     api_requests: int = 0
     ink_ratio: float | None = None
+    overlap_ink_ratio: float | None = None
 
 
 class TextConflict(BaseModel):

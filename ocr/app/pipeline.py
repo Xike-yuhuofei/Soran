@@ -26,7 +26,12 @@ from .merge import (
     to_plain_text,
 )
 from .policy import FreePolicy, PolicyViolation
-from .quality import apply_review, assess_quality, compare_versions
+from .quality import (
+    apply_review,
+    assess_quality,
+    boundary_potential_miss,
+    compare_versions,
+)
 from .schemas import (
     ChunkResult,
     EditDocument,
@@ -250,6 +255,18 @@ class OCRPipeline:
                             forced_cut=plan.forced_cut,
                             risk_flags=list(plan.risk_flags),
                             ink_ratio=round(ink_ratio, 4),
+                            overlap_ink_ratio=(
+                                round(
+                                    chunk_ink_ratio(
+                                        rgb,
+                                        plan.y0,
+                                        min(plan.y1, plan.y0 + plan.overlap_top),
+                                    ),
+                                    4,
+                                )
+                                if plan.overlap_top > 0
+                                else None
+                            ),
                         )
 
                         if cloud_available:
@@ -641,6 +658,21 @@ class OCRPipeline:
         for field in image.key_fields:
             if field.confidence == "conflict":
                 image.warnings.append(f"关键字段冲突：{field.name} = {field.value}")
+                image.needs_manual_check = True
+
+        for index in range(1, len(image.chunks)):
+            previous = image.chunks[index - 1]
+            current = image.chunks[index]
+            if current.overlap_top <= 0:
+                continue
+            issue = boundary_potential_miss(
+                previous.text,
+                current.text,
+                current.overlap_top,
+                current.overlap_ink_ratio or 0.0,
+            )
+            if issue:
+                image.warnings.append(f"分块 {previous.index}/{current.index} 边界完整性：{issue}")
                 image.needs_manual_check = True
 
         for issue in percent_issues(image.text):

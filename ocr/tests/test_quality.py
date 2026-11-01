@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from app.quality import (
     assess_quality,
+    boundary_potential_miss,
     compare_versions,
     find_missing_lines,
     find_primary_only_lines,
@@ -75,6 +76,26 @@ def test_missing_line_detection_and_formatting_tolerance():
 
     primary_only = find_primary_only_lines("标题\n独有内容仅此一处\n品牌", "标题\n品牌")
     assert primary_only == ["独有内容仅此一处"]
+
+
+def test_boundary_potential_miss():
+    assert (
+        boundary_potential_miss(
+            "第一行文字\n共享重叠行",
+            "共享重叠行\n第二段文字",
+            overlap_px=120,
+            overlap_ink_ratio=0.05,
+        )
+        is None
+    )
+    assert boundary_potential_miss(
+        "第一行文字\n第二行文字", "完全不同内容\n另一段文字", overlap_px=120, overlap_ink_ratio=0.05
+    )
+    assert (
+        boundary_potential_miss("第一行文字", "另一段文字", overlap_px=120, overlap_ink_ratio=0.0)
+        is None
+    )
+    assert boundary_potential_miss("", "另一段文字", overlap_px=120, overlap_ink_ratio=0.05)
 
 
 def test_table_structure_issues():
