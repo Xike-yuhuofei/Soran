@@ -5,23 +5,24 @@ import unicodedata
 
 from .schemas import KeyField
 
+_SEP = r"(?:\s*[:：]\s*|[ \u3000]{2,}|\t\s*)"
 _LABEL_PATTERNS: dict[str, re.Pattern[str]] = {
-    "brand": re.compile(r"(?:品牌|Brand)\s*[:：]\s*(.+)$", re.IGNORECASE),
+    "brand": re.compile(rf"(?:品牌|Brand){_SEP}(.+)$", re.IGNORECASE),
     "product_name": re.compile(
-        r"(?:品名|商品名称|产品名称|商品名|名称)\s*[:：]\s*(.+)$", re.IGNORECASE
+        rf"(?:品名|商品名称|产品名称|商品名|名称){_SEP}(.+)$", re.IGNORECASE
     ),
-    "size": re.compile(r"(?:尺码|尺寸|号型|身高|适合身高)\s*[:：]\s*(.+)$", re.IGNORECASE),
-    "sku": re.compile(r"(?:型号|货号|款号|SKU|产品型号|产品货号)\s*[:：]\s*(.+)$", re.IGNORECASE),
-    "standard": re.compile(r"(?:执行标准|产品标准号|标准号)\s*[:：]\s*(.+)$", re.IGNORECASE),
+    "size": re.compile(rf"(?:尺码|尺寸|号型|身高|适合身高){_SEP}(.+)$", re.IGNORECASE),
+    "sku": re.compile(rf"(?:型号|货号|款号|SKU|产品型号|产品货号){_SEP}(.+)$", re.IGNORECASE),
+    "standard": re.compile(rf"(?:执行标准|产品标准号|标准号){_SEP}(.+)$", re.IGNORECASE),
     "safety_category": re.compile(
-        r"(?:安全类别|安全技术类别|安全技术规范)\s*[:：]\s*(.+)$", re.IGNORECASE
+        rf"(?:安全类别|安全技术类别|安全技术规范){_SEP}(.+)$", re.IGNORECASE
     ),
     "price": re.compile(
-        r"(?:价格|售价|到手价|券后价|活动价)\s*[:：]\s*(?:¥|￥)?\s*"
+        rf"(?:价格|售价|到手价|券后价|活动价){_SEP}(?:¥|￥)?\s*"
         r"(\d+(?:\.\d+)?(?:\s*[-~～]\s*\d+(?:\.\d+)?)?)",
         re.IGNORECASE,
     ),
-    "packaging": re.compile(r"(?:包装规格|净含量|包装|数量)\s*[:：]\s*(.+)$", re.IGNORECASE),
+    "packaging": re.compile(rf"(?:包装规格|净含量|包装|数量){_SEP}(.+)$", re.IGNORECASE),
 }
 
 _FABRIC_WORDS = (
@@ -44,7 +45,8 @@ _WASH_CARE_RE = re.compile(
 _WASH_NEGATIVE_RE = re.compile(r"^(?:不要|不可|请勿|勿|切勿|禁止)")
 _SIZE_ROW_RE = re.compile(
     r"^(?:XS|S|M|L|XL|XXL|XXXL|XXXXL|\d+XL|均码|\d{2,3})\s+"
-    r".*(?:\d{2,3}\s*/\s*\d{2,3}|\d+(?:\.\d+)?\s*cm)",
+    r".*(?:\d{2,3}\s*/\s*\d{2,3}|\d+(?:\.\d+)?\s*cm|"
+    r"\d+(?:\.\d+)?\s*[~～-]\s*\d+(?:\.\d+)?)",
     re.IGNORECASE,
 )
 _PERCENT_SUM_RE = re.compile(r"\d+(?:\.\d+)?%")
