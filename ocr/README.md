@@ -236,7 +236,7 @@ ocr/
     storage.py       会话、任务、额度账本、缓存
     metrics.py       CER/行召回/关键字段/重复率
     static/          本地 Web 界面
-  tests/             110 个单元/集成测试
+  tests/             111 个单元/集成测试
   tools/             真实冒烟、数据集导入/校验、评测
   datasets/          标注格式与测试集导入说明
   docs/              部署说明、测试报告、证据
