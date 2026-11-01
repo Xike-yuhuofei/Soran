@@ -21,6 +21,47 @@ SAMPLE_GROUNDING = """<|ref|>title<|/ref|><|det|>[[40, 20, 300, 60]]<|/det|>
 """
 
 
+CAPTION_GRID_GROUNDING = """<|ref|>title<|/ref|><|det|>[[37, 168, 636, 228]]<|/det|>
+挑个顺眼的色号。
+
+<|ref|>image<|/ref|><|det|>[[48, 320, 501, 526]]<|/det|>
+
+
+<|ref|>image_caption<|/ref|><|det|>[[228, 564, 320, 594]]<|/det|>
+<center>燕麦</center>
+
+<|ref|>image<|/ref|><|det|>[[505, 320, 950, 526]]<|/det|>
+
+
+<|ref|>image_caption<|/ref|><|det|>[[684, 564, 777, 594]]<|/det|>
+<center>咖啡</center>
+
+<|ref|>image<|/ref|><|det|>[[48, 647, 501, 855]]<|/det|>
+
+
+<|ref|>image_caption<|/ref|><|det|>[[228, 895, 320, 924]]<|/det|>
+<center>烟灰</center>
+
+<|ref|>image<|/ref|><|det|>[[505, 647, 950, 855]]<|/det|>
+
+
+<|ref|>image_caption<|/ref|><|det|>[[684, 895, 777, 924]]<|/det|>
+<center>灰绿</center>
+"""
+
+
+def test_caption_grid_reads_row_major():
+    blocks = parse_grounding_blocks(CAPTION_GRID_GROUNDING)
+    ordered = order_parsed_blocks(blocks, page_width=1000, page_height=1000)
+    assert [block.text for block in ordered] == [
+        "挑个顺眼的色号。",
+        "燕麦",
+        "咖啡",
+        "烟灰",
+        "灰绿",
+    ]
+
+
 def test_parse_grounding_blocks():
     blocks = parse_grounding_blocks(SAMPLE_GROUNDING)
     assert len(blocks) == 4

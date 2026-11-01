@@ -13,9 +13,10 @@
 - 人工复核 PR：[#14](https://github.com/Xike-yuhuofei/Soran/pull/14) 增加 UI/API 采用/恢复复核文本、审计字段与前端语法 CI。
 - 边界完整性 PR：[#15](https://github.com/Xike-yuhuofei/Soran/pull/15) 增加重叠区墨迹比例与“有墨迹但无共享文本”边界检测，并记录被否决的官方图表提示词实验；已 squash-merge 至 `main`（`45265b9`）。
 - 质量修复 PR：[#16](https://github.com/Xike-yuhuofei/Soran/pull/16) 增加空白区域编造内容检测与自动排除、洗护“不要”行提取，并把真实标注样本从 8 条扩展到 13 条；已 squash-merge 至 `main`（`70bc761`）。
-- 表格与图标清理 PR：[#18](https://github.com/Xike-yuhuofei/Soran/pull/18) 支持表格式标签/区间尺码字段提取、清理图标占位伪文本，并把真实标注样本扩展到 15 条。
-- PR CI：PR #15/#16 的 Python 3.11 与 3.13 矩阵均通过（Ruff、Bandit、构建、105 测试）；PR #18 为 108 测试，覆盖率门槛同样通过。
-- `main` 在 PR #15、#16 合并后 OCR CI 均通过。
+- 表格与图标清理 PR：[#18](https://github.com/Xike-yuhuofei/Soran/pull/18) 支持表格式标签/区间尺码字段提取、清理图标占位伪文本，并把真实标注样本扩展到 15 条；已 squash-merge 至 `main`（`e7c89f1`）。
+- 布局顺序 PR：[#19](https://github.com/Xike-yuhuofei/Soran/pull/19) 修复 2×2 caption 网格被读成列优先的问题，并加入 15 条 text vs markdown 对比证据。
+- PR CI：PR #15/#16 为 105 测试，PR #18 为 108 测试，PR #19 为 109 测试；Python 3.11 / 3.13 矩阵均通过（Ruff、Bandit、构建、覆盖率门槛）。
+- `main` 在 PR #15–#18 合并后 OCR CI 均通过。
 - 未绕过分支保护、未强制合并；仓库 `main` 当时未启用分支保护，PR 为普通 squash merge。
 
 ## 1. 自动化测试
@@ -30,7 +31,7 @@ cd ocr
 结果：
 
 - `ruff check`：通过，0 错误。
-- `pytest`：**108 passed，0 failed，1 warning**（FastAPI TestClient 的第三方弃用提示）。
+- `pytest`：**109 passed，0 failed，1 warning**（FastAPI TestClient 的第三方弃用提示）。
 - 覆盖率：**86%**（语句覆盖；`coverage` 明细见终端输出）。
 - 默认测试使用 `httpx.MockTransport`，**不访问云端、不消耗额度**。
 
@@ -40,7 +41,7 @@ cd ocr
 |---|---|
 | 免费策略 | 官方定价页解析、免费/付费/未注册模型、快照过期阻止、刷新失败保留新鲜快照 |
 | 长图切分 | 空白行切分、120px 重叠与坐标、短图单块、密集图强制切分标记、分块缩放、墨迹比、30000px 超长图覆盖、长图缩略图高度限制 |
-| 布局 | grounding bbox 解析、原图坐标映射、双栏 XY-cut 顺序、纯文本回退 |
+| 布局 | grounding bbox 解析、原图坐标映射、双栏 XY-cut 顺序、2×2 caption 网格行优先顺序、纯文本回退 |
 | 合并去重 | 相邻前缀/后缀去重、物理无重叠不误删、中间分块失败时对最近成功分块去重、拼接块字符级重叠兜底、审计记录 |
 | 文本还原 | grounding token 清理、Markdown→纯文本、HTML/管道表格→TSV、结构化 Markdown 保留 |
 | 关键字段 | 品牌/品名/成分/尺码/型号/洗涤/标准/安全类别/价格/包装提取、百分比校验、多行字段合并、洗护“不要/不可”行提取、冲突标记 |
@@ -202,7 +203,27 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 
 证据：[`docs/evidence/real-eval-2026-11-01.json`](evidence/real-eval-2026-11-01.json) 与 [`docs/evidence/real-eval-2026-11-01.md`](evidence/real-eval-2026-11-01.md)。
 
-### 2.8 官方图表提示词实验（否决）
+### 2.8 纯文字 vs Markdown/grounding 模式（15 条）
+
+同一 15 条样本、禁用缓存、真实调用免费模型，仅切换提示词模式：
+
+| 模式 | CER 均值 | CER 中位数 | 行召回 | 关键字段 | 重复引入率 | P95 延迟 | 需人工核验率 | 状态 |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| `text` | **10.14%** | 4.69% | **89.35%** | **87.5%** | 1.40% | 10.62s | 20.00% | 15/15 completed |
+| `markdown` | 17.02% | 0.30% | 79.13% | 75.0% | 0.67% | 13.92s | 26.67% | 14/15 completed，1 partial |
+
+分类观察：
+
+- **表格/网格明显改善**：`1045196975426-31` 4.91% vs text 0%（两者已接近）；`962070911751-18` 色号网格 **0% vs 25%**；多张表格 CER 0%–4.9%。
+- **复杂艺术字明显变差**：`1080800063120-12` 64.79% vs 9.86%；`1080800063120-16` 57.14% vs 37.14%；`1080800063120-13` 94.23% vs 19.23%。grounding 会把图形当作布局块，丢字/改写更严重。
+- **空白分块行为不同**：markdown 模式对 `1038464992282-13` 的空白分块返回空文本（partial），没有编造表格；text 模式会编造，但已被 `text_without_ink` 拦截。
+- **阅读顺序修复**：新增 caption 网格“行优先”排序后，`962070911751-18` 的 grounding bbox 顺序为“燕麦→咖啡→烟灰→灰绿”，不再读成左栏全部再右栏。
+
+结论：**默认保持 `text`**；表格、参数列表、色号/卖点网格建议手动选 `markdown`。系统不会自动切换模式或模型。
+
+证据：[`docs/evidence/real-eval-15-markdown-2026-11-01.json`](evidence/real-eval-15-markdown-2026-11-01.json) 与 [`.md`](evidence/real-eval-15-markdown-2026-11-01.md)。
+
+### 2.9 官方图表提示词实验（否决）
 
 尝试 DeepSeek-OCR 官方 `<image>\nParse the figure.` 对两条复杂图：
 
@@ -220,7 +241,7 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 | 长图自动切分与合并 | 已实现；真实 7382px 长图 7 分块合并，15 条评测中 B 的 long CER 18.59%（8 条 A/B 对比中 A 为 601.4%） |
 | 不因切图重复/遗漏文字 | B 重复引入率 1.40%；15 样本边界漏字率 20%（图表轴标签）；未达“无漏字”验收 |
 | PaddleOCR-VL 辅助复核 | 已实现并真实调用成功；默认关闭，评测未显示 CER 收益 |
-| 复杂布局阅读顺序 | Markdown/grounding 解析 19 个真实 bbox 块并 XY-cut 重排；纯文字模式下色号网格顺序仍可能错乱 |
+| 复杂布局阅读顺序 | Markdown/grounding 解析 bbox 并 XY-cut 重排；2×2 caption 网格改为行优先。色号网格样本 markdown CER 0% vs text 25%；复杂艺术字仍以 text 更好 |
 | 测试集导入/人工标注机制 | `tools/import_dataset.py` 扫描生成清单，`tools/validate_dataset.py` 校验缺标注/坏图/重复 ID；已建立 15 条真实标注样本 |
 | 完整文字查看、编辑、导出 | 已实现并通过 API 测试 |
 | 禁止意外付费请求 | 白名单 + 定价页校验 + 快照过期阻止 + 额度 + 无付费兜底；真实调用仅免费模型 |
@@ -236,7 +257,7 @@ API 不返回 OCR 置信度（无 logprob），因此 JSON 中 `confidence` 为 
 3. **单分块内重复标签不会自动删除**：实测 `1070411333016-17` 重复输出 `[ 要 ]/[ 不要 ]`；因无法证明原图不同位置没有真实重复，系统只报告重复引入率/质量标记，不做无依据删除。
 4. **模型置信度缺失**：接口未返回，`confidence=null`。质量分与多模型一致性是独立指标，不能替代真实置信度。
 5. **PaddleOCR-VL 延迟波动**：真实评测 C 方案 P95 延迟达 224.1s，显著高于 B 的 10.8s；已默认关闭复核并保留单任务复核上限/超时控制。
-6. **复杂多栏阅读顺序**：Markdown/grounding 模式可解析 bbox 并 XY-cut 重排；纯文字模式没有逐行坐标，只能依赖模型原生顺序。默认仍是纯文字模式，需要复杂布局时应选择 Markdown 模式或启用本地 PP-OCR。
+6. **复杂多栏阅读顺序**：Markdown/grounding 模式可解析 bbox 并 XY-cut 重排，caption 网格按行优先；但整体 CER 高于 text（17.02% vs 10.14%），复杂艺术字明显变差，因此默认仍是纯文字模式，需要表格/网格时手动切换。
 7. **极密集图片**：无可用空白行时只能选择最少墨迹行并标记 `forced_cut`，无法数学保证绝不穿过字形；系统会加大重叠并提示人工核验。
 8. **免费状态变化**：官方定价页字段/模型状态变化会导致阻止调用；这是有意设计（fail closed）。
 9. **账单核实**：本次真实调用全部指向官方页面标记为免费的模型；未调用任何付费模型。但账户是否产生任何费用仍需以硅基流动控制台账单为准，应用无法代替云平台计费系统。
