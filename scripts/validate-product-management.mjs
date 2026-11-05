@@ -48,5 +48,27 @@ for (const name of required) {
     if (columns.length < 5 || new Set(columns).size !== columns.length || columns.some(c=>!c)) issues.push('Bad CSV header: '+name);
   }
 }
+// 商品编码采用单品牌 SPU 格式，不使用历史 SOR- 品牌前缀。
+const legacyTerms = /内部款式编号|品牌款式编号|内部款号|品牌款号|SOR-/;
+function validateNaming(dir) {
+  for (const item of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, item.name);
+    if (legacyTerms.test(item.name)) issues.push('Legacy name: ' + full);
+    if (item.isDirectory()) {
+      validateNaming(full);
+    } else if (/\.(md|csv)$/i.test(item.name)) {
+      if (legacyTerms.test(fs.readFileSync(full, 'utf8'))) {
+        issues.push('Legacy term or brand prefix: ' + full);
+      }
+    }
+  }
+}
+validateNaming(root);
+for (const example of [
+  '示例｜虚构数据/02｜单品开发/女士内裤/UND-W-9001｜莫代尔内裤/01 产品立项书.md',
+  '示例｜虚构数据/02｜单品开发/袜子/SOC-9001｜日常短袜/01 产品立项书.md'
+]) {
+  if (!fs.existsSync(path.join(root, example))) issues.push('Missing renamed example: ' + example);
+}
 if (issues.length) { console.error(issues.join('\n')); process.exit(1); }
 console.log('SORAN product-management templates validated: '+required.length+' files');
