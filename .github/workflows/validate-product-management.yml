@@ -1,0 +1,22 @@
+name: Validate product management templates
+on:
+  pull_request:
+    paths:
+      - 'brand/product-management/**'
+      - 'scripts/validate-product-management.mjs'
+      - '.github/workflows/validate-product-management.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'brand/product-management/**'
+      - 'scripts/validate-product-management.mjs'
+      - '.github/workflows/validate-product-management.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check templates
+        run: node scripts/validate-product-management.mjs
