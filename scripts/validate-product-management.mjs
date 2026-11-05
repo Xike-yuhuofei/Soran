@@ -43,10 +43,10 @@ for (const name of required) {
   const text = fs.readFileSync(full, 'utf8');
   if (!text.trim()) issues.push('Empty: '+name);
   if (name.endsWith('.csv')) {
-    const h = text.replace(/^\\uFEFF/, '').split(/\\r?\\n/,1)[0];
+    const h = text.replace(/^\uFEFF/, '').split(/\r?\n/,1)[0];
     const columns = h.split(',').map(s=>s.trim().replace(/^"|"$/g,''));
     if (columns.length < 5 || new Set(columns).size !== columns.length || columns.some(c=>!c)) issues.push('Bad CSV header: '+name);
   }
 }
-if (issues.length) { console.error(issues.join('\\n')); process.exit(1); }
+if (issues.length) { console.error(issues.join('\n')); process.exit(1); }
 console.log('SORAN product-management templates validated: '+required.length+' files');
